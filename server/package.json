@@ -1,0 +1,11 @@
+{
+  "name": "cricket_alpha",
+  "version": "1.0.0",
+  "description": "Cricket app server for capstone 1",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "",
+  "license": "ISC"
+}
