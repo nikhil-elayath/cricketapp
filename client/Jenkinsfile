@@ -1,0 +1,23 @@
+pipeline{
+    agent any
+    stages{
+        stage("Unit test on react app"){
+            steps{
+                bat 'npm install && npm test'
+            }
+        }
+        stage("SonnarQube analysis on react app"){
+            steps{
+                withSonarQubeEnv('SonarQube'){
+                    bat "sonar-scanner"
+                }
+            }
+        }
+          stage("build docker image react app"){
+            steps{
+                
+                    bat 'docker build -t cricketalpha-client:latest .' 
+            }
+          } 
+
+    }
