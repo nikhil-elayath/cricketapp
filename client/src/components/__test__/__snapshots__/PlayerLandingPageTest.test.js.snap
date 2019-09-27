@@ -1,0 +1,497 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Player Landing Page should render the component 1`] = `
+<PlayerLandingPage>
+  <div
+    style={
+      Object {
+        "padding": "12px",
+      }
+    }
+  >
+    <h1
+      style={
+        Object {
+          "fontFamily": "'Montserrat'",
+          "fontSize": "42px",
+          "fontWeight": 500,
+          "marginLeft": "35px",
+          "marginTop": "2em",
+          "textAlign": "left",
+        }
+      }
+    >
+      Players
+    </h1>
+    <div
+      id="conatiner"
+    >
+      <div
+        className="matchFormatOptons"
+      >
+        <div
+          className="selectNav"
+        >
+          <a
+            className="active"
+            href="#Test"
+          >
+            Test
+          </a>
+          <a
+            href="#Odi"
+          >
+            ODI
+          </a>
+          <a
+            href="#T20"
+          >
+            T20
+          </a>
+        </div>
+      </div>
+      <div
+        className="allPlayersDiv"
+      >
+        <div
+          className="topbatsmanDiv"
+        >
+          <div
+            className="insideBatsmanDiv"
+          >
+            <h2
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              Top Batsmen
+            </h2>
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="virat.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <div
+                  style={
+                    Object {
+                      "display": "flex",
+                      "flexDirection": "column",
+                    }
+                  }
+                >
+                  <span>
+                    <b>
+                      Virat Kohli
+                    </b>
+                  </span>
+                  <span>
+                    Right-Hand Batsman
+                  </span>
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  672
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings: 12
+                </span>
+                <span>
+                  Average: 52.12
+                </span>
+              </div>
+            </div>
+            <hr />
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="virat.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <span>
+                  <b>
+                    Virat Kohli
+                  </b>
+                </span>
+                <span>
+                  Right-Hand Batsman
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  672
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings: 12
+                </span>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Average: 52.12
+                </span>
+              </div>
+            </div>
+            <hr />
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="virat.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <span>
+                  <b>
+                    Virat Kohli
+                  </b>
+                </span>
+                <span>
+                  Right-Hand Batsman
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  672
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings:12
+                </span>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Average:52.12
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="topbowlerDiv"
+        >
+          <div
+            className="insideBowlerDiv"
+          >
+            <h2
+              style={
+                Object {
+                  "textAlign": "center",
+                }
+              }
+            >
+              Top Bowlers
+            </h2>
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="Bumrah.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <span>
+                  <b>
+                    Jasprit Bumrah
+                  </b>
+                </span>
+                <span>
+                  Right-handed fast Bowler
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  93
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings: 12
+                </span>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  E/R: 6.2
+                </span>
+              </div>
+            </div>
+            <hr />
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="Bumrah.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <span>
+                  <b>
+                    Jasprit Bumrah
+                  </b>
+                </span>
+                <span>
+                  Right-handed fast Bowler
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  93
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings: 12
+                </span>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  E/R: 6.2
+                </span>
+              </div>
+            </div>
+            <hr />
+            <div
+              className="batsmenDetailDiv"
+            >
+              <img
+                alt="virat kohli"
+                className="playerImage"
+                src="Bumrah.jpg"
+              />
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "marginTop": "10px",
+                    "textAlign": "left",
+                  }
+                }
+              >
+                <span>
+                  <b>
+                    Jasprit Bumrah
+                  </b>
+                </span>
+                <span>
+                  Right-handed fast Bowler
+                </span>
+              </div>
+              <div
+                style={
+                  Object {
+                    "display": "flex",
+                    "flexDirection": "column",
+                  }
+                }
+              >
+                <b
+                  style={
+                    Object {
+                      "fontSize": "25px",
+                      "justifySelf": "flex-end",
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  93
+                </b>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  Innings: 12
+                </span>
+                <span
+                  style={
+                    Object {
+                      "textAlign": "right",
+                    }
+                  }
+                >
+                  E/R: 6.2
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</PlayerLandingPage>
+`;
