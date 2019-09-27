@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+
+.mainDiv {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  margin-top: 200px;
+}
+
+.personalDetails {
+  justify-items: flex-start;
+  border: 1px solid #ccc;
+  height: 500px;
+}
+
+.playerBasicinfo {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 8px;
+}
+
+.careerStats {
+  border: 1px solid #ccc;
+}

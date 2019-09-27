@@ -3,6 +3,9 @@
 .matchFormatOptons {
   margin-left: 20px;
   margin-top: 30px;
+  border: 1px solid #16a085;
+  border-radius: 8px;
+  width: 237px;
 }
 
 .selectNav a {
@@ -11,9 +14,11 @@
   text-align: center;
   padding: 12px 14px;
   text-decoration: none;
-  font-size: 12px;
-  border: 1px solid #16a085;
-  border-radius: 3px;
+  font-size: 16px;
+  border-right: 1px solid #16a085;
+  font-family: "Monsterrat";
+  /* border-top-right-radius: 8px; */
+  /* border-radius: 8px; */
   width: 50px;
 }
 
@@ -53,9 +58,6 @@
   }
 }
 
-.insideBatsmanDiv {
-}
-
 .batsmenDetailDiv {
   display: flex;
   flex-direction: row;
@@ -64,6 +66,11 @@
   color: #383838;
   align-items: center;
   /* justify-content: s */
+}
+
+hr {
+  margin: auto;
+  width: 80%;
 }
 
 .playerImage {
@@ -83,7 +90,4 @@
     margin-left: 2em;
     font-family: "Montserrat";
   }
-}
-
-.insideBowlerDiv {
 }

@@ -4,11 +4,13 @@ import virat from "../components/images/virat.jpg";
 import bumrah from "../components/images/Bumrah.jpg";
 
 import "./css/PlayerLandingPage.css";
+import NavBar from "../components/common/Navbar";
 
 export default class PlayerLandingPage extends Component {
   render() {
     return (
       <div style={{ padding: 12 + "px" }}>
+        <NavBar></NavBar>
         <h1
           style={{
             textAlign: "left",
@@ -24,11 +26,28 @@ export default class PlayerLandingPage extends Component {
         <div id="conatiner">
           <div className="matchFormatOptons">
             <div className="selectNav">
-              <a href="#Test" className="active">
+              <a
+                href="#Test"
+                className="active"
+                style={{
+                  borderLeft: "none",
+                  borderTopLeftRadius: 8 + "px",
+                  borderBottomLeftRadius: 8 + "px"
+                }}
+              >
                 Test
               </a>
+
               <a href="#Odi">ODI</a>
-              <a href="#T20">T20</a>
+
+              <a
+                href="#T20"
+                style={{
+                  borderRight: "none"
+                }}
+              >
+                T20
+              </a>
             </div>
           </div>
           <div className="allPlayersDiv">

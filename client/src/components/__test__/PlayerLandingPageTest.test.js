@@ -1,8 +1,8 @@
 import React from "react";
-import { mount } from "enzyme";
+import { shallow, mount } from "enzyme";
 import PlayerLandingPage from "../PlayerLandingPage";
 
-const wrapper = mount(<PlayerLandingPage />);
+const wrapper = shallow(<PlayerLandingPage />);
 
 describe("Testing Player Landing Page", () => {
   it("should render the component", () => {
@@ -13,12 +13,53 @@ describe("Testing Player Landing Page", () => {
     expect(wrapper.find("div").length).toBe(28);
   });
 
-  it("should have 2 header for players", () => {
-    expect(wrapper.find("h2").length).toBe(2);
-  });
   it("should have the name of header as Players", () => {
-    expect(wrapper.find("h2").text()).toBe("Players");
+    expect(wrapper.find("h1").text()).toBe("Players");
   });
+
+  it("should have links for Test,Odi and T20", () => {
+    expect(
+      wrapper
+        .find("a")
+        .at(0)
+        .text()
+    ).toBe("Test");
+
+    expect(
+      wrapper
+        .find("a")
+        .at(1)
+        .text()
+    ).toBe("ODI");
+
+    expect(
+      wrapper
+        .find("a")
+        .at(2)
+        .text()
+    ).toBe("T20");
+  });
+
+  it("should have a header for top bowlers", () => {
+    expect(
+      wrapper
+        .find("h2")
+        .at(1)
+        .text()
+    ).toBe("Top Bowlers");
+  });
+  it("should have 6 images ", () => {
+    expect(wrapper.find("img").length).toBe(6);
+  });
+  it("should have a header for top batsman", () => {
+    expect(
+      wrapper
+        .find("h2")
+        .at(0)
+        .text()
+    ).toBe("Top Batsmen");
+  });
+
   it("should display 3 select menus", () => {
     expect(wrapper.find("a").length).toBe(3);
   });
