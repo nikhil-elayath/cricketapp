@@ -7,7 +7,7 @@ const wrapper = shallow(<Navbar />);
 describe("test for the text,css properties and icons on the navbar", () => {
 	it("should have text brand CricketAlpha, matches, teams, players, stats", () => {
 		// checks for no. of link present on navbar
-		expect(wrapper.find(".link").length).toBe(4);
+		expect(wrapper.find(".link").length).toBe(6);
 
 		// checks for the links text
 		expect(
