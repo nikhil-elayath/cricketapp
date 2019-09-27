@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    color: blue;
+}
+
+.timeline{
+    width: 90%;
+    height: 80px;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    margin: 15px;
+}
+
+.all-recent-matches-box{
+    display: grid;
+    grid-template-columns: 22vw 22vw 22vw 22vw;
+    width: 90%;
+    height: 310px;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    margin: 10px;
+
+}
+.inside-recent-matches-box{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: 140px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+
+.inside-recent-matches-box .tournamnet-name {
+    text-align: left;
+    font-size: 12pt;
+    margin-left: 10pt;
+    margin-top: 10pt;
+
+}
+
+.inside-recent-matches-box .winner-name{
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 600;
+    margin-left: 10pt;
+    margin-top: 10pt;
+}
+.inside-recent-matches-box .TeamOne-name, .TeamOne-over, .TeamOne-score , .TeamTwo-name , .TeamTwo-over , .TeamTwo-score{
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 500;
+    margin-left: 15pt;
+}
+.inside-recent-matches-box  .TeamOne-score  , .TeamTwo-score{
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 500;
+    margin-right: 15pt;
+}
+.Team-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 20pt;
+    margin: 3px;
+    margin-left: 10pt
+}

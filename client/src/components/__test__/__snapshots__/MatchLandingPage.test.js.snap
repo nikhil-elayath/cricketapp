@@ -1,0 +1,925 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing of MatchLandingPage Component should render the component 1`] = `
+<Provider
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+>
+  <MatchLandingPage>
+    <div>
+      <div>
+        <h1
+          className="h1-match"
+          style={
+            Object {
+              "margin": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          Matches
+        </h1>
+      </div>
+      <div
+        className="timeline"
+      >
+        <t
+          alignCenter={true}
+          alignOnResize={true}
+          arrowClass="scroll-menu-arrow"
+          arrowDisabledClass="scroll-menu-arrow--disabled"
+          arrowLeft={
+            <div
+              className="arrow-prev"
+            >
+              &lt;
+            </div>
+          }
+          arrowRight={
+            <div
+              className="arrow-next"
+            >
+              &gt;
+            </div>
+          }
+          clickWhenDrag={false}
+          data={
+            Array [
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 19"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 20"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 21"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 22"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 23"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 24"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 25"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 26"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 27"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 28"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 29"
+              />,
+              <MenuItem
+                selected="SEP 26"
+                text="SEP 30"
+              />,
+            ]
+          }
+          dragging={true}
+          hideArrows={false}
+          hideSingleArrow={false}
+          inertiaScrolling={false}
+          inertiaScrollingSlowdown={0.25}
+          innerWrapperClass="menu-wrapper--inner"
+          innerWrapperStyle={
+            Object {
+              "textAlign": "left",
+              "userSelect": "none",
+              "whiteSpace": "nowrap",
+            }
+          }
+          itemClass="menu-item-wrapper"
+          itemClassActive="active"
+          itemStyle={
+            Object {
+              "display": "inline-block",
+            }
+          }
+          menuClass="horizontal-menu"
+          menuStyle={
+            Object {
+              "alignItems": "center",
+              "display": "flex",
+              "userSelect": "none",
+            }
+          }
+          onSelect={[Function]}
+          onUpdate={[Function]}
+          rtl={false}
+          scrollBy={0}
+          scrollToSelected={false}
+          selected="SEP 26"
+          transition={0.4}
+          translate={0}
+          useButtonRole={true}
+          wheel={true}
+          wrapperClass="menu-wrapper"
+          wrapperStyle={
+            Object {
+              "overflow": "hidden",
+              "userSelect": "none",
+            }
+          }
+          xPoint={0}
+        >
+          <div
+            className="horizontal-menu"
+            onWheel={[Function]}
+            style={
+              Object {
+                "alignItems": "center",
+                "display": "flex",
+                "userSelect": "none",
+              }
+            }
+          >
+            <t
+              className="scroll-menu-arrow"
+              disabledClass="scroll-menu-arrow--disabled"
+              isDisabled={true}
+              onClick={[Function]}
+            >
+              <div
+                className="scroll-menu-arrow scroll-menu-arrow--disabled"
+                onClick={[Function]}
+              >
+                <div
+                  className="arrow-prev"
+                >
+                  &lt;
+                </div>
+              </div>
+            </t>
+            <div
+              className="menu-wrapper"
+              onMouseDown={[Function]}
+              onMouseMove={[Function]}
+              onTouchEnd={[Function]}
+              onTouchMove={[Function]}
+              onTouchStart={[Function]}
+              style={
+                Object {
+                  "overflow": "hidden",
+                  "userSelect": "none",
+                }
+              }
+            >
+              <n
+                data={
+                  Array [
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 19"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 20"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 21"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 22"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 23"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 24"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 25"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 26"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 27"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 28"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 29"
+                    />,
+                    <MenuItem
+                      selected="SEP 26"
+                      text="SEP 30"
+                    />,
+                  ]
+                }
+                dragging={false}
+                inertiaScrolling={false}
+                innerWrapperClass="menu-wrapper--inner"
+                innerWrapperStyle={
+                  Object {
+                    "textAlign": "left",
+                    "userSelect": "none",
+                    "whiteSpace": "nowrap",
+                  }
+                }
+                itemClass="menu-item-wrapper"
+                itemClassActive="active"
+                itemStyle={
+                  Object {
+                    "display": "inline-block",
+                  }
+                }
+                mounted={false}
+                onClick={[Function]}
+                rtl={false}
+                selected="SEP 26"
+                setMenuInnerRef={[Function]}
+                setRef={[Function]}
+                transition={0}
+                translate={0}
+                useButtonRole={true}
+              >
+                <div
+                  className="menu-wrapper--inner"
+                  style={
+                    Object {
+                      "textAlign": "left",
+                      "transform": "translate3d(0px, 0, 0)",
+                      "transition": "transform 0s",
+                      "userSelect": "none",
+                      "whiteSpace": "nowrap",
+                      "width": "9900px",
+                    }
+                  }
+                >
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 19"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 19"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 19"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 19
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 20"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 20"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 20"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 20
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 21"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 21"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 21"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 21
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 22"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 22"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 22"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 22
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 23"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 23"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 23"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 23
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 24"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 24"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 24"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 24
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 25"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 25"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 25"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 25
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper active"
+                    key="menuItem-SEP 26"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 26"
+                      onClick={[Function]}
+                      selected={true}
+                      text="SEP 26"
+                    >
+                      <div
+                        className="menu-item active"
+                      >
+                        SEP 26
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 27"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 27"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 27"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 27
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 28"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 28"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 28"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 28
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 29"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 29"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 29"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 29
+                      </div>
+                    </MenuItem>
+                  </div>
+                  <div
+                    className="menu-item-wrapper "
+                    key="menuItem-SEP 30"
+                    onClick={[Function]}
+                    role="button"
+                    style={
+                      Object {
+                        "display": "inline-block",
+                      }
+                    }
+                    tabIndex={0}
+                  >
+                    <MenuItem
+                      key="SEP 30"
+                      onClick={[Function]}
+                      selected={false}
+                      text="SEP 30"
+                    >
+                      <div
+                        className="menu-item "
+                      >
+                        SEP 30
+                      </div>
+                    </MenuItem>
+                  </div>
+                </div>
+              </n>
+            </div>
+            <t
+              className="scroll-menu-arrow"
+              disabledClass="scroll-menu-arrow--disabled"
+              isDisabled={true}
+              onClick={[Function]}
+            >
+              <div
+                className="scroll-menu-arrow scroll-menu-arrow--disabled"
+                onClick={[Function]}
+              >
+                <div
+                  className="arrow-next"
+                >
+                  &gt;
+                </div>
+              </div>
+            </t>
+          </div>
+        </t>
+      </div>
+      <br />
+      <div>
+        <h2
+          className="h2-recent-matches"
+          style={
+            Object {
+              "margin": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          Recent Matches
+        </h2>
+      </div>
+      <div
+        className="all-recent-matches-box"
+      >
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+            INDIA WON
+          </span>
+        </div>
+        <div
+          className="inside-recent-matches-box"
+        >
+          <span
+            className="tournamnet-name"
+          >
+            3rd T20
+          </span>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            >
+              IND
+            </div>
+            <div
+              className="TeamOne-score"
+            >
+              134/2  (20 overs)
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            >
+              SA
+            </div>
+            <div
+              className="TeamTwo-score"
+            >
+              120/9  (20 overs)
+            </div>
+          </div>
+          <div
+            className="winner-name"
+          >
+            INDIA WON
+          </div>
+        </div>
+      </div>
+    </div>
+  </MatchLandingPage>
+</Provider>
+`;
