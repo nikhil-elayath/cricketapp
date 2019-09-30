@@ -1,3 +1,6 @@
 {
-  "cricketPostgresURL": ""
+  "postgresURL": "",
+  "jwtPrivateKey": "",
+  "mailPass": "",
+  "mailId": ""
 }

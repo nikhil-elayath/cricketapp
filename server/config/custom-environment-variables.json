@@ -1,3 +1,6 @@
 {
-  "cricketPostgresURL": "cricketPostgresURL"
+  "postgresURL": "cricketPostgresURL",
+  "jwtPrivateKey": "cricketJwtPrivateKey",
+  "mailPass": "cricketMailPass",
+  "mailId": "cricketMailId"
 }
