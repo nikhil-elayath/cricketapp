@@ -1,3 +1,6 @@
 {
-    "connectionString": ""
+	"postgresURL": "",
+	"jwtPrivateKey": "",
+	"mailPass": "",
+	"mailId": ""
 }
