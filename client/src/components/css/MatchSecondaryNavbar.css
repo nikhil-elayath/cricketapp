@@ -2,6 +2,7 @@
 
 .secNavParent {
 	width: 100vw;
+	padding: 20px 60px 0px 60px;
 	background-color: #ffffff;
 	box-shadow: 0px 2px 4px 0px #e6e6e6;
 	color: #2c3e50;
@@ -10,22 +11,15 @@
 	letter-spacing: 0.3px;
 	position: fixed;
 	font-family: "Montserrat", sans-serif;
-	top: 60px;
+	top: 0;
 	left: 0;
 	right: 0;
 }
 
-.secNavHead {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: 14px 60px 10px 60px;
-}
-
 .secNavHead div:first-child {
 	display: inline-block;
-	width: 60px;
-	height: 60px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -49,7 +43,7 @@
 }
 
 .secNavLinks {
-	margin: 0px 60px;
+	margin-top: 20px;
 }
 
 .secNavLinks ul {

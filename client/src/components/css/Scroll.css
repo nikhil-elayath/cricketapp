@@ -14,5 +14,6 @@
    
   .scroll-menu-arrow {
     padding: 30px;
+    justify-content: space-between;
     cursor: pointer;
   }

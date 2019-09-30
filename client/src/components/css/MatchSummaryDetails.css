@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    color: #272727;
+}
+
+
+.top-div-of-match {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 120px;
+    padding: 5px;
+    border: 1px solid black;
+}
+
+.short-summary-with-result{
+    width: 35%;
+    border: 1px solid black;
+}
+.short-summary-with-result span{
+text-align: right;    
+}
+.short-summary-with-player-of-the-match{
+width: 50%;
+border: 1px solid black;
+}
+
+.short-summary-with-result .TeamOne-name, .TeamOne-over, .TeamOne-score , .TeamTwo-name , .TeamTwo-over , .TeamTwo-score{
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 500;
+    margin-left: 15pt;
+}
+.short-summary-with-result .TeamOne-score  , .TeamTwo-score{
+    text-align: left;
+    font-size: 15pt;
+    font-weight: 500;
+    margin-right: 15pt;
+}
+.ishort-summary-with-result .Team-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 20pt;
+    margin: 3px;
+    margin-left: 10pt
+}

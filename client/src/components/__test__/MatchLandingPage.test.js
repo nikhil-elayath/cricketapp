@@ -8,7 +8,6 @@ import store from "../../store";
 // const matchLandingPage = jest.fn();
 const wrapper = shallow(
     <Provider store={store}>
-        {/* <MatchLandingPage matchLandingPage={matchLandingPage} /> */}
         <MatchLandingPage />
     </Provider>
 );
@@ -33,7 +32,7 @@ describe("Testing of MatchLandingPage Component", () => {
     it("should have one h2 header", () => {
         expect(wrapper.find("h2").length).toBe(1);
     });
-    it("should have one h1 content with 'Matches' content", () => {
+    it("should have one h2 content with 'Recent Matches' content", () => {
         expect(wrapper.find(".h2-recent-matches").text()).toBe("Recent Matches");
     });
 

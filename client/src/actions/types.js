@@ -1,0 +1,1 @@
+export const GET_RECENT_MATCHES = "GET_RECENT_MATCHES";

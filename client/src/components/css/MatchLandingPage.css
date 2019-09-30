@@ -1,9 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
-
 body{
     font-family: 'Montserrat', sans-serif;
-    color: blue;
+    color: #272727;
 }
 
 .timeline{
@@ -28,45 +27,334 @@ body{
 .inside-recent-matches-box{
     display: flex;
     flex-direction: column;
+    margin: 4px;
+    margin-bottom: 10px;
     width: 95%;
     height: 140px;
     border-radius: 8px;
     border: 1px solid black;
 }
-
-.inside-recent-matches-box .tournamnet-name {
-    text-align: left;
-    font-size: 12pt;
-    margin-left: 10pt;
-    margin-top: 10pt;
-
+.inside-recent-matches-box:hover{
+    background-color: rgb(116, 116, 158);
+    width: 98%;
+    height: 145px;
 }
 
-.inside-recent-matches-box .winner-name{
-    text-align: left;
-    font-size: 15pt;
-    font-weight: 600;
-    margin-left: 10pt;
-    margin-top: 10pt;
-}
-.inside-recent-matches-box .TeamOne-name, .TeamOne-over, .TeamOne-score , .TeamTwo-name , .TeamTwo-over , .TeamTwo-score{
-    text-align: left;
-    font-size: 15pt;
-    font-weight: 500;
-    margin-left: 15pt;
-}
-.inside-recent-matches-box  .TeamOne-score  , .TeamTwo-score{
-    text-align: left;
-    font-size: 15pt;
-    font-weight: 500;
-    margin-right: 15pt;
-}
-.Team-data {
+
+
+.inside-recent-matches-box .Team-data {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
-    font-size: 20pt;
+    font-size: 10pt;
     margin: 3px;
-    margin-left: 10pt
+    margin-left: 15px;
+}
+
+.inside-recent-matches-box .tournamnet-name {
+    text-align: left;
+    font-size: 15pt;
+    margin-left: 10pt;
+    margin-top: 10pt;
+}
+
+
+.inside-recent-matches-box .TeamOne-name{
+    text-align: left;
+    font-size: 13pt;
+    font-weight: 500;
+    margin-left: 12pt;
+}
+.inside-recent-matches-box  .TeamTwo-name {
+    text-align: left;
+    font-size: 13pt;
+    font-weight: 500;
+    margin-left: 12pt;
+}
+
+.inside-recent-matches-box  .TeamOne-score{
+    text-align: left;
+    font-size: 13pt;
+    font-weight: 500;
+    margin-left: 10pt;
+    margin-right: 25pt;
+}    
+.inside-recent-matches-box  .TeamTwo-score{
+    text-align: left;
+    font-size: 13pt;
+    font-weight: 500;
+    margin-left: 10pt;
+    margin-right: 25pt;
+}    
+
+.inside-recent-matches-box .winner-name{
+    text-align: left;
+    font-size: 16px;;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 5pt;
+}
+
+
+@media only screen and (max-width: 1230px) {
+
+    .all-recent-matches-box{
+        display: grid;
+        grid-template-columns: 23vw 23vw 23vw 23vw;
+        width: 90%;
+        height: 310px;
+        /* border: 1px solid black; */
+        border-radius: 8px;
+        margin: 20px;
+    
+    }
+    .inside-recent-matches-box{
+        display: flex;
+        flex-direction: column;
+        margin: 4px;
+        margin-bottom: 10px;
+        width: 95%;
+        height: 140px;
+        border-radius: 8px;
+        border: 1px solid black;
+    }
+    .inside-recent-matches-box:hover{
+        background-color: rgb(116, 116, 158);
+        width: 98%;
+        height: 145px;
+    }
+
+    
+
+    .inside-recent-matches-box .Team-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 8pt;
+        margin: 1px;
+        margin-left: 15px;
+    }
+
+    .inside-recent-matches-box .tournamnet-name {
+        text-align: left;
+        font-size: 12pt;
+        margin-left: 10pt;
+        margin-top: 10pt;
+    }
+	
+
+    .inside-recent-matches-box .TeamOne-name{
+        text-align: left;
+        font-size: 12pt;
+        font-weight: 500;
+        margin-left: 10pt;
+    }
+    .inside-recent-matches-box  .TeamTwo-name {
+        text-align: left;
+        font-size: 12pt;
+        font-weight: 500;
+        margin-left: 10pt;
+    }
+
+    .inside-recent-matches-box  .TeamOne-score{
+        text-align: left;
+        font-size: 12pt;
+        font-weight: 500;
+        margin-left: 8pt;
+        margin-right: 15pt;
+    }    
+    .inside-recent-matches-box  .TeamTwo-score{
+        text-align: left;
+        font-size: 12pt;
+        font-weight: 500;
+        margin-left: 8pt;
+        margin-right: 15pt;
+    }    
+   
+    .inside-recent-matches-box .winner-name{
+        text-align: left;
+        font-size: 15px;;
+        font-weight: 600;
+        margin-left: 10pt;
+        margin-top: 5pt;
+    }
+
+}
+
+
+
+
+@media only screen and (max-width: 900px) {
+
+    .all-recent-matches-box{
+        display: grid;
+        grid-template-columns: 45vw 45vw;
+        width: 90%;
+        height: 310px;
+        /* border: 1px solid black; */
+        border-radius: 8px;
+        margin: 20px;
+    
+    }
+    .inside-recent-matches-box{
+        display: flex;
+        flex-direction: column;
+        margin: 4px;
+        margin-bottom: 10px;
+        width: 95%;
+        height: 140px;
+        border-radius: 8px;
+        border: 1px solid black;
+    }
+    .inside-recent-matches-box:hover{
+        background-color: rgb(116, 116, 158);
+        width: 98%;
+        height: 145px;
+    }
+
+    
+
+    .inside-recent-matches-box .Team-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 10pt;
+        margin: 1px;
+        margin-left: 15px;
+    }
+
+    .inside-recent-matches-box .tournamnet-name {
+        text-align: left;
+        font-size: 15pt;
+        margin-left: 12pt;
+        margin-top: 12pt;
+    }
+	
+
+    .inside-recent-matches-box .TeamOne-name{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 15pt;
+    }
+    .inside-recent-matches-box  .TeamTwo-name {
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 15pt;
+    }
+
+    .inside-recent-matches-box  .TeamOne-score{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 30pt;
+        margin-right: 50pt;
+    }    
+    .inside-recent-matches-box  .TeamTwo-score{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 30pt;
+        margin-right: 50pt;
+    }    
+   
+    .inside-recent-matches-box .winner-name{
+        text-align: left;
+        font-size: 16px;;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-top: 7pt;
+    }
+
+}
+
+
+@media only screen and (max-width: 700px) {
+
+    .all-recent-matches-box{
+        display: grid;
+        grid-template-columns: 45vw 45vw;
+        width: 90%;
+        height: 310px;
+        /* border: 1px solid black; */
+        border-radius: 8px;
+        margin: 20px;
+    
+    }
+    .inside-recent-matches-box{
+        display: flex;
+        flex-direction: column;
+        margin: 4px;
+        margin-bottom: 10px;
+        width: 95%;
+        height: 140px;
+        border-radius: 8px;
+        border: 1px solid black;
+    }
+    .inside-recent-matches-box:hover{
+        background-color: rgb(116, 116, 158);
+        width: 98%;
+        height: 145px;
+    }
+
+    
+
+    .inside-recent-matches-box .Team-data {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        font-size: 10pt;
+        margin: 1px;
+        margin-left: 15px;
+    }
+
+    .inside-recent-matches-box .tournamnet-name {
+        text-align: left;
+        font-size: 12pt;    
+        margin-left: 10pt;
+        margin-top: 10pt;
+    }
+	
+
+    .inside-recent-matches-box .TeamOne-name{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 11pt;
+    }
+    .inside-recent-matches-box  .TeamTwo-name {
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 11pt;
+    }
+
+    .inside-recent-matches-box  .TeamOne-score{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 2pt;
+        margin-right: 0pt;
+    }    
+    .inside-recent-matches-box  .TeamTwo-score{
+        text-align: left;
+        font-size: 13pt;
+        font-weight: 500;
+        margin-left: 2pt;
+        margin-right: 0pt;
+    }    
+   
+    .inside-recent-matches-box .winner-name{
+        text-align: left;
+        font-size: 16px;;
+        font-weight: 600;
+        margin-left: 10px;
+        margin-top: 5pt;
+    }
+
 }
