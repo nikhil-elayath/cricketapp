@@ -11,7 +11,7 @@ function App() {
       <Router>
         <div>
           <Route exact path="/matches" component={MatchLandingPage}></Route>
-          <Route exact path="/matches/summary" component={MatchSummaryDetails}></Route>
+          <Route exact path="/matches/summary/:id" component={MatchSummaryDetails}></Route>
 
         </div>
       </Router>

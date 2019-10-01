@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import '../components/css/Scroll.css'
+import { connect } from "react-redux";
+import { getMatchesDate } from '../actions/matches'
+
+
 
 // list of items
 export const list = [
@@ -12,21 +16,17 @@ export const list = [
     { date: 'SEP 25' },
     { date: 'SEP 26' },
     { date: 'SEP 27' },
-    { date: 'SEP 28' },
+    { date: '2006-06-20' },
     { date: 'SEP 29' },
     { date: 'SEP 30' }
 ];
 
-// One item component
-// selected prop will be passed
 export const MenuItem = ({ text, selected }) => {
     return <div
         className={`menu-item ${selected ? 'active' : ''}`}
     >{text}</div>;
 };
 
-// All items component
-// Important! add unique key
 export const Menu = (list, selected) =>
     list.map(el => {
         const { date } = el;
@@ -48,3 +48,36 @@ export const ArrowLeft = Arrow({ text: '<', className: 'arrow-prev' });
 export const ArrowRight = Arrow({ text: '>', className: 'arrow-next' });
 
 export const selected = 'SEP 26';
+
+export class Scroll extends Component {
+    // componentDidMount() {
+    //     this.props.getRecentMatches();
+    //     console.log(date);
+    // }
+
+    componentDidMount() {
+        this.props.getMatchesDate();
+
+    }
+    render() {
+
+        const listOfdate = this.props.date.map(date => {
+            return `date : '${date.date}'`
+        });
+        console.log("Date in scroller" + listOfdate)
+        return (
+
+            <div>
+            </div>
+        )
+    }
+}
+
+const mapStateToProps = state => ({
+    date: state.matchreducer.match_date
+});
+
+export default connect(
+    mapStateToProps,
+    { getMatchesDate }
+)(Scroll);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../components/css/MatchSecondaryNavbar.css";
+import "../css/MatchSecondaryNavbar.css";
 // import dhoni from "../images/dhoni.jpg";
 import { Link } from "react-router-dom";
 
