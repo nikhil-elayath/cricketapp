@@ -24,13 +24,6 @@ exports[`test  Component render the component 1`] = `
         type="password"
         value=""
       />
-<<<<<<< HEAD
-      <br />
-      <p>
-        <Link
-          className="link"
-          to="/reset"
-=======
       <span
         className="errorMessage"
         style={
@@ -44,7 +37,6 @@ exports[`test  Component render the component 1`] = `
         <Link
           className="link"
           to="/resetPassword"
->>>>>>> ec66a449c666239a38b7a59e18010615213c35c0
         >
           <span
             style={
@@ -58,21 +50,11 @@ exports[`test  Component render the component 1`] = `
           </span>
         </Link>
       </p>
-<<<<<<< HEAD
-      <br />
-=======
->>>>>>> ec66a449c666239a38b7a59e18010615213c35c0
       <button
         onClick={[Function]}
       >
         Login
       </button>
-<<<<<<< HEAD
-      <br />
-      <br />
-      <br />
-=======
->>>>>>> ec66a449c666239a38b7a59e18010615213c35c0
       <p>
         Not a User ?
          

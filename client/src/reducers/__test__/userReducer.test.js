@@ -5,7 +5,7 @@ import {
   LOGIN,
   OTP_VERIFICATION,
   EMAIL_VERIFICATION
-} from "../../actions/types";
+} from "../../actions/Types";
 
 describe("Testing Users Reducers", () => {
   it("should return a state object with user array equal to the payload in the action when the action type is GET_USER (when the returned state is initial state)", () => {

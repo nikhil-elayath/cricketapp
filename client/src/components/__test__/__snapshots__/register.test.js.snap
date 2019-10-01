@@ -38,8 +38,6 @@ exports[`test  Component render the component 1`] = `
         type="password"
         value=""
       />
-<<<<<<< HEAD
-=======
       <span
         className="errorMessage"
         style={
@@ -49,19 +47,12 @@ exports[`test  Component render the component 1`] = `
           }
         }
       />
->>>>>>> ec66a449c666239a38b7a59e18010615213c35c0
       <button
         onChange={[Function]}
         onClick={[Function]}
       >
         Sign Up
       </button>
-<<<<<<< HEAD
-      <br />
-      <br />
-      <br />
-=======
->>>>>>> ec66a449c666239a38b7a59e18010615213c35c0
       <p>
         Already have an account ?
         <Link
