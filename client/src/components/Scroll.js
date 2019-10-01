@@ -7,18 +7,20 @@ import { getMatchesDate } from '../actions/matches'
 
 // list of items
 export const list = [
-    { date: 'SEP 19' },
-    { date: 'SEP 20' },
-    { date: 'SEP 21' },
-    { date: 'SEP 22' },
-    { date: 'SEP 23' },
-    { date: 'SEP 24' },
-    { date: 'SEP 25' },
-    { date: 'SEP 26' },
-    { date: 'SEP 27' },
-    { date: '2006-06-20' },
-    { date: 'SEP 29' },
-    { date: 'SEP 30' }
+    { date: '2007-03-15' },
+    { date: '2007-03-16' },
+    { date: '2008-08-20' },
+    { date: '2006-03-19' },
+    { date: '2006-03-22' },
+    { date: '2006-05-10' },
+    { date: '2007-03-17' },
+    { date: '2007-03-23' },
+    { date: '2007-03-20' },
+    { date: '2007-03-24' },
+    { date: '2008-03-06' },
+    { date: '2008-03-24' },
+    { date: '2008-10-17' },
+    { date: '2009-07-18' }
 ];
 
 export const MenuItem = ({ text, selected }) => {

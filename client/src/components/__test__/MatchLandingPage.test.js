@@ -1,17 +1,12 @@
 import React from "react";
 import { shallow } from "enzyme";
-import MatchLandingPage from "../MatchLandingPage";
-import { Provider } from "react-redux";
-import store from "../../store";
+import { MatchLandingPage } from "../MatchLandingPage";
 
 
 // const matchLandingPage = jest.fn();
 const wrapper = shallow(
-    <Provider store={store}>
-        <MatchLandingPage />
-    </Provider>
+    <MatchLandingPage />
 );
-
 
 describe("Testing of MatchLandingPage Component", () => {
 
@@ -32,8 +27,8 @@ describe("Testing of MatchLandingPage Component", () => {
     it("should have one h2 header", () => {
         expect(wrapper.find("h2").length).toBe(1);
     });
-    it("should have one h2 content with 'Recent Matches' content", () => {
-        expect(wrapper.find(".h2-recent-matches").text()).toBe("Recent Matches");
+    it("should have one h2 content with 'Matches' content", () => {
+        expect(wrapper.find(".h2-recent-matches").text()).toBe("Matches");
     });
 
 });

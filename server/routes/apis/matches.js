@@ -1,17 +1,54 @@
 const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
-const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
+const db = pg(postgresURL);
 
 router.get('/recent/:date', async (req, res, next) => {
     try {
-        date = req.params.date;
-        console.log(typeof date);
-        const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
+        let date = req.params.date;
+        console.log("called recent matches")
+        // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
+        // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
+        const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
+        console.log("dat of match", dateOfMatch);
+        var result = new Array();
+
+        for (match of dateOfMatch) {
+
+            console.log("match:", match.match_id)
+            let match_id = match.match_id
+            const teamone_striker_runs = await db.any(`select sum(d.batsman_run) as teamone_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =1;`)
+            console.log(teamone_striker_runs);
+            const teamone_extra_runs = await db.any(`select sum(e.extras_run) as teamone_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=1;`)
+            console.log(teamone_extra_runs);
+            const teamtwo_striker_runs = await db.any(`select sum(d.batsman_run) as teamtwo_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =2;`)
+            console.log(teamtwo_striker_runs);
+            const teamtwo_extra_runs = await db.any(`select sum(e.extras_run) as teamtwo_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=2;`)
+            console.log(teamtwo_extra_runs);
+            const teamone_wicket = await db.any(`select count(wicket_id) as teamone_wickets from delivery where match_id =${match_id} AND inning =1 AND wicket_id>0;`)
+            console.log(teamone_wicket);
+            const teamtwo_wicket = await db.any(`select count(wicket_id) as teamtwo_wickets from delivery where match_id =${match_id} AND inning =2 AND wicket_id>0;;`)
+            console.log(teamtwo_wicket);
+            const teamone_name = await db.any(`select t.team_name as teamone_name from team as t inner join match as m on m.team_one=t.team_id where match_id=${match_id};`)
+            console.log(teamone_name);
+            const teamtwo_name = await db.any(`select t.team_name as teamtwo_name from team as t inner join match as m on m.team_two=t.team_id where match_id=${match_id};`)
+            console.log(teamtwo_name);
+            const teamwinner_name = await db.any(`select t.team_name as winner_name from team as t inner join match as m on m.winner=t.team_id where match_id=${match_id};`)
+            console.log(teamwinner_name);
+
+            const teamOneScore = parseInt(teamone_striker_runs[0].teamone_striker_run) + parseInt(teamone_extra_runs[0].teamone_extra_runs);
+            console.log(teamOneScore);
+            const teamTwoScore = parseInt(teamtwo_striker_runs[0].teamtwo_striker_run) + parseInt(teamtwo_extra_runs[0].teamtwo_extra_runs);
+            console.log(teamTwoScore);
+            result.push({ match_id: dateOfMatch[0].match_id, match_type: dateOfMatch[0].match_type, teamOne: teamone_name[0].teamone_name, teamtwo: teamtwo_name[0].teamtwo_name, team_winner: teamwinner_name[0].winner_name, teamOneScore: teamOneScore, teamTwoScore: teamTwoScore, teamone_wicket: teamone_wicket[0].teamone_wickets, teamtwo_wicket: teamtwo_wicket[0].teamtwo_wickets });
+
+        }
+
+        console.log("outside", result);
         res.status(200).json({
             status: 200,
             data: result,
-            message: "Retrived 8 recent matches list successfully!!"
+            message: "Retrived matches list by date successfully!!"
         });
     }
     catch (err) {
@@ -22,7 +59,7 @@ router.get('/recent/:date', async (req, res, next) => {
 
 router.get('/bydate', async (req, res, next) => {
     try {
-        const result = await db.any("SELECT dates FROM matches ORDER BY dates;");
+        const result = await db.any("SELECT match_date FROM match_date ORDER BY match_date;");
         res.status(200).json({
             status: 200,
             data: result,
@@ -37,7 +74,7 @@ router.get('/bydate', async (req, res, next) => {
 
 router.get('/summary/:id', async (req, res, next) => {
     try {
-        id = req.params.id;
+        let id = req.params.id;
         console.log(typeof date);
         const result = await db.any(`SELECT * FROM matches where id='${id}';`);
         res.status(200).json({
