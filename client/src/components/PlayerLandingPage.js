@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { getBowlers, getBatsmen } from "../actions/PlayerAction";
+import { connect } from "react-redux";
 
 import virat from "../components/images/virat.jpg";
 import bumrah from "../components/images/Bumrah.jpg";
@@ -6,8 +8,18 @@ import bumrah from "../components/images/Bumrah.jpg";
 import "./css/PlayerLandingPage.css";
 import NavBar from "../components/common/Navbar";
 
-export default class PlayerLandingPage extends Component {
+export class PlayerLandingPage extends Component {
+  componentDidMount() {
+    console.log("from landing page", this.props);
+    this.props.getBowlers();
+    this.props.getBatsmen();
+    console.log("Batsman landing page: ", this.props.batsmen);
+    console.log("Bowlers landing page: ", this.props.bowlers);
+  }
+
   render() {
+    // console.log("batsman landing page: ", this.props.batsmen);
+    console.log("Bowlers landing page: ", this.props.bowlers);
     return (
       <div style={{ padding: 12 + "px" }}>
         <NavBar></NavBar>
@@ -50,203 +62,109 @@ export default class PlayerLandingPage extends Component {
               </a>
             </div>
           </div>
+
           <div className="allPlayersDiv">
             <div className="topbatsmanDiv">
-              <div className="insideBatsmanDiv">
+              <div className="insideBowlerDiv">
                 <h2 style={{ textAlign: "center" }}>Top Batsmen</h2>
-                <div className="batsmenDetailDiv">
-                  <img src={virat} alt="virat kohli" className="playerImage" />
+                {this.props.batsmen.map(batsman => (
                   <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-                      textAlign: "left"
+                    className="batsmenDetailDiv"
+                    onClick={() => {
+                      this.props.history.push(
+                        "/playerInfo/" + batsman.player_id
+                      );
                     }}
                   >
+                    <img
+                      src={virat}
+                      alt="virat kohli"
+                      className="playerImage"
+                    />
                     <div
                       style={{
                         display: "flex",
-                        flexDirection: "column"
+                        flexDirection: "column",
+                        marginTop: 10 + "px",
+                        textAlign: "left"
                       }}
                     >
-                      <span>
-                        <b>Virat Kohli</b>
-                      </span>
-                      <span>Right-Hand Batsman</span>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          textAlign: "left",
+                          float: "left"
+                        }}
+                      >
+                        <span>
+                          <b>{batsman.player_name}</b>
+                        </span>
+                        <span>{batsman.batting_style}</span>
+                      </div>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <b
+                        style={{
+                          justifySelf: "flex-end",
+                          fontSize: 25 + "px",
+                          textAlign: "right"
+                        }}
+                      >
+                        672
+                      </b>
+                      <span style={{ textAlign: "right" }}>Innings: 12</span>
+                      <span>Average: 52.12</span>
                     </div>
                   </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
-                      style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
-                      }}
-                    >
-                      672
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings: 12</span>
-                    <span>Average: 52.12</span>
-                  </div>
-                </div>
-                <hr></hr>
-                <div className="batsmenDetailDiv">
-                  <img src={virat} alt="virat kohli" className="playerImage" />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-
-                      textAlign: "left"
-                    }}
-                  >
-                    <span>
-                      <b>Virat Kohli</b>
-                    </span>
-                    <span>Right-Hand Batsman</span>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
-                      style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
-                      }}
-                    >
-                      672
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings: 12</span>
-                    <span style={{ textAlign: "right" }}>Average: 52.12</span>
-                  </div>
-                </div>
-                <hr></hr>
-                <div className="batsmenDetailDiv">
-                  <img src={virat} alt="virat kohli" className="playerImage" />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-
-                      textAlign: "left"
-                    }}
-                  >
-                    <span>
-                      <b>Virat Kohli</b>
-                    </span>
-                    <span>Right-Hand Batsman</span>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
-                      style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
-                      }}
-                    >
-                      672
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings:12</span>
-                    <span style={{ textAlign: "right" }}>Average:52.12</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="topbowlerDiv">
               <div className="insideBowlerDiv">
                 <h2 style={{ textAlign: "center" }}>Top Bowlers</h2>
-                <div className="batsmenDetailDiv">
-                  <img src={bumrah} alt="virat kohli" className="playerImage" />
+                {this.props.bowlers.map(bowler => (
                   <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-                      textAlign: "left"
+                    className="batsmenDetailDiv"
+                    onClick={() => {
+                      this.props.history.push(
+                        "/playerInfo/" + bowler.player_id
+                      );
                     }}
                   >
-                    <span>
-                      <b>Jasprit Bumrah</b>
-                    </span>
-                    <span>Right-handed fast Bowler</span>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
+                    <img
+                      src={bumrah}
+                      alt="virat kohli"
+                      className="playerImage"
+                    />
+                    <div
                       style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
+                        display: "flex",
+                        flexDirection: "column",
+                        marginTop: 10 + "px",
+                        textAlign: "left"
                       }}
                     >
-                      93
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings: 12</span>
-                    <span style={{ textAlign: "right" }}>E/R: 6.2</span>
+                      <span>
+                        <b>{bowler.player_name}</b>
+                      </span>
+                      <span>{bowler.bowling_style}</span>
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column" }}>
+                      <b
+                        style={{
+                          justifySelf: "flex-end",
+                          fontSize: 25 + "px",
+                          textAlign: "right"
+                        }}
+                      >
+                        93
+                      </b>
+                      <span style={{ textAlign: "right" }}>Innings: 12</span>
+                      <span style={{ textAlign: "right" }}>E/R: 6.2</span>
+                    </div>
                   </div>
-                </div>
-                <hr></hr>
-                <div className="batsmenDetailDiv">
-                  <img src={bumrah} alt="virat kohli" className="playerImage" />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-                      textAlign: "left"
-                    }}
-                  >
-                    <span>
-                      <b>Jasprit Bumrah</b>
-                    </span>
-                    <span>Right-handed fast Bowler</span>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
-                      style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
-                      }}
-                    >
-                      93
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings: 12</span>
-                    <span style={{ textAlign: "right" }}>E/R: 6.2</span>
-                  </div>
-                </div>
-                <hr></hr>
-                <div className="batsmenDetailDiv">
-                  <img src={bumrah} alt="virat kohli" className="playerImage" />
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop: 10 + "px",
-
-                      textAlign: "left"
-                    }}
-                  >
-                    <span>
-                      <b>Jasprit Bumrah</b>
-                    </span>
-                    <span>Right-handed fast Bowler</span>
-                  </div>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <b
-                      style={{
-                        justifySelf: "flex-end",
-                        fontSize: 25 + "px",
-                        textAlign: "right"
-                      }}
-                    >
-                      93
-                    </b>
-                    <span style={{ textAlign: "right" }}>Innings: 12</span>
-                    <span style={{ textAlign: "right" }}>E/R: 6.2</span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
@@ -255,3 +173,13 @@ export default class PlayerLandingPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  batsmen: state.PlayerReducer.batsmen,
+  bowlers: state.PlayerReducer.bowlers
+});
+
+export default connect(
+  mapStateToProps,
+  { getBatsmen, getBowlers }
+)(PlayerLandingPage);

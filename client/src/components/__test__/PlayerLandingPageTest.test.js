@@ -1,16 +1,29 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
-import PlayerLandingPage from "../PlayerLandingPage";
+import { PlayerLandingPage } from "../PlayerLandingPage";
 
-const wrapper = shallow(<PlayerLandingPage />);
+const getBowlers = jest.fn();
+var bowlers = [];
+
+const getBatsmen = jest.fn();
+var batsmen = [];
+
+const wrapper = shallow(
+  <PlayerLandingPage
+    getBowlers={getBowlers}
+    bowlers={bowlers}
+    getBatsmen={getBatsmen}
+    batsmen={batsmen}
+  />
+);
 
 describe("Testing Player Landing Page", () => {
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should have 28 div", () => {
-    expect(wrapper.find("div").length).toBe(28);
+  it("should have 9 div", () => {
+    expect(wrapper.find("div").length).toBe(9);
   });
 
   it("should have the name of header as Players", () => {
@@ -48,9 +61,7 @@ describe("Testing Player Landing Page", () => {
         .text()
     ).toBe("Top Bowlers");
   });
-  it("should have 6 images ", () => {
-    expect(wrapper.find("img").length).toBe(6);
-  });
+
   it("should have a header for top batsman", () => {
     expect(
       wrapper

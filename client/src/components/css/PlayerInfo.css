@@ -2,13 +2,16 @@
 
 .mainDiv {
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 50% 50%;
   margin-top: 200px;
 }
 
 .personalDetails {
+  margin-top: 1.5em;
+  border-right: 1px solid #ccc;
+  /* height: 500px; */
   justify-items: flex-start;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   height: 500px;
 }
 
@@ -20,5 +23,12 @@
 }
 
 .careerStats {
-  border: 1px solid #ccc;
+  margin-top: 1.5em;
+  justify-items: flex-start;
+  height: 500px;
+}
+
+.formatHeading {
+  /* height: 40px; */
+  background-color: #2980b9;
 }

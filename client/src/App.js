@@ -11,7 +11,11 @@ function App() {
     <Router>
       <div className="App">
         <Route exact path="/playersPage" component={PlayerLandingPage}></Route>
-        <Route exact path="/playerInfo" component={PlayerInfo}></Route>
+        <Route
+          exact
+          path="/playerInfo/:player_id"
+          component={PlayerInfo}
+        ></Route>
       </div>
     </Router>
   );
