@@ -1,35 +1,35 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
 .secNavParent {
-	width: 100vw;
-	background-color: #ffffff;
-	box-shadow: 0px 2px 4px 0px #e6e6e6;
-	color: #2c3e50;
-	display: flex;
-	flex-direction: column;
-	letter-spacing: 0.3px;
-	position: fixed;
-	font-family: "Montserrat", sans-serif;
-	top: 60px;
-	left: 0;
-	right: 0;
+  width: 100vw;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 4px 0px #e6e6e6;
+  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  letter-spacing: 0.3px;
+  position: fixed;
+  font-family: "Montserrat", sans-serif;
+  top: 60px;
+  left: 0;
+  right: 0;
 }
 
 .secNavHead {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: 14px 60px 10px 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 14px 60px 10px 60px;
 }
 
 .secNavHead div:first-child {
-	display: inline-block;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .secNavHead div:last-child {
@@ -49,11 +49,7 @@
 }
 
 .secNavLinks {
-<<<<<<< HEAD
-  margin-top: 20px;
-=======
-	margin: 0px 60px;
->>>>>>> a9284a84b86e74e154b37f1c322eb59e4f28b79b
+  margin: 0px 60px;
 }
 
 .secNavLinks ul {
