@@ -1,20 +1,16 @@
 import React from "react";
-// import logo from "./logo.svg";
+import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import Login from "./components/Login";
 import Register from "./components/Register";
 import ResetPassword from "./components/ResetPassword";
-import Login from "./components/Login";
-import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div>
-        {/* <Route exact path="/" component={Home}></Route> */}
-        <Route exact path="/register" component={Register}></Route>
-        <Route exact path="/login" component={Login}></Route>
-        <Route exact path="/reset" component={ResetPassword}></Route>
-      </div>
+      <Route path="/login" exact component={Login} />
+      <Route path="/register" exact component={Register} />
+      <Route path="/resetPassword" exact component={ResetPassword} />
     </Router>
   );
 }
