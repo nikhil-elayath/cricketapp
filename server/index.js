@@ -1,29 +1,27 @@
-const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const cors = require("cors");
-const logger = require("morgan");
 const config = require("config");
-
-const news = require("./routes/apis/news");
+const express = require("express");
+const cricketalpha = require("./routes/apis/CricketAlpha");
+const cors = require("cors");
+const bodyParser = require("body-parser");
 const error = require("./middleware/error");
+const app = express();
+
+const cricketPostgresURL = config.get("cricketPostgresURL");
+
+app.use(cors());
 
 app.use(bodyParser.json());
-app.use(cors());
 app.use(
-	bodyParser.urlencoded({
-		extended: false
-	})
+  bodyParser.urlencoded({
+    extended: false
+  })
 );
 
-app.use(logger("common"));
-app.use("/api/news", news);
-
+app.use("/api/cricketalpha/", cricketalpha);
 app.use(error);
 
+const port = process.env.port || 5000;
 if (process.env.NODE_ENV !== "test")
-	app.listen(port, () => {
-		console.log(`Server listening at http://localhost:${port}`);
-	});
+  app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 module.exports = app;
