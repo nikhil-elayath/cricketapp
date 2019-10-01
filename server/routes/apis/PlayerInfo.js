@@ -92,4 +92,46 @@ router.get("/allBowlers", async (req, res) => {
   }
 });
 
+router.post("/TopBatsman", async (req, res) => {
+  try {
+    let match_type = req.body.match_type;
+    console.log(match_type);
+    const result = await db.any(
+      "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
+        match_type +
+        "'AND player_stats_name = 'total_runs' order by player_stats_value desc fetch first 5 rows only"
+    );
+
+    // console.log("data is: ", result);
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "All top Batsman retrieved"
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/TopBowlers", async (req, res) => {
+  try {
+    let match_type = req.body.match_type;
+
+    const result = await db.any(
+      "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
+        match_type +
+        "'AND player_stats_name = 'total_wickets' order by player_stats_value desc fetch first 5 rows only"
+    );
+
+    console.log("data is: ", result);
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "All top bowlers retrieved"
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 module.exports = router;

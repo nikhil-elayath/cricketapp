@@ -11,15 +11,29 @@ import NavBar from "../components/common/Navbar";
 export class PlayerLandingPage extends Component {
   componentDidMount() {
     console.log("from landing page", this.props);
-    this.props.getBowlers();
-    this.props.getBatsmen();
-    console.log("Batsman landing page: ", this.props.batsmen);
-    console.log("Bowlers landing page: ", this.props.bowlers);
+    this.props.getBowlers({ match_type: "Test" });
+    this.props.getBatsmen({ match_type: "Test" });
   }
+
+  getT20 = e => {
+    console.log(e);
+    this.props.getBowlers({ match_type: "T20" });
+    this.props.getBatsmen({ match_type: "T20" });
+  };
+
+  getTest = e => {
+    this.props.getBowlers({ match_type: "Test" });
+    this.props.getBatsmen({ match_type: "Test" });
+  };
+
+  getODI = e => {
+    this.props.getBowlers({ match_type: "ODI" });
+    this.props.getBatsmen({ match_type: "ODI" });
+  };
 
   render() {
     // console.log("batsman landing page: ", this.props.batsmen);
-    console.log("Bowlers landing page: ", this.props.bowlers);
+    console.log("Bowlers comp landing page: ", this.props);
     return (
       <div style={{ padding: 12 + "px" }}>
         <NavBar></NavBar>
@@ -27,7 +41,7 @@ export class PlayerLandingPage extends Component {
           style={{
             textAlign: "left",
             marginLeft: 35 + "px",
-            marginTop: 2 + "em",
+            marginTop: 1.5 + "em",
             fontSize: 42 + "px",
             fontWeight: 500,
             fontFamily: "'Montserrat'"
@@ -39,23 +53,32 @@ export class PlayerLandingPage extends Component {
           <div className="matchFormatOptons">
             <div className="selectNav">
               <a
-                href="#Test"
                 className="active"
                 style={{
                   borderLeft: "none",
                   borderTopLeftRadius: 8 + "px",
-                  borderBottomLeftRadius: 8 + "px"
+                  borderBottomLeftRadius: 8 + "px",
+                  cursor: "pointer"
                 }}
+                onClick={this.getTest}
               >
                 Test
               </a>
 
-              <a href="#Odi">ODI</a>
+              <a
+                className=""
+                style={{ cursor: "pointer" }}
+                onClick={this.getODI}
+              >
+                ODI
+              </a>
 
               <a
-                href="#T20"
+                className=""
+                onClick={this.getT20}
                 style={{
-                  borderRight: "none"
+                  borderRight: "none",
+                  cursor: "pointer"
                 }}
               >
                 T20
@@ -111,7 +134,7 @@ export class PlayerLandingPage extends Component {
                           textAlign: "right"
                         }}
                       >
-                        672
+                        {batsman.player_stats_value}
                       </b>
                       <span style={{ textAlign: "right" }}>Innings: 12</span>
                       <span>Average: 52.12</span>
@@ -158,7 +181,7 @@ export class PlayerLandingPage extends Component {
                           textAlign: "right"
                         }}
                       >
-                        93
+                        {bowler.player_stats_value}
                       </b>
                       <span style={{ textAlign: "right" }}>Innings: 12</span>
                       <span style={{ textAlign: "right" }}>E/R: 6.2</span>

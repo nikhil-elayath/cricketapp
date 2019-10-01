@@ -16,7 +16,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
         "fontSize": "42px",
         "fontWeight": 500,
         "marginLeft": "35px",
-        "marginTop": "2em",
+        "marginTop": "1.5em",
         "textAlign": "left",
       }
     }
@@ -34,27 +34,36 @@ exports[`Testing Player Landing Page should render the component 1`] = `
       >
         <a
           className="active"
-          href="#Test"
+          onClick={[Function]}
           style={
             Object {
               "borderBottomLeftRadius": "8px",
               "borderLeft": "none",
               "borderTopLeftRadius": "8px",
+              "cursor": "pointer",
             }
           }
         >
           Test
         </a>
         <a
-          href="#Odi"
+          className=""
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
         >
           ODI
         </a>
         <a
-          href="#T20"
+          className=""
+          onClick={[Function]}
           style={
             Object {
               "borderRight": "none",
+              "cursor": "pointer",
             }
           }
         >

@@ -39,9 +39,9 @@ export const getSinglePlayer = player_id => dispatch => {
     });
 };
 
-export const getBatsmen = () => dispatch => {
+export const getBatsmen = match_type => dispatch => {
   return axios
-    .get("http://localhost:5000/apis/PlayerInfo/allBatsman")
+    .post("http://localhost:5000/apis/PlayerInfo/TopBatsman", match_type)
     .then(res => {
       // console.log("From Player Actions batsman data is: ", res.data.data);
       dispatch({
@@ -54,9 +54,9 @@ export const getBatsmen = () => dispatch => {
     });
 };
 
-export const getBowlers = () => dispatch => {
+export const getBowlers = match_type => dispatch => {
   return axios
-    .get("http://localhost:5000/apis/PlayerInfo/allBowlers")
+    .post("http://localhost:5000/apis/PlayerInfo/TopBowlers", match_type)
     .then(res => {
       console.log("From Player Actions bowler data is: ", res.data.data);
       dispatch({

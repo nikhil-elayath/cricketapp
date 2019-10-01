@@ -196,7 +196,7 @@ export class PlayerInfo extends Component {
                     color: "#272727"
                   }}
                 >
-                  {this.props.singlePlayer[0].test_debut}
+                  {this.props.singlePlayer[0].debut_test_match}
                 </b>
               </div>
 
@@ -238,7 +238,7 @@ export class PlayerInfo extends Component {
                     color: "#272727"
                   }}
                 >
-                  {this.props.singlePlayer[0].odi_debut}
+                  {this.props.singlePlayer[0].debut_odi_match}
                 </b>
               </div>
 
@@ -279,7 +279,7 @@ export class PlayerInfo extends Component {
                     color: "#272727"
                   }}
                 >
-                  {this.props.singlePlayer[0].t20_debut}
+                  {this.props.singlePlayer[0].debut_t20_match}
                 </b>
               </div>
             </div>

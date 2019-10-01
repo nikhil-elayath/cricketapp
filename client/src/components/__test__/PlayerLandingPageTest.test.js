@@ -1,6 +1,6 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
-import { PlayerLandingPage } from "../PlayerLandingPage";
+import { shallow } from "enzyme";
+import { PlayerLandingPage, getT20 } from "../PlayerLandingPage";
 
 const getBowlers = jest.fn();
 var bowlers = [];
@@ -8,12 +8,17 @@ var bowlers = [];
 const getBatsmen = jest.fn();
 var batsmen = [];
 
+// const getT20 = jest.fn();
+
+// var spy = jest.spy();
+
 const wrapper = shallow(
   <PlayerLandingPage
     getBowlers={getBowlers}
     bowlers={bowlers}
     getBatsmen={getBatsmen}
     batsmen={batsmen}
+    history={[]}
   />
 );
 
@@ -73,5 +78,23 @@ describe("Testing Player Landing Page", () => {
 
   it("should display 3 select menus", () => {
     expect(wrapper.find("a").length).toBe(3);
+  });
+  it("should display 3 select menus", () => {
+    expect(wrapper.find("a").length).toBe(3);
+  });
+
+  it("should check if getT20 has been called ", () => {
+    // const t20 = jest.spyOn(PlayerLandingPage, "getT20");
+    // // getT20.bar();
+    // expect(t20).toHaveBeenCalledTimes(1);
+
+    // const aTag = shallow((<Button onClick={getT20}>Ok!</Button>));
+
+    expect(
+      wrapper
+        .find("a")
+        .at(2)
+        .simulate("getT20")
+    ).toEqual({});
   });
 });

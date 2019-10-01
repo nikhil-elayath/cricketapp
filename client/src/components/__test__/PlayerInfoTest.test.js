@@ -1,6 +1,6 @@
 import React from "react";
 import { PlayerInfo } from "../PlayerInfo";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 
 const getSinglePlayer = jest.fn();
 var singlePlayer = [[]];
