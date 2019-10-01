@@ -27,12 +27,12 @@ create table match
 (
     match_id serial primary key,
     match_type varchar(255),
-    toss_winner varchar(255),
+    toss_winner int,
     toss_decision varchar(255),
     team_one int,
     team_two int,
     outcome varchar(255),
-    player_of_the_match int
+    player_of_the_match varchar
     [],
     gender varchar
     (255),
@@ -47,16 +47,11 @@ create table match
         match_date date
     );
 
-    create table match_player
+    create table match_team_player
     (
         match_id int,
+        team_id int,
         player_id int
-    );
-
-    create table match_team
-    (
-        match_id int,
-        team_id int
     );
 
     create table match_type
@@ -102,8 +97,8 @@ create table match
     create table player_stats
     (
         player_id int,
-        match_type_id int,
-        stat_id int
+        stat_id int,
+        match_type varchar(30)
     );
 
     create table stats
@@ -117,12 +112,6 @@ create table match
     (
         team_id serial primary key,
         team_name varchar(255)
-    );
-
-    create table team_player
-    (
-        team_id int,
-        player_id int
     );
 
     create table umpire
