@@ -30,7 +30,7 @@ exports[`Testing of Scroll Component should render the component 1`] = `
     }
   }
 >
-  <Component
+  <Connect(Scroll)
     scroller={[MockFunction]}
   />
 </ContextProvider>

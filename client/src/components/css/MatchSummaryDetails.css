@@ -53,136 +53,78 @@ border: 1px solid black;
     margin-top: 80px;
 }
 
-.scoreborad-summary{
-
-    /* display: inline-block; */
-    grid-column: 300px;
-    /* grid-template-columns: 2fr 1fr; */
-    justify-content: space-between;
-    height: 320px;
-    width: 55%;
-    border: 1px solid black;
-    overflow: hidden;
-    float: left;
-    border-radius: 8px;
-}
-
-.match-details{
+.topOfSummary{
     display: grid;
-    display: inline-block;
-    grid-column: 30px;
-    height: 320px;
-    width: 25%;
-    margin-right: 80px;
-    border: 1px solid black;
-    overflow: hidden;
-    border-radius: 8px;
+    grid-template-columns: 60% 10% 30%;
+    
 }
 
+.scoreCardSummary{
+    border: 1px solid blue;
+    height: 480px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-rows: 10% 10% 30% 10% 30%
+}
 
-.playing-XI{
-    margin-top: 20px;
-    grid-column: 30px;
-    justify-content: space-between;
-    height: 350px;
-    width: 55%;
-    border: 1px solid black;
-    border-radius: 8px;
-    }
+.matchDetails{
+    border: 1px solid green;
+    margin-right: 80px;
+}
 
-    .summary-title{
-        height: 40px;
-        width: 100%;
-        border: 1px solid black;
-        background-color: #2980b9;
-        text-align: left;
-        font-weight: 600;
-        color: white;
-        border-radius: 8px;
-
-    }
-    .summary-title span{
-        margin-top: 10px;
-        margin: 10px;
-    }
-
-
-    .team-name{
-        text-align: left;
-    }
-    .team-players{
-        display: flex;
-        flex-flow: column;
-        
-    }
-    .team-players-left{
-        display: flex;
-        flex-flow: column;
-        overflow: hidden;
-        float: left;
-    }
-    .team-players-right{
-        display: flex;
-        flex-flow: column;
-        overflow: hidden;
-        float: left;
-    }
-    .team-players-name {
-        margin-top: 4px;
-        text-align: left;
-        width: 510px;
-        float: left;        
-    }
-    .team-players-score{
-        margin-top: 4px;
-        text-align: right;
-        width: 510px;
-        float: left;
-    }
-    .team-players-name-right{
-         margin-top: 4px;
-        text-align: left;
-        width: 510px;
-        float: right;    
-    }
-
-    .match-details-header{
-        text-align: left;
-        margin: 5px;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-    .match-details-value{
-        text-align: left;
-        font-weight: 600;
-        margin: 5px;
-        margin-top: 10px;
-        margin-left: 10px;
-    }
-
-    .team-playing-XI{
-        display: flex;
-        justify-content: space-between;
-        text-align: left;
-        font-size: 15pt;
-        margin:3px;
-        margin-top: 10px;
-        margin-left: 10px;
-        border-bottom: 1px solid #272727
-    }
-    .first-team-players{
-        flex: 1;
-        text-align: left;
-        margin-top: 10px;
-        margin-left: 10%;
+.title{
+    background-color: #2980B9;
     
-    }
+}
 
-    .second-team-players{
-        flex:2;
-        text-align: left;
-        margin-top: 10px;
-        margin-right: 30%;
+.players{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    
+}
 
-    }
-   
+.playerLeft, .playerRight{
+    border: 1px solid green;
+    height: 150px;
+    display: flex;
+    flex-direction: rows;
+    justify-content: space-between;
+    font-size: 20px;
+}
+.playerinfo{
+    margin-top: 10px;
+    margin-left: 100px;
+}
+.playerScores{
+    margin-top: 10px;
+    margin-right: 100px;
+}
+
+.playerRight{
+    border: 1px solid blueviolet
+}
+
+.match-title{
+    text-align: left;
+    margin-top: 8px;
+    margin-left: 8px;
+}
+.match-values{
+    text-align: left;
+    margin-top: 8px;
+    margin-left: 8px;
+
+}
+
+.playing11{
+    border: 1px solid blue;
+    height: 500px;
+    margin-left: 15px;
+    display: grid;
+    grid-template-rows: 10% 90%
+}
+.team-name{
+    margin-left: 15px;
+    display: grid;
+    
+}
