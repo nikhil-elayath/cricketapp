@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const error = require("./middleware/error");
 const app = express();
 
-const cricketPostgresURL = config.get("cricketPostgresURL");
+// const cricketPostgresURL = config.get("cricketPostgresURL");
 
 app.use(cors());
 

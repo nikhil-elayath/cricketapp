@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test  Component render the component 1`] = `
+<div>
+  <div />
+  <form
+    id="msform"
+  >
+    <fieldset>
+      <h1>
+        Login
+      </h1>
+      <input
+        name="user_email"
+        onChange={[Function]}
+        placeholder="Enter Email"
+        type="text"
+        value=""
+      />
+      <input
+        name="user_password"
+        onChange={[Function]}
+        placeholder="Enter Password"
+        type="password"
+        value=""
+      />
+      <br />
+      <p>
+        <Link
+          className="link"
+          to="/reset"
+        >
+          <span
+            style={
+              Object {
+                "color": "#2980b9",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Forgot Password ?
+          </span>
+        </Link>
+      </p>
+      <br />
+      <button
+        onClick={[Function]}
+      >
+        Login
+      </button>
+      <br />
+      <br />
+      <br />
+      <p>
+        Not a User ?
+         
+        <Link
+          className="link"
+          to="/register"
+        >
+          <span
+            style={
+              Object {
+                "color": "#2980b9",
+                "fontWeight": "bold",
+              }
+            }
+          >
+            Register Now
+          </span>
+        </Link>
+      </p>
+    </fieldset>
+  </form>
+</div>
+`;
