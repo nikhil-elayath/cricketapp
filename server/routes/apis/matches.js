@@ -90,9 +90,19 @@ router.get('/summary/:id', async (req, res, next) => {
         console.log(umpires);
         const venue = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
         console.log(venue);
+        const teams_ids = await db.any(`select distinct(t.team_id) from team as t inner join match_team_player as mtp on mtp.team_id=t.team_id where match_id=${id};`)
+        console.log(teams_ids);
+        const teamone_name = await db.any(`select team_name as teamone_name from team where team_id=${teams_ids[0].team_id};`)
+        console.log(teamone_name);
+        const teamone_players = await db.any(`select p.player_name as teamone_players from player as p inner join match_team_player as mtp on mtp.player_id=p.player_id where match_id=${id} and team_id=${teams_ids[0].team_id};`)
+        console.log(teamone_players);
+        const teamtwo_players = await db.any(`select p.player_name as teamtwo_players from player as p inner join match_team_player as mtp on mtp.player_id=p.player_id where match_id=${id} and team_id=${teams_ids[1].team_id};`)
+        console.log(teamtwo_players);
+        const teamtwo_name = await db.any(`select team_name as teamtwo_name from team where team_id=${teams_ids[1].team_id};`)
+        console.log(teamtwo_name);
+
         // const teamone_name = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
         // console.log(teamone_name);
-        console.log(venue.venue_city);
         const result = [{
             toss_winner: match[0].toss_winner,
             toss_decision: match[0].toss_decision,
@@ -100,7 +110,11 @@ router.get('/summary/:id', async (req, res, next) => {
             player_of_the_match: match[0].player_of_the_match,
             venue_name: venue[0].venue_name,
             venue_city: venue[0].venue_city,
-            umpires
+            umpires,
+            teamone_name: teamone_name[0].teamone_name,
+            teamone_players: teamone_players,
+            teamtwo_name: teamtwo_name[0].teamtwo_name,
+            teamtwo_players: teamtwo_players,
         }]
         console.log(result)
 

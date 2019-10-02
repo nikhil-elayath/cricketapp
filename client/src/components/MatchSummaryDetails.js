@@ -133,12 +133,20 @@ export class MatchSummaryDetails extends Component {
                             <div>
                                 <div className="team-names">
 
-                                    <div className="teamone-name">{this.props.location.state.match.teamtwo}</div>
-                                    <div className="teamtwo-name">{this.props.location.state.match.teamOne}</div>
+                                    <div className="teamone-name">{this.props.match.map(match => match.teamtwo_name)}
+                                    </div>
+                                    <div className="teamtwo-name">{this.props.match.map(match => match.teamone_name)}</div>
                                 </div>
                                 <div className="team-players-list">
-                                    <div className='teamone-players-name'> Rohit</div>
-                                    <div className='teamotwo-players-name'>AB dev</div>
+                                    {this.props.match.map(match => (
+                                        match.teamtwo_players.map(first_team => (
+                                            <div className='teamone-players-name'>{first_team.teamtwo_players}</div>
+                                        ))))}
+
+                                    {this.props.match.map(match => (
+                                        match.teamone_players.map(second_team => (
+                                            <div className='teamotwo-players-name'>{second_team.teamone_players}</div>
+                                        ))))}
                                 </div>
                             </div>
                         </div>
