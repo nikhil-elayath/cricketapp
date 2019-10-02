@@ -6,6 +6,11 @@ import Navbar from "../components/common/Navbar";
 import { getTeams, getRanks } from "../actions/Teams";
 
 export class TeamLandingPage extends Component {
+  state = {
+    testClick: true,
+    odiClick: false,
+    t20Click: false
+  };
   componentDidMount() {
     console.log(this.props);
     this.props.getTeams();
@@ -17,6 +22,7 @@ export class TeamLandingPage extends Component {
 
   onClickTest = e => {
     e.preventDefault();
+    this.setState({ testClick: true, odiClick: false, t20Click: false });
     let ranking = {
       match_type: "Test"
     };
@@ -25,6 +31,7 @@ export class TeamLandingPage extends Component {
 
   onClickT20 = e => {
     e.preventDefault();
+    this.setState({ testClick: false, odiClick: false, t20Click: true });
     let ranking = {
       match_type: "T20"
     };
@@ -33,6 +40,7 @@ export class TeamLandingPage extends Component {
 
   onClickOdi = e => {
     e.preventDefault();
+    this.setState({ testClick: false, odiClick: true, t20Click: false });
     let ranking = {
       match_type: "ODI"
     };
@@ -71,13 +79,30 @@ export class TeamLandingPage extends Component {
                     <p className="p-topteam">Most Wins</p>
                     <div className="centered">
                       <div className="cards">
-                        <div className="cardtest" onClick={this.onClickTest}>
+                        <div
+                          style={{ borderRadius: "8px 0px 0px 8px" }}
+                          className={
+                            this.state.testClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickTest}
+                        >
                           <p className="p-card">Test</p>
                         </div>
-                        <div className="cardodi" onClick={this.onClickOdi}>
+                        <div
+                          className={
+                            this.state.odiClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickOdi}
+                        >
                           <p className="p-card">ODI</p>
                         </div>
-                        <div className="cardt20" onClick={this.onClickT20}>
+                        <div
+                          style={{ borderRadius: "0px 8px 8px 0px" }}
+                          className={
+                            this.state.t20Click ? "cardtest" : "cardt20"
+                          }
+                          onClick={this.onClickT20}
+                        >
                           <p className="p-card">T20</p>
                         </div>
                       </div>

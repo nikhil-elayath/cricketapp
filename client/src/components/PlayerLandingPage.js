@@ -9,6 +9,12 @@ import "./css/PlayerLandingPage.css";
 import NavBar from "../components/common/Navbar";
 
 export class PlayerLandingPage extends Component {
+  state = {
+    testClicked: true,
+    odiClicked: false,
+    t20Clicked: false
+  };
+
   componentDidMount() {
     console.log("from landing page", this.props);
     this.props.getBowlers({ match_type: "Test" });
@@ -17,16 +23,21 @@ export class PlayerLandingPage extends Component {
 
   getT20 = e => {
     console.log(e);
+    this.setState({ testClicked: false, odiClicked: false, t20Clicked: true });
     this.props.getBowlers({ match_type: "T20" });
     this.props.getBatsmen({ match_type: "T20" });
   };
 
   getTest = e => {
+    this.setState({ testClicked: true, odiClicked: false, t20Clicked: false });
+
     this.props.getBowlers({ match_type: "Test" });
     this.props.getBatsmen({ match_type: "Test" });
   };
 
   getODI = e => {
+    this.setState({ testClicked: false, odiClicked: true, t20Clicked: false });
+
     this.props.getBowlers({ match_type: "ODI" });
     this.props.getBatsmen({ match_type: "ODI" });
   };
@@ -40,7 +51,7 @@ export class PlayerLandingPage extends Component {
         <h1
           style={{
             textAlign: "left",
-            marginLeft: 35 + "px",
+            marginLeft: 43 + "px",
             marginTop: 1.5 + "em",
             fontSize: 42 + "px",
             fontWeight: 500,
@@ -53,9 +64,9 @@ export class PlayerLandingPage extends Component {
           <div className="matchFormatOptons">
             <div className="selectNav">
               <a
-                className="active"
+                className={this.state.testClicked ? "active" : "notActive"}
                 style={{
-                  borderLeft: "none",
+                  borderLeft: 1 + "px solid",
                   borderTopLeftRadius: 8 + "px",
                   borderBottomLeftRadius: 8 + "px",
                   cursor: "pointer"
@@ -66,7 +77,7 @@ export class PlayerLandingPage extends Component {
               </a>
 
               <a
-                className=""
+                className={this.state.odiClicked ? "active" : "notActive"}
                 style={{ cursor: "pointer" }}
                 onClick={this.getODI}
               >
@@ -74,11 +85,13 @@ export class PlayerLandingPage extends Component {
               </a>
 
               <a
-                className=""
+                className={this.state.t20Clicked ? "active" : "notActive"}
                 onClick={this.getT20}
                 style={{
-                  borderRight: "none",
-                  cursor: "pointer"
+                  borderRight: 1 + "px solid",
+                  cursor: "pointer",
+                  borderTopRightRadius: 8 + "px",
+                  borderBottomRightRadius: 8 + "px"
                 }}
               >
                 T20
@@ -88,14 +101,14 @@ export class PlayerLandingPage extends Component {
 
           <div className="allPlayersDiv">
             <div className="topbatsmanDiv">
-              <div className="insideBowlerDiv">
-                <h2 style={{ textAlign: "center" }}>Top Batsmen</h2>
+              <div className="insideBatsmanDiv">
+                <h2 style={{ textAlign: "center" }}>Top Run Scorers</h2>
                 {this.props.batsmen.map(batsman => (
                   <div
                     className="batsmenDetailDiv"
                     onClick={() => {
                       this.props.history.push(
-                        "/playerInfo/" + batsman.player_id
+                        "/player-info/" + batsman.player_id
                       );
                     }}
                   >
@@ -126,14 +139,11 @@ export class PlayerLandingPage extends Component {
                         <span>{batsman.batting_style}</span>
                       </div>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <b
-                        style={{
-                          justifySelf: "flex-end",
-                          fontSize: 25 + "px",
-                          textAlign: "right"
-                        }}
-                      >
+                    <div
+                      className="playerStats"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      <b className="playerStatValue">
                         {batsman.player_stats_value}
                       </b>
                       <span style={{ textAlign: "right" }}>Innings: 12</span>
@@ -145,7 +155,7 @@ export class PlayerLandingPage extends Component {
             </div>
             <div className="topbowlerDiv">
               <div className="insideBowlerDiv">
-                <h2 style={{ textAlign: "center" }}>Top Bowlers</h2>
+                <h2 style={{ textAlign: "center" }}>Top Wicket Takers</h2>
                 {this.props.bowlers.map(bowler => (
                   <div
                     className="batsmenDetailDiv"
@@ -173,14 +183,11 @@ export class PlayerLandingPage extends Component {
                       </span>
                       <span>{bowler.bowling_style}</span>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "column" }}>
-                      <b
-                        style={{
-                          justifySelf: "flex-end",
-                          fontSize: 25 + "px",
-                          textAlign: "right"
-                        }}
-                      >
+                    <div
+                      className="playerStats"
+                      style={{ display: "flex", flexDirection: "column" }}
+                    >
+                      <b className="playerStatValue">
                         {bowler.player_stats_value}
                       </b>
                       <span style={{ textAlign: "right" }}>Innings: 12</span>

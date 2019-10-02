@@ -53,7 +53,7 @@
 }
 
 .grid-class-topteam {
-	/* width: 350px; */
+	width: 350px;
 	/* height: 500px; */
 	border: 1px solid #707070;
 	border-radius: 8px;
@@ -76,24 +76,30 @@
 }
 .cardtest {
 	color: #707070;
-	border: 1px solid #16a085;
-	border-radius: 8px 0px 0px 8px;
+	background-color: #16a085;
+	color: white;
 	width: 100%;
 	cursor: pointer;
 }
+
+.cardtest p {
+	color: #ffffff;
+}
+
 .cardodi {
 	color: #707070;
 	border: 1px solid #16a085;
 	width: 100%;
 	cursor: pointer;
 }
+
 .cardt20 {
 	color: #707070;
 	border: 1px solid #16a085;
-	border-radius: 0px 8px 8px 0px;
 	width: 100%;
 	cursor: pointer;
 }
+
 .cardtest:hover {
 	background-color: #16a085;
 	color: white;
@@ -106,6 +112,17 @@
 	background-color: #16a085;
 	color: white;
 }
+
+.cardtest:hover .p-card {
+	color: white;
+}
+.cardodi:hover .p-card {
+	color: white;
+}
+.cardt20:hover .p-card {
+	color: white;
+}
+
 .p-card {
 	text-align: center;
 }

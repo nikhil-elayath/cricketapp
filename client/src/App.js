@@ -9,6 +9,7 @@ import PlayerInfo from "../src/components/PlayerInfo";
 import TeamLandingPage from "./components/TeamLandingPage";
 import TeamInfo from "./components/TeamInfo";
 import Home from "./components/Home";
+import MatchLandingPage from "./components/MatchLandingPage";
 
 function App() {
 	return (
@@ -22,6 +23,12 @@ function App() {
 				path="/playerInfo/:player_id"
 				component={PlayerInfo}
 			></Route>
+			<Route
+				exact
+				path="/matches/summary/:id"
+				component={MatchLandingPage}
+			></Route>
+			<Route exact path="/matches" component={MatchLandingPage}></Route>
 			<Route exact path="/teams" component={TeamLandingPage}></Route>
 			<Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route>
 			<Route path="/" exact component={Home} />

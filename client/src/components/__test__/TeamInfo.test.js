@@ -1,21 +1,51 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { TeamInfo } from "../TeamInfo";
+import { getMatch } from "../../actions/Teams";
 
-const getTeams = jest.fn();
-var teams = [];
-var location = [];
+var matches = [];
+
 const wrapper = shallow(
   <TeamInfo
-    getTeams={getTeams}
-    teams={teams}
+    getMatch={getMatch}
+    matches={matches}
     match={{ isExact: true, params: { path: "/", url: "/" } }}
   />
 );
 
 describe("Test TeamInfo Component", () => {
+  it("render the component", () => {
+    expect(wrapper).toMatchSnapshot();
+  });
   it("should have exactly 59 div tags", () => {
     expect(wrapper.find("div").length).toBe(59);
+  });
+  it("should have text brand CricketAlpha, matches, teams, players, stats", () => {
+    expect(wrapper.find(".secLink").length).toBe(4);
+    expect(
+      wrapper
+        .find(".secLink")
+        .at(0)
+        .text()
+    ).toBe("Info");
+    expect(
+      wrapper
+        .find(".secLink")
+        .at(1)
+        .text()
+    ).toBe("Players");
+    expect(
+      wrapper
+        .find(".secLink")
+        .at(2)
+        .text()
+    ).toBe("Stats");
+    expect(
+      wrapper
+        .find(".secLink")
+        .at(3)
+        .text()
+    ).toBe("Fixtures");
   });
   it("should have className = 'container-team-details' exacty 1", () => {
     expect(wrapper.find(".container-team-details").length).toBe(1);
