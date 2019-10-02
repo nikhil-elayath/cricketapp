@@ -15,7 +15,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
         "fontFamily": "'Montserrat'",
         "fontSize": "42px",
         "fontWeight": 500,
-        "marginLeft": "43px",
+        "marginLeft": "35px",
         "marginTop": "1.5em",
         "textAlign": "left",
       }
@@ -38,7 +38,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           style={
             Object {
               "borderBottomLeftRadius": "8px",
-              "borderLeft": "1px solid",
+              "borderLeft": "none",
               "borderTopLeftRadius": "8px",
               "cursor": "pointer",
             }
@@ -47,7 +47,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           Test
         </a>
         <a
-          className="notActive"
+          className=""
           onClick={[Function]}
           style={
             Object {
@@ -58,13 +58,11 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           ODI
         </a>
         <a
-          className="notActive"
+          className=""
           onClick={[Function]}
           style={
             Object {
-              "borderBottomRightRadius": "8px",
-              "borderRight": "1px solid",
-              "borderTopRightRadius": "8px",
+              "borderRight": "none",
               "cursor": "pointer",
             }
           }
@@ -89,7 +87,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
               }
             }
           >
-            Top Run Scorers
+            Top Batsmen
           </h2>
         </div>
       </div>
@@ -106,7 +104,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
               }
             }
           >
-            Top Wicket Takers
+            Top Bowlers
           </h2>
         </div>
       </div>

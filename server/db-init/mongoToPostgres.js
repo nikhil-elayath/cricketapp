@@ -499,7 +499,7 @@ async function player_stats() {
 
 		const total_runs_results = await postdb.any(query);
 		total_runs_results.forEach(async result => {
-			let query = `insert into player_stats(player_stats_name, player_stats_value,match_type,player_id) values('total_runs',${result.total_runs},'${result.match_type}',${player.player_id}) returning player_stats_id`;
+			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('total_runs',${result.total_runs},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
 			console.log("add total runs to player_stats : ", query);
 			const player_stat = await postdb.any(query);
@@ -510,9 +510,9 @@ async function player_stats() {
 			`select m.match_type, count(d.wicket_id) as total_wickets from delivery as d inner join match as m on d.match_id = m.match_id where d.bowler = ${player.player_id} and d.wicket_id>0 group by m.match_type`
 		);
 		total_wickets_results.forEach(async result => {
-			let query = `insert into player_stats(player_stats_name, player_stats_value,match_type,player_id) values('total_wickets',${result.total_wickets},'${result.match_type}',${player.player_id}) returning player_stats_id`;
+			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('total_wickets',${result.total_wickets},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total wickets to player_stats : ", query);
+			console.log("add total wicket to player_stats : ", query);
 			const player_stat = await postdb.any(query);
 		});
 
@@ -521,9 +521,9 @@ async function player_stats() {
 			`select m.match_type, count(d.batsman_run) as total_4s from delivery as d inner join match as m on d.match_id = m.match_id where d.bowler = ${player.player_id} and d.batsman_run=4 group by m.match_type`
 		);
 		fours_results.forEach(async result => {
-			let query = `insert into player_stats(player_stats_name, player_stats_value,match_type,player_id) values('4s',${result.total_4s},'${result.match_type}',${player.player_id}) returning player_stats_id`;
+			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('4s',${result.total_4s},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total 4 runs to player_stats : ", query);
+			console.log("add total fours to player_stats : ", query);
 			const player_stat = await postdb.any(query);
 		});
 
@@ -532,9 +532,9 @@ async function player_stats() {
 			`select m.match_type, count(d.batsman_run) as total_6s from delivery as d inner join match as m on d.match_id = m.match_id where d.bowler = ${player.player_id} and d.batsman_run=6 group by m.match_type`
 		);
 		sixes_results.forEach(async result => {
-			let query = `insert into player_stats(player_stats_name, player_stats_value,match_type,player_id) values('6s',${result.total_6s},'${result.match_type}',${player.player_id}) returning player_stats_id`;
+			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('6s',${result.total_6s},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total 6 runs to player_stats : ", query);
+			console.log("add total sixes to player_stats : ", query);
 			const player_stat = await postdb.any(query);
 		});
 	});

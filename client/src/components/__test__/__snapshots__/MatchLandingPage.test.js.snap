@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing of MatchLandingPage Component should render the component 1`] = `
+<div>
+  <Navbar />
+  <div
+    style={
+      Object {
+        "marginTop": "80px",
+      }
+    }
+  >
+    <div>
+      <h1
+        className="h1-match"
+        style={
+          Object {
+            "margin": "20px",
+            "textAlign": "left",
+          }
+        }
+      >
+        Matches
+      </h1>
+    </div>
+    <div
+      className="timeline"
+      style={
+        Object {
+          "marginBottom": "50px",
+        }
+      }
+    >
+      <t
+        alignCenter={true}
+        alignOnResize={true}
+        arrowClass="scroll-menu-arrow"
+        arrowDisabledClass="scroll-menu-arrow--disabled"
+        arrowLeft={
+          <div
+            className="arrow-prev"
+          >
+            &lt;
+          </div>
+        }
+        arrowRight={
+          <div
+            className="arrow-next"
+          >
+            &gt;
+          </div>
+        }
+        clickWhenDrag={false}
+        data={
+          Array [
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-15"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-16"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2008-08-20"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2006-03-19"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2006-03-22"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2006-05-10"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-17"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-23"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-20"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2007-03-24"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2008-03-06"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2008-03-24"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2008-10-17"
+            />,
+            <MenuItem
+              selected="SEP 26"
+              text="2009-07-18"
+            />,
+          ]
+        }
+        dragging={true}
+        hideArrows={false}
+        hideSingleArrow={false}
+        inertiaScrolling={false}
+        inertiaScrollingSlowdown={0.25}
+        innerWrapperClass="menu-wrapper--inner"
+        innerWrapperStyle={
+          Object {
+            "textAlign": "left",
+            "userSelect": "none",
+            "whiteSpace": "nowrap",
+          }
+        }
+        itemClass="menu-item-wrapper"
+        itemClassActive="active"
+        itemStyle={
+          Object {
+            "display": "inline-block",
+          }
+        }
+        menuClass="horizontal-menu"
+        menuStyle={
+          Object {
+            "alignItems": "center",
+            "display": "flex",
+            "userSelect": "none",
+          }
+        }
+        onSelect={[Function]}
+        onUpdate={[Function]}
+        rtl={false}
+        scrollBy={0}
+        scrollToSelected={false}
+        selected="SEP 26"
+        transition={0.4}
+        translate={0}
+        useButtonRole={true}
+        wheel={true}
+        wrapperClass="menu-wrapper"
+        wrapperStyle={
+          Object {
+            "overflow": "hidden",
+            "userSelect": "none",
+          }
+        }
+        xPoint={0}
+      />
+    </div>
+    <div>
+      <h2
+        className="h1-match"
+        style={
+          Object {
+            "margin": "20px",
+            "textAlign": "left",
+          }
+        }
+      >
+        No Recent Matches
+      </h2>
+    </div>
+  </div>
+</div>
+`;
