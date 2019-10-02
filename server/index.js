@@ -16,9 +16,9 @@ app.use(cors());
 
 app.use(bodyParser.json());
 app.use(
-	bodyParser.urlencoded({
-		extended: false
-	})
+  bodyParser.urlencoded({
+    extended: false
+  })
 );
 
 app.use("/apis", home);
@@ -30,6 +30,6 @@ app.use(error);
 
 const port = process.env.port || 5000;
 if (process.env.NODE_ENV !== "test")
-	app.listen(port, () => console.log(`Server is listening on port ${port}`));
+  app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 module.exports = app;
