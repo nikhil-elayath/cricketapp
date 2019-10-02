@@ -1,4 +1,4 @@
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from "../actions/types";
+import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from "../actions/Types";
 
 const initialstate = {
     matches: [], match_date: [], match: []

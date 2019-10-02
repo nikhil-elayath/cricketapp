@@ -18,7 +18,7 @@ body{
     display: grid;
     grid-template-columns: 23vw 23vw 23vw 23vw;
     width: 90%;
-    height: 350px;
+    height: 320px;
     /* border: 1px solid black; */
     border-radius: 8px;
     margin: 10px;
@@ -29,9 +29,9 @@ body{
     display: flex;
     flex-direction: column;
     margin: 2px;
-    margin-bottom: 10px;
-    width: 98%;
-    height: 180px;
+    margin-bottom: 5px;
+    width: 95%;
+    height: 150px;
     border-radius: 8px;
     border: 1px solid black;
 }

@@ -35,11 +35,9 @@ export class MatchLandingPage extends Component {
     onSelect = key => {
         this.setState({ selected: key });
         this.props.getRecentMatches(key);
-
-
-
     }
     render() {
+
         const { selected } = this.state;
         // Create menu from items
         const menu = this.menuItems;
@@ -49,8 +47,7 @@ export class MatchLandingPage extends Component {
                 <Navbar />
 
                 <div style={{ marginTop: "80px" }}>
-                    <div>
-                        <h1 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>Matches</h1>
+                    <div><h1 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>Matches</h1>
                     </div>
                     <div className="timeline" style={{ marginBottom: "50px" }}>
                         <ScrollMenu
@@ -63,8 +60,7 @@ export class MatchLandingPage extends Component {
                     </div>
 
 
-                    <div>
-                        <h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>Matches</h2>
+                    <div>{this.props.matches.length === 0 ? (<h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>No Recent Matches</h2>) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>Fixtures:</h2>)}
                     </div>
                     {this.props.matches.length > 0 ? (
 
@@ -78,11 +74,11 @@ export class MatchLandingPage extends Component {
                                 }}>
                                     <span className="tournamnet-name">{match.match_type}</span>
                                     <div className="Team-data">
-                                        <div className="TeamOne-name">{match.teamOne}</div>
+                                        <div className="TeamOne-name">{match.teamtwo}</div>
                                         <div className="TeamOne-score">{match.teamOneScore}/{match.teamone_wicket}  (50 overs)</div>
                                     </div>
                                     <div className="Team-data">
-                                        <div className="TeamTwo-name">{match.teamtwo}</div>
+                                        <div className="TeamTwo-name">{match.teamOne}</div>
                                         <div className="TeamTwo-score">{match.teamTwoScore}/{match.teamtwo_wicket}  (50 overs)</div>
                                     </div>
                                     <span className="winner-name">{match.team_winner} won</span>

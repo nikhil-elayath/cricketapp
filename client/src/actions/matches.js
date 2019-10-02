@@ -1,4 +1,4 @@
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from './types'
+import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from './Types'
 import axios from "axios";
 
 const url = 'http://localhost:5000/api/matches';

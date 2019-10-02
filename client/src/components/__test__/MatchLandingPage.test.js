@@ -3,9 +3,12 @@ import { shallow } from "enzyme";
 import { MatchLandingPage } from "../MatchLandingPage";
 
 
-// const matchLandingPage = jest.fn();
+const getRecentMatches = jest.fn();
+const getMatchesDate = jest.fn();
+let matches = [];
 const wrapper = shallow(
-    <MatchLandingPage />
+
+    <MatchLandingPage matches={matches} getRecentMatches={getRecentMatches} getMatchesDate={getMatchesDate} />
 );
 
 describe("Testing of MatchLandingPage Component", () => {
@@ -21,8 +24,14 @@ describe("Testing of MatchLandingPage Component", () => {
         expect(wrapper.find(".h1-match").text()).toBe("Matches");
     });
 
-    it("should have 86 div tag", () => {
-        expect(wrapper.find("div").length).toBe(86);
+    it("should have 5 div tag", () => {
+        expect(wrapper.find("div").length).toBe(5);
+    });
+    it("should have 1 div tag with classname as 'timeline", () => {
+        expect(wrapper.find('.timeline').length).toBe(1);
+    });
+    it("should have 1 div tag with classname as all-recent-matches-box'", () => {
+        expect(wrapper.find('.all-recent-matches-box').length).toBe(1);
     });
     it("should have one h2 header", () => {
         expect(wrapper.find("h2").length).toBe(1);
