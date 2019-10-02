@@ -1,9 +1,9 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import { ResetPassword } from "../ResetPassword";
-import store from "../../store";
-import { Provider } from "react-redux";
-import { isTSAnyKeyword, exportAllDeclaration } from "@babel/types";
+// import store from "../../store";
+// import { Provider } from "react-redux";
+// import { isTSAnyKeyword, exportAllDeclaration } from "@babel/types";
 
 const resetpassword = jest.fn();
 const onVerify = jest.fn();

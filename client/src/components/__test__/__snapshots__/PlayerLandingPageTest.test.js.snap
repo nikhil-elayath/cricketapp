@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing Player Landing Page should render the component 1`] = `
+<div
+  style={
+    Object {
+      "padding": "12px",
+    }
+  }
+>
+  <Navbar />
+  <h1
+    style={
+      Object {
+        "fontFamily": "'Montserrat'",
+        "fontSize": "42px",
+        "fontWeight": 500,
+        "marginLeft": "35px",
+        "marginTop": "1.5em",
+        "textAlign": "left",
+      }
+    }
+  >
+    Players
+  </h1>
+  <div
+    id="conatiner"
+  >
+    <div
+      className="matchFormatOptons"
+    >
+      <div
+        className="selectNav"
+      >
+        <a
+          className="active"
+          onClick={[Function]}
+          style={
+            Object {
+              "borderBottomLeftRadius": "8px",
+              "borderLeft": "none",
+              "borderTopLeftRadius": "8px",
+              "cursor": "pointer",
+            }
+          }
+        >
+          Test
+        </a>
+        <a
+          className=""
+          onClick={[Function]}
+          style={
+            Object {
+              "cursor": "pointer",
+            }
+          }
+        >
+          ODI
+        </a>
+        <a
+          className=""
+          onClick={[Function]}
+          style={
+            Object {
+              "borderRight": "none",
+              "cursor": "pointer",
+            }
+          }
+        >
+          T20
+        </a>
+      </div>
+    </div>
+    <div
+      className="allPlayersDiv"
+    >
+      <div
+        className="topbatsmanDiv"
+      >
+        <div
+          className="insideBowlerDiv"
+        >
+          <h2
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            Top Batsmen
+          </h2>
+        </div>
+      </div>
+      <div
+        className="topbowlerDiv"
+      >
+        <div
+          className="insideBowlerDiv"
+        >
+          <h2
+            style={
+              Object {
+                "textAlign": "center",
+              }
+            }
+          >
+            Top Bowlers
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

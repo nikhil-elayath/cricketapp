@@ -1,8 +1,8 @@
 import React from "react";
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import { Register } from "../Register";
-import store from "../../store";
-import { Provider } from "react-redux";
+// import store from "../../store";
+// import { Provider } from "react-redux";
 const register = jest.fn();
 
 const wrapper = shallow(<Register register={register} />);

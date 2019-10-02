@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+
+.matchFormatOptons {
+  margin-left: 20px;
+  margin-top: 30px;
+  border: 1px solid #16a085;
+  border-radius: 8px;
+  width: 237px;
+}
+
+.selectNav a {
+  float: left;
+  color: #16a085;
+  text-align: center;
+  padding: 12px 14px;
+  text-decoration: none;
+  font-size: 16px;
+  border-right: 1px solid #16a085;
+  font-family: "Montserrat", sans-serif;
+  width: 50px;
+}
+
+.selectNav a:hover {
+  background-color: #16a085;
+  color: white;
+}
+
+.selectNav a.active {
+  background-color: #16a085;
+  color: white;
+}
+
+.selectNav a.notActive {
+  background-color: #707070;
+  color: white;
+}
+
+#conatiner {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 20px 20px 20px;
+}
+
+.allPlayersDiv {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  margin-top: 2em;
+}
+
+.topbatsmanDiv {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 8px;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 1px 5px 9px #888888;
+}
+
+.batsmenDetailDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: #383838;
+  align-items: center;
+  cursor: pointer;
+  /* box-shadow: 1px 5px 9px #888888; */
+  padding: 16px;
+  border-bottom: 1px solid #707070;
+  /* justify-content: s */
+}
+
+hr {
+  margin: auto;
+}
+
+.playerImage {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  border: 1px solid #707070;
+}
+
+.topbowlerDiv {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  margin: 8px;
+  margin-left: 2em;
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+  box-shadow: 1px 5px 9px #888888;
+}
+
+@media screen and (min-width: 480px) {
+  .insideBowlerDiv {
+    border: 1px solid #707070;
+    border-radius: 8px;
+    max-height: 1000px;
+  }
+}
