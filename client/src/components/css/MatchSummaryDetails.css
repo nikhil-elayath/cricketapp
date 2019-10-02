@@ -61,7 +61,7 @@ border: 1px solid black;
 
 .scoreCardSummary{
     border: 1px solid blue;
-    height: 480px;
+    height: auto;
     margin-left: 15px;
     display: grid;
     grid-template-rows: 10% 10% 30% 10% 30%
@@ -123,8 +123,24 @@ border: 1px solid black;
     display: grid;
     grid-template-rows: 10% 90%
 }
-.team-name{
+.team-names{
     margin-left: 15px;
     display: grid;
+    grid-template-columns: 50% 50%;
+    border-bottom: 1px solid black;
+    display: inline;
     
+}
+ .team-players-list, .team-names{
+    text-align: left;
+    margin-left: 15px;
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* border-bottom: 1px solid black; */
+    
+}
+
+.team-names{
+    border-bottom: 1px solid black;
 }

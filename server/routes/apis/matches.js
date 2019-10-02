@@ -10,10 +10,8 @@ const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 router.get('/recent/:date', async (req, res, next) => {
     try {
         let date = req.params.date;
-        // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
-        // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
         const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
-        console.log("dat of match", dateOfMatch);
+        console.log("date of match", dateOfMatch);
         var result = new Array();
 
         for (match of dateOfMatch) {
@@ -38,16 +36,23 @@ router.get('/recent/:date', async (req, res, next) => {
             console.log(teamtwo_name);
             const teamwinner_name = await db.any(`select t.team_name as winner_name from team as t inner join match as m on m.winner=t.team_id where match_id=${match_id};`)
             console.log(teamwinner_name);
-
             const teamOneScore = parseInt(teamone_striker_runs[0].teamone_striker_run) + parseInt(teamone_extra_runs[0].teamone_extra_runs);
             console.log(teamOneScore);
             const teamTwoScore = parseInt(teamtwo_striker_runs[0].teamtwo_striker_run) + parseInt(teamtwo_extra_runs[0].teamtwo_extra_runs);
             console.log(teamTwoScore);
-            result.push({ match_id: dateOfMatch[0].match_id, match_type: dateOfMatch[0].match_type, teamOne: teamone_name[0].teamone_name, teamtwo: teamtwo_name[0].teamtwo_name, team_winner: teamwinner_name[0].winner_name, teamOneScore: teamOneScore, teamTwoScore: teamTwoScore, teamone_wicket: teamone_wicket[0].teamone_wickets, teamtwo_wicket: teamtwo_wicket[0].teamtwo_wickets });
-
+            result.push({
+                match_id: dateOfMatch[0].match_id,
+                match_type: dateOfMatch[0].match_type,
+                teamOne: teamone_name[0].teamone_name,
+                teamtwo: teamtwo_name[0].teamtwo_name,
+                team_winner: teamwinner_name[0].winner_name,
+                teamOneScore: teamOneScore,
+                teamTwoScore: teamTwoScore,
+                teamone_wicket: teamone_wicket[0].teamone_wickets,
+                teamtwo_wicket: teamtwo_wicket[0].teamtwo_wickets
+            });
         }
 
-        console.log("outside", result);
         res.status(200).json({
             status: 200,
             data: result,
@@ -78,8 +83,27 @@ router.get('/bydate', async (req, res, next) => {
 router.get('/summary/:id', async (req, res, next) => {
     try {
         let id = req.params.id;
-        console.log(typeof date);
-        const result = await db.any(`SELECT * FROM matches where id='${id}';`);
+        console.log("abc", id);
+        const match = await db.any(`select t.team_name as toss_winner, m.toss_decision, m.outcome, m.player_of_the_match from match as m inner join team as t on m.toss_winner=t.team_id where match_id=${id};`);
+        console.log(match);
+        const umpires = await db.any(`select u.umpire_name from umpire as u inner join match_umpire as mu on mu.umpire_id=u.umpire_id where match_id=${id};`);
+        console.log(umpires);
+        const venue = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
+        console.log(venue);
+        // const teamone_name = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
+        // console.log(teamone_name);
+        console.log(venue.venue_city);
+        const result = [{
+            toss_winner: match[0].toss_winner,
+            toss_decision: match[0].toss_decision,
+            outcome: match[0].outcome,
+            player_of_the_match: match[0].player_of_the_match,
+            venue_name: venue[0].venue_name,
+            venue_city: venue[0].venue_city,
+            umpires
+        }]
+        console.log(result)
+
         res.status(200).json({
             status: 200,
             data: result,

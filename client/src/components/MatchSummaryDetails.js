@@ -8,32 +8,31 @@ import { connect } from "react-redux";
 export class MatchSummaryDetails extends Component {
 
     componentDidMount() {
-        // this.props.getmatchdetailbyId(this.props.location.state.matches.id);
-        // console.log(this.props.location.state.matches.id)
+        this.props.getmatchdetailbyId(this.props.location.state.match.match_id);
+        console.log(this.props.location.state.match.match_id)
     }
 
     render() {
-        // console.log(this.state.id);
-        // console.log(props);
+        console.log(this.props);
         return (
             <div>
                 <Navbar />
                 <div className="top-div-of-match" style={{ marginTop: "60px" }}>
                     <div className="short-summary-with-result">
 
-                        <span style={{ textAlign: "left", marginRight: "50px" }}>Result: India won by 7 wickets</span>
+                        <span style={{ textAlign: "left", marginRight: "50px" }}>Result: {this.props.location.state.match.team_winner} {this.props.match.map(match => match.outcome)}</span>
                         <div className="Team-data">
-                            <div className="TeamOne-name">South Africa</div>
-                            <div className="TeamOne-score">149/5  (20 overs)</div>
+                            <div className="TeamOne-name">{this.props.location.state.match.teamtwo}</div>
+                            <div className="TeamOne-score">{this.props.location.state.match.teamOneScore}/{this.props.location.state.match.teamone_wicket}  (50 overs)</div>
                         </div>
                         <div className="Team-data">
-                            <div className="TeamTwo-name">India</div>
-                            <div className="TeamTwo-score">151/3  (19/20 overs)</div>
+                            <div className="TeamTwo-name">{this.props.location.state.match.teamOne}</div>
+                            <div className="TeamTwo-score">{this.props.location.state.match.teamTwoScore}/{this.props.location.state.match.teamtwo_wicket}  (50 overs)</div>
                         </div>
                     </div>
                     <div className="short-summary-with-player-of-the-match">
                         <span style={{ textAlign: "left" }}>Player of the match</span>
-                        <div style={{ fontSize: "20px", fontWeight: "700" }}>MS Dhoni</div>
+                        <div style={{ fontSize: "20px", fontWeight: "700" }}>{this.props.match.map(match => match.player_of_the_match)}</div>
                         <div>india</div>
                     </div>
                     <div>
@@ -49,7 +48,7 @@ export class MatchSummaryDetails extends Component {
                                 <h3 style={{ margin: 0 + "px", textAlign: "left", padding: 10 + "px", color: "white" }} > Score Card Summary</h3>
                             </div>
                             <div>
-                                <span style={{ float: "left", margin: 16 + "px", fontSize: 25 + "px" }}>India</span>
+                                <span style={{ float: "left", margin: 16 + "px", fontSize: 25 + "px" }}>{this.props.location.state.match.teamtwo}</span>
                             </div>
                             <div className="players">
                                 <div className="playerLeft">
@@ -77,7 +76,7 @@ export class MatchSummaryDetails extends Component {
                                 </div>
                             </div>
                             <div>
-                                <span style={{ float: "left", margin: 16 + "px", fontSize: 25 + "px" }}>India</span>
+                                <span style={{ float: "left", margin: 16 + "px", fontSize: 25 + "px" }}>{this.props.location.state.match.teamOne}</span>
                             </div>
                             <div className="players">
                                 <div className="playerLeft">
@@ -113,13 +112,16 @@ export class MatchSummaryDetails extends Component {
                                     Match Details</h3>
                             </div>
                             <div className="match-title"> Venue</div>
-                            <h3 className="match-values">BJjkjbmnbmnb,mb</h3>
+                            <h3 className="match-values">{this.props.match.map(match => match.venue_name)}, {this.props.match.map(match => match.venue_city)}</h3>
                             <div className="match-title">Toss</div>
-                            <h3 className="match-values">India, elextwd to bat</h3>
+                            <h3 className="match-values">{this.props.match.map(match => match.toss_winner)}, elected to {this.props.match.map(match => match.toss_decision)}</h3>
                             <div className="match-title">Player of the match</div>
-                            <h3 className="match-values">MS Shoni</h3>
+                            <h3 className="match-values">{this.props.match.map(match => match.player_of_the_match)}</h3>
                             <div className="match-title">Umpires</div>
-                            <h3 className="match-values">Anil</h3>
+                            {this.props.match.map(match => (
+                                match.umpires.map(umpire =>
+                                    <h3 className="match-values"> {umpire.umpire_name}</h3>)
+                            ))}
                         </div>
 
                         <div className="playing11">
@@ -128,8 +130,16 @@ export class MatchSummaryDetails extends Component {
                                     Playing XI</h3>
 
                             </div>
-                            <div className="team-name">
-                                dsad
+                            <div>
+                                <div className="team-names">
+
+                                    <div className="teamone-name">{this.props.location.state.match.teamtwo}</div>
+                                    <div className="teamtwo-name">{this.props.location.state.match.teamOne}</div>
+                                </div>
+                                <div className="team-players-list">
+                                    <div className='teamone-players-name'> Rohit</div>
+                                    <div className='teamotwo-players-name'>AB dev</div>
+                                </div>
                             </div>
                         </div>
                     </div>
