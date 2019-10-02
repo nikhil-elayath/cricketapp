@@ -96,16 +96,11 @@ create table match
 
     create table player_stats
     (
+        player_stats_id serial,
         player_id int,
-        stat_id int,
+        player_stats_name varchar(100),
+        player_stats_value int,
         match_type varchar(30)
-    );
-
-    create table stats
-    (
-        stat_id serial primary key,
-        stat_name varchar(255),
-        stat_value varchar(255)
     );
 
     create table team

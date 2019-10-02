@@ -8,6 +8,8 @@
 **/yaml
 **/json
 
+**/.scannerwork
+
 # testing
 **/coverage
 
