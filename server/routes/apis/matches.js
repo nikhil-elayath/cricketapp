@@ -1,12 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const config = require("config");
+const postgresURL = config.get("postgresURL");
 const pg = require("pg-promise")();
-const db = pg(postgresURL);
+// const db = pg(postgresURL);
+const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
+
 
 router.get('/recent/:date', async (req, res, next) => {
     try {
         let date = req.params.date;
-        console.log("called recent matches")
         // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
         // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
         const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);

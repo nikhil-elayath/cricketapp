@@ -17,14 +17,12 @@ app.use(
 );
 app.use('/api/matches', matches);
 app.use((err, req, res, next) => {
-	next(error);
+  next(error);
 })
 
 const port = process.env.port || 5000;
-
-const port = process.env.port || 5000;
 if (process.env.NODE_ENV !== "test")
-	app.listen(port, () => console.log(`Server is listig on port ${port}`));
+  app.listen(port, () => console.log(`Server is listig on port ${port}`));
 
 module.exports = app;
 

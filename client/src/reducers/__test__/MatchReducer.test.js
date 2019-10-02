@@ -43,7 +43,7 @@ describe("Testing Matches Reducers", () => {
     it(" [GET_RECENT_MATCHES - SOME TYPE] [init-null] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
         let action = {
             type: "SOME_TYPE",
-            payload: [{}, {}, {}],
+            payload: [],
             match: [],
             match_date: []
         };
@@ -53,15 +53,16 @@ describe("Testing Matches Reducers", () => {
 
     it("[GET_RECENT_MATCHES - SOME TYPE] [[init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_RECENT_MATCHES (when the returned state is not an initial state", () => {
         const initialState = {
-            matches: [1, 2, 3, 4, 5],
+            matches: [{}, {}, {}],
             match_date: [],
             match: []
         };
         let action = {
             type: "SOME_TYPE",
-            payload: [1, 2, 3, 4, 5],
+            payload: [{}, {}, {}],
             match: [],
             match_date: []
+
 
         };
         let returnedState = matches(initialState, action);
@@ -100,35 +101,26 @@ describe("Testing Matches Reducers", () => {
 
     it("[GET_MATCHES_DATE- SOME TYPE] [init-null] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
         let action = {
-            payload: [{}, {}, {}]
+            type: "SOME_TYPE",
+            match_date: []
         };
         let returnedState = matches(undefined, action);
-        expect(returnedState).toEqual({ match_date: [] });
-        action = {
-            type: "SOME_TYPE",
-            payload: [{}, {}, {}]
-        };
-        returnedState = matches(undefined, action);
-        expect(returnedState).toEqual({ match_date: [] });
+        expect(returnedState).toEqual({ match_date: action.match_date, matches: [], match: [] });
     });
 
     it("[GET_MATCHES_DATE - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MATCHES_DATE (when the returned state is not an initial state", () => {
         const initialState = {
-            match_date: [1, 2, 3, 4, 5],
-            matches: {},
-            match: {}
+            match_date: [{}, {}, {}],
+            matches: [{}],
+            match: [{}]
         };
         let action = {
-            payload: [{}, {}, {}]
-        };
-        let returnedState = matches(initialState, action);
-        expect(returnedState).toEqual({ match_date: initialState.match_date, match: {}, mataches: {} });
-        action = {
             type: "SOME_TYPE",
             payload: [{}, {}, {}]
+
         };
-        returnedState = matches(initialState, action);
-        expect(returnedState).toEqual({ match_date: initialState.match_date, match: {}, mataches: {} });
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({ match_date: action.payload, match: [{}], matches: [{}] });
     });
 
     //GET_MATCH_DETAILS_BY_ID
@@ -162,15 +154,10 @@ describe("Testing Matches Reducers", () => {
 
     it("[GET_MATCH_DETAILS_BY_ID- SOME TYPE] [init-value] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
         let action = {
-            payload: [{}, {}, {}]
-        };
-        let returnedState = matches(undefined, action);
-        expect(returnedState).toEqual({ match: [], match_date: [], matches: [] });
-        action = {
             type: "SOME_TYPE",
             payload: [{}, {}, {}]
         };
-        returnedState = matches(undefined, action);
+        let returnedState = matches(undefined, action);
         expect(returnedState).toEqual({ match: [], match_date: [], matches: [] });
     });
 
@@ -178,20 +165,15 @@ describe("Testing Matches Reducers", () => {
     it("[GET_MATCH_DETAILS_BY_ID - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MATCH_DETAILS_BY_ID (when the returned state is not an initial state", () => {
         const initialState = {
             match: [1, 2, 3, 4, 5],
-            match_date: {},
-            matches: {}
+            match_date: [{}],
+            matches: [{}]
         };
         let action = {
-            payload: [{}, {}, {}]
-        };
-        let returnedState = matches(initialState, action);
-        expect(returnedState).toEqual({ match: initialState.match, match_date: {}, matches: {} });
-        action = {
             type: "SOME_TYPE",
             payload: [{}, {}, {}]
         };
-        returnedState = matches(initialState, action);
-        expect(returnedState).toEqual({ match: initialState.match, match_date: {}, matches: {} });
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({ match: initialState.match, match_date: [{}], matches: [{}] });
     });
 
 

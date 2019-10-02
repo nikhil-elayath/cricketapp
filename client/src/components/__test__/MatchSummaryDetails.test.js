@@ -28,5 +28,10 @@ describe("Testing of MatchSummaryDetails Component", () => {
     it("should have one h2 content with 'Recent Matches' content", () => {
         expect(wrapper.find(".h2-recent-matches").text()).toBe("MS Dhoni");
     });
+    it("should have one div tag with 'Player of the match", () => {
+        expect(wrapper.find(".short-summary-with-player-of-the-match span").text()).toBe("Player of the match");
+    });
+
+
 
 });
