@@ -38,9 +38,75 @@ describe("test  Component", () => {
   it("there should be a text on button", () => {
     expect(wrapper.find("button").text()).toBe("Send OTP");
   });
-  // it("should call mock function when button is clicked", () => {
-  //   const user_email = "";
-  //   wrapper.find("button").simulate("click");
-  //   expect(onVerify).toBeCalledWith(user_email);
-  // });
+  it("there should be a button", () => {
+    // const wrapper = mount(<Register register={register} />);
+    expect(wrapper.find("button").simulate("onVerify")).toEqual({});
+  });
+  it("there should be a span", () => {
+    expect(wrapper.find("span").length).toBe(1);
+  });
+  it("there should be a input", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("type")
+    ).toEqual("text");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("type")
+    ).toEqual("password");
+    expect(
+      wrapper
+        .find("input")
+        .at(2)
+        .prop("type")
+    ).toEqual("password");
+  });
+  it("there should be a input", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("name")
+    ).toEqual("user_email");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("name")
+    ).toEqual("user_password");
+    expect(
+      wrapper
+        .find("input")
+        .at(2)
+        .prop("name")
+    ).toEqual("confirmPassword");
+  });
+
+  it("there should name in  inputs", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("placeholder")
+    ).toEqual("Enter Email");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("placeholder")
+    ).toEqual("Enter Password");
+    expect(
+      wrapper
+        .find("input")
+        .at(2)
+        .prop("placeholder")
+    ).toEqual("Confirm Password");
+  });
 });
