@@ -3,7 +3,7 @@ import {
 	GET_SINGLE_PLAYER,
 	GET_ALL_BATSMAN,
 	GET_ALL_BOWLERS
-} from "../actions/Types";
+} from "./Types";
 import axios from "axios";
 
 export const getPlayers = () => dispatch => {
