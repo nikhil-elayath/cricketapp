@@ -19,7 +19,7 @@ export default class Navbar extends Component {
               <Link className="link" to="/playersPage">
                 <li>Players</li>
               </Link>
-              <Link className="link" to="/stats">
+              <Link className="link" to="#as">
                 <li>Stats</li>
               </Link>
               <Link className="link" to="/search">

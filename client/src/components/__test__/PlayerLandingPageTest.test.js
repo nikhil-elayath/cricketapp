@@ -64,7 +64,7 @@ describe("Testing Player Landing Page", () => {
         .find("h2")
         .at(1)
         .text()
-    ).toBe("Top Bowlers");
+    ).toBe("Top Wicket Takers");
   });
 
   it("should have a header for top batsman", () => {
@@ -73,7 +73,7 @@ describe("Testing Player Landing Page", () => {
         .find("h2")
         .at(0)
         .text()
-    ).toBe("Top Batsmen");
+    ).toBe("Top Run Scorers");
   });
 
   it("should display 3 select menus", () => {
@@ -84,12 +84,6 @@ describe("Testing Player Landing Page", () => {
   });
 
   it("should check if getT20 has been called ", () => {
-    // const t20 = jest.spyOn(PlayerLandingPage, "getT20");
-    // // getT20.bar();
-    // expect(t20).toHaveBeenCalledTimes(1);
-
-    // const aTag = shallow((<Button onClick={getT20}>Ok!</Button>));
-
     expect(
       wrapper
         .find("a")

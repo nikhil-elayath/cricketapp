@@ -3,6 +3,8 @@ const player = require("./routes/apis/PlayerInfo");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
+// const db = require("./routes/apis/PlayerInfo");
+
 const app = express();
 
 app.use(cors());
@@ -13,7 +15,7 @@ app.use(
     extended: false
   })
 );
-
+// app.use(db);
 app.use("/apis/PlayerInfo", player);
 
 const port = process.env.port || 5000;
