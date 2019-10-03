@@ -2,7 +2,6 @@ import * as action from "../users";
 import {
   GET_USERS,
   CREATE_USERS,
-  LOGIN,
   OTP_VERIFICATION,
   EMAIL_VERIFICATION
 } from "../Types";
