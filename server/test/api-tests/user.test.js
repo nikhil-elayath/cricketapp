@@ -76,6 +76,7 @@ describe("Testing ecommerce API", () => {
 
   //login
 
+<<<<<<< HEAD
   it("should return status of 200 and a message", done => {
     let data = {
       user_email: "test@test.com",
@@ -139,4 +140,71 @@ describe("Testing ecommerce API", () => {
         done();
       });
   });
+=======
+	it("should return status of 200 and a message", done => {
+		let data = {
+			user_email: "test@test.com",
+			user_password: "555d2"
+		};
+		let payload = JSON.stringify(data);
+		request(app)
+			.post("/api/cricketalpha/user/login")
+			.send(payload)
+			.set("Content-type", "application/json")
+			.then(response => {
+				expect(response.statusCode).toBe(200);
+				expect(response.body).toEqual(expect.any(Object));
+				expect(response.body.message).toBe("Login Successfull!");
+				done();
+			});
+	});
+	it("should return status of 200 and a message", done => {
+		let data = {
+			user_email: "test@test.com",
+			user_password: "52"
+		};
+		let payload = JSON.stringify(data);
+		request(app)
+			.post("/api/cricketalpha/user/login")
+			.send(payload)
+			.set("Content-type", "application/json")
+			.then(response => {
+				expect(response.statusCode).toBe(404);
+				expect(response.body).toEqual(expect.any(Object));
+				expect(response.body.message).toBe("Invalid Details");
+				done();
+			});
+	});
+	//delete
+	it("should return status of 200 and a message", done => {
+		// let payload = JSON.stringify(id);
+		request(app)
+			.delete("/api/cricketalpha/user/delete/" + id)
+			// .send(payload)
+			.set("Content-type", "application/json")
+			.then(response => {
+				expect(response.statusCode).toBe(200);
+				expect(response.body).toEqual(expect.any(Object));
+				expect(response.body.message).toBe(
+					"Deleted 1 user info successfully"
+				);
+				done();
+			});
+	});
+	it("should return status of 404 and a message", done => {
+		// let payload = JSON.stringify(id);
+		request(app)
+			.delete("/api/cricketalpha/user/delete/")
+			// .send(payload)
+			.set("Content-type", "application/json")
+			.then(response => {
+				expect(response.statusCode).toBe(404);
+				expect(response.body).toEqual(expect.any(Object));
+				// expect(response.body.message).toBe(
+				//   "Cannot find user with the given id"
+				// );
+				done();
+			});
+	});
+>>>>>>> 92b8d189c675ddbbf8942f5d37bdf70da20fa10e
 });
