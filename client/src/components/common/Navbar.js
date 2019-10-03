@@ -7,7 +7,9 @@ export default class Navbar extends Component {
 		return (
 			<div className="navParent">
 				<nav>
-					<span className="navBrand">CricketAlpha</span>
+					<Link className="link" to="/">
+						<span className="navBrand">CricketAlpha</span>
+					</Link>
 					<div className="navLinks">
 						<ul>
 							<Link className="link" to="/matches">
@@ -25,7 +27,7 @@ export default class Navbar extends Component {
 							<Link className="link" to="/search">
 								<i className="fas fa-search"></i>
 							</Link>
-							<Link className="link" to="/user">
+							<Link className="link" to="/login">
 								<i className="fas fa-user"></i>
 							</Link>
 						</ul>

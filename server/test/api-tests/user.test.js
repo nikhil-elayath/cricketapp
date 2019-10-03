@@ -128,7 +128,7 @@ describe("Testing ecommerce API", () => {
 				done();
 			});
 	});
-	it("should return status of 200 and a message", done => {
+	it("should return status of 404 and a message", done => {
 		// let payload = JSON.stringify(id);
 		request(app)
 			.delete("/api/cricketalpha/user/delete/")

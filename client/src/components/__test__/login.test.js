@@ -23,7 +23,7 @@ describe("test  Component", () => {
     expect(wrapper.find("h1").length).toBe(1);
   });
   it("there should be a navber", () => {
-    expect(wrapper.find("NavBar").length).toBe(0);
+    expect(wrapper.find("Navbar").length).toBe(1);
   });
   it("there should be a input", () => {
     expect(wrapper.find("input").length).toBe(2);
@@ -37,15 +37,57 @@ describe("test  Component", () => {
   it("there should be a button", () => {
     expect(wrapper.find("button").text()).toBe("Login");
   });
-  // it("Test click event", () => {
-  //   const tree = shallow(
-  //     <Button name='button test' handleClick={mockFn} />
-  //   );
-  //   expect(onLogin).toHaveBeenCalled(0);
-  // });
-  // it("should call mock function when button is clicked", () => {
-  //   const tree = shallow(<onLogin name="button test" handleClick={onLogin} />);
-  //   tree.simulate("click");
-  //   expect(onLogin).toHaveBeenCalled();
-  // });
+  it("there should be a span", () => {
+    expect(wrapper.find("span").length).toBe(3);
+  });
+  it("there should be a button", () => {
+    expect(wrapper.find("button").simulate("onLogin")).toEqual({});
+  });
+  it("there should be a input", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("type")
+    ).toEqual("text");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("type")
+    ).toEqual("password");
+  });
+
+  it("there should be a input", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("name")
+    ).toEqual("user_email");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("name")
+    ).toEqual("user_password");
+  });
+
+  it("there should name in  inputs", () => {
+    expect(
+      wrapper
+        .find("input")
+        .at(0)
+        .prop("placeholder")
+    ).toEqual("Enter Email");
+
+    expect(
+      wrapper
+        .find("input")
+        .at(1)
+        .prop("placeholder")
+    ).toEqual("Enter Password");
+  });
 });
