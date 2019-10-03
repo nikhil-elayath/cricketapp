@@ -1,6 +1,0 @@
-export const GET_USERS = "GET_USERS";
-export const CREATE_USERS = "CREATE_USERS";
-export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
-export const OTP_VERIFICATION = "OTP_VERIFICATION";
-export const RESET_PASSWORD = "RESET_PASSWORD";
-export const LOGIN = "LOGIN";

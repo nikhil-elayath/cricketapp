@@ -100,6 +100,23 @@ router.get('/summary/:id', async (req, res, next) => {
         console.log(teamtwo_players);
         const teamtwo_name = await db.any(`select team_name as teamtwo_name from team where team_id=${teams_ids[1].team_id};`)
         console.log(teamtwo_name);
+        // select distinct(striker) from delivery where match_id=1 and inning=1
+
+        const list_of_striker_inn1 = await db.any(`select distinct(d.striker) as striker_id, p.player_name from delivery as d inner join player as p on p.player_id=d.striker where match_id=${id} and inning=1;`)
+        console.log(list_of_striker_inn1);
+
+        var players_runs_inn1 = new Array();
+        console.log(id)
+        for (let striker of list_of_striker_inn1) {
+            console.log(striker)
+            let striker_id = striker.striker_id;
+            console.log(striker_id)
+            console.log(id)
+            const striker_runs = await db.any(`select sum(batsman_run) as batsmanscore from delivery where striker=${striker_id} and match_id=${id}`)
+            console.log(striker_runs)
+            players_runs_inn1.push({ player_name: list_of_striker_inn1[0].player_name, total_run: striker_runs });
+        }
+        console.log(players_runs_inn1);
 
         // const teamone_name = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
         // console.log(teamone_name);
@@ -115,6 +132,7 @@ router.get('/summary/:id', async (req, res, next) => {
             teamone_players: teamone_players,
             teamtwo_name: teamtwo_name[0].teamtwo_name,
             teamtwo_players: teamtwo_players,
+            list_of_striker_inn1
         }]
         console.log(result)
 

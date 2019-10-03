@@ -5,25 +5,35 @@ body{
     color: #272727;
 }
 
-
 .top-div-of-match {
     display: flex;
     flex-direction: row;
     width: 95%;
-    height: 110px;
+    height: auto;
     padding: 5px;
 }
 
 .short-summary-with-result{
-    width: 35%;
-    border: 1px solid black;
+    width: 40%;
+    border-right: 1px solid black;
 }
 .short-summary-with-result span{
-text-align: right;    
+text-align: left;
+margin-bottom: 20px;    
 }
 .short-summary-with-player-of-the-match{
 width: 50%;
 border: 1px solid black;
+}
+
+.short-summary-with-result .Team-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 20pt;
+    margin: 3px;
+    margin-left: 10pt
 }
 
 .short-summary-with-result .TeamOne-name, .TeamOne-over, .TeamOne-score , .TeamTwo-name , .TeamTwo-over , .TeamTwo-score{
@@ -38,15 +48,7 @@ border: 1px solid black;
     font-weight: 500;
     margin-right: 15pt;
 }
-.short-summary-with-result .Team-data {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    font-size: 20pt;
-    margin: 3px;
-    margin-left: 10pt
-}
+
 
 .summary{
     margin: 20px;
