@@ -1,5 +1,5 @@
 import * as action from "../PlayerAction";
-import { GET_ALL_BATSMAN, GET_ALL_BOWLERS, GET_SINGLE_PLAYER } from "../Type";
+import { GET_ALL_BATSMAN, GET_ALL_BOWLERS, GET_SINGLE_PLAYER } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";

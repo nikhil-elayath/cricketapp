@@ -16,51 +16,39 @@ export class PlayerLandingPage extends Component {
   };
 
   componentDidMount() {
-    console.log("from landing page", this.props);
+    // console.log("from landing page", this.props);
     this.props.getBowlers({ match_type: "Test" });
     this.props.getBatsmen({ match_type: "Test" });
   }
 
-  getT20 = e => {
-    console.log(e);
+  getT20 = () => {
     this.setState({ testClicked: false, odiClicked: false, t20Clicked: true });
     this.props.getBowlers({ match_type: "T20" });
     this.props.getBatsmen({ match_type: "T20" });
   };
 
-  getTest = e => {
+  getTest = () => {
     this.setState({ testClicked: true, odiClicked: false, t20Clicked: false });
 
     this.props.getBowlers({ match_type: "Test" });
     this.props.getBatsmen({ match_type: "Test" });
   };
 
-  getODI = e => {
+  getODI = () => {
     this.setState({ testClicked: false, odiClicked: true, t20Clicked: false });
-
     this.props.getBowlers({ match_type: "ODI" });
     this.props.getBatsmen({ match_type: "ODI" });
   };
 
   render() {
     // console.log("batsman landing page: ", this.props.batsmen);
-    console.log("Bowlers comp landing page: ", this.props);
+    // console.log("Bowlers comp landing page: ", this.props);
     return (
       <div style={{ padding: 12 + "px" }}>
         <NavBar></NavBar>
-        <h1
-          style={{
-            textAlign: "left",
-            marginLeft: 43 + "px",
-            marginTop: 1.5 + "em",
-            fontSize: 42 + "px",
-            fontWeight: 500,
-            fontFamily: "'Montserrat'"
-          }}
-        >
-          Players
-        </h1>
-        <div id="conatiner">
+        <h1 id="playerHeading">Players</h1>
+
+        <div id="container">
           <div className="matchFormatOptons">
             <div className="selectNav">
               <a
@@ -83,7 +71,6 @@ export class PlayerLandingPage extends Component {
               >
                 ODI
               </a>
-
               <a
                 className={this.state.t20Clicked ? "active" : "notActive"}
                 onClick={this.getT20}
@@ -98,105 +85,74 @@ export class PlayerLandingPage extends Component {
               </a>
             </div>
           </div>
+        </div>
+        <div className="playersDiv">
+          <div className="playerBatsman">
+            <h1
+            // style={{
+            //   textAlign: "center"
+            // }}
+            >
+              Top Batsmen
+            </h1>
+            {this.props.batsmen.map(batsman => (
+              <div
+                className="singlePlayerDiv"
+                onClick={() => {
+                  this.props.history.push("/playerInfo/" + batsman.player_id);
+                }}
+              >
+                <img className="playerImage" src={virat}></img>
+                {/* player basic info div */}
+                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
+                  <span id="playerName">{batsman.player_name}</span>
+                  <span id="playerMinInfo">Right Handed Batsman</span>
+                  <span id="playerMinInfo">{batsman.player_country}</span>
+                </div>
 
-          <div className="allPlayersDiv">
-            <div className="topbatsmanDiv">
-              <div className="insideBatsmanDiv">
-                <h2 style={{ textAlign: "center" }}>Top Run Scorers</h2>
-                {this.props.batsmen.map(batsman => (
-                  <div
-                    className="batsmenDetailDiv"
-                    onClick={() => {
-                      this.props.history.push(
-                        "/player-info/" + batsman.player_id
-                      );
-                    }}
-                  >
-                    <img
-                      src={virat}
-                      alt="virat kohli"
-                      className="playerImage"
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        marginTop: 10 + "px",
-                        textAlign: "left"
-                      }}
-                    >
-                      <div
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          textAlign: "left",
-                          float: "left"
-                        }}
-                      >
-                        <span>
-                          <b>{batsman.player_name}</b>
-                        </span>
-                        <span>{batsman.batting_style}</span>
-                      </div>
-                    </div>
-                    <div
-                      className="playerStats"
-                      style={{ display: "flex", flexDirection: "column" }}
-                    >
-                      <b className="playerStatValue">
-                        {batsman.player_stats_value}
-                      </b>
-                      <span style={{ textAlign: "right" }}>Innings: 12</span>
-                      <span>Average: 52.12</span>
-                    </div>
-                  </div>
-                ))}
+                {/* player runs,wickets div */}
+                <div className="playerInfoDiv">
+                  <span className="playerStatValue">
+                    {batsman.player_stats_value}
+                  </span>
+
+                  <span id="playerMinInfo">Innings: 12</span>
+                  <span id="playerMinInfo">Average: 52.12</span>
+                </div>
               </div>
-            </div>
-            <div className="topbowlerDiv">
-              <div className="insideBowlerDiv">
-                <h2 style={{ textAlign: "center" }}>Top Wicket Takers</h2>
-                {this.props.bowlers.map(bowler => (
-                  <div
-                    className="batsmenDetailDiv"
-                    onClick={() => {
-                      this.props.history.push(
-                        "/playerInfo/" + bowler.player_id
-                      );
-                    }}
-                  >
-                    <img
-                      src={bumrah}
-                      alt="virat kohli"
-                      className="playerImage"
-                    />
-                    <div
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        marginTop: 10 + "px",
-                        textAlign: "left"
-                      }}
-                    >
-                      <span>
-                        <b>{bowler.player_name}</b>
-                      </span>
-                      <span>{bowler.bowling_style}</span>
-                    </div>
-                    <div
-                      className="playerStats"
-                      style={{ display: "flex", flexDirection: "column" }}
-                    >
-                      <b className="playerStatValue">
-                        {bowler.player_stats_value}
-                      </b>
-                      <span style={{ textAlign: "right" }}>Innings: 12</span>
-                      <span style={{ textAlign: "right" }}>E/R: 6.2</span>
-                    </div>
-                  </div>
-                ))}
+            ))}
+          </div>
+          <div className="playerBowler">
+            <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
+            {this.props.bowlers.map(bowler => (
+              <div
+                className="singlePlayerDiv"
+                onClick={() => {
+                  this.props.history.push("/playerInfo/" + bowler.player_id);
+                }}
+              >
+                <img className="playerImage" src={virat}></img>
+                {/* player basic info div */}
+                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
+                  <span id="playerName">{bowler.player_name}</span>
+                  <span id="playerMinInfo">Right Arm Medium</span>
+                  <span id="playerMinInfo">{bowler.player_country}</span>
+                </div>
+
+                {/* player runs,wickets div */}
+                <div className="playerInfoDiv">
+                  <span className="playerStatValue">
+                    {bowler.player_stats_value}
+                  </span>
+
+                  <span id="playerMinInfo">Innings: 12</span>
+                  <span id="playerMinInfo">Average: 52.12</span>
+                </div>
               </div>
-            </div>
+            ))}
+          </div>
+          <div className="playerType">
+            <h1 style={{ textAlign: "center" }}>Top 6s</h1>
           </div>
         </div>
       </div>

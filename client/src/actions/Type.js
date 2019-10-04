@@ -1,4 +1,0 @@
-export const GET_PLAYERS = "GET_PLAYERS";
-export const GET_SINGLE_PLAYER = "GET_SINGLE_PLAYER";
-export const GET_ALL_BATSMAN = "GET_ALL_BATSMAN";
-export const GET_ALL_BOWLERS = "GET_ALL_BOWLERS";
