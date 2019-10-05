@@ -84,13 +84,13 @@ export class MatchSummaryDetails extends Component {
                             <div className="players">
                                 <div className="playerLeft">
                                     <div className="playerinfo">
-                                        <p>Sachin</p>
-                                        <p>Rohit</p>
+                                        <p>{this.props.match.map(match => match.teamOne_top2_players[0].player_name)}</p>
+                                        <p>{this.props.match.map(match => match.teamOne_top2_players[1].player_name)}</p>
                                     </div>
 
                                     <div className="playerScores">
-                                        <p>50 (20)</p>
-                                        <p>51 (20)</p>
+                                        <p>{this.props.match.map(match => match.teamOne_top2_players[0].total_runs)} ({this.props.match.map(match => match.teamOne_top2_players[0].total_ball_faced)})</p>
+                                        <p>{this.props.match.map(match => match.teamOne_top2_players[1].total_runs)} ({this.props.match.map(match => match.teamOne_top2_players[1].total_ball_faced)})</p>
                                     </div>
                                 </div>
 
@@ -112,13 +112,13 @@ export class MatchSummaryDetails extends Component {
                             <div className="players">
                                 <div className="playerLeft">
                                     <div className="playerinfo">
-                                        <p>Sachin</p>
-                                        <p>Rohit</p>
+                                        <p>{this.props.match.map(match => match.teamTwo_top2_players[0].player_name)}</p>
+                                        <p>{this.props.match.map(match => match.teamTwo_top2_players[1].player_name)}</p>
                                     </div>
 
                                     <div className="playerScores">
-                                        <p>50 (20)</p>
-                                        <p>51 (20)</p>
+                                        <p>{this.props.match.map(match => match.teamTwo_top2_players[0].total_runs)} ({this.props.match.map(match => match.teamTwo_top2_players[0].total_ball_faced)})</p>
+                                        <p>{this.props.match.map(match => match.teamTwo_top2_players[1].total_runs)} ({this.props.match.map(match => match.teamTwo_top2_players[1].total_ball_faced)})</p>
                                     </div>
                                 </div>
 

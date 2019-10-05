@@ -28,7 +28,8 @@ border-left: 1px solid #272727;
 }
 .short-summary-right .default-img{
     height: 60px;
-    background-size: 108px 60px;
+    width: 120px;
+    background-size: 120px 65px;
     margin-top: 15px;
 
 }
@@ -43,14 +44,21 @@ border-left: 1px solid #272727;
     margin-left: 10px;
 }
 
-.Team-data .Team-name, .Team-score , .Team-name , .Team-score{
+.Team-data .Team-name , .Team-score{
     text-align: left;
     font-size: 20px;
     font-weight: 500;
     margin-right: 40px;
     margin-top: 10px;
     }
-.Team-img , .Team-img{
+.Team-data .Team-name , .Team-score{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 40px;
+    margin-top: 10px;
+    }
+.Team-data .Team-img {
     width: 60px;
     background-size: 60px 34px;
 }
@@ -59,7 +67,7 @@ border-left: 1px solid #272727;
     display: grid;
     grid-template-columns: 20% 50%;
     margin-left: 20px;
-    height: 50px;;
+    height: 50px;
 
 }
 .header-player-of-the-match{
@@ -117,9 +125,6 @@ border-left: 1px solid #272727;
     margin-right: 100px;
 }
 
-.playerRight{
-    border: 1px solid blueviolet
-}
 
 .match-title{
     text-align: left;

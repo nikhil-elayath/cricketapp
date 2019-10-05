@@ -96,30 +96,77 @@ router.get('/summary/:id', async (req, res, next) => {
         console.log(teamone_name);
         const teamone_players = await db.any(`select p.player_name as teamone_players from player as p inner join match_team_player as mtp on mtp.player_id=p.player_id where match_id=${id} and team_id=${teams_ids[0].team_id};`)
         console.log(teamone_players);
-        const teamtwo_players = await db.any(`select p.player_name as teamtwo_players from player as p inner join match_team_player as mtp on mtp.player_id=p.player_id where match_id=${id} and team_id=${teams_ids[1].team_id};`)
-        console.log(teamtwo_players);
         const teamtwo_name = await db.any(`select team_name as teamtwo_name from team where team_id=${teams_ids[1].team_id};`)
         console.log(teamtwo_name);
-        // select distinct(striker) from delivery where match_id=1 and inning=1
+        const teamtwo_players = await db.any(`select p.player_name as teamtwo_players from player as p inner join match_team_player as mtp on mtp.player_id=p.player_id where match_id=${id} and team_id=${teams_ids[1].team_id};`)
+        console.log(teamtwo_players);
+        
+        const teamOne_top2_players = await db.any(`with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball_faced from delivery where match_id=${id} and inning=1 and extra_id=0 group by striker order by total_runs desc limit 2), ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) select player_name,total_runs, total_ball_faced from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`)
+        console.log(teamOne_top2_players);
+        const teamTwo_top2_players = await db.any(`with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball_faced from delivery where match_id=${id} and inning=2 and extra_id=0 group by striker order by total_runs desc limit 2), ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) select player_name,total_runs, total_ball_faced from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`)
+        console.log(teamTwo_top2_players);
 
-        const list_of_striker_inn1 = await db.any(`select distinct(d.striker) as striker_id, p.player_name from delivery as d inner join player as p on p.player_id=d.striker where match_id=${id} and inning=1;`)
-        console.log(list_of_striker_inn1);
+        // top bowler name, wickets, overs
+//         with ss as 
+// (with s as (select bowler as bowler_id , count(wicket_id) as total_wicket from delivery 
+// where match_id=1 and inning=1 
+// and wicket_id>0 group by bowler_id order by total_wicket desc limit 2),
+//  ps as(select bowler, count(bowler)/6 as overs from delivery 
+// where extra_id=0 and match_id=1 and inning=1 and bowler in (select bowler_id from s) group by bowler)
+// select bowler_id,total_wicket, overs from ps 
+//  inner join s on s.bowler_id=ps.bowler order by total_wicket desc),
+//  pss as( select player_name,player_id from player 
+// where player_id in (select bowler_id from ss))
+//  select bowler_id,player_name,total_wicket, overs from pss 
+//  inner join ss on ss.bowler_id=pss.player_id order by total_wicket desc;
+ 
 
-        var players_runs_inn1 = new Array();
-        console.log(id)
-        for (let striker of list_of_striker_inn1) {
-            console.log(striker)
-            let striker_id = striker.striker_id;
-            let striker_name = striker.player_name;
-            console.log(striker_id)
-            const striker_runs = await db.any(`select sum(batsman_run) as batsmanscore from delivery where striker=${striker_id} and match_id=${id}`)
-            console.log(striker_runs)
-            console.log(striker_name)
-            players_runs_inn1.push({ player_name: striker_name, batsmanscore: striker_runs[0].batsmanscore });
-        }
+// top two bowler name, wickets, overs and runs
+
+// with sss as(with ss as 
+//     (with s as (select bowler as bowler_id , count(wicket_id) as total_wicket from delivery 
+//     where match_id=1 and inning=1 
+//     and wicket_id>0 group by bowler_id order by total_wicket desc limit 2),
+//      ps as(select bowler, count(bowler)/6 as overs from delivery 
+//     where extra_id=0 and match_id=1 and inning=1 and bowler in (select bowler_id from s) group by bowler)
+//     select bowler_id,total_wicket, overs from ps 
+//      inner join s on s.bowler_id=ps.bowler order by total_wicket desc),
+//      pss as( select player_name,player_id from player 
+//     where player_id in (select bowler_id from ss))
+//      select bowler_id,player_name,total_wicket, overs from pss 
+//      inner join ss on ss.bowler_id=pss.player_id order by total_wicket desc),
+//      psss as(select bowler, sum(batsman_run) as given_runs from delivery 
+//     where match_id=1 and inning=1 and bowler in (select bowler_id from sss) group by bowler)
+//      select bowler_id,player_name,total_wicket, overs, given_runs from psss 
+//      inner join sss on sss.bowler_id=psss.bowler order by total_wicket desc;
 
 
-        console.log(players_runs_inn1);
+
+        // data={}
+        // data:{
+        //     match_details:{
+
+        //     },
+        //     playing_xi:{
+        //         team_one:[
+
+        //         ]
+
+        //         ,
+        //         team_two:{
+
+        //         }
+        //     }
+        // }
+        // data.match_details = result;
+        // data.playing_xi.team_one = play1;
+        // data.playing_xi.team_two = play2;
+
+        // Top two player with their names and score
+        // with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball from delivery where match_id=1 and inning=1 group by striker order by total_runs desc limit 2), ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) select player_name,total_runs from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;
+
+        // Top two player with their names ant score and ball faced
+        // with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball_faced from delivery where match_id=1 and inning=1 and extra_id=0 group by striker order by total_runs desc limit 2), ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) select player_name,total_runs, total_ball_faced from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;
 
         // const teamone_name = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
         // console.log(teamone_name);
@@ -135,7 +182,8 @@ router.get('/summary/:id', async (req, res, next) => {
             teamone_players: teamone_players,
             teamtwo_name: teamtwo_name[0].teamtwo_name,
             teamtwo_players: teamtwo_players,
-            players_runs_inn1
+            teamOne_top2_players,
+            teamTwo_top2_players
         }]
         console.log(result)
 
