@@ -1,9 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
 .secNavParent {
-	margin-top: 170px;
 	width: 100vw;
-	padding: 0px 60px 0px 60px;
 	background-color: #ffffff;
 	box-shadow: 0px 2px 4px 0px #e6e6e6;
 	color: #2c3e50;
@@ -12,50 +10,57 @@
 	letter-spacing: 0.3px;
 	position: fixed;
 	font-family: "Montserrat", sans-serif;
-	top: 0;
+	top: 60px;
 	left: 0;
 	right: 0;
-}
-
-.secNavHead div:first-child {
+  }
+  
+  .secNavHead {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 14px 60px 10px 60px;
+  }
+  
+  .secNavHead div:first-child {
 	display: inline-block;
-	width: 80px;
+	width: 60px;
 	height: 60px;
 	border-radius: 50%;
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-}
-
-.secNavHead div:last-child {
+  }
+  
+  .secNavHead div:last-child {
 	display: flex;
 	flex-direction: column;
 	margin-left: 40px;
-}
-
-.secNavHead div:last-child h2,
-.secNavHead div:last-child h4 {
+  }
+  
+  .secNavHead div:last-child h2,
+  .secNavHead div:last-child h4 {
 	margin: 0px;
-}
-
-.secNavHead div:last-child h4 {
+  }
+  
+  .secNavHead div:last-child h4 {
 	color: #707070;
 	font-weight: 400;
-}
-
-.secNavLinks {
-	margin-top: 20px;
-}
-
-.secNavLinks ul {
+  }
+  
+  .secNavLinks {
+	margin: 0px 60px;
+  }
+  
+  .secNavLinks ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
 	margin: 0px;
 	padding: 0px;
-}
-
-.secNavLinks ul li {
+  }
+  
+  .secNavLinks ul li {
 	font-family: "Montserrat", sans-serif;
 	padding: 10px 0px;
 	transition: 0.3s;
@@ -63,19 +68,94 @@
 	margin-right: 30px;
 	letter-spacing: 0.3px;
 	text-align: center;
-}
-
-.secNavLinks ul li:hover {
+  }
+  
+  .secNavLinks ul li:hover {
 	font-weight: 600;
 	cursor: pointer;
 	padding-bottom: 7px;
 	color: #2980b9;
 	border-bottom: 3px solid #2980b9;
+  }
+  
+  .secLink {
+	text-decoration: none;
+  }
+  
+.summary{
+    margin: 20px;
+    margin-top: 80px;
+}
+.top-div-of-match {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: auto;
 }
 
-.secLink {
-	text-decoration: none;
+.short-summary-with-result{
+    width: 40%;
+    border-right: 1px solid #272727;
+    margin-left: 20px;
 }
+.short-summary-with-result span{
+text-align: left;
+margin-bottom: 20px;    
+}
+
+.short-summary-with-player-of-the-match{
+width: 50%;
+border-left: 1px solid #272727;
+}
+.short-summary-right .default-img{
+    height: 60px;
+    width: 120px;
+    background-size: 120px 65px;
+    margin-top: 15px;
+
+}
+
+.short-summary-with-result .Team-data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 20px;
+    margin: 3px;
+    margin-left: 10px;
+}
+
+.Team-data .Team-name , .Team-score{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 40px;
+    margin-top: 10px;
+    }
+.Team-data .Team-name , .Team-score{
+    text-align: left;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 40px;
+    margin-top: 10px;
+    }
+.Team-data .Team-img {
+    width: 60px;
+    background-size: 60px 34px;
+}
+
+.short-summary-right{
+    display: grid;
+    grid-template-columns: 20% 50%;
+    margin-left: 20px;
+    height: 50px;
+
+}
+.header-player-of-the-match{
+    margin: 40px 0 10px 40px;
+}
+
+
 
 @media only screen and (max-width: 576px) {
 	.secNavParent {

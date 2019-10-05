@@ -1,27 +1,24 @@
 import React, { Component } from 'react'
-import Navbar from './common/Navbar'
-import './css/MatchSummaryDetails.css'
-import './css/SecondaryNavbar.css'
+
+
 // import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import { getmatchdetailbyId, getRecentMatches } from '../actions/Matches'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import south_africa from "./images/SouthAfrica.jpeg";
-import india from "./images/india.jpeg";
-import default_user_img from "./images/defaultuserimg.jpg";
+import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 
 export class MatchSummaryDetails extends Component {
 
     componentDidMount() {
         this.props.getmatchdetailbyId(this.props.location.state.match.match_id);
-        console.log(this.props.location.state.match.match_id)
     }
 
     render() {
-        console.log(this.props);
+        console.log(this.props.history.location.state.match.match_id);
         return (
             <div>
-                <Navbar />
+                <MatchSecondaryNavbar />
+                {/* <Navbar history={this.props.history.location.state.match} />
                 <div className="secNavParent">
                     <div className="top-div-of-match">
                         <div className="short-summary-with-result">
@@ -68,7 +65,7 @@ export class MatchSummaryDetails extends Component {
                             </Link>
                         </ul>
                     </div>
-                </div>
+                </div> */}
 
 
 
