@@ -12,12 +12,18 @@ MongoClient.connect(url, {
 }).then(async db => {
 	dbo = db.db("cricketalpha");
 	// async function which will be defined below
-	await players();
+	// await players();
 	// await umpires();
 	// await team();
-	// await match_type();
-	// await match();
-	// await player_stats();
+
+	console.time("match type");
+	await match_type();
+	console.timeEnd("match type");
+	console.log();
+	console.time("match table");
+	await match();
+	console.timeEnd("match table");
+	await player_stats();
 	console.log("promise satisfied");
 });
 
@@ -26,13 +32,13 @@ async function match() {
 		"\x1b[34m%s\x1b[0m",
 		"\nEntered in match function.\nThis might take time, depends on your device.\n"
 	);
-	ids = await dbo
+	 ids = await dbo
 		.collection("matchinfo")
 		.find()
 		.toArray();
 	let inc = 1;
 
-	for (id in ids) {
+	for ( id in ids) {
 		let venue_id;
 		let umpires_id = [];
 		let toss_winner_id;
@@ -66,6 +72,13 @@ async function match() {
 					u[umpire]
 				);
 				umpire_id = await postdb.any(query);
+				if (umpire_id.length < 1) {
+					query = escape(
+						"insert into umpire(umpire_name) values(%L) returning umpire_id",
+						u[umpire]
+					);
+					umpire_id = await postdb.any(query);
+				}
 
 				umpires_id.push(umpire_id[0].umpire_id);
 			}
@@ -167,7 +180,7 @@ async function match() {
 			} else if (currentId.info.outcome.by.hasOwnProperty("wickets")) {
 				outcome_match = `won by ${currentId.info.outcome.by.wickets} wickets`;
 			}
-			console.log("outcome", currentId.info.outcome);
+			// console.log("outcome", currentId.info.outcome);
 
 			competition = "others";
 			if (currentId.info.hasOwnProperty("competition")) {
@@ -186,12 +199,12 @@ async function match() {
 				currentId.info.player_of_match,
 				competition
 			);
-			console.log("match query", query);
+			// console.log("match query", query);
 			let match_id = await postdb.any(query);
 			if (match_id.length > 0) {
 				console.log(
-					"\x1b[45m\x1b30m%s\x1b[0m",
-					`\n=======================> inserted data in match table ${inc}\n`
+					"\x1b[35m%s\x1b[0m",
+					`\n=========> inserted data in match table ${inc} `
 				);
 			}
 			match_id = match_id[0].match_id;
@@ -200,12 +213,12 @@ async function match() {
 			umpires_id.forEach(async u_id => {
 				query = `insert into match_umpire values(${match_id},${u_id})`;
 				const result = await postdb.any(query);
-				if (result.length < 0) {
-					console.log(
-						"\x1b[45m\x1b30m%s\x1b[0m",
-						`\n=======================> inserted data in match_umpires table ${inc}`
-					);
-				}
+				// if (result.length < 0) {
+				// 	console.log(
+				// 		"\x1b[45m\x1b30m%s\x1b[0m",
+				// 		`\n=======================> inserted data in match_umpires table ${inc}`
+				// 	);
+				// }
 			});
 
 			//  insert into match_venue table
@@ -226,28 +239,34 @@ async function match() {
 					date
 				);
 				const result = await postdb.any(query);
-				if (result.length < 0) {
-					console.log(
-						"\x1b[45m\x1b30m%s\x1b[0m",
-						`\n=======================> inserted data in match_date table ${inc}`
-					);
-				}
+				// if (result.length < 0) {
+				// 	console.log(
+				// 		"\x1b[45m\x1b30m%s\x1b[0m",
+				// 		`\n=======================> inserted data in match_date table ${inc}`
+				// 	);
+				// }
 			});
 
 			// inserting for delivery
-			for (i in currentId.innings) {
+			for (let i in currentId.innings) {
 				let inn = parseInt(i) + 1;
-				console.log(
-					"\x1b[47m\x1b[30m%s\x1b[0m",
-					`\n=========> inserting innings ${inn}`
-				);
+				console.log(`=========> inserting innings ${inn} `);
 				for (const [k, v] of Object.entries(currentId.innings[i])) {
 					let current_team = v.team;
 					let team_query = escape(
 						"select team_id from team where team_name = %L",
 						current_team
 					);
+
 					let current_team_id = await postdb.any(team_query);
+					if (current_team_id.length < 1) {
+						query = escape(
+							"insert into team(team_name) values(%L) returning team_id",
+							current_team
+						);
+						current_team_id = await postdb.any(query);
+					}
+
 					current_team_id = current_team_id[0].team_id;
 
 					deliveries = v.deliveries;
@@ -269,6 +288,13 @@ async function match() {
 										val.wicket.fielders[0]
 									);
 									fielder_one = await postdb.any(query);
+									if (fielder_one.length < 1) {
+										query = escape(
+											"insert into player(player_name) values(%L) returning player_id",
+											val.wicket.fielders[0]
+										);
+										fielder_one = await postdb.any(query);
+									}
 									if (fielder_one.length > 0) {
 										fielder_one = fielder_one[0].player_id;
 									} else {
@@ -281,6 +307,13 @@ async function match() {
 										val.wicket.fielders[1]
 									);
 									fielder_two = await postdb.any(query);
+									if (fielder_two.length < 1) {
+										query = escape(
+											"insert into player(player_name) values(%L) returning player_id",
+											val.wicket.fielders[1]
+										);
+										fielder_two = await postdb.any(query);
+									}
 									if (fielder_two.length > 0) {
 										fielder_two = fielder_two[0].player_id;
 									} else {
@@ -294,6 +327,13 @@ async function match() {
 									val.wicket.player_out
 								);
 								let player_out = await postdb.any(query);
+								if (player_out.length < 1) {
+									query = escape(
+										"insert into player(player_name) values(%L) returning player_id",
+										val.wicket.player_out
+									);
+									player_out = await postdb.any(query);
+								}
 								player_out = player_out[0].player_id;
 
 								// add into wickets
@@ -317,6 +357,13 @@ async function match() {
 								val.batsman
 							);
 							let striker_id = await postdb.any(query);
+							if (striker_id.length < 1) {
+								query = escape(
+									"insert into player(player_name) values(%L) returning player_id",
+									val.batsman
+								);
+								striker_id = await postdb.any(query);
+							}
 							striker_id = striker_id[0].player_id;
 
 							// get non_striker_id
@@ -325,6 +372,13 @@ async function match() {
 								val.non_striker
 							);
 							let non_striker_id = await postdb.any(query);
+							if (non_striker_id.length < 1) {
+								query = escape(
+									"insert into player(player_name) values(%L) returning player_id",
+									val.non_striker
+								);
+								non_striker_id = await postdb.any(query);
+							}
 							non_striker_id = non_striker_id[0].player_id;
 
 							current_team_players.push(striker_id);
@@ -336,6 +390,13 @@ async function match() {
 								val.bowler
 							);
 							let bowler_id = await postdb.any(query);
+							if (bowler_id.length < 1) {
+								query = escape(
+									"insert into player(player_name) values(%L) returning player_id",
+									val.bowler
+								);
+								bowler_id = await postdb.any(query);
+							}
 							bowler_id = bowler_id[0].player_id;
 
 							// insert into delivery table
@@ -344,19 +405,20 @@ async function match() {
 						}
 					}
 
-					current_team_players = current_team_players.filter(
-						(value, index, arr) => arr.indexOf(value) === index
-					);
+					// current_team_players = current_team_players.filter(
+					// 	(value, index, arr) => arr.indexOf(value) === index
+					// );
 
 					current_team_players.forEach(current_player => {
-						const query = `insert into match_team_player values(${match_id},${current_team_id},${current_player})`;
+						const query = `insert into match_team_player select ${match_id},${current_team_id},${current_player} where not exists(select player_id from player where player_id=${current_player})`;
+						// const query = `insert into match_team_player values(${match_id},${current_team_id},${current_player})`;
 						const result = postdb.any(query);
-						if (result.length < 0) {
-							console.log(
-								"\x1b[45m\x1b30m%s\x1b[0m",
-								`\n=======================> inserted data in match_team_player table ${inc}`
-							);
-						}
+						// if (result.length < 0) {
+						// 	console.log(
+						// 		"\x1b[45m\x1b30m%s\x1b[0m",
+						// 		`\n=======================> inserted data in match_team_player table ${inc}`
+						// 	);
+						// }
 					});
 				}
 			}
@@ -380,11 +442,11 @@ async function team() {
 		});
 	});
 
-	teams = teams.filter((value, index, arr) => arr.indexOf(value) === index);
-	console.log(
-		"\x1b[45m\x1b[30m%s\x1b[0m",
-		`filtered teams length ${teams.length}`
-	);
+	// teams = teams.filter((value, index, arr) => arr.indexOf(value) === index);
+	// console.log(
+	// 	"\x1b[45m\x1b[30m%s\x1b[0m",
+	// 	`filtered teams length ${teams.length}`
+	// );
 
 	teams.forEach(async team_name => {
 		try {
@@ -395,7 +457,8 @@ async function team() {
 			let team_id = await postdb.any(query);
 			if (team_id.length < 1) {
 				query = escape(
-					`insert into team(team_name) values(%L) returning team_id`,
+					`insert into team(team_name) select %L where not exists(select team_id from team where team_name=%L)`,
+					team_name,
 					team_name
 				);
 				team_id = await postdb.any(query);
@@ -452,7 +515,8 @@ async function players() {
 
 			if (player_id.length < 1) {
 				const query = escape(
-					`insert into player(player_name) values(%L)`,
+					`insert into player(player_name) select %L where not exists(select player_id from player where player_name=%L)`,
+					player_name,
 					player_name
 				);
 				// console.log(test);
@@ -566,7 +630,7 @@ async function player_stats() {
 			const player_stat = await postdb.any(query);
 		});
 
-		// // 4s stats
+		// // // 4s stats
 		const fours_results = await postdb.any(
 			`select m.match_type, count(d.batsman_run) as total_4s from delivery as d inner join match as m on d.match_id = m.match_id where d.striker = ${player.player_id} and d.batsman_run=4 group by m.match_type`
 		);
@@ -577,7 +641,7 @@ async function player_stats() {
 			const player_stat = await postdb.any(query);
 		});
 
-		// // 6s stats
+		// // // 6s stats
 		const sixes_results = await postdb.any(
 			`select m.match_type, count(d.batsman_run) as total_6s from delivery as d inner join match as m on d.match_id = m.match_id where d.striker = ${player.player_id} and d.batsman_run=6 group by m.match_type`
 		);
