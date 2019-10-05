@@ -61,7 +61,8 @@ create table match
     create table match_type
     (
         match_type_id serial,
-        match_type varchar(255)
+        match_type varchar(255),
+        match_values varchar(255)
     );
 
     create table match_umpire
