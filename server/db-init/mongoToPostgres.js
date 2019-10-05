@@ -71,7 +71,6 @@ async function match() {
 					"select umpire_id from umpire where umpire_name = %L",
 					u[umpire]
 				);
-<<<<<<< HEAD
 				umpire_id = await postdb.any(query);
 				if (umpire_id.length < 1) {
 					query = escape(
@@ -80,9 +79,6 @@ async function match() {
 					);
 					umpire_id = await postdb.any(query);
 				}
-=======
-				 umpire_id = await postdb.any(query);
->>>>>>> 66258d417127ed8a6fe296fd998c21ee855aaa05
 
 				umpires_id.push(umpire_id[0].umpire_id);
 			}
