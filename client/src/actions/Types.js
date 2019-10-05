@@ -1,0 +1,21 @@
+export const GET_USERS = "GET_USERS";
+export const CREATE_USERS = "CREATE_USERS";
+export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
+export const OTP_VERIFICATION = "OTP_VERIFICATION";
+export const RESET_PASSWORD = "RESET_PASSWORD";
+export const LOGIN = "LOGIN";
+
+export const GET_PLAYERS = "GET_PLAYERS";
+export const GET_SINGLE_PLAYER = "GET_SINGLE_PLAYER";
+export const GET_ALL_BATSMAN = "GET_ALL_BATSMAN";
+export const GET_ALL_BOWLERS = "GET_ALL_BOWLERS";
+
+export const GET_TEAMS = "GET_TEAMS";
+export const GET_MATCHBYTEAMID = "GET_MATCHBYTEAMID";
+export const GET_RANKS = "GET_RANKS";
+
+export const GET_NEWS = "GET_NEWS";
+
+export const GET_RECENT_MATCHES = "GET_RECENT_MATCHES";
+export const GET_MATCHES_DATE = "GET_MATCHES_DATE";
+export const GET_MATCH_DETAILS_BY_ID = "GET_MATCH_DETAILS_BY_ID";
