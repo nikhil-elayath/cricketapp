@@ -13,7 +13,8 @@ create table delivery
     bowler int,
     batsman_run int,
     extra_id int,
-    wicket_id int
+    wicket_id int,
+    total_runs int
 );
 
 create table extras
@@ -29,8 +30,8 @@ create table match
     match_type varchar(255),
     toss_winner int,
     toss_decision varchar(255),
-    team_one int,
-    team_two int,
+    innings_one_team int,
+    innings_two_team int,
     outcome varchar(255),
     player_of_the_match varchar
     [],
@@ -38,7 +39,10 @@ create table match
     (255),
     winner int,
     summary varchar
-    (8000)
+    (8000),
+    venue_id int,
+    competition varchar
+    (255)
 );
 
     create table match_date
@@ -64,12 +68,6 @@ create table match
     (
         match_id int,
         umpire_id int
-    );
-
-    create table match_venue
-    (
-        match_id int,
-        venue_id int
     );
 
     create table news
