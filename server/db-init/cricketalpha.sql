@@ -61,7 +61,8 @@ create table match
     create table match_type
     (
         match_type_id serial,
-        match_type varchar(255)
+        match_type varchar(255),
+        match_values varchar(255)
     );
 
     create table match_umpire
@@ -98,7 +99,30 @@ create table match
         player_id int,
         player_stats_name varchar(100),
         player_stats_value int,
-        match_type varchar(30)
+        match_type varchar(30),
+        competition varchar(255)
+    );
+
+    create table match_stats
+    (
+        match_stats_id serial,
+        match_id int,
+        match_stats_name varchar(100),
+        match_stats_value varchar(255),
+        match_type varchar(30),
+        competition varchar(255),
+        inning int
+    );
+
+    create table team_stats
+    (
+        team_stats_id serial,
+        team_stats_name varchar(100),
+        team_stats_value varchar(255),
+        team_id int,
+        match_type varchar(30),
+        competition varchar(255),
+        match_id int
     );
 
     create table team
