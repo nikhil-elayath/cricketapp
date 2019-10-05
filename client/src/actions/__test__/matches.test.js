@@ -1,4 +1,4 @@
-import * as action from "../matches";
+import * as action from "../Matches";
 import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from "../types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";

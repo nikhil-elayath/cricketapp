@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./css/MatchLandingPage.css"
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Navbar from '../components/common/Navbar'
-import { getRecentMatches, getMatchesDate } from '../actions/matches'
+import { getRecentMatches, getMatchesDate } from '../actions/Matches'
 import { Menu, list, selected, ArrowLeft, ArrowRight } from './Scroll'
 
 export class MatchLandingPage extends Component {

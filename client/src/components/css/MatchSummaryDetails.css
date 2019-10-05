@@ -10,20 +10,27 @@ body{
     flex-direction: row;
     width: 95%;
     height: auto;
-    padding: 5px;
 }
 
 .short-summary-with-result{
     width: 40%;
-    border-right: 1px solid black;
+    border-right: 1px solid #272727;
+    margin-left: 20px;
 }
 .short-summary-with-result span{
 text-align: left;
 margin-bottom: 20px;    
 }
+
 .short-summary-with-player-of-the-match{
 width: 50%;
-border: 1px solid black;
+border-left: 1px solid #272727;
+}
+.short-summary-right .default-img{
+    height: 60px;
+    background-size: 108px 60px;
+    margin-top: 15px;
+
 }
 
 .short-summary-with-result .Team-data {
@@ -31,25 +38,33 @@ border: 1px solid black;
     flex-direction: row;
     justify-content: space-between;
     text-align: left;
-    font-size: 20pt;
+    font-size: 20px;
     margin: 3px;
-    margin-left: 10pt
+    margin-left: 10px;
 }
 
-.short-summary-with-result .TeamOne-name, .TeamOne-over, .TeamOne-score , .TeamTwo-name , .TeamTwo-over , .TeamTwo-score{
+.Team-data .Team-name, .Team-score , .Team-name , .Team-score{
     text-align: left;
-    font-size: 15pt;
+    font-size: 20px;
     font-weight: 500;
-    margin-left: 15pt;
-}
-.short-summary-with-result .TeamOne-score  , .TeamTwo-score{
-    text-align: left;
-    font-size: 15pt;
-    font-weight: 500;
-    margin-right: 15pt;
+    margin-right: 40px;
+    margin-top: 10px;
+    }
+.Team-img , .Team-img{
+    width: 60px;
+    background-size: 60px 34px;
 }
 
+.short-summary-right{
+    display: grid;
+    grid-template-columns: 20% 50%;
+    margin-left: 20px;
+    height: 50px;;
 
+}
+.header-player-of-the-match{
+    margin: 40px 0 10px 40px;
+}
 .summary{
     margin: 20px;
     margin-top: 80px;
@@ -62,7 +77,7 @@ border: 1px solid black;
 }
 
 .scoreCardSummary{
-    border: 1px solid blue;
+    border: 1px solid #272727;
     height: auto;
     margin-left: 15px;
     display: grid;

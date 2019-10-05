@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import Navbar from './common/Navbar'
 import './css/MatchSummaryDetails.css'
-import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
-import { getmatchdetailbyId, getRecentMatches } from '../actions/matches'
+import './css/SecondaryNavbar.css'
+// import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
+import { getmatchdetailbyId, getRecentMatches } from '../actions/Matches'
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import south_africa from "./images/SouthAfrica.jpeg";
+import india from "./images/india.jpeg";
+import default_user_img from "./images/defaultuserimg.jpg";
 
 export class MatchSummaryDetails extends Component {
 
@@ -17,34 +22,57 @@ export class MatchSummaryDetails extends Component {
         return (
             <div>
                 <Navbar />
-                <div className="top-div-of-match" style={{ marginTop: "60px" }}>
-                    <div className="short-summary-with-result">
+                <div className="secNavParent">
+                    <div className="top-div-of-match">
+                        <div className="short-summary-with-result">
 
-                        <span style={{ fontSize: "14px", marginRight: "3px" }}>Result: </span>
-                        <span style={{ fontSize: "15px", fontWeight: "500", marginRight: "20px" }}>{this.props.location.state.match.team_winner} {this.props.match.map(match => match.outcome)}</span>
-                        <div className="Team-data">
-                            <div className="TeamOne-img">img</div>
-                            <div className="TeamOne-name">{this.props.location.state.match.teamtwo}</div>
-                            <div className="TeamOne-score">{this.props.location.state.match.teamOneScore}/{this.props.location.state.match.teamone_wicket}  (50 overs)</div>
+                            <span style={{ fontSize: "14px", marginRight: "5px", marginLeft: "15px" }}>Result: </span>
+                            <span style={{ fontSize: "15px", fontWeight: "500" }}>{this.props.location.state.match.team_winner} {this.props.match.map(match => match.outcome)}</span>
+                            <div className="Team-data">
+                                <div className="Team-img" style={{
+                                    backgroundImage: `url(${india})`
+                                }}></div>
+                                <div className="Team-name" >{this.props.location.state.match.teamtwo}</div>
+                                <div className="Team-score">{this.props.location.state.match.teamOneScore}/{this.props.location.state.match.teamone_wicket}  (50 overs)</div>
+                            </div>
+                            <div className="Team-data">
+                                <div className="Team-img" style={{
+                                    backgroundImage: `url(${south_africa})`
+                                }}></div>
+                                <div className="Team-name">{this.props.location.state.match.teamOne}</div>
+                                <div className="Team-score">{this.props.location.state.match.teamTwoScore}/{this.props.location.state.match.teamtwo_wicket}  (50 overs)</div>
+                            </div>
                         </div>
-                        <div className="Team-data">
-                            <div className="TeamTwo-img">img</div>
-                            <div className="TeamTwo-name">{this.props.location.state.match.teamOne}</div>
-                            <div className="TeamTwo-score">{this.props.location.state.match.teamTwoScore}/{this.props.location.state.match.teamtwo_wicket}  (50 overs)</div>
+                        <div className="short-summary-with-player-of-the-match">
+                            <span className="header-player-of-the-match">Player of the match</span>
+                            <div className="short-summary-right">
+                                <div className="default-img" style={{
+                                    backgroundImage: `url(${default_user_img})`
+                                }}> </div>
+                                <div style={{ fontSize: "20px", fontWeight: "700", margin: "30px 0 0 15px" }}>{this.props.match.map(match => match.player_of_the_match)}</div>
+                            </div>
                         </div>
-                    </div>
-                    <div className="short-summary-with-player-of-the-match">
-                        <span style={{ textAlign: "left" }}>Player of the match</span>
-                        <div style={{ fontSize: "20px", fontWeight: "700" }}>{this.props.match.map(match => match.player_of_the_match)}</div>
-                        <div>india</div>
-                    </div>
-                    <div>
-                        <MatchSecondaryNavbar />
-                    </div>
 
 
+                    </div>
+                    <div className="secNavLinks">
+                        <ul>
+                            <Link className="secLink" to="/summary">
+                                <li>Summary</li>
+                            </Link>
+                            <Link className="secLink" to="/scoreboard">
+                                <li>ScoreBoard</li>
+                            </Link>
+                            <Link className="secLink" to="/statistics">
+                                <li>Statistics</li>
+                            </Link>
+                        </ul>
+                    </div>
                 </div>
-                <div style={{ marginTop: 90 + "px" }}>
+
+
+
+                <div style={{ marginTop: 220 + "px" }}>
                     <div className="topOfSummary">
                         <div className="scoreCardSummary">
                             <div className="title">

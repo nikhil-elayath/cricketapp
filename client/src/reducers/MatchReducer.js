@@ -10,7 +10,7 @@ const initialstate = {
 	match: []
 };
 
-export default function(state = initialstate, action) {
+export default function (state = initialstate, action) {
 	switch (action.type) {
 		case GET_RECENT_MATCHES:
 			return { ...state, matches: action.payload };

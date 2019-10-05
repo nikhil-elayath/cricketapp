@@ -110,12 +110,15 @@ router.get('/summary/:id', async (req, res, next) => {
         for (let striker of list_of_striker_inn1) {
             console.log(striker)
             let striker_id = striker.striker_id;
+            let striker_name = striker.player_name;
             console.log(striker_id)
-            console.log(id)
             const striker_runs = await db.any(`select sum(batsman_run) as batsmanscore from delivery where striker=${striker_id} and match_id=${id}`)
             console.log(striker_runs)
-            players_runs_inn1.push({ player_name: list_of_striker_inn1[0].player_name, total_run: striker_runs });
+            console.log(striker_name)
+            players_runs_inn1.push({ player_name: striker_name, batsmanscore: striker_runs[0].batsmanscore });
         }
+
+
         console.log(players_runs_inn1);
 
         // const teamone_name = await db.any(`select v.venue_name, v.venue_city from venue as v inner join match_venue as mv on mv.venue_id=v.venue_id where match_id=${id};`);
@@ -132,7 +135,7 @@ router.get('/summary/:id', async (req, res, next) => {
             teamone_players: teamone_players,
             teamtwo_name: teamtwo_name[0].teamtwo_name,
             teamtwo_players: teamtwo_players,
-            list_of_striker_inn1
+            players_runs_inn1
         }]
         console.log(result)
 
