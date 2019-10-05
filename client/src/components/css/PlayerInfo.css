@@ -7,11 +7,9 @@
 }
 
 .personalDetails {
-  margin-top: 1.5em;
   border-right: 1px solid #ccc;
-  /* height: 500px; */
+
   justify-items: flex-start;
-  /* border: 1px solid #ccc; */
   height: 500px;
 }
 
@@ -22,13 +20,97 @@
   margin: 8px;
 }
 
+.playerBasicinfo b {
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.playerBasicinfo span {
+  font-size: 14px;
+  margin-top: 16px;
+}
+
 .careerStats {
-  margin-top: 1.5em;
   justify-items: flex-start;
   height: 500px;
 }
 
 .formatHeading {
-  /* height: 40px; */
   background-color: #2980b9;
+  text-align: left;
+  padding: 8px;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.pl-stats-details b {
+  margin: 6px;
+  font-size: 18px;
+  color: #272727;
+  margin: auto;
+}
+
+@media only screen and (max-width: 576px) {
+  .mainDiv {
+    grid-template-columns: 90vw;
+    margin: 200px 0px 0px 0px;
+  }
+  .personalDetails {
+    border-right: none;
+    justify-items: flex-start;
+    height: 370px;
+    margin: 20px;
+    /* margin-left: 20px;
+    margin-top: 20px; */
+  }
+
+  .playerBasicinfo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: -20px 6px 6px 0px;
+  }
+
+  .playerBasicinfo b {
+    margin-top: 4px;
+    font-size: 15px;
+  }
+
+  .playerBasicinfo span {
+    font-size: 13px;
+    margin: 16px 0px 0px 0px;
+  }
+
+  .careerStats {
+    justify-items: flex-start;
+    margin-left: 20px;
+    margin-top: -50px;
+  }
+
+  /* #career-stats-heading {
+    margin-left: 0px;
+  } */
+
+  .pl-stats-details {
+    border-right: 1px solid #707070;
+    border-left: 1px solid #707070;
+    padding: 4px;
+  }
+
+  .pl-stats-details b {
+    margin: 6px;
+    font-size: 14px;
+    color: #272727;
+    margin: auto;
+  }
+
+  .formatHeading {
+    background-color: #2980b9;
+    text-align: left;
+    padding: 8px;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+  }
 }

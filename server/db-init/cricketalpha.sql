@@ -26,7 +26,7 @@ create table extras
 
 create table match
 (
-    match_id serial primary key,
+    match_id serial,
     match_type varchar(255),
     toss_winner int,
     toss_decision varchar(255),
@@ -60,7 +60,7 @@ create table match
 
     create table match_type
     (
-        match_type_id serial primary key,
+        match_type_id serial,
         match_type varchar(255)
     );
 
@@ -80,7 +80,7 @@ create table match
 
     create table player
     (
-        player_id serial primary key,
+        player_id serial,
         player_name varchar(255),
         player_type varchar(255),
         batting_style varchar(255),
@@ -103,19 +103,19 @@ create table match
 
     create table team
     (
-        team_id serial primary key,
+        team_id serial,
         team_name varchar(255)
     );
 
     create table umpire
     (
-        umpire_id serial primary key,
+        umpire_id serial,
         umpire_name varchar(255)
     );
 
     create table users
     (
-        user_id serial primary key,
+        user_id serial,
         user_name varchar(255),
         user_email varchar(255),
         user_password varchar(255),

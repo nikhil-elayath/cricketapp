@@ -1,12 +1,21 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
 .matchFormatOptons {
-  margin-left: 2px;
+  /* margin-left: 2px;
   margin-top: 30px;
-  /* border: 1px solid #16a085; */
+  border: 1px solid #16a085;
   border-radius: 8px;
   width: 235px;
-  height: 33px;
+  height: 33px; */
+}
+
+#playerHeading {
+  text-align: left;
+  margin-left: 20px;
+  margin-top: 1.5em;
+  font-size: 40px;
+  font-weight: 500;
+  font-family: "Montserrat", sans-serif;
 }
 
 .selectNav a {
@@ -43,98 +52,183 @@
   border-top: 1px solid #16a085;
 }
 
-#conatiner {
+#container {
   display: flex;
   flex-direction: column;
   margin: 0px 20px 20px 20px;
 }
 
-.allPlayersDiv {
-  display: flex;
-  flex-direction: row;
-  /* grid-template-columns: 50% 50%; */
+.playersDiv {
+  display: grid;
+  grid-template-columns: 30vw 30vw 30vw;
   margin-left: 20px;
-  margin-top: 2em;
+  margin-top: 35px;
 }
 
-.topbatsmanDiv {
-  display: flex;
-  flex-direction: column;
-  /* width: 50%; */
-  margin: 8px;
-  font-family: "Montserrat", sans-serif;
-  box-shadow: 1px 5px 9px #888888;
+.playerBatsman {
+  border: 1px solid #707070;
+  margin-right: 40px;
+  border-radius: 8px;
 }
 
-.batsmenDetailDiv {
+.playerBowler {
+  border: 1px solid #707070;
+  margin-right: 40px;
+  border-radius: 8px;
+}
+
+.playerType {
+  border: 1px solid #707070;
+  margin-right: 40px;
+  border-radius: 8px;
+}
+
+.singlePlayerDiv {
+  border-bottom: 1px solid #707070;
+  margin: 10px;
+  height: 90px;
   display: flex;
   flex-direction: row;
-  /* margin-bottom: 4px; */
-  margin: auto;
-  justify-content: space-around;
-  color: #383838;
-  align-items: center;
-  cursor: pointer;
-  padding: 12px;
-  border-bottom: 1px solid #707070;
+  justify-content: space-between;
 }
 
-hr {
-  margin: auto;
+.singlePlayerDiv :hover {
+  cursor: pointer;
+}
+
+.playerDetails {
+  border: 1px solid #16a085;
 }
 
 .playerImage {
-  height: 100px;
-  width: 100px;
+  height: 70px;
+  width: 70px;
   border-radius: 50%;
   border: 1px solid #707070;
+  margin-left: 10px;
+  margin-top: 0px;
 }
 
-.topbowlerDiv {
+.playerStatValue {
+  font-size: 25px;
+  font-weight: 520;
+}
+
+#playerName {
+  font-size: 20px;
+  font-weight: 620;
+}
+
+#playerMinInfo {
+  font-weight: 450;
+  font-size: 12px;
+}
+
+.playerInfoDiv {
   display: flex;
   flex-direction: column;
-  /* width: 50%; */
-  margin: 8px;
-  /* margin-left: 2em; */
-  font-family: "Montserrat", sans-serif;
-  text-align: left;
-  box-shadow: 1px 5px 9px #888888;
+  margin-top: 5px;
+  /* justify-content: space-evenly; */
+  color: #2c3e50;
 }
-.playerStatValue {
-  justify-self: flex-end;
-  font-size: 25px;
-  text-align: right;
-}
-.insideBowlerDiv {
-  border: 1px solid #707070;
-  border-radius: 8px;
-  max-height: 1000px;
-}
-@media only screen and (max-width: 420px) {
-  .allPlayersDiv {
-    flex-direction: column;
-    margin-left: 0px;
-  }
-  #conatiner {
-    margin: 0px;
-  }
+
+@media only screen and (max-width: 992px) {
   .playerImage {
     width: 50px;
     height: 50px;
   }
-  .playerStatValue {
-    font-size: 16px;
+
+  .playerType {
+    border: 1px solid #707070;
+    margin-top: 20px;
+
+    border-radius: 8px;
   }
-  .playerStats span {
-    font-size: 10px;
+
+  .playerBatsman {
+    border: 1px solid #707070;
+    border-radius: 8px;
   }
-  .topbatsmanDiv {
-    margin-bottom: 50px;
+
+  .playerBowler {
+    border: 1px solid #707070;
+    border-radius: 8px;
+  }
+
+  .playersDiv {
+    grid-template-columns: 50vw 50vw;
+    /* margin-right: 10px; */
   }
 }
 
-.insideBatsmanDiv {
-  border: 1px solid #707070;
-  border-radius: 8px;
-  max-height: 1000px;
+@media only screen and (max-width: 576px) {
+  #playerHeading {
+    font-size: 30px;
+    margin-top: 2.5em;
+  }
+  .playerImage {
+    width: 55px;
+    height: 55px;
+  }
+
+  .playersDiv {
+    grid-template-columns: 90vw;
+    justify-content: space-between;
+  }
+
+  .playerBatsman h1 {
+    text-align: center;
+    font-size: 25px;
+  }
+
+  .playerType {
+    border: 1px solid #707070;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+
+  .playerBowler {
+    margin-top: 20px;
+  }
+
+  .playerBowler h1 {
+    text-align: center;
+    font-size: 25px;
+  }
+
+  #playerName {
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  #playerMinInfo {
+    font-weight: 400;
+    font-size: 11px;
+  }
+
+  .playerInfoDiv {
+    margin: 10px;
+  }
+
+  .playerStatValue {
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: -10px;
+  }
+
+  .selectNav a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .selectNav a.notActive {
+    background-color: white;
+    color: #16a085;
+    font-weight: 500;
+    cursor: pointer;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #16a085;
+    padding-top: 9px;
+    border-top: 1px solid #16a085;
+  }
 }
