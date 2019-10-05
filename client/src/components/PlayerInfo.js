@@ -80,13 +80,9 @@ export class PlayerInfo extends Component {
             </p>
             <div className="playerBasicinfo">
               <span style={{ fontSize: 14 + "px" }}>Full Name</span>
-              <b style={{ marginTop: 4 + "px", fontSize: 18 + "px" }}>
-                {this.props.singlePlayer[0].player_name}
-              </b>
+              <b>{this.props.singlePlayer[0].player_name}</b>
               <div style={{ marginTop: 16 + "px" }}>
-                <span style={{ fontSize: 14 + "px", marginTop: 16 + "px" }}>
-                  Date Of Birth
-                </span>
+                <span>Date Of Birth</span>
                 {/* <span
                   style={{
                     fontSize: 14 + "px",
@@ -97,81 +93,35 @@ export class PlayerInfo extends Component {
                   Age
                 </span> */}
               </div>
-              <b
-                style={{
-                  fontSize: 18 + "px",
-                  marginTop: 4 + "px"
-                }}
-              >
-                {this.props.singlePlayer[0].player_dob}
-              </b>
+              <b>{this.props.singlePlayer[0].player_dob}</b>
 
-              <span
-                style={{
-                  fontSize: 14 + "px",
-                  marginTop: 16 + "px",
-                  float: "right"
-                }}
-              >
-                Role
-              </span>
-              <b style={{ marginTop: 4 + "px", fontSize: 18 + "px" }}>
-                {this.props.singlePlayer[0].player_role}
-              </b>
-              <span
-                style={{
-                  fontSize: 14 + "px",
-                  marginTop: 16 + "px",
-                  float: "right"
-                }}
-              >
-                Batting Style
-              </span>
-              <b style={{ marginTop: 4 + "px", fontSize: 18 + "px" }}>
-                {this.props.singlePlayer[0].batting_style}
-              </b>
-              <span
-                style={{
-                  fontSize: 14 + "px",
-                  marginTop: 16 + "px",
-                  float: "right"
-                }}
-              >
-                Bowling Style
-              </span>
-              <b style={{ marginTop: 4 + "px", fontSize: 18 + "px" }}>
-                {this.props.singlePlayer[0].bowling_style}
-              </b>
+              <span>Role</span>
+              <b>{this.props.singlePlayer[0].player_role}</b>
+              <span>Batting Style</span>
+              <b>{this.props.singlePlayer[0].batting_style}</b>
+              <span>Bowling Style</span>
+              <b>{this.props.singlePlayer[0].bowling_style}</b>
             </div>
           </div>
           <div className="careerStats" style={{ fontFamily: "Montserrat" }}>
             <p
+              id="career-stats-heading"
               style={{
                 borderBottom: "1.2px solid",
                 borderBottomColor: "#ccc",
                 width: 200 + "px",
                 fontSize: 20 + "px",
-                marginLeft: 20 + "px",
-                textAlign: "left",
-                color: "#272727"
+                textAlign: "left"
               }}
             >
               Career Statistics
             </p>
             <div>
-              <div
-                className="formatHeading"
-                style={{
-                  textAlign: "left",
-                  padding: 8 + "px",
-                  color: "white",
-                  fontFamily: "Montserrat",
-                  fontSize: 18 + "px"
-                }}
-              >
+              <div className="formatHeading">
                 <span>Test</span>
               </div>
               <div
+                className="pl-stats-details"
                 style={{
                   textAlign: "left",
                   marginTop: 15 + "px",
@@ -189,30 +139,14 @@ export class PlayerInfo extends Component {
                 >
                   Debut
                 </p>
-                <b
-                  style={{
-                    margin: 6 + "px",
-                    fontSize: 18 + "px",
-                    color: "#272727"
-                  }}
-                >
-                  {this.props.singlePlayer[0].debut_test_match}
-                </b>
+                <b>{this.props.singlePlayer[0].debut_test_match}</b>
               </div>
 
-              <div
-                className="formatHeading"
-                style={{
-                  textAlign: "left",
-                  padding: 8 + "px",
-                  color: "white",
-                  fontFamily: "Montserrat",
-                  fontSize: 18 + "px"
-                }}
-              >
+              <div className="formatHeading">
                 <span>ODI</span>
               </div>
               <div
+                className="pl-stats-details"
                 style={{
                   textAlign: "left",
                   marginTop: 20 + "px",
@@ -231,30 +165,14 @@ export class PlayerInfo extends Component {
                 >
                   Debut
                 </p>
-                <b
-                  style={{
-                    margin: 6 + "px",
-                    fontSize: 18 + "px",
-                    color: "#272727"
-                  }}
-                >
-                  {this.props.singlePlayer[0].debut_odi_match}
-                </b>
+                <b>{this.props.singlePlayer[0].debut_odi_match}</b>
               </div>
 
-              <div
-                className="formatHeading"
-                style={{
-                  textAlign: "left",
-                  padding: 8 + "px",
-                  color: "white",
-                  fontFamily: "Montserrat",
-                  fontSize: 18 + "px"
-                }}
-              >
+              <div className="formatHeading">
                 <span>T20</span>
               </div>
               <div
+                className="pl-stats-details"
                 style={{
                   textAlign: "left",
                   marginTop: 20 + "px",
@@ -272,15 +190,7 @@ export class PlayerInfo extends Component {
                 >
                   Debut
                 </p>
-                <b
-                  style={{
-                    margin: 6 + "px",
-                    fontSize: 18 + "px",
-                    color: "#272727"
-                  }}
-                >
-                  {this.props.singlePlayer[0].debut_t20_match}
-                </b>
+                <b>{this.props.singlePlayer[0].debut_t20_match}</b>
               </div>
             </div>
           </div>

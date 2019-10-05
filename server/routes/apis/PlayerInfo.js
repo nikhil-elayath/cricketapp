@@ -148,13 +148,6 @@ router.post("/TopBowlers", async (req, res) => {
         })
       };
     }
-
-    console.log("data is: ", result);
-    res.status(200).json({
-      status: 200,
-      data: result,
-      message: "All top bowlers retrieved"
-    });
   } catch (err) {
     console.log(err);
   }

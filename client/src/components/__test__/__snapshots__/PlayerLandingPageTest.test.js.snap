@@ -15,7 +15,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
         "fontFamily": "'Montserrat'",
         "fontSize": "42px",
         "fontWeight": 500,
-        "marginLeft": "35px",
+        "marginLeft": "20px",
         "marginTop": "1.5em",
         "textAlign": "left",
       }
@@ -24,7 +24,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
     Players
   </h1>
   <div
-    id="conatiner"
+    id="container"
   >
     <div
       className="matchFormatOptons"
@@ -38,7 +38,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           style={
             Object {
               "borderBottomLeftRadius": "8px",
-              "borderLeft": "none",
+              "borderLeft": "1px solid",
               "borderTopLeftRadius": "8px",
               "cursor": "pointer",
             }
@@ -47,7 +47,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           Test
         </a>
         <a
-          className=""
+          className="notActive"
           onClick={[Function]}
           style={
             Object {
@@ -58,11 +58,13 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           ODI
         </a>
         <a
-          className=""
+          className="notActive"
           onClick={[Function]}
           style={
             Object {
-              "borderRight": "none",
+              "borderBottomRightRadius": "8px",
+              "borderRight": "1px solid",
+              "borderTopRightRadius": "8px",
               "cursor": "pointer",
             }
           }
@@ -71,43 +73,48 @@ exports[`Testing Player Landing Page should render the component 1`] = `
         </a>
       </div>
     </div>
+  </div>
+  <div
+    className="playersDiv"
+  >
     <div
-      className="allPlayersDiv"
+      className="playerType"
     >
-      <div
-        className="topbatsmanDiv"
+      <h1
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
       >
-        <div
-          className="insideBowlerDiv"
-        >
-          <h2
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Top Batsmen
-          </h2>
-        </div>
-      </div>
-      <div
-        className="topbowlerDiv"
+        Top Batsmen
+      </h1>
+    </div>
+    <div
+      className="playerType"
+    >
+      <h1
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
       >
-        <div
-          className="insideBowlerDiv"
-        >
-          <h2
-            style={
-              Object {
-                "textAlign": "center",
-              }
-            }
-          >
-            Top Bowlers
-          </h2>
-        </div>
-      </div>
+        Top wickets
+      </h1>
+    </div>
+    <div
+      className="playerType"
+    >
+      <h1
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
+        Top 6s
+      </h1>
     </div>
   </div>
 </div>

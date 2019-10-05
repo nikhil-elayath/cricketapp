@@ -32,13 +32,13 @@ async function match() {
 		"\x1b[34m%s\x1b[0m",
 		"\nEntered in match function.\nThis might take time, depends on your device.\n"
 	);
-	ids = await dbo
+	 ids = await dbo
 		.collection("matchinfo")
 		.find()
 		.toArray();
 	let inc = 1;
 
-	for (id in ids) {
+	for ( id in ids) {
 		let venue_id;
 		let umpires_id = [];
 		let toss_winner_id;
@@ -71,6 +71,7 @@ async function match() {
 					"select umpire_id from umpire where umpire_name = %L",
 					u[umpire]
 				);
+<<<<<<< HEAD
 				umpire_id = await postdb.any(query);
 				if (umpire_id.length < 1) {
 					query = escape(
@@ -79,6 +80,9 @@ async function match() {
 					);
 					umpire_id = await postdb.any(query);
 				}
+=======
+				 umpire_id = await postdb.any(query);
+>>>>>>> 66258d417127ed8a6fe296fd998c21ee855aaa05
 
 				umpires_id.push(umpire_id[0].umpire_id);
 			}
@@ -248,7 +252,7 @@ async function match() {
 			});
 
 			// inserting for delivery
-			for (i in currentId.innings) {
+			for (let i in currentId.innings) {
 				let inn = parseInt(i) + 1;
 				console.log(`=========> inserting innings ${inn} `);
 				for (const [k, v] of Object.entries(currentId.innings[i])) {
@@ -630,7 +634,7 @@ async function player_stats() {
 			const player_stat = await postdb.any(query);
 		});
 
-		// // 4s stats
+		// // // 4s stats
 		const fours_results = await postdb.any(
 			`select m.match_type, count(d.batsman_run) as total_4s from delivery as d inner join match as m on d.match_id = m.match_id where d.striker = ${player.player_id} and d.batsman_run=4 group by m.match_type`
 		);
@@ -641,7 +645,7 @@ async function player_stats() {
 			const player_stat = await postdb.any(query);
 		});
 
-		// // 6s stats
+		// // // 6s stats
 		const sixes_results = await postdb.any(
 			`select m.match_type, count(d.batsman_run) as total_6s from delivery as d inner join match as m on d.match_id = m.match_id where d.striker = ${player.player_id} and d.batsman_run=6 group by m.match_type`
 		);
