@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-// const config = require("config");
+const config = require("config");
+const jwtPrivateKey = config.get("jwtPrivateKey");
 
 let validateToken = (req, res, next) => {
   // retrive token from header
@@ -17,7 +18,7 @@ let validateToken = (req, res, next) => {
 
   // if a token tos found then verigy if the token is valid
   try {
-    const verifyingtoken = jwt.verify(token, "headstrait"); //Use config.get()
+    const verifyingtoken = jwt.verify(token, jwtPrivateKey); //Use config.get()
     const decodedToken = jwt.decode(verifyingtoken);
 
     console.log(decodeToken);
