@@ -130,7 +130,7 @@ router.post("/TopBowlers", async (req, res) => {
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
+        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
           "'AND player_stats_name = 'total_wickets' order by player_stats_value desc fetch first 5 rows only"
       );

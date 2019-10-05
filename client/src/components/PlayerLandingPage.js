@@ -89,9 +89,9 @@ export class PlayerLandingPage extends Component {
         <div className="playersDiv">
           <div className="playerBatsman">
             <h1
-            // style={{
-            //   textAlign: "center"
-            // }}
+              style={{
+                textAlign: "center"
+              }}
             >
               Top Batsmen
             </h1>
