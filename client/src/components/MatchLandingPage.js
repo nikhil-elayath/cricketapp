@@ -71,6 +71,7 @@ export class MatchLandingPage extends Component {
                                     this.props.history.push("/matches/summary/" + match.match_id, {
                                         match
                                     });
+
                                 }}>
                                     <span className="tournamnet-name">{match.match_type}</span>
                                     <div className="Team-data">

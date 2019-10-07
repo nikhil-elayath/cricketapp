@@ -19,9 +19,6 @@ describe("Testing of MatchSummaryDetails Component", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    // it("should have 20 div tag", () => {
-    //     expect(wrapper.find("div").length).toBe(20);
-    // });
     // it("should have one h2 header", () => {
     //     expect(wrapper.find("h2").length).toBe(1);
     // });

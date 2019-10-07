@@ -11,6 +11,7 @@ import TeamInfo from "./components/TeamInfo";
 import Home from "./components/Home";
 import MatchLandingPage from "./components/MatchLandingPage";
 import MatchSummaryDetails from './components/MatchSummaryDetails';
+import MatchScoreDetails from './components/MatchScoreDetails';
 
 function App() {
 	return (
@@ -32,7 +33,7 @@ function App() {
 			<Route
 				exact
 				path="/matches/scorecard/:id"
-				component={MatchSummaryDetails}
+				component={MatchScoreDetails}
 			></Route>
 			<Route exact path="/matches" component={MatchLandingPage}></Route>
 			<Route exact path="/teams" component={TeamLandingPage}></Route>
