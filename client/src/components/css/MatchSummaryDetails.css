@@ -5,7 +5,56 @@ body{
     color: #272727;
 }
 
+.top-container{
+    display: grid;
+    grid-template-columns: 60% 35%;
+    grid-template-rows: 40% 40%;
+    /* grid-template-areas: "summary matchdetails"
+                        "playingXI empty"; */
+    grid-gap: 10px;
+    justify-content: space-between;
+    border: 1px solid #272727;
+    height: auto;
+    padding: 20px;
+}
 
+.top-container .top-left-container{
+    display: grid;
+    grid-template-rows: 10% 15% 30% 15% 30%;
+    border: 1px solid #272727;
+}
+
+.top-container .teamone-top-players, .teamtwo-top-players{
+    display: grid;
+    grid-template-columns: 35% 15% 35% 15%;
+    grid-template-rows: 50% 50%;
+    border-top: 1px solid #272727;   
+    border-bottom: 1px solid #272727;   
+    padding: 2px; 
+
+}
+.top-container .bottom-left-container{
+    display: grid;
+    grid-template-rows: 10% 90%;
+    border: 1px solid #272727;
+}
+
+.bottom-left-container .playingXI{
+    display: grid;
+    grid-template-columns: 50% 50%; 
+    grid-template-rows: 10% 80%; 
+    grid-gap: 5px;
+}
+
+.top-title{
+    border: 1px solid #272727;
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #2980B9;
+    color: white;
+}
+/* 
 .topOfSummary{
     display: grid;
     grid-template-columns: 60% 10% 30%;
@@ -87,10 +136,10 @@ body{
     margin-top: 15px;
     display: grid;
     grid-template-columns: 50% 50%;
-    /* border-bottom: 1px solid black; */
+    border-bottom: 1px solid black; 
     
 }
 
 .team-names{
     border-bottom: 1px solid black;
-}
+}  */

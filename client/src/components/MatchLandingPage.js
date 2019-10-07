@@ -74,7 +74,7 @@ export class MatchLandingPage extends Component {
                                 }}>
                                     <span className="tournamnet-name">{match.match_type}</span>
                                     <div className="Team-data">
-                                        <div className="TeamOne-name">{match.teamtwo}</div>
+                                        <div className="TeamOne-name">{match.teamTwo}</div>
                                         <div className="TeamOne-score">{match.teamOneScore}/{match.teamone_wicket}  (50 overs)</div>
                                     </div>
                                     <div className="Team-data">

@@ -4,8 +4,8 @@ import React, { Component } from 'react'
 // import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import { getmatchdetailbyId, getRecentMatches } from '../actions/Matches'
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
+import "./css/MatchSummaryDetails.css"
 
 export class MatchSummaryDetails extends Component {
 
@@ -14,10 +14,12 @@ export class MatchSummaryDetails extends Component {
     }
 
     render() {
-        console.log(this.props.history.location.state.match.match_id);
+        console.log(this.props)
         return (
-            <div>
-                <MatchSecondaryNavbar />
+            < div >
+                <div>
+                    <MatchSecondaryNavbar match={this.props.history.location.state.match} />
+                </div>
                 {/* <Navbar history={this.props.history.location.state.match} />
                 <div className="secNavParent">
                     <div className="top-div-of-match">
@@ -69,8 +71,60 @@ export class MatchSummaryDetails extends Component {
 
 
 
-                <div style={{ marginTop: 220 + "px" }}>
-                    <div className="topOfSummary">
+                <div style={{ marginTop: 250 + "px" }}>
+                    <div className="top-container" style={{ height: "700px" }}>
+                        <div className="top-left-container">
+                            <div className="top-title">Summary Scorecard</div>
+                            <div>{this.props.location.state.match.teamOne}</div>
+                            <div className="teamone-top-players">
+                                <div>top1 batsman</div>
+                                <div style={{ borderRight: "1px solid #272727" }}>25/44</div>
+                                <div>top2 batsman</div>
+                                <div>50/44</div>
+                                <div>top bowlers</div>
+                                <div style={{ borderRight: "1px solid #272727" }}>4 0 0</div>
+                                <div>top bowlers</div>
+                                <div>5 0 0</div>
+                            </div>
+                            <div>{this.props.location.state.match.teamTwo}</div>
+                            <div className="teamtwo-top-players">
+                                <div>top batsman</div>
+                                <div style={{ borderRight: "1px solid #272727" }}>25/44</div>
+                                <div>top batsman</div>
+                                <div>50/44</div>
+                                <div>top bowlers</div>
+                                <div style={{ borderRight: "1px solid #272727" }}>4 0 0</div>
+                                <div>top bowlers</div>
+                                <div>5 0 0</div>
+                            </div>
+                        </div>
+                        <div style={{ border: "1px solid #272727" }}>
+                            <div className="top-title"> Match Details</div>
+                            <div>Series</div>
+                            <div style={{ fontWeight: "500" }}> Abc</div>
+                            <div> Date</div>
+                            <div style={{ fontWeight: "500" }}> XYZ</div>
+                            <div> Toss</div>
+                            <div style={{ fontWeight: "500" }}> win</div>
+                            <div> Venue</div>
+                            <div style={{ fontWeight: "500" }}> pqr</div>
+                            <div> Umpire</div>
+                            <div style={{ fontWeight: "500" }}> QWerty</div>
+                        </div>
+                        <div className="bottom-left-container">
+                            <div className="top-title"> Playing XI</div>
+                            <div className="playingXI">
+                                <div style={{ borderBottom: "1px solid #272727" }}>India</div>
+                                <div style={{ borderBottom: "1px solid #272727" }}>Soutj Africa</div>
+                                <div>PlayingXI</div>
+                                <div>PlayingXI</div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    {/* <div className="topOfSummary">
                         <div className="scoreCardSummary">
                             <div className="title">
                                 <h3 style={{ margin: 0 + "px", textAlign: "left", padding: 10 + "px", color: "white" }} > Score Card Summary</h3>
@@ -181,7 +235,7 @@ export class MatchSummaryDetails extends Component {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
 

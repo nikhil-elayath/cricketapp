@@ -132,13 +132,7 @@ border-left: 1px solid #272727;
     margin-right: 40px;
     margin-top: 10px;
     }
-.Team-data .Team-name , .Team-score{
-    text-align: left;
-    font-size: 20px;
-    font-weight: 500;
-    margin-right: 40px;
-    margin-top: 10px;
-    }
+
 .Team-data .Team-img {
     width: 60px;
     background-size: 60px 34px;

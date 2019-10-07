@@ -29,6 +29,11 @@ function App() {
 				path="/matches/summary/:id"
 				component={MatchSummaryDetails}
 			></Route>
+			<Route
+				exact
+				path="/matches/scorecard/:id"
+				component={MatchSummaryDetails}
+			></Route>
 			<Route exact path="/matches" component={MatchLandingPage}></Route>
 			<Route exact path="/teams" component={TeamLandingPage}></Route>
 			<Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route>
