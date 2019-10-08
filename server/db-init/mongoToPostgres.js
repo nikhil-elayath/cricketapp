@@ -16,17 +16,18 @@ MongoClient.connect(url, {
 	// await umpires();
 	// await team();
 
-	console.time("match type");
-	await match_type();
-	console.timeEnd("match type");
+	// console.time("match type");
+	// await match_type();
+	// console.timeEnd("match type");
 
-	console.log();
+	// console.log();
 
-	console.time("match table");
-	await match();
-	console.timeEnd("match table");
+	// console.time("match table");
+	// await match();
+	// console.timeEnd("match table");
 
-	await player_stats();
+	// await player_stats();
+	await stats_player();
 	console.log("promise satisfied");
 });
 
@@ -51,6 +52,7 @@ async function match() {
 		let winner_id;
 		try {
 			let currentId = ids[id];
+			let gender = currentId.info.gender;
 			// // venue
 			venue_id = 0;
 			if (
@@ -199,6 +201,7 @@ async function match() {
 
 			// inserting for delivery
 			for (let i in currentId.innings) {
+				// console.log("gender", gender);
 				let inn = parseInt(i) + 1;
 				console.log(`=========> inserting innings ${inn} `);
 				for (const [k, v] of Object.entries(currentId.innings[i])) {
@@ -232,9 +235,11 @@ async function match() {
 									// );
 									// get fielder_one id
 									let query = escape(
-										"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+										"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 										val.wicket.fielders[0],
-										val.wicket.fielders[0]
+										gender,
+										val.wicket.fielders[0],
+										gender
 									);
 									fielder_one = await postdb.any(query);
 									if (fielder_one.length > 0) {
@@ -246,9 +251,11 @@ async function match() {
 									// get fielder_two id
 									if (val.wicket.fielders.length == 2) {
 										query = escape(
-											"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+											"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 											val.wicket.fielders[1],
-											val.wicket.fielders[1]
+											gender,
+											val.wicket.fielders[1],
+											gender
 										);
 										fielder_two = await postdb.any(query);
 										if (fielder_two.length > 0) {
@@ -262,9 +269,11 @@ async function match() {
 
 								// get player_out id
 								let query = escape(
-									"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+									"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 									val.wicket.player_out,
-									val.wicket.player_out
+									gender,
+									val.wicket.player_out,
+									gender
 								);
 								let player_out = await postdb.any(query);
 								player_out = player_out[0].player_id;
@@ -286,18 +295,22 @@ async function match() {
 
 							// get striker_id
 							let query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.batsman,
-								val.batsman
+								gender,
+								val.batsman,
+								gender
 							);
 							let striker_id = await postdb.any(query);
 							striker_id = striker_id[0].player_id;
 
 							// get non_striker_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.non_striker,
-								val.non_striker
+								gender,
+								val.non_striker,
+								gender
 							);
 							let non_striker_id = await postdb.any(query);
 							non_striker_id = non_striker_id[0].player_id;
@@ -307,9 +320,11 @@ async function match() {
 
 							// get bowler_id
 							query = escape(
-								"with s as (select player_id, player_name from player where player_name=%L), i as (insert into player(player_name) select %L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
+								"with s as (select player_id, player_name, player_gender from player where player_name=%L and player_gender=%L), i as (insert into player(player_name, player_gender) select %L,%L where not exists (select 1 from s) returning player_id) select player_id from s union all select player_id from i",
 								val.bowler,
-								val.bowler
+								gender,
+								val.bowler,
+								gender
 							);
 							let bowler_id = await postdb.any(query);
 							bowler_id = bowler_id[0].player_id;
@@ -320,21 +335,22 @@ async function match() {
 						}
 					}
 
-					// current_team_players = current_team_players.filter(
-					// 	(value, index, arr) => arr.indexOf(value) === index
-					// );
+					current_team_players = current_team_players.filter(
+						(value, index, arr) => arr.indexOf(value) === index
+					);
 
-					current_team_players.forEach(current_player => {
-						const query = `insert into match_team_player select ${match_id},${current_team_id},${current_player} where not exists(select player_id from player where player_id=${current_player})`;
-						// const query = `insert into match_team_player values(${match_id},${current_team_id},${current_player})`;
+					for (current_player of current_team_players) {
+						const query = `insert into match_team_player select ${match_id},${current_team_id},${current_player} where not exists(select * from match_team_player where match_id=${match_id} and team_id=${current_team_id} and player_id=${current_player})`;
+						// 	// const query = `insert into match_team_player values(${match_id},${current_team_id},${current_player})`;
 						const result = postdb.any(query);
-						// if (result.length < 0) {
-						// 	console.log(
-						// 		"\x1b[45m\x1b30m%s\x1b[0m",
-						// 		`\n=======================> inserted data in match_team_player table ${inc}`
-						// 	);
-						// }
-					});
+						// 	console.log("match_team_player", query);
+						// 	// if (result.length < 0) {
+						// 	// 	console.log(
+						// 	// 		"\x1b[45m\x1b30m%s\x1b[0m",
+						// 	// 		`\n=======================> inserted data in match_team_player table ${inc}`
+						// 	// 	);
+						// 	// }
+					}
 				}
 			}
 			inc++;
@@ -524,8 +540,8 @@ async function player_stats() {
 		total_runs_results.forEach(async result => {
 			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('total_runs',${result.total_runs},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total runs to player_stats : ", query);
 			const player_stat = await postdb.any(query);
+			// console.log("add total runs to player_stats : ", query);
 		});
 
 		// total_wickets stats
@@ -535,8 +551,8 @@ async function player_stats() {
 		total_wickets_results.forEach(async result => {
 			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('total_wickets',${result.total_wickets},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total wicket to player_stats : ", query);
 			const player_stat = await postdb.any(query);
+			// console.log("add total wicket to player_stats : ", query);
 		});
 
 		// // // 4s stats
@@ -546,8 +562,8 @@ async function player_stats() {
 		fours_results.forEach(async result => {
 			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('4s',${result.total_4s},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total fours to player_stats : ", query);
 			const player_stat = await postdb.any(query);
+			// console.log("add total fours to player_stats : ", query);
 		});
 
 		// // // 6s stats
@@ -557,8 +573,146 @@ async function player_stats() {
 		sixes_results.forEach(async result => {
 			let query = `insert into player_stats(player_stats_name, player_stats_value,player_id, match_type) values('6s',${result.total_6s},${player.player_id},'${result.match_type}') returning player_stats_id`;
 
-			console.log("add total sixes to player_stats : ", query);
 			const player_stat = await postdb.any(query);
+			// console.log("add total sixes to player_stats : ", query);
 		});
+	});
+}
+
+async function stats_player() {
+	const player_ids = await postdb.any("select player_id from player");
+	player_ids.forEach(async player => {
+		// //  total_50s stats
+		let query;
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _50s from sum_batsman_runs where total_runs >= 50 and
+		// 	total_runs < 100 group by match_type`;
+
+		// const total_50s_results = await postdb.any(query);
+		// total_50s_results.forEach(async total_50s => {
+		// 	// console.log("50s", total_50s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'50s', '${total_50s._50s}','${total_50s.match_type}')`;
+		// 	const total_50s_insert = await postdb.any(query);
+		// });
+
+		// //  total_100s stats
+
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _100s from sum_batsman_runs where total_runs >= 100 and
+		// 	total_runs < 200 group by match_type`;
+
+		// const total_100s_results = await postdb.any(query);
+		// total_100s_results.forEach(async total_100s => {
+		// 	// console.log("100s", total_100s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'100s', '${total_100s._100s}','${total_100s.match_type}')`;
+		// 	const total_100s_insert = await postdb.any(query);
+		// });
+
+		// //  total_200s stats
+
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _200s from sum_batsman_runs where total_runs >= 200 and
+		// 	total_runs < 300 group by match_type`;
+
+		// const total_200s_results = await postdb.any(query);
+		// total_200s_results.forEach(async total_200s => {
+		// 	// console.log("200s", total_200s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'200s', '${total_200s._200s}','${total_200s.match_type}')`;
+		// 	const total_200s_insert = await postdb.any(query);
+		// 	// console.log("total 200s", query);
+		// });
+
+		// //  total_300s stats
+
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _300s from sum_batsman_runs where total_runs >= 300 and
+		// 	total_runs < 400 group by match_type`;
+
+		// const total_300s_results = await postdb.any(query);
+		// total_300s_results.forEach(async total_300s => {
+		// 	// console.log("300s", total_300s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'300s', '${total_300s._300s}','${total_300s.match_type}')`;
+		// 	const total_300s_insert = await postdb.any(query);
+		// 	console.log("total 300s", query);
+		// });
+
+		// //  total_400s stats
+
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _400s from sum_batsman_runs where total_runs >= 400 and
+		// 	total_runs < 500 group by match_type`;
+
+		// const total_400s_results = await postdb.any(query);
+		// total_400s_results.forEach(async total_400s => {
+		// 	// console.log("400s", total_400s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'400s', '${total_400s._400s}','${total_400s.match_type}')`;
+		// 	const total_400s_insert = await postdb.any(query);
+		// 	console.log("total 400s", query);
+		// });
+
+		// //  total_500s stats
+
+		// query = `with sum_batsman_runs as
+		// 	(select m.match_type, d.match_id, sum(d.batsman_run) as total_runs from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(total_runs) as _500s from sum_batsman_runs where total_runs >= 500 and
+		// 	total_runs < 600 group by match_type`;
+
+		// const total_500s_results = await postdb.any(query);
+		// total_500s_results.forEach(async total_500s => {
+		// 	// console.log("500s", total_500s);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'500s', '${total_500s._500s}','${total_500s.match_type}')`;
+		// 	const total_500s_insert = await postdb.any(query);
+		// 	console.log("total 500s", query);
+		// });
+
+		// //  strike_rate
+
+		// query = `with runs as (select sum(d.batsman_run), m.match_type from delivery d inner join
+		// match m on d.match_id=m.match_id where d.striker=${player.player_id} group by m.match_type),
+		// balls as (select count(d.batsman_run), m.match_type from delivery d inner join
+		// match m on d.match_id = m.match_id where striker=${player.player_id} and extra_id=0 group by m.match_type)
+		// select round(cast(((cast (sum as float) / count )*100) as numeric),2) as strike_rate, runs.match_type
+		// from runs inner join balls on runs.match_type=balls.match_type`;
+
+		// const total_strike_rate_results = await postdb.any(query);
+		// total_strike_rate_results.forEach(async total_strike_rate => {
+		// 	// console.log("strike_rate", total_strike_rate);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'strike_rate', '${total_strike_rate.strike_rate}','${total_strike_rate.match_type}')`;
+		// 	console.log("total strike_rate", query);
+		// 	const total_strike_rate_insert = await postdb.any(query);
+		// });
+
+		//  matches
+
+		// query = `with sum_batsman_runs as(select m.match_type, d.match_id from delivery d inner join match m
+		// 	on m.match_id=d.match_id where d.striker = ${player.player_id} group by m.match_type, d.match_id)
+		// select match_type, count(match_id) as matches from sum_batsman_runs group by match_type`;
+
+		// const total_matches = await postdb.any(query);
+		// total_matches.forEach(async total_match => {
+		// 	// console.log("total matches", total_match);
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		// 		values(${player.player_id},'matches_played', '${total_match.matches}','${total_match.match_type}')`;
+		// 	const total_match_insert = await postdb.any(query);
+		// 	console.log("total total matches", query);
+		// });
 	});
 }
