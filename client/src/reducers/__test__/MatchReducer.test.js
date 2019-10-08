@@ -1,5 +1,5 @@
 import matches from "../MatchReducer";
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from "../../actions/types";
+import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID, GET_MATCH_SCORECARD_DETAILS_BY_ID } from "../../actions/types";
 
 describe("Testing Matches Reducers", () => {
 
@@ -190,6 +190,64 @@ describe("Testing Matches Reducers", () => {
         };
         let returnedState = matches(initialState, action);
         expect(returnedState).toEqual({ match: initialState.match, match_date: [{}], matches: [{}], match_score: [{}] });
+    });
+
+
+    //GET_MATCH_SCORECARD_DETAILS_BY_ID
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID] [init-null] should return a state object with matches array equal to the payload in the action when the action type is GET_MATCH_SCORECARD_DETAILS_BY_ID (when the returned state is initial state", () => {
+        const action = {
+            type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: []
+        };
+        const returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({ match: action.match, matches: action.matches, match_date: action.matches, match_score: action.payload });
+    });
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MATCH_SCORECARD_DETAILS_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [1, 2, 3, 4, 5]
+        };
+        const action = {
+            type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: []
+        };
+        const returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({ match: action.match, match_date: action.match_date, matches: action.matches, match_score: action.payload });
+    });
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID- SOME TYPE] [init-value] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({ match: [], match_date: [], matches: [], match_score: [] });
+    });
+
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MATCH_SCORECARD_DETAILS_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [1, 2, 3, 4, 5]
+        };
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({ match: [{}], match_date: [{}], matches: [{}], match_score: initialState.match_score });
     });
 
 

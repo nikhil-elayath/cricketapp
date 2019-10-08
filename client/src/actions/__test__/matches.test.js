@@ -1,5 +1,5 @@
 import * as action from "../Matches";
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from "../types";
+import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID, GET_MATCH_SCORECARD_DETAILS_BY_ID } from "../types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -98,7 +98,7 @@ describe("Testing Matches actions", () => {
                 payload: responseofAPI
             }
         ];
-        return store.dispatch(action.getmatchdetailbyId()).then(() => {
+        return store.dispatch(action.getmatchdetailbyId(id)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     });
@@ -113,7 +113,42 @@ describe("Testing Matches actions", () => {
 
         const store = mockStore({});
         const expectedActions = [];
-        return store.dispatch(action.getMatchesDate()).then(() => {
+        return store.dispatch(action.getmatchdetailbyId(id)).then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID] [20*]should create an action with type GET_MATCH_SCORECARD_DETAILS_BY_ID and the payload should be same as the API response when the response is 20*", () => {
+        const responseofAPI = [{}, {}, {}];
+        const id = '1';
+        moxios.stubRequest(url + "/scorecard/" + id, {
+            status: 200,
+            response: { data: responseofAPI }
+        });
+
+        const store = mockStore({});
+        const expectedActions = [
+            {
+                type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
+                payload: responseofAPI
+            }
+        ];
+        return store.dispatch(action.getMatchScorecardDetailbyId(id)).then(() => {
+            expect(store.getActions()).toEqual(expectedActions);
+        });
+    });
+
+    it("[GET_MATCH_SCORECARD_DETAILS_BY_ID] [40*] should go into catch with type GET_MATCH_SCORECARD_DETAILS_BY_ID and the payload should be same as the API response when the response is 40*", () => {
+        const responseofAPI = [{}, {}, {}];
+        const id = '1';
+        moxios.stubRequest(url + "/scorecard/" + id, {
+            status: 400,
+            response: { data: responseofAPI }
+        });
+
+        const store = mockStore({});
+        const expectedActions = [];
+        return store.dispatch(action.getMatchScorecardDetailbyId(id)).then(() => {
             expect(store.getActions()).toEqual(expectedActions);
         });
     });

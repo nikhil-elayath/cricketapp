@@ -10,7 +10,8 @@ import "./css/MatchSummaryDetails.css"
 export class MatchSummaryDetails extends Component {
 
     componentDidMount() {
-        this.props.getmatchdetailbyId(this.props.location.state.match.match_id);
+        // this.props.getmatchdetailbyId(this.props.location.state.match.match_id);
+        this.props.getmatchdetailbyId(1);
     }
 
     render() {
@@ -18,7 +19,8 @@ export class MatchSummaryDetails extends Component {
         return (
             < div >
                 <div>
-                    <MatchSecondaryNavbar match={this.props.history.location.state.match} />
+                    {/* <MatchSecondaryNavbar match={this.props.history.location.state.match} /> */}
+                    <MatchSecondaryNavbar />
                 </div>
                 {/* <Navbar history={this.props.history.location.state.match} />
                 <div className="secNavParent">
@@ -72,57 +74,92 @@ export class MatchSummaryDetails extends Component {
 
 
                 <div style={{ marginTop: 250 + "px" }}>
-                    <div className="top-container" style={{ height: "700px" }}>
-                        <div className="top-left-container">
-                            <div className="top-title">Summary Scorecard</div>
-                            <div>{this.props.location.state.match.teamOne}</div>
-                            <div className="teamone-top-players">
-                                <div>top1 batsman</div>
-                                <div style={{ borderRight: "1px solid #272727" }}>25/44</div>
-                                <div>top2 batsman</div>
-                                <div>50/44</div>
-                                <div>top bowlers</div>
-                                <div style={{ borderRight: "1px solid #272727" }}>4 0 0</div>
-                                <div>top bowlers</div>
-                                <div>5 0 0</div>
-                            </div>
-                            <div>{this.props.location.state.match.teamTwo}</div>
-                            <div className="teamtwo-top-players">
-                                <div>top batsman</div>
-                                <div style={{ borderRight: "1px solid #272727" }}>25/44</div>
-                                <div>top batsman</div>
-                                <div>50/44</div>
-                                <div>top bowlers</div>
-                                <div style={{ borderRight: "1px solid #272727" }}>4 0 0</div>
-                                <div>top bowlers</div>
-                                <div>5 0 0</div>
-                            </div>
-                        </div>
-                        <div style={{ border: "1px solid #272727" }}>
-                            <div className="top-title"> Match Details</div>
-                            <div>Series</div>
-                            <div style={{ fontWeight: "500" }}> Abc</div>
-                            <div> Date</div>
-                            <div style={{ fontWeight: "500" }}> XYZ</div>
-                            <div> Toss</div>
-                            <div style={{ fontWeight: "500" }}> win</div>
-                            <div> Venue</div>
-                            <div style={{ fontWeight: "500" }}> pqr</div>
-                            <div> Umpire</div>
-                            <div style={{ fontWeight: "500" }}> QWerty</div>
-                        </div>
-                        <div className="bottom-left-container">
-                            <div className="top-title"> Playing XI</div>
-                            <div className="playingXI">
-                                <div style={{ borderBottom: "1px solid #272727" }}>India</div>
-                                <div style={{ borderBottom: "1px solid #272727" }}>Soutj Africa</div>
-                                <div>PlayingXI</div>
-                                <div>PlayingXI</div>
+                    {this.props.match.map(match => (
+                        <div className="top-container" style={{ height: "700px" }}>
+                            <div className="top-left-container">
 
-                            </div>
-                        </div>
+                                <div className="top-title">Summary Scorecard</div>
 
-                    </div>
+                                <div>{match.teamone_name[0].teamone_name}</div>
+
+                                <div className="teamone-top-players">
+
+                                    <div>
+                                        {match.team1_batsman.map(t1_batsman => (
+                                            <div>{t1_batsman.player_name}</div>))}
+                                    </div>
+                                    <div style={{ borderRight: "1px solid #272727" }}>
+                                        {match.team1_batsman.map(t1_batsman => (
+                                            <div>{t1_batsman.total_runs} ({t1_batsman.total_ball})</div>))}
+                                    </div>
+                                    <div>
+                                        {match.team1_bowler.map(t1_bowler => (
+                                            <div>{t1_bowler.player_name}</div>))}
+                                    </div>
+                                    <div style={{ borderRight: "1px solid #272727" }}>
+                                        {match.team1_bowler.map(t1_bowler => (
+                                            <div>{t1_bowler.total_wicket}/{t1_bowler.given_runs} ({t1_bowler.overs})</div>))}
+                                    </div>
+                                </div>
+
+                                <div>{match.teamtwo_name[0].teamtwo_name}</div>
+                                <div className="teamtwo-top-players">
+                                    <div>
+                                        {match.team2_batsman.map(t2_batsman => (
+                                            <div>{t2_batsman.player_name}</div>))}
+                                    </div>
+                                    <div style={{ borderRight: "1px solid #272727" }}>
+                                        {match.team2_batsman.map(t2_batsman => (
+                                            <div>{t2_batsman.total_runs} ({t2_batsman.total_ball})</div>))}
+                                    </div>
+                                    <div>
+                                        {match.team2_bowler.map(t2_bowler => (
+                                            <div>{t2_bowler.player_name}</div>))}
+                                    </div>
+                                    <div style={{ borderRight: "1px solid #272727" }}>
+                                        {match.team2_bowler.map(t2_bowler => (
+                                            <div>{t2_bowler.total_wicket}/{t2_bowler.given_runs} ({t2_bowler.overs})</div>))}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="match_details" style={{ border: "1px solid #272727" }}>
+                                <div className="top-title"> Match Details</div>
+                                <div>Series</div>
+                                <div style={{ fontWeight: "500" }}> {match.match_details[0].competition}</div>
+                                <div> Date</div>
+
+                                <div style={{ fontWeight: "500" }}>
+                                    {match.date.map(date => (
+                                        <div>{date.match_date}</div>))}
+                                </div>
+                                <div> Toss</div>
+                                <div style={{ fontWeight: "500" }}> {match.match_details[0].toss_winner_team}, elected to {match.match_details[0].toss_decision}</div>
+                                <div> Venue</div>
+                                <div style={{ fontWeight: "500" }}> {match.match_details[0].venue_name}, {match.match_details[0].venue_city}</div>
+
+                                <div> Umpire</div>
+                                {match.umpires.map(umpire => (
+                                    <div style={{ fontWeight: "500" }}> {umpire.umpire_name}</div>
+                                ))}
+                            </div>
+
+                            <div className="bottom-left-container">
+                                <div className="top-title"> Playing XI</div>
+                                <div className="playingXI">
+                                    <div style={{ borderBottom: "1px solid #272727" }}>{match.teamone_name.map(teamone => teamone.teamone_name)}</div>
+                                    <div style={{ borderBottom: "1px solid #272727" }}>{match.teamtwo_name.map(teamtwo => teamtwo.teamtwo_name)}</div>
+                                    <div>
+                                        {match.team_one_XI.map(team1_XI =>
+                                            <div>{team1_XI.teamone_players} </div>)}
+                                    </div>
+                                    <div>
+                                        {match.team_two_XI.map(team2_XI =>
+                                            <div>{team2_XI.teamtwo_players} </div>)}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>))}
 
                     {/* <div className="topOfSummary">
                         <div className="scoreCardSummary">

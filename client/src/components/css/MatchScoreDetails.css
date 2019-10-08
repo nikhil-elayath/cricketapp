@@ -8,7 +8,7 @@
 
 .main-container-scorecard{
     display: grid;
-    grid-template-rows: 5% 6% 40% 5% 6% 4% 6% auto;
+    grid-template-rows: 5% 6% auto 5% 6% 4% 6% auto;
     border: 1px solid #272727;
     
 }
