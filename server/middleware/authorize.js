@@ -1,43 +1,28 @@
 const jwt = require("jsonwebtoken");
-// const config = require("config");
+const config = require("config");
 
-let validateToken = (req, res, next) => {
-  // retrive token from header
-  let bearerHeader =
-    req.headers["x-access-token"] || req.header["authorization"];
-  if (!bearerHeader)
-    return res.staus(400).json({
-      login: "falied",
-      message: "Token not found"
-    });
-
-  const token = bearerHeader.split(" ")[1];
-  console.log(token);
-  // check if there is a token present or not
-
-  // if a token tos found then verigy if the token is valid
-  try {
-    const verifyingtoken = jwt.verify(token, "headstrait"); //Use config.get()
-    const decodedToken = jwt.decode(verifyingtoken);
-
-    console.log(decodeToken);
-    //console.log(verifyingToken);
-    if (decodedToken["isadmin"] == true) {
-      //assiging the token nto the user requesting ths service
-      req.user = decodedToken;
-      next();
-    } else {
-      res.Status(400).json({
-        status: 400,
-        message: "Not an admin"
-      });
+module.exports = () => {
+  console.log(
+    "Decoded token: " +
+      JSON.stringify(
+        jwt.decode(global.returned_token, config.get("jwtPrivateKey"))
+      )
+  );
+  global.decoded_token = jwt.decode(
+    global.returned_token,
+    config.get("jwtPrivateKey")
+  );
+  let err_message;
+  jwt.verify(
+    global.returned_token,
+    config.get("jwtPrivateKey"),
+    (err, decoded) => {
+      if (err) {
+        localStorage.removeItem("token");
+        console.log(err.message);
+        err_message = err.message;
+      }
     }
-  } catch (error) {
-    console.log(error);
-    res.status(400).json({
-      status: 400,
-      message: "Invalid token"
-    });
-  }
+  );
+  return err_message;
 };
-module.export = validateToken;

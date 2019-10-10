@@ -9,7 +9,8 @@ import {
   GET_T20_BATSMAN_STATS,
   GET_ODI_BOWLER_STATS,
   GET_T20_BOWLER_STATS,
-  GET_TEST_BOWLER_STATS
+  GET_TEST_BOWLER_STATS,
+  GET_PLAYER_SEARCH
 } from "../actions/Types";
 
 const initialState = {
@@ -23,7 +24,8 @@ const initialState = {
   t20BatsmanStats: [[{}]],
   odiBowlerStats: [[]],
   t20BowlerStats: [[{}]],
-  testBowlerStats: [[{}]]
+  testBowlerStats: [[{}]],
+  bowlers: []
 };
 
 export default function(state = initialState, action) {
@@ -91,6 +93,11 @@ export default function(state = initialState, action) {
         t20BowlerStats: action.payload
       };
 
+    case GET_PLAYER_SEARCH:
+      return {
+        ...state,
+        playerInfo: action.payload
+      };
     default:
       return state;
   }

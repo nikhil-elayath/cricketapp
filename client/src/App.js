@@ -10,8 +10,12 @@ import TeamLandingPage from "./components/TeamLandingPage";
 import TeamInfo from "./components/TeamInfo";
 import Home from "./components/Home";
 import MatchLandingPage from "./components/MatchLandingPage";
-import BattingStats from "./components/PlayerBattingStats";
-import BowlingStats from "./components/PlayerBowlingStats";
+import MatchSummaryDetails from "./components/MatchSummaryDetails";
+import MatchScoreDetails from "./components/MatchScoreDetails";
+import AdminPlayer from "./components/AdminPlayerPage";
+import AdminTeam from "./components/AdminTeamPage";
+import AdminEditPlayer from "./components/AdminEditPlayer";
+import AdminEditTeam from "./components/AdminEditTeam";
 
 function App() {
   return (
@@ -32,6 +36,19 @@ function App() {
       <Route exact path="/teams" component={TeamLandingPage}></Route>
       <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route>
       <Route path="/" exact component={Home} />
+
+      <Route exact path="/adminplayer" component={AdminPlayer}></Route>
+      <Route exact path="/adminteam" component={AdminTeam}></Route>
+      <Route
+        exact
+        path="/admineditplayer/:player_id"
+        component={AdminEditPlayer}
+      ></Route>
+      <Route
+        exact
+        path="/admineditteam/:team_id"
+        component={AdminEditTeam}
+      ></Route>
     </Router>
   );
 }

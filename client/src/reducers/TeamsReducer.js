@@ -1,4 +1,9 @@
-import { GET_TEAMS, GET_RANKS, GET_MATCHBYTEAMID } from "../actions/Types";
+import {
+  GET_TEAMS,
+  GET_RANKS,
+  GET_MATCHBYTEAMID,
+  GET_TEAM_SEARCH
+} from "../actions/Types";
 
 const initialstate = {
   teams: [],
@@ -14,6 +19,8 @@ export default function(state = initialstate, action) {
       return { ...state, ranks: action.payload };
     case GET_MATCHBYTEAMID:
       return { ...state, matches: action.payload };
+    case GET_TEAM_SEARCH:
+      return { ...state, teams: action.payload };
     default:
       return state;
   }

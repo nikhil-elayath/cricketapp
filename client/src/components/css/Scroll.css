@@ -6,10 +6,12 @@
     border: none;
   }
   .menu-item-wrapper.active {
-    border: px blue solid;
+    background-color: #2980B9;
+    font-size: 18px;
   }
   .menu-item.active {
-    border: 1px blue solid;
+cursor: pointer;
+color: white;
   }
    
   .scroll-menu-arrow {

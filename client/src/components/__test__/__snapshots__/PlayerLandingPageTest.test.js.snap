@@ -71,13 +71,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
     <div
       className="playerBatsman"
     >
-      <h1
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
+      <h1>
         Top Batsmen
       </h1>
     </div>
