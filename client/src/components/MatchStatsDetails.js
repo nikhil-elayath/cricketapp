@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 export class MatchStatsDetails extends Component {
 
     componentDidMount() {
-        this.props.getManhattanGraphbyId(3);
+        this.props.getManhattanGraphbyId(this.props.match_id);
     }
     render() {
         console.log(this.props.match_stats)

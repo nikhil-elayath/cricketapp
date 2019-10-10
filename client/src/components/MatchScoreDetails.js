@@ -15,7 +15,7 @@ export class MatchScoreDetails extends Component {
                 <div style={{ marginTop: 210 + "px" }} >
                     {this.props.match_score.map(match => (
 
-                        <div className="top-container-scorecard" style={{ marginTop: 80 + "px" }} >
+                        <div className="top-container-scorecard" style={{ marginTop: 80 + "px", borderRadius: "5px" }} >
                             <div></div>
 
                             <div className="main-container-scorecard">
@@ -23,7 +23,7 @@ export class MatchScoreDetails extends Component {
                                     borderTopLeftRadius: "5px", borderTopRightRadius: "5px",
                                     backgroundColor: "#2980B9", fontSize: "500",
                                     color: "white", padding: "10px"
-                                }}>Inning {match.inning.inning} India</div>
+                                }}>Inning {match.inning.inning}</div>
                                 <div className="batsman-heading" style={{ padding: "5px", fontWeight: "500" }}>
                                     <div>Batsmen</div>
                                     <div></div>

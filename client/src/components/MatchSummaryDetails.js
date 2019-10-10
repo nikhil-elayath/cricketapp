@@ -11,64 +11,10 @@ export class MatchSummaryDetails extends Component {
     componentDidMount() {
         this.props.getmatchdetailbyId(this.props.match_id);
     }
-
     render() {
         console.log("Match Summary", this.props)
         return (
             < div >
-                <div>
-                    {/* <MatchSecondaryNavbar /> */}
-                </div>
-                {/* <Navbar history={this.props.history.location.state.match} />
-                <div className="secNavParent">
-                    <div className="top-div-of-match">
-                        <div className="short-summary-with-result">
-
-                            <span style={{ fontSize: "14px", marginRight: "5px", marginLeft: "15px" }}>Result: </span>
-                            <span style={{ fontSize: "15px", fontWeight: "500" }}>{this.props.location.state.match.team_winner} {this.props.match.map(match => match.outcome)}</span>
-                            <div className="Team-data">
-                                <div className="Team-img" style={{
-                                    backgroundImage: `url(${india})`
-                                }}></div>
-                                <div className="Team-name" >{this.props.location.state.match.teamtwo}</div>
-                                <div className="Team-score">{this.props.location.state.match.teamOneScore}/{this.props.location.state.match.teamone_wicket}  (50 overs)</div>
-                            </div>
-                            <div className="Team-data">
-                                <div className="Team-img" style={{
-                                    backgroundImage: `url(${south_africa})`
-                                }}></div>
-                                <div className="Team-name">{this.props.location.state.match.teamOne}</div>
-                                <div className="Team-score">{this.props.location.state.match.teamTwoScore}/{this.props.location.state.match.teamtwo_wicket}  (50 overs)</div>
-                            </div>
-                        </div>
-                        <div className="short-summary-with-player-of-the-match">
-                            <span className="header-player-of-the-match">Player of the match</span>
-                            <div className="short-summary-right">
-                                <div className="default-img" style={{
-                                    backgroundImage: `url(${default_user_img})`
-                                }}> </div>
-                                <div style={{ fontSize: "20px", fontWeight: "700", margin: "30px 0 0 15px" }}>{this.props.match.map(match => match.player_of_the_match)}</div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div className="secNavLinks">
-                        <ul>
-                            <Link className="secLink" to="/summary">
-                                <li>Summary</li>
-                            </Link>
-                            <Link className="secLink" to="/scoreboard">
-                                <li>ScoreBoard</li>
-                            </Link>
-                            <Link className="secLink" to="/statistics">
-                                <li>Statistics</li>
-                            </Link>
-                        </ul>
-                    </div>
-                </div> */}
-
-
 
                 <div style={{ marginTop: 200 + "px" }}>
                     {this.props.match ? this.props.match.map(match => (
@@ -119,7 +65,7 @@ export class MatchSummaryDetails extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="match_details" style={{ border: "1px solid #272727" }}>
+                            <div className="match_details" style={{ border: "1px solid #272727", borderRadius: "5px" }}>
                                 <div className="top-title"> Match Details</div>
                                 <div style={{ margin: "5px 0 0 8px" }}>Series</div>
                                 <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}> {match.match_details[0].competition}</div>
@@ -140,7 +86,7 @@ export class MatchSummaryDetails extends Component {
                                 ))}
                             </div>
 
-                            <div className="bottom-left-container">
+                            <div className="bottom-left-container" style={{ borderRadius: "5px" }}>
                                 <div className="top-title"> Playing XI</div>
                                 <div className="playingXI">
                                     <div style={{ borderBottom: "1px solid #272727", margin: "6px 0 0 8px" }}>{match.teamone_name.map(teamone => teamone.teamone_name)}</div>

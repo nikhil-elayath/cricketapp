@@ -22,6 +22,7 @@ body{
     display: grid;
     grid-template-rows: 10% 15% 25% 15% 25%;
     border: 1px solid #272727;
+    border-radius: 5px
 }
 
 .top-container .teamone-top-players, .teamtwo-top-players{
@@ -37,6 +38,7 @@ body{
     display: grid;
     grid-template-rows: 10% 90%;
     border: 1px solid #272727;
+    border-radius: 5px;
 }
 
 .bottom-left-container .playingXI{
