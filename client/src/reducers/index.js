@@ -6,9 +6,9 @@ import home from "./HomeReducer";
 import matches from "./MatchReducer";
 
 export default combineReducers({
-	userReducer: users,
-	PlayerReducer: player,
-	TeamsReducer: teams,
-	HomeReducer: home,
-	matchreducer: matches
+  userReducer: users,
+  PlayerReducer: player,
+  TeamsReducer: teams,
+  HomeReducer: home,
+  matchreducer: matches
 });

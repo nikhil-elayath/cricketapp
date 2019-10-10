@@ -2,7 +2,8 @@ import {
   GET_PLAYERS,
   GET_SINGLE_PLAYER,
   GET_ALL_BATSMAN,
-  GET_ALL_BOWLERS
+  GET_ALL_BOWLERS,
+  GET_BATSMAN_STATS
 } from "../../actions/Types";
 
 import PlayerReducer from "../PlayerReducer";
@@ -14,14 +15,16 @@ describe("Testing Player reducer", () => {
       payload: [],
       singlepl: [[]],
       batpl: [],
-      bowlpl: []
+      bowlpl: [],
+      batsmanStatspl: []
     };
     const returnedState = PlayerReducer(undefined, action);
     expect(returnedState).toEqual({
       playerInfo: action.payload,
       singlePlayer: action.singlepl,
       batsmen: action.batpl,
-      bowlers: action.bowlpl
+      bowlers: action.bowlpl,
+      batsmanStats: action.batsmanStatspl
     });
   });
 
@@ -33,7 +36,8 @@ describe("Testing Player reducer", () => {
       ],
       singlePlayer: [[]],
       batsmen: [],
-      bowlers: []
+      bowlers: [],
+      batsmanStats: []
     };
 
     const action = {
@@ -41,7 +45,8 @@ describe("Testing Player reducer", () => {
       payload: [{}, {}, {}],
       singlepl: [[]],
       batpl: [],
-      bowlpl: []
+      bowlpl: [],
+      batsmanStatspl: []
     };
 
     const returnedState = PlayerReducer(initialState, action);
@@ -49,7 +54,8 @@ describe("Testing Player reducer", () => {
       playerInfo: action.payload,
       singlePlayer: action.singlepl,
       batsmen: action.batpl,
-      bowlers: action.bowlpl
+      bowlers: action.bowlpl,
+      batsmanStats: action.batsmanStatspl
     });
   });
 
@@ -59,14 +65,16 @@ describe("Testing Player reducer", () => {
       payload: [[]],
       pl: [],
       batpl: [],
-      bowlpl: []
+      bowlpl: [],
+      batsmanStatspl: []
     };
     const returnedState = PlayerReducer(undefined, action);
     expect(returnedState).toEqual({
       playerInfo: action.pl,
       singlePlayer: action.payload,
       batsmen: action.batpl,
-      bowlers: action.bowlpl
+      bowlers: action.bowlpl,
+      batsmanStats: action.batsmanStatspl
     });
   });
 
@@ -76,14 +84,16 @@ describe("Testing Player reducer", () => {
       payload: [],
       singlepl: [[]],
       allpl: [],
-      bowlpl: []
+      bowlpl: [],
+      batsmanStatspl: []
     };
     const returnedState = PlayerReducer(undefined, action);
     expect(returnedState).toEqual({
       playerInfo: action.allpl,
       singlePlayer: action.singlepl,
       batsmen: action.payload,
-      bowlers: action.bowlpl
+      bowlers: action.bowlpl,
+      batsmanStats: action.batsmanStatspl
     });
   });
 
@@ -93,14 +103,34 @@ describe("Testing Player reducer", () => {
       payload: [],
       singlepl: [[]],
       allpl: [],
-      batpl: []
+      batpl: [],
+      batsmanStatspl: []
     };
     const returnedState = PlayerReducer(undefined, action);
     expect(returnedState).toEqual({
       playerInfo: action.allpl,
       singlePlayer: action.singlepl,
       batsmen: action.batpl,
-      bowlers: action.payload
+      bowlers: action.payload,
+      batsmanStats: action.batsmanStatspl
+    });
+  });
+  it("should return  state object with batsman stats Details array equal to the payload in the action when the action type is GET_BATSMAN_STATS(when the state is initial state)", () => {
+    const action = {
+      type: GET_BATSMAN_STATS,
+      payload: [],
+      singlepl: [[]],
+      allpl: [],
+      batpl: [],
+      bowlpl: []
+    };
+    const returnedState = PlayerReducer(undefined, action);
+    expect(returnedState).toEqual({
+      playerInfo: action.allpl,
+      singlePlayer: action.singlepl,
+      batsmen: action.batpl,
+      bowlers: action.bowlpl,
+      batsmanStats: action.payload
     });
   });
 });

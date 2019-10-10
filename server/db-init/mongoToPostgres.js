@@ -596,6 +596,7 @@ async function stats_player() {
 		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
 		// 		values(${player.player_id},'50s', '${total_50s._50s}','${total_50s.match_type}')`;
 		// 	const total_50s_insert = await postdb.any(query);
+		// 	console.log("50s", query);
 		// });
 
 		// //  total_100s stats
@@ -612,6 +613,7 @@ async function stats_player() {
 		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
 		// 		values(${player.player_id},'100s', '${total_100s._100s}','${total_100s.match_type}')`;
 		// 	const total_100s_insert = await postdb.any(query);
+		// 	console.log("total 100ss",query)
 		// });
 
 		// //  total_200s stats
@@ -696,8 +698,8 @@ async function stats_player() {
 		// 	// console.log("strike_rate", total_strike_rate);
 		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
 		// 		values(${player.player_id},'strike_rate', '${total_strike_rate.strike_rate}','${total_strike_rate.match_type}')`;
-		// 	console.log("total strike_rate", query);
 		// 	const total_strike_rate_insert = await postdb.any(query);
+		// 	console.log("total strike_rate", query);
 		// });
 
 		//  matches
@@ -714,5 +716,114 @@ async function stats_player() {
 		// 	const total_match_insert = await postdb.any(query);
 		// 	console.log("total total matches", query);
 		// });
+
+
+		//Highest score
+		// query = `with h as (select m.match_type,d.match_id,d.striker,sum(d.batsman_run) as highest_score from delivery d inner join match m on m.match_id=d.match_id
+		// where d.striker = ${player.player_id}  
+		// group by m.match_type,d.match_id,d.striker,d.batsman_run order by highest_score desc ) 
+		// select match_type, max(highest_score) as high_score from h group by match_type  `;
+
+		// const highest_score = await postdb.any(query);
+		// highest_score.forEach(async high_score => {
+		// //  console.log("highest_score are", high_score);
+		
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		//  		values(${player.player_id},'highest_score', '${high_score.high_score}','${high_score.match_type}')`;
+		// 	const total_match_insert = await postdb.any(query);
+		// 	console.log("highest score is: ", query);
+		// });
+
+		//Balls faced 
+
+		// query = `select m.match_type,count(d.batsman_run) as balls_faced from delivery d inner join 
+		// match m on d.match_id = m.match_id where striker= ${player.player_id}  
+		// and extra_id=0 group by m.match_type  `;
+
+		// const total_balls_faced = await postdb.any(query);
+		// total_balls_faced.forEach(async balls_faced => {
+		// //  console.log("balls faced are", balls_faced);
+		
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		//  		values(${player.player_id},'balls_faced', '${balls_faced.balls_faced}','${balls_faced.match_type}')`;
+		// 	const total_balls_insert = await postdb.any(query);
+		// 	console.log("total balls faced is: ", query);
+		// });
+
+		//NOt outs
+
+		// query = `with not_out as (select m.match_type,d.match_id,d.striker from (select match_id, inning,striker from delivery where match_id in (select distinct(match_id) from delivery where striker = 265)
+		// and striker = ${player.player_id} and wicket_id > 0 union all
+		// select distinct(match_id), inning,striker from delivery where striker = ${player.player_id} order by match_id) d inner join match m on m.match_id=d.match_id
+		// group by m.match_type,d.match_id,d.striker having count(*) =  1),
+		// no_times_not_out as (select match_type,count(*) from not_out group by match_type) select * from no_times_not_out  `;
+
+		// const total_not_outs = await postdb.any(query);
+		// total_not_outs.forEach(async not_out => {
+		// //  console.log("balls faced are", not_out);
+		
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		//  		values(${player.player_id},'not_out', '${not_out.count}','${not_out.match_type}')`;
+		// 	const total_not_out_insert = await postdb.any(query);
+		// 	console.log("total balls faced is: ", query);
+		// });
+
+
+		//Runs conceded 
+
+		// query = `with a as (select m.match_type,bowler,sum(batsman_run) as runs_given from delivery d inner join match m on m.match_id = d.match_id 
+		// where bowler = ${player.player_id} group by d.match_id,bowler,m.match_type)
+		// select match_type,bowler,sum(runs_given) as runs_conceded from a group by match_type,bowler   `;
+
+		// const total_runs_conceded = await postdb.any(query);
+		// total_runs_conceded.forEach(async runs_conceded => {
+		// //  console.log("balls faced are", runs_conceded);
+		
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		//  		values(${player.player_id},'runs_conceded', '${runs_conceded.runs_conceded}','${runs_conceded.match_type}')`;
+		// 	const total_not_out_insert = await postdb.any(query);
+		// 	console.log("total balls faced is: ", query);
+		// });
+
+		//4 wickets
+
+		// query = `with a as (select distinct(d.match_id),d.wicket_id,d.bowler,m.match_type from delivery d inner join match m on m.match_id = d.match_id
+		// where wicket_id > 0 and bowler = ${player.player_id} ),
+		// b as (select match_type,match_id,count(wicket_id) as _4w from a group by match_id,match_type),
+		// c as (select  match_type,match_id from b where _4w >= 4)
+		// select match_type,count(*) from c group by match_type   `;
+
+		// const total_4w = await postdb.any(query);
+		// total_4w.forEach(async _4w => {
+		// //  console.log("4 wickets are ", _4w);
+		
+		// 	query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		//  		values(${player.player_id},'4w', '${_4w.count}','${_4w.match_type}')`;
+		// 	const total_4w_insert = await postdb.any(query);
+		// 	console.log("total no of times 4w is: ", query);
+		// });
+
+
+		// 5 wickets
+
+
+		query = `with a as (select distinct(d.match_id),d.wicket_id,d.bowler,m.match_type from delivery d inner join match m on m.match_id = d.match_id
+		where wicket_id > 0 and bowler = ${player.player_id} ),
+		b as (select match_type,match_id,count(wicket_id) as _5w from a group by match_id,match_type),
+		c as (select  match_type,match_id from b where _5w >= 5)
+		select match_type,count(*) from c group by match_type   `;
+
+		const total_5w = await postdb.any(query);
+		total_5w.forEach(async _5w => {
+		//  console.log("4 wickets are ", _4w);
+		
+			query = `insert into player_stats(player_id,player_stats_name,player_stats_value, match_type)
+		 		values(${player.player_id},'5w', '${_5w.count}','${_5w.match_type}')`;
+			const total_5w_insert = await postdb.any(query);
+			console.log("total no of times 5w is: ", query);
+		});
+
 	});
 }
+
+

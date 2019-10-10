@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getBowlers, getBatsmen } from "../actions/PlayerAction";
+import { getBowlers, getBatsmen, getTopSixes } from "../actions/PlayerAction";
 import { connect } from "react-redux";
 
 import virat from "../components/images/virat.jpg";
@@ -19,12 +19,14 @@ export class PlayerLandingPage extends Component {
     // console.log("from landing page", this.props);
     this.props.getBowlers({ match_type: "Test" });
     this.props.getBatsmen({ match_type: "Test" });
+    this.props.getTopSixes({ match_type: "Test" });
   }
 
   getT20 = () => {
     this.setState({ testClicked: false, odiClicked: false, t20Clicked: true });
     this.props.getBowlers({ match_type: "T20" });
     this.props.getBatsmen({ match_type: "T20" });
+    this.props.getTopSixes({ match_type: "T20" });
   };
 
   getTest = () => {
@@ -32,12 +34,14 @@ export class PlayerLandingPage extends Component {
 
     this.props.getBowlers({ match_type: "Test" });
     this.props.getBatsmen({ match_type: "Test" });
+    this.props.getTopSixes({ match_type: "Test" });
   };
 
   getODI = () => {
     this.setState({ testClicked: false, odiClicked: true, t20Clicked: false });
     this.props.getBowlers({ match_type: "ODI" });
     this.props.getBatsmen({ match_type: "ODI" });
+    this.props.getTopSixes({ match_type: "ODI" });
   };
 
   render() {
@@ -153,6 +157,32 @@ export class PlayerLandingPage extends Component {
           </div>
           <div className="playerType">
             <h1 style={{ textAlign: "center" }}>Top 6s</h1>
+            {this.props.topSixes.map(six => (
+              <div
+                className="singlePlayerDiv"
+                onClick={() => {
+                  this.props.history.push("/playerInfo/" + six.player_id);
+                }}
+              >
+                <img className="playerImage" src={virat}></img>
+                {/* player basic info div */}
+                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
+                  <span id="playerName">{six.player_name}</span>
+                  <span id="playerMinInfo">Right Arm Medium</span>
+                  <span id="playerMinInfo">{six.player_country}</span>
+                </div>
+
+                {/* player runs,wickets div */}
+                <div className="playerInfoDiv">
+                  <span className="playerStatValue">
+                    {six.player_stats_value}
+                  </span>
+
+                  <span id="playerMinInfo">Innings: 12</span>
+                  <span id="playerMinInfo">Average: 52.12</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -162,10 +192,11 @@ export class PlayerLandingPage extends Component {
 
 const mapStateToProps = state => ({
   batsmen: state.PlayerReducer.batsmen,
-  bowlers: state.PlayerReducer.bowlers
+  bowlers: state.PlayerReducer.bowlers,
+  topSixes: state.PlayerReducer.topSixes
 });
 
 export default connect(
   mapStateToProps,
-  { getBatsmen, getBowlers }
+  { getBatsmen, getBowlers, getTopSixes }
 )(PlayerLandingPage);

@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+
+.bat-main {
+  display: flex;
+  flex-direction: row;
+  margin-top: 210px;
+  margin-bottom: 40px;
+  justify-content: center;
+  width: 95vw;
+}
+
+.battting-main-div {
+  display: grid;
+  grid-template-columns: 39vw 39vw;
+}
+
+#batting-format-heading {
+  background-color: #2980b9;
+  color: white;
+  padding: 8px;
+  margin-top: 0px;
+}
+
+.battting-Test-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-right: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.battting-Odi-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-left: 10px;
+}
+
+.battting-T20-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-right: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.battting-Ipl-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-left: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.batting-stats-info-parent-div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 16px;
+  padding-top: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.batting-stats-info-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  padding-left: 20px;
+}
+
+#bat-stat-span-1 {
+  font-weight: 500;
+  font-size: 19px;
+}
+
+#bat-stat-span-2 {
+  font-weight: 400;
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+@media only screen and (max-width: 576px) {
+  .bat-main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 230px;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .battting-main-div {
+    display: grid;
+    grid-template-columns: 87vw;
+  }
+
+  #batting-format-heading {
+    background-color: #2980b9;
+    color: white;
+    padding: 4px;
+    margin-top: 0px;
+    font-size: 16px;
+  }
+
+  .battting-Test-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .battting-Odi-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .battting-T20-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .battting-Ipl-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .batting-stats-info-parent-div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #707070;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .batting-stats-info-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    padding-left: 14px;
+  }
+
+  #bat-stat-span-1 {
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  #bat-stat-span-2 {
+    font-weight: 400;
+    font-size: 8px;
+    padding-top: 3px;
+  }
+}

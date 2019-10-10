@@ -1,0 +1,264 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing PlayerInfo should render the component 1`] = `
+<div>
+  <Navbar />
+  <div
+    className="secNavParent"
+  >
+    <div
+      className="secNavHead"
+    >
+      <div
+        style={
+          Object {
+            "backgroundImage": "url(dhoni.jpg)",
+          }
+        }
+      />
+      <div>
+        <h2 />
+        <h4
+          style={
+            Object {
+              "textAlign": "left",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="secNavLinks"
+    >
+      <ul>
+        <Link
+          className="secLink"
+          onClick={[Function]}
+        >
+          <li>
+            Info
+          </li>
+        </Link>
+        <Link
+          className="secLink"
+          onClick={[Function]}
+        >
+          <li
+            className="not-active"
+          >
+            Batting Stats
+          </li>
+        </Link>
+        <Link
+          className="secLink"
+          onClick={[Function]}
+        >
+          <li>
+            Bowling Stats
+          </li>
+        </Link>
+        <Link
+          className="secLink"
+          to="/performance"
+        >
+          <li>
+            Performance
+          </li>
+        </Link>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="mainDiv"
+    style={
+      Object {
+        "padding": "16px",
+      }
+    }
+  >
+    <div
+      className="personalDetails"
+      style={
+        Object {
+          "color": "#272727",
+          "fontFamily": "Montserrat",
+        }
+      }
+    >
+      <p
+        style={
+          Object {
+            "borderBottom": "1.2px solid",
+            "borderBottomColor": "#ccc",
+            "fontSize": "20px",
+            "textAlign": "left",
+            "width": "200px",
+          }
+        }
+      >
+        Personal Details
+      </p>
+      <div
+        className="playerBasicinfo"
+      >
+        <span
+          style={
+            Object {
+              "fontSize": "14px",
+            }
+          }
+        >
+          Full Name
+        </span>
+        <b />
+        <div
+          style={
+            Object {
+              "marginTop": "16px",
+            }
+          }
+        >
+          <span>
+            Date Of Birth
+          </span>
+        </div>
+        <b />
+        <span>
+          Role
+        </span>
+        <b />
+        <span>
+          Batting Style
+        </span>
+        <b />
+        <span>
+          Bowling Style
+        </span>
+        <b />
+      </div>
+    </div>
+    <div
+      className="careerStats"
+      style={
+        Object {
+          "fontFamily": "Montserrat",
+        }
+      }
+    >
+      <p
+        id="career-stats-heading"
+        style={
+          Object {
+            "borderBottom": "1.2px solid",
+            "borderBottomColor": "#ccc",
+            "fontSize": "20px",
+            "textAlign": "left",
+            "width": "200px",
+          }
+        }
+      >
+        Career Statistics
+      </p>
+      <div>
+        <div
+          className="formatHeading"
+        >
+          <span>
+            Test
+          </span>
+        </div>
+        <div
+          className="pl-stats-details"
+          style={
+            Object {
+              "marginBottom": "15px",
+              "marginLeft": "15px",
+              "marginTop": "15px",
+              "textAlign": "left",
+            }
+          }
+        >
+          <p
+            style={
+              Object {
+                "color": "#707070",
+                "fontSize": "14px",
+                "fontWeight": 600,
+                "margin": "6px",
+              }
+            }
+          >
+            Debut
+          </p>
+          <b />
+        </div>
+        <div
+          className="formatHeading"
+        >
+          <span>
+            ODI
+          </span>
+        </div>
+        <div
+          className="pl-stats-details"
+          style={
+            Object {
+              "color": "#707070",
+              "marginBottom": "20px",
+              "marginLeft": "20px",
+              "marginTop": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          <p
+            style={
+              Object {
+                "color": "#707070",
+                "fontSize": "14px",
+                "fontWeight": 600,
+                "margin": "6px",
+              }
+            }
+          >
+            Debut
+          </p>
+          <b />
+        </div>
+        <div
+          className="formatHeading"
+        >
+          <span>
+            T20
+          </span>
+        </div>
+        <div
+          className="pl-stats-details"
+          style={
+            Object {
+              "marginBottom": "20px",
+              "marginLeft": "20px",
+              "marginTop": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          <p
+            style={
+              Object {
+                "color": "#707070",
+                "fontSize": "14px",
+                "fontWeight": 600,
+                "margin": "6px",
+              }
+            }
+          >
+            Debut
+          </p>
+          <b />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

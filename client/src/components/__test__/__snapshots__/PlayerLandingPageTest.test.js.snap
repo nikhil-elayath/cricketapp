@@ -10,16 +10,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
 >
   <Navbar />
   <h1
-    style={
-      Object {
-        "fontFamily": "'Montserrat'",
-        "fontSize": "42px",
-        "fontWeight": 500,
-        "marginLeft": "20px",
-        "marginTop": "1.5em",
-        "textAlign": "left",
-      }
-    }
+    id="playerHeading"
   >
     Players
   </h1>
@@ -78,7 +69,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
     className="playersDiv"
   >
     <div
-      className="playerType"
+      className="playerBatsman"
     >
       <h1
         style={
@@ -91,7 +82,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
       </h1>
     </div>
     <div
-      className="playerType"
+      className="playerBowler"
     >
       <h1
         style={
@@ -100,7 +91,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           }
         }
       >
-        Top wickets
+        Top Bowlers
       </h1>
     </div>
     <div
