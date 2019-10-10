@@ -3,6 +3,7 @@ import {
   CREATE_PLAYER,
   EDIT_PLAYER,
   DELETE_PLAYER
+  // GET_PLAYER_SEARCH
 } from "../actions/Types";
 
 const initialState = {
@@ -23,6 +24,11 @@ export default function(state = initialState, action) {
       return state;
     case DELETE_PLAYER:
       return state;
+    // case GET_PLAYER_SEARCH:
+    //   return {
+    //     ...state,
+    //     player: action.payload
+    //   };
     default:
       return state;
   }

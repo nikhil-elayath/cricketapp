@@ -3,6 +3,7 @@ import {
   CREATE_TEAM,
   EDIT_TEAM,
   DELETE_TEAM
+  // GET_TEAM_SEARCH
 } from "../actions/Types";
 
 const initialState = {
@@ -23,6 +24,11 @@ export default function(state = initialState, action) {
       return state;
     case DELETE_TEAM:
       return state;
+    // case GET_TEAM_SEARCH:
+    //   return {
+    //     ...state,
+    //     team: action.payload
+    //   };
     default:
       return state;
   }

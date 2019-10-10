@@ -6,10 +6,11 @@ import {
   EDIT_PLAYER,
   EDIT_TEAM,
   DELETE_PLAYER,
-  DELETE_TEAM
-} from "../Types";
+  DELETE_TEAM,
+  GET_PLAYER_SEARCH,
+  GET_TEAM_SEARCH
+} from "./Types";
 import axios from "axios";
-import { EDIT_PLAYER } from "./Types";
 
 // export const getPlayers = () => dispatch => {
 // 	return axios
@@ -29,7 +30,7 @@ import { EDIT_PLAYER } from "./Types";
 export const getPlayers = () => dispatch => {
   console.log(localStorage.getItem("token"));
   return axios
-    .get("http://localhost:5000/api/cricketalpha/allPlayer", {
+    .get("http://localhost:5000/apis/PlayerInfo/allPlayer", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
@@ -61,7 +62,7 @@ export const getPlayers = () => dispatch => {
 export const getTeams = () => dispatch => {
   console.log(localStorage.getItem("token"));
   return axios
-    .get("http://localhost:5000/api/cricketalpha/allteams", {
+    .get("http://localhost:5000/cricketalpha/teams", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
@@ -104,8 +105,8 @@ export const getTeams = () => dispatch => {
 //       });
 //   };
 export const createTeam = team => dispatch => {
-  axios
-    .post("http://localhost:5000/api/cricketalpha/team/new", team, {
+  return axios
+    .post("http://localhost:5000/apis/admin/team/new", team, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
@@ -122,8 +123,8 @@ export const createTeam = team => dispatch => {
 };
 
 export const createPlayer = player => dispatch => {
-  axios
-    .post("http://localhost:5000/api/cricketalpha/player/new", player, {
+  return axios
+    .post("http://localhost:5000/apis/admin/player/new", player, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
@@ -140,21 +141,20 @@ export const createPlayer = player => dispatch => {
 };
 
 export const editPlayer = player => dispatch => {
-  axios
+  return axios
     .put(
-      "http://localhost:5000/api/cricketalpha/player/update/" +
-        player.player_id,
+      "http://localhost:5000/apis/admin/editplayer/" + player.player_id,
+      player,
       {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-      },
-      player
+      }
     )
     .then(res => {
       dispatch({
         type: EDIT_PLAYER
       });
-      dispatch(getUsers());
-      alert("Updated Successfully");
+
+      alert("Edited Successfully");
     })
     .catch(err => {
       console.log(err);
@@ -162,20 +162,16 @@ export const editPlayer = player => dispatch => {
 };
 
 export const editTeam = team => dispatch => {
-  axios
-    .put(
-      "http://localhost:5000/api/cricketalpha/player/update/" + team.team_id,
-      {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
-      },
-      team
-    )
+  return axios
+    .put("http://localhost:5000/apis/admin/editteam/" + team.team_id, team, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    })
     .then(res => {
       dispatch({
         type: EDIT_TEAM
       });
-      dispatch(getUsers());
-      alert("Updated Successfully");
+      // dispatch(getUsers());
+      alert("Edited Successfully");
     })
     .catch(err => {
       console.log(err);
@@ -183,8 +179,8 @@ export const editTeam = team => dispatch => {
 };
 
 export const deletePlayer = player_id => dispatch => {
-  axios
-    .delete("http://localhost:5000/api/player/delete/" + player_id, {
+  return axios
+    .delete("http://localhost:5000/apis/admin/deleteplayer/" + player_id, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
@@ -200,16 +196,44 @@ export const deletePlayer = player_id => dispatch => {
 };
 
 export const deleteTeam = team_id => dispatch => {
-  axios
-    .delete("http://localhost:5000/api/player/delete/" + team_id, {
+  return axios
+    .delete("http://localhost:5000/apis/admin/deleteteam/" + team_id, {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
     })
     .then(res => {
       dispatch({
         type: DELETE_TEAM
       });
-      dispatch(getPlayers());
+      dispatch(getTeams());
       alert("Team Deleted Successfully");
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getPlayerSearch = searchString => dispatch => {
+  return axios
+    .get("http://localhost:5000/apis/admin/search/" + searchString)
+    .then(res => {
+      dispatch({
+        type: GET_PLAYER_SEARCH,
+        payload: res.data.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getTeamSearch = searchString => dispatch => {
+  return axios
+    .get("http://localhost:5000/apis/admin/searchteam/" + searchString)
+    .then(res => {
+      dispatch({
+        type: GET_TEAM_SEARCH,
+        payload: res.data.data
+      });
     })
     .catch(err => {
       console.log(err);

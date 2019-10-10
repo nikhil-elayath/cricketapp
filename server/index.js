@@ -8,6 +8,7 @@ const player = require("./routes/apis/PlayerInfo");
 const team = require("./routes/apis/Teams");
 const home = require("./routes/apis/home");
 const matches = require("./routes/apis/matches");
+const admin = require("./routes/apis/Admin");
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(
 );
 // app.use(db);
 app.use("/apis/PlayerInfo", player);
+app.use("/apis/admin", admin);
 
 app.use("/apis", home);
 app.use("/api/cricketalpha/user", user);

@@ -7,10 +7,22 @@ function PlayerValidation(players) {
       .max(50)
       .required(),
 
-    player_type: Joi.string()
+    player_country: Joi.string()
       .min(5)
       .max(50)
       .required(),
+
+    player_role: Joi.string()
+      .min(5)
+      .max(50)
+      .required(),
+
+    player_gender: Joi.string()
+      .min(2)
+      .max(50)
+      .required(),
+
+    player_dob: Joi.string().required(),
 
     batting_style: Joi.string()
       .min(5)
@@ -21,10 +33,6 @@ function PlayerValidation(players) {
       .min(5)
       .max(50)
       .required(),
-
-    player_dob: Joi.date()
-      .format("YYYY-MM-DD")
-      .options({ convert: false }),
 
     debut_odi_match: Joi.string()
       .min(5)

@@ -155,38 +155,46 @@ router.post("/verify_otp", async (req, res, next) => {
 //     });
 //   }
 // });
-
 router.post("/login", async (req, res, next) => {
   try {
-    const result = await db.any(
-      `select * from users where user_email='${req.body.user_email}'`
+    console.log(req.body.user_email);
+    const db_result = await db.any(
+      `select * from users where user_email = '${req.body.user_email}'`
     );
-    if (!result) {
-      return res.status(400).send({ message: "Account not found" });
-    }
-    if (bcrypt.compareSync(req.body.user_password, result[0].user_password)) {
-      var payload = {
-        user_id: result[0].user_id,
-        user_name: result[0].user_name,
-        isadmin: result[0].isadmin
+    if (db_result.length != 1)
+      throw {
+        statusCode: 404,
+        errorMessage: "Email or Password is invalid"
       };
-      global.returned_token = generateToken(payload);
 
-      res.status(200).json({
-        status: 200,
-        data: returned_token,
-        message: "Login Successfull!"
-      });
-    } else {
-      // loginattempt = loginaatempt + 1;
-      // if (loginattempt >= 5) {
-      //   resetpassword();
-      // }
-      res.status(404).json({
-        status: 404,
-        message: "Invalid Details"
-      });
-    }
+    let compare_result = await bcrypt.compare(
+      req.body.user_password,
+      db_result[0].user_password
+    );
+
+    if (!compare_result)
+      throw {
+        statusCode: 404,
+        errorMessage: "Email or Password is invalid"
+      };
+
+    let expiresIn = "2h";
+    if (db_result[0].isadmin == 1) expiresIn = "4h";
+    let userDetails = {
+      user_id: db_result[0].user_id,
+      user_email: db_result[0].user_email,
+      user_name: db_result[0].user_name,
+      isAdmin: db_result[0].isadmin
+    };
+    token = generateToken(userDetails, expiresIn);
+    console.log(token);
+
+    res.status(200).json({
+      status: 200,
+      successMessage: "Logged in successful",
+      token: token,
+      loggedInUser: userDetails
+    });
   } catch (error) {
     next(error);
   }

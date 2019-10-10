@@ -1,4 +1,4 @@
-import * as action from "../users";
+import * as action from "../Users";
 import {
   GET_USERS,
   CREATE_USERS,

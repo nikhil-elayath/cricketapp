@@ -1,0 +1,224 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+*::-webkit-scrollbar {
+  display: none;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+fieldset p {
+  margin: 0px;
+}
+
+fieldset h1 {
+  text-align: center;
+}
+
+.player-page {
+  z-index: 0;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  /* position: fixed; */
+}
+
+.players {
+  margin: 100px 50px 300px 100px;
+  /* border: 0.5px solid #707070; */
+  border-radius: 8px;
+  display: grid;
+  /* grid-template-rows: 10% 90%; */
+}
+
+.inner-heading {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.player-list {
+  background: white;
+  border: 0.5px solid #707070;
+  margin: 10px 0px 10px 0px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.player-name {
+  display: grid;
+  grid-template-columns: 50% 55%;
+  margin: 10px 0px 0px 10px;
+}
+
+.inner-button {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  margin: 0px 50px 0px 0px;
+}
+
+.choice {
+  z-index: 3;
+  padding: 15px;
+  border: 0.5px solid #707070;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #707070;
+  font-size: 13px;
+}
+
+#Adminform {
+  width: 450px;
+  margin: 100px 100px 30px auto;
+  /* text-align: center; */
+}
+
+#Adminform fieldset {
+  background: white;
+  border: 0.5px solid #707070;
+  border-radius: 8px;
+  padding: 50px 50px;
+}
+
+input,
+textarea {
+  padding: 15px;
+  border: 0.5px solid #707070;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #707070;
+  font-size: 13px;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #2980b9;
+  color: #2980b9;
+  font-weight: 500;
+}
+
+::placeholder {
+  color: #707070;
+}
+::placeholder:focus {
+  color: #2980b9;
+}
+span {
+  text-decoration-color: #2980b9;
+}
+.link {
+  text-decoration-color: #2980b9;
+}
+p {
+  color: #2980b9;
+}
+
+button {
+  width: 100%;
+  background: #2980b9;
+  font-weight: 500;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 15px;
+  border: 0px;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.6px;
+  font-size: 14px;
+  margin: 16px 0px;
+}
+
+button:hover {
+  box-shadow: 0px 4px 6px 0px #c2c2c2;
+}
+
+h1 {
+  font-size: 30px;
+  /* text-transform: uppercase; */
+  color: #2980b9;
+  margin-bottom: 30px;
+}
+
+.errorMessage {
+  font-size: 12px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.playing-style {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.playing-style div:first-child {
+  margin-right: 10px;
+}
+.playing-style div:last-child {
+  margin-left: 0px;
+}
+.react-datepicker__input-container {
+  margin-left: 100px;
+}
+
+/*  */
+
+@media (max-width: 1200px) {
+  #Adminform {
+    width: 35vw;
+    margin-right: 180px;
+    /* position: fixed; */
+  }
+  .player-page {
+    display: grid;
+    grid-template-columns: auto;
+  }
+}
+
+@media (max-width: 992px) {
+  #Adminform {
+    width: 50vw;
+  }
+  .player-page {
+    display: grid;
+    grid-template-rows: 35% 65%;
+  }
+}
+
+@media (max-width: 767px) {
+  #Adminform {
+    width: 50vw;
+  }
+  .player-page {
+    display: grid;
+    grid-template-rows: 60% 40%;
+  }
+}
+
+@media (max-width: 575px) {
+  #Adminform {
+    width: 70vw;
+  }
+  .player-page {
+    display: grid;
+    grid-template-rows: auto;
+  }
+}
+
+@media (max-width: 425px) {
+  #Adminform {
+    width: 90vw;
+  }
+  .player-page {
+    display: grid;
+    grid-template-rows: 60% 40%;
+  }
+}

@@ -12,13 +12,25 @@ fieldset h1 {
   text-align: center;
 }
 
-#msform {
-  width: 30vw;
+.choice {
+  padding: 15px;
+  border: 0.5px solid #707070;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: #707070;
+  font-size: 13px;
+}
+
+#AdminEditform {
+  width: 450px;
   margin: 100px auto 40px auto;
   /* text-align: center; */
 }
 
-#msform fieldset {
+#AdminEditform fieldset {
   background: white;
   border: 0.5px solid #707070;
   border-radius: 8px;
@@ -79,7 +91,8 @@ button {
   margin: 16px 0px;
 }
 
-button:hover {
+button,
+.cancel:hover {
   box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 
@@ -96,32 +109,68 @@ h1 {
   font-weight: 600;
 }
 
+.playing-style {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.playing-style div:first-child {
+  margin-right: 10px;
+}
+.playing-style div:last-child {
+  margin-left: 0px;
+}
+.react-datepicker__input-container {
+  margin-left: 100px;
+}
+
+.form-button {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.cancel {
+  width: 60%;
+  background: #2980b9;
+  font-weight: 500;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 15px;
+  border: 0px;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.6px;
+  font-size: 14px;
+  margin: 16px 0px;
+}
+/*  */
+
 @media (max-width: 1200px) {
-  #msform {
+  #AdminEditform {
     width: 35vw;
   }
 }
 
 @media (max-width: 992px) {
-  #msform {
+  #AdminEditform {
     width: 40vw;
   }
 }
 
 @media (max-width: 767px) {
-  #msform {
+  #AdminEditform {
     width: 50vw;
   }
 }
 
 @media (max-width: 575px) {
-  #msform {
+  #AdminEditform {
     width: 70vw;
   }
 }
 
 @media (max-width: 425px) {
-  #msform {
+  #AdminEditform {
     width: 90vw;
   }
 }

@@ -9,10 +9,18 @@ export const GET_PLAYERS = "GET_PLAYERS";
 export const GET_SINGLE_PLAYER = "GET_SINGLE_PLAYER";
 export const GET_ALL_BATSMAN = "GET_ALL_BATSMAN";
 export const GET_ALL_BOWLERS = "GET_ALL_BOWLERS";
+export const CREATE_PLAYER = "CREATE_PLAYER";
+export const EDIT_PLAYER = "EDIT_PLAYER";
+export const DELETE_PLAYER = "DELETE_PLAYER";
+export const GET_PLAYER_SEARCH = "GET_PLAYER_SEARCH";
 
 export const GET_TEAMS = "GET_TEAMS";
 export const GET_MATCHBYTEAMID = "GET_MATCHBYTEAMID";
 export const GET_RANKS = "GET_RANKS";
+export const CREATE_TEAM = "CREATE_TEAM";
+export const EDIT_TEAM = "EDIT_TEAM";
+export const DELETE_TEAM = "DELETE_TEAM";
+export const GET_TEAM_SEARCH = "GET_TEAM_SEARCH";
 
 export const GET_NEWS = "GET_NEWS";
 

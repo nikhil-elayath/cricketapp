@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { login, getUsers } from "../actions/users";
+import { login, getUsers } from "../actions/Users";
 import { connect } from "react-redux";
 import Navbar from "./common/Navbar";
 
@@ -116,7 +116,7 @@ export class Login extends Component {
                 </span>
               </Link>
             </p>
-
+            {/* // {this.props.user?<p></p>:null */}
             <button onChange={this.onChange} onClick={this.onLogin}>
               Login
             </button>
