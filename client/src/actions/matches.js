@@ -72,16 +72,14 @@ export const getMatchScorecardDetailbyId = (id) => dispatch => {
         });
 };
 export const getManhattanGraphbyId = (id) => dispatch => {
-    console.log("here outside", id)
     return axios
         .get(url2 + "/runsperover/" + id, {
         })
         .then(res => {
             dispatch({
                 type: GET_MANHATTAN_GRAPH_BY_ID,
-                payload: res.data
+                payload: { manhattan: res.data }
             });
-            console.log("coming out");
             console.log(res.data);
         })
         .catch(err => {
@@ -90,14 +88,14 @@ export const getManhattanGraphbyId = (id) => dispatch => {
 };
 export const getPieChartOnebyId = (id) => dispatch => {
     return axios
-        .get(url + "/stats/" + id, {
+        .get(url2 + "/playerruns/" + id, {
         })
         .then(res => {
             dispatch({
                 type: GET_PIECHART_ONE_GRAPH_BY_ID,
-                payload: res.data.data
+                payload: { piechartOne: res.data }
             });
-            console.log(res.data.data);
+            console.log(res.data);
         })
         .catch(err => {
             console.log(err);
@@ -105,12 +103,12 @@ export const getPieChartOnebyId = (id) => dispatch => {
 };
 export const getPieChartTwobyId = (id) => dispatch => {
     return axios
-        .get(url + "/stats/" + id, {
+        .get(url2 + "/bowlerwickets/" + id, {
         })
         .then(res => {
             dispatch({
                 type: GET_PIECHART_TWO_GRAPH_BY_ID,
-                payload: res.data.data
+                payload: { piechartTwo: res.data }
             });
             console.log(res.data);
         })

@@ -65,7 +65,6 @@ export class MatchScoreDetails extends Component {
                                     <div>Bowler</div>
                                     <div></div>
                                     <div>O</div>
-                                    <div>M</div>
                                     <div>R</div>
                                     <div>W</div>
                                     <div>Extra</div>
@@ -77,7 +76,6 @@ export class MatchScoreDetails extends Component {
                                             <div>{bowler.bowler_name}</div>
                                             <div></div>
                                             <div>{bowler.total_over}</div>
-                                            <div>{bowler.maiden_over}</div>
                                             <div>{bowler.given_runs}</div>
                                             {/* {<div>{bowler.wicket_taken === null && bowler.wicket_taken === ""}</div> ? (<div> 0</div>) : (<div>{bowler.wicket_taken}</div>)} */}
                                             <div>{bowler.wicket_taken}</div>
