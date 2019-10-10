@@ -83,14 +83,15 @@ create table match
     (
         player_id serial,
         player_name varchar(255),
-        player_type varchar(255),
+        player_gender varchar(100),
         batting_style varchar(255),
         bowling_style varchar(255),
         player_dob date,
         player_role varchar(255),
         debut_odi_match varchar(255),
         debut_test_match varchar(255),
-        debut_t20_match varchar(255)
+        debut_t20_match varchar(255),
+        player_country varchar(255)
     );
 
     create table player_stats
@@ -98,7 +99,7 @@ create table match
         player_stats_id serial,
         player_id int,
         player_stats_name varchar(100),
-        player_stats_value int,
+        player_stats_value varchar(100),
         match_type varchar(30),
         competition varchar(255)
     );

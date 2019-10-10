@@ -1,3 +1,4 @@
+const pg = require("pg-promise")();
 const config = require("config");
 const express = require("express");
 const cors = require("cors");
@@ -12,10 +13,7 @@ const admin = require("./routes/apis/Admin");
 
 const app = express();
 
-const cricketPostgresURL = config.get("postgresURL");
-
 app.use(cors());
-
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -32,7 +30,9 @@ app.use("/apis/PlayerInfo", player);
 app.use("/cricketalpha", team);
 app.use("/api/matches", matches);
 
-app.use(error);
+app.use((err, req, res, next) => {
+  next(error);
+});
 
 const port = process.env.port || 5000;
 if (process.env.NODE_ENV !== "test")

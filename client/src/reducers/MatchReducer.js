@@ -1,16 +1,18 @@
 import {
 	GET_RECENT_MATCHES,
 	GET_MATCHES_DATE,
-	GET_MATCH_DETAILS_BY_ID
+	GET_MATCH_DETAILS_BY_ID,
+	GET_MATCH_SCORECARD_DETAILS_BY_ID
 } from "../actions/Types";
 
 const initialstate = {
 	matches: [],
 	match_date: [],
-	match: []
+	match: [],
+	match_score: []
 };
 
-export default function(state = initialstate, action) {
+export default function (state = initialstate, action) {
 	switch (action.type) {
 		case GET_RECENT_MATCHES:
 			return { ...state, matches: action.payload };
@@ -18,6 +20,8 @@ export default function(state = initialstate, action) {
 			return { ...state, match_date: action.payload };
 		case GET_MATCH_DETAILS_BY_ID:
 			return { ...state, match: action.payload };
+		case GET_MATCH_SCORECARD_DETAILS_BY_ID:
+			return { ...state, match_score: action.payload };
 		default:
 			return state;
 	}

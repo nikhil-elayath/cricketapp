@@ -1,4 +1,4 @@
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID } from './Types'
+import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID, GET_MATCH_SCORECARD_DETAILS_BY_ID } from './Types'
 import axios from "axios";
 
 const url = 'http://localhost:5000/api/matches';
@@ -42,6 +42,21 @@ export const getmatchdetailbyId = (id) => dispatch => {
         .then(res => {
             dispatch({
                 type: GET_MATCH_DETAILS_BY_ID,
+                payload: res.data.data
+            });
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+export const getMatchScorecardDetailbyId = (id) => dispatch => {
+    return axios
+        .get(url + "/scorecard/" + id, {
+        })
+        .then(res => {
+            dispatch({
+                type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
                 payload: res.data.data
             });
             console.log(res.data);

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./css/MatchLandingPage.css"
 import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Navbar from '../components/common/Navbar'
-import { getRecentMatches, getMatchesDate } from '../actions/matches'
+import { getRecentMatches, getMatchesDate } from '../actions/Matches'
 import { Menu, list, selected, ArrowLeft, ArrowRight } from './Scroll'
 
 export class MatchLandingPage extends Component {
@@ -71,10 +71,11 @@ export class MatchLandingPage extends Component {
                                     this.props.history.push("/matches/summary/" + match.match_id, {
                                         match
                                     });
+
                                 }}>
                                     <span className="tournamnet-name">{match.match_type}</span>
                                     <div className="Team-data">
-                                        <div className="TeamOne-name">{match.teamtwo}</div>
+                                        <div className="TeamOne-name">{match.teamTwo}</div>
                                         <div className="TeamOne-score">{match.teamOneScore}/{match.teamone_wicket}  (50 overs)</div>
                                     </div>
                                     <div className="Team-data">
