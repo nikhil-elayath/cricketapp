@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
 import default_user_img from "../images/defaultuserimg.jpg";
+import { request } from "https";
 
 export default class MatchSecondaryNavbar extends Component {
 	render() {
@@ -50,15 +51,30 @@ export default class MatchSecondaryNavbar extends Component {
 					</div>
 					<div className="secNavLinks">
 						<ul>
-							<Link className="secLink" to="/matches/summary/"  >
+							<span className="secLink" onClick={() => {
+
+								this.props.changeDetailsType("summary")
+
+							}
+							}  >
 								<li>Summary</li>
-							</Link>
-							<Link className="secLink" to="/matches/scoreboard">
+							</span>
+							<span className="secLink" onClick={() => {
+
+								this.props.changeDetailsType("scorecard")
+
+							}
+							} >
 								<li>ScoreBoard</li>
-							</Link>
-							<Link className="secLink" to="/matches/statistics">
+							</span>
+							<span className="secLink" onClick={() => {
+
+								this.props.changeDetailsType("stats")
+
+							}
+							} >
 								<li>Statistics</li>
-							</Link>
+							</span>
 						</ul>
 					</div>
 				</div>

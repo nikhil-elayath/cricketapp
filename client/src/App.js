@@ -12,6 +12,8 @@ import Home from "./components/Home";
 import MatchLandingPage from "./components/MatchLandingPage";
 import MatchSummaryDetails from './components/MatchSummaryDetails';
 import MatchScoreDetails from './components/MatchScoreDetails';
+import MatchStatsDetails from './components/MatchStatsDetails';
+import MatchDetails from './components/MatchDetails';
 
 function App() {
 	return (
@@ -27,6 +29,11 @@ function App() {
 			></Route>
 			<Route
 				exact
+				path="/match/details/:id"
+				component={MatchDetails}
+			></Route>
+			<Route
+				exact
 				path="/matches/summary/:id"
 				component={MatchSummaryDetails}
 			></Route>
@@ -34,6 +41,11 @@ function App() {
 				exact
 				path="/matches/scorecard/:id"
 				component={MatchScoreDetails}
+			></Route>
+			<Route
+				exact
+				path="/matches/stats/:id"
+				component={MatchStatsDetails}
 			></Route>
 			<Route exact path="/matches" component={MatchLandingPage}></Route>
 			<Route exact path="/teams" component={TeamLandingPage}></Route>

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import "../components/css/MatchScoreDetails.css"
 
+
 export class MatchScoreDetails extends Component {
 
     componentDidMount() {
@@ -41,7 +42,7 @@ export class MatchScoreDetails extends Component {
                                     {match.batsman.map(batsman =>
                                         <div className="batsman-heading" style={{ padding: "5px" }}>
                                             <div>{batsman.striker_name}</div>
-                                            <div>{batsman.wicket_type} {batsman.fielder_name} Bowler {batsman.bowler_name}</div>
+                                            <div>{batsman.wicket_type} {batsman.fielder_name} {batsman.bowler_name}</div>
                                             <div>{batsman.batsman_run}</div>
                                             <div>{batsman.ball_faced}</div>
                                             <div>{batsman.fours}</div>

@@ -8,10 +8,17 @@ import { Menu, list, selected, ArrowLeft, ArrowRight } from './Scroll'
 import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 
 export class MatchLandingPage extends Component {
-
-    constructor(props) {
-        super(props);
-        this.menuItems = Menu(list, selected);
+    state = {
+        selected: false,
+        list: []
+    };
+    componentWillReceiveProps(nextProps) {
+        const list = nextProps.date.map(date => {
+            return {match_date : date.match_date}
+        });
+        console.log(list)
+        this.setState({ menuItems: Menu(list, selected) });
+        this.setState({ list })
     }
     componentDidMount() {
         function yyyymmdd() {
@@ -29,19 +36,19 @@ export class MatchLandingPage extends Component {
         this.props.getMatchesDate();
 
     }
-    state = {
-        selected
-    };
+
 
     onSelect = key => {
         this.setState({ selected: key });
         this.props.getRecentMatches(key);
     }
     render() {
-
+        console.log(this.state)
         const { selected } = this.state;
         // Create menu from items
-        const menu = this.menuItems;
+        const menu = this.state.menuItems;
+
+
 
         return (
             <div>
@@ -71,15 +78,11 @@ export class MatchLandingPage extends Component {
                             {console.log("props matches", this.props.matches)}
                             {this.props.matches.map(match => (
                                 <div className="inside-recent-matches-box" onClick={() => {
-                                    {
-                                        this.props.history.push("/matches/summary/" + match.match_id, {
-                                            match
-                                        });
 
-                                    }
-                                    {
-                                        this.props.history.push(MatchSecondaryNavbar, match.match_id);
-                                    }
+                                    this.props.history.push("/match/details/" + match.match_id, {
+                                        match
+                                    });
+
                                 }
                                 }>
                                     <span className="tournamnet-name">{match.match_type}</span>

@@ -36,6 +36,8 @@ export const getMatchesDate = () => dispatch => {
 };
 
 export const getmatchdetailbyId = (id) => dispatch => {
+    console.log(id)
+
     return axios
         .get(url + "/summary/" + id, {
         })

@@ -4,22 +4,20 @@ import React, { Component } from 'react'
 // import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import { getmatchdetailbyId, getRecentMatches } from '../actions/Matches'
 import { connect } from "react-redux";
-import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import "./css/MatchSummaryDetails.css"
 
 export class MatchSummaryDetails extends Component {
 
     componentDidMount() {
-        this.props.getmatchdetailbyId(this.props.location.state.match.match_id);
+        this.props.getmatchdetailbyId(this.props.match_id);
         // this.props.getmatchdetailbyId(1);
     }
 
     render() {
-        console.log(this.props)
+        console.log("Match Summary", this.props)
         return (
             < div >
                 <div>
-                    <MatchSecondaryNavbar match={this.props.history.location.state.match} />
                     {/* <MatchSecondaryNavbar /> */}
                 </div>
                 {/* <Navbar history={this.props.history.location.state.match} />
@@ -74,7 +72,7 @@ export class MatchSummaryDetails extends Component {
 
 
                 <div style={{ marginTop: 200 + "px" }}>
-                    {this.props.match.map(match => (
+                    {this.props.match ? this.props.match.map(match => (
                         <div className="top-container" style={{ height: "700px" }}>
                             <div className="top-left-container">
 
@@ -159,7 +157,7 @@ export class MatchSummaryDetails extends Component {
                                 </div>
                             </div>
 
-                        </div>))}
+                        </div>)) : null}
                 </div>
 
 

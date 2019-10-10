@@ -31,10 +31,11 @@ export const MenuItem = ({ text, selected }) => {
 
 export const Menu = (list, selected) =>
     list.map(el => {
-        const { date } = el;
+        const date = el.match_date;
 
         return <MenuItem text={date} key={date} selected={selected} />;
     });
+
 
 
 export const Arrow = ({ text, className }) => {
