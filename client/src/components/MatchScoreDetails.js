@@ -1,22 +1,17 @@
 import React, { Component } from 'react'
 import { getMatchScorecardDetailbyId } from '../actions/Matches'
 import { connect } from "react-redux";
-import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 import "../components/css/MatchScoreDetails.css"
 
 
 export class MatchScoreDetails extends Component {
 
     componentDidMount() {
-        this.props.getMatchScorecardDetailbyId(1);
+        this.props.getMatchScorecardDetailbyId(this.props.match_id);
     }
     render() {
         return (
             <div>
-                <div>
-                    {/* <MatchSecondaryNavbar /> */}
-                </div>
-
                 <div style={{ marginTop: 210 + "px" }} >
                     {this.props.match_score.map(match => (
 

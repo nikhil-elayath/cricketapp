@@ -10,7 +10,6 @@ export class MatchSummaryDetails extends Component {
 
     componentDidMount() {
         this.props.getmatchdetailbyId(this.props.match_id);
-        // this.props.getmatchdetailbyId(1);
     }
 
     render() {

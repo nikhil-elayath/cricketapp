@@ -16,7 +16,10 @@ export default class MatchDetails extends Component {
             <div>
                 <MatchSecondaryNavbar changeDetailsType={this.changeDetailsType} match={this.props.history.location.state.match} />
                 {
-                    this.state.detailsType === "stats" ? <MatchStatsDetails match_id={this.props.history.location.state.match.match_id} /> : this.state.detailsType === "scorecard" ? <MatchScoreDetails match_id={this.props.history.location.state.match.match_id} /> : <MatchSummaryDetails match_id={this.props.history.location.state.match.match_id} />
+                    this.state.detailsType === "stats" ? <MatchStatsDetails match_id={this.props.history.location.state.match.match_id} /> 
+                    : this.state.detailsType === "scorecard" ? 
+                    <MatchScoreDetails match_id={this.props.history.location.state.match.match_id} /> : 
+                    <MatchSummaryDetails match_id={this.props.history.location.state.match.match_id} />
                 }
             </div>
         )

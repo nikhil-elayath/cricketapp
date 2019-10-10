@@ -1,7 +1,11 @@
-import { GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID, GET_MATCH_SCORECARD_DETAILS_BY_ID } from './Types'
+import {
+    GET_RECENT_MATCHES, GET_MATCHES_DATE, GET_MATCH_DETAILS_BY_ID, GET_MATCH_SCORECARD_DETAILS_BY_ID,
+    GET_MANHATTAN_GRAPH_BY_ID, GET_PIECHART_ONE_GRAPH_BY_ID, GET_PIECHART_TWO_GRAPH_BY_ID
+} from './Types'
 import axios from "axios";
 
 const url = 'http://localhost:5000/api/matches';
+const url2 = 'http://127.0.0.1:5000';
 
 export const getRecentMatches = (date) => dispatch => {
     return axios
@@ -59,6 +63,53 @@ export const getMatchScorecardDetailbyId = (id) => dispatch => {
         .then(res => {
             dispatch({
                 type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
+                payload: res.data.data
+            });
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+export const getManhattanGraphbyId = (id) => dispatch => {
+    console.log("here outside", id)
+    return axios
+        .get(url2 + "/runsperover/" + id, {
+        })
+        .then(res => {
+            dispatch({
+                type: GET_MANHATTAN_GRAPH_BY_ID,
+                payload: res.data
+            });
+            console.log("coming out");
+            console.log(res.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+export const getPieChartOnebyId = (id) => dispatch => {
+    return axios
+        .get(url + "/stats/" + id, {
+        })
+        .then(res => {
+            dispatch({
+                type: GET_PIECHART_ONE_GRAPH_BY_ID,
+                payload: res.data.data
+            });
+            console.log(res.data.data);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+export const getPieChartTwobyId = (id) => dispatch => {
+    return axios
+        .get(url + "/stats/" + id, {
+        })
+        .then(res => {
+            dispatch({
+                type: GET_PIECHART_TWO_GRAPH_BY_ID,
                 payload: res.data.data
             });
             console.log(res.data);
