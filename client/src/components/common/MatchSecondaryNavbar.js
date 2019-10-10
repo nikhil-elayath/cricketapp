@@ -3,14 +3,12 @@ import "../css/MatchSecondaryNavbar.css";
 // import dhoni from "../images/dhoni.jpg";
 import Navbar from './Navbar'
 import { Link } from "react-router-dom";
-import { } from '../../actions/Matches'
-import { connect } from "react-redux";
 // import './css/SecondaryNavbar.css'
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
 import default_user_img from "../images/defaultuserimg.jpg";
 
-export class MatchSecondaryNavbar extends Component {
+export default class MatchSecondaryNavbar extends Component {
 	render() {
 		console.log(this.props)
 		return (
@@ -68,14 +66,3 @@ export class MatchSecondaryNavbar extends Component {
 		);
 	}
 }
-
-
-
-const mapStateToProps = state => ({
-	match: state.matchreducer.match
-});
-
-export default connect(
-	mapStateToProps,
-	{}
-)(MatchSecondaryNavbar);

@@ -265,43 +265,72 @@ router.get('/scorecard/:id', async (req, res, next) => {
 
             //Batsman_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type, bowler_name(out by whom),fielder_name, fielder_two_name
 
-            const all_batsman = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (with sss as(with ss as (with s as 
-            (select striker as striker1 , sum(batsman_run) as batsman_run from delivery where match_id=${id} and inning=${inning.inning} group by striker1),
-           ps as(select striker , count(batsman_run) as ball_faced from delivery where match_id=${id} and inning=${inning.inning} and striker
-           in(select striker1 from s)group by striker)
-           select striker, batsman_run, ball_faced from ps inner join s on s.striker1=ps.striker),
-           pss as (select striker as striker1 , count(batsman_run) as fours from delivery where match_id=${id} and inning=${inning.inning} and batsman_run = 4 and striker
-           in (select striker from ss)group by striker1)
-           select striker, batsman_run, ball_faced, fours from pss full outer join ss on ss.striker=pss.striker1),
-           psss as (select striker as striker1 , count(batsman_run) as sixes from delivery where match_id=${id} and inning=${inning.inning} and batsman_run = 6 and striker
-           in (select striker from sss)group by striker1)
-           select striker, batsman_run, ball_faced, fours, sixes, round(cast(((cast (batsman_run  as float)/ball_faced)*100) as numeric),2) as striker_rate from psss 
-           full outer join sss on sss.striker=psss.striker1),
-           pssss as(select striker as striker1, wicket_id, bowler from delivery where match_id=${id} and inning=${inning.inning} and wicket_id>0 and striker
-           in(select striker from ssss))
-           select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_id,bowler from pssss
-           full outer join ssss on ssss.striker=pssss.striker1),
-           b as(select wicket_id, wicket_type, fielder_one, fielder_two from wickets where wicket_id
-           in(select wicket_id from a))
-           select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from b
-           full outer join a on a.wicket_id=b.wicket_id),
-           bb as( select player_name as striker_name,player_id from player where player_id
-           in(select striker from aa))
-           select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from bb
-           full outer join aa on aa.striker=bb.player_id),
-           bbb as (select player_name as fielder_name,player_id from player where player_id
-           in(select fielder_one from aaa))
-           select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two from bbb
-           full outer join aaa on aaa.fielder_one=bbb.player_id),
-           bbbb as (select player_name as fielder_two_name,player_id from player where player_id
-           in(select fielder_two from aaaa))
-           select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two_name from bbbb
-           full outer join aaaa on aaaa.fielder_two=bbbb.player_id),
-           d as(select player_name as bowler_name ,player_id from player where player_id
-           in(select bowler from b))
-           select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
-           full outer join b on b.bowler=d.player_id
+            const all_batsman = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (select striker,(sum(cast(batsman_run as int))) as batsman_run,
+            (count(overs)) as ball_faced, round(cast((sum(cast(batsman_run as float))/(count(overs))*100) as numeric),2) as striker_rate ,
+            sum(cast(batsman_run=4 as int)) as fours, sum(cast(batsman_run=6 as int))as sixes
+            from delivery d inner join player p on d.striker=p.player_id where match_id=${id} and inning=${inning.inning}  
+            group by striker),pssss as(select striker as striker1, wicket_id, bowler from delivery where match_id=${id} and inning=${inning.inning} and wicket_id>0 and striker
+            in(select striker from ssss))
+            select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_id,bowler from pssss
+            full outer join ssss on ssss.striker=pssss.striker1),
+            b as(select wicket_id, wicket_type, fielder_one, fielder_two from wickets where wicket_id
+            in(select wicket_id from a))
+            select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from b
+            full outer join a on a.wicket_id=b.wicket_id),
+            bb as( select player_name as striker_name,player_id from player where player_id
+            in(select striker from aa))
+            select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from bb
+            full outer join aa on aa.striker=bb.player_id),
+            bbb as (select player_name as fielder_name,player_id from player where player_id
+            in(select fielder_one from aaa))
+            select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two from bbb
+            full outer join aaa on aaa.fielder_one=bbb.player_id),
+            bbbb as (select player_name as fielder_two_name,player_id from player where player_id
+            in(select fielder_two from aaaa))
+            select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two_name from bbbb
+            full outer join aaaa on aaaa.fielder_two=bbbb.player_id),
+            d as(select player_name as bowler_name ,player_id from player where player_id
+            in(select bowler from b))
+            select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
+            full outer join b on b.bowler=d.player_id
            `);
+        //     const all_batsman = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (with sss as(with ss as (with s as 
+        //     (select striker as striker1 , sum(batsman_run) as batsman_run from delivery where match_id=${id} and inning=${inning.inning} group by striker1),
+        //    ps as(select striker , count(batsman_run) as ball_faced from delivery where match_id=${id} and inning=${inning.inning} and striker
+        //    in(select striker1 from s)group by striker)
+        //    select striker, batsman_run, ball_faced from ps inner join s on s.striker1=ps.striker),
+        //    pss as (select striker as striker1 , count(batsman_run) as fours from delivery where match_id=${id} and inning=${inning.inning} and batsman_run = 4 and striker
+        //    in (select striker from ss)group by striker1)
+        //    select striker, batsman_run, ball_faced, fours from pss full outer join ss on ss.striker=pss.striker1),
+        //    psss as (select striker as striker1 , count(batsman_run) as sixes from delivery where match_id=${id} and inning=${inning.inning} and batsman_run = 6 and striker
+        //    in (select striker from sss)group by striker1)
+        //    select striker, batsman_run, ball_faced, fours, sixes, round(cast(((cast (batsman_run  as float)/ball_faced)*100) as numeric),2) as striker_rate from psss 
+        //    full outer join sss on sss.striker=psss.striker1),
+        //    pssss as(select striker as striker1, wicket_id, bowler from delivery where match_id=${id} and inning=${inning.inning} and wicket_id>0 and striker
+        //    in(select striker from ssss))
+        //    select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_id,bowler from pssss
+        //    full outer join ssss on ssss.striker=pssss.striker1),
+        //    b as(select wicket_id, wicket_type, fielder_one, fielder_two from wickets where wicket_id
+        //    in(select wicket_id from a))
+        //    select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from b
+        //    full outer join a on a.wicket_id=b.wicket_id),
+        //    bb as( select player_name as striker_name,player_id from player where player_id
+        //    in(select striker from aa))
+        //    select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_one, fielder_two from bb
+        //    full outer join aa on aa.striker=bb.player_id),
+        //    bbb as (select player_name as fielder_name,player_id from player where player_id
+        //    in(select fielder_one from aaa))
+        //    select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two from bbb
+        //    full outer join aaa on aaa.fielder_one=bbb.player_id),
+        //    bbbb as (select player_name as fielder_two_name,player_id from player where player_id
+        //    in(select fielder_two from aaaa))
+        //    select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler, fielder_name, fielder_two_name from bbbb
+        //    full outer join aaaa on aaaa.fielder_two=bbbb.player_id),
+        //    d as(select player_name as bowler_name ,player_id from player where player_id
+        //    in(select bowler from b))
+        //    select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
+        //    full outer join b on b.bowler=d.player_id
+        //    `);
 
             //total extra in delivery
             const extra_total = await db.any(`select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0`)

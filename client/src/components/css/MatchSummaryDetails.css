@@ -13,15 +13,14 @@ body{
     grid-template-areas: "summary matchdetails"
                         "playingXI matchdetails";
     grid-gap: 10px;
-    justify-content: space-between;
-    border: 1px solid #272727;
+    justify-content: space-between; 
     height: auto;
     padding: 20px;
 }
 
 .top-container .top-left-container{
     display: grid;
-    grid-template-rows: 10% 15% 30% 15% 30%;
+    grid-template-rows: 10% 15% 25% 15% 25%;
     border: 1px solid #272727;
 }
 
@@ -43,21 +42,22 @@ body{
 .bottom-left-container .playingXI{
     display: grid;
     grid-template-columns: 50% 50%; 
-    grid-template-rows: 10% 80%; 
+    grid-template-rows: 12% 80%; 
     grid-gap: 5px;
 }
 .match_details{
     grid-area: matchdetails;
     height: fit-content;
-}
+    }
 
+    
 .top-title{
-    border: 1px solid #272727;
     font-weight: 500;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #2980B9;
     color: white;
+    padding: 5px;
 }
 
 /* 
