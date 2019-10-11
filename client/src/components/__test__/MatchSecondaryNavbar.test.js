@@ -29,4 +29,14 @@ describe("[MatchSecondaryNavbar] test for the text,css properties", () => {
 				.text()
 		).toBe("Statistics");
 	});
+
+	it("should have one h2 header", () => {
+		expect(wrapper.find("h2").length).toBe(1);
+	});
+	it("should have one div tag with 'Player of the match", () => {
+		expect(wrapper.find(".short-summary-with-player-of-the-match span").text()).toBe("Player of the match");
+	});
+	it("should have one h2 content with 'Recent Matches' content", () => {
+		expect(wrapper.find(".h2-recent-matches").text()).toBe("MS Dhoni");
+	});
 });

@@ -94,11 +94,14 @@ router.get('/bydate', async (req, res, next) => {
         // var dates = new Array();
 
         // for (onedate of result) {
-        //     var date = new Date(onedate.match_date);
+        //     var date = new Date(onedate.match_date)
+        //     console.log(date);
+        //     // var date = new Date(onedate.match_date);
         //     let format_date = onedate.match_date = date.toLocaleDateString("en-IN", {
+        //         year: "2-digit",
         //         day: "2-digit",
         //         month: "2-digit",
-        //         year: "3-digit"
+
         //     });
         //     dates.push({ match_date: format_date })
 
