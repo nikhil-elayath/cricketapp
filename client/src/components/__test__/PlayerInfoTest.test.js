@@ -14,8 +14,8 @@ const wrapper = shallow(
 );
 
 describe("Testing PlayerInfo", () => {
-  it("should have 18 div", () => {
-    expect(wrapper.find("div").length).toBe(18);
+  it("should render the component", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
   it("should have 8 span elements", () => {

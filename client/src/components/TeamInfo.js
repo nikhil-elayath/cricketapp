@@ -3,141 +3,205 @@ import { connect } from "react-redux";
 import "./css/TeamInfo.css";
 import "./css/TeamLandingPage.css";
 import logo from "./images/dhoni.jpg";
-import Navbar from "../components/common/Navbar";
-import { getMatch } from "../actions/Teams";
+// import Navbar from "../components/common/Navbar";
+import { getMatch, getTeamBatsmen, getTeamBowlers } from "../actions/Teams";
 import "./css/SecondaryNavbar.css";
-import teamlogo from "./images/indialogo.jpg";
-import { Link } from "react-router-dom";
+import Loader from "react-loader-spinner";
 
 export class TeamInfo extends Component {
   state = {
-    team_id: this.props.match.params.team_id,
-    team_name: this.props.location.state.teams.team_name
+    testClick: true,
+    odiClick: false,
+    t20Click: false
   };
   componentDidMount() {
-    console.log(this.props.location.state);
-    this.props.getMatch(this.state.team_id);
+    console.log("team name is ", this.props.teams.team_name);
+    this.props.getMatch(this.props.teams.team_id);
+    let type = {
+      match_type: "Test",
+      player_country: this.props.teams.team_name
+    };
+    this.props.getTeamBatsmen(type);
+    this.props.getTeamBowlers(type);
+    console.log("batsman is", this.props.getTeamBatsmen(type));
   }
+
+  onClickTest = e => {
+    e.preventDefault();
+    this.setState({ testClick: true, odiClick: false, t20Click: false });
+    let type = {
+      match_type: "Test",
+      player_country: this.props.teams.team_name
+    };
+    this.props.getTeamBatsmen(type);
+    this.props.getTeamBowlers(type);
+  };
+
+  onClickT20 = e => {
+    e.preventDefault();
+    this.setState({ testClick: false, odiClick: false, t20Click: true });
+    let type = {
+      match_type: "T20",
+      player_country: this.props.teams.team_name
+    };
+    this.props.getTeamBatsmen(type);
+    this.props.getTeamBowlers(type);
+  };
+
+  onClickOdi = e => {
+    e.preventDefault();
+    this.setState({ testClick: false, odiClick: true, t20Click: false });
+    let type = {
+      match_type: "ODI",
+      player_country: this.props.teams.team_name
+    };
+    this.props.getTeamBatsmen(type);
+    this.props.getTeamBowlers(type);
+  };
+
   render() {
+    console.log("teaminfo props is ", this.props.teams.team_id);
     return (
       <div>
-        <Navbar />
-        <div className="secNavParent">
-          <div className="secNavHead">
-            <div
-              style={{
-                backgroundImage: `url(${teamlogo})`
-              }}
-            ></div>
-            <div>
-              <h2>{this.state.team_name}</h2>
-            </div>
-          </div>
-          <div className="secNavLinks">
-            <ul>
-              <Link className="secLink" to="/teaminfo">
-                <li>Info</li>
-              </Link>
-              <Link className="secLink" to="/battingStats">
-                <li>Players</li>
-              </Link>
-              <Link className="secLink" to="/bowlingStats">
-                <li>Stats</li>
-              </Link>
-              <Link className="secLink" to="/performance">
-                <li>Fixtures</li>
-              </Link>
-            </ul>
-          </div>
-        </div>
-
         <div className="container-team-details">
           <p className="p-matches">Recent Matches</p>
-          <div className="all-recent-matches-box">
-            {this.props.matches.map(matches => (
-              <div className="inside-recent-matches-box">
-                <span className="tournamnet-name">{matches.matchType}</span>
-                <div className="Team-data">
-                  <div className="TeamOne-name">{matches.teamOne}</div>
-                  <div className="TeamOne-score">
-                    {matches.teamOneScore}/{matches.teamOneWicket}
+          <div className="matches-section">
+            {/* {this.props.isLoading ? (
+              <Loader type="ThreeDots" color="blue" height={80} width={80} />
+            ) : ( */}
+            <div className="all-recent-matches-box-team">
+              {this.props.matches.map(matches => (
+                <div className="inside-recent-matches-box-team">
+                  <span className="tournamnet-name">{matches.matchType}</span>
+                  <div className="Team-data">
+                    <div className="TeamOne-name">{matches.teamOne}</div>
+                    <div className="TeamOne-score">
+                      {matches.teamOneScore}/{matches.teamOneWicket}
+                    </div>
                   </div>
-                </div>
-                <div className="Team-data">
-                  <div className="TeamTwo-name">{matches.teamTwo}</div>
-                  <div className="TeamTwo-score">
-                    {matches.teamTwoScore}/{matches.teamTwoWicket}
+                  <div className="Team-data">
+                    <div className="TeamTwo-name">{matches.teamTwo}</div>
+                    <div className="TeamTwo-score">
+                      {matches.teamTwoScore}/{matches.teamTwoWicket}
+                    </div>
                   </div>
+                  <span className="winner-name">{matches.teamWinner} WON</span>
                 </div>
-                <span className="winner-name">{matches.teamWinner} WON</span>
-              </div>
-            ))}
-          </div>
-          <hr />
-          {/* ------------------------------------------------------------------- */}
-          <div className="centered">
-            <div className="cards-new">
-              <div className="cardtest">
-                <p className="p-card">Test</p>
-              </div>
-              <div className="cardodi">
-                <p className="p-card">ODI</p>
-              </div>
-              <div className="cardt20">
-                <p className="p-card">T20</p>
-              </div>
+              ))}
             </div>
+            {/* )} */}
           </div>
-          <div className="grid-container-team">
-            <div className="grid-container-team-details">
-              <div className="grid-class-team-details">
-                <div className="grid-class-topteam-details">
-                  <p className="p-top-team-details">Top Batsmen</p>
-                  <div>
-                    <div className="list">
-                      <img src={logo} className="img-card" />
-                      <div>
-                        <p className="p-team-details-name">Virat Kohli</p>
-                        <p className="p-player-style">Right-hand Bat</p>
+          {/* ------------------------------------------------------------------- */}
+          <div className="top-section">
+            <div className="grid-container-team">
+              <div className="grid-container-team-details">
+                <div className="grid-class-team-details">
+                  <div className="grid-class-topteam-details">
+                    <p className="p-top-team-details">Top Batsmen</p>
+                    <div className="centered">
+                      <div className="cards-new">
+                        <div
+                          style={{ borderRadius: "8px 0px 0px 8px" }}
+                          className={
+                            this.state.testClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickTest}
+                        >
+                          <p className="p-card">Test</p>
+                        </div>
+                        <div
+                          className={
+                            this.state.odiClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickOdi}
+                        >
+                          <p className="p-card">ODI</p>
+                        </div>
+                        <div
+                          style={{ borderRadius: "0px 8px 8px 0px" }}
+                          className={
+                            this.state.t20Click ? "cardtest" : "cardt20"
+                          }
+                          onClick={this.onClickT20}
+                        >
+                          <p className="p-card">T20</p>
+                        </div>
                       </div>
-                      <h2 className="h2-team-details-position">672</h2>
                     </div>
-                    <hr className="hr-team-card" />
-                  </div>
-                  <div className="list">
-                    <img src={logo} className="img-card" />
                     <div>
-                      <p className="p-team-details-name">Rohit Sharma</p>
-                      <p className="p-player-style">Right-hand Bat</p>
+                      {this.props.batsmen.map(batsmen => (
+                        <div>
+                          <div className="list">
+                            <img src={logo} className="img-card" />
+                            <div>
+                              <p className="p-team-details-name">
+                                {batsmen.player_name}
+                              </p>
+                              <p className="p-player-style">Right-hand Bat</p>
+                            </div>
+                            <h2 className="h2-team-details-position">
+                              {batsmen.player_stats_value}
+                            </h2>
+                          </div>
+                          <hr className="hr-team-card" />
+                        </div>
+                      ))}
                     </div>
-                    <h2 className="h2-team-details-position">578</h2>
                   </div>
-                  <hr className="hr-team-card" />
                 </div>
-              </div>
-              <div className="grid-class-team-details">
-                <div className="grid-class-topteam-details">
-                  <p className="p-top-team-details">Top Bowlers</p>
-                  <div>
-                    <div className="list">
-                      <img src={logo} className="img-card" />
-                      <div>
-                        <p className="p-team-details-name">Jasprit Bumrah</p>
-                        <p className="p-player-style">Right-arm Fast</p>
+                <div className="grid-class-team-details">
+                  <div className="grid-class-topteam-details">
+                    <p className="p-top-team-details">Top Bowlers</p>
+                    <div className="centered">
+                      <div className="cards-new">
+                        <div
+                          style={{ borderRadius: "8px 0px 0px 8px" }}
+                          className={
+                            this.state.testClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickTest}
+                        >
+                          <p className="p-card">Test</p>
+                        </div>
+                        <div
+                          className={
+                            this.state.odiClick ? "cardtest" : "cardodi"
+                          }
+                          onClick={this.onClickOdi}
+                        >
+                          <p className="p-card">ODI</p>
+                        </div>
+                        <div
+                          style={{ borderRadius: "0px 8px 8px 0px" }}
+                          className={
+                            this.state.t20Click ? "cardtest" : "cardt20"
+                          }
+                          onClick={this.onClickT20}
+                        >
+                          <p className="p-card">T20</p>
+                        </div>
                       </div>
-                      <h2 className="h2-team-details-position">34</h2>
                     </div>
-                    <hr className="hr-team-card" />
-                  </div>
-                  <div className="list">
-                    <img src={logo} className="img-card" />
                     <div>
-                      <p className="p-team-details-name">Hardik Pandya</p>
-                      <p className="p-player-style">Right-arm Fast</p>
+                      {this.props.bowlers.map(bowlers => (
+                        <div>
+                          <div className="list">
+                            <img src={logo} className="img-card" />
+                            <div>
+                              <p className="p-team-details-name">
+                                {bowlers.player_name}
+                              </p>
+                              <p className="p-player-style">Right-arm Fast</p>
+                            </div>
+                            <h2 className="h2-team-details-position">
+                              {bowlers.player_stats_value}
+                            </h2>
+                          </div>
+                          <hr className="hr-team-card" />
+                        </div>
+                      ))}
                     </div>
-                    <h2 className="h2-team-details-position">28</h2>
                   </div>
-                  <hr className="hr-team-card" />
                 </div>
               </div>
             </div>
@@ -149,10 +213,13 @@ export class TeamInfo extends Component {
 }
 
 const mapStateTostate = state => ({
-  matches: state.TeamsReducer.matches
+  matches: state.TeamsReducer.matches,
+  batsmen: state.TeamsReducer.batsmen,
+  bowlers: state.TeamsReducer.bowlers
+  // isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
   mapStateTostate,
-  { getMatch }
+  { getMatch, getTeamBatsmen, getTeamBowlers }
 )(TeamInfo);

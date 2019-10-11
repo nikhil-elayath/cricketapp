@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+
+.top-container-stats{
+    display: grid;
+    grid-template-columns: 12% auto 18%;
+    grid-template-rows:30% 5% 30% 5% 30%;
+    height: 2100px;
+    /* border: 1px solid #272727; */
+    border-radius: 5px;
+}
+.stats-container{
+    display: grid;
+    grid-template-rows: 6% auto;
+    border: 1px solid #272727;
+}
+
+.top-container-stats .top-title{
+    font-weight: 500;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background: #2980B9;
+    color: white;
+    padding: 5px;
+}

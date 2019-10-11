@@ -1,0 +1,183 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
+
+.ball-main {
+  display: flex;
+  flex-direction: row;
+  margin-top: 210px;
+  margin-bottom: 40px;
+  justify-content: center;
+  width: 95vw;
+}
+
+.bowling-main-div {
+  display: grid;
+  grid-template-columns: 39vw 39vw;
+}
+
+#bowling-format-heading {
+  background-color: #2980b9;
+  color: white;
+  padding: 8px;
+  margin-top: 0px;
+}
+
+.bowling-Test-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-right: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bowling-Odi-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-left: 10px;
+}
+
+.bowling-T20-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-right: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.bowling-Ipl-div {
+  border: 1px solid #707070;
+  border-top: none;
+  margin-left: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.bowling-stats-info-parent-div {
+  display: flex;
+  flex-direction: row;
+  margin-left: 16px;
+  margin-right: 16px;
+  border-bottom: 1px solid #707070;
+  padding-bottom: 6px;
+  padding-top: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.bowling-stats-info-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  /* padding: 10px; */
+  padding-left: 20px;
+}
+
+.bowling-stats-bottom-info-div {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  /* padding: 10px; */
+  padding-left: 30px;
+  margin-bottom: 17px;
+}
+
+#ball-stat-span-1 {
+  font-weight: 500;
+  font-size: 19px;
+}
+
+#ball-stat-span-2 {
+  font-weight: 400;
+  font-size: 13px;
+  padding-top: 2px;
+}
+
+@media only screen and (max-width: 576px) {
+  .ball-main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 230px;
+    justify-content: center;
+    width: 100vw;
+  }
+
+  .bowling-main-div {
+    display: grid;
+    grid-template-columns: 87vw;
+  }
+
+  #bowling-format-heading {
+    background-color: #2980b9;
+    color: white;
+    padding: 4px;
+    margin-top: 0px;
+    font-size: 16px;
+  }
+
+  .bowling-Test-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .bowling-Odi-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .bowling-T20-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .bowling-Ipl-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin: auto;
+    margin-top: 15px;
+  }
+
+  .bowling-stats-info-parent-div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-bottom: 1px solid #707070;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .bowling-stats-info-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    padding-left: 14px;
+  }
+
+  .bowling-stats-bottom-info-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    /* padding: 10px; */
+    padding-left: 20px;
+  }
+
+  #ball-stat-span-1 {
+    font-weight: 500;
+    font-size: 13px;
+  }
+
+  #ball-stat-span-2 {
+    font-weight: 400;
+    font-size: 8px;
+    padding-top: 3px;
+  }
+}
