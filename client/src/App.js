@@ -31,7 +31,6 @@ import AdminEditTeam from "./components/AdminEditTeam";
 import MatchLandingPage from "./components/MatchLandingPage";
 import MatchSummaryDetails from "./components/MatchSummaryDetails";
 import MatchScoreDetails from "./components/MatchScoreDetails";
-<<<<<<< HEAD
 import MatchStatsDetails from "./components/MatchStatsDetails";
 import MatchDetails from "./components/MatchDetails";
 
@@ -99,47 +98,6 @@ function App() {
 			<Route path="/" exact component={Home} />
 		</Router>
 	);
-=======
-import AdminPlayer from "./components/AdminPlayerPage";
-import AdminTeam from "./components/AdminTeamPage";
-import AdminEditPlayer from "./components/AdminEditPlayer";
-import AdminEditTeam from "./components/AdminEditTeam";
-
-function App() {
-  return (
-    <Router>
-      <Route path="/login" exact component={Login} />
-      <Route path="/register" exact component={Register} />
-      <Route path="/resetPassword" exact component={ResetPassword} />
-      <Route exact path="/players" component={PlayerLandingPage}></Route>
-      <Route exact path="/playerInfo/:player_id" component={PlayerInfo}></Route>
-      <Route exact path="/batting-stats" component={BattingStats}></Route>
-      <Route exact path="/bowling-stats" component={BowlingStats}></Route>
-      <Route
-        exact
-        path="/matches/summary/:id"
-        component={MatchLandingPage}
-      ></Route>
-      <Route exact path="/matches" component={MatchLandingPage}></Route>
-      <Route exact path="/teams" component={TeamLandingPage}></Route>
-      <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route>
-      <Route path="/" exact component={Home} />
-
-      <Route exact path="/adminplayer" component={AdminPlayer}></Route>
-      <Route exact path="/adminteam" component={AdminTeam}></Route>
-      <Route
-        exact
-        path="/admineditplayer/:player_id"
-        component={AdminEditPlayer}
-      ></Route>
-      <Route
-        exact
-        path="/admineditteam/:team_id"
-        component={AdminEditTeam}
-      ></Route>
-    </Router>
-  );
->>>>>>> 4383b846be8a6e0cd7c6ca5516dada82e5924f35
 }
 
 export default App;
