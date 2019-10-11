@@ -6,7 +6,7 @@ import logo from "./images/dhoni.jpg";
 // import Navbar from "../components/common/Navbar";
 import { getMatch, getTeamBatsmen, getTeamBowlers } from "../actions/Teams";
 import "./css/SecondaryNavbar.css";
-import Loader from "react-loader-spinner";
+// import Loader from "react-loader-spinner";
 
 export class TeamInfo extends Component {
   state = {
@@ -70,24 +70,31 @@ export class TeamInfo extends Component {
               <Loader type="ThreeDots" color="blue" height={80} width={80} />
             ) : ( */}
             <div className="all-recent-matches-box-team">
-              {this.props.matches.map(matches => (
-                <div className="inside-recent-matches-box-team">
-                  <span className="tournamnet-name">{matches.matchType}</span>
-                  <div className="Team-data">
-                    <div className="TeamOne-name">{matches.teamOne}</div>
-                    <div className="TeamOne-score">
-                      {matches.teamOneScore}/{matches.teamOneWicket}
+              {this.props.matches.length == 0 ? (
+                <div className="teaminfoloader"></div>
+              ) : (
+                this.props.matches.map(matches => (
+                  <div className="inside-recent-matches-box-team">
+                    <span className="tournamnet-name">{matches.matchType}</span>
+                    <div className="Team-data">
+                      <div className="TeamOne-name">{matches.teamOne}</div>
+                      <div className="TeamOne-score">
+                        {matches.teamOneScore}/{matches.teamOneWicket}
+                      </div>
                     </div>
-                  </div>
-                  <div className="Team-data">
-                    <div className="TeamTwo-name">{matches.teamTwo}</div>
-                    <div className="TeamTwo-score">
-                      {matches.teamTwoScore}/{matches.teamTwoWicket}
+                    <div className="Team-data">
+                      <div className="TeamTwo-name">{matches.teamTwo}</div>
+                      <div className="TeamTwo-score">
+                        {matches.teamTwoScore}/{matches.teamTwoWicket}
+                      </div>
                     </div>
+                    <span className="winner-name">
+                      {matches.teamWinner} WON
+                    </span>
                   </div>
-                  <span className="winner-name">{matches.teamWinner} WON</span>
-                </div>
-              ))}
+                ))
+                // (this.props.matches.length == 0)
+              )}
             </div>
             {/* )} */}
           </div>

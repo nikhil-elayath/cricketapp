@@ -7,6 +7,9 @@ import NavBar from "./common/Navbar";
 
 export class AdminEditTeam extends Component {
   componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
     this.props.getTeams(this.props.match.params.team_id);
   }
 
