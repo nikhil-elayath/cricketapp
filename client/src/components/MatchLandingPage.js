@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
-import { getRecentMatches, getMatchesDate } from "../actions/Matches";
+import { getRecentMatches, getMatchesDate } from "../actions/matches";
 import { Menu, list, selected, ArrowLeft, ArrowRight } from "./Scroll";
 import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
 
@@ -59,11 +59,14 @@ export class MatchLandingPage extends Component {
               Matches
             </h1>
           </div>
-        </div>
-        <div className="Team-data">
-          <div className="TeamTwo-name">{match.teamOne}</div>
-          <div className="TeamTwo-score">
-            {match.teamTwoScore}/{match.teamtwo_wicket} (50 overs)
+          <div className="timeline" style={{ marginBottom: "50px" }}>
+            <ScrollMenu
+              data={menu}
+              arrowLeft={ArrowLeft}
+              arrowRight={ArrowRight}
+              selected={selected}
+              onSelect={this.onSelect}
+            />
           </div>
 
           <div>
@@ -72,7 +75,7 @@ export class MatchLandingPage extends Component {
                 className="h1-match"
                 style={{ textAlign: "left", margin: "20px" }}
               >
-                No Recent Matches
+                No Matches
               </h2>
             ) : (
               <h2

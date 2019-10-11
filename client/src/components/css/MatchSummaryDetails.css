@@ -1,66 +1,96 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    color: #272727;
+body {
+  font-family: "Montserrat", sans-serif;
+  color: #272727;
+}
+.matchsummaryloader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #2980b9;
+  border-bottom: 16px solid #2980b9;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  display: flex;
+  /* justify-content: center; */
+  margin-left: 80%;
+  margin-top: 50%;
 }
 
-.top-container{
-    
-    display: grid;
-    grid-template-columns: 60% 35%;
-    grid-template-rows: 40% 40%;
-    grid-template-areas: "summary matchdetails"
-                        "playingXI matchdetails";
-    grid-gap: 10px;
-    justify-content: space-between; 
-    height: auto;
-    padding: 20px;
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
-.top-container .top-left-container{
-    display: grid;
-    grid-template-rows: 10% 15% 25% 15% 25%;
-    border: 1px solid #272727;
-    border-radius: 5px
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.top-container {
+  display: grid;
+  grid-template-columns: 60% 35%;
+  grid-template-rows: 40% 40%;
+  grid-template-areas:
+    "summary matchdetails"
+    "playingXI matchdetails";
+  grid-gap: 10px;
+  justify-content: space-between;
+  height: auto;
+  padding: 20px;
 }
 
-.top-container .teamone-top-players, .teamtwo-top-players{
-    display: grid;
-    grid-template-columns: auto 15% auto 15%;
-    border-top: 1px solid #272727;   
-    border-bottom: 1px solid #272727;   
-    padding: 2px;
-    grid-gap: 3px; 
-
-}
-.top-container .bottom-left-container{
-    display: grid;
-    grid-template-rows: 10% 90%;
-    border: 1px solid #272727;
-    border-radius: 5px;
+.top-container .top-left-container {
+  display: grid;
+  grid-template-rows: 10% 15% 25% 15% 25%;
+  border: 1px solid #272727;
+  border-radius: 5px;
 }
 
-.bottom-left-container .playingXI{
-    display: grid;
-    grid-template-columns: 50% 50%; 
-    grid-template-rows: 12% 80%; 
-    grid-gap: 5px;
+.top-container .teamone-top-players,
+.teamtwo-top-players {
+  display: grid;
+  grid-template-columns: auto 15% auto 15%;
+  border-top: 1px solid #272727;
+  border-bottom: 1px solid #272727;
+  padding: 2px;
+  grid-gap: 3px;
 }
-.match_details{
-    grid-area: matchdetails;
-    height: fit-content;
-    }
+.top-container .bottom-left-container {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  border: 1px solid #272727;
+  border-radius: 5px;
+}
 
-    
-.top-title{
-    font-weight: 500;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    background: #2980B9;
-    color: white;
-    padding: 5px;
-    border-radius: 5px;
+.bottom-left-container .playingXI {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 12% 80%;
+  grid-gap: 5px;
+}
+.match_details {
+  grid-area: matchdetails;
+  height: fit-content;
+}
+
+.top-title {
+  font-weight: 500;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: #2980b9;
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 /* 
