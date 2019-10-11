@@ -1,0 +1,307 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test  Component render the component 1`] = `
+<div>
+  <Navbar />
+  <div
+    className="player-page"
+  >
+    <div
+      className="players"
+    >
+      <div
+        className="inner-heading"
+      >
+        <div>
+          <h1>
+            All Players
+          </h1>
+        </div>
+        <div>
+           
+          <input
+            margin="normal"
+            name="Search"
+            onChange={[Function]}
+            placeholder="Search"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="player-list"
+      />
+    </div>
+    <div
+      id="Adminform"
+    >
+      <fieldset>
+        <h1>
+          Add New Player!
+        </h1>
+        <input
+          name="player_name"
+          onChange={[Function]}
+          placeholder="Enter Name"
+          type="text"
+        />
+        <input
+          name="player_country"
+          onChange={[Function]}
+          placeholder="Enter Player Country"
+          type="text"
+        />
+        <div
+          className="playing-style"
+        >
+          <div>
+            <select
+              className="choice"
+              name="batting_style"
+              onChange={[Function]}
+              type="text"
+              value="Batting Style"
+            >
+              <option
+                name="choice"
+              >
+                Batting style
+              </option>
+              <option
+                name="male"
+              >
+                Right Hand
+              </option>
+              <option
+                name="male"
+              >
+                left Hand
+              </option>
+            </select>
+          </div>
+          <div>
+            <select
+              className="choice"
+              name="bowling_style"
+              onChange={[Function]}
+              type="text"
+              value="Bowling style"
+            >
+              <option
+                name="choice"
+              >
+                Bowling style
+              </option>
+              <option
+                name="male"
+              >
+                Right-arm fast
+              </option>
+              <option
+                name="male"
+              >
+                Right-arm fast medium
+              </option>
+              <option
+                name="male"
+              >
+                Right-arm medium fast
+              </option>
+              <option
+                name="male"
+              >
+                Right-arm medium
+              </option>
+              <option
+                name="male"
+              >
+                Left-arm fast
+              </option>
+              <option
+                name="male"
+              >
+                Left-arm fast medium
+              </option>
+              <option
+                name="male"
+              >
+                Left-arm medium fast
+              </option>
+              <option
+                name="male"
+              >
+                Left-arm medium
+              </option>
+              <option
+                name="male"
+              >
+                Off break (right-arm)
+              </option>
+              <option
+                name="male"
+              >
+                Leg break (right-arm)
+              </option>
+              <option
+                name="male"
+              >
+                Slow left-arm orthodox
+              </option>
+              <option
+                name="male"
+              >
+                Slow left-arm chinaman
+              </option>
+            </select>
+          </div>
+        </div>
+        <div
+          className="playing-style"
+        >
+          <t
+            allowSameDay={false}
+            dateFormat="yyyy-MM-dd"
+            dateFormatCalendar="LLLL yyyy"
+            disabled={false}
+            disabledKeyboardNavigation={false}
+            dropdownMode="scroll"
+            inlineFocusSelectedMonth={false}
+            monthsShown={1}
+            name="datepicker"
+            nextMonthButtonLabel="Next Month"
+            nextYearButtonLabel="Next Year"
+            onBlur={[Function]}
+            onChange={[Function]}
+            onClickOutside={[Function]}
+            onFocus={[Function]}
+            onInputClick={[Function]}
+            onInputError={[Function]}
+            onKeyDown={[Function]}
+            onMonthChange={[Function]}
+            onSelect={[Function]}
+            onYearChange={[Function]}
+            placeholderText="DOB"
+            preventOpenOnFocus={false}
+            previousMonthButtonLabel="Previous Month"
+            previousYearButtonLabel="Previous Year"
+            readOnly={false}
+            renderDayContents={[Function]}
+            shouldCloseOnSelect={true}
+            showMonthYearPicker={false}
+            showQuarterYearPicker={false}
+            showTimeInput={false}
+            showTimeSelect={false}
+            strictParsing={false}
+            timeCaption="Time"
+            timeInputLabel="Time"
+            timeIntervals={30}
+            withPortal={false}
+          />
+          <div>
+            <select
+              className="choice"
+              name="player_gender"
+              onChange={[Function]}
+              type="text"
+              value="Gender"
+            >
+              <option
+                name="choice"
+              >
+                Gender
+              </option>
+              <option
+                name="male"
+              >
+                male
+              </option>
+              <option
+                name="male"
+              >
+                female
+              </option>
+            </select>
+          </div>
+        </div>
+        <select
+          className="choice"
+          name="player_role"
+          onChange={[Function]}
+          placeholder="Enter Player Role"
+          type="text"
+          value="Player Role"
+        >
+          <option
+            name="choice"
+          >
+            Player Role
+          </option>
+          <option
+            name="male"
+          >
+            Wicket-keeper-batsmen
+          </option>
+          <option
+            name="male"
+          >
+            Wicket-keeper-batswomen
+          </option>
+          <option
+            name="male"
+          >
+            Bowler
+          </option>
+          <option
+            name="male"
+          >
+            Batsmen
+          </option>
+          <option
+            name="male"
+          >
+            Batswomen
+          </option>
+          <option
+            name="male"
+          >
+            Allrounder
+          </option>
+        </select>
+        <input
+          name="debut_odi_match"
+          onChange={[Function]}
+          placeholder="Enter Debut ODI Match"
+          type="text"
+        />
+        <input
+          name="debut_test_match"
+          onChange={[Function]}
+          placeholder="Enter Debut Test Match"
+          type="text"
+        />
+        <input
+          name="debut_t20_match"
+          onChange={[Function]}
+          placeholder="Enter Debut T20 Match"
+          type="text"
+        />
+        <span
+          className="errorMessage"
+          style={
+            Object {
+              "color": "#c0392b",
+              "display": "none",
+            }
+          }
+        />
+        <button
+          onChange={[Function]}
+          onClick={[Function]}
+        >
+          Add Player
+        </button>
+      </fieldset>
+    </div>
+  </div>
+</div>
+`;

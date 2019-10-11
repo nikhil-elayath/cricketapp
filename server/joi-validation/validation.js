@@ -16,6 +16,7 @@ function Validation(users) {
       .min(5)
       .max(255)
       .required(),
+
     isadmin: Joi.boolean().required()
   };
   return Joi.validate(users, schema);

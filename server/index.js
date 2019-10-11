@@ -8,8 +8,12 @@ const user = require("./routes/apis/user");
 const player = require("./routes/apis/PlayerInfo");
 const team = require("./routes/apis/Teams");
 const home = require("./routes/apis/home");
+<<<<<<< HEAD
 const matches = require("./routes/apis/Matches");
 const search = require("./routes/apis/Search");
+=======
+const matches = require("./routes/apis/matches");
+>>>>>>> 4383b846be8a6e0cd7c6ca5516dada82e5924f35
 const admin = require("./routes/apis/Admin");
 
 const app = express();
@@ -23,6 +27,7 @@ app.use(
 );
 // app.use(db);
 app.use("/apis/PlayerInfo", player);
+app.use("/apis/admin", admin);
 
 app.use("/apis", home);
 app.use("/api/cricketalpha/user", user);
@@ -34,7 +39,11 @@ app.use("/apis/Search", search);
 app.use("/apis/admin", admin);
 
 app.use((err, req, res, next) => {
+<<<<<<< HEAD
 	next(error);
+=======
+  next(error);
+>>>>>>> 4383b846be8a6e0cd7c6ca5516dada82e5924f35
 });
 
 const port = process.env.port || 5000;

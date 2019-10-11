@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test  Component render the component 1`] = `
+<div>
+  <Navbar />
+  <div
+    id="AdminEditform"
+  >
+    <fieldset>
+      <h1>
+        Edit Team
+      </h1>
+      <input
+        name="team_name"
+        onChange={[Function]}
+        placeholder="Enter Team Name"
+        type="text"
+        value="test"
+      />
+      <span
+        className="errorMessage"
+        style={
+          Object {
+            "color": "#c0392b",
+            "display": "none",
+          }
+        }
+      />
+      <div
+        className="form-button"
+      >
+        <Link
+          to="/adminteam"
+        >
+          <button
+            className="cancel"
+          >
+            Cancel
+          </button>
+        </Link>
+        <button
+          onChange={[Function]}
+          onClick={[Function]}
+        >
+          Edit Team
+        </button>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
