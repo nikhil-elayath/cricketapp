@@ -371,7 +371,7 @@ export class PlayerInfo extends Component {
               </ul>
             </div>
           </div>
-          <PlayerBowlingStats />
+          <PlayerBowlingStats player_id={this.props.match.params.player_id} />
         </div>
       );
     }

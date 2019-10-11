@@ -30,14 +30,18 @@ exports[`test  Component render the component 1`] = `
       </div>
       <div
         className="player-list"
-      />
+      >
+        <div
+          className="loader"
+        />
+      </div>
     </div>
     <div
       id="Adminform"
     >
       <fieldset>
         <h1>
-          Add New Player!
+          Add New Player
         </h1>
         <input
           name="player_name"

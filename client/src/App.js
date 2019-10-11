@@ -16,6 +16,8 @@ import AdminPlayer from "./components/AdminPlayerPage";
 import AdminTeam from "./components/AdminTeamPage";
 import AdminEditPlayer from "./components/AdminEditPlayer";
 import AdminEditTeam from "./components/AdminEditTeam";
+import BattingStats from "./components/PlayerBattingStats";
+import BowlingStats from "./components/PlayerBowlingStats";
 
 function App() {
   return (

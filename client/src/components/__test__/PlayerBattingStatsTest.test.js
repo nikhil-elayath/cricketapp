@@ -4,12 +4,22 @@ import { PlayerBattingStats } from "../PlayerBattingStats";
 // import { getBatsmanStats } from "../../actions/PlayerAction";
 
 const getBatsmanStats = jest.fn();
+const getODIBatsmanStats = jest.fn();
+const getT20BatsmanStats = jest.fn();
+const getTestBatsmanStats = jest.fn();
 const batsmanStats = [[]];
+const t20BatsmanStats = [[]];
+const odiBatsmanStats = [[]];
 
 const wrapper = shallow(
   <PlayerBattingStats
     getBatsmanStats={getBatsmanStats}
+    getODIBatsmanStats={getODIBatsmanStats}
+    getT20BatsmanStats={getT20BatsmanStats}
+    getTestBatsmanStats={getTestBatsmanStats}
     batsmanStats={batsmanStats}
+    t20BatsmanStats={t20BatsmanStats}
+    odiBatsmanStats={odiBatsmanStats}
   />
 );
 
@@ -37,14 +47,13 @@ describe("Testing Player Batting stats component", () => {
         .at(2)
         .text()
     ).toBe("T20");
+  });
+  it("should have 70 span tags", () => {
     expect(
       wrapper
-        .find("h3")
-        .at(3)
+        .find("span")
+        .at(1)
         .text()
-    ).toBe("IPL");
-  });
-  it("should have 104 span tags", () => {
-    expect(wrapper.find("span").length).toBe(104);
+    ).toBe("Matches");
   });
 });

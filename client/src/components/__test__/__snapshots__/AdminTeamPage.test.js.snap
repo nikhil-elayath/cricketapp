@@ -30,7 +30,11 @@ exports[`test  Component render the component 1`] = `
       </div>
       <div
         className="player-list"
-      />
+      >
+        <div
+          className="loader"
+        />
+      </div>
     </div>
     <div
       id="Adminform"

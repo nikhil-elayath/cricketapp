@@ -11,7 +11,7 @@
 
 .bowling-main-div {
   display: grid;
-  grid-template-columns: 39vw 39vw;
+  grid-template-columns: 32vw 32vw 32vw;
 }
 
 #bowling-format-heading {
@@ -24,22 +24,23 @@
 .bowling-Test-div {
   border: 1px solid #707070;
   border-top: none;
-  margin-right: 10px;
+  margin-left: 70px;
   font-family: "Montserrat", sans-serif;
+  width: 300px;
 }
 
 .bowling-Odi-div {
   border: 1px solid #707070;
   border-top: none;
   margin-left: 10px;
+  width: 300px;
 }
 
 .bowling-T20-div {
   border: 1px solid #707070;
   border-top: none;
-  margin-right: 10px;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  margin-left: -10px;
+  width: 300px;
 }
 
 .bowling-Ipl-div {
