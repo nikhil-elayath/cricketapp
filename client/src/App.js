@@ -71,6 +71,11 @@ function App() {
 			></Route>
 			<Route
 				exact
+				path="/match/details/:id"
+				component={MatchDetails}
+			></Route>
+			<Route
+				exact
 				path="/matches/summary/:id"
 				component={MatchSummaryDetails}
 			></Route>

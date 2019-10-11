@@ -51,66 +51,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
           </div>
         }
         clickWhenDrag={false}
-        data={
-          Array [
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-15"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-16"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2008-08-20"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2006-03-19"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2006-03-22"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2006-05-10"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-17"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-23"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-20"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2007-03-24"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2008-03-06"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2008-03-24"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2008-10-17"
-            />,
-            <MenuItem
-              selected="SEP 26"
-              text="2009-07-18"
-            />,
-          ]
-        }
+        data={Array []}
         dragging={true}
         hideArrows={false}
         hideSingleArrow={false}
@@ -144,7 +85,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
         rtl={false}
         scrollBy={0}
         scrollToSelected={false}
-        selected="SEP 26"
+        selected={false}
         transition={0.4}
         translate={0}
         useButtonRole={true}

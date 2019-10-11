@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getUsers, otpVerify, otpSend } from "../actions/Users";
+import { getUsers, otpVerify, otpSend } from "../actions/users.js";
 import { connect } from "react-redux";
 import NavBar from "./common/Navbar";
 import "./css/Login.css";
@@ -187,10 +187,10 @@ export class ResetPassword extends Component {
                 </button>
               </>
             ) : (
-              <button onChange={this.OnChange} onClick={this.onVerify}>
-                Send OTP
+                <button onChange={this.OnChange} onClick={this.onVerify}>
+                  Send OTP
               </button>
-            )}
+              )}
           </fieldset>
         </form>
       </div>

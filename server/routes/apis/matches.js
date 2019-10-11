@@ -88,17 +88,20 @@ router.get('/bydate', async (req, res, next) => {
     try {
 
         // feaching all the dates
-        const result = await db.any("SELECT match_date FROM match_date ORDER BY match_date;");
+        const result = await db.any("SELECT match_id,match_date FROM match_date;");
         // console.log(result)
 
         // var dates = new Array();
 
         // for (onedate of result) {
-        //     var date = new Date(onedate.match_date);
+        //     var date = new Date(onedate.match_date)
+        //     console.log(date);
+        //     // var date = new Date(onedate.match_date);
         //     let format_date = onedate.match_date = date.toLocaleDateString("en-IN", {
+        //         year: "2-digit",
         //         day: "2-digit",
         //         month: "2-digit",
-        //         year: "3-digit"
+
         //     });
         //     dates.push({ match_date: format_date })
 
