@@ -66,6 +66,9 @@ export class AdminEditPlayer extends Component {
 
   componentDidMount() {
     this.props.getPlayers(this.props.match.params.player_id);
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
   }
   OnChange = e => {
     this.setState({ [e.target.name]: e.target.value });

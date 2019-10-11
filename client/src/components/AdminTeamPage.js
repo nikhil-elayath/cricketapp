@@ -13,6 +13,9 @@ import NavBar from "./common/Navbar";
 
 export class AdminTeamPage extends Component {
   componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
     this.props.getTeams();
   }
   state = {

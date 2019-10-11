@@ -17,9 +17,9 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(
-	bodyParser.urlencoded({
-		extended: false
-	})
+  bodyParser.urlencoded({
+    extended: false
+  })
 );
 // app.use(db);
 app.use("/apis/PlayerInfo", player);
@@ -34,7 +34,12 @@ app.use("/apis/Search", search);
 //piyush
 app.use("/apis/admin", admin);
 
-app.use((err, req, res, next) => {});
-app.listen(port, () => console.log(`Server is listening on port ${port}`));
+app.use((err, req, res, next) => {
+  next(error);
+});
+
+const port = process.env.port || 5000;
+if (process.env.NODE_ENV !== "test")
+  app.listen(port, () => console.log(`Server is listening on port ${port}`));
 
 module.exports = app;

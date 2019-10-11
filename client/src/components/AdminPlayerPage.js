@@ -53,6 +53,9 @@ export class AdminPlayerPage extends Component {
   }
 
   componentDidMount() {
+    if (!localStorage.getItem("token")) {
+      this.props.history.push("/");
+    }
     this.props.getPlayers();
   }
 
