@@ -41,7 +41,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.testBowlerStats["0"].Matches
                     ? this.props.testBowlerStats["0"].Matches.length === 0
-                      ? console.log("not returned")
+                      ? "-"
                       : this.props.testBowlerStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -56,7 +56,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.testBowlerStats["0"].RunsConceded
                     ? this.props.testBowlerStats["0"].RunsConceded.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.testBowlerStats["0"].RunsConceded[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -80,7 +80,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.testBowlerStats["0"].TotalWIckets
                     ? this.props.testBowlerStats["0"].TotalWIckets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.testBowlerStats["0"].TotalWIckets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -99,7 +99,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.testBowlerStats["0"].FourWickets
                     ? this.props.testBowlerStats["0"].FourWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.testBowlerStats["0"].FourWickets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -110,7 +110,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.testBowlerStats["0"].FiveWickets
                     ? this.props.testBowlerStats["0"].FiveWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.testBowlerStats["0"].FiveWickets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -127,7 +127,7 @@ export class PlayerBowlingStats extends Component {
                   {" "}
                   {this.props.odiBowlerStats["0"].Matches
                     ? this.props.odiBowlerStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBowlerStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -142,7 +142,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.odiBowlerStats["0"].RunsConceded
                     ? this.props.odiBowlerStats["0"].RunsConceded.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBowlerStats["0"].RunsConceded[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -166,7 +166,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.odiBowlerStats["0"].TotalWIckets
                     ? this.props.odiBowlerStats["0"].TotalWIckets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBowlerStats["0"].TotalWIckets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -185,7 +185,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.odiBowlerStats["0"].FourWickets
                     ? this.props.odiBowlerStats["0"].FourWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBowlerStats["0"].FourWickets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -196,7 +196,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.odiBowlerStats["0"].FiveWickets
                     ? this.props.odiBowlerStats["0"].FiveWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBowlerStats["0"].FiveWickets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -212,7 +212,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].Matches
                     ? this.props.t20BowlerStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BowlerStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -227,7 +227,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].RunsConceded
                     ? this.props.t20BowlerStats["0"].RunsConceded.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BowlerStats["0"].RunsConceded[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -251,7 +251,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].TotalWIckets
                     ? this.props.t20BowlerStats["0"].TotalWIckets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BowlerStats["0"].TotalWIckets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -270,7 +270,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].FourWickets
                     ? this.props.t20BowlerStats["0"].FourWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BowlerStats["0"].FourWickets[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -281,7 +281,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].FiveWickets
                     ? this.props.t20BowlerStats["0"].FiveWickets.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BowlerStats["0"].FiveWickets[0]
                           .player_stats_value
                     : console.log("not found")}

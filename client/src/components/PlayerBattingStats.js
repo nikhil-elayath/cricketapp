@@ -39,7 +39,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Matches
                     ? this.props.batsmanStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -54,7 +54,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].TotalRuns
                     ? this.props.batsmanStats["0"].TotalRuns.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].TotalRuns[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -65,7 +65,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].BallsFaced
                     ? this.props.batsmanStats["0"].BallsFaced.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].BallsFaced[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -76,7 +76,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].StrikeRate
                     ? this.props.batsmanStats["0"].StrikeRate.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].StrikeRate[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -96,7 +96,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Highestscore
                     ? this.props.batsmanStats["0"].Highestscore.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Highestscore[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -107,7 +107,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].NotOut
                     ? this.props.batsmanStats["0"].NotOut.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].NotOut[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -118,7 +118,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Hundreds
                     ? this.props.batsmanStats["0"].Hundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Hundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -129,7 +129,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Fifties
                     ? this.props.batsmanStats["0"].Fifties.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Fifties[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -140,7 +140,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].TwoHundreds
                     ? this.props.batsmanStats["0"].TwoHundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].TwoHundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -151,7 +151,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Fours
                     ? this.props.batsmanStats["0"].Fours.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Fours[0].player_stats_value
                     : console.log("not found")}
                 </span>
@@ -161,7 +161,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.batsmanStats["0"].Sixes
                     ? this.props.batsmanStats["0"].Sixes.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.batsmanStats["0"].Sixes[0].player_stats_value
                     : console.log("not found")}
                 </span>
@@ -178,7 +178,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Matches
                     ? this.props.odiBatsmanStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -193,7 +193,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].TotalRuns
                     ? this.props.odiBatsmanStats["0"].TotalRuns.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].TotalRuns[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -204,7 +204,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].BallsFaced
                     ? this.props.odiBatsmanStats["0"].BallsFaced.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].BallsFaced[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -215,7 +215,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].StrikeRate
                     ? this.props.odiBatsmanStats["0"].StrikeRate.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].StrikeRate[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -231,7 +231,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Highestscore
                     ? this.props.odiBatsmanStats["0"].Highestscore.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Highestscore[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -242,7 +242,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].NotOut
                     ? this.props.odiBatsmanStats["0"].NotOut.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].NotOut[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -253,7 +253,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Hundreds
                     ? this.props.odiBatsmanStats["0"].Hundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Hundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -264,7 +264,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Fifties
                     ? this.props.odiBatsmanStats["0"].Fifties.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Fifties[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -275,7 +275,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].TwoHundreds
                     ? this.props.odiBatsmanStats["0"].TwoHundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].TwoHundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -286,7 +286,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Fours
                     ? this.props.odiBatsmanStats["0"].Fours.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Fours[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -297,7 +297,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.odiBatsmanStats["0"].Sixes
                     ? this.props.odiBatsmanStats["0"].Sixes.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.odiBatsmanStats["0"].Sixes[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -315,7 +315,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Matches
                     ? this.props.t20BatsmanStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -327,7 +327,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Matches
                     ? this.props.t20BatsmanStats["0"].Matches.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Matches[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -338,7 +338,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].BallsFaced
                     ? this.props.t20BatsmanStats["0"].BallsFaced.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].BallsFaced[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -349,7 +349,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].StrikeRate
                     ? this.props.t20BatsmanStats["0"].StrikeRate.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].StrikeRate[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -365,7 +365,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Highestscore
                     ? this.props.t20BatsmanStats["0"].Highestscore.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Highestscore[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -376,7 +376,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].NotOut
                     ? this.props.t20BatsmanStats["0"].NotOut.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].NotOut[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -387,7 +387,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Hundreds
                     ? this.props.t20BatsmanStats["0"].Hundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Hundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -398,7 +398,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Fifties
                     ? this.props.t20BatsmanStats["0"].Fifties.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Fifties[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -409,7 +409,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].TwoHundreds
                     ? this.props.t20BatsmanStats["0"].TwoHundreds.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].TwoHundreds[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -420,7 +420,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Fours
                     ? this.props.t20BatsmanStats["0"].Fours.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Fours[0]
                           .player_stats_value
                     : console.log("not found")}
@@ -431,7 +431,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-1">
                   {this.props.t20BatsmanStats["0"].Sixes
                     ? this.props.t20BatsmanStats["0"].Sixes.length === 0
-                      ? 0
+                      ? "-"
                       : this.props.t20BatsmanStats["0"].Sixes[0]
                           .player_stats_value
                     : console.log("not found")}

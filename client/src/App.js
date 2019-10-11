@@ -26,8 +26,6 @@ import AdminPlayer from "./components/AdminPlayerPage";
 import AdminTeam from "./components/AdminTeamPage";
 import AdminEditPlayer from "./components/AdminEditPlayer";
 import AdminEditTeam from "./components/AdminEditTeam";
-import BattingStats from "./components/PlayerBattingStats";
-import BowlingStats from "./components/PlayerBowlingStats";
 
 //yatin
 import MatchLandingPage from "./components/MatchLandingPage";
@@ -37,69 +35,57 @@ import MatchStatsDetails from "./components/MatchStatsDetails";
 import MatchDetails from "./components/MatchDetails";
 
 function App() {
-	return (
-		<Router>
-			{/* //piyush */}
-			<Route exact path="/adminplayer" component={AdminPlayer}></Route>
-			<Route exact path="/adminteam" component={AdminTeam}></Route>
-			<Route
-				exact
-				path="/admineditplayer/:player_id"
-				component={AdminEditPlayer}
-			></Route>
-			<Route
-				exact
-				path="/admineditteam/:team_id"
-				component={AdminEditTeam}
-			></Route>
-			<Route path="/login" exact component={Login} />
-			<Route path="/register" exact component={Register} />
-			<Route path="/resetPassword" exact component={ResetPassword} />
+  return (
+    <Router>
+      {/* //piyush */}
+      <Route exact path="/adminplayer" component={AdminPlayer}></Route>
+      <Route exact path="/adminteam" component={AdminTeam}></Route>
+      <Route
+        exact
+        path="/admineditplayer/:player_id"
+        component={AdminEditPlayer}
+      ></Route>
+      <Route
+        exact
+        path="/admineditteam/:team_id"
+        component={AdminEditTeam}
+      ></Route>
+      <Route path="/login" exact component={Login} />
+      <Route path="/register" exact component={Register} />
+      <Route path="/resetPassword" exact component={ResetPassword} />
 
-			{/* //ashfi */}
-			<Route exact path="/players" component={PlayerLandingPage}></Route>
-			<Route
-				exact
-				path="/playerInfo/:player_id"
-				component={PlayerInfo}
-			></Route>
-			<Route exact path="/batting-stats" component={BattingStats}></Route>
-			<Route exact path="/bowling-stats" component={BowlingStats}></Route>
+      {/* //ashfi */}
+      <Route exact path="/players" component={PlayerLandingPage}></Route>
+      <Route exact path="/playerInfo/:player_id" component={PlayerInfo}></Route>
+      <Route exact path="/batting-stats" component={BattingStats}></Route>
+      <Route exact path="/bowling-stats" component={BowlingStats}></Route>
 
-			<Route
-				exact
-				path="/match/details/:id"
-				component={MatchDetails}
-			></Route>
-			<Route
-				exact
-				path="/matches/summary/:id"
-				component={MatchSummaryDetails}
-			></Route>
-			<Route
-				exact
-				path="/matches/scorecard/:id"
-				component={MatchScoreDetails}
-			></Route>
-			<Route
-				exact
-				path="/matches/stats/:id"
-				component={MatchStatsDetails}
-			></Route>
-			<Route exact path="/matches" component={MatchLandingPage}></Route>
+      <Route exact path="/match/details/:id" component={MatchDetails}></Route>
+      <Route
+        exact
+        path="/matches/summary/:id"
+        component={MatchSummaryDetails}
+      ></Route>
+      <Route
+        exact
+        path="/matches/scorecard/:id"
+        component={MatchScoreDetails}
+      ></Route>
+      <Route
+        exact
+        path="/matches/stats/:id"
+        component={MatchStatsDetails}
+      ></Route>
+      <Route exact path="/matches" component={MatchLandingPage}></Route>
 
-			{/* aditya */}
-			<Route
-				exact
-				path="/teamdetails/:team_id"
-				component={TeamDetails}
-			></Route>
+      {/* aditya */}
+      <Route exact path="/teamdetails/:team_id" component={TeamDetails}></Route>
 
-			<Route exact path="/teams" component={TeamLandingPage}></Route>
-			{/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
-			<Route path="/" exact component={Home} />
-		</Router>
-	);
+      <Route exact path="/teams" component={TeamLandingPage}></Route>
+      {/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
+      <Route path="/" exact component={Home} />
+    </Router>
+  );
 }
 
 export default App;

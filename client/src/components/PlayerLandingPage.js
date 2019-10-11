@@ -99,38 +99,43 @@ export class PlayerLandingPage extends Component {
             >
               Top Batsmen
             </h1>
-            {this.props.batsmen.length==0 ?(
-                <div className="matchlandingpageloader"></div>
-            ):(
+            {this.props.batsmen.length == 0 ? (
+              <div className="playerlandingpageloader"></div>
+            ) : (
               this.props.batsmen.map(batsman => (
-              <div
-                className="singlePlayerDiv"
-                onClick={() => {
-                  this.props.history.push("/playerInfo/" + batsman.player_id);
-                }}
-              >
-                <img className="playerImage" src={virat}></img>
-                {/* player basic info div */}
-                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
-                  <span id="playerName">{batsman.player_name}</span>
-                  <span id="playerMinInfo">Right Handed Batsman</span>
-                  <span id="playerMinInfo">{batsman.player_country}</span>
-                </div>
+                <div
+                  className="singlePlayerDiv"
+                  onClick={() => {
+                    this.props.history.push("/playerInfo/" + batsman.player_id);
+                  }}
+                >
+                  <img className="playerImage" src={virat}></img>
+                  {/* player basic info div */}
+                  <div
+                    className="playerInfoDiv"
+                    style={{ marginTop: 8 + "px" }}
+                  >
+                    <span id="playerName">{batsman.player_name}</span>
+                    <span id="playerMinInfo">Right Handed Batsman</span>
+                    <span id="playerMinInfo">{batsman.player_country}</span>
+                  </div>
 
-                {/* player runs,wickets div */}
-                <div className="playerInfoDiv">
-                  <span className="playerStatValue">
-                    {batsman.player_stats_value}
-                  </span>
+                  {/* player runs,wickets div */}
+                  <div className="playerInfoDiv">
+                    <span className="playerStatValue">
+                      {batsman.player_stats_value}
+                    </span>
 
-                  <span id="playerMinInfo">Innings: 12</span>
-                  <span id="playerMinInfo">Average: 52.12</span>
+                    <span id="playerMinInfo">Innings: 12</span>
+                    <span id="playerMinInfo">Average: 52.12</span>
+                  </div>
                 </div>
-              </div>
-            )))}
+              ))
+            )}
           </div>
           <div className="playerBowler">
             <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
+
             {this.props.bowlers.map(bowler => (
               <div
                 className="singlePlayerDiv"
