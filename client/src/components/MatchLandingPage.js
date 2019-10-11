@@ -5,12 +5,20 @@ import ScrollMenu from 'react-horizontal-scrolling-menu';
 import Navbar from '../components/common/Navbar'
 import { getRecentMatches, getMatchesDate } from '../actions/Matches'
 import { Menu, list, selected, ArrowLeft, ArrowRight } from './Scroll'
+import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
 
 export class MatchLandingPage extends Component {
-
-    constructor(props) {
-        super(props);
-        this.menuItems = Menu(list, selected);
+    state = {
+        selected: false,
+        list: []
+    };
+    componentWillReceiveProps(nextProps) {
+        const list = nextProps.date.map(date => {
+            return {match_date : date.match_date}
+        });
+        console.log(list)
+        this.setState({ menuItems: Menu(list, selected) });
+        this.setState({ list })
     }
     componentDidMount() {
         function yyyymmdd() {
@@ -28,19 +36,19 @@ export class MatchLandingPage extends Component {
         this.props.getMatchesDate();
 
     }
-    state = {
-        selected
-    };
+
 
     onSelect = key => {
         this.setState({ selected: key });
         this.props.getRecentMatches(key);
     }
     render() {
-
+        console.log(this.state)
         const { selected } = this.state;
         // Create menu from items
-        const menu = this.menuItems;
+        const menu = this.state.menuItems;
+
+
 
         return (
             <div>
@@ -60,7 +68,9 @@ export class MatchLandingPage extends Component {
                     </div>
 
 
-                    <div>{this.props.matches.length === 0 ? (<h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>No Recent Matches</h2>) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>Fixtures:</h2>)}
+                    <div>{this.props.matches.length === 0 ? (<h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
+                        No Recent Matches</h2>) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>
+                            Fixtures:</h2>)}
                     </div>
                     {this.props.matches.length > 0 ? (
 
@@ -68,11 +78,13 @@ export class MatchLandingPage extends Component {
                             {console.log("props matches", this.props.matches)}
                             {this.props.matches.map(match => (
                                 <div className="inside-recent-matches-box" onClick={() => {
-                                    this.props.history.push("/matches/summary/" + match.match_id, {
+
+                                    this.props.history.push("/match/details/" + match.match_id, {
                                         match
                                     });
 
-                                }}>
+                                }
+                                }>
                                     <span className="tournamnet-name">{match.match_type}</span>
                                     <div className="Team-data">
                                         <div className="TeamOne-name">{match.teamTwo}</div>

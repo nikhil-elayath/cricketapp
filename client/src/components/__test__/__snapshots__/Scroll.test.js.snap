@@ -1,5 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+<<<<<<< HEAD
+exports[`Testing of Scroll Component should render the component 1`] = `<div />`;
+=======
 exports[`Testing of Scroll Component should render the component 1`] = `
 <ContextProvider
   value={
@@ -35,3 +38,4 @@ exports[`Testing of Scroll Component should render the component 1`] = `
   />
 </ContextProvider>
 `;
+>>>>>>> cd65d2801ed842ed6ff9ab0cc10267da2ad1d6c5

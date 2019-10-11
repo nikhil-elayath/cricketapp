@@ -1,5 +1,11 @@
 import * as action from "../PlayerAction";
-import { GET_ALL_BATSMAN, GET_ALL_BOWLERS, GET_SINGLE_PLAYER } from "../Types";
+import {
+  GET_ALL_BATSMAN,
+  GET_ALL_BOWLERS,
+  GET_SINGLE_PLAYER,
+  GET_BATSMAN_STATS,
+  GET_TOP_SIXES
+} from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -142,6 +148,56 @@ describe("Testing Players action", () => {
     });
   });
 
+  it("should create an action of type GET_ALL_BOWLERS and the payload should be same as the API response from the server with status code 200", () => {
+    const responseOfApi = [];
+    let match = { match_type: "ODI" };
+    moxios.stubRequest(
+      "http://localhost:5000/apis/PlayerInfo/TopBowlers",
+
+      {
+        status: 200,
+        response: { data: responseOfApi }
+      }
+    );
+    // console.log("response: ", data);
+    const store = mockStore({}, {}, {});
+    const expectedActions = [
+      {
+        type: GET_ALL_BOWLERS,
+        payload: responseOfApi
+      }
+    ];
+    console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getBowlers(match)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create an action of type GET_TOP_SIXES and the payload should be same as the API response from the server with status code 200", () => {
+    const responseOfApi = [];
+    let match = { match_type: "ODI" };
+    moxios.stubRequest(
+      "http://localhost:5000/apis/PlayerInfo/TopSixes",
+
+      {
+        status: 200,
+        response: { data: responseOfApi }
+      }
+    );
+    // console.log("response: ", data);
+    const store = mockStore({}, {}, {});
+    const expectedActions = [
+      {
+        type: GET_TOP_SIXES,
+        payload: responseOfApi
+      }
+    ];
+    console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTopSixes(match)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
   it("should create an action of type GET_SINGLE_PLAYER and the payload should be same as the API response from the server with status code 200", () => {
     const responseOfApi = [[]];
     let player_id = 455;
@@ -165,4 +221,28 @@ describe("Testing Players action", () => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
+
+  // it("should create an action of type GET_BATSMAN_STATS and the payload should be same as the API response from the server with status code 200", () => {
+  //   const responseOfApi = [];
+  //   let player_id = 48;
+  //   moxios.stubRequest(
+  //     "http://localhost:5000/apis/PlayerInfo/Test-Batsman-Stats/" + player_id,
+  //     {
+  //       status: 200,
+  //       response: { data: responseOfApi }
+  //     }
+  //   );
+  //   // console.log("response: ", re);
+  //   const store = mockStore({}, {}, {});
+  //   const expectedActions = [
+  //     {
+  //       type: GET_BATSMAN_STATS,
+  //       payload: responseOfApi
+  //     }
+  //   ];
+  //   console.log("expected actions:", expectedActions);
+  //   return store.dispatch(action.getBatsmanStats(player_id)).then(() => {
+  //     expect(store.getActions()).toEqual(expectedActions);
+  //   });
+  // });
 });
