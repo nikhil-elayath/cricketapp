@@ -14,7 +14,7 @@ export class MatchLandingPage extends Component {
     };
     componentWillReceiveProps(nextProps) {
         const list = nextProps.date.map(date => {
-            return {match_date : date.match_date}
+            return { match_date: date.match_date }
         });
         console.log(list)
         this.setState({ menuItems: Menu(list, selected) });
@@ -69,7 +69,7 @@ export class MatchLandingPage extends Component {
 
 
                     <div>{this.props.matches.length === 0 ? (<h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
-                        No Recent Matches</h2>) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>
+                        No Matches</h2>) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>
                             Fixtures:</h2>)}
                     </div>
                     {this.props.matches.length > 0 ? (
