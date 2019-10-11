@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getTeams, editTeam } from "../actions/Admin";
+import { getAllTeams, editTeam } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/AdminEditPage.css";
 import NavBar from "./common/Navbar";
@@ -100,11 +100,10 @@ export class AdminEditTeam extends Component {
 }
 
 const mapStateToProps = state => ({
-  teams: state.TeamsReducer.teams,
   team: state.AdminTeamReducer.team
 });
 
 export default connect(
   mapStateToProps,
-  { getTeams, editTeam }
+  { getAllTeams, editTeam }
 )(AdminEditTeam);

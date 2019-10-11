@@ -16,7 +16,8 @@ var matches = [
     }
   ],
   batsmen = [],
-  bowlers = [];
+  bowlers = [],
+  teams = [];
 
 const wrapper = shallow(
   <TeamInfo
@@ -26,6 +27,7 @@ const wrapper = shallow(
     batsmen={batsmen}
     getTeamBowlers={getTeamBowlers}
     bowlers={bowlers}
+    teams={teams}
     match={{ isExact: true, params: { path: "/", url: "/" } }}
   />
 );
@@ -52,34 +54,6 @@ describe("Test TeamInfo Component", () => {
   // });
   it("render the component", () => {
     expect(wrapper).toMatchSnapshot();
-  });
-  it("should have links for Test,ODI,T20 for Top Batsmen", () => {
-    expect(
-      wrapper
-        .find("p")
-        .at(1)
-        .text()
-    ).toBe("Top Batsmen");
-    expect(
-      wrapper
-        .find("p")
-        .at(2)
-        .text()
-    ).toBe("Test");
-
-    expect(
-      wrapper
-        .find("p")
-        .at(3)
-        .text()
-    ).toBe("ODI");
-
-    expect(
-      wrapper
-        .find("p")
-        .at(4)
-        .text()
-    ).toBe("T20");
   });
   it("should have links for Test,ODI,T20 for Top Bowlers", () => {
     expect(
@@ -115,33 +89,6 @@ describe("Test TeamInfo Component", () => {
       .at(0)
       .simulate("click");
   });
-  it("should have text brand CricketAlpha, matches, teams, players, stats", () => {
-    expect(wrapper.find(".secLink").length).toBe(4);
-    expect(
-      wrapper
-        .find(".secLink")
-        .at(0)
-        .text()
-    ).toBe("Info");
-    expect(
-      wrapper
-        .find(".secLink")
-        .at(1)
-        .text()
-    ).toBe("Players");
-    expect(
-      wrapper
-        .find(".secLink")
-        .at(2)
-        .text()
-    ).toBe("Stats");
-    expect(
-      wrapper
-        .find(".secLink")
-        .at(3)
-        .text()
-    ).toBe("Fixtures");
-  });
   it("should have className = 'container-team-details' exacty 1", () => {
     expect(wrapper.find(".container-team-details").length).toBe(1);
   });
@@ -157,23 +104,23 @@ describe("Test TeamInfo Component", () => {
   it("should have className = 'grid-class-topteam-details' exacty 2", () => {
     expect(wrapper.find(".grid-class-topteam-details").length).toBe(2);
   });
-  it("should have className = 'centered' exacty 1", () => {
-    expect(wrapper.find(".centered").length).toBe(1);
+  it("should have className = 'centered' exacty 2", () => {
+    expect(wrapper.find(".centered").length).toBe(2);
   });
-  it("should have className = 'cards-new' exacty 1", () => {
-    expect(wrapper.find(".cards-new").length).toBe(1);
+  it("should have className = 'cards-new' exacty 2", () => {
+    expect(wrapper.find(".cards-new").length).toBe(2);
   });
-  it("should have className = 'cardtest' exacty 1", () => {
-    expect(wrapper.find(".cardtest").length).toBe(1);
+  it("should have className = 'cardtest' exacty 2", () => {
+    expect(wrapper.find(".cardtest").length).toBe(2);
   });
-  it("should have className = 'cardodi' exacty 1", () => {
-    expect(wrapper.find(".cardodi").length).toBe(1);
+  it("should have className = 'cardodi' exacty 2", () => {
+    expect(wrapper.find(".cardodi").length).toBe(2);
   });
-  it("should have className = 'cardt20' exacty 1", () => {
-    expect(wrapper.find(".cardt20").length).toBe(1);
+  it("should have className = 'cardt20' exacty 2", () => {
+    expect(wrapper.find(".cardt20").length).toBe(2);
   });
-  it("should have className = 'p-card' exacty 3", () => {
-    expect(wrapper.find(".p-card").length).toBe(3);
+  it("should have className = 'p-card' exacty 6", () => {
+    expect(wrapper.find(".p-card").length).toBe(6);
   });
   it("should have no br tags", () => {
     expect(wrapper.find("br").length).toBe(0);

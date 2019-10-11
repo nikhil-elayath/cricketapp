@@ -49,6 +49,7 @@ export const CREATE_PLAYER = "CREATE_PLAYER";
 export const EDIT_PLAYER = "EDIT_PLAYER";
 export const DELETE_PLAYER = "DELETE_PLAYER";
 export const GET_PLAYER_SEARCH = "GET_PLAYER_SEARCH";
+export const GET_ALLTEAMS = "GET_ALLTEAMS";
 
 //aditya
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getUsers, createUsers } from "../actions/users";
+import { getUsers, createUsers } from "../actions/users.js";
 import { connect } from "react-redux";
 import "./css/Login.css";
 import NavBar from "./common/Navbar";

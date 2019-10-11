@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
-import { getmatchdetailbyId, getRecentMatches } from "../actions/matches";
+import { getmatchdetailbyId, getRecentMatches } from "../actions/matches.js";
 import { connect } from "react-redux";
 import "./css/MatchSummaryDetails.css";
 

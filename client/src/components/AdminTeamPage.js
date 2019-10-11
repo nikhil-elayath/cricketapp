@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 // import { Link } from "react-router-dom";
 import {
-  getTeams,
   createTeam,
   editTeam,
   deleteTeam,
-  getTeamSearch
+  getTeamSearch,
+  getAllTeams
 } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/Adminpage.css";
@@ -14,9 +14,9 @@ import NavBar from "./common/Navbar";
 export class AdminTeamPage extends Component {
   componentDidMount() {
     if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     }
-    this.props.getTeams();
+    this.props.getAllTeams();
   }
   state = {
     team_name: "",
@@ -89,10 +89,10 @@ export class AdminTeamPage extends Component {
               </div>
             </div>
             <div className="player-list">
-              {this.props.teams.length == 0 ? (
+              {this.props.team.length == 0 ? (
                 <div className="loader"></div>
               ) : (
-                this.props.teams.map(teams => (
+                this.props.team.map(teams => (
                   <div className="player-name">
                     <p>{teams.team_name}</p>
                     <div className="inner-button">
@@ -158,11 +158,10 @@ export class AdminTeamPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  teams: state.TeamsReducer.teams,
   team: state.AdminTeamReducer.team
 });
 
 export default connect(
   mapStateToProps,
-  { getTeams, createTeam, editTeam, deleteTeam, getTeamSearch }
+  { getAllTeams, createTeam, editTeam, deleteTeam, getTeamSearch }
 )(AdminTeamPage);

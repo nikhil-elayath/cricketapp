@@ -61,6 +61,7 @@ function App() {
       <Route exact path="/bowling-stats" component={BowlingStats}></Route>
 
       <Route exact path="/match/details/:id" component={MatchDetails}></Route>
+      <Route exact path="/match/details/:id" component={MatchDetails}></Route>
       <Route
         exact
         path="/matches/summary/:id"
