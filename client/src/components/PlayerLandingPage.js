@@ -99,7 +99,10 @@ export class PlayerLandingPage extends Component {
             >
               Top Batsmen
             </h1>
-            {this.props.batsmen.map(batsman => (
+            {this.props.batsmen.length==0 ?(
+                <div className="matchlandingpageloader"></div>
+            ):(
+              this.props.batsmen.map(batsman => (
               <div
                 className="singlePlayerDiv"
                 onClick={() => {
@@ -124,7 +127,7 @@ export class PlayerLandingPage extends Component {
                   <span id="playerMinInfo">Average: 52.12</span>
                 </div>
               </div>
-            ))}
+            )))}
           </div>
           <div className="playerBowler">
             <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>

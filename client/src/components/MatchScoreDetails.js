@@ -1,25 +1,20 @@
 import React, { Component } from "react";
 import { getMatchScorecardDetailbyId } from "../actions/matches";
 import { connect } from "react-redux";
-import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
 import "../components/css/MatchScoreDetails.css";
 
 export class MatchScoreDetails extends Component {
   componentDidMount() {
-    this.props.getMatchScorecardDetailbyId(1);
+    this.props.getMatchScorecardDetailbyId(this.props.match_id);
   }
   render() {
     return (
       <div>
-        <div>
-          <MatchSecondaryNavbar />
-        </div>
-
         <div style={{ marginTop: 210 + "px" }}>
           {this.props.match_score.map(match => (
             <div
               className="top-container-scorecard"
-              style={{ marginTop: 80 + "px" }}
+              style={{ marginTop: 80 + "px", borderRadius: "5px" }}
             >
               <div></div>
 
@@ -34,9 +29,12 @@ export class MatchScoreDetails extends Component {
                     padding: "10px"
                   }}
                 >
-                  Inning {match.inning.inning} India
+                  Inning {match.inning.inning}
                 </div>
-                <div className="batsman-heading">
+                <div
+                  className="batsman-heading"
+                  style={{ padding: "5px", fontWeight: "500" }}
+                >
                   <div>Batsmen</div>
                   <div></div>
                   <div>R</div>
@@ -45,22 +43,27 @@ export class MatchScoreDetails extends Component {
                   <div>6s</div>
                   <div>SR</div>
                 </div>
-                {match.batsman.map(batsman => (
-                  <div className="batsman-heading">
-                    <div>{batsman.striker_name}</div>
-                    <div>
-                      {batsman.wicket_type} {batsman.fielder_name} Bowler{" "}
-                      {batsman.bowler_name}
+                <div>
+                  {match.batsman.map(batsman => (
+                    <div className="batsman-heading" style={{ padding: "5px" }}>
+                      <div>{batsman.striker_name}</div>
+                      <div>
+                        {batsman.wicket_type} {batsman.fielder_name}{" "}
+                        {batsman.bowler_name}
+                      </div>
+                      <div>{batsman.batsman_run}</div>
+                      <div>{batsman.ball_faced}</div>
+                      <div>{batsman.fours}</div>
+                      <div>{batsman.sixes}</div>
+                      <div>{batsman.striker_rate}</div>
                     </div>
-                    <div>{batsman.batsman_run}</div>
-                    <div>{batsman.ball_faced}</div>
-                    <div>{batsman.fours}</div>
-                    <div>{batsman.sixes}</div>
-                    <div>{batsman.striker_rate}</div>
-                  </div>
-                ))}
+                  ))}
+                </div>
 
-                <div className="extras-content">
+                <div
+                  className="extras-content"
+                  style={{ fontWeight: "500", padding: "5px" }}
+                >
                   <div>Extras</div>
                   <div></div>
                   <div>
@@ -69,7 +72,10 @@ export class MatchScoreDetails extends Component {
                   </div>
                 </div>
 
-                <div className="total-content">
+                <div
+                  className="total-content"
+                  style={{ fontWeight: "500", padding: "5px" }}
+                >
                   <div>Total</div>
                   <div></div>
                   <div>
@@ -79,31 +85,32 @@ export class MatchScoreDetails extends Component {
                   </div>
                 </div>
                 <div></div>
-                <div className="bowler-heading">
+                <div
+                  className="bowler-heading"
+                  style={{ padding: "5px", fontWeight: "500" }}
+                >
                   <div>Bowler</div>
                   <div></div>
                   <div>O</div>
-                  <div>M</div>
                   <div>R</div>
                   <div>W</div>
-                  <div>NB</div>
-                  <div>WD</div>
+                  <div>Extra</div>
                   <div>Ecom</div>
                 </div>
-
-                {match.all_bowler.map(bowler => (
-                  <div className="bowler-heading">
-                    <div>{bowler.bowler_name}</div>
-                    <div></div>
-                    <div>{bowler.total_over}</div>
-                    <div>{bowler.maiden_over}</div>
-                    <div>{bowler.given_runs}</div>
-                    <div>{bowler.wicket_taken}</div>
-                    <div>{bowler.total_extras}</div>
-                    <div>{bowler.total_extras}</div>
-                    <div>{bowler.ecom}</div>
-                  </div>
-                ))}
+                <div>
+                  {match.all_bowler.map(bowler => (
+                    <div className="bowler-heading" style={{ padding: "5px" }}>
+                      <div>{bowler.bowler_name}</div>
+                      <div></div>
+                      <div>{bowler.total_over}</div>
+                      <div>{bowler.given_runs}</div>
+                      {/* {<div>{bowler.wicket_taken === null && bowler.wicket_taken === ""}</div> ? (<div> 0</div>) : (<div>{bowler.wicket_taken}</div>)} */}
+                      <div>{bowler.wicket_taken}</div>
+                      <div>{bowler.total_extras}</div>
+                      <div>{bowler.ecom}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               <div></div>

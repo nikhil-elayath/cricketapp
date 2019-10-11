@@ -28,6 +28,11 @@ export const MenuItem = ({ text, selected }) => {
 export const Menu = (list, selected) =>
   list.map(el => {
     const { date } = el;
+    list.map(el => {
+      const date = el.match_date;
+
+      return <MenuItem text={date} key={date} selected={selected} />;
+    });
 
     return <MenuItem text={date} key={date} selected={selected} />;
   });

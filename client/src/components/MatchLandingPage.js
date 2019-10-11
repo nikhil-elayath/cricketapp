@@ -3,13 +3,22 @@ import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
-import { getRecentMatches, getMatchesDate } from "../actions/matches";
+import { getRecentMatches, getMatchesDate } from "../actions/Matches";
 import { Menu, list, selected, ArrowLeft, ArrowRight } from "./Scroll";
+import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
 
 export class MatchLandingPage extends Component {
-  constructor(props) {
-    super(props);
-    this.menuItems = Menu(list, selected);
+  state = {
+    selected: false,
+    list: []
+  };
+  componentWillReceiveProps(nextProps) {
+    const list = nextProps.date.map(date => {
+      return { match_date: date.match_date };
+    });
+    console.log(list);
+    this.setState({ menuItems: Menu(list, selected) });
+    this.setState({ list });
   }
   componentDidMount() {
     function yyyymmdd() {
@@ -26,18 +35,16 @@ export class MatchLandingPage extends Component {
     this.props.getRecentMatches(date);
     this.props.getMatchesDate();
   }
-  state = {
-    selected
-  };
 
   onSelect = key => {
     this.setState({ selected: key });
     this.props.getRecentMatches(key);
   };
   render() {
+    console.log(this.state);
     const { selected } = this.state;
     // Create menu from items
-    const menu = this.menuItems;
+    const menu = this.state.menuItems;
 
     return (
       <div>
@@ -52,14 +59,11 @@ export class MatchLandingPage extends Component {
               Matches
             </h1>
           </div>
-          <div className="timeline" style={{ marginBottom: "50px" }}>
-            <ScrollMenu
-              data={menu}
-              arrowLeft={ArrowLeft}
-              arrowRight={ArrowRight}
-              selected={selected}
-              onSelect={this.onSelect}
-            />
+        </div>
+        <div className="Team-data">
+          <div className="TeamTwo-name">{match.teamOne}</div>
+          <div className="TeamTwo-score">
+            {match.teamTwoScore}/{match.teamtwo_wicket} (50 overs)
           </div>
 
           <div>
@@ -87,7 +91,7 @@ export class MatchLandingPage extends Component {
                   className="inside-recent-matches-box"
                   onClick={() => {
                     this.props.history.push(
-                      "/matches/summary/" + match.match_id,
+                      "/match/details/" + match.match_id,
                       {
                         match
                       }

@@ -3,14 +3,13 @@ import "../css/MatchSecondaryNavbar.css";
 // import dhoni from "../images/dhoni.jpg";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
-import {} from "../../actions/matches";
-import { connect } from "react-redux";
 // import './css/SecondaryNavbar.css'
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
 import default_user_img from "../images/defaultuserimg.jpg";
+import { request } from "https";
 
-export class MatchSecondaryNavbar extends Component {
+export default class MatchSecondaryNavbar extends Component {
   render() {
     console.log(this.props);
     return (
@@ -92,15 +91,30 @@ export class MatchSecondaryNavbar extends Component {
           </div>
           <div className="secNavLinks">
             <ul>
-              <Link className="secLink" to="/matches/summary/">
+              <span
+                className="secLink"
+                onClick={() => {
+                  this.props.changeDetailsType("summary");
+                }}
+              >
                 <li>Summary</li>
-              </Link>
-              <Link className="secLink" to="/matches/scoreboard">
+              </span>
+              <span
+                className="secLink"
+                onClick={() => {
+                  this.props.changeDetailsType("scorecard");
+                }}
+              >
                 <li>ScoreBoard</li>
-              </Link>
-              <Link className="secLink" to="/matches/statistics">
+              </span>
+              <span
+                className="secLink"
+                onClick={() => {
+                  this.props.changeDetailsType("stats");
+                }}
+              >
                 <li>Statistics</li>
-              </Link>
+              </span>
             </ul>
           </div>
         </div>
@@ -108,12 +122,3 @@ export class MatchSecondaryNavbar extends Component {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  match: state.matchreducer.match
-});
-
-export default connect(
-  mapStateToProps,
-  {}
-)(MatchSecondaryNavbar);
