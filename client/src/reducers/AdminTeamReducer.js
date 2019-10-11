@@ -1,9 +1,9 @@
 import {
-  GET_TEAMS,
   CREATE_TEAM,
   EDIT_TEAM,
-  DELETE_TEAM
-  // GET_TEAM_SEARCH
+  DELETE_TEAM,
+  GET_ALLTEAMS,
+  GET_TEAM_SEARCH
 } from "../actions/Types";
 
 const initialState = {
@@ -12,8 +12,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case GET_TEAMS:
-      console.log("GET_TEAM");
+    case GET_ALLTEAMS:
+      console.log("GET_ALLTEAMS");
       return {
         ...state,
         team: action.payload
@@ -24,11 +24,13 @@ export default function(state = initialState, action) {
       return state;
     case DELETE_TEAM:
       return state;
-    // case GET_TEAM_SEARCH:
-    //   return {
-    //     ...state,
-    //     team: action.payload
-    //   };
+    case GET_ALLTEAMS:
+      return state;
+    case GET_TEAM_SEARCH:
+      return {
+        ...state,
+        team: action.payload
+      };
     default:
       return state;
   }

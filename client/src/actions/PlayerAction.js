@@ -141,6 +141,24 @@ export const getTestBatsmanStats = player_id => dispatch => {
     });
 };
 
+export const getTestBowlerStats = player_id => dispatch => {
+  return axios
+    .get("http://localhost:5000/apis/PlayerInfo/Test-Bowler-Stats/" + player_id)
+    .then(res => {
+      console.log(
+        "From Player Actions test Batsman stats is: ",
+        res.data.TestBowler
+      );
+      dispatch({
+        type: GET_TEST_BOWLER_STATS,
+        payload: res.data.TestBowler
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export const getT20BatsmanStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/T20-Batsman-Stats/" + player_id)
@@ -156,13 +174,31 @@ export const getT20BatsmanStats = player_id => dispatch => {
     });
 };
 
+export const getT20BowlerStats = player_id => dispatch => {
+  return axios
+    .get("http://localhost:5000/apis/PlayerInfo/T20-Bowler-Stats/" + player_id)
+    .then(res => {
+      console.log(
+        "From Player Actions ODI BOWLER stats is: ",
+        res.data.T20Bowler
+      );
+      dispatch({
+        type: GET_T20_BOWLER_STATS,
+        payload: res.data.T20Bowler
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
 export const getBatsmanStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/Batsman-Stats/" + player_id)
     .then(res => {
       console.log("From Player Actions test Batsman stats is: ", res.data.data);
       dispatch({
-        type: GET_BATSMAN_STATS,
+        type: GET_T20_BOWLER_STATS,
         payload: res.data.data
       });
     })

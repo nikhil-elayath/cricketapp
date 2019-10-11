@@ -694,7 +694,7 @@ router.get("/T20-Bowler-Stats/:player_id", async (req, res) => {
 
     res.status(200).json({
       status: 200,
-      ODI: data,
+      T20Bowler: data,
       message: "Batsman stats retrieved"
     });
   } catch (err) {
@@ -754,7 +754,7 @@ router.get("/Test-Bowler-Stats/:player_id", async (req, res) => {
 
     res.status(200).json({
       status: 200,
-      ODI: data,
+      TestBowler: data,
       message: "Batsman stats retrieved"
     });
   } catch (err) {

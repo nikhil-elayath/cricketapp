@@ -6,6 +6,18 @@ let id;
 let player_name;
 let team_name;
 describe("Testing ecommerce API", () => {
+  //test  for all team
+  it("should return a status code of 200, the body should be an object, a message in the body,  the data should be an array", done => {
+    request(app)
+      .get("/apis/admin/allteam")
+      .then(res => {
+        expect(res.status).toBe(200);
+        expect(res.body).toEqual(expect.any(Object));
+        expect(res.body.data).toEqual(expect.any(Array));
+        expect(res.body.message).toBe("Retrieved all players");
+        done();
+      });
+  });
   //create player api test
   it("should return status of 200 and a mesage", done => {
     let data = {
