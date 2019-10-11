@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { login, getUsers } from "../actions/Users";
+import { login, getUsers } from "../actions/users.js";
 import { connect } from "react-redux";
 import Navbar from "./common/Navbar";
 

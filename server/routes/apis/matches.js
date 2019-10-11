@@ -88,7 +88,7 @@ router.get('/bydate', async (req, res, next) => {
     try {
 
         // feaching all the dates
-        const result = await db.any("SELECT match_date FROM match_date ORDER BY match_date;");
+        const result = await db.any("SELECT match_id,match_date FROM match_date;");
         // console.log(result)
 
         // var dates = new Array();
