@@ -8,7 +8,6 @@
 
 .personalDetails {
   border-right: 1px solid #ccc;
-
   justify-items: flex-start;
   height: 500px;
 }

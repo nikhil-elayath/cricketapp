@@ -1,5 +1,11 @@
 import * as action from "../Teams";
-import { GET_TEAMS, GET_RANKS, GET_MATCHBYTEAMID } from "../Types";
+import {
+  GET_TEAMS,
+  GET_RANKS,
+  GET_MATCHBYTEAMID,
+  GET_TEAM_BATSMEN,
+  GET_TEAM_BOWLERS
+} from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
 import thunk from "redux-thunk";
@@ -112,6 +118,68 @@ describe("Testing the Actions", () => {
     const store = mockStore({});
     const expectedActions = [];
     return store.dispatch(action.getMatch(team_id)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create action with type GET_TEAM_BATSMEN and the payload should be same as the api response when the response is 200", () => {
+    const responseOfApi = [{}, {}, {}];
+    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/topbatsmen", {
+      status: 200,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedActions = [
+      {
+        type: GET_TEAM_BATSMEN,
+        payload: responseOfApi
+      }
+    ];
+    return store.dispatch(action.getTeamBatsmen()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create action with type GET_TEAM_BATSMEN and the payload should be same as the api response when the response is 400", () => {
+    const responseOfApi = [{}, {}, {}];
+    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/topbatsmen", {
+      status: 400,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedActions = [];
+    return store.dispatch(action.getTeamBatsmen()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create action with type GET_TEAM_BOWLERS and the payload should be same as the api response when the response is 200", () => {
+    const responseOfApi = [{}, {}, {}];
+    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/topbowlers", {
+      status: 200,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedActions = [
+      {
+        type: GET_TEAM_BOWLERS,
+        payload: responseOfApi
+      }
+    ];
+    return store.dispatch(action.getTeamBowlers()).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create action with type GET_TEAM_BOWLERS and the payload should be same as the api response when the response is 400", () => {
+    const responseOfApi = [{}, {}, {}];
+    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/topbowlers", {
+      status: 400,
+      response: { data: responseOfApi }
+    });
+    const store = mockStore({});
+    const expectedActions = [];
+    return store.dispatch(action.getTeamBowlers()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });

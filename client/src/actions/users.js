@@ -43,6 +43,7 @@ export const createUsers = users => dispatch => {
 
 export const login = (users, history) => dispatch => {
   return axios
+
     .post("http://localhost:5000/api/cricketalpha/user/login", users)
     .then(res => {
       console.log(res.data.token);
@@ -53,11 +54,14 @@ export const login = (users, history) => dispatch => {
       });
       console.log(res.data);
       console.log("Login successful");
+
       // history.push("/displayusers");
     })
     .catch(err => {
       console.log(err);
       console.log("Invalid Credentials");
+      alert("Invalid Login!");
+      // dispatch({ type: errormessage });
     });
 };
 //me
@@ -75,6 +79,7 @@ export const otpVerify = users => dispatch => {
     })
     .catch(err => {
       console.log(err);
+      alert("Invalid otp");
     });
 };
 // export const resetPassword = users => dispatch => {
@@ -103,5 +108,6 @@ export const otpSend = users => dispatch => {
     })
     .catch(err => {
       console.log(err);
+      alert("Invalid email!");
     });
 };

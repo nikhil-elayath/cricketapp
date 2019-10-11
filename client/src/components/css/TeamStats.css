@@ -1,0 +1,86 @@
+.match-type-section {
+  width: 50%;
+  float: left;
+}
+
+.category-section {
+  width: 50%;
+  float: right;
+}
+
+.p-match-type {
+  color: #2c3e50;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.p-category {
+  color: #2c3e50;
+  font-size: 20px;
+  margin-left: 15px;
+}
+
+.p-category-name {
+  color: #2c3e50;
+  font-size: 24px;
+  margin-left: 15px;
+}
+
+.cards-team-stats {
+  display: flex;
+  margin: 5px 250px 15px 15px;
+}
+
+.cards-team-category {
+  display: flex;
+  margin: 5px 100px 15px 15px;
+}
+
+.stats-table {
+  border: 1px solid #707070;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.list {
+  text-align: center;
+  display: flex;
+  margin: 15px 0px 0px 0px;
+}
+
+.p-row {
+  font-size: 18px;
+  color: #2c3e50;
+  margin: auto;
+}
+
+.p-row-details {
+  font-size: 15px;
+  color: #2c3e50;
+  margin: auto;
+}
+
+.hr-row {
+  margin: 0px 35px 0px 35px;
+}
+/* --------------------------------------------------------------------------------- */
+@media only screen and (max-width: 1024px) {
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 576px) {
+  .match-type-section {
+    width: 100%;
+  }
+  .category-section {
+    width: 100%;
+  }
+  .cards-team-stats {
+    margin: 5px 15px 15px 15px;
+  }
+  .cards-team-category {
+    margin: 5px 15px 15px 15px;
+  }
+}

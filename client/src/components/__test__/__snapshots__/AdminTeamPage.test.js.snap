@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test  Component render the component 1`] = `
+<div>
+  <Navbar />
+  <div
+    className="player-page"
+  >
+    <div
+      className="players"
+    >
+      <div
+        className="inner-heading"
+      >
+        <div>
+          <h1>
+            All Team
+          </h1>
+        </div>
+        <div>
+           
+          <input
+            margin="normal"
+            name="Search"
+            onChange={[Function]}
+            placeholder="Search"
+            type="text"
+          />
+        </div>
+      </div>
+      <div
+        className="player-list"
+      />
+    </div>
+    <div
+      id="Adminform"
+    >
+      <fieldset>
+        <h1>
+          Add New Team
+        </h1>
+        <input
+          name="team_name"
+          onChange={[Function]}
+          placeholder="Enter Team Name"
+          type="text"
+          value=""
+        />
+        <span
+          className="errorMessage"
+          style={
+            Object {
+              "color": "#c0392b",
+              "display": "none",
+            }
+          }
+        />
+        <button
+          onChange={[Function]}
+          onClick={[Function]}
+        >
+          Add Team
+        </button>
+      </fieldset>
+    </div>
+  </div>
+</div>
+`;

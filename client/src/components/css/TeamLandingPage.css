@@ -1,164 +1,268 @@
 * {
-	font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .container-team {
-	margin-top: 80px;
-	margin-left: 2%;
-	margin-right: 2%;
+  margin-top: 80px;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 .h1-team {
-	color: #2c3e50;
-	font-size: 38px;
+  color: #2c3e50;
+  font-size: 38px;
 }
 
 .grid-class-team {
-	grid-gap: 10px;
-	width: 250px;
-	height: 200px;
-	padding: 15px;
-	border: 1px solid #707070;
-	border-radius: 8px;
-	margin: 15px;
-	display: inline-flex;
-	cursor: pointer;
+  grid-gap: 10px;
+  width: 250px;
+  height: 200px;
+  padding: 15px;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  margin: 15px;
+  display: inline-flex;
+  cursor: pointer;
 }
 
 .grid-class-team:hover {
-	transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+.img-team-logo {
+  width: 100px;
+  border-radius: 50%;
 }
 
 .info-team {
-	width: 97%;
-	text-align: center;
-	font-size: 27px;
-	margin-top: 5%;
-	color: #2c3e50;
+  width: 97%;
+  text-align: center;
+  font-size: 27px;
+  margin-top: 5%;
 }
 
 .grid-container-team {
-	display: grid;
-	grid-template-columns: auto auto;
+  display: grid;
+  grid-template-columns: auto auto;
 }
 
 .country-team {
-	width: 70%;
-	float: left;
+  width: 70%;
+  float: left;
 }
 
 .top-team {
-	width: 30%;
-	float: right;
+  width: 30%;
+  float: right;
+  /* margin-top: 72px; */
 }
 
-.grid-class-topteam {
-	width: 350px;
-	/* height: 500px; */
-	border: 1px solid #707070;
-	border-radius: 8px;
-	margin: 15px;
-	margin-left: 0px;
+.p-team {
+  color: #2c3e50;
+}
+
+.cards-team {
+  display: flex;
+  margin: 5px 1000px 15px 15px;
+}
+.cardtest-team {
+  color: #707070;
+  background-color: #16a085;
+  color: white;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cardtest-team p {
+  color: #ffffff;
+}
+
+.cardodi-team {
+  color: #707070;
+  border: 1px solid #16a085;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cardt20-team {
+  color: #707070;
+  border: 1px solid #16a085;
+  width: 100%;
+  cursor: pointer;
+}
+
+.cardtest-team:hover {
+  background-color: #16a085;
+  color: white;
+}
+.cardodi-team:hover {
+  background-color: #16a085;
+  color: white;
+}
+.cardt20-team:hover {
+  background-color: #16a085;
+  color: white;
+}
+
+.cardtest-team:hover .p-card {
+  color: white;
+}
+.cardodi-team:hover .p-card {
+  color: white;
+}
+.cardt20-team:hover .p-card {
+  color: white;
+}
+
+.p-card-team {
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------- */
+
+@media only screen and (max-width: 1024px) {
+  .grid-container-team {
+    grid-template-columns: auto;
+  }
+  .cards-team {
+    margin: 0px 370px 15px 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .country-team {
+    width: 50%;
+  }
+  .top-team {
+    width: 50%;
+    float: right;
+  }
+  .grid-container-team {
+    grid-template-columns: auto;
+  }
+  .cards-team {
+    margin: 0px 445px 10px 15px;
+  }
+  .grid-class-team {
+    margin: 12px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .top-team {
+    display: none;
+  }
+  .grid-container-team {
+    grid-template-columns: auto;
+  }
+  .cards-team {
+    margin: 0px 15px 15px 10px;
+  }
+  .grid-class-team {
+    margin: 12px;
+  }
+}
+
+/* ----------------------------------------------------------------- */
+
+/* .grid-class-topteam {
+  width: 350px;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  margin: 15px;
+  margin-left: 0px;
+  position: fixed;
 }
 
 .p-topteam {
-	width: 98%;
-	text-align: center;
-	font-size: 28px;
-	color: #2c3e50;
+  width: 98%;
+  text-align: center;
+  font-size: 28px;
+  color: #2c3e50;
 }
 
 .cards {
-	display: flex;
-	margin-left: 20%;
-	margin-right: 20%;
-	margin-bottom: 5%;
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 5%;
 }
 .cardtest {
-	color: #707070;
-	background-color: #16a085;
-	color: white;
-	width: 100%;
-	cursor: pointer;
+  color: #707070;
+  background-color: #16a085;
+  color: white;
+  width: 100%;
+  cursor: pointer;
 }
 
 .cardtest p {
-	color: #ffffff;
+  color: #ffffff;
 }
 
 .cardodi {
-	color: #707070;
-	border: 1px solid #16a085;
-	width: 100%;
-	cursor: pointer;
+  color: #707070;
+  border: 1px solid #16a085;
+  width: 100%;
+  cursor: pointer;
 }
 
 .cardt20 {
-	color: #707070;
-	border: 1px solid #16a085;
-	width: 100%;
-	cursor: pointer;
+  color: #707070;
+  border: 1px solid #16a085;
+  width: 100%;
+  cursor: pointer;
 }
 
 .cardtest:hover {
-	background-color: #16a085;
-	color: white;
+  background-color: #16a085;
+  color: white;
 }
 .cardodi:hover {
-	background-color: #16a085;
-	color: white;
+  background-color: #16a085;
+  color: white;
 }
 .cardt20:hover {
-	background-color: #16a085;
-	color: white;
+  background-color: #16a085;
+  color: white;
 }
 
 .cardtest:hover .p-card {
-	color: white;
+  color: white;
 }
 .cardodi:hover .p-card {
-	color: white;
+  color: white;
 }
 .cardt20:hover .p-card {
-	color: white;
+  color: white;
 }
 
 .p-card {
-	text-align: center;
-}
-
-img {
-	width: 100px;
-	border-radius: 50%;
+  text-align: center;
 }
 
 .list {
-	margin-left: 5%;
-	display: flex;
-	align-items: center;
-	/* justify-content: space-around; */
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
 }
 .img-card {
-	width: 60px;
-	height: 60px;
-	margin-right: 5%;
+  width: 60px;
+  height: 60px;
+  margin-right: 5%;
+  border-radius: 50%;
 }
 .p-team-name {
-	font-size: 20px;
-	margin-right: auto;
+  font-size: 20px;
+  margin-right: auto;
 }
 
 .h2-team-position {
-	font-size: 20px;
-	margin-left: auto;
-	margin-right: 18px;
+  font-size: 20px;
+  margin-left: auto;
+  margin-right: 18px;
 }
 
 .hr-team-card {
-	margin-left: 5%;
-	margin-right: 5%;
-}
-
-.link-team {
-	text-decoration: none;
-}
+  margin-left: 5%;
+  margin-right: 5%;
+} */

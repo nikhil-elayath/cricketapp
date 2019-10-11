@@ -249,8 +249,5 @@ describe("Testing Matches Reducers", () => {
         let returnedState = matches(initialState, action);
         expect(returnedState).toEqual({ match: [{}], match_date: [{}], matches: [{}], match_score: initialState.match_score });
     });
-
-
+  });
 });
-
-
