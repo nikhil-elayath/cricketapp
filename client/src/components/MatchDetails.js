@@ -27,10 +27,10 @@ export default class MatchDetails extends Component {
             match_id={this.props.history.location.state.match.match_id}
           />
         ) : (
-          <MatchSummaryDetails
-            match_id={this.props.history.location.state.match.match_id}
-          />
-        )}
+              <MatchSummaryDetails
+                match_id={this.props.history.location.state.match.match_id}
+              />
+            )}
       </div>
     );
   }

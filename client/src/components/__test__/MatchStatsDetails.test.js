@@ -17,30 +17,30 @@ describe("Testing of MatchStatsDetails Component", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    it("[Main container] should have exactly defined classname ", () => {
-        expect(
-            wrapper
-                .find("div")
-                .at(3)
-                .props().className
-        ).toBe("top-container-stats");
-    });
-    it("[Main container -> stats-container] should have exactly defined classname ", () => {
-        expect(
-            wrapper
-                .find("div")
-                .at(5)
-                .props().className
-        ).toBe("stats-container");
-    });
-    it("[Main container -> top-title] should have exactly defined classname ", () => {
-        expect(
-            wrapper
-                .find("div")
-                .at(6)
-                .props().className
-        ).toBe("top-title");
-    });
+    // it("[Main container] should have exactly defined classname ", () => {
+    //     expect(
+    //         wrapper
+    //             .find("div")
+    //             .at(3)
+    //             .props().className
+    //     ).toBe("top-container-stats");
+    // });
+    // it("[Main container -> stats-container] should have exactly defined classname ", () => {
+    //     expect(
+    //         wrapper
+    //             .find("div")
+    //             .at(5)
+    //             .props().className
+    //     ).toBe("stats-container");
+    // });
+    // it("[Main container -> top-title] should have exactly defined classname ", () => {
+    //     expect(
+    //         wrapper
+    //             .find("div")
+    //             .at(6)
+    //             .props().className
+    //     ).toBe("top-title");
+    // });
 
 
 
