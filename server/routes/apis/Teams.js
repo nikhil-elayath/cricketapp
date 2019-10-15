@@ -15,7 +15,7 @@ router.post("/teams", async (req, res, next) => {
     const result = await db.any(
       `select t.team_id, t.team_name from team t left join match m on m.innings_one_team = t.team_id  where m.match_type='${match_type}' and m.competition = '${competition}' group by t.team_id,t.team_name order by t.team_name;`
     );
-    console.log("Asass", result);
+    // console.log("Get team result is", result);
     if (!result)
       throw {
         statusCode: 404,
@@ -25,6 +25,32 @@ router.post("/teams", async (req, res, next) => {
       status: 200,
       data: result,
       message: "Retrieved all the teams successfully!"
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/teamdetails/:team_id", async (req, res, next) => {
+  try {
+    // const match_type = req.body.match_type;
+    // const competition = req.body.competition;
+    const team_id = req.params.team_id;
+    // console.log("match type", match_type);
+    // console.log("competition", match_type);
+    const result = await db.any(
+      `select * from team where team_id = '${team_id}';`
+    );
+    console.log("Get team by id result: ", result);
+    if (!result)
+      throw {
+        statusCode: 404,
+        customMessage: "Cannot find any team with this id"
+      };
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Retrieved team with this id successfully!"
     });
   } catch (err) {
     next(err);

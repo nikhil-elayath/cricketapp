@@ -5,7 +5,8 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS
+  GET_LOWEST_TOTALS,
+  GET_TEAM_BY_ID
 } from "./Types";
 
 import axios from "axios";
@@ -17,6 +18,20 @@ export const getTeams = match_type => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAMS,
+        payload: res.data.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getTeamsById = team_id => dispatch => {
+  return axios
+    .get("http://localhost:5000/cricketalpha/teamsdetails/" + team_id)
+    .then(res => {
+      dispatch({
+        type: GET_TEAM_BY_ID,
         payload: res.data.data
       });
     })

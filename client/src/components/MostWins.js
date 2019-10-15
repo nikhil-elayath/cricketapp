@@ -11,6 +11,7 @@ export class MostWins extends Component {
     t20Click: false,
     iplClick: false
   };
+
   componentDidMount() {
     console.log(this.props);
     let ranking = {

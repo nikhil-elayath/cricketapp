@@ -6,7 +6,8 @@ import {
   GET_TEAM_BOWLERS,
   GET_HIGHEST_TOTALS,
   GET_LOWEST_TOTALS,
-  GET_TEAM_SEARCH
+  GET_TEAM_SEARCH,
+  GET_TEAM_BY_ID
 } from "../actions/Types";
 
 const initialstate = {
@@ -16,7 +17,8 @@ const initialstate = {
   batsmen: [],
   bowlers: [],
   highesttotals: [],
-  lowesttotals: []
+  lowesttotals: [],
+  team: [[]]
 };
 
 export default function(state = initialstate, action) {
@@ -49,6 +51,8 @@ export default function(state = initialstate, action) {
       };
     case GET_TEAM_SEARCH:
       return { ...state, teams: action.payload };
+    case GET_TEAM_BY_ID:
+      return { ...state, team: action.payload };
     default:
       return state;
   }

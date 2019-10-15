@@ -65,12 +65,33 @@ export class TeamInfo extends Component {
       <div>
         <div className="container-team-details">
           <p className="p-matches">Recent Matches</p>
+          <div className="centered">
+            <div className="cards-new">
+              <div
+                style={{ borderRadius: "8px 0px 0px 8px" }}
+                className={this.state.testClick ? "cardtest" : "cardodi"}
+                onClick={this.onClickTest}
+              >
+                <p className="p-card">Test</p>
+              </div>
+              <div
+                className={this.state.odiClick ? "cardtest" : "cardodi"}
+                onClick={this.onClickOdi}
+              >
+                <p className="p-card">ODI</p>
+              </div>
+              <div
+                style={{ borderRadius: "0px 8px 8px 0px" }}
+                className={this.state.t20Click ? "cardtest" : "cardt20"}
+                onClick={this.onClickT20}
+              >
+                <p className="p-card">T20</p>
+              </div>
+            </div>
+          </div>
           <div className="matches-section">
-            {/* {this.props.isLoading ? (
-              <Loader type="ThreeDots" color="blue" height={80} width={80} />
-            ) : ( */}
             <div className="all-recent-matches-box-team">
-              {this.props.matches.length == 0 ? (
+              {this.props.matches.length === 0 ? (
                 <div className="teaminfoloader"></div>
               ) : (
                 this.props.matches.map(matches => (
@@ -104,37 +125,7 @@ export class TeamInfo extends Component {
               <div className="grid-container-team-details">
                 <div className="grid-class-team-details">
                   <div className="grid-class-topteam-details">
-                    <p className="p-top-team-details">Top Batsmen</p>
-                    <div className="centered">
-                      <div className="cards-new">
-                        <div
-                          style={{ borderRadius: "8px 0px 0px 8px" }}
-                          className={
-                            this.state.testClick ? "cardtest" : "cardodi"
-                          }
-                          onClick={this.onClickTest}
-                        >
-                          <p className="p-card">Test</p>
-                        </div>
-                        <div
-                          className={
-                            this.state.odiClick ? "cardtest" : "cardodi"
-                          }
-                          onClick={this.onClickOdi}
-                        >
-                          <p className="p-card">ODI</p>
-                        </div>
-                        <div
-                          style={{ borderRadius: "0px 8px 8px 0px" }}
-                          className={
-                            this.state.t20Click ? "cardtest" : "cardt20"
-                          }
-                          onClick={this.onClickT20}
-                        >
-                          <p className="p-card">T20</p>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="p-top-team-details">Top Run Scorers</p>
                     <div>
                       {this.props.batsmen.map(batsmen => (
                         <div>
@@ -158,37 +149,7 @@ export class TeamInfo extends Component {
                 </div>
                 <div className="grid-class-team-details">
                   <div className="grid-class-topteam-details">
-                    <p className="p-top-team-details">Top Bowlers</p>
-                    <div className="centered">
-                      <div className="cards-new">
-                        <div
-                          style={{ borderRadius: "8px 0px 0px 8px" }}
-                          className={
-                            this.state.testClick ? "cardtest" : "cardodi"
-                          }
-                          onClick={this.onClickTest}
-                        >
-                          <p className="p-card">Test</p>
-                        </div>
-                        <div
-                          className={
-                            this.state.odiClick ? "cardtest" : "cardodi"
-                          }
-                          onClick={this.onClickOdi}
-                        >
-                          <p className="p-card">ODI</p>
-                        </div>
-                        <div
-                          style={{ borderRadius: "0px 8px 8px 0px" }}
-                          className={
-                            this.state.t20Click ? "cardtest" : "cardt20"
-                          }
-                          onClick={this.onClickT20}
-                        >
-                          <p className="p-card">T20</p>
-                        </div>
-                      </div>
-                    </div>
+                    <p className="p-top-team-details">Top Wicket Takers</p>
                     <div>
                       {this.props.bowlers.map(bowlers => (
                         <div>
