@@ -24,7 +24,7 @@ export class MatchStatsDetails extends Component {
               <div className="top-title"> Manhattan</div>
               <div>
                 <iframe
-                  src={this.props.match_stats.manhattan}
+                  src={this.props.match_stats_manhattan.manhattan}
                   style={{
                     width: 1100 + "px",
                     height: 600 + "px",
@@ -39,10 +39,10 @@ export class MatchStatsDetails extends Component {
           <div className="top-container-stats" style={{ marginTop: 70 + "px" }}>
             <div></div>
             <div className="stats-container">
-              <div className="top-title"> Pie Chard 1</div>
+              <div className="top-title"> Pie chart of players run</div>
               <div>
                 <iframe
-                  src={this.props.match_stats.piechartOne}
+                  src={this.props.match_stats_pie1.piechartOne}
                   style={{
                     width: 1100 + "px",
                     height: 600 + "px",
@@ -56,10 +56,10 @@ export class MatchStatsDetails extends Component {
           <div className="top-container-stats" style={{ marginTop: 70 + "px" }}>
             <div></div>
             <div className="stats-container">
-              <div className="top-title"> Pie Chard 2</div>
+              <div className="top-title"> Pie chart of bowlers wicket</div>
               <div>
                 <iframe
-                  src={this.props.match_stats.piechartTwo}
+                  src={this.props.match_stats_pie2.piechartTwo}
                   style={{
                     width: 1100 + "px",
                     height: 600 + "px",
@@ -78,7 +78,9 @@ export class MatchStatsDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  match_stats: state.matchreducer.match_stats
+  match_stats_manhattan: state.matchreducer.match_stats_manhattan,
+  match_stats_pie1: state.matchreducer.match_stats_pie1,
+  match_stats_pie2: state.matchreducer.match_stats_pie2
 });
 
 export default connect(
