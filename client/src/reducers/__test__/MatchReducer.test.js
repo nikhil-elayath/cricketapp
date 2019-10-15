@@ -424,5 +424,313 @@ describe("Testing Matches Reducers", () => {
             match_stats_pie2: [{}]
         });
     });
+
+    // GET_MANHATTAN_GRAPH_BY_ID
+
+    it("[GET_MANHATTAN_GRAPH_BY_ID] [init-null] should return a state object with matches array equal to the payload in the action when the action type is GET_MANHATTAN_GRAPH_BY_ID (when the returned state is initial state", () => {
+        const action = {
+            type: GET_MANHATTAN_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        };
+        const returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            matches: action.matches,
+            match_date: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.payload,
+            match_stats_pie1: action.match_stats_pie1,
+            match_stats_pie2: action.match_stats_pie2
+        });
+    });
+
+    it("[GET_MANHATTAN_GRAPH_BY_ID] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MANHATTAN_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [1, 2, 3, 4, 5],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        };
+        const action = {
+            type: GET_MANHATTAN_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        };
+        const returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            match_date: action.match_date,
+            matches: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.payload,
+            match_stats_pie1: action.match_stats_pie1,
+            match_stats_pie2: action.match_stats_pie2
+        });
+    });
+
+    it("[GET_MANHATTAN_GRAPH_BY_ID- SOME TYPE] [init-value] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        });
+    });
+
+
+    it("[GET_MANHATTAN_GRAPH_BY_ID - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_MANHATTAN_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: [1, 2, 3, 4, 5],
+            match_stats_pie1: [{}],
+            match_stats_pie2: [{}]
+        };
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: initialState.match_stats_manhattan,
+            match_stats_pie1: [{}],
+            match_stats_pie2: [{}]
+        });
+    });
+
+
+
+    // GET_PIECHART_ONE_GRAPH_BY_ID
+
+    it("[GET_PIECHART_ONE_GRAPH_BY_ID] [init-null] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_ONE_GRAPH_BY_ID (when the returned state is initial state", () => {
+        const action = {
+            type: GET_PIECHART_ONE_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie2: []
+        };
+        const returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            matches: action.matches,
+            match_date: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.match_stats_manhattan,
+            match_stats_pie1: action.payload,
+            match_stats_pie2: action.match_stats_pie2
+        });
+    });
+
+    it("[GET_PIECHART_ONE_GRAPH_BY_ID] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_ONE_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie1: [1, 2, 3, 4, 5],
+            match_stats_pie2: []
+        };
+        const action = {
+            type: GET_PIECHART_ONE_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie2: []
+        };
+        const returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            match_date: action.match_date,
+            matches: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.match_stats_manhattan,
+            match_stats_pie1: action.payload,
+            match_stats_pie2: action.match_stats_pie2
+        });
+    });
+
+    it("[GET_PIECHART_ONE_GRAPH_BY_ID- SOME TYPE] [init-value] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        });
+    });
+
+
+    it("[GET_PIECHART_ONE_GRAPH_BY_ID - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_ONE_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: [{}],
+            match_stats_pie1: [1, 2, 3, 4, 5],
+            match_stats_pie2: [{}]
+        };
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: [{}],
+            match_stats_pie1: initialState.match_stats_pie1,
+            match_stats_pie2: [{}]
+        });
+    });
+
+
+    // GET_PIECHART_TWO_GRAPH_BY_ID
+
+    it("[GET_PIECHART_TWO_GRAPH_BY_ID] [init-null] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_TWO_GRAPH_BY_ID (when the returned state is initial state", () => {
+        const action = {
+            type: GET_PIECHART_TWO_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_pie1: [],
+            match_stats_manhattan: []
+        };
+        const returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            matches: action.matches,
+            match_date: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.match_stats_manhattan,
+            match_stats_pie1: action.match_stats_pie1,
+            match_stats_pie2: action.payload
+        });
+    });
+
+    it("[GET_PIECHART_TWO_GRAPH_BY_ID] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_TWO_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie1: [],
+            match_stats_pie2: [1, 2, 3, 4, 5]
+        };
+        const action = {
+            type: GET_PIECHART_TWO_GRAPH_BY_ID,
+            payload: [{}, {}, {}],
+            match_date: [],
+            matches: [],
+            match: [],
+            match_score: [],
+            match_stats_pie1: [],
+            match_stats_manhattan: []
+        };
+        const returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: action.match,
+            match_date: action.match_date,
+            matches: action.matches,
+            match_score: action.match_score,
+            match_stats_manhattan: action.match_stats_manhattan,
+            match_stats_pie1: action.match_stats_pie1,
+            match_stats_pie2: action.payload
+        });
+    });
+
+    it("[GET_PIECHART_TWO_GRAPH_BY_ID- SOME TYPE] [init-value] should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(undefined, action);
+        expect(returnedState).toEqual({
+            match: [],
+            match_date: [],
+            matches: [],
+            match_score: [],
+            match_stats_manhattan: [],
+            match_stats_pie1: [],
+            match_stats_pie2: []
+        });
+    });
+
+
+    it("[GET_PIECHART_TWO_GRAPH_BY_ID - SOME TYPE] [init-some values] should return a state object with matches array equal to the payload in the action when the action type is GET_PIECHART_TWO_GRAPH_BY_ID (when the returned state is not an initial state", () => {
+        const initialState = {
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: [{}],
+            match_stats_pie1: [{}],
+            match_stats_pie2: [1, 2, 3, 4, 5]
+        };
+        let action = {
+            type: "SOME_TYPE",
+            payload: [{}, {}, {}]
+        };
+        let returnedState = matches(initialState, action);
+        expect(returnedState).toEqual({
+            match: [{}],
+            match_date: [{}],
+            matches: [{}],
+            match_score: [{}],
+            match_stats_manhattan: [{}],
+            match_stats_pie1: [{}],
+            match_stats_pie2: initialState.match_stats_pie2
+        });
+    });
+
+
 });
 
