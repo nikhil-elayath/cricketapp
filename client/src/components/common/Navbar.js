@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 export class Navbar extends Component {
   state = {
     active: true,
-    searchInput: ""
+    searchInput: "",
   };
 
   handleSearchInputChange = e => {
@@ -21,7 +21,7 @@ export class Navbar extends Component {
   handleEnter = e => {
     console.log("from handle enter function");
     let search_term = {
-      search: this.state.searchInput
+      search: this.state.searchInput,
     };
     console.log("STATE VALUE", search_term);
     if (e.key === "Enter") {
@@ -35,7 +35,7 @@ export class Navbar extends Component {
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
     let search_term = {
-      search: this.state.searchInput
+      search: this.state.searchInput,
     };
     this.props.getSearch(search_term, this.props.history);
   };
@@ -96,7 +96,7 @@ export class Navbar extends Component {
                   <div
                     className="search-result"
                     style={{
-                      display: this.state.searchInput ? "block" : "none"
+                      display: this.state.searchInput ? "block" : "none",
                     }}
                   >
                     {this.props.search.length != 0
@@ -107,7 +107,7 @@ export class Navbar extends Component {
                                 <Link
                                   to={{
                                     pathname:
-                                      "/playerInfo/" + mapped_search.player_id
+                                      "/playerInfo/" + mapped_search.player_id,
                                     // state:{
                                   }}
                                 >
@@ -127,8 +127,7 @@ export class Navbar extends Component {
                                 <Link
                                   to={{
                                     pathname:
-                                      "/teaminfo/" + mapped_search.team_id
-                                    // state:{
+                                      "/teamdetails/" + mapped_search.team_id,
                                   }}
                                 >
                                   {mapped_search.team_name}
@@ -154,7 +153,7 @@ export class Navbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  search: state.SearchReducer.search
+  search: state.SearchReducer.search,
 });
 
 export default connect(
