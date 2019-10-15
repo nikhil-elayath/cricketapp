@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 
 export class MatchStatsDetails extends Component {
   componentDidMount() {
+    // [yatin] calling indivisual stats api on component mount
     this.props.getManhattanGraphbyId(this.props.match_id);
     this.props.getPieChartOnebyId(this.props.match_id);
     this.props.getPieChartTwobyId(this.props.match_id);

@@ -3,7 +3,7 @@
 .top-container-stats{
     display: grid;
     grid-template-columns: 12% auto 12%;
-    height: 700px;
+    height: 600px;
     /* border: 1px solid #272727; */
     border-radius: 5px;
 }
