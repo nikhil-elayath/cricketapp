@@ -15,9 +15,7 @@ export class PlayerInfo extends Component {
     player_id: "",
     info: true,
     batting_stats: false,
-    bowling_stats: false,
-    runs: 199,
-    wickets: 3
+    bowling_stats: false
   };
 
   componentDidMount() {

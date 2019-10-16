@@ -47,7 +47,14 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Matches</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">623</span>
+                <span id="bat-stat-span-1">
+                  {this.props.batsmanStats["0"].Innings
+                    ? this.props.batsmanStats["0"].Innings.length === 0
+                      ? "-"
+                      : this.props.batsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
                 <span id="bat-stat-span-2">Innings</span>
               </div>
               <div className="batting-stats-info-div">
@@ -186,7 +193,14 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Matches</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">623</span>
+                <span id="bat-stat-span-1">
+                  {this.props.odiBatsmanStats["0"].Innings
+                    ? this.props.odiBatsmanStats["0"].Innings.length === 0
+                      ? "-"
+                      : this.props.odiBatsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
                 <span id="bat-stat-span-2">Innings</span>
               </div>
               <div className="batting-stats-info-div">
@@ -325,10 +339,21 @@ export class PlayerBattingStats extends Component {
 
               <div className="batting-stats-info-div">
                 <span id="bat-stat-span-1">
-                  {this.props.t20BatsmanStats["0"].Matches
-                    ? this.props.t20BatsmanStats["0"].Matches.length === 0
+                  {this.props.t20BatsmanStats["0"].Innings
+                    ? this.props.t20BatsmanStats["0"].Innings.length === 0
                       ? "-"
-                      : this.props.t20BatsmanStats["0"].Matches[0]
+                      : this.props.t20BatsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
+                <span id="bat-stat-span-2">Innings</span>
+              </div>
+              <div className="batting-stats-info-div">
+                <span id="bat-stat-span-1">
+                  {this.props.t20BatsmanStats["0"].TotalRuns
+                    ? this.props.t20BatsmanStats["0"].TotalRuns.length === 0
+                      ? "-"
+                      : this.props.t20BatsmanStats["0"].TotalRuns[0]
                           .player_stats_value
                     : console.log("not found")}
                 </span>

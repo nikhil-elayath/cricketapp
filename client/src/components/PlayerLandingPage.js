@@ -164,7 +164,7 @@ export class PlayerLandingPage extends Component {
             ))}
           </div>
           <div className="playerType">
-            <h1 style={{ textAlign: "center" }}>Top 6s</h1>
+            <h1 style={{ textAlign: "center" }}>Most 6s</h1>
             {this.props.topSixes.map(six => (
               <div
                 className="singlePlayerDiv"
