@@ -11,8 +11,8 @@ import './css/Home.css'
 
 export class NewsPage extends Component {
   componentDidMount () {
-    console.log('NEWSPAGE')
-    console.log(this.props.match.params.id)
+    // console.log('NEWSPAGE')
+    // console.log(this.props.match.params.id)
     const id = this.props.match.params.id
     this.props.getNews()
 
@@ -20,7 +20,7 @@ export class NewsPage extends Component {
   }
   onNewsClick = id => {
     // const id = this.props.match.params.id;
-    console.log('from news click', id)
+    // console.log('from news click', id)
     this.props.getNewsById(id)
   }
   render () {
@@ -33,10 +33,10 @@ export class NewsPage extends Component {
           {this.props.news.map(news => (
             <div className='newspage-grid-container'>
               <div className='grid-item2'>
-                <p className='newspage-news-title'>
+                <p className='grid-item2' id='newspage-news-title'>
                   <b>{news.news_title}</b>
-                  <p>{news.news_date} </p>
                 </p>
+                <p id='news-date'>{news.news_date} </p>
 
                 {/* <div
                   className="div-news-images"
@@ -46,7 +46,7 @@ export class NewsPage extends Component {
                 > */}
                 <img className='news_img' src={news_img} />
                 {/* </div> */}
-                <p>{news.news_content} </p>
+                <p id='news-content'>{news.news_content} </p>
               </div>
 
               {/* Right side recent news section */}
@@ -64,6 +64,7 @@ export class NewsPage extends Component {
                     {/* <img className="news_img" src={news_img} /> */}
                   </div>
                   {/* using the same css from news list in news page */}
+                  {/* recent news */}
                   {this.props.home.map(recent => (
                     // <Link
                     //   to={{
@@ -82,9 +83,11 @@ export class NewsPage extends Component {
                         onClick={() => this.onNewsClick(recent.news_id)}
                       >
                         <p class='p-news'>
-                          <b>{recent.news_title}</b>
+                          <b id='recent-news-title'>{recent.news_title}</b>
                         </p>
-                        <p className='date'>{recent.news_date} </p>
+                        <p id='recent-news-date' className='date'>
+                          {recent.news_date}{' '}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -93,8 +96,6 @@ export class NewsPage extends Component {
             </div>
           ))}
         </div>
-
-        {/* RECENT NEWS */}
       </div>
     )
   }
