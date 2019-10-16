@@ -154,7 +154,7 @@ header {
 		padding: 6px 0px;
 	}
 	.menu {
-		width: 100%;
+		width: auto;
 		height: auto;
 	}
 	.menu ul {

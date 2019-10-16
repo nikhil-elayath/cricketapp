@@ -84,95 +84,91 @@ export class Navbar extends Component {
 							<Link className="link" to="/players" id="players">
 								<li>Players</li>
 							</Link>
-							<li className="search-box-li">
-								<input
-									name="searchInput"
-									className="search-box"
-									value={this.state.searchInput}
-									onChange={this.handleSearchInputChange}
-									placeholder="Search for Team or Player"
-									// onKeyDown={this.handleEnter}
-									onChange={this.OnChange}
-								/>
-
-								<div
-									className="search-result"
-									style={{
-										display: this.state.searchInput
-											? "block"
-											: "none"
-									}}
-								>
-									{this.props.search.length !== 0 ? (
-										this.props.search.player.length !== 0 &&
-										this.props.search.player.length !==
-											0 ? (
-											<>
-												{this.props.search.player
-													.length !== 0
-													? this.props.search.player.map(
-															mapped_search => (
-																<div>
-																	<Link
-																		className="search-list-item"
-																		to={{
-																			pathname:
-																				"/playerInfo/" +
-																				mapped_search.player_id
-																			// state:{
-																		}}
-																	>
-																		<div className="search-suggestion">
-																			{
-																				mapped_search.player_name
-																			}
-																		</div>
-																	</Link>
-																</div>
-															)
-													  )
-													: null}
-												{this.props.search.team
-													.length != 0
-													? this.props.search.team.map(
-															mapped_search => (
-																<div>
-																	<Link
-																		className="search-list-item"
-																		to={{
-																			pathname:
-																				"/teaminfo/" +
-																				mapped_search.team_id
-																			// state:{
-																		}}
-																	>
-																		<div className="search-suggestion">
-																			{
-																				mapped_search.team_name
-																			}
-																		</div>
-																	</Link>
-																</div>
-															)
-													  )
-													: null}
-											</>
-										) : (
-											<div className="search-no-result">
-												<div
-													style={{ color: "#272727" }}
-												>
-													No result found
-												</div>
-											</div>
-										)
-									) : null}
-								</div>
-							</li>
-							<Link className="link" to="/login">
-								<i className="fas fa-user"></i>
-							</Link>
 						</ul>
+						<li className="search-box-li">
+							<input
+								name="searchInput"
+								className="search-box"
+								value={this.state.searchInput}
+								onChange={this.handleSearchInputChange}
+								placeholder="Search for Team or Player"
+								// onKeyDown={this.handleEnter}
+								onChange={this.OnChange}
+							/>
+
+							<div
+								className="search-result"
+								style={{
+									display: this.state.searchInput
+										? "block"
+										: "none"
+								}}
+							>
+								{this.props.search.length !== 0 ? (
+									this.props.search.player.length !== 0 ||
+									this.props.search.team.length !== 0 ? (
+										<>
+											{this.props.search.player.length !==
+											0
+												? this.props.search.player.map(
+														mapped_search => (
+															<div>
+																<Link
+																	className="search-list-item"
+																	to={{
+																		pathname:
+																			"/playerInfo/" +
+																			mapped_search.player_id
+																		// state:{
+																	}}
+																>
+																	<div className="search-suggestion">
+																		{
+																			mapped_search.player_name
+																		}
+																	</div>
+																</Link>
+															</div>
+														)
+												  )
+												: null}
+											{this.props.search.team.length != 0
+												? this.props.search.team.map(
+														mapped_search => (
+															<div>
+																<Link
+																	className="search-list-item"
+																	to={{
+																		pathname:
+																			"/teaminfo/" +
+																			mapped_search.team_id
+																		// state:{
+																	}}
+																>
+																	<div className="search-suggestion">
+																		{
+																			mapped_search.team_name
+																		}
+																	</div>
+																</Link>
+															</div>
+														)
+												  )
+												: null}
+										</>
+									) : (
+										<div className="search-no-result">
+											<div style={{ color: "#272727" }}>
+												No result found
+											</div>
+										</div>
+									)
+								) : null}
+							</div>
+						</li>
+						<Link className="link" to="/login">
+							<i className="fas fa-user"></i>
+						</Link>
 					</nav>
 				</header>
 			</div>
