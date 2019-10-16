@@ -58,14 +58,15 @@ router.get("/teamdetails/:team_id", async (req, res, next) => {
 });
 
 // Individual team matches
-router.get("/teams/match/:team_id", async (req, res, next) => {
+router.post("/teams/match/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
+    const match_type = req.body.match_type;
     console.log("called Individual team matches");
     // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
     // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
     const result = await db.any(
-      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.innings_one_team=${team_id} or m.innings_two_team=${team_id} order by md.match_date desc limit 8`
+      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.match_type = '${match_type}' and(m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
       // `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.team_one=${team_id} or m.team_two=${team_id} order by md.match_date desc limit 8`
     );
     console.log("matches id", result);

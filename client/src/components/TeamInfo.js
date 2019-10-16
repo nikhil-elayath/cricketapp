@@ -10,24 +10,24 @@ import "./css/SecondaryNavbar.css";
 
 export class TeamInfo extends Component {
   state = {
-    testClick: true,
+    testClick: false,
     odiClick: false,
-    t20Click: false
+    t20Click: true
   };
   componentDidMount() {
-    console.log("team name is ", this.props.teams.team_name);
-    this.props.getMatch(this.props.teams.team_id);
+    console.log("team name is ", this.props.teams);
+    // this.props.getMatch(this.props.teams.team_id);
     let type = {
-      match_type: "Test",
+      match_type: "T20",
       player_country: this.props.teams.team_name
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
     console.log("batsman is", this.props.getTeamBatsmen(type));
+    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
   }
 
-  onClickTest = e => {
-    e.preventDefault();
+  onClickTest = () => {
     this.setState({ testClick: true, odiClick: false, t20Click: false });
     let type = {
       match_type: "Test",
@@ -35,10 +35,10 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
+    this.props.getMatch(this.props.teams.team_id, { match_type: "Test" });
   };
 
-  onClickT20 = e => {
-    e.preventDefault();
+  onClickT20 = () => {
     this.setState({ testClick: false, odiClick: false, t20Click: true });
     let type = {
       match_type: "T20",
@@ -46,10 +46,10 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
+    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
   };
 
-  onClickOdi = e => {
-    e.preventDefault();
+  onClickOdi = () => {
     this.setState({ testClick: false, odiClick: true, t20Click: false });
     let type = {
       match_type: "ODI",
@@ -57,6 +57,7 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
+    this.props.getMatch(this.props.teams.team_id, { match_type: "ODI" });
   };
 
   render() {
@@ -69,10 +70,10 @@ export class TeamInfo extends Component {
             <div className="cards-new">
               <div
                 style={{ borderRadius: "8px 0px 0px 8px" }}
-                className={this.state.testClick ? "cardtest" : "cardodi"}
-                onClick={this.onClickTest}
+                className={this.state.t20Click ? "cardtest" : "cardt20"}
+                onClick={this.onClickT20}
               >
-                <p className="p-card">Test</p>
+                <p className="p-card">T20</p>
               </div>
               <div
                 className={this.state.odiClick ? "cardtest" : "cardodi"}
@@ -82,10 +83,10 @@ export class TeamInfo extends Component {
               </div>
               <div
                 style={{ borderRadius: "0px 8px 8px 0px" }}
-                className={this.state.t20Click ? "cardtest" : "cardt20"}
-                onClick={this.onClickT20}
+                className={this.state.testClick ? "cardtest" : "cardodi"}
+                onClick={this.onClickTest}
               >
-                <p className="p-card">T20</p>
+                <p className="p-card">Test</p>
               </div>
             </div>
           </div>
