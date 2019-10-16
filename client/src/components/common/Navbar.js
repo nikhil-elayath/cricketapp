@@ -37,7 +37,11 @@ export class Navbar extends Component {
 							<div className="genders">
 								<span
 									id="men"
-									className="active-gender"
+									className={
+										this.props.gender == "male"
+											? "active-gender"
+											: ""
+									}
 									onClick={() =>
 										this.props.changeGender("male")
 									}
@@ -46,6 +50,11 @@ export class Navbar extends Component {
 								</span>
 								<span
 									id="women"
+									className={
+										this.props.gender == "female"
+											? "active-gender"
+											: ""
+									}
 									onClick={() =>
 										this.props.changeGender("female")
 									}
