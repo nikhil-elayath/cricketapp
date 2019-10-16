@@ -3,11 +3,13 @@ import {
   EDIT_TEAM,
   DELETE_TEAM,
   GET_ALLTEAMS,
-  GET_TEAM_SEARCH
+  GET_TEAM_SEARCH,
+  ERROR_TYPE
 } from "../actions/Types";
 
 const initialState = {
-  team: []
+  team: [],
+  error: ""
 };
 
 export default function(state = initialState, action) {
@@ -31,6 +33,8 @@ export default function(state = initialState, action) {
         ...state,
         team: action.payload
       };
+    case ERROR_TYPE:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

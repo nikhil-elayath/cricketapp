@@ -30,21 +30,28 @@ router.post("/player/new", async (req, res, next) => {
     };
     console.log("Validation");
     PlayerValidation(player).then(async () => {
-      console.log("Hello");
-      const result = await db.any(
-        `insert into player(player_name,player_country,batting_style,bowling_style,player_dob,player_role,debut_odi_match,debut_test_match,debut_t20_match,player_gender) values ( '${req.body.player_name}','${req.body.player_country}','${req.body.batting_style}','${req.body.bowling_style}','${req.body.player_dob}','${req.body.player_role}','${req.body.debut_odi_match}','${req.body.debut_test_match}','${req.body.debut_t20_match}','${req.body.player_gender}') returning player_id`
+      let playerName = await db.any(
+        `select player_name from player where player_name = '${req.body.player_name}'`
       );
-      console.log(result);
-      // if (!result)
-      //   throw {
-      //     statusCode: 404,
-      //     customMessage: "invalid input"
-      //   };
-      res.status(200).json({
-        status: 200,
-        data: result,
-        message: "Created 1 Player successfully"
-      });
+      if (playerName != 0) {
+        console.log(playerName);
+        return res.status(500).send({ message: "Player already exists" });
+      } else {
+        const result = await db.any(
+          `insert into player(player_name,player_country,batting_style,bowling_style,player_dob,player_role,debut_odi_match,debut_test_match,debut_t20_match,player_gender) values ( '${req.body.player_name}','${req.body.player_country}','${req.body.batting_style}','${req.body.bowling_style}','${req.body.player_dob}','${req.body.player_role}','${req.body.debut_odi_match}','${req.body.debut_test_match}','${req.body.debut_t20_match}','${req.body.player_gender}') returning player_id`
+        );
+        console.log(result);
+        // if (!result)
+        //   throw {
+        //     statusCode: 404,
+        //     customMessage: "invalid input"
+        //   };
+        res.status(200).json({
+          status: 200,
+          data: result,
+          message: "Created 1 Player successfully"
+        });
+      }
     });
   } catch (error) {
     next(error);
@@ -58,19 +65,27 @@ router.post("/team/new", async (req, res, next) => {
       team_name: req.body.team_name
     };
     TeamValidation(team).then(async () => {
-      const result = await db.any(
-        `insert into team(team_name) values ( '${req.body.team_name}') returning team_id`
+      let teamName = await db.any(
+        `select team_name from team where team_name = '${req.body.team_name}'`
       );
-      // if (!result)
-      //   throw {
-      //     statusCode: 404,
-      //     customMessage: "invalid input"
-      //   };
-      res.status(200).json({
-        status: 200,
-        data: result,
-        message: "Created 1 team successfully"
-      });
+      if (teamName.length != 0) {
+        console.log(teamName);
+        return res.status(500).send({ message: "Team already exists" });
+      } else {
+        const result = await db.any(
+          `insert into team(team_name) values ( '${req.body.team_name}') returning team_id`
+        );
+        // if (!result)
+        //   throw {
+        //     statusCode: 404,
+        //     customMessage: "invalid input"
+        //   };
+        res.status(200).json({
+          status: 200,
+          data: result,
+          message: "Created 1 team successfully"
+        });
+      }
     });
   } catch (error) {
     next(error);
@@ -112,7 +127,7 @@ router.put("/editplayer/:player_id", async (req, res, next) => {
         // error.errorMessage = error.details[0].message;
         next(error);
       });
-  } catch (error) {
+  } catch (err) {
     next(error);
   }
 });
