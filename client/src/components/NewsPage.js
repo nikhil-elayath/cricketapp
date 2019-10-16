@@ -4,7 +4,7 @@ import { getNewsById } from '../actions/NewsAction'
 import { getNews } from '../actions/Home'
 import { connect } from 'react-redux'
 import './css/NewsPage.css'
-import Navbar from './common/Navbar'
+// import Navbar from './common/Navbar'
 import news_img from '../components/images/vk.jpeg'
 import { Link } from 'react-router-dom'
 import './css/Home.css'
@@ -26,9 +26,7 @@ export class NewsPage extends Component {
   render () {
     return (
       <div className='parent'>
-        <div className='navbar'>
-          <Navbar />
-        </div>
+        <div className='navbar'>{/* <Navbar /> */}</div>
         <div>
           {this.props.news.map(news => (
             <div className='newspage-grid-container'>
