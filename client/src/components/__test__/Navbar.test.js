@@ -3,50 +3,60 @@ import { shallow, mount } from "enzyme";
 import { Navbar } from "../common/Navbar";
 import { MemoryRouter, Route } from "react-router-dom";
 
-let handleSearchInputChange = jest.fn();
-const navbar = jest.fn();
-
-const wrapper = shallow(<Navbar navbar={navbar} />);
+const search = {
+	team: [
+		{
+			team_id: 10,
+			team_name: "India"
+		},
+		{
+			team_id: 67,
+			team_name: "Bahrain"
+		}
+	],
+	player: [
+		{
+			player_id: 58,
+			player_name: "JEC Franklin"
+		},
+		{
+			player_id: 65,
+			player_name: "D Ramdin"
+		}
+	]
+};
+const handleSearchInputChange = jest.fn();
+const changeGender = jest.fn();
+const wrapper = shallow(
+	<Navbar
+		search={search}
+		handleSearchInputChange={handleSearchInputChange}
+		changeGender={changeGender}
+		getSearch={jest.fn()}
+	/>
+);
 
 describe("test for the text, input, css properties and icons on the navbar", () => {
-	it("should have text brand CricketAlpha, matches, teams, players, stats", () => {
-		// checks for no. of link present on navbar
-		expect(wrapper.find(".link").length).toBe(6);
-
+	it("should have text brand CricketAlpha, matches, teams, players", () => {
 		// checks for the links text
-		expect(
-			wrapper
-				.find("#matches")
-				.text()
-		).toBe("Matches");
-		expect(
-			wrapper
-				.find("#teams")
-				.text()
-		).toBe("Teams");
-		expect(
-			wrapper
-				.find("#players")
-				.text()
-		).toBe("Players");
-		expect(
-			wrapper
-				.find("#stats")
-				.text()
-		).toBe("Stats");
+		expect(wrapper.find("#men").text()).toBe("Men");
+		expect(wrapper.find("#women").text()).toBe("Women");
+		expect(wrapper.find("#matches").text()).toBe("Matches");
+		expect(wrapper.find("#teams").text()).toBe("Teams");
+		expect(wrapper.find("#players").text()).toBe("Players");
 
 		// checks for the nav brand text
 		expect(wrapper.find("#nav-brand").text()).toBe("CricketAlpha");
+	});
+	it("testing for search input field", () => {
+		// checks for the presence of search input field
+		expect(wrapper.find("#searchInput").length).toBe(1);
 
-		// checks for the search input field
-		expect(wrapper.find("input").length).toBe(1);
-
-		// checks placeholder for the input field
-		expect(wrapper.find("input").prop("placeholder")).toBe(
+		// checks placeholder of the input field
+		expect(wrapper.find("#searchInput").prop("placeholder")).toBe(
 			"Search for Team or Player"
 		);
-
-		//checks for the input vale to be same as state while inserting text
+		//checks for the input value to be same as state while inserting text
 		const e = {
 			target: {
 				name: "searchInput",
@@ -55,32 +65,19 @@ describe("test for the text, input, css properties and icons on the navbar", () 
 		};
 		wrapper.instance().handleSearchInputChange(e);
 		expect(wrapper.state().searchInput).toBe(e.target.value);
+
+		// // expects handleSearchInputChange to be called on change in input field
+		// wrapper.find("#searchInput").simulate("change", e);
+		// expect(handleSearchInputChange).toBeCalled();
 	});
 
-	//testing for images
-	// expect(logo.find("img").prop("src")).toEqual(logoImage);
-});
+	it("checks for changeGender function to be called", () => {
+		// expects changeGender to be called on clicking men link
+		wrapper.find("#men").simulate("click");
+		expect(changeGender).toBeCalledWith("male");
 
-// describe("test for checking the link component", () => {
-// 	test("for the link to redirect on click", () => {
-// 		const linkWrapper = shallow(
-// 			<MemoryRouter>
-// 				<Navbar />
-// 				<Route
-// 					path="*"
-// 					render={({ history, location }) => {
-// 						history = history;
-// 						location = location;
-// 						return null;
-// 					}}
-// 				/>
-// 			</MemoryRouter>
-// 		);
-// 		// expect(linkWrapper.contains(<Link></Link>)).to.equal(true);
-// 		linkWrapper
-// 			.find("li")
-// 			.at(2)
-// 			.simulate("click");
-// 		expect(location.pathname).toBe("/matches");
-// 	});
-// });
+		// expects changeGender to be called on clicking men link
+		wrapper.find("#women").simulate("click");
+		expect(changeGender).toBeCalledWith("female");
+	});
+});

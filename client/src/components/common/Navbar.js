@@ -12,28 +12,6 @@ export class Navbar extends Component {
 
 	handleSearchInputChange = e => {
 		this.setState({ [e.target.name]: e.target.value });
-	};
-
-	handleHamburgerClick = e => {
-		e.target.className = { display: "none" };
-		console.log("event", e.target.className);
-	};
-	handleEnter = e => {
-		console.log("from handle enter function");
-		let search_term = {
-			search: this.state.searchInput
-		};
-		console.log("STATE VALUE", search_term);
-		if (e.key === "Enter") {
-			console.log(this.props);
-			this.props.getSearch(search_term, this.props.history);
-			console.log("search history", this.props.search);
-
-			console.log("hit enter");
-		}
-	};
-	OnChange = event => {
-		this.setState({ [event.target.name]: event.target.value });
 		let search_term = {
 			search: this.state.searchInput
 		};
@@ -86,13 +64,12 @@ export class Navbar extends Component {
 							</Link>
 							<li className="search-box-li">
 								<input
+									id="searchInput"
 									name="searchInput"
 									className="search-box"
 									value={this.state.searchInput}
 									onChange={this.handleSearchInputChange}
 									placeholder="Search for Team or Player"
-									// onKeyDown={this.handleEnter}
-									onChange={this.OnChange}
 								/>
 
 								<div
