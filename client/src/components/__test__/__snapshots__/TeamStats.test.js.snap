@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test TeamStats Component render the component 1`] = `
+<div>
+  <div
+    className="container-team-details"
+  >
+    <div
+      className="types-section"
+    >
+      <div
+        className="match-type-section"
+      >
+        <p
+          className="p-match-type"
+        >
+          Select Match Type
+        </p>
+        <div
+          className="centered-team"
+        >
+          <div
+            className="cards-team-stats"
+          >
+            <div
+              className="cardtest"
+              onClick={[Function]}
+              style={
+                Object {
+                  "borderRadius": "8px 0px 0px 8px",
+                }
+              }
+            >
+              <p
+                className="p-card"
+              >
+                Test
+              </p>
+            </div>
+            <div
+              className="cardodi"
+              onClick={[Function]}
+            >
+              <p
+                className="p-card"
+              >
+                ODI
+              </p>
+            </div>
+            <div
+              className="cardt20"
+              onClick={[Function]}
+              style={
+                Object {
+                  "borderRadius": "0px 8px 8px 0px",
+                }
+              }
+            >
+              <p
+                className="p-card"
+              >
+                T20
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="category-section"
+      >
+        <p
+          className="p-category"
+        >
+          Select Category
+        </p>
+        <div
+          className="centered-team"
+        >
+          <div
+            className="cards-team-category"
+          >
+            <div
+              className="cardtest"
+              style={
+                Object {
+                  "borderRadius": "8px 0px 0px 8px",
+                }
+              }
+            >
+              <p
+                className="p-card"
+              >
+                Highest Totals
+              </p>
+            </div>
+            <div
+              className="cardodi"
+            >
+              <p
+                className="p-card"
+              >
+                Lowest Totals
+              </p>
+            </div>
+            <div
+              className="cardodi"
+            >
+              <p
+                className="p-card"
+              >
+                Largest Victories
+              </p>
+            </div>
+            <div
+              className="cardt20"
+              style={
+                Object {
+                  "borderRadius": "0px 8px 8px 0px",
+                }
+              }
+            >
+              <p
+                className="p-card"
+              >
+                Smallest Victories
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="stats-display"
+    >
+      <p
+        className="p-category-name"
+      >
+        Highest Totals
+      </p>
+      <div
+        className="stats-table"
+      >
+        <div
+          className="list"
+        >
+          <p
+            className="p-row"
+          >
+            Score
+          </p>
+          <p
+            className="p-row"
+          >
+            Overs
+          </p>
+          <p
+            className="p-row"
+          >
+            RR
+          </p>
+          <p
+            className="p-row"
+          >
+            Inns
+          </p>
+          <p
+            className="p-row"
+          >
+            MatchDate
+          </p>
+          <p
+            className="p-row"
+          >
+            Scorecard
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

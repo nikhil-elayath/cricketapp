@@ -21,17 +21,15 @@ export class MatchStatsDetails extends Component {
         <div style={{ marginTop: 240 + "px" }}>
           <div className="top-container-stats" style={{ marginTop: 80 + "px" }}>
             <div></div>
-            <div className="stats-container">
-              <div className="top-title"> Manhattan</div>
+            <div id="manhattan-container" className="stats-container">
+              <div id="manhattan-title" className="top-title"> Manhattan</div>
               <div>
-                <iframe
-                  src={this.props.match_stats_manhattan.manhattan}
-                  style={{
-                    width: 1100 + "px",
-                    height: 600 + "px",
-                    border: "none"
-                  }}
-                />
+                {this.props.match_stats_manhattan.length == 0 ? (
+                  <div className="matchscorecardloader"></div>
+                ) :
+                  (<iframe className="stats-graph"
+                    src={this.props.match_stats_manhattan.manhattan}
+                  />)}
               </div>
             </div>
             <div></div>
@@ -42,14 +40,12 @@ export class MatchStatsDetails extends Component {
             <div className="stats-container">
               <div className="top-title"> Pie chart of players run</div>
               <div>
-                <iframe
-                  src={this.props.match_stats_pie1.piechartOne}
-                  style={{
-                    width: 1100 + "px",
-                    height: 600 + "px",
-                    border: "none"
-                  }}
-                />
+                {this.props.match_stats_pie1.length == 0 ? (
+                  <div className="matchscorecardloader"></div>
+                ) :
+                  (<iframe className="stats-graph"
+                    src={this.props.match_stats_pie1.piechartOne}
+                  />)}
               </div>
             </div>
             <div></div>
@@ -59,14 +55,12 @@ export class MatchStatsDetails extends Component {
             <div className="stats-container">
               <div className="top-title"> Pie chart of bowlers wicket</div>
               <div>
-                <iframe
-                  src={this.props.match_stats_pie2.piechartTwo}
-                  style={{
-                    width: 1100 + "px",
-                    height: 600 + "px",
-                    border: "none"
-                  }}
-                />
+                {this.props.match_stats_pie2.length == 0 ? (
+                  <div className="matchscorecardloader"></div>
+                ) : (
+                    <iframe className="stats-graph"
+                      src={this.props.match_stats_pie2.piechartTwo}
+                    />)}
               </div>
             </div>
             <div></div>
