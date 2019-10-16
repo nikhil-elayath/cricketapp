@@ -4,21 +4,21 @@ import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
-import { Menu, selected, ArrowLeft, ArrowRight } from "./Scroll";
+// import { Menu, selected, ArrowLeft, ArrowRight } from "./Scroll";
 
 export class MatchLandingPage extends Component {
-    state = {
-        selected: false,
-        list: []
-    };
-    componentWillReceiveProps(nextProps) {
-        const list = nextProps.date.map(date => {
-            return { match_date: date.match_date };
-        });
-        console.log(list);
-        this.setState({ menuItems: Menu(list, selected) });
-        this.setState({ list });
-    }
+    // state = {
+    //     selected: false,
+    //     list: []
+    // };
+    // componentWillReceiveProps(nextProps) {
+    //     const list = nextProps.date.map(date => {
+    //         return { match_date: date.match_date };
+    //     });
+    //     console.log(list);
+    //     this.setState({ menuItems: Menu(list, selected) });
+    //     this.setState({ list });
+    // }
     componentDidMount() {
         function yyyymmdd() {
             var now = new Date();
@@ -32,33 +32,27 @@ export class MatchLandingPage extends Component {
         var date = yyyymmdd();
         console.log(date);
         this.props.getRecentMatches(date);
-        this.props.getMatchesDate();
+        // this.props.getMatchesDate();
     }
 
-    onSelect = key => {
-        this.setState({ selected: key });
-        this.props.getRecentMatches(key);
-    };
+    // onSelect = key => {
+    //     this.setState({ selected: key });
+    //     this.props.getRecentMatches(key);
+    // };
     render() {
-        console.log(this.state);
-        const { selected } = this.state;
-        // Create menu from items
-        const menu = this.state.menuItems;
+        // console.log(this.state);
+        // const { selected } = this.state;
+        // // Create menu from items
+        // const menu = this.state.menuItems;
 
         return (
             <div>
-                <Navbar />
+                <div>
+                    <Navbar />
+                </div>
 
                 <div style={{ marginTop: "80px" }}>
-                    <div>
-                        <h1
-                            className="h1-match"
-                            style={{ textAlign: "left", margin: "20px" }}
-                        >
-                            Matches
-            </h1>
-                    </div>
-                    <div className="timeline" style={{ marginBottom: "50px" }}>
+                    {/* <div className="timeline" style={{ marginBottom: "50px" }}>
                         <ScrollMenu
                             data={menu}
                             arrowLeft={ArrowLeft}
@@ -66,23 +60,14 @@ export class MatchLandingPage extends Component {
                             selected={selected}
                             onSelect={this.onSelect}
                         />
-                    </div>
+                    </div> */}
 
                     <div>
                         {this.props.matches.length === 0 ? (
-                            <h2
-                                className="h1-match"
-                                style={{ textAlign: "left", margin: "20px" }}
-                            >
-                                No Matches
-              </h2>
-                        ) : (
-                                <h2
-                                    className="h2-recent-matches"
-                                    style={{ textAlign: "left", margin: "20px" }}
-                                >
-                                    Fixtures:
-              </h2>
+                            <h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
+                                No Matches</h2>
+                        ) : (<h2 className="h2-recent-matches" style={{ textAlign: "left", margin: "20px" }}>
+                            Fixtures:</h2>
                             )}
                     </div>
                     {this.props.matches.length > 0 ? (

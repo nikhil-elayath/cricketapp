@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getNews } from "../actions/Home";
 import "./css/Home.css";
 import news_img from "../components/images/vk.jpeg";
+import Navbar from "../components/common/Navbar";
 import logo from "./images/indialogo.jpg";
 import { getRanks } from "../actions/Teams";
 // import { getRanks } from "../actions/Teams";
