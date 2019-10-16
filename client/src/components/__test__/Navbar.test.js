@@ -16,31 +16,27 @@ describe("test for the text, input, css properties and icons on the navbar", () 
 		// checks for the links text
 		expect(
 			wrapper
-				.find(".link")
-				.at(1)
+				.find("#matches")
 				.text()
 		).toBe("Matches");
 		expect(
 			wrapper
-				.find(".link")
-				.at(2)
+				.find("#teams")
 				.text()
 		).toBe("Teams");
 		expect(
 			wrapper
-				.find(".link")
-				.at(3)
+				.find("#players")
 				.text()
 		).toBe("Players");
 		expect(
 			wrapper
-				.find(".link")
-				.at(4)
+				.find("#stats")
 				.text()
 		).toBe("Stats");
 
 		// checks for the nav brand text
-		expect(wrapper.find(".nav-brand").text()).toBe("CricketAlpha");
+		expect(wrapper.find("#nav-brand").text()).toBe("CricketAlpha");
 
 		// checks for the search input field
 		expect(wrapper.find("input").length).toBe(1);
@@ -62,7 +58,7 @@ describe("test for the text, input, css properties and icons on the navbar", () 
 	});
 
 	//testing for images
-	expect(logo.find("img").prop("src")).toEqual(logoImage);
+	// expect(logo.find("img").prop("src")).toEqual(logoImage);
 });
 
 // describe("test for checking the link component", () => {

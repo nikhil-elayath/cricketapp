@@ -7,16 +7,20 @@ import matches from "./MatchReducer";
 import Search from "./Search";
 import adminplayer from "./AdminPlayerReducer";
 import adminteam from "./AdminTeamReducer";
+import news from "./NewsReducer";
+import NewsReducer from "./NewsReducer";
 
 export default combineReducers({
-	userReducer: users,
-	PlayerReducer: player,
-	TeamsReducer: teams,
-	HomeReducer: home,
-	matchreducer: matches,
-	SearchReducer: Search,
+  userReducer: users,
+  PlayerReducer: player,
+  TeamsReducer: teams,
+  HomeReducer: home,
+  matchreducer: matches,
+  SearchReducer: Search,
 
-	//piyush
-	AdminPlayerReducer: adminplayer,
-	AdminTeamReducer: adminteam
+  //piyush
+  AdminPlayerReducer: adminplayer,
+  AdminTeamReducer: adminteam,
+  //nikhil
+  NewsReducer: news,
 });

@@ -11,6 +11,7 @@ const home = require("./routes/apis/home");
 const matches = require("./routes/apis/Matches");
 const search = require("./routes/apis/Search");
 const admin = require("./routes/apis/Admin");
+const news = require("./routes/apis/News");
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
-    extended: false
+    extended: false,
   })
 );
 // app.use(db);
@@ -33,6 +34,8 @@ app.use("/api/matches", matches);
 app.use("/apis/Search", search);
 //piyush
 app.use("/apis/admin", admin);
+//nikhil
+app.use("/apis/news", news);
 
 app.use((err, req, res, next) => {
   next(error);

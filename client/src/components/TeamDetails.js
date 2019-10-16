@@ -5,13 +5,13 @@ import TeamStats from "./TeamStats";
 
 export default class TeamDetails extends Component {
   state = {
-    detailsType: "info"
+    detailsType: "info",
   };
   changeDetailsType = detailsType => {
     this.setState({ detailsType });
   };
   render() {
-    console.log("team props is ", this.props.history.location.state.teams);
+    // console.log("team props is ", this.props.history.location.state.teams);
     return (
       <div>
         <TeamSecondaryNavbar
