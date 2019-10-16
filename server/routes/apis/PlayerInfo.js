@@ -105,13 +105,16 @@ router.get("/singlePlayer/:player_id", async (req, res) => {
 router.post("/TopBatsman", async (req, res) => {
   try {
     var match_type = req.body.match_type;
+    var gender = req.body.gender;
     console.log(match_type);
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
+        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country,player.player_gender from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = 'total_runs' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = 'total_runs' AND player.player_gender = '" +
+          gender +
+          "'order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({
@@ -137,12 +140,15 @@ router.post("/TopBatsman", async (req, res) => {
 router.post("/TopBowlers", async (req, res) => {
   try {
     let match_type = req.body.match_type;
+    var gender = req.body.gender;
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
         "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = 'total_wickets' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = 'total_wickets' AND player.player_gender = '" +
+          gender +
+          "' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({
@@ -166,12 +172,15 @@ router.post("/TopBowlers", async (req, res) => {
 router.post("/TopSixes", async (req, res) => {
   try {
     let match_type = req.body.match_type;
+    var gender = req.body.gender;
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
         "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = '6s' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = '6s' AND player.player_gender = '" +
+          gender +
+          "'  order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({

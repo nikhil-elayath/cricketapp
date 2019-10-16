@@ -74,14 +74,30 @@ export default class App extends Component {
         <Route path="/resetPassword" exact component={ResetPassword} />
 
         {/* //ashfi */}
-        <Route exact path="/players" component={PlayerLandingPage}></Route>
+        <Route
+          exact
+          path="/players"
+          //   component={PlayerLandingPage}
+          render={() => <PlayerLandingPage gender={this.state.gender} />}
+        ></Route>
         <Route
           exact
           path="/playerInfo/:player_id"
           component={PlayerInfo}
+          gender={this.state.gender}
         ></Route>
-        <Route exact path="/batting-stats" component={BattingStats}></Route>
-        <Route exact path="/bowling-stats" component={BowlingStats}></Route>
+        <Route
+          exact
+          path="/batting-stats"
+          component={BattingStats}
+          gender={this.state.gender}
+        ></Route>
+        <Route
+          exact
+          path="/bowling-stats"
+          component={BowlingStats}
+          gender={this.state.gender}
+        ></Route>
 
         <Route exact path="/match/details/:id" component={MatchDetails}></Route>
         <Route exact path="/match/details/:id" component={MatchDetails}></Route>
