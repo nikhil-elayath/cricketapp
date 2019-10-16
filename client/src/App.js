@@ -21,6 +21,9 @@ import Home from "./components/Home";
 // import MatchSummaryDetails from "./components/MatchSummaryDetails";
 // import MatchScoreDetails from "./components/MatchScoreDetails";
 
+//Nikhil
+import NewsPage from "./components/NewsPage";
+
 //piyush
 import AdminPlayer from "./components/AdminPlayerPage";
 import AdminTeam from "./components/AdminTeamPage";
@@ -134,10 +137,10 @@ export default class App extends Component {
 					component={TeamDetails}
 				></Route>
 
-				<Route exact path="/teams" component={TeamLandingPage}></Route>
-				{/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
-				<Route path="/" exact component={Home} />
-			</Router>
-		);
-	}
+      <Route exact path="/teams" component={TeamLandingPage}></Route>
+      {/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
+      <Route path="/" exact component={Home} />
+      <Route exact path="/newsbyid/:id" exact component={NewsPage} />
+    </Router>
+  );
 }

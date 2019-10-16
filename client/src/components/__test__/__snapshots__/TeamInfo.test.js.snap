@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test TeamInfo Component render the component 1`] = `
+<div>
+  <div
+    className="container-team-details"
+  >
+    <p
+      className="p-matches"
+    >
+      Recent Matches
+    </p>
+    <div
+      className="matches-section"
+    >
+      <div
+        className="all-recent-matches-box-team"
+      >
+        <div
+          className="inside-recent-matches-box-team"
+        >
+          <span
+            className="tournamnet-name"
+          />
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamOne-name"
+            />
+            <div
+              className="TeamOne-score"
+            >
+              /
+            </div>
+          </div>
+          <div
+            className="Team-data"
+          >
+            <div
+              className="TeamTwo-name"
+            />
+            <div
+              className="TeamTwo-score"
+            >
+              /
+            </div>
+          </div>
+          <span
+            className="winner-name"
+          >
+             WON
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      className="top-section"
+    >
+      <div
+        className="grid-container-team"
+      >
+        <div
+          className="grid-container-team-details"
+        >
+          <div
+            className="grid-class-team-details"
+          >
+            <div
+              className="grid-class-topteam-details"
+            >
+              <p
+                className="p-top-team-details"
+              >
+                Top Batsmen
+              </p>
+              <div
+                className="centered"
+              >
+                <div
+                  className="cards-new"
+                >
+                  <div
+                    className="cardtest"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": "8px 0px 0px 8px",
+                      }
+                    }
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      Test
+                    </p>
+                  </div>
+                  <div
+                    className="cardodi"
+                    onClick={[Function]}
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      ODI
+                    </p>
+                  </div>
+                  <div
+                    className="cardt20"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": "0px 8px 8px 0px",
+                      }
+                    }
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      T20
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div />
+            </div>
+          </div>
+          <div
+            className="grid-class-team-details"
+          >
+            <div
+              className="grid-class-topteam-details"
+            >
+              <p
+                className="p-top-team-details"
+              >
+                Top Bowlers
+              </p>
+              <div
+                className="centered"
+              >
+                <div
+                  className="cards-new"
+                >
+                  <div
+                    className="cardtest"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": "8px 0px 0px 8px",
+                      }
+                    }
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      Test
+                    </p>
+                  </div>
+                  <div
+                    className="cardodi"
+                    onClick={[Function]}
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      ODI
+                    </p>
+                  </div>
+                  <div
+                    className="cardt20"
+                    onClick={[Function]}
+                    style={
+                      Object {
+                        "borderRadius": "0px 8px 8px 0px",
+                      }
+                    }
+                  >
+                    <p
+                      className="p-card"
+                    >
+                      T20
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

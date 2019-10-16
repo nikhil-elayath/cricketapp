@@ -7,15 +7,19 @@ import logo from "./images/indialogo.jpg";
 import { getRanks } from "../actions/Teams";
 // import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
+import { Link } from "react-router-dom";
 
 export class Home extends Component {
 	componentWillMount() {
-		this.props.getNews();
+		console.log("home mounted");
+		const a = this.props.getNews();
+		console.log(this.props);
 		// this.props.getTeams();
 		let ranking = {
 			match_type: "Test"
 		};
 		this.props.getRanks(ranking);
+		// this.props.getNews();
 	}
 	onClickTest = e => {
 		e.preventDefault();
@@ -43,25 +47,35 @@ export class Home extends Component {
 	render() {
 		return (
 			<div className="div-container">
+				<Navbar />
 				<div className="div-section">
 					<div className="div-news-section">
 						{this.props.home.map(news => (
-							<div className="div-news">
-								<div
-									className="div-news-images"
-									style={{
-										backgroundImage: `url(${news_img})`
-									}}
-								>
-									{/* <img className="news_img" src={news_img} /> */}
+							<Link
+								to={{
+									pathname: "/newsbyid/" + news.news_id
+									// state:{
+								}}
+							>
+								<div className="div-news">
+									<div
+										className="div-news-images"
+										style={{
+											backgroundImage: `url(${news_img})`
+										}}
+									>
+										{/* <img className="news_img" src={news_img} /> */}
+									</div>
+									<div className="div-news-details">
+										<p className="p-news">
+											<b>{news.news_title}</b>
+										</p>
+										<p className="date">
+											{news.news_date}{" "}
+										</p>
+									</div>
 								</div>
-								<div className="div-news-details">
-									<p className="p-news">
-										<b>{news.news_title}</b>
-									</p>
-									<p className="date">{news.news_date} </p>
-								</div>
-							</div>
+							</Link>
 						))}
 					</div>
 					{/* ------------------------------------- */}
