@@ -127,18 +127,25 @@ header {
 .genders > span:not(:first-child) {
 	border-left: 1px solid #ffffff;
 }
-.active-gender {
-	background-color: #ffffff;
-	color: #272727;
-}
 .genders > span:hover {
 	cursor: pointer;
 	transition: 0.3s ease;
 	background-color: #ffffff;
 	color: #272727;
 }
-.genders > span:hover:not(:first-child) {
+.genders > span:hover:last-child {
 	border-left: 1px solid #272727;
+}
+.genders > span:hover:first-child {
+	border-right: 1px solid #272727;
+}
+.active-gender {
+	background-color: #ffffff;
+	color: #272727;
+}
+.genders > span.active-gender:hover {
+	border-left: 0px;
+	border-right: 0px;
 }
 
 @media screen and (max-width: 992px) {
@@ -147,6 +154,9 @@ header {
 	}
 }
 @media screen and (max-width: 768px) {
+	/* .genders {
+		background-color: transparent;
+	} */
 	.link > .nav-brand {
 		font-size: 14px;
 	}
@@ -154,7 +164,7 @@ header {
 		padding: 6px 0px;
 	}
 	.menu {
-		width: auto;
+		width: 100%;
 		height: auto;
 	}
 	.menu ul {

@@ -125,7 +125,7 @@ export default class App extends Component {
           component={TeamDetails}
         ></Route>
 
-        <Route exact path="/teams" component={TeamLandingPage}></Route>
+        <Route exact path="/teams" component={TeamLandingPage} />
         {/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
         <Route path="/" exact component={Home} />
         <Route exact path="/newsbyid/:id" exact component={NewsPage} />
