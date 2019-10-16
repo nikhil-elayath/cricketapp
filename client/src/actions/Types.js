@@ -60,4 +60,6 @@ export const GET_TEAM_BATSMEN = "GET_TEAM_BATSMEN";
 export const GET_TEAM_BOWLERS = "GET_TEAM_BOWLERS";
 export const GET_HIGHEST_TOTALS = "GET_HIGHEST_TOTALS";
 export const GET_LOWEST_TOTALS = "GET_LOWEST_TOTALS";
-export const GET_TEAM_BY_ID = "GET_TEAM_BY_ID";
+
+//Nikhil
+export const GET_NEWS_ID = "GET_NEWS_ID";
