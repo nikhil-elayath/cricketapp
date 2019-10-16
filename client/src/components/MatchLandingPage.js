@@ -4,8 +4,7 @@ import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
-import { Menu, list, selected, ArrowLeft, ArrowRight } from "./Scroll";
-import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
+import { Menu, selected, ArrowLeft, ArrowRight } from "./Scroll";
 
 export class MatchLandingPage extends Component {
     state = {
