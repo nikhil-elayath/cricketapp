@@ -1,0 +1,35 @@
+.team-fixtures-container {
+  margin: 220px 0px 0px 20px;
+}
+
+.fixture-container {
+  margin: 50px 180px 15px 150px;
+}
+
+.fixture-details {
+  border: 1px solid #16a085;
+  border-radius: 8px;
+  display: flex;
+}
+
+.fixture-col {
+  margin: auto;
+}
+
+.fixture-info-type {
+  font-size: 20px;
+  color: #2c3e50;
+  margin: 30px 0px 30px 0px;
+}
+
+.fixture-info-one {
+  font-size: 20px;
+  color: #2c3e50;
+  margin: 30px 0px 0px 0px;
+}
+
+.fixture-info-two {
+  font-size: 12px;
+  color: #707070;
+  margin: 0px 0px 30px 0px;
+}
