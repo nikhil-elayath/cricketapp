@@ -39,7 +39,31 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           <span
             id="ball-stat-span-2"
           >
+            Innings
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
             Runs Conceded
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Balls bowled
           </span>
         </div>
       </div>
@@ -61,6 +85,18 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
             id="ball-stat-span-2"
           >
             Wickets
+          </span>
+        </div>
+        <div
+          className="bowling-stats-bottom-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Economy rate
           </span>
         </div>
         <div
@@ -123,7 +159,31 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           <span
             id="ball-stat-span-2"
           >
+            Innings
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
             Runs Conceded
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Balls bowled
           </span>
         </div>
       </div>
@@ -145,6 +205,18 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
             id="ball-stat-span-2"
           >
             Wickets
+          </span>
+        </div>
+        <div
+          className="bowling-stats-bottom-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Economy rate
           </span>
         </div>
         <div
@@ -205,7 +277,31 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           <span
             id="ball-stat-span-2"
           >
+            Innings
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
             Runs Conceded
+          </span>
+        </div>
+        <div
+          className="bowling-stats-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Balls bowled
           </span>
         </div>
       </div>
@@ -227,6 +323,18 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
             id="ball-stat-span-2"
           >
             Wickets
+          </span>
+        </div>
+        <div
+          className="bowling-stats-bottom-info-div"
+        >
+          <span
+            id="ball-stat-span-1"
+          />
+          <span
+            id="ball-stat-span-2"
+          >
+            Economy rate
           </span>
         </div>
         <div

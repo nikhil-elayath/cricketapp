@@ -2,7 +2,7 @@
 
 exports[`Testing PlayerInfo should render the component 1`] = `
 <div>
-  <Navbar />
+  <Connect(Navbar) />
   <div
     className="secNavParent"
   >

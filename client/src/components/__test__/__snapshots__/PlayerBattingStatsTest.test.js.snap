@@ -36,9 +36,7 @@ exports[`Testing Player Batting stats component should render the component 1`] 
         >
           <span
             id="bat-stat-span-1"
-          >
-            623
-          </span>
+          />
           <span
             id="bat-stat-span-2"
           >
@@ -205,9 +203,7 @@ exports[`Testing Player Batting stats component should render the component 1`] 
         >
           <span
             id="bat-stat-span-1"
-          >
-            623
-          </span>
+          />
           <span
             id="bat-stat-span-2"
           >
@@ -367,6 +363,18 @@ exports[`Testing Player Batting stats component should render the component 1`] 
             id="bat-stat-span-2"
           >
             Matches
+          </span>
+        </div>
+        <div
+          className="batting-stats-info-div"
+        >
+          <span
+            id="bat-stat-span-1"
+          />
+          <span
+            id="bat-stat-span-2"
+          >
+            Innings
           </span>
         </div>
         <div
