@@ -78,7 +78,9 @@ export default class App extends Component {
           exact
           path="/players"
           //   component={PlayerLandingPage}
-          render={() => <PlayerLandingPage gender={this.state.gender} />}
+          component={props => (
+            <PlayerLandingPage {...props} gender={this.state.gender} />
+          )}
         ></Route>
         <Route
           exact

@@ -146,11 +146,11 @@ export class PlayerLandingPage extends Component {
                 this.props.batsmen.map(batsman => (
                   <div
                     className="singlePlayerDiv"
-                    onClick={() => {
+                    onClick={() =>
                       this.props.history.push(
                         "/playerInfo/" + batsman.player_id
-                      );
-                    }}
+                      )
+                    }
                   >
                     <img className="playerImage" src={virat}></img>
                     {/* player basic info div */}
