@@ -147,6 +147,9 @@ header {
 	}
 }
 @media screen and (max-width: 768px) {
+	.genders {
+		background-color: transparent;
+	}
 	.link > .nav-brand {
 		font-size: 14px;
 	}
@@ -154,7 +157,7 @@ header {
 		padding: 6px 0px;
 	}
 	.menu {
-		width: auto;
+		width: 100%;
 		height: auto;
 	}
 	.menu ul {
