@@ -9,7 +9,7 @@ describe("testing player api's", () => {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(expect.any(Object));
         expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("Retrieved all players");
+        expect(res.body.message).toBe("Retrieved news by id");
         done();
       });
   });

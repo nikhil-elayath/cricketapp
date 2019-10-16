@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../components/css/Scroll.css";
 import { connect } from "react-redux";
-import { getMatchesDate } from "../actions/matches";
+import { getMatchesDate } from "../actions/Matches";
 
 // list of items
 export const list = [

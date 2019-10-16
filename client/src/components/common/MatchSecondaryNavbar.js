@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
 import default_user_img from "../images/defaultuserimg.jpg";
-import { request } from "https";
+// import { request } from "https";
 
 export default class MatchSecondaryNavbar extends Component {
   render() {

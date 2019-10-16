@@ -15,7 +15,7 @@ router.post("/teams", async (req, res, next) => {
     const result = await db.any(
       `select t.team_id, t.team_name from team t left join match m on m.innings_one_team = t.team_id  where m.match_type='${match_type}' and m.competition = '${competition}' group by t.team_id,t.team_name order by t.team_name;`
     );
-    console.log("Asass", result);
+    // console.log("Get team result is", result);
     if (!result)
       throw {
         statusCode: 404,
@@ -31,15 +31,42 @@ router.post("/teams", async (req, res, next) => {
   }
 });
 
+router.get("/teamdetails/:team_id", async (req, res, next) => {
+  try {
+    // const match_type = req.body.match_type;
+    // const competition = req.body.competition;
+    const team_id = req.params.team_id;
+    // console.log("match type", match_type);
+    // console.log("competition", match_type);
+    const result = await db.any(
+      `select * from team where team_id = '${team_id}';`
+    );
+    console.log("Get team by id result: ", result);
+    if (!result)
+      throw {
+        statusCode: 404,
+        customMessage: "Cannot find any team with this id"
+      };
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Retrieved team with this id successfully!"
+    });
+  } catch (err) {
+    next(err);
+  }
+});
+
 // Individual team matches
-router.get("/teams/match/:team_id", async (req, res, next) => {
+router.post("/teams/match/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
+    const match_type = req.body.match_type;
     console.log("called Individual team matches");
     // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
     // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
     const result = await db.any(
-      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.innings_one_team=${team_id} or m.innings_two_team=${team_id} order by md.match_date desc limit 8`
+      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.match_type = '${match_type}' and(m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
       // `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.team_one=${team_id} or m.team_two=${team_id} order by md.match_date desc limit 8`
     );
     console.log("matches id", result);

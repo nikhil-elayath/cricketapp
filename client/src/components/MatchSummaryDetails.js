@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 // import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
-import { getmatchdetailbyId, getRecentMatches } from "../actions/matches.js";
+import { getmatchdetailbyId, getRecentMatches } from "../actions/Matches.js";
 import { connect } from "react-redux";
 import "./css/MatchSummaryDetails.css";
 
@@ -115,7 +115,7 @@ export class MatchSummaryDetails extends Component {
                   <div style={{ margin: "3px 0 0 8px" }}> Toss</div>
                   <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                     {" "}
-                    {match.match_details[0].toss_winner_team}, elected to{" "}
+                    {match.match_details[0].toss_winner_team} elected to{" "}
                     {match.match_details[0].toss_decision}
                   </div>
                   <div style={{ margin: "3px 0 0 8px" }}> Venue</div>
