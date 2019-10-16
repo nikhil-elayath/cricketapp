@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getNews } from "../actions/Home";
-import Navbar from "../components/common/Navbar";
 import "./css/Home.css";
 import news_img from "../components/images/vk.jpeg";
+import Navbar from "../components/common/Navbar";
 import logo from "./images/indialogo.jpg";
 import { getRanks } from "../actions/Teams";
 // import { getRanks } from "../actions/Teams";
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export class Home extends Component {
   componentWillMount() {
     console.log("home mounted");
-    const a = this.props.getNews();
+    this.props.getNews();
     console.log(this.props);
     // this.props.getTeams();
     let ranking = {

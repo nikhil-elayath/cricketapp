@@ -9,7 +9,6 @@ import {
 } from "./Types";
 
 import axios from "axios";
-import { randomFill } from "crypto";
 
 export const getTeams = match_type => dispatch => {
   return axios
@@ -40,9 +39,12 @@ export const getRanks = ranking => dispatch => {
     });
 };
 
-export const getMatch = team_id => dispatch => {
+export const getMatch = (team_id, match_type) => dispatch => {
   return axios
-    .get("http://localhost:5000/cricketalpha/teams/match/" + team_id)
+    .post(
+      "http://localhost:5000/cricketalpha/teams/match/" + team_id,
+      match_type
+    )
     .then(res => {
       dispatch({
         type: GET_MATCHBYTEAMID,
