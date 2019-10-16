@@ -2,9 +2,25 @@ import React, { Component } from "react";
 import "./css/SecondaryNavbar.css";
 import teamlogo from "./images/indialogo.jpg";
 import Navbar from "./common/Navbar";
-// import { Link } from "react-router-dom";
 
 export default class TeamSecondaryNavbar extends Component {
+  state = {
+    infoClick: true,
+    statsClick: false,
+    fixturesClick: false
+  };
+  onClickInfo = () => {
+    this.setState({ infoClick: true, statsClick: false, fixturesClick: false });
+    this.props.changeDetailsType("info");
+  };
+  onClickStats = () => {
+    this.setState({ infoClick: false, statsClick: true, fixturesClick: false });
+    this.props.changeDetailsType("stats");
+  };
+  onClickFixtures = () => {
+    this.setState({ infoClick: false, statsClick: false, fixturesClick: true });
+    this.props.changeDetailsType("fixtures");
+  };
   render() {
     console.log("navbar props is ", this.props.teams.team_name);
     return (
@@ -23,28 +39,32 @@ export default class TeamSecondaryNavbar extends Component {
           </div>
           <div className="secNavLinks">
             <ul>
-              <div
-                className="secLink"
-                onClick={() => {
-                  this.props.changeDetailsType("info");
-                }}
-              >
-                <li>Info</li>
+              <div>
+                <li
+                  className={this.state.infoClick ? "li-colored" : "li-normal"}
+                  onClick={this.onClickInfo}
+                >
+                  Info
+                </li>
               </div>
-              {/* <Link className="secLink" to="/dev">
-                <li>Players</li>
-              </Link> */}
-              <div
-                className="secLink"
-                onClick={() => {
-                  this.props.changeDetailsType("stats");
-                }}
-              >
-                <li>Stats</li>
+              <div>
+                <li
+                  className={this.state.statsClick ? "li-colored" : "li-normal"}
+                  onClick={this.onClickStats}
+                >
+                  Stats
+                </li>
               </div>
-              {/* <Link className="secLink" to="/dev">
-                <li>Fixtures</li>
-              </Link> */}
+              <div>
+                <li
+                  className={
+                    this.state.fixturesClick ? "li-colored" : "li-normal"
+                  }
+                  onClick={this.onClickFixtures}
+                >
+                  Fixtures
+                </li>
+              </div>
             </ul>
           </div>
         </div>

@@ -87,7 +87,7 @@
 }
 
 .cards-new {
-  margin: 15px 30px 15px 30px;
+  margin: 5px 1000px 15px 15px;
 }
 
 .matches-section {
@@ -176,7 +176,11 @@
   margin-top: 5pt;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1024px) {
+  .cards-new {
+    margin: 0px 425px 10px 15px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 25vw 25vw;
@@ -253,6 +257,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .cards-new {
+    margin: 0px 325px 10px 15px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 50vw;
@@ -333,6 +341,10 @@
 }
 
 @media only screen and (max-width: 576px) {
+  .cards-new {
+    margin: 5px 15px 15px 25px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 85vw;
