@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 export class Home extends Component {
   componentWillMount() {
     console.log("home mounted");
-    const a = this.props.getNews();
+    this.props.getNews();
     console.log(this.props);
     // this.props.getTeams();
     let ranking = {
@@ -58,7 +58,7 @@ export class Home extends Component {
                   // state:{
                 }}
               >
-                <div className="div-news">
+                <div className="div-recent-news">
                   <div
                     className="div-news-images"
                     style={{
