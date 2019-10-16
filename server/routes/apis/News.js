@@ -13,6 +13,16 @@ router.get("/newsbyid/:id", async (req, res) => {
     const result = await db.any(
       `Select * from news where news_id = ${req.params.id} `
     );
+    for (news of result) {
+      var date = new Date(news.news_date);
+
+      news.news_date = date.toLocaleDateString("en-IN", {
+        weekday: "short",
+        month: "long",
+        day: "2-digit",
+        year: "numeric",
+      });
+    }
     console.log(result);
     res.status(200).json({
       status: 200,

@@ -1,98 +1,123 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getNews } from "../actions/Home";
-import "./css/Home.css";
-import news_img from "../components/images/vk.jpeg";
-import logo from "./images/indialogo.jpg";
-import { getRanks } from "../actions/Teams";
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { getNews } from '../actions/Home'
+import './css/Home.css'
+import news_img from '../components/images/vk.jpeg'
+import logo from './images/indialogo.jpg'
+import { getRanks } from '../actions/Teams'
 // import { getRanks } from "../actions/Teams";
-import MostWins from "./MostWins";
-import { Link } from "react-router-dom";
+import MostWins from './MostWins'
+import { Link } from 'react-router-dom'
 
 export class Home extends Component {
-  componentWillMount() {
-    console.log("home mounted");
-    const a = this.props.getNews();
-    console.log(this.props);
+  componentWillMount () {
+    console.log('home mounted')
+    this.props.getNews()
+    console.log(this.props)
     // this.props.getTeams();
     let ranking = {
-      match_type: "Test"
-    };
-    this.props.getRanks(ranking);
+      match_type: 'Test'
+    }
+    this.props.getRanks(ranking)
     // this.props.getNews();
   }
   onClickTest = e => {
-    e.preventDefault();
+    e.preventDefault()
     let ranking = {
-      match_type: "Test"
-    };
-    this.props.getRanks(ranking);
-  };
+      match_type: 'Test'
+    }
+    this.props.getRanks(ranking)
+  }
 
   onClickT20 = e => {
-    e.preventDefault();
+    e.preventDefault()
     let ranking = {
-      match_type: "T20"
-    };
-    this.props.getRanks(ranking);
-  };
+      match_type: 'T20'
+    }
+    this.props.getRanks(ranking)
+  }
 
   onClickOdi = e => {
-    e.preventDefault();
+    e.preventDefault()
     let ranking = {
-      match_type: "ODI"
-    };
-    this.props.getRanks(ranking);
-  };
-  render() {
+      match_type: 'ODI'
+    }
+    this.props.getRanks(ranking)
+  }
+  render () {
     return (
-      <div className="div-container">
-        <div className="div-section">
-          <div className="div-news-section">
+      <div className='div-container'>
+        <Navbar />
+        <div className='div-section'>
+          <div className='div-news-section'>
             {this.props.home.map(news => (
               <Link
                 to={{
-                  pathname: "/newsbyid/" + news.news_id
+                  pathname: '/newsbyid/' + news.news_id
                   // state:{
                 }}
               >
-                <div className="div-news">
+                <div className='div-news'>
                   <div
-                    className="div-news-images"
+                    className='div-news-images'
                     style={{
                       backgroundImage: `url(${news_img})`
                     }}
                   >
                     {/* <img className="news_img" src={news_img} /> */}
                   </div>
+<<<<<<< HEAD
                   <div className="div-news-details">
                     <p className="p-news">
                       <b>{news.news_title}</b>
                     </p>
                     <p className="date">{news.news_date} </p>
+=======
+                  <div className='div-news-details'>
+                    <p className='p-news'>
+                      <b>{news.news_title}</b>
+                    </p>
+                    <p className='date'>{news.news_date} </p>
+>>>>>>> d1a4fae1b39409e954cfb462bc47d43609d7c4ce
                   </div>
                 </div>
               </Link>
             ))}
           </div>
           {/* ------------------------------------- */}
+<<<<<<< HEAD
           <div className="div-second-section">
+=======
+          <div className='div-second-section'>
+>>>>>>> d1a4fae1b39409e954cfb462bc47d43609d7c4ce
             <MostWins />
           </div>
           {/* -------------------------------------- */}
         </div>
       </div>
+<<<<<<< HEAD
     );
+=======
+    )
+>>>>>>> d1a4fae1b39409e954cfb462bc47d43609d7c4ce
   }
 }
 const mapStateToProps = state => ({
   home: state.HomeReducer.home,
   ranks: state.TeamsReducer.ranks
+<<<<<<< HEAD
 });
+=======
+})
+>>>>>>> d1a4fae1b39409e954cfb462bc47d43609d7c4ce
 export default connect(
   mapStateToProps,
   {
     getNews,
     getRanks
   }
+<<<<<<< HEAD
 )(Home);
+=======
+)(Home)
+>>>>>>> d1a4fae1b39409e954cfb462bc47d43609d7c4ce
