@@ -4,9 +4,12 @@ import {
   GET_MATCHBYTEAMID,
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
+  GET_TEAM_FIXTURES,
   GET_HIGHEST_TOTALS,
   GET_LOWEST_TOTALS
 } from "./Types";
+
+import { startLoading, stopLoading } from "./LoadingAction";
 
 import axios from "axios";
 
@@ -40,18 +43,21 @@ export const getRanks = ranking => dispatch => {
 };
 
 export const getMatch = (team_id, match_type) => dispatch => {
+  dispatch(startLoading());
   return axios
     .post(
       "http://localhost:5000/cricketalpha/teams/match/" + team_id,
       match_type
     )
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_MATCHBYTEAMID,
         payload: res.data.data
       });
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
@@ -76,6 +82,23 @@ export const getTeamBowlers = match_type => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BOWLERS,
+        payload: res.data.data
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
+
+export const getFixtures = (team_id, match_type) => dispatch => {
+  return axios
+    .post(
+      "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
+      match_type
+    )
+    .then(res => {
+      dispatch({
+        type: GET_TEAM_FIXTURES,
         payload: res.data.data
       });
     })

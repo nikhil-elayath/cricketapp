@@ -50,6 +50,9 @@ export const EDIT_PLAYER = "EDIT_PLAYER";
 export const DELETE_PLAYER = "DELETE_PLAYER";
 export const GET_PLAYER_SEARCH = "GET_PLAYER_SEARCH";
 export const GET_ALLTEAMS = "GET_ALLTEAMS";
+export const ERROR_TYPE = "ERROR_TYPE";
+export const LOADING_START = "LOADING_START";
+export const LOADING_STOP = "LOADING_STOP";
 
 //aditya
 
@@ -58,6 +61,7 @@ export const GET_MATCHBYTEAMID = "GET_MATCHBYTEAMID";
 export const GET_RANKS = "GET_RANKS";
 export const GET_TEAM_BATSMEN = "GET_TEAM_BATSMEN";
 export const GET_TEAM_BOWLERS = "GET_TEAM_BOWLERS";
+export const GET_TEAM_FIXTURES = "GET_TEAM_FIXTURES";
 export const GET_HIGHEST_TOTALS = "GET_HIGHEST_TOTALS";
 export const GET_LOWEST_TOTALS = "GET_LOWEST_TOTALS";
 

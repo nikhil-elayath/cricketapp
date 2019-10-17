@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 
 export class PlayerBattingStats extends Component {
   componentDidMount() {
-    console.log("from mount", this.props.player_id);
+    console.log("from mount", this.props);
     this.props.getODIBatsmanStats(this.props.player_id);
 
     this.props.getT20BatsmanStats(this.props.player_id);
@@ -18,14 +18,16 @@ export class PlayerBattingStats extends Component {
   }
 
   render() {
-    console.log(
-      "Component batting stats ",
-      this.props.t20BatsmanStats["0"].TotalRuns
-        ? this.props.t20BatsmanStats["0"].TotalRuns.length === 0
-          ? console.log("not returned")
-          : this.props.t20BatsmanStats["0"].TotalRuns[0].match_type
-        : console.log("not found")
-    );
+    // console.log(
+    //   "Component batting stats ",
+    //   this.props.t20BatsmanStats["0"].TotalRuns
+    //     ? this.props.t20BatsmanStats["0"].TotalRuns.length === 0
+    //       ? console.log("not returned")
+    //       : this.props.t20BatsmanStats["0"].TotalRuns[0].match_type
+    //     : console.log("not found")
+    // );
+
+    console.log("from component", this.props.batsmanStats);
 
     return (
       <div className="bat-main">
@@ -36,7 +38,7 @@ export class PlayerBattingStats extends Component {
             </h3>
             <div className="batting-stats-info-parent-div">
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Matches">
                   {this.props.batsmanStats["0"].Matches
                     ? this.props.batsmanStats["0"].Matches.length === 0
                       ? "-"
@@ -47,11 +49,18 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Matches</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">623</span>
+                <span id="bat-stat-span-1" className="jest-map-Innings">
+                  {this.props.batsmanStats["0"].Innings
+                    ? this.props.batsmanStats["0"].Innings.length === 0
+                      ? "-"
+                      : this.props.batsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
                 <span id="bat-stat-span-2">Innings</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-TotalRuns">
                   {this.props.batsmanStats["0"].TotalRuns
                     ? this.props.batsmanStats["0"].TotalRuns.length === 0
                       ? "-"
@@ -62,7 +71,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Runs</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-BallsFaced">
                   {this.props.batsmanStats["0"].BallsFaced
                     ? this.props.batsmanStats["0"].BallsFaced.length === 0
                       ? "-"
@@ -73,7 +82,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Balls Faced</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-StrikeRate">
                   {this.props.batsmanStats["0"].StrikeRate
                     ? this.props.batsmanStats["0"].StrikeRate.length === 0
                       ? "-"
@@ -93,7 +102,7 @@ export class PlayerBattingStats extends Component {
               style={{ borderBottom: "none" }}
             >
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Highestscore">
                   {this.props.batsmanStats["0"].Highestscore
                     ? this.props.batsmanStats["0"].Highestscore.length === 0
                       ? "-"
@@ -104,7 +113,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Highest Score</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-NotOut">
                   {this.props.batsmanStats["0"].NotOut
                     ? this.props.batsmanStats["0"].NotOut.length === 0
                       ? "-"
@@ -115,7 +124,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Not Out</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Hundreds">
                   {this.props.batsmanStats["0"].Hundreds
                     ? this.props.batsmanStats["0"].Hundreds.length === 0
                       ? "-"
@@ -126,7 +135,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">100s</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Fifties">
                   {this.props.batsmanStats["0"].Fifties
                     ? this.props.batsmanStats["0"].Fifties.length === 0
                       ? "-"
@@ -137,7 +146,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">50s</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-TwoHundreds">
                   {this.props.batsmanStats["0"].TwoHundreds
                     ? this.props.batsmanStats["0"].TwoHundreds.length === 0
                       ? "-"
@@ -148,7 +157,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">200s</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Fours">
                   {this.props.batsmanStats["0"].Fours
                     ? this.props.batsmanStats["0"].Fours.length === 0
                       ? "-"
@@ -158,7 +167,7 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">4s</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">
+                <span id="bat-stat-span-1" className="jest-map-Sixes">
                   {this.props.batsmanStats["0"].Sixes
                     ? this.props.batsmanStats["0"].Sixes.length === 0
                       ? "-"
@@ -170,7 +179,7 @@ export class PlayerBattingStats extends Component {
             </div>
           </div>
           <div className="battting-Odi-div">
-            <h3 id="batting-format-heading" className="jest-Heading-3">
+            <h3 id="batting-format-heading" className="jest-Heading-2">
               ODI
             </h3>
             <div className="batting-stats-info-parent-div">
@@ -186,7 +195,14 @@ export class PlayerBattingStats extends Component {
                 <span id="bat-stat-span-2">Matches</span>
               </div>
               <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">623</span>
+                <span id="bat-stat-span-1">
+                  {this.props.odiBatsmanStats["0"].Innings
+                    ? this.props.odiBatsmanStats["0"].Innings.length === 0
+                      ? "-"
+                      : this.props.odiBatsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
                 <span id="bat-stat-span-2">Innings</span>
               </div>
               <div className="batting-stats-info-div">
@@ -307,7 +323,7 @@ export class PlayerBattingStats extends Component {
             </div>
           </div>
           <div className="battting-T20-div">
-            <h3 id="batting-format-heading" className="jest-Heading-2">
+            <h3 id="batting-format-heading" className="jest-Heading-3">
               T20
             </h3>
             <div className="batting-stats-info-parent-div">
@@ -325,10 +341,21 @@ export class PlayerBattingStats extends Component {
 
               <div className="batting-stats-info-div">
                 <span id="bat-stat-span-1">
-                  {this.props.t20BatsmanStats["0"].Matches
-                    ? this.props.t20BatsmanStats["0"].Matches.length === 0
+                  {this.props.t20BatsmanStats["0"].Innings
+                    ? this.props.t20BatsmanStats["0"].Innings.length === 0
                       ? "-"
-                      : this.props.t20BatsmanStats["0"].Matches[0]
+                      : this.props.t20BatsmanStats["0"].Innings[0]
+                          .player_stats_value
+                    : console.log("not found")}
+                </span>
+                <span id="bat-stat-span-2">Innings</span>
+              </div>
+              <div className="batting-stats-info-div">
+                <span id="bat-stat-span-1">
+                  {this.props.t20BatsmanStats["0"].TotalRuns
+                    ? this.props.t20BatsmanStats["0"].TotalRuns.length === 0
+                      ? "-"
+                      : this.props.t20BatsmanStats["0"].TotalRuns[0]
                           .player_stats_value
                     : console.log("not found")}
                 </span>

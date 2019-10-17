@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getUsers, otpVerify, otpSend } from "../actions/users.js";
+import { getUsers, otpVerify, otpSend } from "../actions/Users.js";
 import { connect } from "react-redux";
-import NavBar from "./common/Navbar";
+
 import "./css/Login.css";
 
 export class ResetPassword extends Component {
@@ -134,7 +134,6 @@ export class ResetPassword extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         <form id="msform">
           <fieldset>
             <h1>Reset Password</h1>
@@ -159,15 +158,27 @@ export class ResetPassword extends Component {
               onChange={this.OnChange}
               value={this.state.confirmPassword}
             />
-            <span
+            <div
               className="errorMessage"
               style={{
-                color: "#c0392b",
-                display: this.state.showError ? "block" : "none"
+                color: "#c0392b"
               }}
             >
-              {this.state.errorMessage}
-            </span>
+              {/*dispatch error from node*/}
+              {this.props.error ? (
+                <>{this.props.error}</>
+              ) : (
+                <span
+                  className="errorMessage"
+                  style={{
+                    color: "#c0392b",
+                    display: this.state.showError ? "block" : "none"
+                  }}
+                >
+                  {this.state.errorMessage}
+                </span>
+              )}
+            </div>
             {/* <button onChange={this.OnChange} onClick={this.onVerify}>
               Send OTP
             </button> */}
@@ -182,12 +193,41 @@ export class ResetPassword extends Component {
                   onChange={this.OnChange}
                   value={this.state.otp}
                 />
-                <button onChange={this.OnChange} onClick={this.userVerify}>
+                <div
+                  className="errorMessage"
+                  style={{
+                    color: "#c0392b"
+                  }}
+                >
+                  {/*dispatch error from node*/}
+                  {this.props.error ? (
+                    <>{this.props.error}</>
+                  ) : (
+                    <span
+                      className="errorMessage"
+                      style={{
+                        color: "#c0392b",
+                        display: this.state.showError ? "block" : "none"
+                      }}
+                    >
+                      {this.state.errorMessage}
+                    </span>
+                  )}
+                </div>
+                <button
+                  className="formbutton"
+                  onChange={this.OnChange}
+                  onClick={this.userVerify}
+                >
                   Verify OTP and Reset Password
                 </button>
               </>
             ) : (
-              <button onChange={this.OnChange} onClick={this.onVerify}>
+              <button
+                className="formbutton"
+                onChange={this.OnChange}
+                onClick={this.onVerify}
+              >
                 Send OTP
               </button>
             )}
@@ -199,7 +239,8 @@ export class ResetPassword extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+  users: state.userReducer.users,
+  error: state.userReducer.error
 });
 
 export default connect(

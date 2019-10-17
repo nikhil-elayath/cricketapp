@@ -9,9 +9,13 @@ import {
 } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/Adminpage.css";
-import NavBar from "./common/Navbar";
+// import NavBar from "./common/Navbar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import SweetAlert from "sweetalert-react";
+import "sweetalert/dist/sweetalert.css";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class AdminPlayerPage extends Component {
   constructor() {
@@ -64,7 +68,6 @@ export class AdminPlayerPage extends Component {
     player_country: "",
     batting_style: "",
     bowling_style: "",
-
     player_gender: "",
     player_role: "",
     debut_odi_match: "",
@@ -73,7 +76,8 @@ export class AdminPlayerPage extends Component {
     showError: false,
     errorMessage: "",
     player_dob: new Date(),
-    searchString: ""
+    searchString: "",
+    show: false
   };
 
   OnChange = event => {
@@ -223,36 +227,46 @@ export class AdminPlayerPage extends Component {
   };
 
   render() {
+    console.log("loading is:", this.props.isLoading);
     return (
       <div>
-        <NavBar />
+        {/* <NavBar /> */}
         <div className="player-page">
-          <div className="players">
-            <div className="inner-heading">
-              <div>
-                <h1>All Players</h1>
-              </div>
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  name="Search"
-                  margin="normal"
-                  placeholder="Search"
-                  onChange={this.onSearchInputChange}
-                />
-              </div>
+          {this.props.isLoading ? (
+            <div style={{ margin: "auto" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
             </div>
-            <div className="player-list">
-              {this.props.playerInfo.length == 0 ? (
-                <div className="loader"></div>
-              ) : (
-                this.props.playerInfo.map(players => (
+          ) : (
+            <div className="players">
+              <div className="inner-heading">
+                <div>
+                  <h1>All Players</h1>
+                </div>
+                <div>
+                  {" "}
+                  <input
+                    type="text"
+                    name="Search"
+                    margin="normal"
+                    placeholder="Search"
+                    onChange={this.onSearchInputChange}
+                  />
+                </div>
+              </div>
+
+              <div className="player-list">
+                {this.props.playerInfo.map(players => (
                   <div className="player-name">
                     <p>{players.player_name}</p>
                     <div className="inner-button">
                       <div style={{ marginRight: "5px" }}>
                         <button
+                          className="admininnerbutton"
                           onChange={this.OnChange}
                           onClick={() => {
                             this.props.history.push(
@@ -276,21 +290,45 @@ export class AdminPlayerPage extends Component {
 
                       <div>
                         <button
+                          className="admininnerbutton"
                           onChange={this.OnChange}
-                          onClick={() =>
-                            this.props.deletePlayer(players.player_id)
-                          }
+                          // onClick={() =>
+                          //   this.props.deletePlayer(players.player_id)
+                          // }
+                          onClick={() => this.setState({ show: true })}
                           style={{ background: "#E74C3c" }}
                         >
                           Delete
                         </button>
+                        <SweetAlert
+                          show={this.state.show}
+                          type="warning"
+                          title={`DELETE PLAYER!`}
+                          text="Are you sure?"
+                          confirmButtonText="Delete!"
+                          confirmButtonColor="#e74c3c"
+                          cancelButtonText="No, keep it"
+                          showCancelButton
+                          onConfirm={() => {
+                            console.log("confirm");
+                            this.setState({ show: false });
+                            this.props.deletePlayer(players.player_id);
+                          }}
+                          onCancel={() => {
+                            console.log("cancel");
+
+                            this.setState({ show: false });
+                          }}
+                          onEscapeKey={() => this.setState({ show: false })}
+                          onOutsideClick={() => this.setState({ show: false })}
+                        />
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div id="Adminform">
             <fieldset>
@@ -407,16 +445,32 @@ export class AdminPlayerPage extends Component {
                 value={this.state.debut_t20_match}
                 onChange={this.OnChange}
               />
-              <span
+              <div
                 className="errorMessage"
                 style={{
-                  color: "#c0392b",
-                  display: this.state.showError ? "block" : "none"
+                  color: "#c0392b"
                 }}
               >
-                {this.state.errorMessage}
-              </span>
-              <button onChange={this.OnChange} onClick={this.onRegister}>
+                {/*dispatch error from node*/}
+                {this.props.error ? (
+                  <>{this.props.error}</>
+                ) : (
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
+              </div>
+              <button
+                className="adminpagebutton "
+                onChange={this.OnChange}
+                onClick={this.onRegister}
+              >
                 Add Player
                 {console.log(this.onRegister)}
               </button>
@@ -443,7 +497,9 @@ export class AdminPlayerPage extends Component {
 
 const mapStateToProps = state => ({
   player: state.AdminPlayerReducer.player,
-  playerInfo: state.PlayerReducer.playerInfo
+  playerInfo: state.PlayerReducer.playerInfo,
+  error: state.AdminPlayerReducer.error,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(

@@ -2,7 +2,6 @@
 
 exports[`Testing of MatchLandingPage Component should render the component 1`] = `
 <div>
-  <Navbar />
   <div
     style={
       Object {
@@ -110,7 +109,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
           }
         }
       >
-        No Recent Matches
+        No Matches
       </h2>
     </div>
   </div>

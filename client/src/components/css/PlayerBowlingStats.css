@@ -11,7 +11,7 @@
 
 .bowling-main-div {
   display: grid;
-  grid-template-columns: 32vw 32vw 32vw;
+  grid-template-columns: 35vw 35vw;
 }
 
 #bowling-format-heading {
@@ -24,23 +24,21 @@
 .bowling-Test-div {
   border: 1px solid #707070;
   border-top: none;
-  margin-left: 70px;
+  /* margin-left: 70px; */
   font-family: "Montserrat", sans-serif;
-  width: 300px;
 }
 
 .bowling-Odi-div {
   border: 1px solid #707070;
   border-top: none;
-  margin-left: 10px;
-  width: 300px;
+  margin-left: 15px;
 }
 
 .bowling-T20-div {
   border: 1px solid #707070;
   border-top: none;
-  margin-left: -10px;
-  width: 300px;
+  /* margin-left: 50px; */
+  margin-top: 15px;
 }
 
 .bowling-Ipl-div {
@@ -58,7 +56,7 @@
   margin-right: 16px;
   border-bottom: 1px solid #707070;
   padding-bottom: 6px;
-  padding-top: 10px;
+  padding-top: 7px;
   font-family: "Montserrat", sans-serif;
 }
 
@@ -67,7 +65,8 @@
   flex-direction: column;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  /* padding: 10px; */
+  justify-content: space-between;
+  padding: 6px;
   padding-left: 20px;
 }
 
@@ -76,7 +75,7 @@
   flex-direction: column;
   text-align: center;
   font-family: "Montserrat", sans-serif;
-  /* padding: 10px; */
+  padding: 4px;
   padding-left: 30px;
   margin-bottom: 17px;
 }
@@ -89,7 +88,100 @@
 #ball-stat-span-2 {
   font-weight: 400;
   font-size: 13px;
-  padding-top: 2px;
+  /* padding-top: 2px; */
+}
+
+@media only screen and (max-width: 768px) {
+  .ball-main {
+    display: flex;
+    flex-direction: row;
+    margin-top: 210px;
+    margin-bottom: 40px;
+    justify-content: center;
+    width: 90vw;
+  }
+
+  .bowling-main-div {
+    display: grid;
+    grid-template-columns: 48vw 48vw;
+  }
+
+  #bowling-format-heading {
+    background-color: #2980b9;
+    color: white;
+    padding: 8px;
+    margin-top: 0px;
+  }
+
+  .bowling-Test-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin-left: 35px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .bowling-Odi-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin-left: 25px;
+  }
+
+  .bowling-T20-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin-left: 35px;
+    margin-top: 15px;
+  }
+
+  .bowling-Ipl-div {
+    border: 1px solid #707070;
+    border-top: none;
+    margin-left: 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
+  .bowling-stats-info-parent-div {
+    display: flex;
+    flex-direction: row;
+    margin-left: 16px;
+    margin-right: 16px;
+    border-bottom: 1px solid #707070;
+    padding-bottom: 6px;
+    padding-top: 7px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .bowling-stats-info-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    justify-content: space-between;
+    padding: 6px;
+    padding-left: 20px;
+  }
+
+  .bowling-stats-bottom-info-div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: "Montserrat", sans-serif;
+    padding: 4px;
+    padding-left: 30px;
+    margin-bottom: 17px;
+  }
+
+  #ball-stat-span-1 {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  #ball-stat-span-2 {
+    font-weight: 400;
+    font-size: 11px;
+    /* padding-top: 2px; */
+  }
 }
 
 @media only screen and (max-width: 576px) {
@@ -118,7 +210,7 @@
     border: 1px solid #707070;
     border-top: none;
     margin: auto;
-    margin-top: 15px;
+    margin-top: 35px;
     font-family: "Montserrat", sans-serif;
   }
 
@@ -146,20 +238,19 @@
   .bowling-stats-info-parent-div {
     display: flex;
     flex-direction: row;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-top: -10px;
+
     border-bottom: 1px solid #707070;
-    padding-bottom: 3px;
-    padding-top: 3px;
+
     font-family: "Montserrat", sans-serif;
   }
 
   .bowling-stats-info-div {
     display: flex;
     flex-direction: column;
-    text-align: center;
+    /* text-align: center; */
     font-family: "Montserrat", sans-serif;
-    padding-left: 14px;
+    /* padding-left: 14px; */
   }
 
   .bowling-stats-bottom-info-div {
@@ -167,18 +258,20 @@
     flex-direction: column;
     text-align: center;
     font-family: "Montserrat", sans-serif;
+    margin-top: 5px;
+    margin-bottom: 5px;
     /* padding: 10px; */
     padding-left: 20px;
   }
 
   #ball-stat-span-1 {
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 600;
+    font-size: 16px;
   }
 
   #ball-stat-span-2 {
-    font-weight: 400;
-    font-size: 8px;
-    padding-top: 3px;
+    font-weight: 500;
+    font-size: 10px;
+    /* padding-top: 3px; */
   }
 }

@@ -10,19 +10,21 @@ fieldset p {
   margin: 0px;
 }
 
-fieldset h1 {
+fieldset h2 {
   text-align: center;
 }
 
 .player-page {
-  z-index: 0;
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 2fr 1fr;
+  grid-template-areas: "players adminform";
+  margin: 100px 80px 30px 80px;
   /* position: fixed; */
 }
 
 .players {
-  margin: 100px 50px 300px 100px;
+  grid-area: players;
+  margin: 0px 50px 180px 0px;
   /* border: 0.5px solid #707070; */
   border-radius: 8px;
   display: grid;
@@ -32,30 +34,49 @@ fieldset h1 {
 .inner-heading {
   display: grid;
   grid-template-columns: 70% 30%;
+  align-items: center;
 }
 
 .player-list {
   background: white;
   border: 0.5px solid #707070;
-  margin: 10px 0px 10px 0px;
+  padding: 10px;
   border-radius: 8px;
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   height: 500px;
   overflow-x: hidden;
   overflow-y: auto;
+  column-gap: 20px;
 }
 
 .player-name {
   display: grid;
-  grid-template-columns: 50% 55%;
-  margin: 10px 0px 0px 10px;
+  grid-template-columns: 1fr 1fr;
+  /* margin: 10px 0px 0px 10px; */
+  /* align-items: center; */
 }
 
 .inner-button {
   display: grid;
-  grid-template-columns: 50% 50%;
-  margin: 0px 50px 0px 0px;
+  grid-template-columns: auto auto;
+  padding: 12px;
+}
+
+.admininnerbutton {
+  width: 100%;
+  background: #2980b9;
+  font-weight: 500;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 10px;
+  border: 0px;
+  transition: 0.3s;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 0.6px;
+  font-size: 12px;
 }
 
 .choice {
@@ -72,8 +93,8 @@ fieldset h1 {
 }
 
 #Adminform {
-  width: 450px;
-  margin: 100px 100px 30px auto;
+  grid-area: adminform;
+  /* width: 450px; */
   /* text-align: center; */
 }
 
@@ -89,7 +110,7 @@ textarea {
   padding: 15px;
   border: 0.5px solid #707070;
   border-radius: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
@@ -121,7 +142,7 @@ p {
   color: #2980b9;
 }
 
-button {
+.adminpagebutton {
   width: 100%;
   background: #2980b9;
   font-weight: 500;
@@ -138,7 +159,7 @@ button {
   margin: 16px 0px;
 }
 
-button:hover {
+.adminpagebutton :hover {
   box-shadow: 0px 4px 6px 0px #c2c2c2;
 }
 
@@ -169,56 +190,60 @@ h1 {
   margin-left: 100px;
 }
 
-/*  */
-
 @media (max-width: 1200px) {
-  #Adminform {
-    width: 35vw;
-    margin-right: 180px;
+  .player-page {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+
+    margin: 100px 80px 30px 80px;
     /* position: fixed; */
   }
-  .player-page {
-    display: grid;
-    grid-template-columns: auto;
-  }
-}
-
-@media (max-width: 992px) {
-  #Adminform {
-    width: 50vw;
-  }
-  .player-page {
-    display: grid;
-    grid-template-rows: 35% 65%;
-  }
-}
-
-@media (max-width: 767px) {
-  #Adminform {
-    width: 50vw;
-  }
-  .player-page {
-    display: grid;
-    grid-template-rows: 60% 40%;
+  #Adminform fieldset {
+    background: white;
+    border: 0.5px solid #707070;
+    border-radius: 8px;
+    padding: 10px 40px;
   }
 }
 
 @media (max-width: 575px) {
-  #Adminform {
-    width: 70vw;
+  #Adminform fieldset {
+    background: white;
+    border: 0.5px solid #707070;
+    border-radius: 8px;
+    padding: 10px 40px;
   }
   .player-page {
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "adminform" "players";
+    grid-template-columns: none;
+    margin: 100px 20px 0px 20px;
   }
-}
+  .player-list {
+    background: white;
+    border: 0.5px solid #707070;
+    padding: 10px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    grid-column-gap: 20px;
+    column-gap: 20px;
+  }
+  .inner-heading {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+  }
+  .players {
+    margin: 0px 0px 40px 0px;
+    /* border: 0.5px solid #707070; */
+    border-radius: 8px;
 
-@media (max-width: 425px) {
-  #Adminform {
-    width: 90vw;
-  }
-  .player-page {
     display: grid;
-    grid-template-rows: 60% 40%;
+    /* grid-template-rows: 10% 90%; */
   }
 }

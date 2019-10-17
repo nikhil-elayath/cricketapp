@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllTeams, editTeam } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/AdminEditPage.css";
-import NavBar from "./common/Navbar";
+// import NavBar from "./common/Navbar";
 
 export class AdminEditTeam extends Component {
   componentDidMount() {
@@ -60,7 +60,7 @@ export class AdminEditTeam extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        {/* <NavBar /> */}
 
         <div id="AdminEditform">
           <fieldset>
@@ -87,7 +87,11 @@ export class AdminEditTeam extends Component {
                 <button className="cancel">Cancel</button>
               </Link>
 
-              <button onChange={this.OnChange} onClick={this.OnEdit}>
+              <button
+                className="admineditpagebutton"
+                onChange={this.OnChange}
+                onClick={this.OnEdit}
+              >
                 Edit Team
                 {console.log(this.OnEdit)}
               </button>

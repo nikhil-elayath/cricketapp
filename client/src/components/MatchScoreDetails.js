@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getMatchScorecardDetailbyId } from "../actions/Matches";
+import { getMatchScorecardDetailbyId } from "../actions/matches";
 import { connect } from "react-redux";
 import "../components/css/MatchScoreDetails.css";
 

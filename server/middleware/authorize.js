@@ -1,28 +1,31 @@
 const jwt = require("jsonwebtoken");
 const config = require("config");
 
-module.exports = () => {
-  console.log(
-    "Decoded token: " +
-      JSON.stringify(
-        jwt.decode(global.returned_token, config.get("jwtPrivateKey"))
-      )
-  );
-  global.decoded_token = jwt.decode(
-    global.returned_token,
-    config.get("jwtPrivateKey")
-  );
-  let err_message;
-  jwt.verify(
-    global.returned_token,
-    config.get("jwtPrivateKey"),
-    (err, decoded) => {
-      if (err) {
-        localStorage.removeItem("token");
-        console.log(err.message);
-        err_message = err.message;
-      }
-    }
-  );
-  return err_message;
+let validateToken = (req, res, next) => {
+  // retrieve token from header
+  const token = req.headers["x-access-token"] || req.headers["authorization"];
+
+  //   check if there is a token present or not
+  if (!token)
+    return res.json({
+      login: "failed",
+      message: "Token not found"
+    });
+  // if a token is found then verify if the token is valid
+  try {
+    const verifyingToken = jwt.verify(token, config.get("jwtPrivateKey"));
+    console.log(verifyingToken);
+    // assigning the token to the user requesting the service
+    req.user = verifyingToken;
+    next();
+  } catch (error) {
+    //   if try fails catch the error
+    console.log(error);
+    res.json({
+      status: 400,
+      message: "Invalid token"
+    });
+  }
 };
+
+module.exports = validateToken;

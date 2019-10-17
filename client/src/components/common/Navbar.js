@@ -18,7 +18,7 @@ export class Navbar extends Component {
 		this.props.getSearch(search_term, this.props.history);
 	};
 	render() {
-		console.log(this.props);
+		// console.log(this.props);
 		return (
 			<div className="nav-parent">
 				<header>

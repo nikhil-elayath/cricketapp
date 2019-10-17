@@ -9,7 +9,12 @@ import {
 } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/Adminpage.css";
-import NavBar from "./common/Navbar";
+// import NavBar from "./common/Navbar";
+import SweetAlert from "sweetalert-react";
+import "sweetalert/dist/sweetalert.css";
+
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class AdminTeamPage extends Component {
   componentDidMount() {
@@ -22,7 +27,8 @@ export class AdminTeamPage extends Component {
     team_name: "",
     showError: false,
     errorMessage: "",
-    searchString: ""
+    searchString: "",
+    show: false
   };
 
   OnChange = event => {
@@ -70,34 +76,42 @@ export class AdminTeamPage extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        {/* <NavBar /> */}
         <div className="player-page">
-          <div className="players">
-            <div className="inner-heading">
-              <div>
-                <h1>All Team</h1>
-              </div>
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  name="Search"
-                  margin="normal"
-                  placeholder="Search"
-                  onChange={this.onSearchInputChange}
-                />
-              </div>
+          {this.props.isLoading ? (
+            <div style={{ margin: "auto" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
             </div>
-            <div className="player-list">
-              {this.props.team.length == 0 ? (
-                <div className="loader"></div>
-              ) : (
-                this.props.team.map(teams => (
+          ) : (
+            <div className="players">
+              <div className="inner-heading">
+                <div>
+                  <h1>All Team</h1>
+                </div>
+                <div>
+                  {" "}
+                  <input
+                    type="text"
+                    name="Search"
+                    margin="normal"
+                    placeholder="Search"
+                    onChange={this.onSearchInputChange}
+                  />
+                </div>
+              </div>
+              <div className="player-list">
+                {this.props.team.map(teams => (
                   <div className="player-name">
                     <p>{teams.team_name}</p>
                     <div className="inner-button">
                       <div style={{ marginRight: "5px" }}>
                         <button
+                          className="admininnerbutton"
                           onChange={this.OnChange}
                           onClick={() => {
                             this.props.history.push(
@@ -112,23 +126,47 @@ export class AdminTeamPage extends Component {
 
                       <div>
                         <button
+                          className="admininnerbutton"
                           onChange={this.OnChange}
-                          onClick={() => this.props.deleteTeam(teams.team_id)}
+                          // onClick={() => this.props.deleteTeam(teams.team_id)}
+                          onClick={() => this.setState({ show: true })}
                           style={{ background: "#E74C3c" }}
                         >
                           Delete
                         </button>
+                        <SweetAlert
+                          show={this.state.show}
+                          type="warning"
+                          title={`DELETE TEAM`}
+                          text="Are you sure?"
+                          confirmButtonText="Delete!"
+                          confirmButtonColor="#e74c3c"
+                          cancelButtonText="No, keep it"
+                          showCancelButton
+                          onConfirm={() => {
+                            console.log("confirm");
+                            this.setState({ show: false });
+                            this.props.deleteTeam(teams.team_id);
+                          }}
+                          onCancel={() => {
+                            console.log("cancel");
+
+                            this.setState({ show: false });
+                          }}
+                          onEscapeKey={() => this.setState({ show: false })}
+                          onOutsideClick={() => this.setState({ show: false })}
+                        />
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div id="Adminform">
             <fieldset>
-              <h1>Add New Team</h1>
+              <h2>Add New Team</h2>
               <input
                 type="text"
                 name="team_name"
@@ -137,16 +175,32 @@ export class AdminTeamPage extends Component {
                 onChange={this.OnChange}
               />
 
-              <span
+              <div
                 className="errorMessage"
                 style={{
-                  color: "#c0392b",
-                  display: this.state.showError ? "block" : "none"
+                  color: "#c0392b"
                 }}
               >
-                {this.state.errorMessage}
-              </span>
-              <button onChange={this.OnChange} onClick={this.onRegister}>
+                {/*dispatch error from node*/}
+                {this.props.error ? (
+                  <>{this.props.error}</>
+                ) : (
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
+              </div>
+              <button
+                className="adminpagebutton"
+                onChange={this.OnChange}
+                onClick={this.onRegister}
+              >
                 Add Team
               </button>
             </fieldset>
@@ -158,7 +212,9 @@ export class AdminTeamPage extends Component {
 }
 
 const mapStateToProps = state => ({
-  team: state.AdminTeamReducer.team
+  team: state.AdminTeamReducer.team,
+  error: state.AdminTeamReducer.error,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
