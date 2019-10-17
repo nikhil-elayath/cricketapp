@@ -4,9 +4,13 @@ import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
+import InfiniteCalendar from 'react-infinite-calendar';
+import 'react-infinite-calendar/styles.css';
 // import { Menu, selected, ArrowLeft, ArrowRight } from "./Scroll";
 
 export class MatchLandingPage extends Component {
+
+
     // state = {
     //     selected: false,
     //     list: []
@@ -20,18 +24,18 @@ export class MatchLandingPage extends Component {
     //     this.setState({ list });
     // }
     componentDidMount() {
-        function yyyymmdd() {
-            var now = new Date();
-            var y = now.getFullYear();
-            var m = now.getMonth() + 1;
-            var d = now.getDate();
-            var mm = m < 10 ? "0" + m : m;
-            var dd = d < 10 ? "0" + d : d;
-            return y + "-" + mm + "-" + dd;
-        }
-        var date = yyyymmdd();
-        console.log(date);
-        this.props.getRecentMatches(date);
+        // function yyyymmdd() {
+        //     var now = new Date();
+        //     var y = now.getFullYear();
+        //     var m = now.getMonth() + 1;
+        //     var d = now.getDate();
+        //     var mm = m < 10 ? "0" + m : m;
+        //     var dd = d < 10 ? "0" + d : d;
+        //     return y + "-" + mm + "-" + dd;
+        // }
+        // var date = yyyymmdd();
+        // console.log(date);
+        this.props.getRecentMatches("2016-05-20");
         // this.props.getMatchesDate();
     }
 
@@ -45,6 +49,8 @@ export class MatchLandingPage extends Component {
         // const { selected } = this.state;
         // // Create menu from items
         // const menu = this.state.menuItems;
+        var today = new Date();
+        var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
 
         return (
             <div>
@@ -113,69 +119,79 @@ export class MatchLandingPage extends Component {
                 <div>
                     <div className="landing-container">
                         <div className="calander">
-
+                            <InfiniteCalendar
+                                width={410}
+                                height={300}
+                                minDate={new Date(1980, 0, 1)}
+                                selected={today}
+                                rowHeight={60}
+                                displayOptions={{
+                                    // showOverlay: false,
+                                    // shouldHeaderAnimate: false
+                                }}
+                            />
                         </div>
 
                         <div className="all-matches-box">
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                             <div className="each-matches-box">
-                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
                                 <div className="Team-data" style={{ fontWeight: "400" }}>
                                     <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
                                     <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
                                     <div style={{ margin: "3% 0 0 3%" }}>India</div>
                                     <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
                         </div>
 

@@ -58,7 +58,7 @@ body{
     box-sizing: border-box;
     margin: 1%;
     border-radius: 5px;
-    height: 300px;
+    height: auto;
     
 }
 .landing-container .all-matches-box{
@@ -91,7 +91,7 @@ body{
     grid-template-columns: 45% 55%;
     grid-template-rows: 50% 50%;
     justify-content: space-between; 
-    font-size: 82%;  
+    font-size: 120%;  
 }
 
 
