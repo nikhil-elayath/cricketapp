@@ -4,7 +4,6 @@ exports[`Testing for home component should render the component 1`] = `
 <div
   className="div-container"
 >
-  <Connect(Navbar) />
   <div
     className="div-section"
   >
