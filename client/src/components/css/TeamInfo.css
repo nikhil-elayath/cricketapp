@@ -120,6 +120,14 @@
   border: 1px solid #707070;
   cursor: pointer;
 }
+.list-info {
+  text-align: center;
+  display: flex;
+  margin: 15px 0px 0px 0px;
+}
+.list-info:not(:last-child) {
+  border-bottom: 1px solid #707070;
+}
 
 .inside-recent-matches-box-team .Team-data {
   display: flex;

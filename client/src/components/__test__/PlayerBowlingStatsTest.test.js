@@ -6,7 +6,16 @@ const getTestBowlerStats = jest.fn();
 const getODIBowlerStats = jest.fn();
 const getT20BowlerStats = jest.fn();
 // const getTestBatsmanStats = jest.fn();
-const testBowlerStats = [[]];
+const testBowlerStats = [
+  {
+    Innings: [
+      {
+        player_stats_value: "34"
+      }
+    ]
+  }
+];
+//
 const t20BowlerStats = [[]];
 const odiBowlerStats = [[]];
 
@@ -45,5 +54,13 @@ describe("Testing player Bowling stats ", () => {
         .at(2)
         .text()
     ).toBe("T20");
+  });
+
+  // it("should check the length of innings array of testBowlerStats", () => {
+  //   expect(wrapper.find(".jest-Innings").text()).toBe("-");
+  // });
+
+  it("should check the length of innings array of testBowlerStats and return a value", () => {
+    expect(wrapper.find(".jest-Innings").text()).toBe("34");
   });
 });

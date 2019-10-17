@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
-import Navbar from "../components/common/Navbar";
-import { getRecentMatches, getMatchesDate } from "../actions/matches.js";
+// import Navbar from "../components/common/Navbar";
+import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
 import { Menu, list, selected, ArrowLeft, ArrowRight } from "./Scroll";
 import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
 
@@ -48,7 +48,7 @@ export class MatchLandingPage extends Component {
 
     return (
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
 
         <div style={{ marginTop: "80px" }}>
           <div>

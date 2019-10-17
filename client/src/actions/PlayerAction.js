@@ -9,7 +9,7 @@ import {
   GET_ODI_BOWLER_STATS,
   GET_T20_BOWLER_STATS,
   GET_TEST_BOWLER_STATS,
-  GET_TOP_SIXES,
+  GET_TOP_SIXES
 } from "./Types";
 import axios from "axios";
 
@@ -20,7 +20,7 @@ export const getPlayers = () => dispatch => {
       console.log("From Player Actions", res.data.data);
       dispatch({
         type: GET_PLAYERS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -38,7 +38,7 @@ export const getSinglePlayer = player_id => dispatch => {
       );
       dispatch({
         type: GET_SINGLE_PLAYER,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -46,14 +46,18 @@ export const getSinglePlayer = player_id => dispatch => {
     });
 };
 
-export const getBatsmen = match_type => dispatch => {
+export const getBatsmen = (match_type, gender) => dispatch => {
   return axios
-    .post("http://localhost:5000/apis/PlayerInfo/TopBatsman", match_type)
+    .post(
+      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      match_type,
+      gender
+    )
     .then(res => {
       // console.log("From Player Actions batsman data is: ", res.data.data);
       dispatch({
         type: GET_ALL_BATSMAN,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -61,14 +65,18 @@ export const getBatsmen = match_type => dispatch => {
     });
 };
 
-export const getBowlers = match_type => dispatch => {
+export const getBowlers = (match_type, gender) => dispatch => {
   return axios
-    .post("http://localhost:5000/apis/PlayerInfo/TopBowlers", match_type)
+    .post(
+      "http://localhost:5000/apis/PlayerInfo/TopBowlers",
+      match_type,
+      gender
+    )
     .then(res => {
       // console.log("From Player Actions bowler data is: ", res.data.data);
       dispatch({
         type: GET_ALL_BOWLERS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -76,14 +84,14 @@ export const getBowlers = match_type => dispatch => {
     });
 };
 
-export const getTopSixes = match_type => dispatch => {
+export const getTopSixes = (match_type, gender) => dispatch => {
   return axios
-    .post("http://localhost:5000/apis/PlayerInfo/TopSixes", match_type)
+    .post("http://localhost:5000/apis/PlayerInfo/TopSixes", match_type, gender)
     .then(res => {
       // console.log("From Player Actions bowler data is: ", res.data.data);
       dispatch({
         type: GET_TOP_SIXES,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -98,7 +106,7 @@ export const getODIBatsmanStats = player_id => dispatch => {
       // console.log("From Player Actions odi Batsman stats is: ", res.data.ODI);
       dispatch({
         type: GET_ODI_BATSMAN_STATS,
-        payload: res.data.ODI,
+        payload: res.data.ODI
       });
     })
     .catch(err => {
@@ -116,7 +124,7 @@ export const getODIBowlerStats = player_id => dispatch => {
       );
       dispatch({
         type: GET_ODI_BOWLER_STATS,
-        payload: res.data.ODIBowler,
+        payload: res.data.ODIBowler
       });
     })
     .catch(err => {
@@ -133,7 +141,7 @@ export const getTestBatsmanStats = player_id => dispatch => {
       // console.log("From Player Actions test Batsman stats is: ", res.data.Test);
       dispatch({
         type: GET_BATSMAN_STATS,
-        payload: res.data.Test,
+        payload: res.data.Test
       });
     })
     .catch(err => {
@@ -151,7 +159,7 @@ export const getTestBowlerStats = player_id => dispatch => {
       );
       dispatch({
         type: GET_TEST_BOWLER_STATS,
-        payload: res.data.TestBowler,
+        payload: res.data.TestBowler
       });
     })
     .catch(err => {
@@ -166,7 +174,7 @@ export const getT20BatsmanStats = player_id => dispatch => {
       // console.log("From Player Actions test Batsman stats is: ", res.data.T20);
       dispatch({
         type: GET_T20_BATSMAN_STATS,
-        payload: res.data.T20,
+        payload: res.data.T20
       });
     })
     .catch(err => {
@@ -184,7 +192,7 @@ export const getT20BowlerStats = player_id => dispatch => {
       );
       dispatch({
         type: GET_T20_BOWLER_STATS,
-        payload: res.data.T20Bowler,
+        payload: res.data.T20Bowler
       });
     })
     .catch(err => {
@@ -199,7 +207,7 @@ export const getBatsmanStats = player_id => dispatch => {
       console.log("From Player Actions test Batsman stats is: ", res.data.data);
       dispatch({
         type: GET_T20_BOWLER_STATS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
