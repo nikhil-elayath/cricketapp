@@ -81,9 +81,11 @@ export const getMatchScorecardDetailbyId = id => dispatch => {
     });
 };
 export const getManhattanGraphbyId = id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(url2 + "/runsperover/" + id, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_MANHATTAN_GRAPH_BY_ID,
         payload: { manhattan: res.data }
@@ -91,13 +93,16 @@ export const getManhattanGraphbyId = id => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
 export const getPieChartOnebyId = id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(url2 + "/playerruns/" + id, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
         payload: { piechartOne: res.data }
@@ -105,13 +110,16 @@ export const getPieChartOnebyId = id => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
 export const getPieChartTwobyId = id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(url2 + "/bowlerwickets/" + id, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_TWO_GRAPH_BY_ID,
         payload: { piechartTwo: res.data }
@@ -119,6 +127,7 @@ export const getPieChartTwobyId = id => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
