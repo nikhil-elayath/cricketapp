@@ -64,9 +64,11 @@ export const getmatchdetailbyId = id => dispatch => {
     });
 };
 export const getMatchScorecardDetailbyId = id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(url + "/scorecard/" + id, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
         payload: res.data.data
@@ -74,6 +76,7 @@ export const getMatchScorecardDetailbyId = id => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };

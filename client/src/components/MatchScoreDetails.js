@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { getMatchScorecardDetailbyId } from "../actions/Matches";
 import { connect } from "react-redux";
 import "../components/css/MatchScoreDetails.css";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class MatchScoreDetails extends Component {
   componentDidMount() {
@@ -11,8 +13,15 @@ export class MatchScoreDetails extends Component {
     return (
       <div>
         <div style={{ marginTop: 210 + "px" }}>
-          {this.props.match_score.length == 0 ? (
-            <div className="matchscorecardloader"></div>
+          {this.props.isLoading ? (
+            <div style={{ margin: "400px" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
+            </div>
           ) : (
               this.props.match_score.map(match => (
                 <div
@@ -133,7 +142,8 @@ export class MatchScoreDetails extends Component {
 }
 
 const mapStateToProps = state => ({
-  match_score: state.matchreducer.match_score
+  match_score: state.matchreducer.match_score,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
