@@ -118,26 +118,65 @@ export class MatchLandingPage extends Component {
 
                         <div className="all-matches-box">
                             <div className="each-matches-box">
-                                <span>ODI</span>
-                                <div className="Team-data">
-                                    <div className="Team-name">South Africa</div>
-                                    <div className="Team-score">
-                                        122/2 (50 overs)
-                                     </div>
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
                                 </div>
-                                <div className="Team-data">
-                                    <div className="Team-name">India</div>
-                                    <div className="TeamTwo-score">
-                                        122/2 (50 overs)
-                                     </div>
-                                </div>
-                                <span className="winner-name">team_winner won</span>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
                             </div>
-                            <div>2</div>
-                            <div>3</div>
-                            <div>4</div>
-                            <div>5</div>
-                            <div>6</div>
+                            <div className="each-matches-box">
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                                </div>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                            </div>
+                            <div className="each-matches-box">
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                                </div>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                            </div>
+                            <div className="each-matches-box">
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                                </div>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                            </div>
+                            <div className="each-matches-box">
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                                </div>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                            </div>
+                            <div className="each-matches-box">
+                                <span style={{ fontSize: "70%", margin: "1% 0 0 0" }}>ODI</span>
+                                <div className="Team-data" style={{ fontWeight: "400" }}>
+                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
+                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
+                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                                </div>
+                                <span style={{ fontSize: "70%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
+                            </div>
                         </div>
 
                     </div>

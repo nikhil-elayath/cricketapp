@@ -49,36 +49,32 @@ body{
 
 .landing-container{
     display: flex;
-    border: 1px solid black;
     box-sizing: border-box;
-    height: 500px;
-    margin: 30px;
-    border-radius: 5px;
-
+    margin: 1%;
 }
 .landing-container .calander{
     flex: 1;
     border: 1px solid black;
     box-sizing: border-box;
-    margin: 10px;
+    margin: 1%;
     border-radius: 5px;
+    height: 300px;
     
 }
 .landing-container .all-matches-box{
     flex: 3;
+    height: fit-content;
     box-sizing: border-box;
     border: 1px solid black;
-    margin: 10px;
+    margin: 1%;
     border-radius: 5px;
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
 }
 .landing-container .all-matches-box > div{
     padding: 1%;
-    
     border: 1px solid black;
-    width: 30%;
+    width: 29%;
     height: fit-content;
 }
 .all-matches-box .each-matches-box{
@@ -86,22 +82,18 @@ body{
     display: flex;
     flex-direction: column;
     border-radius: 5px;
-    margin: 2%;
+    margin: 1%;
     text-align: left;
 }
 
 .each-matches-box .Team-data{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-weight: 500;
-   
+    display: grid;
+    grid-template-columns: 45% 55%;
+    grid-template-rows: 50% 50%;
+    justify-content: space-between; 
+    font-size: 82%;  
 }
 
-.Team-data .Team-name{
-    font-size: 1px;
-    font-weight: 500;
-}
 
 /* .all-matches-box .each-matches-box :hover{
        box-shadow: 1px 1px 1px 1px #272727;
