@@ -4,8 +4,8 @@ import "./css/MatchLandingPage.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
-import InfiniteCalendar from 'react-infinite-calendar';
-import 'react-infinite-calendar/styles.css';
+// import InfiniteCalendar from 'react-infinite-calendar';
+// import 'react-infinite-calendar/styles.css';
 // import { Menu, selected, ArrowLeft, ArrowRight } from "./Scroll";
 
 export class MatchLandingPage extends Component {
@@ -119,7 +119,7 @@ export class MatchLandingPage extends Component {
                 <div>
                     <div className="landing-container">
                         <div className="calander">
-                            <InfiniteCalendar
+                            {/* <InfiniteCalendar
                                 width={410}
                                 height={300}
                                 minDate={new Date(1980, 0, 1)}
@@ -129,7 +129,7 @@ export class MatchLandingPage extends Component {
                                     // showOverlay: false,
                                     // shouldHeaderAnimate: false
                                 }}
-                            />
+                            /> */}
                         </div>
 
                         <div className="all-matches-box">
