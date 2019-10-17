@@ -51,6 +51,8 @@ export const DELETE_PLAYER = "DELETE_PLAYER";
 export const GET_PLAYER_SEARCH = "GET_PLAYER_SEARCH";
 export const GET_ALLTEAMS = "GET_ALLTEAMS";
 export const ERROR_TYPE = "ERROR_TYPE";
+export const LOADING_START = "LOADING_START";
+export const LOADING_STOP = "LOADING_STOP";
 
 // aditya
 

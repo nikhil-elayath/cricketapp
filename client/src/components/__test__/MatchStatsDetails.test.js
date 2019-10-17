@@ -17,14 +17,17 @@ describe("Testing of MatchStatsDetails Component", () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    // it("[Main container] should have exactly defined classname ", () => {
+    // it("[Manhattan-grahph] should have a conatiner ", () => {
     //     expect(
     //         wrapper
-    //             .find("div")
-    //             .at(3)
-    //             .props().className
-    //     ).toBe("top-container-stats");
+    //             .find("#manhattan-container").length).toBe(1);
     // });
+    // it("[Manhattan-graph] should have a title ", () => {
+    //     expect(
+    //         wrapper
+    //             .find('#manhattan-title').text()).toBe('Manhattan');
+    // });
+
     // it("[Main container -> stats-container] should have exactly defined classname ", () => {
     //     expect(
     //         wrapper

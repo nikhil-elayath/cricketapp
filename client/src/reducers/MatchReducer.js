@@ -13,7 +13,9 @@ const initialstate = {
 	match_date: [],
 	match: [],
 	match_score: [],
-	match_stats: []
+	match_stats_manhattan: [],
+	match_stats_pie1: [],
+	match_stats_pie2: []
 };
 
 export default function (state = initialstate, action) {
@@ -27,11 +29,11 @@ export default function (state = initialstate, action) {
 		case GET_MATCH_SCORECARD_DETAILS_BY_ID:
 			return { ...state, match_score: action.payload };
 		case GET_MANHATTAN_GRAPH_BY_ID:
-			return { ...state, match_stats: action.payload };
+			return { ...state, match_stats_manhattan: action.payload };
 		case GET_PIECHART_ONE_GRAPH_BY_ID:
-			return { ...state, match_stats: action.payload };
+			return { ...state, match_stats_pie1: action.payload };
 		case GET_PIECHART_TWO_GRAPH_BY_ID:
-			return { ...state, match_stats: action.payload };
+			return { ...state, match_stats_pie2: action.payload };
 		default:
 			return state;
 	}
