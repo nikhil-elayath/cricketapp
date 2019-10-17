@@ -49,7 +49,7 @@ export class PlayerBowlingStats extends Component {
                 <span id="ball-stat-span-2">Matches</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span id="ball-stat-span-1" className="jest-Innings">
                   {this.props.testBowlerStats["0"].Innings
                     ? this.props.testBowlerStats["0"].Innings.length === 0
                       ? "-"
