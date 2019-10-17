@@ -6,6 +6,8 @@ import {
   getPieChartTwobyId
 } from "../actions/Matches";
 import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class MatchStatsDetails extends Component {
   componentDidMount() {
@@ -75,7 +77,8 @@ export class MatchStatsDetails extends Component {
 const mapStateToProps = state => ({
   match_stats_manhattan: state.matchreducer.match_stats_manhattan,
   match_stats_pie1: state.matchreducer.match_stats_pie1,
-  match_stats_pie2: state.matchreducer.match_stats_pie2
+  match_stats_pie2: state.matchreducer.match_stats_pie2,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(

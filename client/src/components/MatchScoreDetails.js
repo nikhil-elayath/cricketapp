@@ -62,10 +62,12 @@ export class MatchScoreDetails extends Component {
                           style={{ padding: "5px" }}
                         >
                           <div>{batsman.striker_name}</div>
-                          <div>
-                            {batsman.wicket_type} {batsman.fielder_name}{" "}
-                            {batsman.bowler_name}
-                          </div>
+                          {batsman.wicket_type ?
+                            (<div>
+                              {batsman.wicket_type} {batsman.fielder_name}{" "} (b){" "}
+                              {batsman.bowler_name}
+                            </div>) : (<div> not out </div>)
+                          }
                           <div>{batsman.batsman_run}</div>
                           <div>{batsman.ball_faced}</div>
                           <div>{batsman.fours}</div>
@@ -122,7 +124,6 @@ export class MatchScoreDetails extends Component {
                           <div></div>
                           <div>{bowler.total_over}</div>
                           <div>{bowler.given_runs}</div>
-                          {/* {<div>{bowler.wicket_taken === null && bowler.wicket_taken === ""}</div> ? (<div> 0</div>) : (<div>{bowler.wicket_taken}</div>)} */}
                           <div>{bowler.wicket_taken}</div>
                           <div>{bowler.total_extras}</div>
                           <div>{bowler.ecom}</div>
