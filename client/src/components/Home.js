@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 export class Home extends Component {
 	componentWillMount() {
 		console.log("home mounted");
-		const a = this.props.getNews();
+		this.props.getNews();
 		console.log(this.props);
 		// this.props.getTeams();
 		let ranking = {
@@ -45,13 +45,13 @@ export class Home extends Component {
 		this.props.getRanks(ranking);
 	};
 	render() {
-		console.log(this.props);
 		return (
 			<div className="div-container">
 				<div className="div-section">
 					<div className="div-news-section">
 						{this.props.home.map(news => (
 							<Link
+								className="link-news"
 								to={{
 									pathname: "/newsbyid/" + news.news_id
 									// state:{
@@ -70,7 +70,7 @@ export class Home extends Component {
 										<p className="p-news">
 											<b>{news.news_title}</b>
 										</p>
-										<p className="date">
+										<p className="home-news-date">
 											{news.news_date}{" "}
 										</p>
 									</div>

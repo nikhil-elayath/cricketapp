@@ -3,7 +3,8 @@ import {
   CREATE_USERS,
   EMAIL_VERIFICATION,
   OTP_VERIFICATION,
-  LOGIN
+  LOGIN,
+  ERROR_TYPE
 } from "./Types";
 
 import axios from "axios";
@@ -38,6 +39,8 @@ export const createUsers = users => dispatch => {
     })
     .catch(err => {
       console.log(err);
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };
 
@@ -59,9 +62,8 @@ export const login = (users, history) => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      console.log("Invalid Credentials");
-      alert("Invalid Login!");
-      // dispatch({ type: errormessage });
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };
 //me
@@ -79,7 +81,8 @@ export const otpVerify = users => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      alert("Invalid otp");
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };
 // export const resetPassword = users => dispatch => {
@@ -108,6 +111,7 @@ export const otpSend = users => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      alert("Invalid email!");
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };

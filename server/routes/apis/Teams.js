@@ -15,7 +15,7 @@ router.post("/teams", async (req, res, next) => {
     const result = await db.any(
       `select t.team_id, t.team_name from team t left join match m on m.innings_one_team = t.team_id  where m.match_type='${match_type}' and m.competition = '${competition}' group by t.team_id,t.team_name order by t.team_name;`
     );
-    console.log("Asass", result);
+    // console.log("Get team result is", result);
     if (!result)
       throw {
         statusCode: 404,
@@ -32,14 +32,15 @@ router.post("/teams", async (req, res, next) => {
 });
 
 // Individual team matches
-router.get("/teams/match/:team_id", async (req, res, next) => {
+router.post("/teams/match/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
+    const match_type = req.body.match_type;
     console.log("called Individual team matches");
     // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
     // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
     const result = await db.any(
-      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.innings_one_team=${team_id} or m.innings_two_team=${team_id} order by md.match_date desc limit 8`
+      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.match_type = '${match_type}' and(m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
       // `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.team_one=${team_id} or m.team_two=${team_id} order by md.match_date desc limit 8`
     );
     console.log("matches id", result);
@@ -154,11 +155,7 @@ router.post("/teams/topbatsmen", async (req, res) => {
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
-          match_type +
-          "'AND player_stats_name = 'total_runs' AND player_country='" +
-          player_country +
-          "'order by player_stats_value desc fetch first 3 rows only"
+        `select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' AND player_stats_name = 'total_runs' AND player_country='${player_country}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
       );
 
       res.status(200).json({
@@ -187,11 +184,7 @@ router.post("/teams/topbowlers", async (req, res) => {
     var player_country = req.body.player_country;
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
-          match_type +
-          "'AND player_stats_name = 'total_wickets' AND player_country='" +
-          player_country +
-          "'order by player_stats_value desc fetch first 3 rows only"
+        `select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' AND player_stats_name = 'total_wickets' AND player_country = '${player_country}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
       );
 
       res.status(200).json({

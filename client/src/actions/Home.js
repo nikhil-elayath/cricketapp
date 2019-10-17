@@ -3,7 +3,7 @@ import {
   GET_STATISTICS,
   GET_PLAYER_STATS,
   GET_TOP_BATSMAN,
-  GET_NEWS,
+  GET_NEWS
 } from "./Types";
 import axios from "axios";
 
@@ -13,7 +13,7 @@ export const getNews = () => dispatch => {
     .then(res => {
       dispatch({
         type: GET_NEWS,
-        payload: res.data.data,
+        payload: res.data.data
       });
       console.log("from 'then' get news");
     })

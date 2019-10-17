@@ -48,6 +48,10 @@ router.post("/verify_email", async (req, res, next) => {
     const email = await db.any(
       `select user_email from users where user_email='${req.body.user_email}'`
     );
+    if (email.length != 1) {
+      console.log(email);
+      return res.status(500).send({ message: "Email address invalid!" });
+    }
     if (email.length != 0) {
       let transporter = nodemailer.createTransport({
         service: "gmail",
@@ -108,11 +112,8 @@ router.post("/verify_otp", async (req, res, next) => {
       //   message: "otp verified successfully"
       // });
     } else {
-      res.status(400).json({
-        status: 400,
-        // data: ,
-        message: "otp invalid"
-      });
+      console.log(email);
+      return res.status(500).send({ message: "Invalid OTP!" });
     }
   } catch (error) {
     next(error);
@@ -161,22 +162,28 @@ router.post("/login", async (req, res, next) => {
     const db_result = await db.any(
       `select * from users where user_email = '${req.body.user_email}'`
     );
-    if (db_result.length != 1)
-      throw {
-        statusCode: 404,
-        errorMessage: "Email or Password is invalid"
-      };
+    if (db_result.length != 1) {
+      // throw {
+      //   statusCode: 404,
+      //   errorMessage: "Email or Password is invalid"
+      // };
+      console.log(db_result);
+      return res.status(500).send({ message: "Email address invalid!" });
+    }
 
     let compare_result = await bcrypt.compare(
       req.body.user_password,
       db_result[0].user_password
     );
 
-    if (!compare_result)
-      throw {
-        statusCode: 404,
-        errorMessage: "Email or Password is invalid"
-      };
+    if (!compare_result) {
+      // throw {
+      //   statusCode: 404,
+      //   errorMessage: "Email or Password is invalid"
+      // };
+      console.log(compare_result);
+      return res.status(500).send({ message: "Invalid Password!" });
+    }
 
     let expiresIn = "2h";
     if (db_result[0].isadmin == 1) expiresIn = "4h";
@@ -186,17 +193,18 @@ router.post("/login", async (req, res, next) => {
       user_name: db_result[0].user_name,
       isAdmin: db_result[0].isadmin
     };
-    token = generateToken(userDetails, expiresIn);
+    global.token = generateToken(userDetails, expiresIn);
     console.log(token);
 
     res.status(200).json({
       status: 200,
       successMessage: "Logged in successful",
       token: token,
+      data: token,
       loggedInUser: userDetails
     });
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 });
 // router.put("/new_password", async (req, res, next) => {
@@ -232,19 +240,32 @@ router.post("/new", async (req, res, next) => {
       isadmin: req.body.isadmin
     };
     Validation(user_info).then(async () => {
-      const result = await db.any(
-        `insert into users(user_name,isadmin,user_email,user_password) values ( '${req.body.user_name}','${req.body.isadmin}','${req.body.user_email}','${password}') returning user_id`
+      let userEmail = await db.any(
+        `select user_email from users where user_email = '${req.body.user_email}'`
       );
-      // if (!result)
-      //   throw {
-      //     statusCode: 404,
-      //     customMessage: "invalid input"
-      //   };
-      res.status(200).json({
-        status: 200,
-        data: result,
-        message: "Created 1 user successfully"
-      });
+      if (userEmail != 0) {
+        console.log(userEmail);
+        return res
+          .status(500)
+          .send({ message: "An account already exists with this email!" });
+      } else {
+        const result = await db.any(
+          `insert into users(user_name,isadmin,user_email,user_password) values ( '${req.body.user_name}','${req.body.isadmin}','${req.body.user_email}','${password}') returning user_id`
+        );
+        // if (!result)
+        //   throw {
+        //     statusCode: 404,
+        //     customMessage: "invalid input"
+        //   };
+        return res
+          .status(200)
+          .json({
+            status: 200,
+            data: result,
+            message: "Created user successfully"
+          })
+          .send({ message: "An account already exists with this email!" });
+      }
     });
   } catch (error) {
     next(error);

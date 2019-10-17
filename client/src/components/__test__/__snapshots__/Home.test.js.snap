@@ -4,7 +4,6 @@ exports[`Testing for home component should render the component 1`] = `
 <div
   className="div-container"
 >
-  <Navbar />
   <div
     className="div-section"
   >
@@ -14,58 +13,7 @@ exports[`Testing for home component should render the component 1`] = `
     <div
       className="div-second-section"
     >
-      <div
-        className="grid-class-topteam"
-      >
-        <div
-          className="info-topteam"
-        >
-          <p
-            className="p-topteam"
-          >
-            Most Wins
-          </p>
-          <div
-            className="centered"
-          >
-            <div
-              className="cards"
-            >
-              <div
-                className="cardtest"
-                onClick={[Function]}
-              >
-                <p
-                  className="p-card"
-                >
-                  Test
-                </p>
-              </div>
-              <div
-                className="cardodi"
-                onClick={[Function]}
-              >
-                <p
-                  className="p-card"
-                >
-                  ODI
-                </p>
-              </div>
-              <div
-                className="cardt20"
-                onClick={[Function]}
-              >
-                <p
-                  className="p-card"
-                >
-                  T20
-                </p>
-              </div>
-            </div>
-          </div>
-          <div />
-        </div>
-      </div>
+      <Connect(MostWins) />
     </div>
   </div>
 </div>

@@ -87,7 +87,7 @@
 }
 
 .cards-new {
-  margin: 15px 30px 15px 30px;
+  margin: 5px 1000px 15px 15px;
 }
 
 .matches-section {
@@ -119,6 +119,14 @@
   border-radius: 8px;
   border: 1px solid #707070;
   cursor: pointer;
+}
+.list-info {
+  text-align: center;
+  display: flex;
+  margin: 15px 0px 0px 0px;
+}
+.list-info:not(:last-child) {
+  border-bottom: 1px solid #707070;
 }
 
 .inside-recent-matches-box-team .Team-data {
@@ -176,7 +184,11 @@
   margin-top: 5pt;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 1024px) {
+  .cards-new {
+    margin: 0px 425px 10px 15px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 25vw 25vw;
@@ -253,6 +265,10 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .cards-new {
+    margin: 0px 325px 10px 15px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 50vw;
@@ -333,6 +349,10 @@
 }
 
 @media only screen and (max-width: 576px) {
+  .cards-new {
+    margin: 5px 15px 15px 25px;
+  }
+
   .all-recent-matches-box-team {
     display: grid;
     grid-template-columns: 85vw;

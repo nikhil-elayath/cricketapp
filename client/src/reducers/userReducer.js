@@ -4,11 +4,13 @@ import {
   EMAIL_VERIFICATION,
   OTP_VERIFICATION,
   RESET_PASSWORD,
-  LOGIN
+  LOGIN,
+  ERROR_TYPE
 } from "../actions/Types";
 
 const initialstate = {
-  users: []
+  users: [],
+  error: ""
 };
 
 export default function(state = initialstate, action) {
@@ -25,6 +27,8 @@ export default function(state = initialstate, action) {
       return state;
     case OTP_VERIFICATION:
       return state;
+    case ERROR_TYPE:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

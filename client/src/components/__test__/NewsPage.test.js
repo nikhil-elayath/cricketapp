@@ -3,62 +3,67 @@ import { shallow, mount } from "enzyme";
 import { NewsPage } from "../NewsPage";
 
 const newspage = jest.fn();
+// creating mock fuctions of actions
+const getNews = jest.fn();
+const getNewsById = jest.fn();
 
-const wrapper = shallow(<NewsPage newspage={newspage} />);
+// creating a dummy data that will be used to check the mapping functionality
+// news is the reducer which will recieve the actual data but for testing purpose we are passing dummy data and testing wheter that will be mapped properly or not.
+const news = [
+  {
+    news_id: 1,
+    news_content: "news content",
+    news_title: "this is title",
+    news_date: "12-12-12"
+  }
+];
+let home = [
+  {
+    news_id: 1,
+    news_content: "Recent news content",
+    news_title: "Recent news title",
+    news_date: "12-12-12"
+  }
+];
 
-describe("test for the text, input, css properties and icons on the navbar", () => {
-  it("should have text brand CricketAlpha, matches, teams, players, stats", () => {
-    // checks for no. of link present on navbar
-    expect(wrapper.find(".link").length).toBe(6);
+const wrapper = shallow(
+  <NewsPage
+    // news reducer which contains dummy data
+    news={news}
+    history={[]}
+    // home reducer which contains dummy data
+    home={home}
+    // for props function
+    getNews={getNews}
+    getNewsById={getNewsById}
+    // passing id in parameters
+    match={{ params: { id: 1 } }}
+  />
+);
 
-    // checks for the links text
-    expect(
-      wrapper
-        .find(".link")
-        .at(1)
-        .text()
-    ).toBe("Matches");
-    expect(
-      wrapper
-        .find(".link")
-        .at(2)
-        .text()
-    ).toBe("Teams");
-    expect(
-      wrapper
-        .find(".link")
-        .at(3)
-        .text()
-    ).toBe("Players");
-    expect(
-      wrapper
-        .find(".link")
-        .at(4)
-        .text()
-    ).toBe("Stats");
-
-    // checks for the nav brand text
-    expect(wrapper.find(".nav-brand").text()).toBe("CricketAlpha");
-
-    // checks for the search input field
-    expect(wrapper.find("input").length).toBe(1);
-
-    // checks placeholder for the input field
-    expect(wrapper.find("input").prop("placeholder")).toBe(
-      "Search for Team or Player"
-    );
-
-    //checks for the input vale to be same as state while inserting text
-    const e = {
-      target: {
-        name: "searchInput",
-        value: "virat",
-      },
-    };
-    wrapper.instance().handleSearchInputChange(e);
-    expect(wrapper.state().searchInput).toBe(e.target.value);
+describe("Testing of NewsPage Component", () => {
+  it("should render the component", () => {
+    expect(wrapper).toMatchSnapshot();
   });
 
-  //testing for images
-  expect(logo.find("img").prop("src")).toEqual(logoImage);
+  // testing for mapped functions by creating a dummy mapped value above and checking whether the exact text is being mapped or not.
+  it("News title should be shown", () => {
+    expect(wrapper.find("#newspage-news-title").text()).toBe("this is title");
+  });
+  it("News content should be present", () => {
+    expect(wrapper.find("#news-content").text()).toBe("news content ");
+  });
+  it("News date should be present", () => {
+    expect(wrapper.find("#news-date").text()).toBe("12-12-12 ");
+  });
+});
+
+describe("Testing of Recent News section", () => {
+  // testing for mapped functions by creating a dummy mapped value above and checking whether the exact text is being mapped or not.
+  it("Recent news title should be shown", () => {
+    expect(wrapper.find("#recent-news-title").text()).toBe("Recent news title");
+  });
+  it("Date of the recent news should be shown", () => {
+    expect(wrapper.find("#recent-news-date").text()).toBe("12-12-12 ");
+  });
 });

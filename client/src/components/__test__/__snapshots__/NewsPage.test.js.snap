@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing of NewsPage Component should render the component 1`] = `
+<div
+  className="parent"
+>
+  <div>
+    <div
+      className="newspage-grid-container"
+    >
+      <div
+        className="grid-item2"
+      >
+        <p
+          className="grid-item2"
+          id="newspage-news-title"
+        >
+          <b>
+            this is title
+          </b>
+        </p>
+        <p
+          id="news-date"
+        >
+          12-12-12
+           
+        </p>
+        <img
+          className="news_img"
+          src="vk.jpeg"
+        />
+        <p
+          id="news-content"
+        >
+          news content
+           
+        </p>
+      </div>
+      <div
+        className="grid-item"
+      >
+        <div>
+          <div
+            className="div-news-images"
+            style={Object {}}
+          />
+          <div
+            className="div-news"
+          >
+            <div
+              className="div-news-images"
+              style={
+                Object {
+                  "backgroundImage": "url(vk.jpeg)",
+                }
+              }
+            />
+            <div
+              className="div-news-details"
+              onClick={[Function]}
+            >
+              <p
+                class="p-news"
+              >
+                <b
+                  id="recent-news-title"
+                >
+                  Recent news title
+                </b>
+              </p>
+              <p
+                className="date"
+                id="recent-news-date"
+              >
+                12-12-12
+                 
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
