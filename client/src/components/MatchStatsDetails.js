@@ -4,7 +4,7 @@ import {
   getManhattanGraphbyId,
   getPieChartOnebyId,
   getPieChartTwobyId
-} from "../actions/matches";
+} from "../actions/Matches";
 import { connect } from "react-redux";
 
 export class MatchStatsDetails extends Component {

@@ -7,15 +7,18 @@ import {
   GET_PIECHART_ONE_GRAPH_BY_ID,
   GET_PIECHART_TWO_GRAPH_BY_ID
 } from "./Types";
+import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
 
 const url = "http://localhost:5000/api/matches";
 const url2 = "http://127.0.0.1:5000";
 
 export const getRecentMatches = date => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(url + "/recent/" + date, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_RECENT_MATCHES,
         payload: res.data.data
@@ -23,6 +26,7 @@ export const getRecentMatches = date => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
