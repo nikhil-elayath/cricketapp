@@ -4,6 +4,7 @@ const intialState = {
   home: [],
   // another reducer for recent_matches
   recent_matches: [],
+  // recent_match_date:[]
 };
 
 export default function(state = intialState, action) {
@@ -19,6 +20,7 @@ export default function(state = intialState, action) {
         ...state,
         recent_matches: action.payload,
       };
+
     default:
       return state;
   }
