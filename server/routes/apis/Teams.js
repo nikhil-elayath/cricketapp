@@ -128,7 +128,7 @@ router.post("/teams/rankings", async (req, res, next) => {
     console.log("match type", match_type);
     console.log("competition", match_type);
     const result = await db.any(
-      `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
+      `select team.team_id, team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' group by team.team_id, team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
       // `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
     );
     // console.log("result is ", result);

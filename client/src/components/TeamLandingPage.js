@@ -119,19 +119,6 @@ export class TeamLandingPage extends Component {
           <div className="grid-container-team">
             <div>
               <div className="country-team">
-                {/* <div className="centered-team">
-                  <div className="cards-team">
-                    <div className="cardtest-team">
-                      <p className="p-card-team">Test</p>
-                    </div>
-                    <div className="cardodi-team">
-                      <p className="p-card">ODI</p>
-                    </div>
-                    <div className="cardt20-team">
-                      <p className="p-card">T20</p>
-                    </div>
-                  </div>
-                </div> */}
                 {this.props.teams.map(teams => (
                   <div
                     className="grid-class-team"
