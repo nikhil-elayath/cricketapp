@@ -11,6 +11,9 @@ exports[`Testing for home component should render the component 1`] = `
       className="div-news-section"
     />
     <div
+      id="home-recent-matches"
+    />
+    <div
       className="div-second-section"
     >
       <Connect(MostWins) />

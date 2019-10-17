@@ -5,7 +5,7 @@ import {
   GET_MATCH_SCORECARD_DETAILS_BY_ID,
   GET_MANHATTAN_GRAPH_BY_ID,
   GET_PIECHART_ONE_GRAPH_BY_ID,
-  GET_PIECHART_TWO_GRAPH_BY_ID
+  GET_PIECHART_TWO_GRAPH_BY_ID,
 } from "./Types";
 import axios from "axios";
 
@@ -18,7 +18,7 @@ export const getRecentMatches = date => dispatch => {
     .then(res => {
       dispatch({
         type: GET_RECENT_MATCHES,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log(res.data);
     })
@@ -33,7 +33,7 @@ export const getMatchesDate = () => dispatch => {
     .then(res => {
       dispatch({
         type: GET_MATCHES_DATE,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log(res.data);
     })
@@ -50,7 +50,7 @@ export const getmatchdetailbyId = id => dispatch => {
     .then(res => {
       dispatch({
         type: GET_MATCH_DETAILS_BY_ID,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log(res.data);
     })
@@ -64,7 +64,7 @@ export const getMatchScorecardDetailbyId = id => dispatch => {
     .then(res => {
       dispatch({
         type: GET_MATCH_SCORECARD_DETAILS_BY_ID,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log(res.data);
     })
@@ -78,7 +78,7 @@ export const getManhattanGraphbyId = id => dispatch => {
     .then(res => {
       dispatch({
         type: GET_MANHATTAN_GRAPH_BY_ID,
-        payload: { manhattan: res.data }
+        payload: { manhattan: res.data },
       });
       console.log(res.data);
     })
@@ -92,7 +92,7 @@ export const getPieChartOnebyId = id => dispatch => {
     .then(res => {
       dispatch({
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
-        payload: { piechartOne: res.data }
+        payload: { piechartOne: res.data },
       });
       console.log(res.data);
     })
@@ -106,7 +106,7 @@ export const getPieChartTwobyId = id => dispatch => {
     .then(res => {
       dispatch({
         type: GET_PIECHART_TWO_GRAPH_BY_ID,
-        payload: { piechartTwo: res.data }
+        payload: { piechartTwo: res.data },
       });
       console.log(res.data);
     })
