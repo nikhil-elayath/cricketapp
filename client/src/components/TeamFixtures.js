@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./css/TeamFixtures.css";
+import { getFixtures } from "../actions/Teams";
 
-export default class TeamFixtures extends Component {
+export class TeamFixtures extends Component {
   render() {
     return (
       <div>
@@ -30,14 +32,14 @@ export default class TeamFixtures extends Component {
           </div>
           <div className="fixture-container">
             <div className="fixture-details">
-              <div className="fixture-col">
+              <div className="fixture-col-1">
                 <p className="fixture-info-type">T20</p>
               </div>
-              <div className="fixture-col">
+              <div className="fixture-col-2">
                 <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
                 <p className="fixture-info-two">9:30 (IST)</p>
               </div>
-              <div className="fixture-col">
+              <div className="fixture-col-3">
                 <p className="fixture-info-one">India vs Bangladesh</p>
                 <p className="fixture-info-two">JCA Stadium, Ranchi</p>
               </div>
@@ -45,14 +47,14 @@ export default class TeamFixtures extends Component {
           </div>
           <div className="fixture-container">
             <div className="fixture-details">
-              <div className="fixture-col">
+              <div className="fixture-col-1">
                 <p className="fixture-info-type">T20</p>
               </div>
-              <div className="fixture-col">
+              <div className="fixture-col-2">
                 <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
                 <p className="fixture-info-two">9:30 (IST)</p>
               </div>
-              <div className="fixture-col">
+              <div className="fixture-col-3">
                 <p className="fixture-info-one">India vs South Africa</p>
                 <p className="fixture-info-two">JCA Stadium, Ranchi</p>
               </div>
@@ -63,3 +65,12 @@ export default class TeamFixtures extends Component {
     );
   }
 }
+
+const mapStateTostate = state => ({
+  fixtures: state.TeamsReducer.fixtures
+});
+
+export default connect(
+  mapStateTostate,
+  { getFixtures }
+)(TeamFixtures);

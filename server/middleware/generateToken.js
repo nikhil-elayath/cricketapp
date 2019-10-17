@@ -5,7 +5,7 @@ var LocalStorage = require("node-localstorage").LocalStorage;
 localStorage = new LocalStorage("./storage");
 module.exports = payload => {
   const token = jwt.sign(payload, jwtPrivateKey, {
-    expiresIn: "9s"
+    expiresIn: "30s"
   });
   return token;
 };

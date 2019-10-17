@@ -7,9 +7,64 @@ exports[`Test TeamInfo Component render the component 1`] = `
   >
     <p
       className="p-matches"
+      id="id-p-matches"
     >
       Recent Matches
     </p>
+    <div
+      className="centered"
+    >
+      <div
+        className="cards-new"
+      >
+        <div
+          className="cardtest"
+          id="click-t20"
+          onClick={[Function]}
+          style={
+            Object {
+              "borderRadius": "8px 0px 0px 8px",
+            }
+          }
+        >
+          <p
+            className="p-card"
+            id="id-p-t20"
+          >
+            T20
+          </p>
+        </div>
+        <div
+          className="cardodi"
+          id="click-odi"
+          onClick={[Function]}
+        >
+          <p
+            className="p-card"
+            id="id-p-odi"
+          >
+            ODI
+          </p>
+        </div>
+        <div
+          className="cardodi"
+          id="click-test"
+          onClick={[Function]}
+          style={
+            Object {
+              "borderRadius": "0px 8px 8px 0px",
+            }
+          }
+        >
+          <p
+            className="p-card"
+            id="id-p-test"
+          >
+            Test
+          </p>
+        </div>
+      </div>
+    </div>
     <div
       className="matches-section"
     >
@@ -21,17 +76,25 @@ exports[`Test TeamInfo Component render the component 1`] = `
         >
           <span
             className="tournamnet-name"
-          />
+            id="id-match-type"
+          >
+            ODI
+          </span>
           <div
             className="Team-data"
           >
             <div
               className="TeamOne-name"
-            />
+              id="id-team-one"
+            >
+              South Africa
+            </div>
             <div
               className="TeamOne-score"
             >
+              327
               /
+              8
             </div>
           </div>
           <div
@@ -39,16 +102,23 @@ exports[`Test TeamInfo Component render the component 1`] = `
           >
             <div
               className="TeamTwo-name"
-            />
+              id="id-team-two"
+            >
+              Australia
+            </div>
             <div
               className="TeamTwo-score"
             >
+              296
               /
+              10
             </div>
           </div>
           <span
             className="winner-name"
+            id="id-winner"
           >
+            South Africa
              WON
           </span>
         </div>
@@ -71,58 +141,37 @@ exports[`Test TeamInfo Component render the component 1`] = `
             >
               <p
                 className="p-top-team-details"
+                id="id-p-top-runs"
               >
-                Top Batsmen
+                Top Run Scorers
               </p>
               <div
-                className="centered"
+                className="list-info"
               >
-                <div
-                  className="cards-new"
-                >
-                  <div
-                    className="cardtest"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "borderRadius": "8px 0px 0px 8px",
-                      }
-                    }
+                <img
+                  className="img-card"
+                  src="dhoni.jpg"
+                />
+                <div>
+                  <p
+                    className="p-team-details-name"
+                    id="#id-batsman-name"
                   >
-                    <p
-                      className="p-card"
-                    >
-                      Test
-                    </p>
-                  </div>
-                  <div
-                    className="cardodi"
-                    onClick={[Function]}
+                    MS Dhoni
+                  </p>
+                  <p
+                    className="p-player-style"
                   >
-                    <p
-                      className="p-card"
-                    >
-                      ODI
-                    </p>
-                  </div>
-                  <div
-                    className="cardt20"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "borderRadius": "0px 8px 8px 0px",
-                      }
-                    }
-                  >
-                    <p
-                      className="p-card"
-                    >
-                      T20
-                    </p>
-                  </div>
+                    Right-hand Bat
+                  </p>
                 </div>
+                <h2
+                  className="h2-team-details-position"
+                  id="#id-batsman-score"
+                >
+                  10004
+                </h2>
               </div>
-              <div />
             </div>
           </div>
           <div
@@ -133,58 +182,37 @@ exports[`Test TeamInfo Component render the component 1`] = `
             >
               <p
                 className="p-top-team-details"
+                id="id-p-top-wickets"
               >
-                Top Bowlers
+                Top Wicket Takers
               </p>
               <div
-                className="centered"
+                className="list-info"
               >
-                <div
-                  className="cards-new"
-                >
-                  <div
-                    className="cardtest"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "borderRadius": "8px 0px 0px 8px",
-                      }
-                    }
+                <img
+                  className="img-card"
+                  src="dhoni.jpg"
+                />
+                <div>
+                  <p
+                    className="p-team-details-name"
+                    id="#id-bowler-name"
                   >
-                    <p
-                      className="p-card"
-                    >
-                      Test
-                    </p>
-                  </div>
-                  <div
-                    className="cardodi"
-                    onClick={[Function]}
+                    Mohammad Sami
+                  </p>
+                  <p
+                    className="p-player-style"
                   >
-                    <p
-                      className="p-card"
-                    >
-                      ODI
-                    </p>
-                  </div>
-                  <div
-                    className="cardt20"
-                    onClick={[Function]}
-                    style={
-                      Object {
-                        "borderRadius": "0px 8px 8px 0px",
-                      }
-                    }
-                  >
-                    <p
-                      className="p-card"
-                    >
-                      T20
-                    </p>
-                  </div>
+                    Right-arm Fast
+                  </p>
                 </div>
+                <h2
+                  className="h2-team-details-position"
+                  id="#id-bowler-score"
+                >
+                  15
+                </h2>
               </div>
-              <div />
             </div>
           </div>
         </div>

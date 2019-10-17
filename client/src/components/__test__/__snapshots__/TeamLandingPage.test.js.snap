@@ -2,7 +2,6 @@
 
 exports[`Test TeamLandingPage Component render the component 1`] = `
 <div>
-  <Connect(Navbar) />
   <div
     className="container-team"
   >

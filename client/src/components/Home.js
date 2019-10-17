@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { getNews } from "../actions/Home";
 import "./css/Home.css";
 import news_img from "../components/images/vk.jpeg";
-import Navbar from "../components/common/Navbar";
 import logo from "./images/indialogo.jpg";
 import { getRanks } from "../actions/Teams";
 // import { getRanks } from "../actions/Teams";
@@ -48,11 +47,11 @@ export class Home extends Component {
   render() {
     return (
       <div className="div-container">
-        <Navbar />
         <div className="div-section">
           <div className="div-news-section">
             {this.props.home.map(news => (
               <Link
+                className="link-news"
                 to={{
                   pathname: "/newsbyid/" + news.news_id
                   // state:{
@@ -71,7 +70,7 @@ export class Home extends Component {
                     <p className="p-news">
                       <b>{news.news_title}</b>
                     </p>
-                    <p className="date">{news.news_date} </p>
+                    <p className="home-news-date">{news.news_date} </p>
                   </div>
                 </div>
               </Link>
