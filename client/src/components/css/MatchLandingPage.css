@@ -38,36 +38,87 @@ body{
 	}
 }
 
-.timeline{
+/* .timeline{
     width: 90%;
     height: 80px;
     padding: 5px;
     border: 1px solid black;
     border-radius: 8px;
     margin: 15px;
+} */
+
+.landing-container{
+    display: flex;
+    border: 1px solid black;
+    box-sizing: border-box;
+    height: 500px;
+    margin: 30px;
+    border-radius: 5px;
+
 }
+.landing-container .calander{
+    flex: 1;
+    border: 1px solid black;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 5px;
+    
+}
+.landing-container .all-matches-box{
+    flex: 3;
+    box-sizing: border-box;
+    border: 1px solid black;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.landing-container .all-matches-box > div{
+    padding: 1%;
+    
+    border: 1px solid black;
+    width: 30%;
+    height: fit-content;
+}
+.all-matches-box .each-matches-box{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin: 2%;
+    text-align: left;
+}
+
+.each-matches-box .Team-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 500;
+   
+}
+
+.Team-data .Team-name{
+    font-size: 1px;
+    font-weight: 500;
+}
+
+/* .all-matches-box .each-matches-box :hover{
+       box-shadow: 1px 1px 1px 1px #272727;
+} */
+
 
 .all-recent-matches-box{
     display: grid;
     grid-template-columns: 23vw 23vw 23vw 23vw;
     width: 90%;
     height: 320px;
-    /* border: 1px solid black; */
+    border: 1px solid black;
     border-radius: 8px;
     margin: 10px;
 
 }
-.inside-recent-matches-box{
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    margin: 2px;
-    margin-bottom: 5px;
-    width: 95%;
-    height: 150px;
-    border-radius: 8px;
-    border: 1px solid black;
-}
+
 .inside-recent-matches-box:hover{
     background-color: #2980B9;
     width: 98%;
