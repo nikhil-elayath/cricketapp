@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import { login, getUsers } from "../actions/users.js";
+import { login, getUsers } from "../actions/Users.js";
 import { connect } from "react-redux";
-import Navbar from "./common/Navbar";
+// import Navbar from "./common/Navbar";
 
 import { Link } from "react-router-dom";
 import "./css/Login.css";
@@ -77,7 +77,7 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        {/* <Navbar /> */}
         <form id="msform">
           <fieldset>
             <h1>Login</h1>
@@ -95,15 +95,27 @@ export class Login extends Component {
               onChange={this.OnChange}
               value={this.state.user_password}
             />
-            <span
+            <div
               className="errorMessage"
               style={{
-                color: "#c0392b",
-                display: this.state.showError ? "block" : "none"
+                color: "#c0392b"
               }}
             >
-              {this.state.errorMessage}
-            </span>
+              {/*dispatch error from node*/}
+              {this.props.error ? (
+                <>{this.props.error}</>
+              ) : (
+                <span
+                  className="errorMessage"
+                  style={{
+                    color: "#c0392b",
+                    display: this.state.showError ? "block" : "none"
+                  }}
+                >
+                  {this.state.errorMessage}
+                </span>
+              )}
+            </div>
             <p>
               <Link className="link" to="/resetPassword">
                 <span
@@ -117,7 +129,11 @@ export class Login extends Component {
               </Link>
             </p>
             {/* // {this.props.user?<p></p>:null */}
-            <button onChange={this.onChange} onClick={this.onLogin}>
+            <button
+              className="formbutton"
+              onChange={this.onChange}
+              onClick={this.onLogin}
+            >
               Login
             </button>
             <p>
@@ -141,7 +157,8 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+  users: state.userReducer.users,
+  error: state.userReducer.error
 });
 
 export default connect(

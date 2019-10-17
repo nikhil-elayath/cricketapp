@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getUsers, createUsers } from "../actions/users.js";
+import { getUsers, createUsers } from "../actions/Users.js";
 import { connect } from "react-redux";
 import "./css/Login.css";
-import NavBar from "./common/Navbar";
 
 export class Register extends Component {
   // constructor(props) {
@@ -16,9 +15,9 @@ export class Register extends Component {
   // }
 
   componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.props.history.push("/");
-    }
+    // if (localStorage.getItem("token")) {
+    //   this.props.history.push("/");
+    // }
   }
 
   state = {
@@ -85,7 +84,7 @@ export class Register extends Component {
                 isadmin: this.state.isadmin
               };
               this.props.createUsers(user);
-              this.props.history.push("/login");
+              // this.props.history.push("/login");
               this.setState({
                 user_name: "",
                 user_email: "",
@@ -102,7 +101,6 @@ export class Register extends Component {
   render() {
     return (
       <div>
-        <NavBar />
         <form id="msform">
           <fieldset>
             <h1>Register</h1>
@@ -134,16 +132,33 @@ export class Register extends Component {
               value={this.state.confirmPassword}
               onChange={this.OnChange}
             />
-            <span
+            <div
               className="errorMessage"
               style={{
-                color: "#c0392b",
-                display: this.state.showError ? "block" : "none"
+                color: "#c0392b"
               }}
             >
-              {this.state.errorMessage}
-            </span>
-            <button onChange={this.OnChange} onClick={this.onRegister}>
+              {/*dispatch error from node*/}
+              {this.props.error ? (
+                <>{this.props.error}</>
+              ) : (
+                <span
+                  className="errorMessage"
+                  style={{
+                    color: "#c0392b",
+                    display: this.state.showError ? "block" : "none"
+                  }}
+                >
+                  {this.state.errorMessage}
+                </span>
+              )}
+            </div>
+
+            <button
+              className="formbutton"
+              onChange={this.OnChange}
+              onClick={this.onRegister}
+            >
               Sign Up
             </button>
             <p>
@@ -167,7 +182,8 @@ export class Register extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.userReducer.users
+  users: state.userReducer.users,
+  error: state.userReducer.error
 });
 
 export default connect(
