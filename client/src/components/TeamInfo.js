@@ -5,7 +5,7 @@ import "./css/TeamLandingPage.css";
 import logo from "./images/dhoni.jpg";
 // import Navbar from "../components/common/Navbar";
 import { getMatch, getTeamBatsmen, getTeamBowlers } from "../actions/Teams";
-import "./css/SecondaryNavbar.css";
+// import "./css/SecondaryNavbar.css";
 // import Loader from "react-loader-spinner";
 
 export class TeamInfo extends Component {
@@ -65,28 +65,39 @@ export class TeamInfo extends Component {
     return (
       <div>
         <div className="container-team-details">
-          <p className="p-matches">Recent Matches</p>
+          <p className="p-matches" id="id-p-matches">
+            Recent Matches
+          </p>
           <div className="centered">
             <div className="cards-new">
               <div
+                id="click-t20"
                 style={{ borderRadius: "8px 0px 0px 8px" }}
                 className={this.state.t20Click ? "cardtest" : "cardt20"}
                 onClick={this.onClickT20}
               >
-                <p className="p-card">T20</p>
+                <p className="p-card" id="id-p-t20">
+                  T20
+                </p>
               </div>
               <div
+                id="click-odi"
                 className={this.state.odiClick ? "cardtest" : "cardodi"}
                 onClick={this.onClickOdi}
               >
-                <p className="p-card">ODI</p>
+                <p className="p-card" id="id-p-odi">
+                  ODI
+                </p>
               </div>
               <div
+                id="click-test"
                 style={{ borderRadius: "0px 8px 8px 0px" }}
                 className={this.state.testClick ? "cardtest" : "cardodi"}
                 onClick={this.onClickTest}
               >
-                <p className="p-card">Test</p>
+                <p className="p-card" id="id-p-test">
+                  Test
+                </p>
               </div>
             </div>
           </div>
@@ -97,20 +108,26 @@ export class TeamInfo extends Component {
               ) : (
                 this.props.matches.map(matches => (
                   <div className="inside-recent-matches-box-team">
-                    <span className="tournamnet-name">{matches.matchType}</span>
+                    <span className="tournamnet-name" id="id-match-type">
+                      {matches.matchType}
+                    </span>
                     <div className="Team-data">
-                      <div className="TeamOne-name">{matches.teamOne}</div>
+                      <div className="TeamOne-name" id="id-team-one">
+                        {matches.teamOne}
+                      </div>
                       <div className="TeamOne-score">
                         {matches.teamOneScore}/{matches.teamOneWicket}
                       </div>
                     </div>
                     <div className="Team-data">
-                      <div className="TeamTwo-name">{matches.teamTwo}</div>
+                      <div className="TeamTwo-name" id="id-team-two">
+                        {matches.teamTwo}
+                      </div>
                       <div className="TeamTwo-score">
                         {matches.teamTwoScore}/{matches.teamTwoWicket}
                       </div>
                     </div>
-                    <span className="winner-name">
+                    <span className="winner-name" id="id-winner">
                       {matches.teamWinner} WON
                     </span>
                   </div>
@@ -126,50 +143,66 @@ export class TeamInfo extends Component {
               <div className="grid-container-team-details">
                 <div className="grid-class-team-details">
                   <div className="grid-class-topteam-details">
-                    <p className="p-top-team-details">Top Run Scorers</p>
-                    <div>
-                      {this.props.batsmen.map(batsmen => (
+                    <p className="p-top-team-details" id="id-p-top-runs">
+                      Top Run Scorers
+                    </p>
+                    {/* <div> */}
+                    {this.props.batsmen.map(batsmen => (
+                      // <div>
+                      <div className="list-info">
+                        <img src={logo} className="img-card" />
                         <div>
-                          <div className="list">
-                            <img src={logo} className="img-card" />
-                            <div>
-                              <p className="p-team-details-name">
-                                {batsmen.player_name}
-                              </p>
-                              <p className="p-player-style">Right-hand Bat</p>
-                            </div>
-                            <h2 className="h2-team-details-position">
-                              {batsmen.player_stats_value}
-                            </h2>
-                          </div>
-                          <hr className="hr-team-card" />
+                          <p
+                            className="p-team-details-name"
+                            id="#id-batsman-name"
+                          >
+                            {batsmen.player_name}
+                          </p>
+                          <p className="p-player-style">Right-hand Bat</p>
                         </div>
-                      ))}
-                    </div>
+                        <h2
+                          className="h2-team-details-position"
+                          id="#id-batsman-score"
+                        >
+                          {batsmen.player_stats_value}
+                        </h2>
+                      </div>
+                      //   <hr className="hr-team-card" />
+                      // </div>
+                    ))}
+                    {/* </div> */}
                   </div>
                 </div>
                 <div className="grid-class-team-details">
                   <div className="grid-class-topteam-details">
-                    <p className="p-top-team-details">Top Wicket Takers</p>
-                    <div>
-                      {this.props.bowlers.map(bowlers => (
+                    <p className="p-top-team-details" id="id-p-top-wickets">
+                      Top Wicket Takers
+                    </p>
+                    {/* <div> */}
+                    {this.props.bowlers.map(bowlers => (
+                      // <div>
+                      <div className="list-info">
+                        <img src={logo} className="img-card" />
                         <div>
-                          <div className="list">
-                            <img src={logo} className="img-card" />
-                            <div>
-                              <p className="p-team-details-name">
-                                {bowlers.player_name}
-                              </p>
-                              <p className="p-player-style">Right-arm Fast</p>
-                            </div>
-                            <h2 className="h2-team-details-position">
-                              {bowlers.player_stats_value}
-                            </h2>
-                          </div>
-                          <hr className="hr-team-card" />
+                          <p
+                            className="p-team-details-name"
+                            id="#id-bowler-name"
+                          >
+                            {bowlers.player_name}
+                          </p>
+                          <p className="p-player-style">Right-arm Fast</p>
                         </div>
-                      ))}
-                    </div>
+                        <h2
+                          className="h2-team-details-position"
+                          id="#id-bowler-score"
+                        >
+                          {bowlers.player_stats_value}
+                        </h2>
+                      </div>
+                      // <hr className="hr-team-card" />
+                      // </div>
+                    ))}
+                    {/* </div> */}
                   </div>
                 </div>
               </div>

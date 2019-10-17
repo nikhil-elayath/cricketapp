@@ -5,18 +5,35 @@ import { getMatch, getTeamBatsmen, getTeamBowlers } from "../../actions/Teams";
 
 var matches = [
     {
-      matchType: "",
-      teamOne: "",
-      teamOneScore: "",
-      teamOneWicket: "",
-      teamTwo: "",
-      teamTwoScore: "",
-      teamTwoWicket: "",
-      teamWinner: ""
+      matchType: "ODI",
+      teamOne: "South Africa",
+      teamTwo: "Australia",
+      teamWinner: "South Africa",
+      teamOneScore: 327,
+      teamTwoScore: 296,
+      teamOneWicket: "8",
+      teamTwoWicket: "10"
     }
   ],
-  batsmen = [],
-  bowlers = [],
+  batsmen = [
+    {
+      match_type: "ODI",
+      player_stats_name: "total_runs",
+      player_stats_value: "10004",
+      player_name: "MS Dhoni",
+      player_id: 151,
+      player_country: "India"
+    }
+  ],
+  bowlers = [
+    {
+      match_type: "ODI",
+      player_stats_name: "total_wickets",
+      player_stats_value: "15",
+      player_name: "Mohammad Sami",
+      player_country: "India"
+    }
+  ],
   teams = [];
 
 const wrapper = shallow(
@@ -55,122 +72,60 @@ describe("Test TeamInfo Component", () => {
   it("render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  it("should have links for Test,ODI,T20 for Top Bowlers", () => {
-    expect(
-      wrapper
-        .find("p")
-        .at(5)
-        .text()
-    ).toBe("Top Bowlers");
-    expect(
-      wrapper
-        .find("p")
-        .at(6)
-        .text()
-    ).toBe("Test");
+  it("should have text for Top Run Scorers", () => {
+    expect(wrapper.find("#id-p-top-runs").text()).toBe("Top Run Scorers");
+  });
+  it("should have text for Top Wicket Takers", () => {
+    expect(wrapper.find("#id-p-top-wickets").text()).toBe("Top Wicket Takers");
+  });
+  it("should change the state of testClicked to true when test tab is clicked", () => {
+    const test = wrapper.find("#click-test");
+    test.simulate("click");
+    expect(wrapper.state().testClick).toBe(true);
+    expect(wrapper.state().odiClick).toBe(false);
+    expect(wrapper.state().t20Click).toBe(false);
+  });
 
-    expect(
-      wrapper
-        .find("p")
-        .at(7)
-        .text()
-    ).toBe("ODI");
+  it("should change the state of odiclicked to true when odi tab is clicked", () => {
+    const odi = wrapper.find("#click-odi");
+    odi.simulate("click");
+    expect(wrapper.state().testClick).toBe(false);
+    expect(wrapper.state().odiClick).toBe(true);
+    expect(wrapper.state().t20Click).toBe(false);
+  });
 
-    expect(
-      wrapper
-        .find("p")
-        .at(8)
-        .text()
-    ).toBe("T20");
+  it("should change the state of t20Click to true when IT20 tab is clicked", () => {
+    const t20 = wrapper.find("#click-t20");
+    t20.simulate("click");
+    expect(wrapper.state().odiClick).toBe(false);
+    expect(wrapper.state().testClick).toBe(false);
+    expect(wrapper.state().t20Click).toBe(true);
   });
-  it("should check if the tabs are getting clicked ", () => {
-    wrapper
-      .find("div")
-      .at(0)
-      .simulate("click");
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-match-type").text()).toBe("ODI");
   });
-  it("should have className = 'container-team-details' exacty 1", () => {
-    expect(wrapper.find(".container-team-details").length).toBe(1);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-team-one").text()).toBe("South Africa");
   });
-  it("should have className = 'grid-container-team' exacty 1", () => {
-    expect(wrapper.find(".grid-container-team").length).toBe(1);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-team-two").text()).toBe("Australia");
   });
-  it("should have className = 'grid-container-team-details' exacty 1", () => {
-    expect(wrapper.find(".grid-container-team-details").length).toBe(1);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-winner").text()).toBe("South Africa WON");
   });
-  it("should have className = 'grid-class-team-details' exacty 2", () => {
-    expect(wrapper.find(".grid-class-team-details").length).toBe(2);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-batsman-name").text()).toBe("Ms Dhoni");
   });
-  it("should have className = 'grid-class-topteam-details' exacty 2", () => {
-    expect(wrapper.find(".grid-class-topteam-details").length).toBe(2);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-batsman-score").text()).toBe("10004");
   });
-  it("should have className = 'centered' exacty 2", () => {
-    expect(wrapper.find(".centered").length).toBe(2);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-bowler-name").text()).toBe("Mohammad Sami");
   });
-  it("should have className = 'cards-new' exacty 2", () => {
-    expect(wrapper.find(".cards-new").length).toBe(2);
-  });
-  it("should have className = 'cardtest' exacty 2", () => {
-    expect(wrapper.find(".cardtest").length).toBe(2);
-  });
-  it("should have className = 'cardodi' exacty 2", () => {
-    expect(wrapper.find(".cardodi").length).toBe(2);
-  });
-  it("should have className = 'cardt20' exacty 2", () => {
-    expect(wrapper.find(".cardt20").length).toBe(2);
-  });
-  it("should have className = 'p-card' exacty 6", () => {
-    expect(wrapper.find(".p-card").length).toBe(6);
+  it("Match type should be shown", () => {
+    expect(wrapper.find("#id-bowler-score").text()).toBe("15");
   });
   it("should have no br tags", () => {
     expect(wrapper.find("br").length).toBe(0);
-  });
-  // it("should have className = 'hr-team-card' exacty 4", () => {
-  //   expect(wrapper.find(".hr-team-card").length).toBe(4);
-  // });
-  // it("should have className = 'list' exacty 6", () => {
-  //   expect(wrapper.find(".list").length).toBe(4);
-  // });
-  // it("should have className = 'img-card' exacty 6", () => {
-  //   expect(wrapper.find(".img-card").length).toBe(4);
-  // });
-  // it("should have className = 'p-team-details-name' exacty 6", () => {
-  //   expect(wrapper.find(".p-team-details-name").length).toBe(4);
-  // });
-  // it("should have className = 'p-player-style' exacty 4", () => {
-  //   expect(wrapper.find(".p-player-style").length).toBe(4);
-  // });
-  // it("should have className = 'h2-team-details-position' exacty 4", () => {
-  //   expect(wrapper.find(".h2-team-details-position").length).toBe(4);
-  // });
-  it("should have className = 'p-matches' exacty 1", () => {
-    expect(wrapper.find(".p-matches").length).toBe(1);
-  });
-  // it("should have className = 'all-recent-matches-box' exacty 1", () => {
-  //   expect(wrapper.find(".all-recent-matches-box").length).toBe(1);
-  // });
-  // it("should have className = 'inside-recent-matches-box' exacty 5", () => {
-  //   expect(wrapper.find(".inside-recent-matches-box").length).toBe(5);
-  // });
-  it("should have className = 'tournamnet-name' exacty 5", () => {
-    expect(wrapper.find(".tournamnet-name").length).toBe(1);
-  });
-  it("should have className = 'Team-data' exacty 2", () => {
-    expect(wrapper.find(".Team-data").length).toBe(2);
-  });
-  it("should have className = 'TeamOne-name' exacty 1", () => {
-    expect(wrapper.find(".TeamOne-name").length).toBe(1);
-  });
-  it("should have className = 'TeamOne-score' exacty 1", () => {
-    expect(wrapper.find(".TeamOne-score").length).toBe(1);
-  });
-  it("should have className = 'TeamTwo-name' exacty 1", () => {
-    expect(wrapper.find(".TeamTwo-name").length).toBe(1);
-  });
-  it("should have className = 'TeamTwo-score' exacty 1", () => {
-    expect(wrapper.find(".TeamTwo-score").length).toBe(1);
-  });
-  it("should have className = 'winner-name' exacty 1", () => {
-    expect(wrapper.find(".winner-name").length).toBe(1);
   });
 });

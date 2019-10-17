@@ -6,7 +6,7 @@ import virat from "../components/images/virat.jpg";
 import bumrah from "../components/images/Bumrah.jpg";
 
 import "./css/PlayerLandingPage.css";
-import NavBar from "../components/common/Navbar";
+// import NavBar from "../components/common/Navbar";
 
 export class PlayerLandingPage extends Component {
   state = {
@@ -49,7 +49,7 @@ export class PlayerLandingPage extends Component {
     // console.log("Bowlers comp landing page: ", this.props);
     return (
       <div style={{ padding: 12 + "px" }}>
-        <NavBar></NavBar>
+        {/* <NavBar></NavBar> */}
         <h1 id="playerHeading">Players</h1>
 
         <div id="container">

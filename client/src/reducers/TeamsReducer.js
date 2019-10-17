@@ -4,6 +4,7 @@ import {
   GET_MATCHBYTEAMID,
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
+  GET_TEAM_FIXTURES,
   GET_HIGHEST_TOTALS,
   GET_LOWEST_TOTALS,
   GET_TEAM_SEARCH
@@ -15,6 +16,7 @@ const initialstate = {
   matches: [],
   batsmen: [],
   bowlers: [],
+  fixtures: [],
   highesttotals: [],
   lowesttotals: []
 };
@@ -36,6 +38,11 @@ export default function(state = initialstate, action) {
       return {
         ...state,
         bowlers: action.payload
+      };
+    case GET_TEAM_FIXTURES:
+      return {
+        ...state,
+        fixtures: action.payload
       };
     case GET_HIGHEST_TOTALS:
       return {

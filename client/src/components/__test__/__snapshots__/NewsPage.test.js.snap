@@ -4,11 +4,6 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
 <div
   className="parent"
 >
-  <div
-    className="navbar"
-  >
-    <Connect(Navbar) />
-  </div>
   <div>
     <div
       className="newspage-grid-container"

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./css/SecondaryNavbar.css";
+import "./css/TeamSecondaryNavbar.css";
 import teamlogo from "./images/indialogo.jpg";
-import Navbar from "./common/Navbar";
+// import Navbar from "./common/Navbar";
 
 export default class TeamSecondaryNavbar extends Component {
   state = {
@@ -25,8 +25,7 @@ export default class TeamSecondaryNavbar extends Component {
     console.log("navbar props is ", this.props.teams.team_name);
     return (
       <div>
-        <Navbar />
-        <div className="secNavParent">
+        <div className="secNavTeamParent">
           <div className="secNavHead">
             <div
               style={{
