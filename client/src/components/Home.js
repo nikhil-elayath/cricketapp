@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getNews } from '../actions/Home'
+import { getNews, getRecentMatches } from '../actions/Home'
 import './css/Home.css'
 import news_img from '../components/images/vk.jpeg'
 import logo from './images/indialogo.jpg'
@@ -19,7 +19,9 @@ export class Home extends Component {
       match_type: 'Test'
     }
     this.props.getRanks(ranking)
-    // this.props.getNews();
+
+    // FETCHING RECENT MATCHES
+    this.props.getRecentMatches()
   }
   onClickTest = e => {
     e.preventDefault()
@@ -76,6 +78,7 @@ export class Home extends Component {
               </Link>
             ))}
           </div>
+          <div id='home-recent-matches' />
           {/* ------------------------------------- */}
           <div className='div-second-section'>
             <MostWins />
@@ -94,6 +97,7 @@ export default connect(
   mapStateToProps,
   {
     getNews,
-    getRanks
+    getRanks,
+    getRecentMatches
   }
 )(Home)
