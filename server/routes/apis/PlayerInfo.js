@@ -105,13 +105,16 @@ router.get("/singlePlayer/:player_id", async (req, res) => {
 router.post("/TopBatsman", async (req, res) => {
   try {
     var match_type = req.body.match_type;
+    var gender = req.body.gender;
     console.log(match_type);
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
+        "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country,player.player_gender from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = 'total_runs' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = 'total_runs' AND player.player_gender = '" +
+          gender +
+          "'order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({
@@ -137,12 +140,15 @@ router.post("/TopBatsman", async (req, res) => {
 router.post("/TopBowlers", async (req, res) => {
   try {
     let match_type = req.body.match_type;
+    var gender = req.body.gender;
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
         "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = 'total_wickets' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = 'total_wickets' AND player.player_gender = '" +
+          gender +
+          "' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({
@@ -166,12 +172,15 @@ router.post("/TopBowlers", async (req, res) => {
 router.post("/TopSixes", async (req, res) => {
   try {
     let match_type = req.body.match_type;
+    var gender = req.body.gender;
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
         "select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country,player.player_id from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '" +
           match_type +
-          "'AND player_stats_name = '6s' order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
+          "'AND player_stats_name = '6s' AND player.player_gender = '" +
+          gender +
+          "'  order by cast (player_stats_value as numeric) desc fetch first 5 rows only"
       );
 
       res.status(200).json({
@@ -216,10 +225,16 @@ router.get("/ODI-Batsman-Stats/:player_id", async (req, res) => {
         " and match_type = 'ODI' and player_stats_name = 'balls_faced'"
     );
 
-    const matches_played = await db.any(
+    const batsman_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'ODI' and player_stats_name = 'matches_played'"
+        " and match_type = 'ODI' and player_stats_name = 'batsman_matches_played'"
+    );
+
+    const batsman_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'ODI' and player_stats_name = 'batsman_innings_played'"
     );
 
     const strike_rate = await db.any(
@@ -266,7 +281,8 @@ router.get("/ODI-Batsman-Stats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
+        Matches: batsman_matches_played,
+        Innings: batsman_innings_played,
         Highestscore: highest_score,
         TotalRuns: total_runs,
         BallsFaced: balls_faced,
@@ -312,10 +328,16 @@ router.get("/Test-Batsman-Stats/:player_id", async (req, res) => {
         " and match_type = 'Test' and player_stats_name = 'balls_faced'"
     );
 
-    const matches_played = await db.any(
+    const batsman_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'Test' and player_stats_name = 'matches_played'"
+        " and match_type = 'Test' and player_stats_name = 'batsman_matches_played'"
+    );
+
+    const batsman_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'Test' and player_stats_name = 'batsman_innings_played'"
     );
 
     const strike_rate = await db.any(
@@ -362,7 +384,8 @@ router.get("/Test-Batsman-Stats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
+        Matches: batsman_matches_played,
+        Innings: batsman_innings_played,
         Highestscore: highest_score,
         TotalRuns: total_runs,
         BallsFaced: balls_faced,
@@ -408,10 +431,16 @@ router.get("/T20-Batsman-Stats/:player_id", async (req, res) => {
         " and match_type = 'T20' and player_stats_name = 'balls_faced'"
     );
 
-    const matches_played = await db.any(
+    const batsman_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'T20' and player_stats_name = 'matches_played'"
+        " and match_type = 'T20' and player_stats_name = 'batsman_matches_played'"
+    );
+
+    const batsman_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'T20' and player_stats_name = 'batsman_innings_played'"
     );
 
     const strike_rate = await db.any(
@@ -458,7 +487,8 @@ router.get("/T20-Batsman-Stats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
+        Matches: batsman_matches_played,
+        Innings: batsman_innings_played,
         Highestscore: highest_score,
         TotalRuns: total_runs,
         BallsFaced: balls_faced,
@@ -504,10 +534,16 @@ router.get("/Batsman-Stats/:player_id", async (req, res) => {
         "   and player_stats_name = 'balls_faced' order by match_type"
     );
 
-    const matches_played = await db.any(
+    const batsman_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        "   and player_stats_name = 'matches_played' order by match_type"
+        "  and player_stats_name = 'batsman_matches_played' order by match_type"
+    );
+
+    const batsman_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        "  and player_stats_name = 'batsman_innings_played' order by match_type"
     );
 
     const strike_rate = await db.any(
@@ -554,7 +590,8 @@ router.get("/Batsman-Stats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
+        Matches: batsman_matches_played,
+        Innings: batsman_innings_played,
         Highestscore: highest_score,
         TotalRuns: total_runs,
         BallsFaced: balls_faced,
@@ -602,10 +639,28 @@ router.get("/ODIBowlerStats/:player_id", async (req, res) => {
         " and match_type = 'ODI' and player_stats_name = '4w'"
     );
 
-    const matches_played = await db.any(
+    const bowler_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'ODI' and player_stats_name = 'matches_played'"
+        " and match_type = 'ODI' and player_stats_name = 'bowler_matches_played'"
+    );
+
+    const bowler_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'ODI' and player_stats_name = 'bowler_innings_played'"
+    );
+
+    const balls_bowled = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'ODI' and player_stats_name = 'balls_bowled'"
+    );
+
+    const economy_rate = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'ODI' and player_stats_name = 'economy_rate'"
     );
 
     const wickets_5 = await db.any(
@@ -622,11 +677,12 @@ router.get("/ODIBowlerStats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
-
+        Matches: bowler_matches_played,
+        Innings: bowler_innings_played,
         RunsConceded: runs_conceded,
+        EconomyRate: economy_rate,
         TotalWIckets: total_wickets,
-
+        BallsBowled: balls_bowled,
         FourWickets: wickets_4,
         FiveWickets: wickets_5
       }
@@ -635,7 +691,7 @@ router.get("/ODIBowlerStats/:player_id", async (req, res) => {
     res.status(200).json({
       status: 200,
       ODIBowler: data,
-      message: "Batsman stats retrieved"
+      message: "ODI Bowler stats retrieved"
     });
   } catch (err) {
     console.log(err);
@@ -646,10 +702,23 @@ router.get("/T20-Bowler-Stats/:player_id", async (req, res) => {
   try {
     let player_id = req.params.player_id;
 
+    const qu = await db.any(
+      "select player_id from player where player_id = " + player_id + ""
+    );
+    qu.forEach(function(id) {
+      caught_id = Object.values(id);
+    });
+
     const runs_conceded = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
         " and match_type = 'T20' and player_stats_name = 'runs_conceded'"
+    );
+
+    const economy_rate = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'T20' and player_stats_name = 'economy_rate'"
     );
 
     const total_wickets = await db.any(
@@ -664,10 +733,22 @@ router.get("/T20-Bowler-Stats/:player_id", async (req, res) => {
         " and match_type = 'T20' and player_stats_name = '4w'"
     );
 
-    const matches_played = await db.any(
+    const bowler_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'T20' and player_stats_name = 'matches_played'"
+        " and match_type = 'T20' and player_stats_name = 'bowler_matches_played'"
+    );
+
+    const bowler_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'T20' and player_stats_name = 'bowler_innings_played'"
+    );
+
+    const balls_bowled = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'T20' and player_stats_name = 'balls_bowled'"
     );
 
     const wickets_5 = await db.any(
@@ -676,16 +757,13 @@ router.get("/T20-Bowler-Stats/:player_id", async (req, res) => {
         " and match_type = 'T20' and player_stats_name = '5w'"
     );
 
-    // const _4s = await db.any(
-    //   "select * from player_stats where player_id = " +
-    //     player_id +
-    //     " and match_type = 'ODI' and player_stats_name = '4s'"
-    // );
-
     data = [
       {
-        Matches: matches_played,
+        Matches: bowler_matches_played,
+        Innings: bowler_innings_played,
         RunsConceded: runs_conceded,
+        EconomyRate: economy_rate,
+        BallsBowled: balls_bowled,
         TotalWIckets: total_wickets,
         FourWickets: wickets_4,
         FiveWickets: wickets_5
@@ -695,7 +773,7 @@ router.get("/T20-Bowler-Stats/:player_id", async (req, res) => {
     res.status(200).json({
       status: 200,
       T20Bowler: data,
-      message: "Batsman stats retrieved"
+      message: "T20 Bowler stats retrieved"
     });
   } catch (err) {
     console.log(err);
@@ -718,16 +796,34 @@ router.get("/Test-Bowler-Stats/:player_id", async (req, res) => {
         " and match_type = 'Test' and player_stats_name = 'total_wickets'  "
     );
 
+    const economy_rate = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'Test' and player_stats_name = 'economy_rate'"
+    );
+
     const wickets_4 = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
         " and match_type = 'Test' and player_stats_name = '4w'"
     );
 
-    const matches_played = await db.any(
+    const bowler_matches_played = await db.any(
       "select * from player_stats where player_id = " +
         player_id +
-        " and match_type = 'Test' and player_stats_name = 'matches_played'"
+        " and match_type = 'Test' and player_stats_name = 'bowler_matches_played'"
+    );
+
+    const bowler_innings_played = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'Test' and player_stats_name = 'bowler_innings_played'"
+    );
+
+    const balls_bowled = await db.any(
+      "select * from player_stats where player_id = " +
+        player_id +
+        " and match_type = 'Test' and player_stats_name = 'balls_bowled'"
     );
 
     const wickets_5 = await db.any(
@@ -744,8 +840,11 @@ router.get("/Test-Bowler-Stats/:player_id", async (req, res) => {
 
     data = [
       {
-        Matches: matches_played,
+        Matches: bowler_matches_played,
+        Innings: bowler_innings_played,
         RunsConceded: runs_conceded,
+        BallsBowled: balls_bowled,
+        EconomyRate: economy_rate,
         TotalWIckets: total_wickets,
         FourWickets: wickets_4,
         FiveWickets: wickets_5
@@ -755,7 +854,7 @@ router.get("/Test-Bowler-Stats/:player_id", async (req, res) => {
     res.status(200).json({
       status: 200,
       TestBowler: data,
-      message: "Batsman stats retrieved"
+      message: "Test Bowler stats retrieved"
     });
   } catch (err) {
     console.log(err);

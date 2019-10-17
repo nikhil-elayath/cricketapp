@@ -6,7 +6,9 @@ import logo from "./images/dhoni.jpg";
 // import Navbar from "../components/common/Navbar";
 import { getMatch, getTeamBatsmen, getTeamBowlers } from "../actions/Teams";
 // import "./css/SecondaryNavbar.css";
-// import Loader from "react-loader-spinner";
+
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class TeamInfo extends Component {
   state = {
@@ -103,8 +105,15 @@ export class TeamInfo extends Component {
           </div>
           <div className="matches-section">
             <div className="all-recent-matches-box-team">
-              {this.props.matches.length === 0 ? (
-                <div className="teaminfoloader"></div>
+              {this.props.isLoading ? (
+                <div style={{ margin: "auto" }}>
+                  <Loader
+                    type="TailSpin"
+                    color="#2980b9"
+                    height="100"
+                    width="100"
+                  />
+                </div>
               ) : (
                 this.props.matches.map(matches => (
                   <div className="inside-recent-matches-box-team">
@@ -217,8 +226,8 @@ export class TeamInfo extends Component {
 const mapStateTostate = state => ({
   matches: state.TeamsReducer.matches,
   batsmen: state.TeamsReducer.batsmen,
-  bowlers: state.TeamsReducer.bowlers
-  // isLoading: state.LoadingReducer.isLoading
+  bowlers: state.TeamsReducer.bowlers,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(

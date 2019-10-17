@@ -9,6 +9,8 @@ import {
   GET_LOWEST_TOTALS
 } from "./Types";
 
+import { startLoading, stopLoading } from "./LoadingAction";
+
 import axios from "axios";
 
 export const getTeams = match_type => dispatch => {
@@ -41,18 +43,21 @@ export const getRanks = ranking => dispatch => {
 };
 
 export const getMatch = (team_id, match_type) => dispatch => {
+  dispatch(startLoading());
   return axios
     .post(
       "http://localhost:5000/cricketalpha/teams/match/" + team_id,
       match_type
     )
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_MATCHBYTEAMID,
         payload: res.data.data
       });
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
