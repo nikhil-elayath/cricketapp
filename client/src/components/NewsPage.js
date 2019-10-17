@@ -26,9 +26,7 @@ export class NewsPage extends Component {
   render() {
     return (
       <div className="parent">
-        {/* <div className='navbar'>
-          <Navbar />
-        </div> */}
+        <div className="navbar">{/* <Navbar /> */}</div>
         <div>
           {this.props.news.map(news => (
             <div className="newspage-grid-container">

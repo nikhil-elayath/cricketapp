@@ -2,12 +2,14 @@ import {
   GET_PLAYERS,
   CREATE_PLAYER,
   EDIT_PLAYER,
-  DELETE_PLAYER
+  DELETE_PLAYER,
+  ERROR_TYPE
   // GET_PLAYER_SEARCH
 } from "../actions/Types";
 
 const initialState = {
-  player: []
+  player: [],
+  error: ""
 };
 
 export default function(state = initialState, action) {
@@ -29,6 +31,8 @@ export default function(state = initialState, action) {
     //     ...state,
     //     player: action.payload
     //   };
+    case ERROR_TYPE:
+      return { ...state, error: action.payload };
     default:
       return state;
   }

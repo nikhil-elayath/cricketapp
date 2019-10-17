@@ -8,7 +8,8 @@ import {
   DELETE_TEAM,
   GET_PLAYER_SEARCH,
   GET_TEAM_SEARCH,
-  GET_ALLTEAMS
+  GET_ALLTEAMS,
+  ERROR_TYPE
 } from "./Types";
 import axios from "axios";
 
@@ -124,7 +125,8 @@ export const createTeam = team => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      alert("Try Again");
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };
 
@@ -144,7 +146,8 @@ export const createPlayer = player => dispatch => {
     })
     .catch(err => {
       console.log(err);
-      alert("Try Again");
+      dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
+      console.log(err.response.data.message);
     });
 };
 
@@ -202,7 +205,7 @@ export const deletePlayer = player_id => dispatch => {
         type: DELETE_PLAYER
       });
       dispatch(getPlayers());
-      alert("Player Deleted Successfully");
+      // alert("Player Deleted Successfully");
     })
     .catch(err => {
       console.log(err);
@@ -221,7 +224,7 @@ export const deleteTeam = team_id => dispatch => {
         type: DELETE_TEAM
       });
       dispatch(getAllTeams());
-      alert("Team Deleted Successfully");
+      // alert("Team Deleted Successfully");
     })
     .catch(err => {
       console.log(err);
