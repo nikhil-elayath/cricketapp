@@ -47,11 +47,11 @@ export const getMatchesDate = () => dispatch => {
 };
 
 export const getmatchdetailbyId = id => dispatch => {
-  console.log(id);
-
+  dispatch(startLoading());
   return axios
     .get(url + "/summary/" + id, {})
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_MATCH_DETAILS_BY_ID,
         payload: res.data.data
@@ -59,6 +59,7 @@ export const getmatchdetailbyId = id => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };

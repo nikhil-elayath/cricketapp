@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
-import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
 import { Calendar } from '@y0c/react-datepicker';
 import '@y0c/react-datepicker/assets/styles/calendar.scss';
@@ -32,10 +31,6 @@ export class MatchLandingPage extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <Navbar />
-                </div>
-
                 <div style={{ marginTop: "80px" }}>
                     <div>
                         <h1 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
