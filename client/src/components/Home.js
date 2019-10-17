@@ -45,9 +45,9 @@ export class Home extends Component {
 		this.props.getRanks(ranking);
 	};
 	render() {
+		console.log(this.props);
 		return (
 			<div className="div-container">
-				<Navbar />
 				<div className="div-section">
 					<div className="div-news-section">
 						{this.props.home.map(news => (

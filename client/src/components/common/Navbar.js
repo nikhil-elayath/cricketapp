@@ -18,7 +18,6 @@ export class Navbar extends Component {
 		this.props.getSearch(search_term, this.props.history);
 	};
 	render() {
-		console.log(this.props);
 		return (
 			<div className="nav-parent">
 				<header>
@@ -27,7 +26,6 @@ export class Navbar extends Component {
 							CricketAlpha
 						</span>
 					</Link>
-					{/* <figure className="brand">Responsive</figure> */}
 					<nav className="menu">
 						<input type="checkbox" id="menuToggle" />
 						<label for="menuToggle" className="menu-icon">
