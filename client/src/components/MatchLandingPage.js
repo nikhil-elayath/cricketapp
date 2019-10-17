@@ -133,66 +133,31 @@ export class MatchLandingPage extends Component {
                         </div>
 
                         <div className="all-matches-box">
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
+                            {this.props.matches.map(match => (
+                                <div className="each-matches-box" onClick={() => {
+                                    this.props.history.push(
+                                        "/match/details/" + match.match_id,
+                                        {
+                                            match
+                                        }
+                                    );
+                                }}>
+                                    <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>{match.match_type}</span>
+                                    <div className="Team-data" style={{ fontWeight: "400" }}>
+                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamOne}</div>
+                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                            {match.teamOneScore}/{match.teamone_wicket} (50 overs)
+                                         </div>
+                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamTwo}</div>
+                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                            {match.teamTwoScore}/{match.teamtwo_wicket} (50 overs)
+                                        </div>
+                                    </div>
+                                    <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >
+                                        {match.team_winner} won
+                                    </span>
                                 </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
-                                </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
-                                </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
-                                </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
-                                </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
-                            <div className="each-matches-box">
-                                <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>ODI</span>
-                                <div className="Team-data" style={{ fontWeight: "400" }}>
-                                    <div style={{ margin: "3% 0 0 3%" }}> South Africa</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}> 122/2 (50 overs) </div>
-                                    <div style={{ margin: "3% 0 0 3%" }}>India</div>
-                                    <div style={{ margin: "3% 0 0 10%" }}>122/2 (50 overs) </div>
-                                </div>
-                                <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >team_winner won</span>
-                            </div>
+                            ))}
                         </div>
 
                     </div>
