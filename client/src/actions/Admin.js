@@ -11,6 +11,7 @@ import {
   GET_ALLTEAMS,
   ERROR_TYPE
 } from "./Types";
+import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
 
 // export const getPlayers = () => dispatch => {
@@ -29,6 +30,7 @@ import axios from "axios";
 // };
 //
 export const getPlayers = () => dispatch => {
+  dispatch(startLoading());
   console.log(localStorage.getItem("token"));
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/allPlayer", {
@@ -37,6 +39,7 @@ export const getPlayers = () => dispatch => {
       }
     })
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_PLAYERS,
         payload: res.data.data
@@ -44,6 +47,7 @@ export const getPlayers = () => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
@@ -63,6 +67,7 @@ export const getPlayers = () => dispatch => {
 //   };
 
 export const getAllTeams = () => dispatch => {
+  dispatch(startLoading());
   console.log(localStorage.getItem("token"));
   return axios
     .get("http://localhost:5000/apis/admin/allteam", {
@@ -71,6 +76,7 @@ export const getAllTeams = () => dispatch => {
       }
     })
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_ALLTEAMS,
         payload: res.data.data
@@ -78,6 +84,7 @@ export const getAllTeams = () => dispatch => {
       console.log(res.data);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };

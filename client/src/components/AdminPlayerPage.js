@@ -14,6 +14,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import SweetAlert from "sweetalert-react";
 import "sweetalert/dist/sweetalert.css";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class AdminPlayerPage extends Component {
   constructor() {
@@ -225,31 +227,40 @@ export class AdminPlayerPage extends Component {
   };
 
   render() {
+    console.log("loading is:", this.props.isLoading);
     return (
       <div>
         {/* <NavBar /> */}
         <div className="player-page">
-          <div className="players">
-            <div className="inner-heading">
-              <div>
-                <h1>All Players</h1>
-              </div>
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  name="Search"
-                  margin="normal"
-                  placeholder="Search"
-                  onChange={this.onSearchInputChange}
-                />
-              </div>
+          {this.props.isLoading ? (
+            <div style={{ margin: "auto" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
             </div>
-            <div className="player-list">
-              {this.props.playerInfo.length == 0 ? (
-                <div className="loader"></div>
-              ) : (
-                this.props.playerInfo.map(players => (
+          ) : (
+            <div className="players">
+              <div className="inner-heading">
+                <div>
+                  <h1>All Players</h1>
+                </div>
+                <div>
+                  {" "}
+                  <input
+                    type="text"
+                    name="Search"
+                    margin="normal"
+                    placeholder="Search"
+                    onChange={this.onSearchInputChange}
+                  />
+                </div>
+              </div>
+
+              <div className="player-list">
+                {this.props.playerInfo.map(players => (
                   <div className="player-name">
                     <p>{players.player_name}</p>
                     <div className="inner-button">
@@ -314,10 +325,10 @@ export class AdminPlayerPage extends Component {
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div id="Adminform">
             <fieldset>
@@ -487,7 +498,8 @@ export class AdminPlayerPage extends Component {
 const mapStateToProps = state => ({
   player: state.AdminPlayerReducer.player,
   playerInfo: state.PlayerReducer.playerInfo,
-  error: state.AdminPlayerReducer.error
+  error: state.AdminPlayerReducer.error,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
