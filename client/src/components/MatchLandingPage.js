@@ -146,11 +146,11 @@ export class MatchLandingPage extends Component {
                                     <div className="Team-data" style={{ fontWeight: "400" }}>
                                         <div style={{ margin: "3% 0 0 3%" }}>{match.teamOne}</div>
                                         <div style={{ margin: "3% 0 0 10%" }}>
-                                            {match.teamOneScore}/{match.teamone_wicket} (50 overs)
+                                            {match.teamOneScore}/{match.teamone_wicket} ({match.match_values})
                                          </div>
                                         <div style={{ margin: "3% 0 0 3%" }}>{match.teamTwo}</div>
                                         <div style={{ margin: "3% 0 0 10%" }}>
-                                            {match.teamTwoScore}/{match.teamtwo_wicket} (50 overs)
+                                            {match.teamTwoScore}/{match.teamtwo_wicket} ({match.match_values})
                                         </div>
                                     </div>
                                     <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >

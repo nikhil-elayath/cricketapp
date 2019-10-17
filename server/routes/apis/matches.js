@@ -17,6 +17,7 @@ router.get('/recent/:date', async (req, res, next) => {
         for (match of dateOfMatch) {
 
             let match_id = match.match_id
+            console.log(match_id)
 
             // match_id, team_one_name,  team_two_name, match_winner_name, won_by, match_type, player_of_the match
 
@@ -34,11 +35,11 @@ router.get('/recent/:date', async (req, res, next) => {
                 select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
                 winner,match_winner,won_by, match_type, player_of_the_match 
                 from pss inner join ss on ss.winner=pss.team_id),
-                k as(select match_type_id, match_values from match_type 
-                where match_type_id in(select match_id from m))
+                k as(select match_type as match_typee, match_values from match_type 
+                where match_type in(select match_type from m))
                 select match_id, innings_one_team, match_values,team_one_name, innings_two_team,team_two_name, 
                 winner,match_winner,won_by, match_type, player_of_the_match 
-                from k inner join m on m.match_id=k.match_type_id`);
+                from k inner join m on m.match_type=k.match_typee`);
 
             // const match_detail = await db.any(`with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
             //     m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name 
@@ -78,6 +79,7 @@ router.get('/recent/:date', async (req, res, next) => {
             data.push({
                 match_id: match_detail[0].match_id,
                 match_type: match_detail[0].match_type,
+                match_values: match_detail[0].match_values,
                 teamOne: match_detail[0].team_one_name,
                 teamTwo: match_detail[0].team_two_name,
                 team_winner: match_detail[0].match_winner,
