@@ -57,6 +57,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  display: inline-block;
 }
 
 .div-section {
@@ -135,6 +136,46 @@
 
 #link-recent-matches {
   text-decoration: none;
+}
+@media screen and (max-width: 480px) {
+  .p-news {
+    /* color: #272727; */
+    font-size: 100%;
+    /* margin: 0px; */
+  }
+  /* .div-news-section {
+    padding: 20px 60px 20px 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  } */
+  .div-section {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 20px 15px;
+  }
+  .div-news {
+    width: 150%;
+    height: 140px;
+    border: 1px solid #707070;
+    border-radius: 8px;
+    /* margin-bottom: 30px; */
+    display: flex;
+  }
+  .div-news-section {
+    padding: 20px 0px 20px 0px;
+  }
+  #home-recent-matches {
+    width: 95%;
+  }
+  .grid-class-topteam {
+    display: none;
+  }
+  #div-second-section {
+    width: auto;
+  }
 }
 
 /* #home-recent-match-date

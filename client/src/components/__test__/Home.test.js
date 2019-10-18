@@ -44,11 +44,11 @@ describe("Testing for home component", () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it("should display the news list", () => {
+  it("should display the title of the news", () => {
     expect(wrapper.find("#p-news").text()).toBe("this is title");
   });
-  it("should display the news list", () => {
-    expect(wrapper.find("#home-news-date").text()).toBe("12-12-12 ");
+  it("should display the news date", () => {
+    expect(wrapper.find("#home-news-date").text()).toBe("12-12-12");
   });
   it("should display the recent matches title on the right side section", () => {
     expect(wrapper.find("#home-recent-matches-title").text()).toBe(
@@ -64,7 +64,7 @@ describe("Testing for home component", () => {
     );
   });
 
-  it("should display the name of team one", () => {
+  it("should display the name of team two", () => {
     expect(wrapper.find("#home-recent-matches-teamTwo").text()).toBe(
       "Pakistan "
     );
@@ -83,15 +83,5 @@ describe("Testing for home component", () => {
   });
   it("should display the date of the match", () => {
     expect(wrapper.find("#home-recent-match-date").text()).toBe("12-12-12");
-  });
-
-  it("checks for changeGender function to be called", () => {
-    // expects changeGender to be called on clicking men link
-    wrapper.find("#men").simulate("click");
-    expect(changeGender).toBeCalledWith("male");
-
-    // expects changeGender to be called on clicking men link
-    wrapper.find("#women").simulate("click");
-    expect(changeGender).toBeCalledWith("female");
   });
 });
