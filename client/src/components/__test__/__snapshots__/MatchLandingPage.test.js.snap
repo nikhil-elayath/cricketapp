@@ -12,6 +12,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
     <div>
       <h1
         className="h1-match"
+        id="title-of-match"
         style={
           Object {
             "margin": "20px",
@@ -22,95 +23,132 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
         Matches
       </h1>
     </div>
+  </div>
+  <div>
     <div
-      className="timeline"
-      style={
-        Object {
-          "marginBottom": "50px",
-        }
-      }
+      className="landing-container"
     >
-      <t
-        alignCenter={true}
-        alignOnResize={true}
-        arrowClass="scroll-menu-arrow"
-        arrowDisabledClass="scroll-menu-arrow--disabled"
-        arrowLeft={
-          <div
-            className="arrow-prev"
-          >
-            &lt;
-          </div>
-        }
-        arrowRight={
-          <div
-            className="arrow-next"
-          >
-            &gt;
-          </div>
-        }
-        clickWhenDrag={false}
-        data={Array []}
-        dragging={true}
-        hideArrows={false}
-        hideSingleArrow={false}
-        inertiaScrolling={false}
-        inertiaScrollingSlowdown={0.25}
-        innerWrapperClass="menu-wrapper--inner"
-        innerWrapperStyle={
-          Object {
-            "textAlign": "left",
-            "userSelect": "none",
-            "whiteSpace": "nowrap",
-          }
-        }
-        itemClass="menu-item-wrapper"
-        itemClassActive="active"
-        itemStyle={
-          Object {
-            "display": "inline-block",
-          }
-        }
-        menuClass="horizontal-menu"
-        menuStyle={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "userSelect": "none",
-          }
-        }
-        onSelect={[Function]}
-        onUpdate={[Function]}
-        rtl={false}
-        scrollBy={0}
-        scrollToSelected={false}
-        selected={false}
-        transition={0.4}
-        translate={0}
-        useButtonRole={true}
-        wheel={true}
-        wrapperClass="menu-wrapper"
-        wrapperStyle={
-          Object {
-            "overflow": "hidden",
-            "userSelect": "none",
-          }
-        }
-        xPoint={0}
-      />
-    </div>
-    <div>
-      <h2
-        className="h1-match"
-        style={
-          Object {
-            "margin": "20px",
-            "textAlign": "left",
-          }
-        }
+      <div
+        className="calendar-container"
       >
-        No Matches
-      </h2>
+        <div
+          className="calender-datepicker"
+        >
+          <DatePicker
+            clear={true}
+            includeTime={false}
+            locale="en"
+            onChange={[Function]}
+            portal={false}
+            showDefaultIcon={true}
+            showMonthCnt={1}
+          />
+        </div>
+        <div
+          className="calendar-fixed"
+        >
+          <Calendar
+            base={"2019-10-18T06:36:08.875Z"}
+            onChange={[Function]}
+            showMonthCnt={1}
+            showToday={false}
+          />
+        </div>
+      </div>
+      <div>
+        <div
+          className="all-matches-box"
+        >
+          <div
+            className="each-matches-box"
+            onClick={[Function]}
+          >
+            <span
+              id="match-type"
+              style={
+                Object {
+                  "fontSize": "15px",
+                  "margin": "5px 0 0 0",
+                }
+              }
+            >
+              ODI
+            </span>
+            <div
+              className="Team-data"
+              style={
+                Object {
+                  "fontWeight": "400",
+                }
+              }
+            >
+              <div
+                id="team-one-name"
+                style={
+                  Object {
+                    "margin": "10px 0 0 5px",
+                  }
+                }
+              >
+                India
+              </div>
+              <div
+                id="team-one-score"
+                style={
+                  Object {
+                    "margin": "10px 0 0 10px",
+                  }
+                }
+              >
+                120
+                /
+                5
+                 (
+                50 overs
+                )
+              </div>
+              <div
+                id="team-two-name"
+                style={
+                  Object {
+                    "margin": "10px 0 0 5px",
+                  }
+                }
+              >
+                Pakistan
+              </div>
+              <div
+                id="team-two-score"
+                style={
+                  Object {
+                    "margin": "10px 0 0 10px",
+                  }
+                }
+              >
+                150
+                /
+                10
+                 (
+                50 overs
+                )
+              </div>
+            </div>
+            <span
+              id="match-winner"
+              style={
+                Object {
+                  "fontSize": "18px",
+                  "fontWeight": "500",
+                  "margin": "10px 0 0 0",
+                }
+              }
+            >
+              India
+               won
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

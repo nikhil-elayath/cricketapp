@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../css/MatchSecondaryNavbar.css";
 // import dhoni from "../images/dhoni.jpg";
 // import Navbar from "./Navbar";
-import { Link } from "react-router-dom";
 // import './css/SecondaryNavbar.css'
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
