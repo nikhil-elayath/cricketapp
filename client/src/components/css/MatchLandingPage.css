@@ -10,12 +10,15 @@ body{
     grid-template-columns: 1fr 5fr;
     grid-gap: 2px;
 }
-.landing-container .calander{
+.landing-container .calendar-container{
     margin: 5px;
     border-radius: 5px;
     height: fit-content;
     
 }
+.calendar-container .calender-datepicker{
+        display: none;
+    }
 .landing-container .all-matches-box{
     height: fit-content;
     margin: 5px;
@@ -52,4 +55,53 @@ body{
 
 .Team-data > div{
     word-break: break-word;
+}
+
+
+@media screen and (max-width: 768px) {
+    .calendar-container .calender-datepicker{
+        display: inline-block;
+    }
+    
+.calendar-container .calendar-fixed{
+        display: none;
+    }
+
+.landing-container{
+        grid-template-columns: 1fr;
+}
+.landing-container .calendar-container{
+    margin: 5px;
+    border-radius: 5px;
+    height: fit-content;  
+}
+.landing-container .all-matches-box{
+    margin: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+}
+
+@media screen and (max-width: 576px) {
+    .calendar-container .calender-datepicker{
+        display: inline-block;
+    }
+    
+.calendar-container .calendar-fixed{
+        display: none;
+    }
+
+.landing-container{
+        grid-template-columns: 1fr;
+}
+.landing-container .calendar-container{
+    margin: 5px;
+    border-radius: 5px;
+    height: fit-content;  
+}
+.landing-container .all-matches-box{
+    margin: 20px;
+    grid-template-columns: 1fr;
+}
+
 }

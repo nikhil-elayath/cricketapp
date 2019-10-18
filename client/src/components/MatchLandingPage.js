@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
-import { Calendar } from '@y0c/react-datepicker';
+import { Calendar, DatePicker } from '@y0c/react-datepicker';
 import '@y0c/react-datepicker/assets/styles/calendar.scss';
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -40,8 +40,13 @@ export class MatchLandingPage extends Component {
                 </div>
                 <div>
                     <div className="landing-container">
-                        <div className="calander">
-                            <Calendar onChange={this.onChange} />
+                        <div className="calendar-container">
+                            <div className="calender-datepicker">
+                                <DatePicker onChange={this.onChange} showDefaultIcon clear />
+                            </div >
+                            <div className="calendar-fixed">
+                                <Calendar onChange={this.onChange} />
+                            </div>
                         </div>
                         {this.props.isLoading ? (
                             <div style={{ margin: "auto" }}>
