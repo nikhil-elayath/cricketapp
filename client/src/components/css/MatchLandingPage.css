@@ -60,7 +60,7 @@ body{
 
 @media screen and (max-width: 768px) {
     .calendar-container .calender-datepicker{
-        display: inline-block;
+        display: block;
     }
     
 .calendar-container .calendar-fixed{
@@ -84,7 +84,7 @@ body{
 
 @media screen and (max-width: 576px) {
     .calendar-container .calender-datepicker{
-        display: inline-block;
+        display: block;
     }
     
 .calendar-container .calendar-fixed{

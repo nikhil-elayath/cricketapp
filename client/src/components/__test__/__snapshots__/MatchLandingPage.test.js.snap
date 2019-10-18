@@ -15,6 +15,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
     <div>
       <h1
         className="h1-match"
+        id="title-of-match"
         style={
           Object {
             "margin": "20px",
@@ -31,27 +32,126 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
       className="landing-container"
     >
       <div
-        className="calander"
+        className="calendar-container"
       >
-        <Calendar
-          base={"2019-10-18T04:14:30.308Z"}
-          onChange={[Function]}
-          showMonthCnt={1}
-          showToday={false}
-        />
+        <div
+          className="calender-datepicker"
+        >
+          <DatePicker
+            clear={true}
+            includeTime={false}
+            locale="en"
+            onChange={[Function]}
+            portal={false}
+            showDefaultIcon={true}
+            showMonthCnt={1}
+          />
+        </div>
+        <div
+          className="calendar-fixed"
+        >
+          <Calendar
+            base={"2019-10-18T07:35:48.986Z"}
+            onChange={[Function]}
+            showMonthCnt={1}
+            showToday={false}
+          />
+        </div>
       </div>
       <div>
-        <h2
-          className="h1-match"
-          style={
-            Object {
-              "margin": "20px",
-              "textAlign": "left",
-            }
-          }
+        <div
+          className="all-matches-box"
         >
-          No Matches 
-        </h2>
+          <div
+            className="each-matches-box"
+            id="pushing-match"
+            onClick={[Function]}
+          >
+            <span
+              id="match-type"
+              style={
+                Object {
+                  "fontSize": "15px",
+                  "margin": "5px 0 0 0",
+                }
+              }
+            >
+              ODI
+            </span>
+            <div
+              className="Team-data"
+              style={
+                Object {
+                  "fontWeight": "400",
+                }
+              }
+            >
+              <div
+                id="team-one-name"
+                style={
+                  Object {
+                    "margin": "10px 0 0 5px",
+                  }
+                }
+              >
+                India
+              </div>
+              <div
+                id="team-one-score"
+                style={
+                  Object {
+                    "margin": "10px 0 0 10px",
+                  }
+                }
+              >
+                120
+                /
+                5
+                 (
+                50 overs
+                )
+              </div>
+              <div
+                id="team-two-name"
+                style={
+                  Object {
+                    "margin": "10px 0 0 5px",
+                  }
+                }
+              >
+                Pakistan
+              </div>
+              <div
+                id="team-two-score"
+                style={
+                  Object {
+                    "margin": "10px 0 0 10px",
+                  }
+                }
+              >
+                150
+                /
+                10
+                 (
+                50 overs
+                )
+              </div>
+            </div>
+            <span
+              id="match-winner"
+              style={
+                Object {
+                  "fontSize": "18px",
+                  "fontWeight": "500",
+                  "margin": "10px 0 0 0",
+                }
+              }
+            >
+              India
+               won
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   </div>

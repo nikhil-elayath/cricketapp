@@ -67,7 +67,7 @@ router.get("/recentMatches", async (req, res) => {
         select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
         winner,match_winner,won_by, match_type, player_of_the_match 
         from pss inner join ss on ss.winner=pss.team_id`);
-    console.log("recent matches", recent_matches);
+    // console.log("recent matches", recent_matches);
 
     const match_total_of_score = await db.any(`with ss as (with s as (select inning as inning_one, 
       sum(total_runs) as total_score 
@@ -82,8 +82,18 @@ router.get("/recentMatches", async (req, res) => {
       inning in(select inning from ss) group by inning)
       select inning,total_score, total_wicket, total_over from pss
       inner join ss on ss.inning_one=pss.inning`);
-    console.log(match_total_of_score);
+    // console.log(match_total_of_score);
+    var date = new Date(recent_match_date[0]["match_date"]);
+    console.log("below date", date);
+    console.log("what", recent_match_date);
 
+    date = date.toLocaleDateString("en-IN", {
+      weekday: "short",
+      month: "long",
+      day: "2-digit",
+      year: "numeric",
+    });
+    console.log("new", date);
     //PUSHING THE REQUIRED DATA INTO DATA ARRAY DEFINED ABOVE
     data.push({
       match_id: recent_matches[0].match_id,
@@ -99,7 +109,9 @@ router.get("/recentMatches", async (req, res) => {
       teamtwo_wicket: match_total_of_score[1].total_wicket,
       team_one_total_over: match_total_of_score[0].total_over,
       team_two_total_over: match_total_of_score[1].total_over,
+      match_date: date,
     });
+    console.log("pushed data", data);
   }
 
   res.status(200).json({
