@@ -105,16 +105,16 @@ export class Login extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-                <span
-                  className="errorMessage"
-                  style={{
-                    color: "#c0392b",
-                    display: this.state.showError ? "block" : "none"
-                  }}
-                >
-                  {this.state.errorMessage}
-                </span>
-              )}
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
             </div>
             <p>
               <Link className="link" to="/resetPassword">
