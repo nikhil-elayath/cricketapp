@@ -1,54 +1,90 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamStats.css";
-// import logo from "./images/dhoni.jpg";s
-// import { getMatch, getTeamBatsmen, getTeamBowlers } from "../actions/Teams";
-import "./css/SecondaryNavbar.css";
 import { getHighestTotals, getLowestTotals } from "../actions/Teams";
 
 export class TeamStats extends Component {
   state = {
-    testClick: true,
+    testClick: false,
     odiClick: false,
-    t20Click: false
+    t20Click: true
   };
   componentDidMount() {
-    console.log("team stats is ", this.props.teams.team_id);
+    console.log("team id for team stats is ", this.props.teams.team_id);
     let type = {
-      match_type: "Test"
+      match_type: "T20",
+      gender: "male"
     };
+    console.log("type is", type);
+    console.log("gender for team stats is", this.props.gender);
     this.props.getHighestTotals(this.props.teams.team_id, type);
   }
 
   onClickTest = e => {
     e.preventDefault();
-    this.setState({ testClick: true, odiClick: false, t20Click: false });
+    this.setState({
+      testClick: true,
+      odiClick: false,
+      t20Click: false
+      // type: "Test"
+    });
     let type = {
-      match_type: "Test"
+      match_type: "Test",
+      gender: "male"
     };
     this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
   onClickOdi = e => {
     e.preventDefault();
-    this.setState({ testClick: false, odiClick: true, t20Click: false });
+    this.setState({
+      testClick: false,
+      odiClick: true,
+      t20Click: false
+      // type: "ODI"
+    });
     let type = {
-      match_type: "ODI"
+      match_type: "ODI",
+      gender: "male"
     };
     this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
   onClickT20 = e => {
     e.preventDefault();
-    this.setState({ testClick: false, odiClick: false, t20Click: true });
+    this.setState({
+      testClick: false,
+      odiClick: false,
+      t20Click: true
+      // type: "T20"
+    });
     let type = {
-      match_type: "T20"
+      match_type: "T20",
+      gender: "male"
     };
     this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
+  onClickHighestTotals = e => {
+    e.preventDefault();
+    this.props.getHighestTotals(this.props.teams.team_id, this.state.type);
+  };
+
+  // onClickLowestTotals = e => {
+  //   e.preventDefault();
+  //   this.setState({ testClick: true, odiClick: false, t20Click: false });
+  //   let type = {
+  //     match_type: "ODI"
+  //   };
+  //   if (testClick == true) {
+  //     type = "ODI";
+  //   }
+  //   this.props.getLowestTotals(this.props.teams.team_id, type);
+  // };
+
   render() {
     console.log("teamstats props is ", this.props.teams.team_id);
+    console.log("gender for team stats render is", this.props);
     return (
       <div>
         <div className="container-team-details">
@@ -60,10 +96,10 @@ export class TeamStats extends Component {
                 <div className="cards-team-stats">
                   <div
                     style={{ borderRadius: "8px 0px 0px 8px" }}
-                    className={this.state.testClick ? "cardtest" : "cardodi"}
-                    onClick={this.onClickTest}
+                    className={this.state.t20Click ? "cardtest" : "cardodi"}
+                    onClick={this.onClickT20}
                   >
-                    <p className="p-card">Test</p>
+                    <p className="p-card">T20</p>
                   </div>
                   <div
                     className={this.state.odiClick ? "cardtest" : "cardodi"}
@@ -73,10 +109,10 @@ export class TeamStats extends Component {
                   </div>
                   <div
                     style={{ borderRadius: "0px 8px 8px 0px" }}
-                    className={this.state.t20Click ? "cardtest" : "cardt20"}
-                    onClick={this.onClickT20}
+                    className={this.state.testClick ? "cardtest" : "cardt20"}
+                    onClick={this.onClickTest}
                   >
-                    <p className="p-card">T20</p>
+                    <p className="p-card">Test</p>
                   </div>
                 </div>
               </div>
@@ -110,26 +146,21 @@ export class TeamStats extends Component {
           {/* ------------------------------------------------------------------------- */}
           <div className="stats-display">
             <p className="p-category-name">Highest Totals</p>
-            <div className="stats-table">
-              <div className="list">
-                <p className="p-row">Score</p>
-                <p className="p-row">Overs</p>
-                <p className="p-row">RR</p>
-                <p className="p-row">Inns</p>
-                <p className="p-row">MatchDate</p>
-                <p className="p-row">Scorecard</p>
+            <div className="grid-table">
+              <div className="grid-container">
+                <p className="grid-item-title">Score</p>
+                <p className="grid-item-title">Overs</p>
+                <p className="grid-item-title">RR</p>
+                <p className="grid-item-title">Inns</p>
+                <p className="grid-item-title">MatchDate</p>
               </div>
-              {this.props.highesttotals.map(highesttotals => (
-                <div>
-                  <div className="list">
-                    <p className="p-row-details">{highesttotals.tr}</p>
-                    <p className="p-row-details">50</p>
-                    <p className="p-row-details">20.15</p>
-                    <p className="p-row-details">1</p>
-                    <p className="p-row-details">{highesttotals.match_date}</p>
-                    <p className="p-row-details">#scoreboard</p>
-                  </div>
-                  <hr className="hr-row" />
+              {this.props.teamstats.map(teamstats => (
+                <div className="grid-container">
+                  <p className="grid-item-detail">{teamstats.total_run}</p>
+                  <p className="grid-item-detail">{teamstats.overs}</p>
+                  <p className="grid-item-detail">NA</p>
+                  <p className="grid-item-detail">{teamstats.inning}</p>
+                  <p className="grid-item-detail">{teamstats.match_date}</p>
                 </div>
               ))}
             </div>
@@ -141,8 +172,7 @@ export class TeamStats extends Component {
 }
 
 const mapStateTostate = state => ({
-  highesttotals: state.TeamsReducer.highesttotals,
-  lowesttotals: state.TeamsReducer.lowesttotals
+  teamstats: state.TeamsReducer.teamstats
 });
 
 export default connect(
