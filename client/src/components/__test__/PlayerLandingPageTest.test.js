@@ -34,10 +34,6 @@ var topSixes = [
 
 const historyMock = { push: jest.fn() };
 
-// const getTopPlayers = jest.fn();
-
-// const getT20 = jest.fn();
-
 const wrapper = shallow(
   <PlayerLandingPage
     getBowlers={getBowlers}
@@ -56,6 +52,8 @@ describe("Testing Player Landing Page", () => {
   it("should render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  /////  ############# COMPONENTDIDMOUNT AND WILLRECIEVE FUNCTION TESTS
 
   it("should test for the functions are called ", () => {
     const componentDidMount = jest.spyOn(
@@ -133,34 +131,4 @@ describe("Testing Player Landing Page", () => {
       .simulate("click");
     expect(wrapper.state().matchType).toBe("T20");
   });
-
-  // it("should change the state of testClicked to true when test tab is clicked", () => {
-  //   const test1 = wrapper.find("#jest-test-tab");
-  //   console.log("getting functions from props ", test1.props());
-  //   test1.simulate("click");
-  //   console.log("after simulation props are: ", wrapper.state());
-  //   expect(wrapper.state().testClicked).toBe(true);
-  //   expect(wrapper.state().odiClicked).toBe(false);
-  //   expect(wrapper.state().t20Clicked).toBe(false);
-  // });
-
-  // it("should change the state of odiclicked to true when odi tab is clicked", () => {
-  //   const odi = wrapper.find("#jest-ODI-tab");
-  //   console.log("getting functions from props ", odi.props());
-  //   odi.simulate("click");
-  //   console.log("after simulation props are: ", wrapper.state());
-  //   expect(wrapper.state().odiClicked).toBe(true);
-  //   expect(wrapper.state().testClicked).toBe(false);
-  //   expect(wrapper.state().t20Clicked).toBe(false);
-  // });
-
-  // it("should change the state of t20Clicked to true when T20 tab is clicked", () => {
-  //   const odi = wrapper.find("#jest-T20-tab");
-  //   console.log("getting functions from props ", odi.props());
-  //   odi.simulate("click");
-  //   console.log("after simulation props are: ", wrapper.state());
-  //   expect(wrapper.state().odiClicked).toBe(false);
-  //   expect(wrapper.state().testClicked).toBe(false);
-  //   expect(wrapper.state().t20Clicked).toBe(true);
-  // });
 });

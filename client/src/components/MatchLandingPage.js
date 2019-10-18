@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
-import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
-import { Calendar } from "@y0c/react-datepicker";
+import { Calendar, DatePicker } from "@y0c/react-datepicker";
 import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
@@ -21,20 +20,21 @@ export class MatchLandingPage extends Component {
     //  before passing it to the match api function
     var datee = date.toJSON().slice(0, 10);
 
+    //[yatin] slicing the date in "yyyy-mm-dd" format
+    //  before passing it to the match api function
+    var datee = date.toJSON().slice(0, 10);
+
     //[yatin] passing the new selected date to the api
     this.props.getRecentMatches(datee);
   };
   componentDidMount() {
+    // calling the initial matches
     this.props.getRecentMatches("2016-05-20");
   }
 
   render() {
     return (
       <div>
-        <div>
-          <Navbar />
-        </div>
-
         <div style={{ marginTop: "80px" }}>
           <div>
             <h1
@@ -47,8 +47,13 @@ export class MatchLandingPage extends Component {
         </div>
         <div>
           <div className="landing-container">
-            <div className="calander">
-              <Calendar onChange={this.onChange} />
+            <div className="calendar-container">
+              <div className="calender-datepicker">
+                <DatePicker onChange={this.onChange} showDefaultIcon clear />
+              </div>
+              <div className="calendar-fixed">
+                <Calendar onChange={this.onChange} />
+              </div>
             </div>
             {this.props.isLoading ? (
               <div style={{ margin: "auto" }}>
@@ -82,33 +87,33 @@ export class MatchLandingPage extends Component {
                           );
                         }}
                       >
-                        <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>
+                        <span style={{ fontSize: "15px", margin: "5px 0 0 0" }}>
                           {match.match_type}
                         </span>
                         <div
                           className="Team-data"
                           style={{ fontWeight: "400" }}
                         >
-                          <div style={{ margin: "3% 0 0 3%" }}>
+                          <div style={{ margin: "10px 0 0 5px" }}>
                             {match.teamOne}
                           </div>
-                          <div style={{ margin: "3% 0 0 10%" }}>
+                          <div style={{ margin: "10px 0 0 10px" }}>
                             {match.teamOneScore}/{match.teamone_wicket} (
                             {match.match_values})
                           </div>
-                          <div style={{ margin: "3% 0 0 3%" }}>
+                          <div style={{ margin: "10px 0 0 5px" }}>
                             {match.teamTwo}
                           </div>
-                          <div style={{ margin: "3% 0 0 10%" }}>
+                          <div style={{ margin: "10px 0 0 10px" }}>
                             {match.teamTwoScore}/{match.teamtwo_wicket} (
                             {match.match_values})
                           </div>
                         </div>
                         <span
                           style={{
-                            fontSize: "100%",
+                            fontSize: "18px",
                             fontWeight: "500",
-                            margin: "2% 0 0 0"
+                            margin: "10px 0 0 0"
                           }}
                         >
                           {match.team_winner} won
