@@ -2,6 +2,9 @@
 
 exports[`Testing of MatchLandingPage Component should render the component 1`] = `
 <div>
+  <div>
+    <Connect(Navbar) />
+  </div>
   <div
     style={
       Object {
@@ -22,95 +25,34 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
         Matches
       </h1>
     </div>
+  </div>
+  <div>
     <div
-      className="timeline"
-      style={
-        Object {
-          "marginBottom": "50px",
-        }
-      }
+      className="landing-container"
     >
-      <t
-        alignCenter={true}
-        alignOnResize={true}
-        arrowClass="scroll-menu-arrow"
-        arrowDisabledClass="scroll-menu-arrow--disabled"
-        arrowLeft={
-          <div
-            className="arrow-prev"
-          >
-            &lt;
-          </div>
-        }
-        arrowRight={
-          <div
-            className="arrow-next"
-          >
-            &gt;
-          </div>
-        }
-        clickWhenDrag={false}
-        data={Array []}
-        dragging={true}
-        hideArrows={false}
-        hideSingleArrow={false}
-        inertiaScrolling={false}
-        inertiaScrollingSlowdown={0.25}
-        innerWrapperClass="menu-wrapper--inner"
-        innerWrapperStyle={
-          Object {
-            "textAlign": "left",
-            "userSelect": "none",
-            "whiteSpace": "nowrap",
-          }
-        }
-        itemClass="menu-item-wrapper"
-        itemClassActive="active"
-        itemStyle={
-          Object {
-            "display": "inline-block",
-          }
-        }
-        menuClass="horizontal-menu"
-        menuStyle={
-          Object {
-            "alignItems": "center",
-            "display": "flex",
-            "userSelect": "none",
-          }
-        }
-        onSelect={[Function]}
-        onUpdate={[Function]}
-        rtl={false}
-        scrollBy={0}
-        scrollToSelected={false}
-        selected={false}
-        transition={0.4}
-        translate={0}
-        useButtonRole={true}
-        wheel={true}
-        wrapperClass="menu-wrapper"
-        wrapperStyle={
-          Object {
-            "overflow": "hidden",
-            "userSelect": "none",
-          }
-        }
-        xPoint={0}
-      />
-    </div>
-    <div>
-      <h2
-        className="h1-match"
-        style={
-          Object {
-            "margin": "20px",
-            "textAlign": "left",
-          }
-        }
+      <div
+        className="calander"
       >
-        No Matches
-      </h2>
+        <Calendar
+          base={"2019-10-18T04:14:30.308Z"}
+          onChange={[Function]}
+          showMonthCnt={1}
+          showToday={false}
+        />
+      </div>
+      <div>
+        <h2
+          className="h1-match"
+          style={
+            Object {
+              "margin": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          No Matches 
+        </h2>
+      </div>
     </div>
   </div>
 </div>

@@ -5,14 +5,19 @@ import { getHighestTotals, getLowestTotals } from "../actions/Teams";
 
 export class TeamStats extends Component {
   state = {
-    testClick: true,
+    testClick: false,
     odiClick: false,
-    t20Click: false,
-    type: "Test"
+    t20Click: true
   };
   componentDidMount() {
-    console.log("team stats is ", this.props.teams.team_id);
-    this.props.getHighestTotals(this.props.teams.team_id, this.state.type);
+    console.log("team id for team stats is ", this.props.teams.team_id);
+    let type = {
+      match_type: "T20",
+      gender: "male"
+    };
+    console.log("type is", type);
+    console.log("gender for team stats is", this.props.gender);
+    this.props.getHighestTotals(this.props.teams.team_id, type);
   }
 
   onClickTest = e => {
@@ -20,13 +25,14 @@ export class TeamStats extends Component {
     this.setState({
       testClick: true,
       odiClick: false,
-      t20Click: false,
-      type: "Test"
+      t20Click: false
+      // type: "Test"
     });
-    // let type = {
-    //   match_type: "Test"
-    // };
-    // this.props.getHighestTotals(this.props.teams.team_id, type);
+    let type = {
+      match_type: "Test",
+      gender: "male"
+    };
+    this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
   onClickOdi = e => {
@@ -34,13 +40,14 @@ export class TeamStats extends Component {
     this.setState({
       testClick: false,
       odiClick: true,
-      t20Click: false,
-      type: "ODI"
+      t20Click: false
+      // type: "ODI"
     });
-    // let type = {
-    //   match_type: "ODI"
-    // };
-    // this.props.getHighestTotals(this.props.teams.team_id, type);
+    let type = {
+      match_type: "ODI",
+      gender: "male"
+    };
+    this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
   onClickT20 = e => {
@@ -48,13 +55,14 @@ export class TeamStats extends Component {
     this.setState({
       testClick: false,
       odiClick: false,
-      t20Click: true,
-      type: "T20"
+      t20Click: true
+      // type: "T20"
     });
-    // let type = {
-    //   match_type: "T20"
-    // };
-    // this.props.getHighestTotals(this.props.teams.team_id, type);
+    let type = {
+      match_type: "T20",
+      gender: "male"
+    };
+    this.props.getHighestTotals(this.props.teams.team_id, type);
   };
 
   onClickHighestTotals = e => {
@@ -76,6 +84,7 @@ export class TeamStats extends Component {
 
   render() {
     console.log("teamstats props is ", this.props.teams.team_id);
+    console.log("gender for team stats render is", this.props);
     return (
       <div>
         <div className="container-team-details">
@@ -87,10 +96,10 @@ export class TeamStats extends Component {
                 <div className="cards-team-stats">
                   <div
                     style={{ borderRadius: "8px 0px 0px 8px" }}
-                    className={this.state.testClick ? "cardtest" : "cardodi"}
-                    onClick={this.onClickTest}
+                    className={this.state.t20Click ? "cardtest" : "cardodi"}
+                    onClick={this.onClickT20}
                   >
-                    <p className="p-card">Test</p>
+                    <p className="p-card">T20</p>
                   </div>
                   <div
                     className={this.state.odiClick ? "cardtest" : "cardodi"}
@@ -100,10 +109,10 @@ export class TeamStats extends Component {
                   </div>
                   <div
                     style={{ borderRadius: "0px 8px 8px 0px" }}
-                    className={this.state.t20Click ? "cardtest" : "cardt20"}
-                    onClick={this.onClickT20}
+                    className={this.state.testClick ? "cardtest" : "cardt20"}
+                    onClick={this.onClickTest}
                   >
-                    <p className="p-card">T20</p>
+                    <p className="p-card">Test</p>
                   </div>
                 </div>
               </div>
@@ -147,10 +156,10 @@ export class TeamStats extends Component {
               </div>
               {this.props.teamstats.map(teamstats => (
                 <div className="grid-container">
-                  <p className="grid-item-detail">{teamstats.tr}</p>
-                  <p className="grid-item-detail">50</p>
-                  <p className="grid-item-detail">20.15</p>
-                  <p className="grid-item-detail">1</p>
+                  <p className="grid-item-detail">{teamstats.total_run}</p>
+                  <p className="grid-item-detail">{teamstats.overs}</p>
+                  <p className="grid-item-detail">NA</p>
+                  <p className="grid-item-detail">{teamstats.inning}</p>
                   <p className="grid-item-detail">{teamstats.match_date}</p>
                 </div>
               ))}

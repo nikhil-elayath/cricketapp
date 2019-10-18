@@ -101,31 +101,33 @@ export default class App extends Component {
           gender={this.state.gender}
         ></Route>
 
-      <Route exact path="/match/details/:id" component={MatchDetails}></Route>
-      <Route
-        exact
-        path="/matches/summary/:id"
-        component={MatchSummaryDetails}
-      ></Route>
-      <Route
-        exact
-        path="/matches/scorecard/:id"
-        component={MatchScoreDetails}
-      ></Route>
-      <Route
-        exact
-        path="/matches/stats/:id"
-        component={MatchStatsDetails}
-      ></Route>
-      <Route exact path="/matches" component={MatchLandingPage}></Route>
+        <Route exact path="/match/details/:id" component={MatchDetails}></Route>
+        <Route
+          exact
+          path="/matches/summary/:id"
+          component={MatchSummaryDetails}
+        ></Route>
+        <Route
+          exact
+          path="/matches/scorecard/:id"
+          component={MatchScoreDetails}
+        ></Route>
+        <Route
+          exact
+          path="/matches/stats/:id"
+          component={MatchStatsDetails}
+        ></Route>
+        <Route exact path="/matches" component={MatchLandingPage}></Route>
 
         {/* aditya */}
         <Route
           exact
           path="/teamdetails/:team_id"
-          component={TeamDetails}
-        ></Route>
-
+          // component={TeamDetails}
+          component={props => (
+            <TeamDetails {...props} gender={this.state.gender} />
+          )}
+        />
         <Route exact path="/teams" component={TeamLandingPage} />
         {/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
         <Route path="/" exact component={Home} />
