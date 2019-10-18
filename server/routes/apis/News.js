@@ -20,19 +20,19 @@ router.get("/newsbyid/:id", async (req, res) => {
         weekday: "short",
         month: "long",
         day: "2-digit",
-        year: "numeric",
+        year: "numeric"
       });
     }
     console.log(result);
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retreivied one news by id",
+      message: "Retreivied one news by id"
     });
   } catch {
     res.status(400).json({
       status: 400,
-      message: "Unexpected error",
+      message: "Unexpected error"
     });
   }
 });

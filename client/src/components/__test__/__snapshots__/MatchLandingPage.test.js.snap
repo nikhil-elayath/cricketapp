@@ -2,6 +2,9 @@
 
 exports[`Testing of MatchLandingPage Component should render the component 1`] = `
 <div>
+  <div>
+    <Connect(Navbar) />
+  </div>
   <div
     style={
       Object {

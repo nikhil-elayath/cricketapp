@@ -1,11 +1,16 @@
+.container-team-details {
+  margin-left: 100px;
+}
+
+.types-section {
+  display: flex;
+}
 .match-type-section {
   width: 50%;
-  float: left;
 }
 
 .category-section {
   width: 50%;
-  float: right;
 }
 
 .p-match-type {
@@ -23,7 +28,7 @@
 .p-category-name {
   color: #2c3e50;
   font-size: 24px;
-  margin-left: 15px;
+  margin: 50px 0px 25px 12px;
 }
 
 .cards-team-stats {
@@ -36,33 +41,78 @@
   margin: 5px 100px 15px 15px;
 }
 
-.stats-table {
+.grid-table {
   border: 1px solid #707070;
   border-radius: 8px;
-  margin-bottom: 15px;
+  margin: 0px 100px 20px 20px;
 }
-
-.list {
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1.3fr;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  display: flex;
-  margin: 15px 0px 0px 0px;
+  margin: 0px 10px 0px 10px;
+  padding: 1px;
+}
+.grid-container:not(:last-child) {
+  border-bottom: 1px solid #707070;
 }
 
-.p-row {
+.grid-item-title {
   font-size: 18px;
+  text-align: center;
   color: #2c3e50;
-  margin: auto;
 }
 
-.p-row-details {
+.grid-item-detail {
+  font-size: 15px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* .grid-item-score {
+  padding: 10px 10px 10px 0px;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  margin-left: 20px;
   font-size: 15px;
   color: #2c3e50;
-  margin: auto;
 }
-
-.hr-row {
-  margin: 0px 35px 0px 35px;
+.grid-item-overs {
+  padding: 10px 10px 10px 12px;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  font-size: 15px;
+  color: #2c3e50;
 }
+.grid-item-rr {
+  padding: 10px 10px 10px 20px;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  font-size: 15px;
+  color: #2c3e50;
+}
+.grid-item-inns {
+  padding: 10px 10px 10px 10px;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  font-size: 15px;
+  color: #2c3e50;
+}
+.grid-item-date {
+  padding: 10px 10px 10px 35px;
+  font-size: 30px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+  margin-right: 20px;
+  font-size: 15px;
+  color: #2c3e50;
+} */
 /* --------------------------------------------------------------------------------- */
 @media only screen and (max-width: 1024px) {
 }
@@ -71,16 +121,26 @@
 }
 
 @media only screen and (max-width: 576px) {
-  .match-type-section {
-    width: 100%;
-  }
-  .category-section {
-    width: 100%;
+  .types-section {
+    display: block;
   }
   .cards-team-stats {
-    margin: 5px 15px 15px 15px;
+    margin: 5px 0px 15px 15px;
   }
   .cards-team-category {
     margin: 5px 15px 15px 15px;
+  }
+  .container-team-details {
+    margin-left: 5px;
+  }
+  .grid-table {
+    margin: auto;
+  }
+  .grid-item-title {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .grid-item-detail {
+    font-size: 13px;
   }
 }
