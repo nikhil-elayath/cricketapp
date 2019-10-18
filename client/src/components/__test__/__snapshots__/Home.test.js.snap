@@ -45,7 +45,6 @@ exports[`Testing for home component should render the component 1`] = `
               id="home-news-date"
             >
               12-12-12
-               
             </p>
           </div>
         </div>

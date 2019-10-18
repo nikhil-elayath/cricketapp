@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getUsers, otpVerify, otpSend } from "../actions/users.js";
+import { getUsers, otpVerify, otpSend } from "../actions/Users.js";
 import { connect } from "react-redux";
 
 import "./css/Login.css";

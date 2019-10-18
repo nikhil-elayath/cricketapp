@@ -22,14 +22,6 @@ export class PlayerInfo extends Component {
     this.props.getSinglePlayer(this.props.match.params.player_id);
   }
 
-  getDob = () => {
-    // console.log("from function", this.props.singlePlayer[0].player_dob);
-    let dob = {
-      date: this.props.singlePlayer[0].player_dob
-    };
-    console.log("dob is funxtions is", dob);
-  };
-
   render() {
     // console.log(
     //   "Inside render component",
@@ -38,7 +30,6 @@ export class PlayerInfo extends Component {
     if (this.state.info === true)
       return (
         <div>
-          <NavBar></NavBar>
           <div className="secNavParent">
             <div className="secNavHead">
               <div
@@ -120,7 +111,9 @@ export class PlayerInfo extends Component {
                 Personal Details
               </p>
               <div className="playerBasicinfo">
-                <span style={{ fontSize: 14 + "px" }}>Full Name</span>
+                <span id="jest-full-name" style={{ fontSize: 14 + "px" }}>
+                  Full Name
+                </span>
                 <b>{this.props.singlePlayer[0].player_name}</b>
                 <div style={{ marginTop: 16 + "px" }}>
                   <span>Date Of Birth</span>
@@ -137,11 +130,11 @@ export class PlayerInfo extends Component {
                 */}
                 </div>
                 <b>{this.props.singlePlayer[0].player_dob}</b>
-                <span>Role</span>
+                <span id="jest-role">Role</span>
                 <b>{this.props.singlePlayer[0].player_role}</b>
-                <span>Batting Style</span>
+                <span id="jest-batting-style">Batting Style</span>
                 <b>{this.props.singlePlayer[0].batting_style}</b>
-                <span>Bowling Style</span>
+                <span id="jest-bowling-style">Bowling Style</span>
                 <b>{this.props.singlePlayer[0].bowling_style}</b>
               </div>
             </div>
@@ -160,7 +153,7 @@ export class PlayerInfo extends Component {
               </p>
               <div>
                 <div className="formatHeading">
-                  <span>Test</span>
+                  <span id="test-heading">Test</span>
                 </div>
                 <div
                   className="pl-stats-details"
@@ -185,7 +178,7 @@ export class PlayerInfo extends Component {
                 </div>
 
                 <div className="formatHeading">
-                  <span>ODI</span>
+                  <span id="odi-heading">ODI</span>
                 </div>
                 <div
                   className="pl-stats-details"
@@ -211,7 +204,7 @@ export class PlayerInfo extends Component {
                 </div>
 
                 <div className="formatHeading">
-                  <span>T20</span>
+                  <span id="t20-heading">T20</span>
                 </div>
                 <div
                   className="pl-stats-details"
