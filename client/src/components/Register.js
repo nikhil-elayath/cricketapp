@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getUsers, createUsers } from "../actions/users.js";
+import { getUsers, createUsers } from "../actions/Users.js";
 import { connect } from "react-redux";
 import "./css/Login.css";
 
@@ -142,16 +142,16 @@ export class Register extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-                <span
-                  className="errorMessage"
-                  style={{
-                    color: "#c0392b",
-                    display: this.state.showError ? "block" : "none"
-                  }}
-                >
-                  {this.state.errorMessage}
-                </span>
-              )}
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
             </div>
 
             <button

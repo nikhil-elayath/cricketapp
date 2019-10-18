@@ -26,7 +26,16 @@ export class MatchLandingPage extends Component {
     };
     componentDidMount() {
         // calling the initial matches
+
+        console.log("from landing page", this.props.gender);
         this.props.getRecentMatches("2016-05-20");
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.gender !== this.props.gender) {
+            console.log("from receive props ", nextProps.gender, this.props.gender);
+            //   this.getTopPlayers( nextProps.gender);
+        }
     }
 
     render() {
@@ -65,7 +74,7 @@ export class MatchLandingPage extends Component {
                                                 No Matches</h2>
                                         ) : (<div className="all-matches-box">
                                             {this.props.matches.map(match => (
-                                                <div  id="pushing-match"className="each-matches-box" onClick={() => {
+                                                <div id="pushing-match" className="each-matches-box" onClick={() => {
                                                     this.props.history.push(
                                                         "/match/details/" + match.match_id,
                                                         {

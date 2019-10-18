@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getUsers, otpVerify, otpSend } from "../actions/users.js";
+import { getUsers, otpVerify, otpSend } from "../actions/Users.js";
 import { connect } from "react-redux";
 
 import "./css/Login.css";
@@ -168,16 +168,16 @@ export class ResetPassword extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-                <span
-                  className="errorMessage"
-                  style={{
-                    color: "#c0392b",
-                    display: this.state.showError ? "block" : "none"
-                  }}
-                >
-                  {this.state.errorMessage}
-                </span>
-              )}
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
             </div>
             {/* <button onChange={this.OnChange} onClick={this.onVerify}>
               Send OTP
@@ -203,16 +203,16 @@ export class ResetPassword extends Component {
                   {this.props.error ? (
                     <>{this.props.error}</>
                   ) : (
-                    <span
-                      className="errorMessage"
-                      style={{
-                        color: "#c0392b",
-                        display: this.state.showError ? "block" : "none"
-                      }}
-                    >
-                      {this.state.errorMessage}
-                    </span>
-                  )}
+                      <span
+                        className="errorMessage"
+                        style={{
+                          color: "#c0392b",
+                          display: this.state.showError ? "block" : "none"
+                        }}
+                      >
+                        {this.state.errorMessage}
+                      </span>
+                    )}
                 </div>
                 <button
                   className="formbutton"
@@ -223,14 +223,14 @@ export class ResetPassword extends Component {
                 </button>
               </>
             ) : (
-              <button
-                className="formbutton"
-                onChange={this.OnChange}
-                onClick={this.onVerify}
-              >
-                Send OTP
+                <button
+                  className="formbutton"
+                  onChange={this.OnChange}
+                  onClick={this.onVerify}
+                >
+                  Send OTP
               </button>
-            )}
+              )}
           </fieldset>
         </form>
       </div>
