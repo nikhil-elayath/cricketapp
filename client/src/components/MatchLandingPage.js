@@ -8,10 +8,10 @@ import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class MatchLandingPage extends Component {
-
-    // [Yatin] On selection of new date from the calender, 
-    // new date will be passed to the match api to check 
+    // [Yatin] On selection of new date from the calender,
+    // new date will be passed to the match api to check
     // if any matches were played on selected date
+
 
     onChange = (date) => {
         //[yatin] storing the selected date in date format
@@ -23,7 +23,7 @@ export class MatchLandingPage extends Component {
 
         //[yatin] passing the new selected date to the api
         this.props.getRecentMatches(datee);
-    }
+    };
     componentDidMount() {
         // calling the initial matches
         this.props.getRecentMatches("2016-05-20");

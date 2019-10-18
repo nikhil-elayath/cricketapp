@@ -24,7 +24,7 @@ const matches = [
 
 
 const wrapper = shallow(
-    <MatchLandingPage matches={matches} getRecentMatches={getRecentMatches} getMatchesDate={getMatchesDate} />
+    <MatchLandingPage matches={matches} history={[]} getRecentMatches={getRecentMatches} getMatchesDate={getMatchesDate} />
 );
 
 describe("Testing of MatchLandingPage Component", () => {
