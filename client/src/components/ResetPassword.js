@@ -19,7 +19,7 @@ export class ResetPassword extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (localStorage.getItem('token')) {
       this.props.history.push('/')
     }
@@ -131,7 +131,7 @@ export class ResetPassword extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
         <form id='msform'>
@@ -168,16 +168,16 @@ export class ResetPassword extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-                <span
-                  className='errorMessage'
-                  style={{
-                    color: '#c0392b',
-                    display: this.state.showError ? 'block' : 'none'
-                  }}
-                >
-                  {this.state.errorMessage}
-                </span>
-              )}
+                  <span
+                    className='errorMessage'
+                    style={{
+                      color: '#c0392b',
+                      display: this.state.showError ? 'block' : 'none'
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
             </div>
             {/* <button onChange={this.OnChange} onClick={this.onVerify}>
               Send OTP
@@ -203,16 +203,16 @@ export class ResetPassword extends Component {
                   {this.props.error ? (
                     <>{this.props.error}</>
                   ) : (
-                    <span
-                      className='errorMessage'
-                      style={{
-                        color: '#c0392b',
-                        display: this.state.showError ? 'block' : 'none'
-                      }}
-                    >
-                      {this.state.errorMessage}
-                    </span>
-                  )}
+                      <span
+                        className='errorMessage'
+                        style={{
+                          color: '#c0392b',
+                          display: this.state.showError ? 'block' : 'none'
+                        }}
+                      >
+                        {this.state.errorMessage}
+                      </span>
+                    )}
                 </div>
                 <button
                   className='formbutton'
@@ -223,14 +223,14 @@ export class ResetPassword extends Component {
                 </button>
               </>
             ) : (
-              <button
-                className='formbutton'
-                onChange={this.OnChange}
-                onClick={this.onVerify}
-              >
-                Send OTP
+                <button
+                  className='formbutton'
+                  onChange={this.OnChange}
+                  onClick={this.onVerify}
+                >
+                  Send OTP
               </button>
-            )}
+              )}
           </fieldset>
         </form>
       </div>

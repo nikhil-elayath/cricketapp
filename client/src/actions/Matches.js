@@ -1,11 +1,11 @@
 import {
-	GET_RECENT_MATCHES,
-	GET_MATCHES_DATE,
-	GET_MATCH_DETAILS_BY_ID,
-	GET_MATCH_SCORECARD_DETAILS_BY_ID,
-	GET_MANHATTAN_GRAPH_BY_ID,
-	GET_PIECHART_ONE_GRAPH_BY_ID,
-	GET_PIECHART_TWO_GRAPH_BY_ID
+  GET_RECENT_MATCHES,
+  GET_MATCHES_DATE,
+  GET_MATCH_DETAILS_BY_ID,
+  GET_MATCH_SCORECARD_DETAILS_BY_ID,
+  GET_MANHATTAN_GRAPH_BY_ID,
+  GET_PIECHART_ONE_GRAPH_BY_ID,
+  GET_PIECHART_TWO_GRAPH_BY_ID
 } from "./Types";
 import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
@@ -13,37 +13,37 @@ import axios from "axios";
 const url = "http://localhost:5000/api/matches";
 const url2 = "http://127.0.0.1:5000";
 
-export const getRecentMatches = date => dispatch => {
-	dispatch(startLoading());
-	return axios
-		.get(url + "/recent/" + date, {})
-		.then(res => {
-			dispatch(stopLoading());
-			dispatch({
-				type: GET_RECENT_MATCHES,
-				payload: res.data.data
-			});
-			console.log(res.data);
-		})
-		.catch(err => {
-			dispatch(startLoading());
-			console.log(err);
-		});
+export const getRecentMatches = (date, gender) => dispatch => {
+  dispatch(startLoading());
+  return axios
+    .get(url + "/recent/" + date + "/" + gender)
+    .then(res => {
+      dispatch(stopLoading());
+      dispatch({
+        type: GET_RECENT_MATCHES,
+        payload: res.data.data,
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      dispatch(startLoading());
+      console.log(err);
+    });
 };
 
 export const getMatchesDate = () => dispatch => {
-	return axios
-		.get(url + "/bydate", {})
-		.then(res => {
-			dispatch({
-				type: GET_MATCHES_DATE,
-				payload: res.data.data
-			});
-			console.log(res.data);
-		})
-		.catch(err => {
-			console.log(err);
-		});
+  return axios
+    .get(url + "/bydate")
+    .then(res => {
+      dispatch({
+        type: GET_MATCHES_DATE,
+        payload: res.data.data,
+      });
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
 };
 
 export const getmatchdetailbyId = id => dispatch => {
