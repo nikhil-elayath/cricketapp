@@ -9,6 +9,7 @@ import adminplayer from "./AdminPlayerReducer";
 import adminteam from "./AdminTeamReducer";
 import news from "./NewsReducer";
 import NewsReducer from "./NewsReducer";
+import LoadingReducer from "./LoadingReducer";
 
 export default combineReducers({
   userReducer: users,
@@ -21,6 +22,8 @@ export default combineReducers({
   //piyush
   AdminPlayerReducer: adminplayer,
   AdminTeamReducer: adminteam,
+  LoadingReducer,
+
   //nikhil
-  NewsReducer: news,
+  NewsReducer: news
 });

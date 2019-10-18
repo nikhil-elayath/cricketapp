@@ -1,139 +1,121 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
+<<<<<<< HEAD
 import ScrollMenu from "react-horizontal-scrolling-menu";
 // import Navbar from "../components/common/Navbar";
 import { getRecentMatches, getMatchesDate } from "../actions/matches.js";
 import { Menu, list, selected, ArrowLeft, ArrowRight } from "./Scroll";
 import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
+=======
+import Navbar from "../components/common/Navbar";
+import { getRecentMatches, getMatchesDate } from "../actions/Matches.js";
+import { Calendar } from '@y0c/react-datepicker';
+import '@y0c/react-datepicker/assets/styles/calendar.scss';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+>>>>>>> 263f5e90952de6e9b284f141e60be08b462d5a39
 
 export class MatchLandingPage extends Component {
-  state = {
-    selected: false,
-    list: []
-  };
-  componentWillReceiveProps(nextProps) {
-    const list = nextProps.date.map(date => {
-      return { match_date: date.match_date };
-    });
-    console.log(list);
-    this.setState({ menuItems: Menu(list, selected) });
-    this.setState({ list });
-  }
-  componentDidMount() {
-    function yyyymmdd() {
-      var now = new Date();
-      var y = now.getFullYear();
-      var m = now.getMonth() + 1;
-      var d = now.getDate();
-      var mm = m < 10 ? "0" + m : m;
-      var dd = d < 10 ? "0" + d : d;
-      return y + "-" + mm + "-" + dd;
+
+    // [Yatin] On selection of new date from the calender, 
+    // new date will be passed to the match api to check 
+    // if any matches were played on selected date
+
+    onChange = (date) => {
+        //[yatin] storing the selected date in date format
+        var date = date.toDate();
+
+        //[yatin] slicing the date in "yyyy-mm-dd" fromat
+        //  before passing it to the match api function
+        var datee = date.toJSON().slice(0, 10)
+
+        //[yatin] passing the new selected date to the api
+        this.props.getRecentMatches(datee);
     }
-    var date = yyyymmdd();
-    console.log(date);
-    this.props.getRecentMatches(date);
-    this.props.getMatchesDate();
-  }
+    componentDidMount() {
+        this.props.getRecentMatches("2016-05-20");
+    }
 
-  onSelect = key => {
-    this.setState({ selected: key });
-    this.props.getRecentMatches(key);
-  };
-  render() {
-    console.log(this.state);
-    const { selected } = this.state;
-    // Create menu from items
-    const menu = this.state.menuItems;
-
-    return (
-      <div>
-        {/* <Navbar /> */}
-
-        <div style={{ marginTop: "80px" }}>
-          <div>
-            <h1
-              className="h1-match"
-              style={{ textAlign: "left", margin: "20px" }}
-            >
-              Matches
-            </h1>
-          </div>
-          <div className="timeline" style={{ marginBottom: "50px" }}>
-            <ScrollMenu
-              data={menu}
-              arrowLeft={ArrowLeft}
-              arrowRight={ArrowRight}
-              selected={selected}
-              onSelect={this.onSelect}
-            />
-          </div>
-
-          <div>
-            {this.props.matches.length === 0 ? (
-              <h2
-                className="h1-match"
-                style={{ textAlign: "left", margin: "20px" }}
-              >
-                No Matches
-              </h2>
-            ) : (
-              <h2
-                className="h2-recent-matches"
-                style={{ textAlign: "left", margin: "20px" }}
-              >
-                Fixtures:
-              </h2>
-            )}
-          </div>
-          {this.props.matches.length > 0 ? (
-            <div className="all-recent-matches-box">
-              {console.log("props matches", this.props.matches)}
-              {this.props.matches.map(match => (
-                <div
-                  className="inside-recent-matches-box"
-                  onClick={() => {
-                    this.props.history.push(
-                      "/match/details/" + match.match_id,
-                      {
-                        match
-                      }
-                    );
-                  }}
-                >
-                  <span className="tournamnet-name">{match.match_type}</span>
-                  <div className="Team-data">
-                    <div className="TeamOne-name">{match.teamTwo}</div>
-                    <div className="TeamOne-score">
-                      {match.teamOneScore}/{match.teamone_wicket} (50 overs)
-                    </div>
-                  </div>
-                  <div className="Team-data">
-                    <div className="TeamTwo-name">{match.teamOne}</div>
-                    <div className="TeamTwo-score">
-                      {match.teamTwoScore}/{match.teamtwo_wicket} (50 overs)
-                    </div>
-                  </div>
-                  <span className="winner-name">{match.team_winner} won</span>
+    render() {
+        return (
+            <div>
+                <div>
+                    <Navbar />
                 </div>
-              ))}
-            </div>
-          ) : (
-            console.log("do nothing")
-          )}
-          {/* <Scroll date={this.props.date} /> */}
-        </div>
-      </div>
-    );
-  }
+
+                <div style={{ marginTop: "80px" }}>
+                    <div>
+                        <h1 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
+                            Matches</h1>
+                    </div>
+                </div>
+                <div>
+                    <div className="landing-container">
+                        <div className="calander">
+                            <Calendar onChange={this.onChange} />
+                        </div>
+                        {this.props.isLoading ? (
+                            <div style={{ margin: "auto" }}>
+                                <Loader
+                                    type="TailSpin"
+                                    color="#2980b9"
+                                    height="100"
+                                    width="100"
+                                />
+                            </div>
+                        ) : (
+                                < div >
+                                    {
+                                        this.props.matches.length === 0 ? (
+                                            <h2 className="h1-match" style={{ textAlign: "left", margin: "20px" }}>
+                                                No Matches </h2>
+                                        ) : (<div className="all-matches-box">
+                                            {this.props.matches.map(match => (
+                                                <div className="each-matches-box" onClick={() => {
+                                                    this.props.history.push(
+                                                        "/match/details/" + match.match_id,
+                                                        {
+                                                            match
+                                                        }
+                                                    );
+                                                }}>
+                                                    <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>{match.match_type}</span>
+                                                    <div className="Team-data" style={{ fontWeight: "400" }}>
+                                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamOne}</div>
+                                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                                            {match.teamOneScore}/{match.teamone_wicket} ({match.match_values})
+                                         </div>
+                                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamTwo}</div>
+                                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                                            {match.teamTwoScore}/{match.teamtwo_wicket} ({match.match_values})
+                                        </div>
+                                                    </div>
+                                                    <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >
+                                                        {match.team_winner} won
+                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>)
+                                    }
+                                </div>)}
+
+                    </div>
+                </div>
+
+
+            </div >
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  matches: state.matchreducer.matches,
-  date: state.matchreducer.match_date
+    matches: state.matchreducer.matches,
+    date: state.matchreducer.match_date,
+    isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
-  mapStateToProps,
-  { getRecentMatches, getMatchesDate }
+    mapStateToProps,
+    { getRecentMatches, getMatchesDate }
 )(MatchLandingPage);

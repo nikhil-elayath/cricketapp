@@ -13,6 +13,9 @@ import "./css/Adminpage.css";
 import SweetAlert from "sweetalert-react";
 import "sweetalert/dist/sweetalert.css";
 
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+
 export class AdminTeamPage extends Component {
   componentDidMount() {
     if (!localStorage.getItem("token")) {
@@ -75,27 +78,34 @@ export class AdminTeamPage extends Component {
       <div>
         {/* <NavBar /> */}
         <div className="player-page">
-          <div className="players">
-            <div className="inner-heading">
-              <div>
-                <h1>All Team</h1>
-              </div>
-              <div>
-                {" "}
-                <input
-                  type="text"
-                  name="Search"
-                  margin="normal"
-                  placeholder="Search"
-                  onChange={this.onSearchInputChange}
-                />
-              </div>
+          {this.props.isLoading ? (
+            <div style={{ margin: "auto" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
             </div>
-            <div className="player-list">
-              {this.props.team.length === 0 ? (
-                <div className="loader"></div>
-              ) : (
-                this.props.team.map(teams => (
+          ) : (
+            <div className="players">
+              <div className="inner-heading">
+                <div>
+                  <h1>All Team</h1>
+                </div>
+                <div>
+                  {" "}
+                  <input
+                    type="text"
+                    name="Search"
+                    margin="normal"
+                    placeholder="Search"
+                    onChange={this.onSearchInputChange}
+                  />
+                </div>
+              </div>
+              <div className="player-list">
+                {this.props.team.map(teams => (
                   <div className="player-name">
                     <p>{teams.team_name}</p>
                     <div className="inner-button">
@@ -149,10 +159,10 @@ export class AdminTeamPage extends Component {
                       </div>
                     </div>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
 
           <div id="Adminform">
             <fieldset>
@@ -203,7 +213,8 @@ export class AdminTeamPage extends Component {
 
 const mapStateToProps = state => ({
   team: state.AdminTeamReducer.team,
-  error: state.AdminTeamReducer.error
+  error: state.AdminTeamReducer.error,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(

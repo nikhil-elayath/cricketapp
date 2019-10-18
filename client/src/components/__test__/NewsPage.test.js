@@ -14,22 +14,23 @@ const news = [
     news_id: 1,
     news_content: "news content",
     news_title: "this is title",
-    news_date: "12-12-12"
-  }
+    news_date: "12-12-12",
+  },
 ];
 let home = [
   {
     news_id: 1,
     news_content: "Recent news content",
     news_title: "Recent news title",
-    news_date: "12-12-12"
-  }
+    news_date: "12-12-12",
+  },
 ];
 
 const wrapper = shallow(
   <NewsPage
     // news reducer which contains dummy data
     news={news}
+    //FOR THIS.PROPS.HISTORY IS UNDEFINED
     history={[]}
     // home reducer which contains dummy data
     home={home}
