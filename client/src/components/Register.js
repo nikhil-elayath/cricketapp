@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 import './css/Login.css'
 
 export class Register extends Component {
-  // constructor(props) {
-  // 	super(props);
-  // 	this.onRegister = this.onRegister.bind(this);
-  // }
+	// constructor(props) {
+	// 	super(props);
+	// 	this.onRegister = this.onRegister.bind(this);
+	// }
 
-  // componentDidMount() {
-  //   this.props.getUsers();
-  // }
+	// componentDidMount() {
+	//   this.props.getUsers();
+	// }
 
   componentDidMount () {
     // if (localStorage.getItem("token")) {

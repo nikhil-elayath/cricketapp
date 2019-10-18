@@ -8,10 +8,10 @@ import { Link } from 'react-router-dom'
 import './css/Login.css'
 
 export class Login extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.onLogin = this.onLogin.bind(this);
-  // }
+	// constructor(props) {
+	//   super(props);
+	//   this.onLogin = this.onLogin.bind(this);
+	// }
 
   state = {
     user_email: '',

@@ -40,66 +40,73 @@ import MatchDetails from "./components/MatchDetails";
 // ankit
 import Navbar from "./components/common/Navbar";
 export default class App extends Component {
-  state = {
-    gender: "male"
-  };
-  changeGender = gender_type => {
-    gender_type == "male"
-      ? this.setState({ gender: "male" })
-      : this.setState({ gender: "female" });
-  };
-  render() {
-    return (
-      <Router>
-        <Navbar
-          changeGender={getGender => this.changeGender(getGender)}
-          gender={this.state.gender}
-        />
-        {console.log("gender", this.state.gender)}
-        {/* //piyush */}
-        <Route exact path="/adminplayer" component={AdminPlayer}></Route>
-        <Route exact path="/adminteam" component={AdminTeam}></Route>
-        <Route
-          exact
-          path="/admineditplayer/:player_id"
-          component={AdminEditPlayer}
-        ></Route>
-        <Route
-          exact
-          path="/admineditteam/:team_id"
-          component={AdminEditTeam}
-        ></Route>
-        <Route path="/login" exact component={Login} />
-        <Route path="/register" exact component={Register} />
-        <Route path="/resetPassword" exact component={ResetPassword} />
+	state = {
+		gender: "male"
+	};
+	changeGender = gender_type => {
+		gender_type == "male"
+			? this.setState({ gender: "male" })
+			: this.setState({ gender: "female" });
+	};
+	render() {
+		return (
+			<Router>
+				<Navbar
+					changeGender={getGender => this.changeGender(getGender)}
+					gender={this.state.gender}
+				/>
+				{console.log("gender", this.state.gender)}
+				{/* //piyush */}
+				<Route
+					exact
+					path="/adminplayer"
+					component={AdminPlayer}
+				></Route>
+				<Route exact path="/adminteam" component={AdminTeam}></Route>
+				<Route
+					exact
+					path="/admineditplayer/:player_id"
+					component={AdminEditPlayer}
+				></Route>
+				<Route
+					exact
+					path="/admineditteam/:team_id"
+					component={AdminEditTeam}
+				></Route>
+				<Route path="/login" exact component={Login} />
+				<Route path="/register" exact component={Register} />
+				<Route path="/resetPassword" exact component={ResetPassword} />
 
-        {/* //ashfi */}
-        <Route
-          exact
-          path="/players"
-          //   component={PlayerLandingPage}
-          component={props => (
-            <PlayerLandingPage {...props} gender={this.state.gender} />
-          )}
-        ></Route>
-        <Route
-          exact
-          path="/playerInfo/:player_id"
-          component={PlayerInfo}
-          gender={this.state.gender}
-        ></Route>
-        <Route
-          exact
-          path="/batting-stats"
-          component={BattingStats}
-          gender={this.state.gender}
-        ></Route>
-        <Route
-          exact
-          path="/bowling-stats"
-          component={BowlingStats}
-          gender={this.state.gender}
-        ></Route>
+				{/* //ashfi */}
+				<Route
+					exact
+					path="/players"
+					//   component={PlayerLandingPage}
+					component={props => (
+						<PlayerLandingPage
+							{...props}
+							gender={this.state.gender}
+						/>
+					)}
+				></Route>
+				<Route
+					exact
+					path="/playerInfo/:player_id"
+					component={PlayerInfo}
+					gender={this.state.gender}
+				></Route>
+				<Route
+					exact
+					path="/batting-stats"
+					component={BattingStats}
+					gender={this.state.gender}
+				></Route>
+				<Route
+					exact
+					path="/bowling-stats"
+					component={BowlingStats}
+					gender={this.state.gender}
+				></Route>
 
         <Route exact path="/match/details/:id" component={MatchDetails}></Route>
         <Route

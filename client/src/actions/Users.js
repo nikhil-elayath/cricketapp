@@ -45,7 +45,7 @@ export const createUsers = users => dispatch => {
 }
 
 export const login = (users, history) => dispatch => {
-  return axios
+	return axios
 
     .post('http://localhost:5000/api/cricketalpha/user/login', users)
     .then(res => {
