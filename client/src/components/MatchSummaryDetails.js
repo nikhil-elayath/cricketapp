@@ -10,8 +10,6 @@ export class MatchSummaryDetails extends Component {
     this.props.getmatchdetailbyId(this.props.match_id);
   }
   render() {
-    console.log("Match Summary", this.props);
-    console.log("Loader", this.props.isLoading);
     return (
       <div>
         {this.props.isLoading ? (
@@ -24,7 +22,7 @@ export class MatchSummaryDetails extends Component {
             />
           </div>
         ) : (
-            <div style={{ marginTop: 200 + "px" }}>
+            <div style={{ marginTop: 150 + "px" }}>
               {this.props.match.map(match => (
                 <div className="top-container" style={{ height: "700px" }}>
                   <div className="top-left-container">
