@@ -9,10 +9,122 @@ exports[`Testing for home component should render the component 1`] = `
   >
     <div
       className="div-news-section"
-    />
-    <div
-      className="div-second-section"
     >
+      <Link
+        className="link-news"
+        to={
+          Object {
+            "pathname": "/newsbyid/1",
+          }
+        }
+      >
+        <div
+          className="div-news"
+        >
+          <div
+            className="div-news-images"
+            style={
+              Object {
+                "backgroundImage": "url(vk.jpeg)",
+              }
+            }
+          />
+          <div
+            className="div-news-details"
+          >
+            <p
+              className="p-news"
+              id="p-news"
+            >
+              <b>
+                this is title
+              </b>
+            </p>
+            <p
+              className="home-news-date"
+              id="home-news-date"
+            >
+              12-12-12
+               
+            </p>
+          </div>
+        </div>
+      </Link>
+    </div>
+    <div
+      id="div-second-section"
+    >
+      <div
+        id="home-recent-matches"
+      >
+        <div
+          id="home-recent-matches-title"
+        >
+          Recent Matches
+        </div>
+        <Link
+          id="link-recent-matches"
+          to={
+            Object {
+              "pathname": "/match/details/1",
+            }
+          }
+        >
+          <div
+            id="home-match"
+          >
+            <div
+              id="team-score"
+            >
+              <p
+                id="home-recent-matches-teamOne"
+              >
+                India
+              </p>
+              <p
+                id="home-recent-matches-team-one-score"
+              >
+                120
+                /
+              </p>
+            </div>
+            <div
+              id="team-score"
+            >
+              <p
+                id="home-recent-matches-teamTwo"
+              >
+                Pakistan
+                 
+              </p>
+              <p
+                id="home-recent-matches-team-two-score"
+              >
+                150
+                /
+                 
+                 
+              </p>
+            </div>
+            <div
+              id="home-recent-matches-result"
+            >
+              <p
+                id="home-recent-matches-team-winner"
+              >
+                Pakistan
+                 
+                 
+              </p>
+            </div>
+            <div
+              id="home-recent-match-date"
+            >
+              12-12-12
+            </div>
+          </div>
+        </Link>
+      </div>
       <Connect(MostWins) />
     </div>
   </div>
