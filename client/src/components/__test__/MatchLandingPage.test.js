@@ -90,4 +90,14 @@ describe("Testing of MatchLandingPage Component", () => {
         })
     })
 
+    it("should test function ComponentDidMount is called ", () => {
+        const componentDidMount = jest.spyOn(
+            MatchLandingPage.prototype,
+            "componentDidMount"
+        );
+        wrapper.instance().componentDidMount();
+        expect(componentDidMount).toHaveBeenCalled();
+
+    });
+
 });
