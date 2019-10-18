@@ -17,8 +17,7 @@ const initialstate = {
   batsmen: [],
   bowlers: [],
   fixtures: [],
-  highesttotals: [],
-  lowesttotals: []
+  teamstats: []
 };
 
 export default function(state = initialstate, action) {
@@ -47,12 +46,12 @@ export default function(state = initialstate, action) {
     case GET_HIGHEST_TOTALS:
       return {
         ...state,
-        highesttotals: action.payload
+        teamstats: action.payload
       };
     case GET_LOWEST_TOTALS:
       return {
         ...state,
-        lowesttotals: action.payload
+        teamstats: action.payload
       };
     case GET_TEAM_SEARCH:
       return { ...state, teams: action.payload };

@@ -35,10 +35,15 @@ export class PlayerBowlingStats extends Component {
       <div className="ball-main">
         <div className="bowling-main-div">
           <div className="bowling-Test-div">
-            <h3 id="bowling-format-heading">Test</h3>
+            <h3 className="bowling-format-heading" id="jest-Test-heading">
+              Test
+            </h3>
             <div className="bowling-stats-info-parent-div">
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-Matches"
+                >
                   {this.props.testBowlerStats["0"].Matches
                     ? this.props.testBowlerStats["0"].Matches.length === 0
                       ? "-"
@@ -46,10 +51,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Matches</span>
+                <span className="ball-stat-span-2">Matches</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1" className="jest-Innings">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-Innings"
+                >
                   {this.props.testBowlerStats["0"].Innings
                     ? this.props.testBowlerStats["0"].Innings.length === 0
                       ? "-"
@@ -57,10 +65,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Innings</span>
+                <span className="ball-stat-span-2">Innings</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-RunsConceded"
+                >
                   {this.props.testBowlerStats["0"].RunsConceded
                     ? this.props.testBowlerStats["0"].RunsConceded.length === 0
                       ? "-"
@@ -68,10 +79,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Runs Conceded</span>
+                <span className="ball-stat-span-2">Runs Conceded</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-BallsBowled"
+                >
                   {this.props.testBowlerStats["0"].BallsBowled
                     ? this.props.testBowlerStats["0"].BallsBowled.length === 0
                       ? "-"
@@ -79,7 +93,7 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Balls bowled</span>
+                <span className="ball-stat-span-2">Balls bowled</span>
               </div>
             </div>
             <div
@@ -87,7 +101,10 @@ export class PlayerBowlingStats extends Component {
               style={{ borderBottom: "none" }}
             >
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-TotalWickets"
+                >
                   {this.props.testBowlerStats["0"].TotalWIckets
                     ? this.props.testBowlerStats["0"].TotalWIckets.length === 0
                       ? "-"
@@ -95,10 +112,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Wickets</span>
+                <span className="ball-stat-span-2">Wickets</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-EconomyRate"
+                >
                   {this.props.testBowlerStats["0"].EconomyRate
                     ? this.props.testBowlerStats["0"].EconomyRate.length === 0
                       ? "-"
@@ -106,14 +126,17 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Economy rate</span>
+                <span className="ball-stat-span-2">Economy rate</span>
               </div>
               {/* <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">30.54</span>
-                <span id="ball-stat-span-2">Strike Rate</span>
+                <span className="ball-stat-span-1">30.54</span>
+                <span className="ball-stat-span-2">Strike Rate</span>
               </div> */}
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-FourWickets"
+                >
                   {this.props.testBowlerStats["0"].FourWickets
                     ? this.props.testBowlerStats["0"].FourWickets.length === 0
                       ? "-"
@@ -121,10 +144,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">4 wickets</span>
+                <span className="ball-stat-span-2">4 wickets</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-Test-Format-FiveWickets"
+                >
                   {this.props.testBowlerStats["0"].FiveWickets
                     ? this.props.testBowlerStats["0"].FiveWickets.length === 0
                       ? "-"
@@ -132,15 +158,17 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">5 wickets</span>
+                <span className="ball-stat-span-2">5 wickets</span>
               </div>
             </div>
           </div>
           <div className="bowling-Odi-div">
-            <h3 id="bowling-format-heading">ODI</h3>
+            <h3 className="bowling-format-heading" id="jest-ODI-heading">
+              ODI
+            </h3>
             <div className="bowling-stats-info-parent-div">
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1" id="jest-odi-Format-Matches">
                   {" "}
                   {this.props.odiBowlerStats["0"].Matches
                     ? this.props.odiBowlerStats["0"].Matches.length === 0
@@ -149,10 +177,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Matches</span>
+                <span className="ball-stat-span-2">Matches</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1" id="jest-odi-Format-Innings">
                   {this.props.odiBowlerStats["0"].Innings
                     ? this.props.odiBowlerStats["0"].Innings.length === 0
                       ? "-"
@@ -160,10 +188,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Innings</span>
+                <span className="ball-stat-span-2">Innings</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-RunsConceded"
+                >
                   {this.props.odiBowlerStats["0"].RunsConceded
                     ? this.props.odiBowlerStats["0"].RunsConceded.length === 0
                       ? "-"
@@ -171,10 +202,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Runs Conceded</span>
+                <span className="ball-stat-span-2">Runs Conceded</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-BallsBowled"
+                >
                   {this.props.odiBowlerStats["0"].BallsBowled
                     ? this.props.odiBowlerStats["0"].BallsBowled.length === 0
                       ? "-"
@@ -182,11 +216,11 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Balls bowled</span>
+                <span className="ball-stat-span-2">Balls bowled</span>
               </div>
               {/* <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">123.4</span>
-                <span id="ball-stat-span-2">Economy rate</span>
+                <span className="ball-stat-span-1">123.4</span>
+                <span className="ball-stat-span-2">Economy rate</span>
               </div> */}
             </div>
             <div
@@ -194,7 +228,10 @@ export class PlayerBowlingStats extends Component {
               style={{ borderBottom: "none" }}
             >
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-TotalWickets"
+                >
                   {this.props.odiBowlerStats["0"].TotalWIckets
                     ? this.props.odiBowlerStats["0"].TotalWIckets.length === 0
                       ? "-"
@@ -202,10 +239,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Wickets</span>
+                <span className="ball-stat-span-2">Wickets</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-EconomyRate"
+                >
                   {this.props.odiBowlerStats["0"].EconomyRate
                     ? this.props.odiBowlerStats["0"].EconomyRate.length === 0
                       ? "-"
@@ -213,14 +253,17 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Economy rate</span>
+                <span className="ball-stat-span-2">Economy rate</span>
               </div>
               {/* <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">30.54</span>
-                <span id="ball-stat-span-2">Strike Rate</span>
+                <span className="ball-stat-span-1">30.54</span>
+                <span className="ball-stat-span-2">Strike Rate</span>
               </div> */}
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-FourWickets"
+                >
                   {this.props.odiBowlerStats["0"].FourWickets
                     ? this.props.odiBowlerStats["0"].FourWickets.length === 0
                       ? "-"
@@ -228,10 +271,13 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">4 wickets</span>
+                <span className="ball-stat-span-2">4 wickets</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span
+                  className="ball-stat-span-1"
+                  id="jest-odi-Format-FiveWickets"
+                >
                   {this.props.odiBowlerStats["0"].FiveWickets
                     ? this.props.odiBowlerStats["0"].FiveWickets.length === 0
                       ? "-"
@@ -239,15 +285,17 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">5 wickets</span>
+                <span className="ball-stat-span-2">5 wickets</span>
               </div>
             </div>
           </div>
           <div className="bowling-T20-div">
-            <h3 id="bowling-format-heading">T20</h3>
+            <h3 className="bowling-format-heading" id="jest-T20-heading">
+              T20
+            </h3>
             <div className="bowling-stats-info-parent-div">
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].Matches
                     ? this.props.t20BowlerStats["0"].Matches.length === 0
                       ? "-"
@@ -255,10 +303,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Matches</span>
+                <span className="ball-stat-span-2">Matches</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].Innings
                     ? this.props.t20BowlerStats["0"].Innings.length === 0
                       ? "-"
@@ -266,10 +314,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Innings</span>
+                <span className="ball-stat-span-2">Innings</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].RunsConceded
                     ? this.props.t20BowlerStats["0"].RunsConceded.length === 0
                       ? "-"
@@ -277,10 +325,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Runs Conceded</span>
+                <span className="ball-stat-span-2">Runs Conceded</span>
               </div>
               <div className="bowling-stats-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].BallsBowled
                     ? this.props.t20BowlerStats["0"].BallsBowled.length === 0
                       ? "-"
@@ -288,7 +336,7 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Balls bowled</span>
+                <span className="ball-stat-span-2">Balls bowled</span>
               </div>
             </div>
             <div
@@ -296,7 +344,7 @@ export class PlayerBowlingStats extends Component {
               style={{ borderBottom: "none" }}
             >
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].TotalWIckets
                     ? this.props.t20BowlerStats["0"].TotalWIckets.length === 0
                       ? "-"
@@ -304,11 +352,11 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Wickets</span>
+                <span className="ball-stat-span-2">Wickets</span>
               </div>
 
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].EconomyRate
                     ? this.props.t20BowlerStats["0"].EconomyRate.length === 0
                       ? "-"
@@ -316,10 +364,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">Economy rate</span>
+                <span className="ball-stat-span-2">Economy rate</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].FourWickets
                     ? this.props.t20BowlerStats["0"].FourWickets.length === 0
                       ? "-"
@@ -327,10 +375,10 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">4 wickets</span>
+                <span className="ball-stat-span-2">4 wickets</span>
               </div>
               <div className="bowling-stats-bottom-info-div">
-                <span id="ball-stat-span-1">
+                <span className="ball-stat-span-1">
                   {this.props.t20BowlerStats["0"].FiveWickets
                     ? this.props.t20BowlerStats["0"].FiveWickets.length === 0
                       ? "-"
@@ -338,7 +386,7 @@ export class PlayerBowlingStats extends Component {
                           .player_stats_value
                     : console.log("not found")}
                 </span>
-                <span id="ball-stat-span-2">5 wickets</span>
+                <span className="ball-stat-span-2">5 wickets</span>
               </div>
             </div>
           </div>

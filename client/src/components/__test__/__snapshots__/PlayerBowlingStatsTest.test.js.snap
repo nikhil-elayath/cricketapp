@@ -11,7 +11,8 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
       className="bowling-Test-div"
     >
       <h3
-        id="bowling-format-heading"
+        className="bowling-format-heading"
+        id="jest-Test-heading"
       >
         Test
       </h3>
@@ -22,10 +23,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-Matches"
+          >
+            42
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Matches
           </span>
@@ -34,13 +38,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            className="jest-Innings"
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
+            id="jest-Test-Format-Innings"
           >
             34
           </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Innings
           </span>
@@ -49,10 +53,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-RunsConceded"
+          >
+            2000
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Runs Conceded
           </span>
@@ -61,10 +68,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-BallsBowled"
+          >
+            1500
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Balls bowled
           </span>
@@ -82,10 +92,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-TotalWickets"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Wickets
           </span>
@@ -94,10 +107,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-EconomyRate"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Economy rate
           </span>
@@ -106,10 +122,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-FourWickets"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             4 wickets
           </span>
@@ -118,10 +137,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-Test-Format-FiveWickets"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             5 wickets
           </span>
@@ -132,7 +154,8 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
       className="bowling-Odi-div"
     >
       <h3
-        id="bowling-format-heading"
+        className="bowling-format-heading"
+        id="jest-ODI-heading"
       >
         ODI
       </h3>
@@ -143,12 +166,14 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
+            id="jest-odi-Format-Matches"
           >
              
+            -
           </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Matches
           </span>
@@ -157,10 +182,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-Innings"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Innings
           </span>
@@ -169,10 +197,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-RunsConceded"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Runs Conceded
           </span>
@@ -181,10 +212,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-BallsBowled"
+          >
+            -
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Balls bowled
           </span>
@@ -202,10 +236,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-TotalWickets"
+          >
+            90
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Wickets
           </span>
@@ -214,10 +251,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-EconomyRate"
+          >
+            6.4
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Economy rate
           </span>
@@ -226,10 +266,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-FourWickets"
+          >
+            2
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             4 wickets
           </span>
@@ -238,10 +281,13 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
-          />
+            className="ball-stat-span-1"
+            id="jest-odi-Format-FiveWickets"
+          >
+            0
+          </span>
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             5 wickets
           </span>
@@ -252,7 +298,8 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
       className="bowling-T20-div"
     >
       <h3
-        id="bowling-format-heading"
+        className="bowling-format-heading"
+        id="jest-T20-heading"
       >
         T20
       </h3>
@@ -263,10 +310,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Matches
           </span>
@@ -275,10 +322,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Innings
           </span>
@@ -287,10 +334,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Runs Conceded
           </span>
@@ -299,10 +346,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Balls bowled
           </span>
@@ -320,10 +367,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Wickets
           </span>
@@ -332,10 +379,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             Economy rate
           </span>
@@ -344,10 +391,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             4 wickets
           </span>
@@ -356,10 +403,10 @@ exports[`Testing player Bowling stats  should render the componendt 1`] = `
           className="bowling-stats-bottom-info-div"
         >
           <span
-            id="ball-stat-span-1"
+            className="ball-stat-span-1"
           />
           <span
-            id="ball-stat-span-2"
+            className="ball-stat-span-2"
           >
             5 wickets
           </span>

@@ -2,7 +2,6 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
-  <Connect(Navbar) />
   <form
     id="msform"
   >
@@ -38,16 +37,26 @@ exports[`test  Component render the component 1`] = `
         type="password"
         value=""
       />
-      <span
+      <div
         className="errorMessage"
         style={
           Object {
             "color": "#c0392b",
-            "display": "none",
           }
         }
-      />
+      >
+        <span
+          className="errorMessage"
+          style={
+            Object {
+              "color": "#c0392b",
+              "display": "none",
+            }
+          }
+        />
+      </div>
       <button
+        className="formbutton"
         onChange={[Function]}
         onClick={[Function]}
       >
