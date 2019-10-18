@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
-// import MatchSecondaryNavbar from './common/MatchSecondaryNavbar'
-import { getmatchdetailbyId, getRecentMatches } from "../actions/Matches.js";
+import { getmatchdetailbyId } from "../actions/Matches.js";
 import { connect } from "react-redux";
 import "./css/MatchSummaryDetails.css";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class MatchSummaryDetails extends Component {
   componentDidMount() {
@@ -11,13 +11,21 @@ export class MatchSummaryDetails extends Component {
   }
   render() {
     console.log("Match Summary", this.props);
+    console.log("Loader", this.props.isLoading);
     return (
       <div>
-        <div style={{ marginTop: 200 + "px" }}>
-          {this.props.match.length == 0 ? (
-            <div className="matchsummaryloader"></div>
-          ) : (
-              this.props.match.map(match => (
+        {this.props.isLoading ? (
+          <div style={{ margin: "400px" }}>
+            <Loader
+              type="TailSpin"
+              color="#2980b9"
+              height="100"
+              width="100"
+            />
+          </div>
+        ) : (
+            <div style={{ marginTop: 200 + "px" }}>
+              {this.props.match.map(match => (
                 <div className="top-container" style={{ height: "700px" }}>
                   <div className="top-left-container">
                     <div className="top-title">Summary Scorecard</div>
@@ -170,18 +178,19 @@ export class MatchSummaryDetails extends Component {
                   </div>
                 </div>
               ))
-            )}
-        </div>
+              }
+            </div>)}
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  match: state.matchreducer.match
+  match: state.matchreducer.match,
+  isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
   mapStateToProps,
-  { getmatchdetailbyId, getRecentMatches }
+  { getmatchdetailbyId }
 )(MatchSummaryDetails);

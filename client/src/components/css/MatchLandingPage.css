@@ -5,67 +5,28 @@ body{
     color: #272727;
 }
 
-.matchlandingpageloader {
-	border: 16px solid #f3f3f3;
-	border-radius: 50%;
-	border-top: 16px solid #2980b9;
-	border-bottom: 16px solid #2980b9;
-	width: 120px;
-	height: 120px;
-	-webkit-animation: spin 2s linear infinite;
-	animation: spin 2s linear infinite;
-	display: flex;
-	/* justify-content: center; */
-	margin-left: 135%;
-	margin-top: 40%;
-}
-
-@-webkit-keyframes spin {
-	0% {
-		-webkit-transform: rotate(0deg);
-	}
-	100% {
-		-webkit-transform: rotate(360deg);
-	}
-}
-
-@keyframes spin {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
-}
-
-/* .timeline{
-    width: 90%;
-    height: 80px;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 8px;
-    margin: 15px;
-} */
-
 .landing-container{
     display: grid;
-    grid-template-columns: 20% 78%;
-    grid-gap: 1%;
+    grid-template-columns: 1fr 5fr;
+    grid-gap: 2px;
 }
-.landing-container .calander{
-    margin: 1%;
+.landing-container .calendar-container{
+    margin: 5px;
     border-radius: 5px;
     height: fit-content;
     
 }
+.calendar-container .calender-datepicker{
+        display: none;
+    }
 .landing-container .all-matches-box{
     height: fit-content;
-    margin: 1%;
+    margin: 5px;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 32% 32% 32%;
-    grid-gap: 2%;
-    row-gap: 5%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    row-gap: 30px;
     }
 .landing-container .all-matches-box > div{
     padding: 1%;
@@ -74,6 +35,7 @@ body{
     
 }
 .all-matches-box .each-matches-box{
+    padding: 15px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -93,4 +55,53 @@ body{
 
 .Team-data > div{
     word-break: break-word;
+}
+
+
+@media screen and (max-width: 768px) {
+    .calendar-container .calender-datepicker{
+        display: block;
+    }
+    
+.calendar-container .calendar-fixed{
+        display: none;
+    }
+
+.landing-container{
+        grid-template-columns: 1fr;
+}
+.landing-container .calendar-container{
+    margin: 5px;
+    border-radius: 5px;
+    height: fit-content;  
+}
+.landing-container .all-matches-box{
+    margin: 20px;
+    grid-template-columns: 1fr 1fr;
+}
+
+}
+
+@media screen and (max-width: 576px) {
+    .calendar-container .calender-datepicker{
+        display: block;
+    }
+    
+.calendar-container .calendar-fixed{
+        display: none;
+    }
+
+.landing-container{
+        grid-template-columns: 1fr;
+}
+.landing-container .calendar-container{
+    margin: 5px;
+    border-radius: 5px;
+    height: fit-content;  
+}
+.landing-container .all-matches-box{
+    margin: 20px;
+    grid-template-columns: 1fr;
+}
+
 }
