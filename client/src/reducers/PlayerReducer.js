@@ -19,12 +19,12 @@ const initialState = {
   batsmen: [],
   bowlers: [],
   topSixes: [],
-  batsmanStats: [[{}]],
-  odiBatsmanStats: [[{}]],
-  t20BatsmanStats: [[{}]],
+  batsmanStats: [[]],
+  odiBatsmanStats: [[]],
+  t20BatsmanStats: [[]],
   odiBowlerStats: [[]],
-  t20BowlerStats: [[{}]],
-  testBowlerStats: [[{}]],
+  t20BowlerStats: [[]],
+  testBowlerStats: [[]],
   bowlers: []
 };
 

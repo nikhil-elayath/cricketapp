@@ -74,88 +74,86 @@ export class Login extends Component {
 		}
 	};
 
-	render() {
-		return (
-			<div>
-				{/* <Navbar /> */}
-				<form id="msform">
-					<fieldset>
-						<h1>Login</h1>
-						<input
-							type="text"
-							name="user_email"
-							placeholder="Enter Email"
-							onChange={this.OnChange}
-							value={this.state.user_email}
-						/>
-						<input
-							type="password"
-							name="user_password"
-							placeholder="Enter Password"
-							onChange={this.OnChange}
-							value={this.state.user_password}
-						/>
-						<div
-							className="errorMessage"
-							style={{
-								color: "#c0392b"
-							}}
-						>
-							{/*dispatch error from node*/}
-							{this.props.error ? (
-								<>{this.props.error}</>
-							) : (
-								<span
-									className="errorMessage"
-									style={{
-										color: "#c0392b",
-										display: this.state.showError
-											? "block"
-											: "none"
-									}}
-								>
-									{this.state.errorMessage}
-								</span>
-							)}
-						</div>
-						<p>
-							<Link className="link" to="/resetPassword">
-								<span
-									style={{
-										color: "#2980b9",
-										fontWeight: "bold"
-									}}
-								>
-									Forgot Password ?
-								</span>
-							</Link>
-						</p>
-						{/* // {this.props.user?<p></p>:null */}
-						<button
-							className="formbutton"
-							onChange={this.onChange}
-							onClick={this.onLogin}
-						>
-							Login
-						</button>
-						<p>
-							Not a User ?{" "}
-							<Link className="link" to="/register">
-								<span
-									style={{
-										color: "#2980b9",
-										fontWeight: "bold"
-									}}
-								>
-									Register Now
-								</span>
-							</Link>
-						</p>
-					</fieldset>
-				</form>
-			</div>
-		);
-	}
+  render() {
+    return (
+      <div>
+        {/* <Navbar /> */}
+        <form id="msform">
+          <fieldset>
+            <h1>Login</h1>
+            <input
+              type="text"
+              name="user_email"
+              placeholder="Enter Email"
+              onChange={this.OnChange}
+              value={this.state.user_email}
+            />
+            <input
+              type="password"
+              name="user_password"
+              placeholder="Enter Password"
+              onChange={this.OnChange}
+              value={this.state.user_password}
+            />
+            <div
+              className="errorMessage"
+              style={{
+                color: "#c0392b"
+              }}
+            >
+              {/*dispatch error from node*/}
+              {this.props.error ? (
+                <>{this.props.error}</>
+              ) : (
+                  <span
+                    className="errorMessage"
+                    style={{
+                      color: "#c0392b",
+                      display: this.state.showError ? "block" : "none"
+                    }}
+                  >
+                    {this.state.errorMessage}
+                  </span>
+                )}
+            </div>
+            <p>
+              <Link className="link" to="/resetPassword">
+                <span
+                  style={{
+                    color: "#2980b9",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Forgot Password ?
+                </span>
+              </Link>
+            </p>
+            {/* // {this.props.user?<p></p>:null */}
+            <button
+              className="formbutton"
+              onChange={this.onChange}
+              onClick={this.onLogin}
+            >
+              Login
+            </button>
+            <p>
+              Not a User ?{" "}
+              <Link className="link" to="/register">
+                <span
+                  style={{
+                    color: "#2980b9",
+                    fontWeight: "bold"
+                  }}
+                >
+                  Register Now
+                </span>
+              </Link>
+            </p>
+          </fieldset>
+        </form>
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({

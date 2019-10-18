@@ -17,10 +17,11 @@ router.get('/recent/:date', async (req, res, next) => {
         for (match of dateOfMatch) {
 
             let match_id = match.match_id
+            console.log(match_id)
 
             // match_id, team_one_name,  team_two_name, match_winner_name, won_by, match_type, player_of_the match
 
-            const match_detail = await db.any(`with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
+            const match_detail = await db.any(`with m as (with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
                 m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name 
                 from match as m 
                 inner join team as t on t.team_id=m.innings_one_team where match_id=${match_id}),
@@ -33,7 +34,27 @@ router.get('/recent/:date', async (req, res, next) => {
                 where team_id in(select winner from ss))
                 select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
                 winner,match_winner,won_by, match_type, player_of_the_match 
-                from pss inner join ss on ss.winner=pss.team_id`);
+                from pss inner join ss on ss.winner=pss.team_id),
+                k as(select match_type as match_typee, match_values from match_type 
+                where match_type in(select match_type from m))
+                select match_id, innings_one_team, match_values,team_one_name, innings_two_team,team_two_name, 
+                winner,match_winner,won_by, match_type, player_of_the_match 
+                from k inner join m on m.match_type=k.match_typee`);
+
+            // const match_detail = await db.any(`with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
+            //     m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name 
+            //     from match as m 
+            //     inner join team as t on t.team_id=m.innings_one_team where match_id=${match_id}),
+            //     ps as( select team_id,team_name as team_two_name from team
+            //     where team_id in(select innings_two_team from s))
+            //     select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
+            //     winner,won_by, match_type, player_of_the_match 
+            //     from ps inner join s on s.innings_two_team=ps.team_id),
+            //     pss as( select team_id, team_name as match_winner from team 
+            //     where team_id in(select winner from ss))
+            //     select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
+            //     winner,match_winner,won_by, match_type, player_of_the_match 
+            //     from pss inner join ss on ss.winner=pss.team_id`);
 
             console.log(match_detail);
 
@@ -58,6 +79,7 @@ router.get('/recent/:date', async (req, res, next) => {
             data.push({
                 match_id: match_detail[0].match_id,
                 match_type: match_detail[0].match_type,
+                match_values: match_detail[0].match_values,
                 teamOne: match_detail[0].team_one_name,
                 teamTwo: match_detail[0].team_two_name,
                 team_winner: match_detail[0].match_winner,

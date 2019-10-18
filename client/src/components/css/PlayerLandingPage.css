@@ -24,6 +24,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.selectNav {
+  margin-top: 3em;
+}
+
 .selectNav a {
   /* float: left; */
   color: #16a085;
@@ -147,7 +151,6 @@
   .playerType {
     border: 1px solid #707070;
     margin-top: 20px;
-
     border-radius: 8px;
   }
 
@@ -162,7 +165,7 @@
   }
 
   .playersDiv {
-    grid-template-columns: 50vw 50vw;
+    grid-template-columns: 49vw 49vw;
     /* margin-right: 10px; */
   }
 }
@@ -170,7 +173,7 @@
 @media only screen and (max-width: 576px) {
   #playerHeading {
     font-size: 30px;
-    margin-top: 2.5em;
+    margin-top: 4.5em;
   }
   .playerImage {
     width: 55px;

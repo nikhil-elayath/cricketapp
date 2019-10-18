@@ -1,13 +1,10 @@
-import {
-  GET_PLAYERS,
-  GET_STATISTICS,
-  GET_PLAYER_STATS,
-  GET_TOP_BATSMAN,
-  GET_NEWS,
-} from "../actions/Types";
+import { GET_NEWS, GET_HOME_RECENT_MATCHES } from "../actions/Types";
 
 const intialState = {
   home: [],
+  // another reducer for recent_matches
+  recent_matches: [],
+  // recent_match_date:[]
 };
 
 export default function(state = intialState, action) {
@@ -17,6 +14,13 @@ export default function(state = intialState, action) {
         ...state,
         home: action.payload,
       };
+
+    case GET_HOME_RECENT_MATCHES:
+      return {
+        ...state,
+        recent_matches: action.payload,
+      };
+
     default:
       return state;
   }

@@ -5,7 +5,7 @@ export const OTP_VERIFICATION = "OTP_VERIFICATION";
 export const RESET_PASSWORD = "RESET_PASSWORD";
 export const LOGIN = "LOGIN";
 
-//ashfi
+// ashfi
 export const GET_PLAYERS = "GET_PLAYERS";
 export const GET_SINGLE_PLAYER = "GET_SINGLE_PLAYER";
 export const GET_ALL_BATSMAN = "GET_ALL_BATSMAN";
@@ -30,7 +30,7 @@ export const GET_TEST_BOWLER_STATS = "GET_TEST_BOWLER_STATS";
 export const GET_NEWS = "GET_NEWS";
 export const GET_SEARCH = "GET_SEARCH";
 
-//yatin
+// yatin
 export const GET_RECENT_MATCHES = "GET_RECENT_MATCHES";
 export const GET_MATCHES_DATE = "GET_MATCHES_DATE";
 export const GET_MATCH_DETAILS_BY_ID = "GET_MATCH_DETAILS_BY_ID";
@@ -51,8 +51,10 @@ export const DELETE_PLAYER = "DELETE_PLAYER";
 export const GET_PLAYER_SEARCH = "GET_PLAYER_SEARCH";
 export const GET_ALLTEAMS = "GET_ALLTEAMS";
 export const ERROR_TYPE = "ERROR_TYPE";
+export const LOADING_START = "LOADING_START";
+export const LOADING_STOP = "LOADING_STOP";
 
-//aditya
+// aditya
 
 export const GET_TEAMS = "GET_TEAMS";
 export const GET_MATCHBYTEAMID = "GET_MATCHBYTEAMID";
@@ -63,5 +65,6 @@ export const GET_TEAM_FIXTURES = "GET_TEAM_FIXTURES";
 export const GET_HIGHEST_TOTALS = "GET_HIGHEST_TOTALS";
 export const GET_LOWEST_TOTALS = "GET_LOWEST_TOTALS";
 
-//Nikhil
+// Nikhil
 export const GET_NEWS_ID = "GET_NEWS_ID";
+export const GET_HOME_RECENT_MATCHES = "GET_HOME_RECENT_MATCHES";
