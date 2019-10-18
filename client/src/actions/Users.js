@@ -4,7 +4,7 @@ import {
   EMAIL_VERIFICATION,
   OTP_VERIFICATION,
   LOGIN,
-  ERROR_TYPE,
+  ERROR_TYPE
 } from "./Types";
 
 import axios from "axios";
@@ -13,13 +13,13 @@ export const getUsers = () => dispatch => {
   return axios
     .get("http://localhost:5000/api/cricketalpha/user/all", {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
+        Authorization: `Bearer ${localStorage.getItem("token")}`
+      }
     })
     .then(res => {
       dispatch({
         type: GET_USERS,
-        payload: res.data.data,
+        payload: res.data.data
       });
       console.log(res.data);
     })
@@ -33,7 +33,7 @@ export const createUsers = users => dispatch => {
     .post("http://localhost:5000/api/cricketalpha/user/new", users)
     .then(res => {
       dispatch({
-        type: CREATE_USERS,
+        type: CREATE_USERS
       });
       console.log("User created successfully");
     })
@@ -53,7 +53,7 @@ export const login = (users, history) => dispatch => {
       localStorage.setItem("token", res.data.data);
       history.push("/");
       dispatch({
-        type: LOGIN,
+        type: LOGIN
       });
       console.log(res.data);
       console.log("Login successful");
@@ -72,7 +72,7 @@ export const otpVerify = users => dispatch => {
     .post("http://localhost:5000/api/cricketalpha/user/verify_otp", users)
     .then(res => {
       dispatch({
-        type: OTP_VERIFICATION,
+        type: OTP_VERIFICATION
       });
       console.log("OTP verify successfully !!");
       console.log("Password updated successfully !!");
@@ -105,7 +105,7 @@ export const otpSend = users => dispatch => {
     .post("http://localhost:5000/api/cricketalpha/user/verify_email", users)
     .then(res => {
       dispatch({
-        type: EMAIL_VERIFICATION,
+        type: EMAIL_VERIFICATION
       });
       console.log("otp send successfully");
     })
