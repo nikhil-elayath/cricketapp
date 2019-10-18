@@ -65,7 +65,7 @@ export class MatchLandingPage extends Component {
                                                 No Matches</h2>
                                         ) : (<div className="all-matches-box">
                                             {this.props.matches.map(match => (
-                                                <div className="each-matches-box" onClick={() => {
+                                                <div  id="pushing-match"className="each-matches-box" onClick={() => {
                                                     this.props.history.push(
                                                         "/match/details/" + match.match_id,
                                                         {

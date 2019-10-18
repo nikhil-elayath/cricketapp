@@ -4,7 +4,6 @@ import { MatchLandingPage } from "../MatchLandingPage";
 
 
 const getRecentMatches = jest.fn();
-const getMatchesDate = jest.fn();
 
 const matches = [
     {
@@ -22,9 +21,25 @@ const matches = [
     },
 ];
 
+const match = {
+    match_id: 1,
+    match_type: "ODI",
+    teamOne: "India",
+    teamTwo: "Pakistan",
+    teamOneScore: 120,
+    teamTwoScore: 150,
+    team_winner: "India",
+    match_date: "12-12-12",
+    teamone_wicket: 5,
+    teamtwo_wicket: 10,
+    match_values: "50 overs"
+}
+
+const historyMock = { push: jest.fn() };
+
 
 const wrapper = shallow(
-    <MatchLandingPage matches={matches} history={[]} getRecentMatches={getRecentMatches} getMatchesDate={getMatchesDate} />
+    <MatchLandingPage matches={matches} match={match} history={historyMock} getRecentMatches={getRecentMatches} />
 );
 
 describe("Testing of MatchLandingPage Component", () => {
@@ -66,5 +81,13 @@ describe("Testing of MatchLandingPage Component", () => {
     it("should have team winner name in the container of every matches", () => {
         expect(wrapper.find("#match-winner").text()).toBe("India won");
     });
+
+    it("should mock the history push function", () => {
+        wrapper.find("#pushing-match").simulate("click");
+        expect(historyMock.push).toBeCalledWith(
+            "/match/details/" + matches[0].match_id, {
+            match
+        })
+    })
 
 });
