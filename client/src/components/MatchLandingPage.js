@@ -17,7 +17,7 @@ export class MatchLandingPage extends Component {
         //[yatin] storing the selected date in date format
         var date = date.toDate();
 
-        //[yatin] slicing the date in "yyyy-mm-dd" fromat
+        //[yatin] slicing the date in "yyyy-mm-dd" format
         //  before passing it to the match api function
         var datee = date.toJSON().slice(0, 10)
 
@@ -25,6 +25,7 @@ export class MatchLandingPage extends Component {
         this.props.getRecentMatches(datee);
     }
     componentDidMount() {
+        // calling the initial matches
         this.props.getRecentMatches("2016-05-20");
     }
 
@@ -67,18 +68,18 @@ export class MatchLandingPage extends Component {
                                                         }
                                                     );
                                                 }}>
-                                                    <span style={{ fontSize: "90%", margin: "1% 0 0 0" }}>{match.match_type}</span>
+                                                    <span style={{ fontSize: "15px", margin: "5px 0 0 0" }}>{match.match_type}</span>
                                                     <div className="Team-data" style={{ fontWeight: "400" }}>
-                                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamOne}</div>
-                                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                                        <div style={{ margin: "10px 0 0 5px" }}>{match.teamOne}</div>
+                                                        <div style={{ margin: "10px 0 0 10px" }}>
                                                             {match.teamOneScore}/{match.teamone_wicket} ({match.match_values})
                                          </div>
-                                                        <div style={{ margin: "3% 0 0 3%" }}>{match.teamTwo}</div>
-                                                        <div style={{ margin: "3% 0 0 10%" }}>
+                                                        <div style={{ margin: "10px 0 0 5px" }}>{match.teamTwo}</div>
+                                                        <div style={{ margin: "10px 0 0 10px" }}>
                                                             {match.teamTwoScore}/{match.teamtwo_wicket} ({match.match_values})
                                         </div>
                                                     </div>
-                                                    <span style={{ fontSize: "100%", fontWeight: "500", margin: "2% 0 0 0" }} >
+                                                    <span style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
                                                         {match.team_winner} won
                                     </span>
                                                 </div>
