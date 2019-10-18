@@ -88,6 +88,7 @@ export class PlayerLandingPage extends Component {
                   className={
                     this.state.matchType === "Test" ? "active" : "notActive"
                   }
+                  id="jest-test-tab"
                   style={{
                     borderLeft: 1 + "px solid",
                     borderTopLeftRadius: 8 + "px",
@@ -109,6 +110,7 @@ export class PlayerLandingPage extends Component {
                   onClick={() => {
                     this.changeMatchType("ODI");
                   }}
+                  id="jest-ODI-tab"
                 >
                   ODI
                 </a>
@@ -125,6 +127,7 @@ export class PlayerLandingPage extends Component {
                     borderTopRightRadius: 8 + "px",
                     borderBottomRightRadius: 8 + "px"
                   }}
+                  id="jest-T20-tab"
                 >
                   T20
                 </a>

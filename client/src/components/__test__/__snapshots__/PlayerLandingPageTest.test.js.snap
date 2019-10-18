@@ -8,7 +8,6 @@ exports[`Testing Player Landing Page should render the component 1`] = `
     }
   }
 >
-  <Navbar />
   <h1
     id="playerHeading"
   >
@@ -71,9 +70,18 @@ exports[`Testing Player Landing Page should render the component 1`] = `
     <div
       className="playerBatsman"
     >
-      <h1>
+      <h1
+        style={
+          Object {
+            "textAlign": "center",
+          }
+        }
+      >
         Top Batsmen
       </h1>
+      <div
+        className="playerlandingpageloader"
+      />
     </div>
     <div
       className="playerBowler"
@@ -98,7 +106,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
           }
         }
       >
-        Top 6s
+        Most 6s
       </h1>
     </div>
   </div>
