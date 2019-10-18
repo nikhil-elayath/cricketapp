@@ -89,6 +89,8 @@ nav {
 }
 .login-icon {
 	order: 5;
+	width: 100%;
+	text-align: center;
 }
 .search-box {
 	margin: 0px;
@@ -167,7 +169,8 @@ nav {
 }
 
 @media screen and (min-width: 526px) {
-	.item {
+	.item,
+	.login-icon {
 		width: auto;
 	}
 	.item .link {

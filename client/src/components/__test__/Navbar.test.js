@@ -1,7 +1,6 @@
 import React from "react";
 import { shallow, mount } from "enzyme";
 import { Navbar } from "../common/Navbar";
-import { MemoryRouter, Route } from "react-router-dom";
 
 const search = {
 	team: [
@@ -32,7 +31,11 @@ const wrapper = shallow(
 	/>
 );
 
-describe("test for the text, input, css properties and icons on the navbar", () => {
+describe("test for the text, input, css properties and icons on the navbar and snapshot testing", () => {
+	it("renders the component for snapshot testing", () => {
+		expect(wrapper).toMatchSnapshot();
+	});
+
 	it("should have text brand CricketAlpha, matches, teams, players", () => {
 		// checks for the links text
 		expect(wrapper.find("#men").text()).toBe("Men");
@@ -65,21 +68,46 @@ describe("test for the text, input, css properties and icons on the navbar", () 
 });
 
 describe("test for men and women toggle on navbar and toggleChange function", () => {
-	it("checks for changeGender function to be called", () => {
+	it("checks for changeGender function to be called on clicking men link", () => {
 		// expects changeGender to be called on clicking men link
 		wrapper.find("#men").simulate("click");
 		expect(changeGender).toBeCalledWith("male");
-		// expect(changeGender).not.toBeCalledWith("female");
+		expect(changeGender).not.toBeCalledWith("female");
+	});
+	it("checks for changeGender function to be called on clicking women link", () => {
+		// const changeGenderMock = jest.fn();
+		// const newWrapper = shallow(
+		// 	<Navbar
+		// 		search={search}
+		// 		handleSearchInputChange={handleSearchInputChange}
+		// 		changeGender={changeGenderMock}
+		// 		getSearch={jest.fn()}
+		// 		toggleChange={toggleChange}
+		// 		updateDimensions={updateDimensions}
+		// 	/>
+		// );
 
-		// expects changeGender to be called on clicking men link
+		// expects changeGender to be called on clicking women link
 		wrapper.find("#women").simulate("click");
 		expect(changeGender).toBeCalledWith("female");
+		// expect(changeGenderMock).not.toBeCalledWith("male");
 	});
-	// it("checks for the toggleChange function to be called when menu-btn is clicked", () => {
-	// 	// expects toggleChange to be called on clicking men link
-	// 	wrapper.find("#menu-btn").simulate("click");
-	// 	expect(toggleChange).toBeCalled();
-	// });
+	it("checks for the toggleChange function to be called when menu-btn is clicked", () => {
+		const toggleChangeMock = jest.fn();
+		const newWrapper = shallow(
+			<Navbar
+				search={search}
+				handleSearchInputChange={handleSearchInputChange}
+				changeGender={changeGender}
+				getSearch={jest.fn()}
+				toggleChange={toggleChangeMock}
+				updateDimensions={updateDimensions}
+			/>
+		);
+		// expects toggleChange to be called on clicking men link
+		newWrapper.find("#menu-btn").simulate("click");
+		expect(toggleChangeMock).toHaveBeenCalled();
+	});
 });
 
 describe("test for updateDimensions function to be called", () => {
@@ -92,5 +120,35 @@ describe("test for updateDimensions function to be called", () => {
 		// expects updateDimensions to be called on clicking men link
 		// wrapper.find("#menu-btn").simulate("click");
 		expect(spy).toBeCalled();
+	});
+});
+
+describe("testing for map functions", () => {
+	// testing for player name in the search
+	it("checks for the player array in search object", () => {
+		expect(
+			wrapper.find("#player-search-" + search.player[0].player_id).text()
+		).toBe(search.player[0].player_name);
+	});
+	// testing for team name in the search
+	it("checks for the team array in search object", () => {
+		expect(
+			wrapper.find("#team-search-" + search.team[0].team_id).text()
+		).toBe(search.team[0].team_name);
+	});
+
+	it("checks for player array and team array", () => {
+		// checks length for player and team array not to be 0
+		expect(search.player.length).not.toBe(0);
+		expect(search.team.length).not.toBe(0);
+
+		const searchMock = {
+			team: [],
+			player: []
+		};
+
+		// checks length for player and team array to be 0
+		expect(searchMock.player.length).toBe(0);
+		expect(searchMock.team.length).toBe(0);
 	});
 });
