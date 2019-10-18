@@ -13,10 +13,10 @@ import axios from "axios";
 const url = "http://localhost:5000/api/matches";
 const url2 = "http://127.0.0.1:5000";
 
-export const getRecentMatches = date => dispatch => {
+export const getRecentMatches = (date, gender) => dispatch => {
   dispatch(startLoading());
   return axios
-    .get(url + "/recent/" + date, {})
+    .get(url + "/recent/" + date + "/" + gender)
     .then(res => {
       dispatch(stopLoading());
       dispatch({
@@ -33,7 +33,7 @@ export const getRecentMatches = date => dispatch => {
 
 export const getMatchesDate = () => dispatch => {
   return axios
-    .get(url + "/bydate", {})
+    .get(url + "/bydate")
     .then(res => {
       dispatch({
         type: GET_MATCHES_DATE,

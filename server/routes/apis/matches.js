@@ -7,10 +7,15 @@ const pg = require("pg-promise")();
 const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 
 
-router.get('/recent/:date', async (req, res, next) => {
+router.get('/recent/:date/:gender', async (req, res, next) => {
     try {
         let date = req.params.date;
-        const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
+        let gender = req.params.gender;
+        console.log(gender)
+        console.log(date)
+        const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date 
+        inner join match as m on date.match_id=m.match_id where match_date='${date}' and gender='${gender}' 
+        ORDER BY date.match_date;`);
         console.log("date of match", dateOfMatch);
         var data = new Array();
 

@@ -117,7 +117,7 @@ export default class App extends Component {
           path="/matches/stats/:id"
           component={MatchStatsDetails}
         ></Route>
-        <Route exact path="/matches" component={MatchLandingPage}></Route>
+        <Route exact path="/matches" component={(props)=>(<MatchLandingPage {...props} gender={this.state.gender}/>)}></Route>
 
         {/* aditya */}
         <Route

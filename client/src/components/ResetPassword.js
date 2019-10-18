@@ -19,7 +19,7 @@ export class ResetPassword extends Component {
     this.setState({ [event.target.name]: event.target.value })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     if (localStorage.getItem('token')) {
       this.props.history.push('/')
     }
@@ -131,7 +131,7 @@ export class ResetPassword extends Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
         <form id='msform'>
@@ -168,29 +168,16 @@ export class ResetPassword extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-<<<<<<< HEAD
                   <span
-                    className="errorMessage"
+                    className='errorMessage'
                     style={{
-                      color: "#c0392b",
-                      display: this.state.showError ? "block" : "none"
+                      color: '#c0392b',
+                      display: this.state.showError ? 'block' : 'none'
                     }}
                   >
                     {this.state.errorMessage}
                   </span>
                 )}
-=======
-                <span
-                  className='errorMessage'
-                  style={{
-                    color: '#c0392b',
-                    display: this.state.showError ? 'block' : 'none'
-                  }}
-                >
-                  {this.state.errorMessage}
-                </span>
-              )}
->>>>>>> 06967de49744aec55f2c8bfe7a8fe8abc87880b3
             </div>
             {/* <button onChange={this.OnChange} onClick={this.onVerify}>
               Send OTP
@@ -216,29 +203,16 @@ export class ResetPassword extends Component {
                   {this.props.error ? (
                     <>{this.props.error}</>
                   ) : (
-<<<<<<< HEAD
                       <span
-                        className="errorMessage"
+                        className='errorMessage'
                         style={{
-                          color: "#c0392b",
-                          display: this.state.showError ? "block" : "none"
+                          color: '#c0392b',
+                          display: this.state.showError ? 'block' : 'none'
                         }}
                       >
                         {this.state.errorMessage}
                       </span>
                     )}
-=======
-                    <span
-                      className='errorMessage'
-                      style={{
-                        color: '#c0392b',
-                        display: this.state.showError ? 'block' : 'none'
-                      }}
-                    >
-                      {this.state.errorMessage}
-                    </span>
-                  )}
->>>>>>> 06967de49744aec55f2c8bfe7a8fe8abc87880b3
                 </div>
                 <button
                   className='formbutton'
@@ -249,21 +223,12 @@ export class ResetPassword extends Component {
                 </button>
               </>
             ) : (
-<<<<<<< HEAD
                 <button
-                  className="formbutton"
+                  className='formbutton'
                   onChange={this.OnChange}
                   onClick={this.onVerify}
                 >
                   Send OTP
-=======
-              <button
-                className='formbutton'
-                onChange={this.OnChange}
-                onClick={this.onVerify}
-              >
-                Send OTP
->>>>>>> 06967de49744aec55f2c8bfe7a8fe8abc87880b3
               </button>
               )}
           </fieldset>

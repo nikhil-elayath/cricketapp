@@ -22,20 +22,14 @@ export class MatchLandingPage extends Component {
         var datee = received_date.toJSON().slice(0, 10)
 
         //[yatin] passing the new selected date to the api
-        this.props.getRecentMatches(datee);
+        this.props.getRecentMatches(datee, this.props.gender);
     };
     componentDidMount() {
         // calling the initial matches
 
-        console.log("from landing page", this.props.gender);
-        this.props.getRecentMatches("2016-05-20");
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.gender !== this.props.gender) {
-            console.log("from receive props ", nextProps.gender, this.props.gender);
-            //   this.getTopPlayers( nextProps.gender);
-        }
+        console.log("from landing page gendere is", this.props.gender);
+        this.props.getRecentMatches("2009-03-10", this.props.gender);
+        // this.props.getRecentMatches("2016-05-20", this.props.gender);
     }
 
     render() {
@@ -93,9 +87,12 @@ export class MatchLandingPage extends Component {
                                                             {match.teamTwoScore}/{match.teamtwo_wicket} ({match.match_values})
                                         </div>
                                                     </div>
-                                                    <span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
-                                                        {match.team_winner} won
-                                    </span>
+                                                    {match.team_winner === "NA" ? (<span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
+                                                        draw
+                                            </span>) : (<span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
+                                                            {match.team_winner} won
+                                            </span>)}
+
                                                 </div>
                                             ))}
                                         </div>)

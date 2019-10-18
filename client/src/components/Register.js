@@ -142,18 +142,6 @@ export class Register extends Component {
               {this.props.error ? (
                 <>{this.props.error}</>
               ) : (
-<<<<<<< HEAD
-                  <span
-                    className="errorMessage"
-                    style={{
-                      color: "#c0392b",
-                      display: this.state.showError ? "block" : "none"
-                    }}
-                  >
-                    {this.state.errorMessage}
-                  </span>
-                )}
-=======
                 <span
                   className='errorMessage'
                   style={{
@@ -164,7 +152,6 @@ export class Register extends Component {
                   {this.state.errorMessage}
                 </span>
               )}
->>>>>>> 06967de49744aec55f2c8bfe7a8fe8abc87880b3
             </div>
 
             <button
