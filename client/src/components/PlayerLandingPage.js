@@ -47,372 +47,357 @@ export class PlayerLandingPage extends Component {
 
   changeMatchType = mType => {
     this.setState({ matchType: mType });
-    // console.log("after changing match type, state is", this.state.matchType);
-    // console.log("from change match type function: ", mType);
     this.getTopPlayers(mType);
   };
 
-  // getT20 = () => {
-  //   this.setState({ testClicked: false, odiClicked: false, t20Clicked: true });
-  //   this.props.getBowlers({ match_type: "T20", gender: this.props.gender });
-  //   this.props.getBatsmen({ match_type: "T20", gender: this.props.gender });
-  //   this.props.getTopSixes({ match_type: "T20", gender: this.props.gender });
-  // };
-
-  // getTest = () => {
-  //   this.setState({ testClicked: true, odiClicked: false, t20Clicked: false });
-
-  //   this.props.getBowlers({ match_type: "Test", gender: this.props.gender });
-  //   this.props.getBatsmen({ match_type: "Test", gender: this.props.gender });
-  //   this.props.getTopSixes({ match_type: "Test", gender: this.props.gender });
-  // };
-
-  // getODI = () => {
-  //   this.setState({ testClicked: false, odiClicked: true, t20Clicked: false });
-  //   this.props.getBowlers({ match_type: "ODI", gender: this.props.gender });
-  //   this.props.getBatsmen({ match_type: "ODI", gender: this.props.gender });
-  //   this.props.getTopSixes({ match_type: "ODI", gender: this.props.gender });
-  // };
-
   render() {
-    // console.log("batsman landing page: ", this.props.batsmen);
     console.log("Gender check: ", this.props);
-    if (this.props.gender == "male") {
-      return (
-        <div style={{ padding: 12 + "px" }}>
-          <h1 id="playerHeading">Players</h1>
-          <div id="container">
-            <div className="matchFormatOptons">
-              <div className="selectNav">
-                <a
-                  className={
-                    this.state.matchType === "Test" ? "active" : "notActive"
-                  }
-                  style={{
-                    borderLeft: 1 + "px solid",
-                    borderTopLeftRadius: 8 + "px",
-                    borderBottomLeftRadius: 8 + "px",
-                    cursor: "pointer"
-                  }}
-                  onClick={() => {
-                    this.changeMatchType("Test");
-                  }}
-                >
-                  Test
-                </a>
 
-                <a
-                  className={
-                    this.state.matchType === "ODI" ? "active" : "notActive"
-                  }
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    this.changeMatchType("ODI");
-                  }}
-                >
-                  ODI
-                </a>
-                <a
-                  className={
-                    this.state.matchType === "T20" ? "active" : "notActive"
-                  }
-                  onClick={() => {
-                    this.changeMatchType("T20");
-                  }}
-                  style={{
-                    borderRight: 1 + "px solid",
-                    cursor: "pointer",
-                    borderTopRightRadius: 8 + "px",
-                    borderBottomRightRadius: 8 + "px"
-                  }}
-                >
-                  T20
-                </a>
-              </div>
-            </div>
-          </div>
-          <div className="playersDiv">
-            <div className="playerBatsman">
-              <h1
+    return (
+      <div style={{ padding: 12 + "px" }}>
+        <h1 id="playerHeading">Players</h1>
+        <div className="container">
+          <div className="matchFormatOptons">
+            <div className="selectNav">
+              <a
+                id="jest-test-tab"
+                className={
+                  this.state.matchType === "Test" ? "active" : "notActive"
+                }
                 style={{
-                  textAlign: "center"
+                  borderLeft: 1 + "px solid",
+                  borderTopLeftRadius: 8 + "px",
+                  borderBottomLeftRadius: 8 + "px",
+                  cursor: "pointer"
+                }}
+                onClick={() => {
+                  this.changeMatchType("Test");
                 }}
               >
-                Top Batsmen
-              </h1>
-              {this.props.batsmen.length == 0 ? (
-                <div className="playerlandingpageloader"></div>
-              ) : (
-                this.props.batsmen.map(batsman => (
-                  <div
-                    className="singlePlayerDiv"
-                    onClick={() =>
-                      this.props.history.push(
-                        "/playerInfo/" + batsman.player_id
-                      )
-                    }
-                  >
-                    <img className="playerImage" src={virat}></img>
-                    {/* player basic info div */}
-                    <div
-                      className="playerInfoDiv"
-                      style={{ marginTop: 8 + "px" }}
-                    >
-                      <span id="playerName">{batsman.player_name}</span>
-                      <span id="playerMinInfo">Right Handed Batsman</span>
-                      <span id="playerMinInfo">{batsman.player_country}</span>
-                    </div>
+                Test
+              </a>
 
-                    {/* player runs,wickets div */}
-                    <div className="playerInfoDiv">
-                      <span className="playerStatValue">
-                        {batsman.player_stats_value}
-                      </span>
-
-                      <span id="playerMinInfo">Innings: 12</span>
-                      <span id="playerMinInfo">Average: 52.12</span>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-            <div className="playerBowler">
-              <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
-
-              {this.props.bowlers.map(bowler => (
-                <div
-                  className="singlePlayerDiv"
-                  onClick={() => {
-                    this.props.history.push("/playerInfo/" + bowler.player_id);
-                  }}
-                >
-                  <img className="playerImage" src={virat}></img>
-                  {/* player basic info div */}
-                  <div
-                    className="playerInfoDiv"
-                    style={{ marginTop: 8 + "px" }}
-                  >
-                    <span id="playerName">{bowler.player_name}</span>
-                    <span id="playerMinInfo">Right Arm Medium</span>
-                    <span id="playerMinInfo">{bowler.player_country}</span>
-                  </div>
-
-                  {/* player runs,wickets div */}
-                  <div className="playerInfoDiv">
-                    <span className="playerStatValue">
-                      {bowler.player_stats_value}
-                    </span>
-
-                    <span id="playerMinInfo">Innings: 12</span>
-                    <span id="playerMinInfo">Average: 52.12</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="playerType">
-              <h1 style={{ textAlign: "center" }}>Most 6s</h1>
-              {this.props.topSixes.map(six => (
-                <div
-                  className="singlePlayerDiv"
-                  onClick={() => {
-                    this.props.history.push("/playerInfo/" + six.player_id);
-                  }}
-                >
-                  <img className="playerImage" src={virat}></img>
-                  {/* player basic info div */}
-                  <div
-                    className="playerInfoDiv"
-                    style={{ marginTop: 8 + "px" }}
-                  >
-                    <span id="playerName">{six.player_name}</span>
-                    <span id="playerMinInfo">Right Arm Medium</span>
-                    <span id="playerMinInfo">{six.player_country}</span>
-                  </div>
-
-                  {/* player runs,wickets div */}
-                  <div className="playerInfoDiv">
-                    <span className="playerStatValue">
-                      {six.player_stats_value}
-                    </span>
-
-                    <span id="playerMinInfo">Innings: 12</span>
-                    <span id="playerMinInfo">Average: 52.12</span>
-                  </div>
-                </div>
-              ))}
+              <a
+                className={
+                  this.state.matchType === "ODI" ? "active" : "notActive"
+                }
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.changeMatchType("ODI");
+                }}
+                id="jest-ODI-tab"
+              >
+                ODI
+              </a>
+              <a
+                className={
+                  this.state.matchType === "T20" ? "active" : "notActive"
+                }
+                onClick={() => {
+                  this.changeMatchType("T20");
+                }}
+                style={{
+                  borderRight: 1 + "px solid",
+                  cursor: "pointer",
+                  borderTopRightRadius: 8 + "px",
+                  borderBottomRightRadius: 8 + "px"
+                }}
+                id="jest-T20-tab"
+              >
+                T20
+              </a>
             </div>
           </div>
         </div>
-      );
-    } else {
-      console.log("from female part:", this.props);
-      return (
-        <div style={{ padding: 12 + "px" }}>
-          <h1 id="playerHeading">Players</h1>
-          <div id="container">
-            <div className="matchFormatOptons">
-              <div className="selectNav">
-                <a
-                  className={
-                    this.state.matchType === "Test" ? "active" : "notActive"
+        <div className="playersDiv">
+          <div className="playerBatsman">
+            <h1
+              id="jest-heading-Top-Batsman"
+              style={{
+                textAlign: "center"
+              }}
+            >
+              Top Batsmen
+            </h1>
+            {this.props.batsmen.length == 0 ? (
+              <div className="playerlandingpageloader"></div>
+            ) : (
+              this.props.batsmen.map(batsman => (
+                <div
+                  id="jest-history-1"
+                  className="singlePlayerDiv"
+                  onClick={() =>
+                    this.props.history.push("/playerInfo/" + batsman.player_id)
                   }
-                  style={{
-                    borderLeft: 1 + "px solid",
-                    borderTopLeftRadius: 8 + "px",
-                    borderBottomLeftRadius: 8 + "px",
-                    cursor: "pointer"
-                  }}
-                  onClick={() => {
-                    this.changeMatchType("Test");
-                  }}
                 >
-                  Test
-                </a>
+                  <img
+                    id="pImage"
+                    className="playerImage"
+                    src={this.props.gender == "male" ? virat : smriti}
+                  ></img>
+                  {/* player basic info div */}
+                  <div
+                    className="playerInfoDiv"
+                    style={{ marginTop: 8 + "px" }}
+                  >
+                    <span id="playerName">{batsman.player_name}</span>
+                    <span id="playerMinInfo">Right Handed Batsman</span>
+                    <span id="playerMinInfo">{batsman.player_country}</span>
+                  </div>
 
-                <a
-                  className={
-                    this.state.matchType === "ODI" ? "active" : "notActive"
-                  }
-                  style={{ cursor: "pointer" }}
-                  onClick={() => {
-                    this.changeMatchType("ODI");
-                  }}
-                >
-                  ODI
-                </a>
-                <a
-                  className={
-                    this.state.matchType === "T20" ? "active" : "notActive"
-                  }
-                  onClick={() => {
-                    this.changeMatchType("T20");
-                  }}
-                  style={{
-                    borderRight: 1 + "px solid",
-                    cursor: "pointer",
-                    borderTopRightRadius: 8 + "px",
-                    borderBottomRightRadius: 8 + "px"
-                  }}
-                >
-                  T20
-                </a>
-              </div>
-            </div>
+                  {/* player runs,wickets div */}
+                  <div className="playerInfoDiv">
+                    <span className="playerStatValue">
+                      {batsman.player_stats_value}
+                    </span>
+
+                    <span id="playerMinInfo">Innings: 12</span>
+                    <span id="playerMinInfo">Average: 52.12</span>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
-          <div className="playersDiv">
-            <div className="playerBatsman">
-              <h1
-                style={{
-                  textAlign: "center"
+          <div className="playerBowler">
+            <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
+
+            {this.props.bowlers.map(bowler => (
+              <div
+                id="jest-history-2"
+                className="singlePlayerDiv"
+                onClick={() => {
+                  this.props.history.push("/playerInfo/" + bowler.player_id);
                 }}
               >
-                Top Batsmen
-              </h1>
-              {this.props.batsmen.length == 0 ? (
-                <div className="playerlandingpageloader"></div>
-              ) : (
-                this.props.batsmen.map(batsman => (
-                  <div
-                    className="singlePlayerDiv"
-                    onClick={() => {
-                      this.props.history.push(
-                        "/playerInfo/" + batsman.player_id
-                      );
-                    }}
-                  >
-                    <img className="playerImage" src={smriti}></img>
-                    {/* player basic info div */}
-                    <div
-                      className="playerInfoDiv"
-                      style={{ marginTop: 8 + "px" }}
-                    >
-                      <span id="playerName">{batsman.player_name}</span>
-                      <span id="playerMinInfo">Right Handed Batsman</span>
-                      <span id="playerMinInfo">{batsman.player_country}</span>
-                    </div>
-
-                    {/* player runs,wickets div */}
-                    <div className="playerInfoDiv">
-                      <span className="playerStatValue">
-                        {batsman.player_stats_value}
-                      </span>
-
-                      <span id="playerMinInfo">Innings: 12</span>
-                      <span id="playerMinInfo">Average: 52.12</span>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-            <div className="playerBowler">
-              <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
-
-              {this.props.bowlers.map(bowler => (
-                <div
-                  className="singlePlayerDiv"
-                  onClick={() => {
-                    this.props.history.push("/playerInfo/" + bowler.player_id);
-                  }}
-                >
-                  <img className="playerImage" src={smriti}></img>
-                  {/* player basic info div */}
-                  <div
-                    className="playerInfoDiv"
-                    style={{ marginTop: 8 + "px" }}
-                  >
-                    <span id="playerName">{bowler.player_name}</span>
-                    <span id="playerMinInfo">Right Arm Medium</span>
-                    <span id="playerMinInfo">{bowler.player_country}</span>
-                  </div>
-
-                  {/* player runs,wickets div */}
-                  <div className="playerInfoDiv">
-                    <span className="playerStatValue">
-                      {bowler.player_stats_value}
-                    </span>
-
-                    <span id="playerMinInfo">Innings: 12</span>
-                    <span id="playerMinInfo">Average: 52.12</span>
-                  </div>
+                <img
+                  className="playerImage"
+                  src={this.props.gender == "male" ? virat : smriti}
+                ></img>
+                {/* player basic info div */}
+                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
+                  <span id="playerName">{bowler.player_name}</span>
+                  <span id="playerMinInfo">Right Arm Medium</span>
+                  <span id="playerMinInfo">{bowler.player_country}</span>
                 </div>
-              ))}
-            </div>
-            <div className="playerType">
-              <h1 style={{ textAlign: "center" }}>Most 6s</h1>
-              {this.props.topSixes.map(six => (
-                <div
-                  className="singlePlayerDiv"
-                  onClick={() => {
-                    this.props.history.push("/playerInfo/" + six.player_id);
-                  }}
-                >
-                  <img className="playerImage" src={smriti}></img>
-                  {/* player basic info div */}
-                  <div
-                    className="playerInfoDiv"
-                    style={{ marginTop: 8 + "px" }}
-                  >
-                    <span id="playerName">{six.player_name}</span>
-                    <span id="playerMinInfo">Right Arm Medium</span>
-                    <span id="playerMinInfo">{six.player_country}</span>
-                  </div>
 
-                  {/* player runs,wickets div */}
-                  <div className="playerInfoDiv">
-                    <span className="playerStatValue">
-                      {six.player_stats_value}
-                    </span>
+                {/* player runs,wickets div */}
+                <div className="playerInfoDiv">
+                  <span className="playerStatValue">
+                    {bowler.player_stats_value}
+                  </span>
 
-                    <span id="playerMinInfo">Innings: 12</span>
-                    <span id="playerMinInfo">Average: 52.12</span>
-                  </div>
+                  <span id="playerMinInfo">Innings: 12</span>
+                  <span id="playerMinInfo">Average: 52.12</span>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
+          <div className="playerType">
+            <h1 style={{ textAlign: "center" }}>Most 6s</h1>
+            {this.props.topSixes.map(six => (
+              <div
+                id="jest-history-mostSixes"
+                className="singlePlayerDiv"
+                onClick={() => {
+                  this.props.history.push("/playerInfo/" + six.player_id);
+                }}
+              >
+                <img
+                  className="playerImage"
+                  src={this.props.gender == "male" ? virat : smriti}
+                ></img>
+                {/* player basic info div */}
+                <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
+                  <span id="playerName">{six.player_name}</span>
+                  <span id="playerMinInfo">Right Arm Medium</span>
+                  <span id="playerMinInfo">{six.player_country}</span>
+                </div>
+
+                {/* player runs,wickets div */}
+                <div className="playerInfoDiv">
+                  <span className="playerStatValue">
+                    {six.player_stats_value}
+                  </span>
+
+                  <span id="playerMinInfo">Innings: 12</span>
+                  <span id="playerMinInfo">Average: 52.12</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      );
-    }
+      </div>
+    );
+    // } else {
+    //   console.log("from female part:", this.props);
+    //   return (
+    //     <div style={{ padding: 12 + "px" }}>
+    //       <h1 id="playerHeading">Players</h1>
+    //       <div id="container">
+    //         <div className="matchFormatOptons">
+    //           <div className="selectNav">
+    //             <a
+    //               className={
+    //                 this.state.matchType === "Test" ? "active" : "notActive"
+    //               }
+    //               style={{
+    //                 borderLeft: 1 + "px solid",
+    //                 borderTopLeftRadius: 8 + "px",
+    //                 borderBottomLeftRadius: 8 + "px",
+    //                 cursor: "pointer"
+    //               }}
+    //               onClick={() => {
+    //                 this.changeMatchType("Test");
+    //               }}
+    //             >
+    //               Test
+    //             </a>
+
+    //             <a
+    //               className={
+    //                 this.state.matchType === "ODI" ? "active" : "notActive"
+    //               }
+    //               style={{ cursor: "pointer" }}
+    //               onClick={() => {
+    //                 this.changeMatchType("ODI");
+    //               }}
+    //             >
+    //               ODI
+    //             </a>
+    //             <a
+    //               className={
+    //                 this.state.matchType === "T20" ? "active" : "notActive"
+    //               }
+    //               onClick={() => {
+    //                 this.changeMatchType("T20");
+    //               }}
+    //               style={{
+    //                 borderRight: 1 + "px solid",
+    //                 cursor: "pointer",
+    //                 borderTopRightRadius: 8 + "px",
+    //                 borderBottomRightRadius: 8 + "px"
+    //               }}
+    //             >
+    //               T20
+    //             </a>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       <div className="playersDiv">
+    //         <div className="playerBatsman">
+    //           <h1
+    //             style={{
+    //               textAlign: "center"
+    //             }}
+    //           >
+    //             Top Batsmen
+    //           </h1>
+    //           {this.props.batsmen.length == 0 ? (
+    //             <div className="playerlandingpageloader"></div>
+    //           ) : (
+    //             this.props.batsmen.map(batsman => (
+    //               <div
+    //                 className="singlePlayerDiv"
+    //                 onClick={() => {
+    //                   this.props.history.push(
+    //                     "/playerInfo/" + batsman.player_id
+    //                   );
+    //                 }}
+    //               >
+    //                 <img className="playerImage" src={smriti}></img>
+    //                 {/* player basic info div */}
+    //                 <div
+    //                   className="playerInfoDiv"
+    //                   style={{ marginTop: 8 + "px" }}
+    //                 >
+    //                   <span id="playerName">{batsman.player_name}</span>
+    //                   <span id="playerMinInfo">Right Handed Batsman</span>
+    //                   <span id="playerMinInfo">{batsman.player_country}</span>
+    //                 </div>
+
+    //                 {/* player runs,wickets div */}
+    //                 <div className="playerInfoDiv">
+    //                   <span className="playerStatValue">
+    //                     {batsman.player_stats_value}
+    //                   </span>
+
+    //                   <span id="playerMinInfo">Innings: 12</span>
+    //                   <span id="playerMinInfo">Average: 52.12</span>
+    //                 </div>
+    //               </div>
+    //             ))
+    //           )}
+    //         </div>
+    //         <div className="playerBowler">
+    //           <h1 style={{ textAlign: "center" }}>Top Bowlers</h1>
+
+    //           {this.props.bowlers.map(bowler => (
+    //             <div
+    //               id="jest-history-2"
+    //               className="singlePlayerDiv"
+    //               onClick={() => {
+    //                 this.props.history.push("/playerInfo/" + bowler.player_id);
+    //               }}
+    //             >
+    //               <img className="playerImage" src={smriti}></img>
+    //               {/* player basic info div */}
+    //               <div
+    //                 className="playerInfoDiv"
+    //                 style={{ marginTop: 8 + "px" }}
+    //               >
+    //                 <span id="playerName">{bowler.player_name}</span>
+    //                 <span id="playerMinInfo">Right Arm Medium</span>
+    //                 <span id="playerMinInfo">{bowler.player_country}</span>
+    //               </div>
+
+    //               {/* player runs,wickets div */}
+    //               <div className="playerInfoDiv">
+    //                 <span className="playerStatValue">
+    //                   {bowler.player_stats_value}
+    //                 </span>
+
+    //                 <span id="playerMinInfo">Innings: 12</span>
+    //                 <span id="playerMinInfo">Average: 52.12</span>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //         <div className="playerType">
+    //           <h1 style={{ textAlign: "center" }}>Most 6s</h1>
+    //           {this.props.topSixes.map(six => (
+    //             <div
+    //               className="singlePlayerDiv"
+    //               onClick={() => {
+    //                 this.props.history.push("/playerInfo/" + six.player_id);
+    //               }}
+    //             >
+    //               <img className="playerImage" src={smriti}></img>
+    //               {/* player basic info div */}
+    //               <div
+    //                 className="playerInfoDiv"
+    //                 style={{ marginTop: 8 + "px" }}
+    //               >
+    //                 <span id="playerName">{six.player_name}</span>
+    //                 <span id="playerMinInfo">Right Arm Medium</span>
+    //                 <span id="playerMinInfo">{six.player_country}</span>
+    //               </div>
+
+    //               {/* player runs,wickets div */}
+    //               <div className="playerInfoDiv">
+    //                 <span className="playerStatValue">
+    //                   {six.player_stats_value}
+    //                 </span>
+
+    //                 <span id="playerMinInfo">Innings: 12</span>
+    //                 <span id="playerMinInfo">Average: 52.12</span>
+    //               </div>
+    //             </div>
+    //           ))}
+    //         </div>
+    //       </div>
+    //     </div>
+    //   );
+    // }
   }
 }
 
