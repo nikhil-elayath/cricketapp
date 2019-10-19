@@ -25,6 +25,10 @@ export default class TeamSecondaryNavbar extends Component {
     console.log("navbar props is ", this.props.teams.team_name);
     return (
       <div>
+        {/* <Navbar
+          gender={this.props.gender}
+          changeGender={getGender => this.props.changeGender(getGender)}
+        /> */}
         <div className="secNavTeamParent">
           <div className="secNavHead">
             <div

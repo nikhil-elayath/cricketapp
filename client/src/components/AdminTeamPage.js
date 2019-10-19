@@ -9,7 +9,7 @@ import {
 } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/Adminpage.css";
-// import NavBar from "./common/Navbar";
+import AdminNavbar from "./common/AdminNavbar";
 import SweetAlert from "sweetalert-react";
 import "sweetalert/dist/sweetalert.css";
 
@@ -76,6 +76,7 @@ export class AdminTeamPage extends Component {
   render() {
     return (
       <div>
+        <AdminNavbar />
         <div className="player-page">
           {this.props.isLoading ? ( //use to display loader
             <div style={{ margin: "auto" }}>

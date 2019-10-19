@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getPlayers, editPlayer } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/AdminEditPage.css";
-// import NavBar from "./common/Navbar";
+import AdminNavbar from "./common/AdminNavbar";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -214,7 +214,7 @@ export class AdminEditPlayer extends Component {
   render() {
     return (
       <div>
-        {/* <NavBar /> */}
+        <AdminNavbar />
 
         <div id="AdminEditform">
           <fieldset>

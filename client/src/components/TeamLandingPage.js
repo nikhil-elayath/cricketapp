@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamLandingPage.css";
 import logo from "./images/indialogo.jpg";
-// import Navbar from "../components/common/Navbar";
+import Navbar from "../components/common/Navbar";
 import { getTeams } from "../actions/Teams";
 import MostWins from "./MostWins";
 
@@ -83,7 +83,10 @@ export class TeamLandingPage extends Component {
     console.log(this.props);
     return (
       <div>
-        {/* <Navbar /> */}
+        <Navbar
+          gender={this.props.gender}
+          changeGender={getGender => this.props.changeGender(getGender)}
+        />
         <div className="container-team">
           <h2 className="h1-team">Teams</h2>
           <div className="centered-team">
@@ -136,7 +139,10 @@ export class TeamLandingPage extends Component {
                 ))}
               </div>
               <div className="top-team">
-                <MostWins />
+                <MostWins
+                  gender={this.props.gender}
+                  changeGender={getGender => this.props.changeGender(getGender)}
+                />
               </div>
             </div>
           </div>
