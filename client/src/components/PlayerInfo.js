@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/PlayerInfo.css";
-import NavBar from "../components/common/Navbar";
+import Navbar from "./common/Navbar";
 import "../components/css/SecondaryNavbar.css";
 import dhoni from "../components/images/dhoni.jpg";
 import { Link } from "react-router-dom";
@@ -38,7 +38,8 @@ export class PlayerInfo extends Component {
     if (this.state.info === true)
       return (
         <div>
-          <NavBar></NavBar>
+                  <Navbar gender={this.props.gender} changeGender={getGender => this.props.changeGender(getGender)} />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
@@ -242,7 +243,8 @@ export class PlayerInfo extends Component {
     else if (this.state.batting_stats === true) {
       return (
         <div>
-          <NavBar></NavBar>
+                  <Navbar gender={this.props.gender} changeGender={getGender => this.props.changeGender(getGender)} />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
@@ -310,7 +312,8 @@ export class PlayerInfo extends Component {
     } else if (this.state.bowling_stats === true) {
       return (
         <div>
-          <NavBar></NavBar>
+                  <Navbar gender={this.props.gender} changeGender={getGender => this.props.changeGender(getGender)} />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
