@@ -71,6 +71,9 @@
 
 .p-card {
   text-align: center;
+  font-size: 15px;
+  color: #16a085;
+  font-weight: 500;
 }
 
 .list-wins {

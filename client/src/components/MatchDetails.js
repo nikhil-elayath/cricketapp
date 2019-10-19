@@ -3,6 +3,7 @@ import MatchSecondaryNavbar from "./common/MatchSecondaryNavbar";
 import MatchSummaryDetails from "./MatchSummaryDetails";
 import MatchScoreDetails from "./MatchScoreDetails";
 import MatchStatsDetails from "./MatchStatsDetails";
+import Navbar from './common/Navbar';
 
 export default class MatchDetails extends Component {
   state = {
@@ -13,7 +14,11 @@ export default class MatchDetails extends Component {
   };
   render() {
     return (
+
       <div>
+        <div>
+          <Navbar />
+        </div>
         <MatchSecondaryNavbar
           changeDetailsType={this.changeDetailsType}
           match={this.props.history.location.state.match}

@@ -66,20 +66,24 @@ export default class App extends Component {
       <Router>
         {console.log("gender", this.state.gender)}
         {/* //piyush */}
-
-        <Route exact path="/adminplayer" component={AdminPlayer}></Route>
-        <Route exact path="/adminteam" component={AdminTeam}></Route>
-        <Route
-          exact
-          path="/admineditplayer/:player_id"
-          component={AdminEditPlayer}
-        ></Route>
-        <Route
-          exact
-          path="/admineditteam/:team_id"
-          component={AdminEditTeam}
-        ></Route>
-
+        {decoded_token ? (
+          decoded_token.isAdmin ? (
+            <>
+              <Route exact path="/adminplayer" component={AdminPlayer}></Route>
+              <Route exact path="/adminteam" component={AdminTeam}></Route>
+              <Route
+                exact
+                path="/admineditplayer/:player_id"
+                component={AdminEditPlayer}
+              ></Route>
+              <Route
+                exact
+                path="/admineditteam/:team_id"
+                component={AdminEditTeam}
+              ></Route>
+            </>
+          ) : null
+        ) : null}
         <Route
           path="/login"
           exact

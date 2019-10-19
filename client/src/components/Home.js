@@ -7,23 +7,14 @@ import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
 import Navbar from "./common/Navbar";
-import decode from "jwt-decode";
-let decoded_token;
 export class Home extends Component {
   componentWillMount() {
     console.log("home mounted");
     this.props.getNews();
-    this.props.getRecentMatches();
-    if (localStorage.getItem("token")) {
-      decoded_token = decode(localStorage.getItem("token"));
-      console.log("decoded token", decoded_token);
-    } else {
-      console.log("no token found");
-    }
+    this.props.getRecentMatches(this.props.gender);
   }
 
   render() {
-    console.log(decoded_token.isAdmin);
     console.log("find layout", this.props);
     return (
       <div>

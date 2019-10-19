@@ -1,38 +1,40 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
 * {
-	font-family: Montserrat, sans-serif;
+  font-family: Montserrat, sans-serif;
 }
 
 .div-container {
-	margin-top: 80px;
+  padding-top: 80px;
+  background-color: #ecf0f1;
 }
 
 .div-news {
-	width: 100%;
-	height: 140px;
-	border: 1px solid #707070;
-	border-radius: 8px;
-	margin-bottom: 30px;
-	display: flex;
+  width: 100%;
+  height: 140px;
+  /* border: 1px solid #707070; */
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
+  background-color: white;
 }
 /* for news images */
 .div-recent-news {
-	width: 100%;
-	border: 1px solid #707070;
-	border-radius: 8px;
-	margin-bottom: 30px;
-	display: flex;
+  width: 100%;
+  border: 1px solid #707070;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  display: flex;
 }
 
 #div-second-section {
-	width: 350px;
+  width: 350px;
 }
 
 .div-news-details {
-	width: 80%;
-	text-decoration: none;
-	margin: 2%;
+  width: 80%;
+  text-decoration: none;
+  margin: 2%;
 }
 
 /* .news_img {
@@ -40,120 +42,125 @@
 	height: 100%;
 } */
 .div-news-images {
-	border-radius: 8px 0px 0px 8px;
-	width: 40%;
-	display: inline-block;
-	/* height: 100%; */
-	/* border-radius: 50%; */
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
+  border-radius: 8px 0px 0px 8px;
+  width: 40%;
+  display: inline-block;
+  /* height: 100%; */
+  /* border-radius: 50%; */
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .div-news-section {
-	padding: 20px 60px 20px 100px;
-	width: 60vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	display: inline-block;
+  padding: 20px 60px 20px 100px;
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
 }
 
 .div-section {
-	display: flex;
+  display: flex;
+  background-color: #ecf0f1;
 }
 
 .p-news {
-	color: #272727;
-	font-size: 20px;
-	margin: 0px;
+  color: #272727;
+  font-size: 20px;
+  margin: 0px;
 }
 .home-news-date {
-	font-size: 12px;
+  font-size: 12px;
 }
 .link-news {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* --------------------------------- */
 #home-recent-matches {
-	border: 1px solid #707070;
-	border-radius: 10px 10px 0px 0px;
+  border: 1px solid #707070;
+  border-radius: 10px 10px 0px 0px;
 }
 
 #link-recent-matches:not(:last-child) > div {
-	border-bottom: 1px solid #707070;
+  border-bottom: 1px solid #707070;
 }
 #home-match {
-	color: #272727;
-	padding: 10px 20px;
+  color: #272727;
+  padding: 10px 20px;
+  background-color: white;
 }
 #home-recent-match-date {
-	font-size: 12px;
+  font-size: 12px;
 }
 #team-score {
-	display: flex;
-	margin: 0px 0px 10px 0px;
+  display: flex;
+  margin: 0px 0px 10px 0px;
 }
 #home-recent-matches-team-one-score {
-	margin: 0px 0px 0px auto;
-	font-size: 20px;
-	color: #272727;
+  margin: 0px 0px 0px auto;
+  font-size: 20px;
+  color: #272727;
 }
 #home-recent-matches-teamOne {
-	font-size: 20px;
-	margin: 0px 0px 0px 0px;
+  font-size: 20px;
+  margin: 0px 0px 0px 0px;
 
-	color: #272727;
+  color: #272727;
 }
 #home-recent-matches-team-one-wickets {
-	margin-left: 10px;
-	font-size: 20px;
-	padding-right: 50px;
-	color: #272727;
+  margin-left: 10px;
+  font-size: 20px;
+  padding-right: 50px;
+  color: #272727;
 }
 #home-recent-matches-team-two-score {
-	margin: 0px 0px 0px auto;
-	font-size: 20px;
-	color: #272727;
+  margin: 0px 0px 0px auto;
+  font-size: 20px;
+  color: #272727;
 }
 #home-recent-matches-teamTwo {
-	font-size: 20px;
-	margin: 0px;
-	color: #272727;
+  font-size: 20px;
+  margin: 0px;
+  color: #272727;
 }
 #home-recent-matches-team-winner {
-	/* margin-left: 25px; */
-	margin: 20px 0px 6px 0px;
-	color: #272727;
-	font-weight: 600;
+  /* margin-left: 25px; */
+  margin: 20px 0px 6px 0px;
+  color: #272727;
+  font-weight: 600;
 }
 #home-recent-matches-title {
-	font-size: 16px;
-	height: 30px;
-	border-radius: 10px 10px 0px 0px;
-	border-bottom: 1px solid #707070;
-	/* color: #2980b9; */
-	background-color: #2980b9;
-	color: white;
-	padding: 10px 5px 0px 5px;
+  font-size: 16px;
+  height: 30px;
+  border-radius: 10px 10px 0px 0px;
+  border-bottom: 1px solid #707070;
+  /* color: #2980b9; */
+  background-color: #2980b9;
+  color: white;
+  padding: 10px 5px 0px 5px;
+}
+.grid-class-topteam {
+  background-color: white;
 }
 
 #rm {
-	font-size: 10px;
+  font-size: 10px;
 }
 
 #link-recent-matches {
-	text-decoration: none;
+  text-decoration: none;
 }
 @media screen and (max-width: 480px) {
-	.p-news {
-		/* color: #272727; */
-		font-size: 100%;
-		/* margin: 0px; */
-	}
-	/* .div-news-section {
+  .p-news {
+    /* color: #272727; */
+    font-size: 100%;
+    /* margin: 0px; */
+  }
+  /* .div-news-section {
     padding: 20px 60px 20px 100px;
     width: 100px;
     display: flex;
@@ -161,29 +168,23 @@
     justify-content: center;
     align-items: center;
   } */
-	.div-section {
-		display: flex;
-		flex-direction: column;
-		padding: 0px 0px 20px 15px;
-	}
-	.div-news {
-		width: 150%;
-		height: 140px;
-		border: 1px solid #707070;
-		border-radius: 8px;
-		/* margin-bottom: 30px; */
-		display: flex;
-	}
-	.div-news-section {
-		padding: 20px 0px 20px 0px;
-	}
-	#home-recent-matches {
-		width: 95%;
-	}
-	.grid-class-topteam {
-		display: none;
-	}
-	#div-second-section {
-		width: auto;
-	}
+  .div-section {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 0px 20px 15px;
+  }
+
+  .div-news-section {
+    padding: 20px 0px 20px 0px;
+    width: 95%;
+  }
+  #home-recent-matches {
+    width: 95%;
+  }
+  .grid-class-topteam {
+    display: none;
+  }
+  #div-second-section {
+    width: auto;
+  }
 }
