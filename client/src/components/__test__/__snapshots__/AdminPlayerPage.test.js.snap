@@ -2,7 +2,6 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
-  <Navbar />
   <div
     className="player-page"
   >
@@ -13,13 +12,16 @@ exports[`test  Component render the component 1`] = `
         className="inner-heading"
       >
         <div>
-          <h1>
+          <h1
+            id="heading-1"
+          >
             All Players
           </h1>
         </div>
         <div>
            
           <input
+            id="searchInput"
             margin="normal"
             name="Search"
             onChange={[Function]}
@@ -32,24 +34,92 @@ exports[`test  Component render the component 1`] = `
         className="player-list"
       >
         <div
-          className="loader"
-        />
+          className="player-name"
+        >
+          <p>
+            SC Cook
+          </p>
+          <div
+            className="inner-button"
+          >
+            <div
+              style={
+                Object {
+                  "marginRight": "5px",
+                }
+              }
+            >
+              <button
+                className="admininnerbutton"
+                id="editbutton"
+                onChange={[Function]}
+                onClick={[Function]}
+              >
+                Edit
+              </button>
+            </div>
+            <div>
+              <button
+                className="admininnerbutton"
+                id="deletebutton"
+                onChange={[Function]}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "background": "#E74C3c",
+                  }
+                }
+              >
+                Delete
+              </button>
+              <SweetAlert
+                animation={true}
+                cancelButtonText="No, keep it"
+                confirmButtonColor="#e74c3c"
+                confirmButtonText="Delete!"
+                customClass={null}
+                html={false}
+                id="SweetAlert"
+                imageSize="80x80"
+                imageUrl={null}
+                inputPlaceholder={null}
+                inputType="text"
+                inputValue={null}
+                onCancel={[Function]}
+                onConfirm={[Function]}
+                onEscapeKey={[Function]}
+                onOutsideClick={[Function]}
+                show={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                showLoaderOnConfirm={false}
+                text="Are you sure?"
+                title="DELETE PLAYER!"
+                type="warning"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
       id="Adminform"
     >
       <fieldset>
-        <h1>
+        <h2
+          id="heading-2"
+        >
           Add New Player
-        </h1>
+        </h2>
         <input
+          id="enter-name"
           name="player_name"
           onChange={[Function]}
           placeholder="Enter Name"
           type="text"
         />
         <input
+          id="player_country"
           name="player_country"
           onChange={[Function]}
           placeholder="Enter Player Country"
@@ -61,6 +131,7 @@ exports[`test  Component render the component 1`] = `
           <div>
             <select
               className="choice"
+              id="batting_style"
               name="batting_style"
               onChange={[Function]}
               type="text"
@@ -86,6 +157,7 @@ exports[`test  Component render the component 1`] = `
           <div>
             <select
               className="choice"
+              id="bowling_style"
               name="bowling_style"
               onChange={[Function]}
               type="text"
@@ -169,6 +241,7 @@ exports[`test  Component render the component 1`] = `
             disabled={false}
             disabledKeyboardNavigation={false}
             dropdownMode="scroll"
+            id="DatePicker"
             inlineFocusSelectedMonth={false}
             monthsShown={1}
             name="datepicker"
@@ -204,6 +277,7 @@ exports[`test  Component render the component 1`] = `
           <div>
             <select
               className="choice"
+              id="player_gender"
               name="player_gender"
               onChange={[Function]}
               type="text"
@@ -229,6 +303,7 @@ exports[`test  Component render the component 1`] = `
         </div>
         <select
           className="choice"
+          id="player_role"
           name="player_role"
           onChange={[Function]}
           placeholder="Enter Player Role"
@@ -272,33 +347,47 @@ exports[`test  Component render the component 1`] = `
           </option>
         </select>
         <input
+          id="debut_odi_match"
           name="debut_odi_match"
           onChange={[Function]}
           placeholder="Enter Debut ODI Match"
           type="text"
         />
         <input
+          id="debut_test_match"
           name="debut_test_match"
           onChange={[Function]}
           placeholder="Enter Debut Test Match"
           type="text"
         />
         <input
+          id="debut_t20_match"
           name="debut_t20_match"
           onChange={[Function]}
           placeholder="Enter Debut T20 Match"
           type="text"
         />
-        <span
+        <div
           className="errorMessage"
           style={
             Object {
               "color": "#c0392b",
-              "display": "none",
             }
           }
-        />
+        >
+          <span
+            className="errorMessage"
+            style={
+              Object {
+                "color": "#c0392b",
+                "display": "none",
+              }
+            }
+          />
+        </div>
         <button
+          className="adminpagebutton "
+          id="addbutton"
           onChange={[Function]}
           onClick={[Function]}
         >

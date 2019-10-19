@@ -2,7 +2,6 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
-  <Navbar />
   <div
     className="player-page"
   >
@@ -13,13 +12,16 @@ exports[`test  Component render the component 1`] = `
         className="inner-heading"
       >
         <div>
-          <h1>
+          <h1
+            id="heading-1"
+          >
             All Team
           </h1>
         </div>
         <div>
            
           <input
+            id="searchInput"
             margin="normal"
             name="Search"
             onChange={[Function]}
@@ -32,34 +34,111 @@ exports[`test  Component render the component 1`] = `
         className="player-list"
       >
         <div
-          className="loader"
-        />
+          className="player-name"
+        >
+          <p>
+            India
+          </p>
+          <div
+            className="inner-button"
+          >
+            <div
+              style={
+                Object {
+                  "marginRight": "5px",
+                }
+              }
+            >
+              <button
+                className="admininnerbutton"
+                id="editbutton"
+                onChange={[Function]}
+                onClick={[Function]}
+              >
+                Edit
+              </button>
+            </div>
+            <div>
+              <button
+                className="admininnerbutton"
+                id="deletebutton"
+                onChange={[Function]}
+                onClick={[Function]}
+                style={
+                  Object {
+                    "background": "#E74C3c",
+                  }
+                }
+              >
+                Delete
+              </button>
+              <SweetAlert
+                animation={true}
+                cancelButtonText="No, keep it"
+                confirmButtonColor="#e74c3c"
+                confirmButtonText="Delete!"
+                customClass={null}
+                html={false}
+                imageSize="80x80"
+                imageUrl={null}
+                inputPlaceholder={null}
+                inputType="text"
+                inputValue={null}
+                onCancel={[Function]}
+                onConfirm={[Function]}
+                onEscapeKey={[Function]}
+                onOutsideClick={[Function]}
+                show={false}
+                showCancelButton={true}
+                showConfirmButton={true}
+                showLoaderOnConfirm={false}
+                text="Are you sure?"
+                title="DELETE TEAM"
+                type="warning"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div
       id="Adminform"
     >
       <fieldset>
-        <h1>
+        <h2
+          id="heading-2"
+        >
           Add New Team
-        </h1>
+        </h2>
         <input
+          id="team_name"
           name="team_name"
           onChange={[Function]}
           placeholder="Enter Team Name"
           type="text"
           value=""
         />
-        <span
+        <div
           className="errorMessage"
           style={
             Object {
               "color": "#c0392b",
-              "display": "none",
             }
           }
-        />
+        >
+          <span
+            className="errorMessage"
+            style={
+              Object {
+                "color": "#c0392b",
+                "display": "none",
+              }
+            }
+          />
+        </div>
         <button
+          className="adminpagebutton"
+          id="add-team"
           onChange={[Function]}
           onClick={[Function]}
         >
