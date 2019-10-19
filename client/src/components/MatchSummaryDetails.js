@@ -22,7 +22,7 @@ export class MatchSummaryDetails extends Component {
             />
           </div>
         ) : (
-            <div style={{ marginTop: 150 + "px" }}>
+            <div style={{ marginTop: 210 + "px" }}>
               {this.props.match.map(match => (
                 <div className="top-container">
                   <div className="top-left-container">
