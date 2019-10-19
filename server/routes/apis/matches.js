@@ -61,7 +61,7 @@ router.get("/recent/:date/:gender", async (req, res, next) => {
 
 			console.log(match_detail);
 
-			//total(score, wicket, over) all inning wise
+			// total(score, wicket, over) all inning wise
 
 			const match_total_of_score = await db.any(`with ss as (with s as (select inning as inning_one, 
                 sum(total_runs) as total_score 
@@ -257,7 +257,7 @@ router.get("/summary/:id", async (req, res, next) => {
         mtp.player_id=p.player_id where match_id=${id} and team_id=${match_details[0].innings_two_team}`);
 		// console.log(team_two_XI)
 
-		//umpires of the match
+		// umpires of the match
 
 		const umpires = await db.any(
 			`select u.umpire_name from umpire as u inner join match_umpire as mu on mu.umpire_id=u.umpire_id where match_id=${id};`
@@ -306,7 +306,7 @@ router.get("/scorecard/:id", async (req, res, next) => {
 		for (inning of innings) {
 			console.log(inning.inning);
 
-			//Batsman_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type, bowler_name(out by whom),fielder_name, fielder_two_name
+			// Batsman_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type, bowler_name(out by whom),fielder_name, fielder_two_name
 
 			const all_batsman = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (select striker,(sum(cast(batsman_run as int))) as batsman_run,
             (count(overs)) as ball_faced, round(cast((sum(cast(batsman_run as float))/(count(overs))*100) as numeric),2) as striker_rate ,
@@ -338,7 +338,7 @@ router.get("/scorecard/:id", async (req, res, next) => {
             full outer join b on b.bowler=d.player_id
            `);
 
-			//total extra in delivery
+			// total extra in delivery
 			const extra_total = await db.any(
 				`select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0`
 			);
