@@ -12,7 +12,7 @@ export class MatchScoreDetails extends Component {
   render() {
     return (
       <div>
-        <div style={{ marginTop: 150 + "px" }}>
+        <div style={{ marginTop: 230 + "px" }}>
           {this.props.isLoading ? (
             <div style={{ margin: "400px" }}>
               <Loader

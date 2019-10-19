@@ -1,171 +1,61 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
-/* .secNavParent {
-	width: 100vw;
-	background-color: #ffffff;
-	box-shadow: 0px 2px 4px 0px #e6e6e6;
-	color: #2c3e50;
+.matchSecNavHead{
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 14px 60px 10px 60px;
+}
+.match-score-details{
 	display: flex;
 	flex-direction: column;
-	letter-spacing: 0.3px;
-	position: fixed;
-	font-family: "Montserrat", sans-serif;
-	top: 60px;
-	left: 0;
-	right: 0;
-  }
-  
-  .secNavHead {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	margin: 14px 60px 10px 60px;
-  }
-  
-  .secNavHead div:first-child {
-	display: inline-block;
-	width: 60px;
-	height: 60px;
-	border-radius: 50%;
+}
+.match-team-score > div{
+display: grid;
+grid-template-columns: max-content 35% 45%;
+width:40vw;
+column-gap: 10px;
+}
+.match-team-score > div:first-child{
+	margin: 10px 0px;
+}
+.match-team-score > div > div:first-child{
+	height: 20px;
+	width: 30px;
 	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: cover;
-  }
-  
-  .secNavHead div:last-child {
-	display: flex;
-	flex-direction: column;
-	margin-left: 40px;
-  }
-  
-  .secNavHead div:last-child h2,
-  .secNavHead div:last-child h4 {
-	margin: 0px;
-  }
-  
-  .secNavHead div:last-child h4 {
-	color: #707070;
-	font-weight: 400;
-  }
-  
-  .secNavLinks {
-	margin: 0px 60px;
-  }
-  
-  .secNavLinks ul {
-	display: flex;
+  	background-position: center center;
+  	background-size: cover;
+}
+
+.match-pom{
+	border-left: 1px solid #707070;
+	padding-left: 20px;
+}
+
+.match-pom .pom-name-photo{
+	display: grid;
+	grid-template-columns: max-content max-content;
+	column-gap: 20px;
 	align-items: center;
-	list-style-type: none;
-	margin: 0px;
-	padding: 0px;
-  }
-  
-  .secNavLinks ul li {
-	font-family: "Montserrat", sans-serif;
-	padding: 10px 0px;
-	transition: 0.3s;
-	color: #272727;
-	margin-right: 30px;
-	letter-spacing: 0.3px;
-	text-align: center;
-  }
-  
-  .secNavLinks ul li:hover {
+	margin-top:10px;
+}
+
+.pom-name> div:first-child{
+	font-size: 20px;
 	font-weight: 600;
-	cursor: pointer;
-	padding-bottom: 7px;
-	color: #2980b9;
-	border-bottom: 3px solid #2980b9;
-  }
-  
-  .secLink {
-	text-decoration: none;
-  }
-   */
-.summary{
-    margin: 20px;
-    margin-top: 80px;
-}
-.top-div-of-match {
-    display: flex;
-    flex-direction: row;
-    width: 95%;
-    height: auto;
 }
 
-.short-summary-with-result{
-    width: 40%;
-    border-right: 1px solid #272727;
-    margin-left: 20px;
-}
-.short-summary-with-result span{
-text-align: left;
-margin-bottom: 20px;    
-}
-
-.short-summary-with-player-of-the-match{
-width: 50%;
-border-left: 1px solid #272727;
-}
-.short-summary-right .default-img{
-    height: 60px;
-    width: 120px;
-    background-size: 120px 65px;
-    margin-top: 15px;
-
+.pom-img {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	border: 1px solid #c2c2c2;
 }
 
-.short-summary-with-result .Team-data {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    text-align: left;
-    font-size: 20px;
-    margin: 3px;
-    margin-left: 10px;
-}
-
-.Team-data .Team-name , .Team-score{
-    text-align: left;
-    font-size: 20px;
-    font-weight: 500;
-    margin-right: 40px;
-    margin-top: 10px;
-    }
-
-.Team-data .Team-img {
-    width: 60px;
-    background-size: 60px 34px;
-}
-
-.short-summary-right{
-    display: grid;
-    grid-template-columns: 20% 50%;
-    margin-left: 20px;
-    height: 50px;
-
-}
-.header-player-of-the-match{
-    margin: 40px 0 10px 40px;
-}
-
-
-
-@media only screen and (max-width: 576px) {
-	.secNavParent {
-		padding: 20px 20px 0px 20px;
-	}
-	.secNavLinks ul li {
-		font-size: 12px;
-	}
-	.secNavHead div:first-child {
-		width: 60px;
-		height: 60px;
-	}
-	.secNavLinks {
-		margin-top: 10px;
-	}
-	.secNavHead div:last-child {
-		margin-left: 20px;
-	}
+.pom-img > i {
+	color: #c2c2c2;
+	font-size: 30px;
 }
