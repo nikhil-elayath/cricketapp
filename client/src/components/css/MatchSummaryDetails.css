@@ -7,16 +7,18 @@ body {
 
 .top-container {
   display: grid;
-  grid-template-columns: 5fr 3fr;
-  grid-template-rows: 2fr 2fr;
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: auto auto;
   grid-template-areas:
     "summary matchdetails"
     "playingXI matchdetails";
-  grid-gap: 20px;
+  row-gap: 30px;
+  column-gap: 25px;
   justify-content: space-between;
-  height: auto;
+  height: fit-content;
   padding: 20px;
-  margin: 60px;
+  margin: 130px;
+  font-size: 14px;
 }
 
 .top-container .top-left-container {
@@ -26,15 +28,17 @@ body {
   border-radius: 5px;
 }
 
-.top-container .teamone-top-players,
-.teamtwo-top-players {
+.top-container .teamone-top-players, .teamtwo-top-players {
   display: grid;
   grid-template-columns: 4fr 2fr 4fr 2fr;
   border-top: 1px solid #272727;
   border-bottom: 1px solid #272727;
-  padding: 2px;
   grid-gap: 3px;
 }
+.top-container .teamtwo-top-players {
+  border-bottom: none;
+}
+
 .top-container .bottom-left-container {
   display: grid;
   grid-template-rows: 1fr 9fr;
@@ -44,7 +48,7 @@ body {
 
 .bottom-left-container .playingXI {
   display: grid;
-  grid-template-columns: 4fr 5fr;
+  grid-template-columns: 5fr 5fr;
   grid-template-rows: 1fr 8fr;
   grid-gap: 5px;
   height: auto;
@@ -54,11 +58,12 @@ body {
   height: fit-content;
 }
 
-.top-title {
+.top-container .top-title {
   font-weight: 500;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background: #2980b9;
   color: white;
-  padding: 5px;
+  padding: 10px;
   }
+
