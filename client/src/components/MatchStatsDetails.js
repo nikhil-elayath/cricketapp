@@ -12,12 +12,17 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 export class MatchStatsDetails extends Component {
   componentDidMount() {
     // [yatin] calling indivisual stats api on component mount
-    this.props.getManhattanGraphbyId(this.props.match_id);
+    // this.props.getManhattanGraphbyId(this.props.match_id);
     this.props.getPieChartOnebyId(this.props.match_id);
-    this.props.getPieChartTwobyId(this.props.match_id);
+    // this.props.getPieChartTwobyId(this.props.match_id);
   }
   render() {
-    console.log(this.props.match_stats);
+    console.log("received", this.props.match_stats_pie1);
+    console.log("received typeof", typeof this.props.match_stats_pie1);
+    console.log("accessing head", this.props.match_stats_pie1[3]);
+    console.log("accessing head2", this.props.match_stats_pie1.head2);
+    console.log("accessing status_code", this.props.match_stats_pie1.status_code);
+    console.log("accessing message", this.props.match_stats_pie1.message);
     return (
       <div>
         {/* {this.props.isLoading ? (
@@ -51,7 +56,7 @@ export class MatchStatsDetails extends Component {
               <div className="top-title"> Pie chart of players run</div>
               <div>
                 <iframe className="stats-graph"
-                  src={this.props.match_stats_pie1.piechartOne}
+                  src={this.props.match_stats_pie1.head}
                 />
               </div>
             </div>

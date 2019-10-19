@@ -105,7 +105,7 @@ export const getPieChartOnebyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
-        payload: { piechartOne: res.data },
+        payload: res.data
       });
       console.log(res.data);
     })
