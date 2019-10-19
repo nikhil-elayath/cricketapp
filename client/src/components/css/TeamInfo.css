@@ -121,7 +121,7 @@
   cursor: pointer;
 }
 .list-info {
-  text-align: center;
+  text-align: left;
   display: flex;
   margin: 15px 0px 0px 0px;
 }
