@@ -28,19 +28,20 @@ export class MatchSummaryDetails extends Component {
                   <div className="top-left-container">
                     <div className="top-title">Summary Scorecard</div>
 
-                    <div style={{ margin: "15px 0 0 8px" }}>
+                    <div style={{ padding: "10px" }}>
                       {match.teamone_name[0].teamone_name}
                     </div>
 
                     <div className="teamone-top-players">
-                      <div style={{ fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team1_batsman.map(t1_batsman => (
                           <div>{t1_batsman.player_name}</div>
                         ))}
                       </div>
                       <div
                         style={{
-                          borderRight: "1px solid #272727"
+                          borderRight: "1px solid #272727",
+                          padding: "10px"
                         }}
                       >
                         {match.team1_batsman.map(t1_batsman => (
@@ -49,12 +50,12 @@ export class MatchSummaryDetails extends Component {
                         </div>
                         ))}
                       </div>
-                      <div style={{ fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team1_bowler.map(t1_bowler => (
                           <div>{t1_bowler.player_name}</div>
                         ))}
                       </div>
-                      <div>
+                      <div style={{ margin: "10px", margin: "10px" }}>
                         {match.team1_bowler.map(t1_bowler => (
                           <div>
                             {t1_bowler.total_wicket}/{t1_bowler.given_runs} (
@@ -64,18 +65,19 @@ export class MatchSummaryDetails extends Component {
                       </div>
                     </div>
 
-                    <div style={{ margin: "15px 0 0 8px" }}>
+                    <div style={{ padding: "10px" }}>
                       {match.teamtwo_name[0].teamtwo_name}
                     </div>
                     <div className="teamtwo-top-players">
-                      <div style={{ fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team2_batsman.map(t2_batsman => (
                           <div>{t2_batsman.player_name}</div>
                         ))}
                       </div>
                       <div
                         style={{
-                          borderRight: "1px solid #272727"
+                          borderRight: "1px solid #272727",
+                          padding: "10px"
                         }}
                       >
                         {match.team2_batsman.map(t2_batsman => (
@@ -84,12 +86,12 @@ export class MatchSummaryDetails extends Component {
                         </div>
                         ))}
                       </div>
-                      <div style={{ fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team2_bowler.map(t2_bowler => (
                           <div>{t2_bowler.player_name}</div>
                         ))}
                       </div>
-                      <div>
+                      <div style={{ margin: "10px" }}>
                         {match.team2_bowler.map(t2_bowler => (
                           <div>
                             {t2_bowler.total_wicket}/{t2_bowler.given_runs} (
