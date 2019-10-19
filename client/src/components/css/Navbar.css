@@ -130,7 +130,7 @@ nav {
 }
 
 .bars::before {
-	top: 5px;
+	top: -10px;
 }
 
 .bars::after {
@@ -173,6 +173,16 @@ nav {
 	text-decoration: none;
 }
 
+/* admin properties */
+
+.menu .admin-ul {
+	justify-content: end;
+}
+
+.admin-nav-brand {
+	margin-right: auto;
+}
+
 @media screen and (min-width: 526px) {
 	.item,
 	.login-icon {
@@ -180,6 +190,9 @@ nav {
 	}
 	.item .link {
 		font-size: 12px;
+	}
+	#adminteam {
+		margin-left: 30px;
 	}
 }
 
@@ -209,6 +222,9 @@ nav {
 	.nav-brand-li {
 		/* flex-grow: 3; */
 		min-width: 30vw;
+	}
+	.menu.admin {
+		padding: 5px 130px;
 	}
 }
 .active-gender {
