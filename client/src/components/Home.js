@@ -12,7 +12,7 @@ export class Home extends Component {
 	componentWillMount() {
 		console.log("home mounted");
 		this.props.getNews();
-		this.props.getRecentMatches();
+		this.props.getRecentMatches(this.props.gender);
 	}
 
 	render() {
