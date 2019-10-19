@@ -2,5 +2,5 @@ projectKey=cricketalphaclient
 serverUrl=http://localhost:9000
 serverVersion=7.7.0.23042
 dashboardUrl=http://localhost:9000/dashboard?id=cricketalphaclient
-ceTaskId=AW2ltJv3yGSKvdFbmQMp
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AW2ltJv3yGSKvdFbmQMp
+ceTaskId=AW3jFCPJInbiM9J8pmMi
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AW3jFCPJInbiM9J8pmMi
