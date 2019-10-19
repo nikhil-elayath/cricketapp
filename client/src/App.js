@@ -39,43 +39,98 @@ import MatchDetails from "./components/MatchDetails";
 
 // ankit
 import Navbar from "./components/common/Navbar";
+import AdminNavbar from "./components/common/AdminNavbar";
+import decode from "jwt-decode";
+
+let decoded_token;
 export default class App extends Component {
 	state = {
 		gender: "male"
 	};
+
 	changeGender = gender_type => {
 		gender_type == "male"
 			? this.setState({ gender: "male" })
 			: this.setState({ gender: "female" });
 	};
+	componentDidMount() {
+		if (localStorage.getItem("token")) {
+			decoded_token = decode(localStorage.getItem("token"));
+			console.log("decoded token", decoded_token);
+		} else {
+			console.log("no token found");
+		}
+	}
 	render() {
 		return (
 			<Router>
-				<Navbar
-					changeGender={getGender => this.changeGender(getGender)}
-					gender={this.state.gender}
-				/>
 				{console.log("gender", this.state.gender)}
 				{/* //piyush */}
+				{decoded_token ? (
+					decoded_token.isAdmin ? (
+						<>
+							<Route
+								exact
+								path="/adminplayer"
+								component={AdminPlayer}
+							></Route>
+							<Route
+								exact
+								path="/adminteam"
+								component={AdminTeam}
+							></Route>
+							<Route
+								exact
+								path="/admineditplayer/:player_id"
+								component={AdminEditPlayer}
+							></Route>
+							<Route
+								exact
+								path="/admineditteam/:team_id"
+								component={AdminEditTeam}
+							></Route>
+						</>
+					) : null
+				) : null}
 				<Route
+					path="/login"
 					exact
-					path="/adminplayer"
-					component={AdminPlayer}
-				></Route>
-				<Route exact path="/adminteam" component={AdminTeam}></Route>
+					component={props => (
+						<Login
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
 				<Route
+					path="/register"
 					exact
-					path="/admineditplayer/:player_id"
-					component={AdminEditPlayer}
-				></Route>
+					component={props => (
+						<Register
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
 				<Route
+					path="/resetPassword"
 					exact
-					path="/admineditteam/:team_id"
-					component={AdminEditTeam}
-				></Route>
-				<Route path="/login" exact component={Login} />
-				<Route path="/register" exact component={Register} />
-				<Route path="/resetPassword" exact component={ResetPassword} />
+					component={props => (
+						<ResetPassword
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
 
 				{/* //ashfi */}
 				<Route
@@ -86,60 +141,175 @@ export default class App extends Component {
 						<PlayerLandingPage
 							{...props}
 							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
 						/>
 					)}
 				></Route>
 				<Route
 					exact
 					path="/playerInfo/:player_id"
-					component={PlayerInfo}
-					gender={this.state.gender}
+					component={props => (
+						<PlayerInfo
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
 				></Route>
 				<Route
 					exact
 					path="/batting-stats"
-					component={BattingStats}
-					gender={this.state.gender}
+					component={props => (
+						<BattingStats
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
 				></Route>
 				<Route
 					exact
 					path="/bowling-stats"
-					component={BowlingStats}
-					gender={this.state.gender}
+					component={props => (
+						<BowlingStats
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
 				></Route>
 
-        <Route exact path="/match/details/:id" component={MatchDetails}></Route>
-        <Route
-          exact
-          path="/matches/summary/:id"
-          component={MatchSummaryDetails}
-        ></Route>
-        <Route
-          exact
-          path="/matches/scorecard/:id"
-          component={MatchScoreDetails}
-        ></Route>
-        <Route
-          exact
-          path="/matches/stats/:id"
-          component={MatchStatsDetails}
-        ></Route>
-        <Route exact path="/matches" component={(props)=>(<MatchLandingPage {...props} gender={this.state.gender}/>)}></Route>
+				<Route
+					exact
+					path="/match/details/:id"
+					component={props => (
+						<MatchDetails
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				></Route>
+				<Route
+					exact
+					path="/matches/summary/:id"
+					component={props => (
+						<MatchSummaryDetails
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				></Route>
+				<Route
+					exact
+					path="/matches/scorecard/:id"
+					component={props => (
+						<MatchScoreDetails
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				></Route>
+				<Route
+					exact
+					path="/matches/stats/:id"
+					component={props => (
+						<MatchStatsDetails
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				></Route>
+				<Route
+					exact
+					path="/matches"
+					component={props => (
+						<MatchLandingPage
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				></Route>
 
-        {/* aditya */}
-        <Route
-          exact
-          path="/teamdetails/:team_id"
-          // component={TeamDetails}
-          component={props => (
-            <TeamDetails {...props} gender={this.state.gender} />
-          )}
-        />
-        <Route exact path="/teams" component={TeamLandingPage} />
-        {/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
-        <Route path="/" exact component={Home} />
-        <Route exact path="/newsbyid/:id" exact component={NewsPage} />
-      </Router>
-    );
-  }
+				{/* aditya */}
+				<Route
+					exact
+					path="/teamdetails/:team_id"
+					// component={TeamDetails}
+					component={props => (
+						<TeamDetails
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
+				<Route
+					exact
+					path="/teams"
+					component={props => (
+						<TeamLandingPage
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
+				{/* <Route exact path="/teaminfo/:team_id" component={TeamInfo}></Route> */}
+				<Route
+					path="/"
+					exact
+					component={props => (
+						<Home
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
+				<Route
+					exact
+					path="/newsbyid/:id"
+					exact
+					component={props => (
+						<NewsPage
+							{...props}
+							gender={this.state.gender}
+							changeGender={getGender =>
+								this.changeGender(getGender)
+							}
+						/>
+					)}
+				/>
+			</Router>
+		);
+	}
 }
