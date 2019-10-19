@@ -12,7 +12,7 @@ export class MatchScoreDetails extends Component {
   render() {
     return (
       <div>
-        <div style={{ marginTop: 210 + "px" }}>
+        <div style={{ marginTop: 230 + "px" }}>
           {this.props.isLoading ? (
             <div style={{ margin: "400px" }}>
               <Loader
@@ -26,23 +26,21 @@ export class MatchScoreDetails extends Component {
               this.props.match_score.map(match => (
                 <div
                   className="top-container-scorecard"
-                  style={{ marginTop: 80 + "px", borderRadius: "5px" }}
+                  style={{ borderRadius: "5px" }}
                 >
-                  <div></div>
-
+                  <div
+                    style={{
+                      borderTopLeftRadius: "5px",
+                      borderTopRightRadius: "5px",
+                      backgroundColor: "#2980B9",
+                      fontSize: "400",
+                      color: "white",
+                      padding: "10px"
+                    }}
+                  >
+                    Inning {match.inning.inning}
+                  </div>
                   <div className="main-container-scorecard">
-                    <div
-                      style={{
-                        borderTopLeftRadius: "5px",
-                        borderTopRightRadius: "5px",
-                        backgroundColor: "#2980B9",
-                        fontSize: "500",
-                        color: "white",
-                        padding: "10px"
-                      }}
-                    >
-                      Inning {match.inning.inning}
-                    </div>
                     <div
                       className="batsman-heading"
                       style={{ padding: "5px", fontWeight: "500" }}
@@ -64,7 +62,8 @@ export class MatchScoreDetails extends Component {
                           <div>{batsman.striker_name}</div>
                           {batsman.wicket_type ?
                             (<div>
-                              {batsman.wicket_type} {batsman.fielder_name}{" "} (b){" "}
+                              {batsman.wicket_type == "caught" ? "(c) " : batsman.wicket_type}
+                              {batsman.fielder_name}{" "} (b) {" "}
                               {batsman.bowler_name}
                             </div>) : (<div> not out </div>)
                           }
@@ -72,18 +71,17 @@ export class MatchScoreDetails extends Component {
                           <div>{batsman.ball_faced}</div>
                           <div>{batsman.fours}</div>
                           <div>{batsman.sixes}</div>
-                          <div>{batsman.striker_rate}</div>
+                          <div> {batsman.striker_rate}</div>
                         </div>
                       ))}
                     </div>
 
                     <div
                       className="extras-content"
-                      style={{ fontWeight: "500", padding: "5px" }}
+                      style={{ fontWeight: "500", padding: "10px" }}
                     >
                       <div>Extras</div>
-                      <div></div>
-                      <div>
+                      <div style={{ margin: "0 80px 0 0" }}>
                         {" "}
                         {match.extra_total.map(total => total.extra_count)} extras
                     </div>
@@ -91,20 +89,18 @@ export class MatchScoreDetails extends Component {
 
                     <div
                       className="total-content"
-                      style={{ fontWeight: "500", padding: "5px" }}
+                      style={{ fontWeight: "500", padding: "5px", borderBottom: "none" }}
                     >
                       <div>Total</div>
-                      <div></div>
-                      <div>
+                      <div style={{ margin: "0 40px 0 0" }}>
                         {match.total_score.map(score => score.total_runs)} /
                       {match.total_score.map(score => score.total_wicket)}({" "}
                         {match.total_score.map(score => score.total_overs)} overs)
                     </div>
                     </div>
-                    <div></div>
                     <div
                       className="bowler-heading"
-                      style={{ padding: "5px", fontWeight: "500" }}
+                      style={{ padding: "5px", fontWeight: "500", borderTop: "none" }}
                     >
                       <div>Bowler</div>
                       <div></div>
@@ -131,8 +127,6 @@ export class MatchScoreDetails extends Component {
                       ))}
                     </div>
                   </div>
-
-                  <div></div>
                 </div>
               ))
             )}

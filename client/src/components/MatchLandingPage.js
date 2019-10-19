@@ -6,6 +6,7 @@ import { Calendar, DatePicker } from "@y0c/react-datepicker";
 import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Navbar from "./common/Navbar";
 
 export class MatchLandingPage extends Component {
   // [Yatin] On selection of new date from the calender,
@@ -34,6 +35,12 @@ export class MatchLandingPage extends Component {
   render() {
     return (
       <div>
+        <div>
+          <Navbar
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+          />
+        </div>
         <div style={{ marginTop: "80px" }}>
           <div>
             <h1

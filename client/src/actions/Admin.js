@@ -48,7 +48,7 @@ export const getPlayers = () => dispatch => {
     })
     .catch(err => {
       dispatch(startLoading());
-      console.log(err);
+      // console.log(err);
     });
 };
 
@@ -85,7 +85,7 @@ export const getAllTeams = () => dispatch => {
     })
     .catch(err => {
       dispatch(startLoading());
-      console.log(err);
+      // console.log(err);
     });
 };
 
@@ -127,11 +127,11 @@ export const createTeam = team => dispatch => {
       dispatch({
         type: CREATE_TEAM
       });
-      alert("Added one team successfully");
+      // alert("Added one team successfully");
       dispatch(getAllTeams());
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
       console.log(err.response.data.message);
     });
@@ -148,11 +148,11 @@ export const createPlayer = player => dispatch => {
       dispatch({
         type: CREATE_PLAYER
       });
-      alert("Added one player successfully");
+      // alert("Added one player successfully");
       dispatch(getPlayers());
     })
     .catch(err => {
-      console.log(err);
+      // console.log(err);
       dispatch({ type: ERROR_TYPE, payload: err.response.data.message });
       console.log(err.response.data.message);
     });
@@ -173,8 +173,8 @@ export const editPlayer = player => dispatch => {
       dispatch({
         type: EDIT_PLAYER
       });
-
-      alert("Edited Successfully");
+      dispatch(getPlayers());
+      // alert("Edited Successfully");
     })
     .catch(err => {
       console.log(err);
@@ -192,8 +192,9 @@ export const editTeam = team => dispatch => {
       dispatch({
         type: EDIT_TEAM
       });
-      // dispatch(getUsers());
-      alert("Edited Successfully");
+
+      dispatch(getAllTeams());
+      // alert("Edited Successfully");
     })
     .catch(err => {
       console.log(err);
