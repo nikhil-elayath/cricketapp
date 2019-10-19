@@ -76,9 +76,8 @@ export class AdminTeamPage extends Component {
   render() {
     return (
       <div>
-        {/* <NavBar /> */}
         <div className="player-page">
-          {this.props.isLoading ? (
+          {this.props.isLoading ? ( //use to display loader
             <div style={{ margin: "auto" }}>
               <Loader
                 type="TailSpin"
@@ -91,11 +90,12 @@ export class AdminTeamPage extends Component {
             <div className="players">
               <div className="inner-heading">
                 <div>
-                  <h1>All Team</h1>
+                  <h1 id="heading-1">All Team</h1>
                 </div>
                 <div>
                   {" "}
                   <input
+                    id="searchInput"
                     type="text"
                     name="Search"
                     margin="normal"
@@ -111,6 +111,7 @@ export class AdminTeamPage extends Component {
                     <div className="inner-button">
                       <div style={{ marginRight: "5px" }}>
                         <button
+                          id="editbutton"
                           className="admininnerbutton"
                           onChange={this.OnChange}
                           onClick={() => {
@@ -126,6 +127,7 @@ export class AdminTeamPage extends Component {
 
                       <div>
                         <button
+                          id="deletebutton"
                           className="admininnerbutton"
                           onChange={this.OnChange}
                           // onClick={() => this.props.deleteTeam(teams.team_id)}
@@ -134,7 +136,7 @@ export class AdminTeamPage extends Component {
                         >
                           Delete
                         </button>
-                        <SweetAlert
+                        <SweetAlert // for alert message
                           show={this.state.show}
                           type="warning"
                           title={`DELETE TEAM`}
@@ -144,12 +146,12 @@ export class AdminTeamPage extends Component {
                           cancelButtonText="No, keep it"
                           showCancelButton
                           onConfirm={() => {
-                            console.log("confirm");
+                            // console.log("confirm");
                             this.setState({ show: false });
                             this.props.deleteTeam(teams.team_id);
                           }}
                           onCancel={() => {
-                            console.log("cancel");
+                            // console.log("cancel");
 
                             this.setState({ show: false });
                           }}
@@ -166,8 +168,9 @@ export class AdminTeamPage extends Component {
 
           <div id="Adminform">
             <fieldset>
-              <h2>Add New Team</h2>
+              <h2 id="heading-2">Add New Team</h2>
               <input
+                id="team_name"
                 type="text"
                 name="team_name"
                 placeholder="Enter Team Name"
@@ -197,6 +200,7 @@ export class AdminTeamPage extends Component {
                 )}
               </div>
               <button
+                id="add-team"
                 className="adminpagebutton"
                 onChange={this.OnChange}
                 onClick={this.onRegister}

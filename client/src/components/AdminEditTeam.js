@@ -8,9 +8,9 @@ import "./css/AdminEditPage.css";
 export class AdminEditTeam extends Component {
   componentDidMount() {
     if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     }
-    this.props.getTeams(this.props.match.params.team_id);
+    // this.props.getAllTeams(this.props.match.params.team_id);
   }
 
   state = {
@@ -60,12 +60,11 @@ export class AdminEditTeam extends Component {
   render() {
     return (
       <div>
-        {/* <NavBar /> */}
-
         <div id="AdminEditform">
           <fieldset>
-            <h1>Edit Team</h1>
+            <h1 id="heading">Edit Team</h1>
             <input
+              id="team_name"
               type="text"
               name="team_name"
               placeholder="Enter Team Name"
@@ -84,10 +83,13 @@ export class AdminEditTeam extends Component {
             </span>
             <div className="form-button">
               <Link to="/adminteam">
-                <button className="cancel">Cancel</button>
+                <button id="cancel" className="cancel">
+                  Cancel
+                </button>
               </Link>
 
               <button
+                id="editbutton"
                 className="admineditpagebutton"
                 onChange={this.OnChange}
                 onClick={this.OnEdit}
