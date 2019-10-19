@@ -13,7 +13,6 @@ export default class MatchSecondaryNavbar extends Component {
     console.log(this.props);
     return (
       <div>
-        {/* <Navbar /> */}
         <div className="secNavParent">
           <div className="top-div-of-match">
             <div className="short-summary-with-result">
