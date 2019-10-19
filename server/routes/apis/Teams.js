@@ -218,11 +218,11 @@ router.post("/teams/highesttotals/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const match_type = req.body.match_type;
-    const gender = req.body.gender;
+    // const gender = req.body.gender;
     console.log("match type", match_type);
     const result = await db.any(
       `with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
-      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender='${gender}' and match_id in(
+      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and match_id in(
       select match_id from s))
       select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
       pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
@@ -231,14 +231,20 @@ router.post("/teams/highesttotals/:team_id", async (req, res, next) => {
       y as(select match_id as idd, match_date from match_date where match_id
       in(select match_id from k))
       select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd order by total_run desc limit 15;`
-      // `with  s as (select d.match_id,m.match_type,sum(d.total_runs) as tr from delivery as d inner join match as m on m.match_id = d.match_id where(m.innings_one_team='${team_id}' or m.innings_two_team=${team_id})
-      // and m.match_type='${match_type}' group by d.match_id,m.match_type order by tr desc),ps as
-      // (select md.match_date, m.match_id as match_idd from match_date as md inner join match as m on m.match_id = md.match_id where(m.innings_one_team=${team_id} or m.innings_two_team=${team_id})
-      // and m.match_type='${match_type}' and
-      // m.match_id in(select match_id from s))
-      // select match_date, match_type, tr from ps inner join s on s.match_id=ps.match_idd limit 10;`
     );
     // console.log("result is ", result);
+    let dates = [];
+    for (onedate of result) {
+      console.log("date - ", onedate);
+      var date = new Date(onedate.match_date);
+      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }));
+      dates.push({ match_date: format_date });
+    }
+    console.log(dates);
     if (!result)
       throw {
         statusCode: 404,
@@ -258,11 +264,11 @@ router.post("/teams/lowesttotals/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const match_type = req.body.match_type;
-    const gender = req.body.gender;
+    // const gender = req.body.gender;
     console.log("match type", match_type);
     const result = await db.any(
       `with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
-      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender='${gender}' and match_id in(
+      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and match_id in(
       select match_id from s))
       select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
       pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
@@ -271,14 +277,20 @@ router.post("/teams/lowesttotals/:team_id", async (req, res, next) => {
       y as(select match_id as idd, match_date from match_date where match_id
       in(select match_id from k))
       select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd order by total_run limit 15;`
-      // `with  s as (select d.match_id,m.match_type,sum(d.total_runs) as tr from delivery as d inner join match as m on m.match_id = d.match_id where(m.innings_one_team='${team_id}' or m.innings_two_team=${team_id})
-      // and m.match_type='${match_type}' group by d.match_id,m.match_type order by tr),ps as
-      // (select md.match_date, m.match_id as match_idd from match_date as md inner join match as m on m.match_id = md.match_id where(m.innings_one_team=${team_id} or m.innings_two_team=${team_id})
-      // and m.match_type='${match_type}' and
-      // m.match_id in(select match_id from s))
-      // select match_date, match_type, tr from ps inner join s on s.match_id=ps.match_idd limit 10;`
     );
     // console.log("result is ", result);
+    let dates = [];
+    for (onedate of result) {
+      console.log("date - ", onedate);
+      var date = new Date(onedate.match_date);
+      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }));
+      dates.push({ match_date: format_date });
+    }
+    console.log(dates);
     if (!result)
       throw {
         statusCode: 404,

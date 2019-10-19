@@ -4,180 +4,66 @@ body {
   font-family: "Montserrat", sans-serif;
   color: #272727;
 }
-.matchsummaryloader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #2980b9;
-  border-bottom: 16px solid #2980b9;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-  display: flex;
-  /* justify-content: center; */
-  margin-left: 80%;
-  margin-top: 50%;
-}
 
-@-webkit-keyframes spin {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .top-container {
   display: grid;
-  grid-template-columns: 60% 35%;
-  grid-template-rows: 40% 40%;
+  grid-template-columns: 5fr 2fr;
+  grid-template-rows: auto auto;
   grid-template-areas:
     "summary matchdetails"
     "playingXI matchdetails";
-  grid-gap: 10px;
+  row-gap: 30px;
+  column-gap: 25px;
   justify-content: space-between;
-  height: auto;
+  height: fit-content;
   padding: 20px;
+  margin: 130px;
+  font-size: 14px;
 }
 
 .top-container .top-left-container {
   display: grid;
-  grid-template-rows: 10% 15% 25% 15% 25%;
+  grid-template-rows: 1fr 1fr 2fr 1fr 2fr;
   border: 1px solid #272727;
   border-radius: 5px;
 }
 
-.top-container .teamone-top-players,
-.teamtwo-top-players {
+.top-container .teamone-top-players, .teamtwo-top-players {
   display: grid;
-  grid-template-columns: auto 15% auto 15%;
+  grid-template-columns: 4fr 2fr 4fr 2fr;
   border-top: 1px solid #272727;
   border-bottom: 1px solid #272727;
-  padding: 2px;
   grid-gap: 3px;
 }
+.top-container .teamtwo-top-players {
+  border-bottom: none;
+}
+
 .top-container .bottom-left-container {
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 1fr 9fr;
   border: 1px solid #272727;
   border-radius: 5px;
 }
 
 .bottom-left-container .playingXI {
   display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 12% 80%;
+  grid-template-columns: 5fr 5fr;
+  grid-template-rows: 1fr 8fr;
   grid-gap: 5px;
+  height: auto;
 }
 .match_details {
   grid-area: matchdetails;
   height: fit-content;
 }
 
-.top-title {
+.top-container .top-title {
   font-weight: 500;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   background: #2980b9;
   color: white;
-  padding: 5px;
+  padding: 10px;
   }
 
-/* 
-.topOfSummary{
-    display: grid;
-    grid-template-columns: 60% 10% 30%;
-    
-}
-
-.scoreCardSummary{
-    border: 1px solid #272727;
-    height: auto;
-    margin-left: 15px;
-    display: grid;
-    grid-template-rows: 10% 10% 30% 10% 30%
-}
-
-.matchDetails{
-    border: 1px solid green;
-    margin-right: 80px;
-}
-
-.title{
-    background-color: #2980B9;
-    
-}
-
-.players{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    
-}
-
-.playerLeft, .playerRight{
-    border: 1px solid green;
-    height: 150px;
-    display: flex;
-    flex-direction: rows;
-    justify-content: space-between;
-    font-size: 20px;
-}
-.playerinfo{
-    margin-top: 10px;
-    margin-left: 100px;
-}
-.playerScores{
-    margin-top: 10px;
-    margin-right: 100px;
-}
-
-
-.match-title{
-    text-align: left;
-    margin-top: 8px;
-    margin-left: 8px;
-}
-.match-values{
-    text-align: left;
-    margin-top: 8px;
-    margin-left: 8px;
-
-}
-
-.playing11{
-    border: 1px solid blue;
-    height: 500px;
-    margin-left: 15px;
-    display: grid;
-    grid-template-rows: 10% 90%
-}
-.team-names{
-    margin-left: 15px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    border-bottom: 1px solid black;
-    display: inline;
-    
-}
- .team-players-list, .team-names{
-    text-align: left;
-    margin-left: 15px;
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: 50% 50%;
-    border-bottom: 1px solid black; 
-    
-}
-
-.team-names{
-    border-bottom: 1px solid black;
-}  */

@@ -107,11 +107,12 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
-export const getHighestTotals = (team_id, type) => dispatch => {
+export const getHighestTotals = (team_id, match_type) => dispatch => {
+  console.log("high actions", team_id, match_type);
   return axios
     .post(
       "http://localhost:5000/cricketalpha/teams/highesttotals/" + team_id,
-      type
+      match_type
     )
     .then(res => {
       dispatch({
