@@ -9,6 +9,7 @@
 **/json
 
 # testing
+**/.scannerwork
 **/coverage
 
 # production

@@ -36,11 +36,12 @@ router.post("/teams/match/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const match_type = req.body.match_type;
+    // const gender = req.body.gender;
     console.log("called Individual team matches");
     // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
     // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
     const result = await db.any(
-      `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.match_type = '${match_type}' and(m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
+      `select md.match_date, m.match_id, m.match_type, m.gender from match_date as md inner join match as m on md.match_id = m.match_id where m.match_type = '${match_type}' and (m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
       // `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.team_one=${team_id} or m.team_two=${team_id} order by md.match_date desc limit 8`
     );
     console.log("matches id", result);
@@ -128,7 +129,7 @@ router.post("/teams/rankings", async (req, res, next) => {
     console.log("match type", match_type);
     console.log("competition", match_type);
     const result = await db.any(
-      `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
+      `select team.team_id, team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' group by team.team_id, team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
       // `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
     );
     // console.log("result is ", result);
@@ -182,6 +183,7 @@ router.post("/teams/topbowlers", async (req, res) => {
   try {
     let match_type = req.body.match_type;
     var player_country = req.body.player_country;
+    // let gender = req.body.player_gender;
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
         `select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' AND player_stats_name = 'total_wickets' AND player_country = '${player_country}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
@@ -216,16 +218,33 @@ router.post("/teams/highesttotals/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const match_type = req.body.match_type;
+    // const gender = req.body.gender;
     console.log("match type", match_type);
     const result = await db.any(
-      `with  s as (select d.match_id,m.match_type,sum(d.total_runs) as tr from delivery as d inner join match as m on m.match_id = d.match_id where(m.innings_one_team='${team_id}' or m.innings_two_team=${team_id})
-      and m.match_type='${match_type}' group by d.match_id,m.match_type order by tr desc),ps as
-      (select md.match_date, m.match_id as match_idd from match_date as md inner join match as m on m.match_id = md.match_id where(m.innings_one_team=${team_id} or m.innings_two_team=${team_id})
-      and m.match_type='${match_type}' and
-      m.match_id in(select match_id from s))
-      select match_date, match_type, tr from ps inner join s on s.match_id=ps.match_idd limit 15;`
+      `with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
+      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and match_id in(
+      select match_id from s))
+      select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
+      pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
+      where match_id in( select match_id from ss) group by match_id, inning)
+      select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id),
+      y as(select match_id as idd, match_date from match_date where match_id
+      in(select match_id from k))
+      select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd order by total_run desc limit 15;`
     );
     // console.log("result is ", result);
+    let dates = [];
+    for (onedate of result) {
+      console.log("date - ", onedate);
+      var date = new Date(onedate.match_date);
+      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }));
+      dates.push({ match_date: format_date });
+    }
+    console.log(dates);
     if (!result)
       throw {
         statusCode: 404,
@@ -245,16 +264,33 @@ router.post("/teams/lowesttotals/:team_id", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const match_type = req.body.match_type;
+    // const gender = req.body.gender;
     console.log("match type", match_type);
     const result = await db.any(
-      `with  s as (select d.match_id,m.match_type,sum(d.total_runs) as tr from delivery as d inner join match as m on m.match_id = d.match_id where(m.innings_one_team='${team_id}' or m.innings_two_team=${team_id})
-      and m.match_type='${match_type}' group by d.match_id,m.match_type order by tr),ps as
-      (select md.match_date, m.match_id as match_idd from match_date as md inner join match as m on m.match_id = md.match_id where(m.innings_one_team=${team_id} or m.innings_two_team=${team_id})
-      and m.match_type='${match_type}' and
-      m.match_id in(select match_id from s))
-      select match_date, match_type, tr from ps inner join s on s.match_id=ps.match_idd limit 15;`
+      `with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
+      ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and match_id in(
+      select match_id from s))
+      select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
+      pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
+      where match_id in( select match_id from ss) group by match_id, inning)
+      select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id),
+      y as(select match_id as idd, match_date from match_date where match_id
+      in(select match_id from k))
+      select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd order by total_run limit 15;`
     );
     // console.log("result is ", result);
+    let dates = [];
+    for (onedate of result) {
+      console.log("date - ", onedate);
+      var date = new Date(onedate.match_date);
+      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }));
+      dates.push({ match_date: format_date });
+    }
+    console.log(dates);
     if (!result)
       throw {
         statusCode: 404,

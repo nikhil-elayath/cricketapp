@@ -121,7 +121,7 @@
   cursor: pointer;
 }
 .list-info {
-  text-align: center;
+  text-align: left;
   display: flex;
   margin: 15px 0px 0px 0px;
 }
@@ -349,6 +349,10 @@
 }
 
 @media only screen and (max-width: 576px) {
+  .container-team-details {
+    margin-top: 220px;
+  }
+
   .cards-new {
     margin: 5px 15px 15px 25px;
   }
@@ -438,9 +442,5 @@
 
   .grid-class-team-details {
     width: auto;
-  }
-
-  .container-team-details {
-    margin-top: 220px;
   }
 }

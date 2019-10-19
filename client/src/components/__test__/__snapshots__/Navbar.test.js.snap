@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for the text, input, css properties and icons on the navbar and snapshot testing renders the component for snapshot testing 1`] = `
+<div
+  className="nav-parent"
+>
+  <nav
+    className="menu"
+  >
+    <ul>
+      <li
+        className="nav-brand-li"
+      >
+        <Link
+          id="nav-brand"
+          to="/"
+        >
+          CricketAlpha
+        </Link>
+      </li>
+      <div
+        className="genders"
+      >
+        <span
+          className=""
+          id="men"
+          onClick={[Function]}
+        >
+          Men
+        </span>
+        <span
+          className=""
+          id="women"
+          onClick={[Function]}
+        >
+          Women
+        </span>
+      </div>
+      <input
+        checked={true}
+        className="menu-btn"
+        id="menu-btn"
+        onClick={[Function]}
+        type="checkbox"
+      />
+      <label
+        className="menu-icon"
+        for="menu-btn"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <span
+          className="bars"
+        />
+      </label>
+      <li
+        className="item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="matches"
+          to="/matches"
+        >
+          Matches
+        </Link>
+      </li>
+      <li
+        className="item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="teams"
+          to="/teams"
+        >
+          Teams
+        </Link>
+      </li>
+      <li
+        className="item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="players"
+          to="/players"
+        >
+          Players
+        </Link>
+      </li>
+      <li
+        className="search-box-li"
+      >
+        <input
+          className="search-box"
+          id="searchInput"
+          name="searchInput"
+          onChange={[Function]}
+          placeholder="Search for Team or Player"
+          value=""
+        />
+        <div
+          className="search-result"
+          style={
+            Object {
+              "display": "none",
+            }
+          }
+        >
+          <div>
+            <Link
+              className="search-list-item"
+              to={
+                Object {
+                  "pathname": "/playerInfo/58",
+                }
+              }
+            >
+              <div
+                className="search-suggestion"
+                id="player-search-58"
+              >
+                JEC Franklin
+              </div>
+            </Link>
+          </div>
+          <div>
+            <Link
+              className="search-list-item"
+              to={
+                Object {
+                  "pathname": "/teamdetails/10",
+                }
+              }
+            >
+              <div
+                className="search-suggestion"
+                id="team-search-10"
+              >
+                India
+              </div>
+            </Link>
+          </div>
+        </div>
+      </li>
+      <li
+        className="login-icon"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          to="/login"
+        >
+          <i
+            className="fas fa-user"
+          />
+        </Link>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

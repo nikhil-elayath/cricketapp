@@ -115,13 +115,10 @@ export class MostWins extends Component {
             </div>
             <div>
               {this.props.ranks.map(ranks => (
-                <div>
-                  <div className="list">
-                    <img src={logo} className="img-card" />
-                    <p className="p-team-name">{ranks.team_name}</p>
-                    <h2 className="h2-team-position">{ranks.count}</h2>
-                  </div>
-                  <hr className="hr-team-card" />
+                <div className="list-wins">
+                  <img src={logo} className="img-card" />
+                  <p className="p-team-name">{ranks.team_name}</p>
+                  <h2 className="h2-team-position">{ranks.count}</h2>
                 </div>
               ))}
             </div>

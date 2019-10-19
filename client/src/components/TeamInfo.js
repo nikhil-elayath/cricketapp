@@ -26,7 +26,7 @@ export class TeamInfo extends Component {
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
     console.log("batsman is", this.props.getTeamBatsmen(type));
-    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
+    this.props.getMatch(this.props.teams.team_id, type);
   }
 
   onClickTest = () => {
@@ -37,7 +37,7 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "Test" });
+    this.props.getMatch(this.props.teams.team_id, type);
   };
 
   onClickT20 = () => {
@@ -48,7 +48,7 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
+    this.props.getMatch(this.props.teams.team_id, type);
   };
 
   onClickOdi = () => {
@@ -59,7 +59,7 @@ export class TeamInfo extends Component {
     };
     this.props.getTeamBatsmen(type);
     this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "ODI" });
+    this.props.getMatch(this.props.teams.team_id, type);
   };
 
   render() {
