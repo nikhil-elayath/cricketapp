@@ -22,11 +22,14 @@ export class MatchLandingPage extends Component {
         var datee = received_date.toJSON().slice(0, 10)
 
         //[yatin] passing the new selected date to the api
-        this.props.getRecentMatches(datee);
+        this.props.getRecentMatches(datee, this.props.gender);
     };
     componentDidMount() {
         // calling the initial matches
-        this.props.getRecentMatches("2016-05-20");
+
+        console.log("from landing page gendere is", this.props.gender);
+        this.props.getRecentMatches("2009-03-10", this.props.gender);
+        // this.props.getRecentMatches("2016-05-20", this.props.gender);
     }
 
     render() {
@@ -65,7 +68,7 @@ export class MatchLandingPage extends Component {
                                                 No Matches</h2>
                                         ) : (<div className="all-matches-box">
                                             {this.props.matches.map(match => (
-                                                <div  id="pushing-match"className="each-matches-box" onClick={() => {
+                                                <div id="pushing-match" className="each-matches-box" onClick={() => {
                                                     this.props.history.push(
                                                         "/match/details/" + match.match_id,
                                                         {
@@ -84,9 +87,12 @@ export class MatchLandingPage extends Component {
                                                             {match.teamTwoScore}/{match.teamtwo_wicket} ({match.match_values})
                                         </div>
                                                     </div>
-                                                    <span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
-                                                        {match.team_winner} won
-                                    </span>
+                                                    {match.team_winner === "NA" ? (<span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
+                                                        draw
+                                            </span>) : (<span id="match-winner" style={{ fontSize: "18px", fontWeight: "500", margin: "10px 0 0 0" }} >
+                                                            {match.team_winner} won
+                                            </span>)}
+
                                                 </div>
                                             ))}
                                         </div>)
