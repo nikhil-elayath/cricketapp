@@ -1,15 +1,8 @@
 import React, { Component } from "react";
 import "../css/MatchSecondaryNavbar.css";
 import "../css/SecondaryNavbar.css"
-import { Link } from "react-router-dom"
-import dhoni from "../images/dhoni.jpg";
-// import Navbar from "./Navbar";
-// import './css/SecondaryNavbar.css'
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
-import default_user_img from "../images/defaultuserimg.jpg";
-// import { request } from "https";
-
 export default class MatchSecondaryNavbar extends Component {
   render() {
     console.log(this.props);

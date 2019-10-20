@@ -55,7 +55,7 @@ export class MatchSummaryDetails extends Component {
                           <div id="team-one-tbn">{t1_bowler.player_name}</div>
                         ))}
                       </div>
-                      <div style={{ margin: "10px", margin: "10px" }}>
+                      <div style={{ margin: "10px" }}>
                         {match.team1_bowler.map(t1_bowler => (
                           <div id="team-one-tbn-wickets">
                             {t1_bowler.total_wicket}/{t1_bowler.given_runs} (
