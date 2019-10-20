@@ -93,7 +93,7 @@ export class MatchScoreDetails extends Component {
                       <div id="total-text">Total</div>
                       <div id="total-value" style={{ margin: "0 40px 0 0" }}>
                         {match.total_score.map(score => score.total_runs)} /
-                      {match.total_score.map(score => score.total_wicket)}({" "}
+                      {match.total_score.map(score => score.total_wicket)} (
                         {match.total_score.map(score => score.total_overs)} overs)
                     </div>
                     </div>

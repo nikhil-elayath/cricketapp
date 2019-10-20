@@ -27,10 +27,12 @@ export class MatchLandingPage extends Component {
   componentDidMount() {
     // calling the initial matches
     this.props.getRecentMatchesDate(this.props.gender);
-    this.props.match_date.map(date => (
 
-      this.props.getMatchesByDate(date.match_date, this.props.gender)))
-    // this.props.getMatchesByDate("2009-03-10", this.props.gender);
+    // this.props.match_date.map(date => (
+    //   console.log("here", date.match_date)
+    //   // this.props.getMatchesByDate(date.match_date, this.props.gender)
+    // ))
+    this.props.getMatchesByDate("2009-03-10", this.props.gender);
     // this.props.getMatchesByDate("2016-05-20", this.props.gender);
   }
 

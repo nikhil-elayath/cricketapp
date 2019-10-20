@@ -4,6 +4,7 @@ import { MatchLandingPage } from "../MatchLandingPage";
 
 
 const getMatchesByDate = jest.fn();
+const getRecentMatchesDate = jest.fn();
 
 const matches = [
     {
@@ -39,7 +40,8 @@ const historyMock = { push: jest.fn() };
 
 
 const wrapper = shallow(
-    <MatchLandingPage matches={matches} match={match} history={historyMock} getMatchesByDate={getMatchesByDate} />
+    <MatchLandingPage matches={matches} match={match} history={historyMock} getMatchesByDate={getMatchesByDate}
+        getRecentMatchesDate={getRecentMatchesDate} />
 );
 
 describe("Testing of MatchLandingPage Component", () => {

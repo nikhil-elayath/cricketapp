@@ -108,7 +108,7 @@ describe("Testing of MatchScoreDetails Component", () => {
         expect(wrapper.find("#total-text").text()).toBe("Total");
     });
     it("[Scorecard-container > Total] should have tota runs, wicket and overs of the match", () => {
-        expect(wrapper.find("#total-value").text()).toBe("352 /10( 106 overs)");
+        expect(wrapper.find("#total-value").text()).toBe("352 /10 (106 overs)");
     });
     it("[Scorecard-container > Bowlers Text] should have bowler text", () => {
         expect(wrapper.find("#bowler-text").text()).toBe("Bowler");
