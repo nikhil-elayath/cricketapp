@@ -65,3 +65,29 @@ body {
   padding: 10px;
   }
 
+@media screen and (max-width: 768px) {
+.top-container {
+   margin: 0px;
+}
+
+.top-container .teamone-top-players, .teamtwo-top-players {
+  grid-gap: 0;
+}
+
+}
+
+@media screen and (max-width: 576px) {
+.top-container {
+   margin-top: 320px;
+   display: block;
+  }
+
+.top-container .top-left-container {
+  margin: "20px 0 20px 0"
+}
+
+.match_details {
+  margin: "0 0 20px 0"
+}
+
+}
