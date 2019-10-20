@@ -83,11 +83,11 @@ body {
   }
 
 .top-container .top-left-container {
-  margin: "20px 0 20px 0"
+  margin: 20px 0 20px 0;
 }
 
 .match_details {
-  margin: "0 0 20px 0"
+  margin: 0 0 20px 0;
 }
 
 }
