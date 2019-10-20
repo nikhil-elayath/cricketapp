@@ -1,6 +1,6 @@
 import {
-  GET_RECENT_MATCHES_BY_DATE,
-  GET_MATCHES_DATE,
+  GET_MATCHES_BY_DATE,
+  GET_RECENT_MATCHES_DATE,
   GET_MATCH_DETAILS_BY_ID,
   GET_MATCH_SCORECARD_DETAILS_BY_ID,
   GET_MANHATTAN_GRAPH_BY_ID,
@@ -20,7 +20,7 @@ export const getMatchesByDate = (date, gender) => dispatch => {
     .then(res => {
       dispatch(stopLoading());
       dispatch({
-        type: GET_RECENT_MATCHES_BY_DATE,
+        type: GET_MATCHES_BY_DATE,
         payload: res.data.data,
       });
       console.log(res.data);
@@ -31,12 +31,12 @@ export const getMatchesByDate = (date, gender) => dispatch => {
     });
 };
 
-export const getMatchesDate = () => dispatch => {
+export const getRecentMatchesDate = (gender) => dispatch => {
   return axios
-    .get(url + "/bydate")
+    .get(url + "/recent/" + gender)
     .then(res => {
       dispatch({
-        type: GET_MATCHES_DATE,
+        type: GET_RECENT_MATCHES_DATE,
         payload: res.data.data,
       });
       console.log(res.data);

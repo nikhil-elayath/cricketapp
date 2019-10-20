@@ -93,16 +93,20 @@ router.get('/ondate/:date/:gender', async (req, res, next) => {
   }
 })
 
-router.get('/bydate', async (req, res, next) => {
+router.get('/recent/:gender', async (req, res, next) => {
+  let gender = req.params.gender
   try {
-    // feaching all the dates
-    const result = await db.any('SELECT match_date FROM match_date;')
+    // feaching latest 6 matches dates from database
+    const result = await db.any(`with s as(select distinct (match_date) , match_id from match_date  group by match_date, match_id  order by match_date desc),
+    ps as(select match_id as match_idd, gender from match where gender='${gender}' and match_id 
+    in(select match_id from s))
+    select match_id,match_date from ps inner join s on s.match_id=ps.match_idd order by match_date desc limit 6`)
     // console.log(result)
 
     res.status(200).json({
       status: 200,
       data: result,
-      message: 'Retrived all matches date ordered by date successfully!!'
+      message: 'Retrived 6 recent matches date ordered by date successfully!!'
     })
   } catch (err) {
     console.log(err)

@@ -1,6 +1,6 @@
 import {
-	GET_RECENT_MATCHES_BY_DATE,
-	GET_MATCHES_DATE,
+	GET_MATCHES_BY_DATE,
+	GET_RECENT_MATCHES_DATE,
 	GET_MATCH_DETAILS_BY_ID,
 	GET_MATCH_SCORECARD_DETAILS_BY_ID,
 	GET_MANHATTAN_GRAPH_BY_ID,
@@ -20,9 +20,9 @@ const initialstate = {
 
 export default function (state = initialstate, action) {
 	switch (action.type) {
-		case GET_RECENT_MATCHES_BY_DATE:
+		case GET_MATCHES_BY_DATE:
 			return { ...state, matches: action.payload };
-		case GET_MATCHES_DATE:
+		case GET_RECENT_MATCHES_DATE:
 			return { ...state, match_date: action.payload };
 		case GET_MATCH_DETAILS_BY_ID:
 			return { ...state, match: action.payload };

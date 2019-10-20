@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
-import { getMatchesByDate } from "../actions/Matches.js";
+import { getMatchesByDate, getRecentMatchesDate } from "../actions/Matches.js";
 import { Calendar, DatePicker } from "@y0c/react-datepicker";
 import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import Loader from "react-loader-spinner";
@@ -26,9 +26,11 @@ export class MatchLandingPage extends Component {
   };
   componentDidMount() {
     // calling the initial matches
+    this.props.getRecentMatchesDate(this.props.gender);
+    this.props.match_date.map(date => (
 
-    console.log("from landing page gendere is", this.props.gender);
-    this.props.getMatchesByDate("2009-03-10", this.props.gender);
+      this.props.getMatchesByDate(date.match_date, this.props.gender)))
+    // this.props.getMatchesByDate("2009-03-10", this.props.gender);
     // this.props.getMatchesByDate("2016-05-20", this.props.gender);
   }
 
@@ -171,10 +173,11 @@ export class MatchLandingPage extends Component {
 
 const mapStateToProps = state => ({
   matches: state.matchreducer.matches,
+  match_date: state.matchreducer.match_date,
   isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
   mapStateToProps,
-  { getMatchesByDate }
+  { getMatchesByDate, getRecentMatchesDate }
 )(MatchLandingPage);
