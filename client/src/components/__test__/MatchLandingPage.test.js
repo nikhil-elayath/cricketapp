@@ -3,7 +3,7 @@ import { shallow } from "enzyme";
 import { MatchLandingPage } from "../MatchLandingPage";
 
 
-const getRecentMatches = jest.fn();
+const getMatchesByDate = jest.fn();
 
 const matches = [
     {
@@ -39,7 +39,7 @@ const historyMock = { push: jest.fn() };
 
 
 const wrapper = shallow(
-    <MatchLandingPage matches={matches} match={match} history={historyMock} getRecentMatches={getRecentMatches} />
+    <MatchLandingPage matches={matches} match={match} history={historyMock} getMatchesByDate={getMatchesByDate} />
 );
 
 describe("Testing of MatchLandingPage Component", () => {

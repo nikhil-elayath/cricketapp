@@ -1,5 +1,5 @@
 import {
-  GET_RECENT_MATCHES,
+  GET_RECENT_MATCHES_BY_DATE,
   GET_MATCHES_DATE,
   GET_MATCH_DETAILS_BY_ID,
   GET_MATCH_SCORECARD_DETAILS_BY_ID,
@@ -13,14 +13,14 @@ import axios from "axios";
 const url = "http://localhost:5000/api/matches";
 const url2 = "http://127.0.0.1:5000";
 
-export const getRecentMatches = (date, gender) => dispatch => {
+export const getMatchesByDate = (date, gender) => dispatch => {
   dispatch(startLoading());
   return axios
-    .get(url + "/recent/" + date + "/" + gender)
+    .get(url + "/ondate/" + date + "/" + gender)
     .then(res => {
       dispatch(stopLoading());
       dispatch({
-        type: GET_RECENT_MATCHES,
+        type: GET_RECENT_MATCHES_BY_DATE,
         payload: res.data.data,
       });
       console.log(res.data);

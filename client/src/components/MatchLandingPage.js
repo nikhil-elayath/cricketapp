@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
-import { getRecentMatches } from "../actions/Matches.js";
+import { getMatchesByDate } from "../actions/Matches.js";
 import { Calendar, DatePicker } from "@y0c/react-datepicker";
 import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import Loader from "react-loader-spinner";
@@ -22,14 +22,14 @@ export class MatchLandingPage extends Component {
     var datee = received_date.toJSON().slice(0, 10);
 
     //[yatin] passing the new selected date to the api
-    this.props.getRecentMatches(datee, this.props.gender);
+    this.props.getMatchesByDate(datee, this.props.gender);
   };
   componentDidMount() {
     // calling the initial matches
 
     console.log("from landing page gendere is", this.props.gender);
-    this.props.getRecentMatches("2009-03-10", this.props.gender);
-    // this.props.getRecentMatches("2016-05-20", this.props.gender);
+    this.props.getMatchesByDate("2009-03-10", this.props.gender);
+    // this.props.getMatchesByDate("2016-05-20", this.props.gender);
   }
 
   render() {
@@ -72,96 +72,96 @@ export class MatchLandingPage extends Component {
                 />
               </div>
             ) : (
-              <div>
-                {this.props.matches.length === 0 ? (
-                  <h2
-                    id="no-matches-title"
-                    className="h1-match"
-                    style={{ textAlign: "left", margin: "20px" }}
-                  >
-                    No Matches
+                <div>
+                  {this.props.matches.length === 0 ? (
+                    <h2
+                      id="no-matches-title"
+                      className="h1-match"
+                      style={{ textAlign: "left", margin: "20px" }}
+                    >
+                      No Matches
                   </h2>
-                ) : (
-                  <div className="all-matches-box">
-                    {this.props.matches.map(match => (
-                      <div
-                        id="pushing-match"
-                        className="each-matches-box"
-                        onClick={() => {
-                          this.props.history.push(
-                            "/match/details/" + match.match_id,
-                            {
-                              match
-                            }
-                          );
-                        }}
-                      >
-                        <span
-                          id="match-type"
-                          style={{ fontSize: "15px", margin: "5px 0 0 0" }}
-                        >
-                          {match.match_type}
-                        </span>
-                        <div
-                          className="Team-data"
-                          style={{ fontWeight: "400" }}
-                        >
+                  ) : (
+                      <div className="all-matches-box">
+                        {this.props.matches.map(match => (
                           <div
-                            id="team-one-name"
-                            style={{ margin: "10px 0 0 5px" }}
-                          >
-                            {match.teamOne}
-                          </div>
-                          <div
-                            id="team-one-score"
-                            style={{ margin: "10px 0 0 10px" }}
-                          >
-                            {match.teamOneScore}/{match.teamone_wicket} (
-                            {match.match_values})
-                          </div>
-                          <div
-                            id="team-two-name"
-                            style={{ margin: "10px 0 0 5px" }}
-                          >
-                            {match.teamTwo}
-                          </div>
-                          <div
-                            id="team-two-score"
-                            style={{ margin: "10px 0 0 10px" }}
-                          >
-                            {match.teamTwoScore}/{match.teamtwo_wicket} (
-                            {match.match_values})
-                          </div>
-                        </div>
-                        {match.team_winner === "NA" ? (
-                          <span
-                            id="match-winner"
-                            style={{
-                              fontSize: "18px",
-                              fontWeight: "500",
-                              margin: "10px 0 0 0"
+                            id="pushing-match"
+                            className="each-matches-box"
+                            onClick={() => {
+                              this.props.history.push(
+                                "/match/details/" + match.match_id,
+                                {
+                                  match
+                                }
+                              );
                             }}
                           >
-                            draw
+                            <span
+                              id="match-type"
+                              style={{ fontSize: "15px", margin: "5px 0 0 0" }}
+                            >
+                              {match.match_type}
+                            </span>
+                            <div
+                              className="Team-data"
+                              style={{ fontWeight: "400" }}
+                            >
+                              <div
+                                id="team-one-name"
+                                style={{ margin: "10px 0 0 5px" }}
+                              >
+                                {match.teamOne}
+                              </div>
+                              <div
+                                id="team-one-score"
+                                style={{ margin: "10px 0 0 10px" }}
+                              >
+                                {match.teamOneScore}/{match.teamone_wicket} (
+                            {match.match_values})
+                          </div>
+                              <div
+                                id="team-two-name"
+                                style={{ margin: "10px 0 0 5px" }}
+                              >
+                                {match.teamTwo}
+                              </div>
+                              <div
+                                id="team-two-score"
+                                style={{ margin: "10px 0 0 10px" }}
+                              >
+                                {match.teamTwoScore}/{match.teamtwo_wicket} (
+                            {match.match_values})
+                          </div>
+                            </div>
+                            {match.team_winner === "NA" ? (
+                              <span
+                                id="match-winner"
+                                style={{
+                                  fontSize: "18px",
+                                  fontWeight: "500",
+                                  margin: "10px 0 0 0"
+                                }}
+                              >
+                                draw
                           </span>
-                        ) : (
-                          <span
-                            id="match-winner"
-                            style={{
-                              fontSize: "18px",
-                              fontWeight: "500",
-                              margin: "10px 0 0 0"
-                            }}
-                          >
-                            {match.team_winner} won
+                            ) : (
+                                <span
+                                  id="match-winner"
+                                  style={{
+                                    fontSize: "18px",
+                                    fontWeight: "500",
+                                    margin: "10px 0 0 0"
+                                  }}
+                                >
+                                  {match.team_winner} won
                           </span>
-                        )}
+                              )}
+                          </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            )}
+                    )}
+                </div>
+              )}
           </div>
         </div>
       </div>
@@ -176,5 +176,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getRecentMatches }
+  { getMatchesByDate }
 )(MatchLandingPage);
