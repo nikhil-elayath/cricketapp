@@ -171,8 +171,9 @@ export class PlayerLandingPage extends Component {
                 }}
               >
                 <img
+                  id="pImage"
                   className="playerImage"
-                  src={this.props.gender == "male" ? virat : smriti}
+                  src={`data:image/jpeg;base64,${bowler.player_image}`}
                 ></img>
                 {/* player basic info div */}
                 <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
@@ -204,8 +205,9 @@ export class PlayerLandingPage extends Component {
                 }}
               >
                 <img
+                  id="pImage"
                   className="playerImage"
-                  src={this.props.gender == "male" ? virat : smriti}
+                  src={`data:image/jpeg;base64,${six.player_image}`}
                 ></img>
                 {/* player basic info div */}
                 <div className="playerInfoDiv" style={{ marginTop: 8 + "px" }}>
