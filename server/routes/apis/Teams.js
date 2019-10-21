@@ -290,27 +290,29 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
       console.log("order type", order_type);
       const result = await db.any(
         `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
-ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender = '${gender}' and match_id in(
+ps as(select match_id as match_idd, match_type, cast(substring(outcome FROM '[0-9]+') as numeric) as outcome from match 
+where (outcome != 'tie' or outcome != 'no result' or outcome != 'draw') 
+and outcome ilike '%runs' and match_type='${match_type}' and gender = '${gender}' and match_id in(
 select match_id from s))
-select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
-pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
+select distinct(match_id), match_type, outcome from ps inner join s on s.match_id=ps.match_idd),
+pss as(select match_id as match_idd, inning, sum(cast(extra_id=0 as int))/6 as overs from delivery
 where match_id in( select match_id from ss) group by match_id, inning)
-select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run),
+select match_id, inning, outcome, overs from pss inner join ss on pss.match_idd=ss.match_id order by match_id),
 y as(select match_id as idd, match_date from match_date where match_id
 in(select match_id from k))
-select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd),
+select match_id, match_date, inning, outcome, overs from y inner join k on k.match_id=y.idd),
 yy as(select match_id as match_idd, innings_one_team, innings_two_team from match where match_id
 in(select match_id from kk))
-select match_id, match_date, inning, innings_one_team, innings_two_team, total_run, overs from yy
+select match_id, match_date, inning, innings_one_team, innings_two_team, outcome, overs from yy
 inner join kk on kk.match_id=yy.match_idd),
-l as(select team_id,team_name as team_one from team where team_id
+l as(select team_id,team_name as team_one from team where team_id!=0 and team_id
 in(select innings_one_team from t))
-select match_id, match_date, inning, team_one, innings_two_team, total_run, overs from l
+select match_id, match_date, inning, team_one, innings_two_team, outcome, overs from l
 inner join t on t.innings_one_team=l.team_id),
 ll as(select team_id,team_name as team_two from team where team_id
 in(select innings_two_team from tt))
-select match_id, match_date, inning, team_one, team_two, total_run, overs from ll
-inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type} limit 15;`
+select match_id, match_date, inning, team_one, team_two, outcome, overs from ll
+inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} limit 15;`
         //${order_type} instead of desc
       );
       // console.log("stats result is ", result);

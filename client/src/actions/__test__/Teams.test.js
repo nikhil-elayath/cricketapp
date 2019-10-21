@@ -4,7 +4,8 @@ import {
   GET_RANKS,
   GET_MATCHBYTEAMID,
   GET_TEAM_BATSMEN,
-  GET_TEAM_BOWLERS
+  GET_TEAM_BOWLERS,
+  GET_TEAM_STATS
 } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
@@ -54,10 +55,14 @@ describe("Testing the Actions", () => {
 
   it("should create action with type GET_RANKS and the payload should be same as the api response when the response is 200", () => {
     const responseOfApi = [{}, {}, {}];
-    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/rankings", {
-      status: 200,
-      response: { data: responseOfApi }
-    });
+    let gender = "male";
+    moxios.stubRequest(
+      "http://localhost:5000/cricketalpha/teams/rankings/" + gender,
+      {
+        status: 200,
+        response: { data: responseOfApi }
+      }
+    );
     const store = mockStore({});
     const expectedActions = [
       {
@@ -65,20 +70,24 @@ describe("Testing the Actions", () => {
         payload: responseOfApi
       }
     ];
-    return store.dispatch(action.getRanks()).then(() => {
+    return store.dispatch(action.getRanks(gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should create action with type GET_RANKS and the payload should be same as the api response when the response is 400", () => {
     const responseOfApi = [{}, {}, {}];
-    moxios.stubRequest("http://localhost:5000/cricketalpha/teams/rankings", {
-      status: 400,
-      response: { data: responseOfApi }
-    });
+    let gender = "malee";
+    moxios.stubRequest(
+      "http://localhost:5000/cricketalpha/teams/rankings/" + gender,
+      {
+        status: 400,
+        response: { data: responseOfApi }
+      }
+    );
     const store = mockStore({});
     const expectedActions = [];
-    return store.dispatch(action.getRanks()).then(() => {
+    return store.dispatch(action.getRanks(gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -86,8 +95,12 @@ describe("Testing the Actions", () => {
   it("should create action with type GET_MATCHBYTEAMID and the payload should be same as the api response when the response is 200", () => {
     const responseOfApi = [{}, {}, {}];
     let team_id = 3;
+    let gender = "male";
     moxios.stubRequest(
-      "http://localhost:5000/cricketalpha/teams/match/" + team_id,
+      "http://localhost:5000/cricketalpha/teams/match/" +
+        team_id +
+        "/" +
+        gender,
       {
         status: 200,
         response: { data: responseOfApi }
@@ -100,7 +113,7 @@ describe("Testing the Actions", () => {
         payload: responseOfApi
       }
     ];
-    return store.dispatch(action.getMatch(team_id)).then(() => {
+    return store.dispatch(action.getMatch(team_id, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -108,8 +121,12 @@ describe("Testing the Actions", () => {
   it("should create action with type GET_MATCHBYTEAMID and the payload should be same as the api response when the response is 400", () => {
     const responseOfApi = [{}, {}, {}];
     let team_id = 3000;
+    let gender = "male";
     moxios.stubRequest(
-      "http://localhost:5000/cricketalpha/teams/match/" + team_id,
+      "http://localhost:5000/cricketalpha/teams/match/" +
+        team_id +
+        "/" +
+        gender,
       {
         status: 400,
         response: { data: responseOfApi }
@@ -117,7 +134,7 @@ describe("Testing the Actions", () => {
     );
     const store = mockStore({});
     const expectedActions = [];
-    return store.dispatch(action.getMatch(team_id)).then(() => {
+    return store.dispatch(action.getMatch(team_id, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -181,6 +198,28 @@ describe("Testing the Actions", () => {
     const expectedActions = [];
     return store.dispatch(action.getTeamBowlers()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  it("should create action with type GET_TEAM_STATS and the payload should be same as the api response when the response is 200", () => {
+    const responseOfApi = [{}, {}, {}];
+    let gender = "male";
+    moxios.stubRequest(
+      "http://localhost:5000/cricketalpha/teams/rankings/" + gender,
+      {
+        status: 200,
+        response: { data: responseOfApi }
+      }
+    );
+    const store = mockStore({});
+    const expectedActions = [
+      {
+        type: GET_TEAM_STATS,
+        payload: responseOfApi
+      }
+    ];
+    return store.dispatch(action.getRanks()).then(() => {
+      expect(store.getTeamStats()).toEqual(expectedActions);
     });
   });
 });
