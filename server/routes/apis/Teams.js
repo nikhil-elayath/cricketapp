@@ -13,7 +13,7 @@ router.post("/teams", async (req, res, next) => {
     console.log("match type", match_type);
     console.log("competition", match_type);
     const result = await db.any(
-      `select t.team_id, t.team_name from team t left join match m on m.innings_one_team = t.team_id  where t.team_id != 0 and m.match_type='${match_type}' and m.competition = '${competition}' group by t.team_id,t.team_name order by t.team_name;`
+      `select t.team_id, t.team_name, t.team_image from team t left join match m on m.innings_one_team = t.team_id  where t.team_id != 0 and m.match_type='${match_type}' and m.competition = '${competition}' group by t.team_id,t.team_name,t.team_image order by t.team_name;`
     );
     // console.log("Get team result is", result);
     if (!result)
@@ -131,7 +131,7 @@ router.post("/teams/rankings/:gender", async (req, res, next) => {
     console.log("match type", match_type);
     console.log("competition", match_type);
     const result = await db.any(
-      `select team.team_id, team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' and match.gender = '${gender}' group by team.team_id, team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
+      `select team.team_id,team.team_image, team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' and match.gender = '${gender}' and team.team_id != 0 group by team.team_id,team.team_image, team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
       // `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
     );
     // console.log("result is ", result);
@@ -159,7 +159,7 @@ router.post("/teams/topbatsmen/:player_gender", async (req, res) => {
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        `select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' and player_stats_name = 'total_runs' and player_country='${player_country}' and player.player_gender = '${player_gender}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
+        `select player.player_image,player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_id,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' and player_stats_name = 'total_runs' and player_country='${player_country}' and player.player_gender = '${player_gender}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
       );
 
       res.status(200).json({
@@ -190,7 +190,7 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
     // let gender = req.body.player_gender;
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
-        `select player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' AND player_stats_name = 'total_wickets' AND player_country = '${player_country}' and player_gender = '${player_gender}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
+        `select  player.player_image,player_stats.match_type,player_stats.player_stats_name, player_stats.player_stats_value,player.player_name,player.player_country from player_stats inner join player on player_stats.player_id = player.player_id where player_stats.match_type = '${match_type}' AND player_stats_name = 'total_wickets' AND player_country = '${player_country}' and player_gender = '${player_gender}' order by cast(player_stats_value as numeric) desc fetch first 3 rows only`
       );
 
       res.status(200).json({

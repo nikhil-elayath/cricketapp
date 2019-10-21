@@ -162,7 +162,12 @@ export class TeamInfo extends Component {
                     {this.props.batsmen.map(batsmen => (
                       // <div>
                       <div className="list-info">
-                        <img src={logo} className="img-card" />
+                        {/* <img src={logo} className="img-card" /> */}
+                        <img
+                          id="pImage"
+                          className="playerImage"
+                          src={`data:image/jpeg;base64,${batsmen.player_image}`}
+                        ></img>
                         <div>
                           <p
                             className="p-team-details-name"
@@ -194,7 +199,12 @@ export class TeamInfo extends Component {
                     {this.props.bowlers.map(bowlers => (
                       // <div>
                       <div className="list-info">
-                        <img src={logo} className="img-card" />
+                        {/* <img src={logo} className="img-card" /> */}
+                        <img
+                          id="pImage"
+                          className="playerImage"
+                          src={`data:image/jpeg;base64,${bowlers.player_image}`}
+                        ></img>
                         <div>
                           <p
                             className="p-team-details-name"
