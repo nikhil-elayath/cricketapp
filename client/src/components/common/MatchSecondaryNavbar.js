@@ -4,6 +4,11 @@ import "../css/SecondaryNavbar.css";
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
 export default class MatchSecondaryNavbar extends Component {
+  state = {
+    summary: true,
+    scorecard: false,
+    stats: false
+  }
   render() {
     return (
       <div>
@@ -60,32 +65,35 @@ export default class MatchSecondaryNavbar extends Component {
               </div>
             </div>
           </div>
-          <div className="secNavLinks">
+          <div className="secNavLink">
             <ul>
               <span
                 id="summary-click"
                 className="secLink"
                 onClick={() => {
+                  this.setState({ summary: true, scorecard: false, stats: false })
                   this.props.changeDetailsType("summary");
                 }}
               >
-                <li id="match-summary">Summary</li>
+                <li id="match-summary" className={this.state.summary ? "options-selected-li" : "options-li"}>Summary</li>
               </span>
               <span
                 className="secLink"
                 onClick={() => {
+                  this.setState({ summary: false, scorecard: true, stats: false })
                   this.props.changeDetailsType("scorecard");
                 }}
               >
-                <li id="match-scorecard">ScoreBoard</li>
+                <li id="match-scorecard" className={this.state.scorecard ? "options-selected-li" : "options-li"}>ScoreBoard</li>
               </span>
               <span
                 className="secLink"
                 onClick={() => {
+                  this.setState({ summary: false, scorecard: false, stats: true })
                   this.props.changeDetailsType("stats");
                 }}
               >
-                <li id="match-stats">Statistics</li>
+                <li id="match-stats" className={this.state.stats ? "options-selected-li" : "options-li"}>Statistics</li>
               </span>
             </ul>
           </div>

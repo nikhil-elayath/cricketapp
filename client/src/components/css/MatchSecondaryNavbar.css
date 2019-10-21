@@ -60,6 +60,55 @@ column-gap: 10px;
 	font-size: 30px;
 }
 
+
+.secNavLink {
+	margin: 0px 60px;
+}
+
+.secNavLink ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.secNavLink ul li {
+	font-family: "Montserrat", sans-serif;
+	padding: 10px 0px;
+	transition: 0.3s;
+	margin-right: 30px;
+	letter-spacing: 0.3px;
+	text-align: center;
+}
+
+.secNavLink ul li:hover {
+	font-weight: 600;
+	cursor: pointer;
+	padding-bottom: 7px;
+	color: #2980b9;
+	border-bottom: 3px solid #2980b9;
+}
+
+
+.options-li{
+	font-family: "Montserrat", sans-serif;
+	padding: 10px 0px;
+	transition: 0.3s;
+	color: #272727;
+	margin-right: 30px;
+	letter-spacing: 0.3px;
+	text-align: center;
+}
+
+.options-selected-li{
+	font-weight: 600;
+	cursor: pointer;
+	padding-bottom: 7px;
+	color: #2980b9;
+	border-bottom: 3px solid #2980b9;
+}
+
 @media screen and (max-width: 768px) {
 
 .match-team-score > div{
