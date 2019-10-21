@@ -433,8 +433,10 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
 //for fixtures
 // router.post("/teams/lowesttotals/:team_id/:gender", async (req, res, next) => {
 
-router.post("/teams/fixtures/:team_id/", async (req, res) => {
-  console.log("ye waala", req.body.team_id);
+router.post("/teams/fixtures", async (req, res) => {
+  const team_name = req.body.team_name;
+  console.log("team name", team_name);
+
   try {
     // const player_gender = req.params.player_gender;
     // let match_type = req.body.match_type;
@@ -442,16 +444,31 @@ router.post("/teams/fixtures/:team_id/", async (req, res) => {
     // let gender = req.body.player_gender;
     // if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
     const result = await db.any(
-      `select * from fixtures where team_one='India' or team_two='India'`
+      `select distinct * from fixtures where team_one='${team_name}' or team_two='${team_name}' `
     );
+    const images = await db.any(
+      `select team_image from team where team_name='${team_name}'`
+    );
+    let dates = [];
+    for (onedate of result) {
+      console.log("some date", onedate);
+      // console.log("date - ", onedate);
+      var date = new Date(onedate.date);
+      onedate.date = onedate.date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+      // dates.push({ match_date: format_date });
+    }
     console.log("FIXTURES", result);
+    // data = { result };
 
     res.status(200).json({
       status: 200,
       data: result,
       message: "Fixtures received",
     });
-    // } else {
   } catch (err) {
     console.log(err);
   }

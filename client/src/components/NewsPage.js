@@ -36,13 +36,6 @@ export class NewsPage extends Component {
                 </p>
                 <p id="news-date">{news.news_date} </p>
 
-                {/* <div
-                  className="div-news-images"
-                  style={{
-                    backgroundImage: `url(${news_img})`,
-                  }}
-                > */}
-                {/* <img className="main_img" src={news_img} /> */}
                 <img
                   // id="pImage"
                   // className="playerImage"
@@ -79,7 +72,7 @@ export class NewsPage extends Component {
                       <div
                         className="div-news-images"
                         style={{
-                          backgroundImage: `url(data:image/jpeg;base64,${recent.news_image}`
+                          backgroundImage: `url(data:image/jpeg;base64,${recent.news_image}`,
                         }}
                       />
                       <div
@@ -107,12 +100,12 @@ export class NewsPage extends Component {
 
 const mapStateToProps = state => ({
   news: state.NewsReducer.news,
-  home: state.HomeReducer.home
+  home: state.HomeReducer.home,
 });
 export default connect(
   mapStateToProps,
   {
     getNewsById,
-    getNews
+    getNews,
   }
 )(NewsPage);

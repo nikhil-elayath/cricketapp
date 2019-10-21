@@ -5,14 +5,9 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
-<<<<<<< HEAD
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS,
-=======
-  GET_TEAM_STATS
+  GET_TEAM_STATS,
   // GET_HIGHEST_TOTALS,
   // GET_LOWEST_TOTALS
->>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -109,13 +104,10 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
 };
 
 //NIKHIL
-export const getFixtures = (team_id, match_type) => dispatch => {
-  console.log("get fix from actions");
+export const getFixtures = team_name => dispatch => {
+  console.log("get fix from actions", team_name);
   return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
-      match_type
-    )
+    .post("http://localhost:5000/cricketalpha/teams/fixtures", team_name)
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,
@@ -127,35 +119,8 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
-<<<<<<< HEAD
-export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
-  console.log("high actions", team_id, match_type);
-  dispatch(startLoading());
-  return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/highesttotals/" +
-        team_id +
-        "/" +
-        gender,
-      match_type
-    )
-    .then(res => {
-      dispatch(stopLoading());
-      dispatch({
-        type: GET_HIGHEST_TOTALS,
-        payload: res.data.data,
-      });
-      console.log("getHighestTotals action");
-    })
-    .catch(err => {
-      dispatch(startLoading());
-      console.log(err);
-    });
-};
-=======
 export const getTeamStats = (team_id, gender, type) => dispatch => {
   console.log("getTeamStats action- ", team_id, gender, type);
->>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
 
   // dispatch(startLoading());
   return axios
@@ -171,13 +136,8 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
       // dispatch(stopLoading());
       console.log("getTeamStats Action");
       dispatch({
-<<<<<<< HEAD
-        type: GET_LOWEST_TOTALS,
-        payload: res.data.data,
-=======
         type: GET_TEAM_STATS,
-        payload: res.data.data
->>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
+        payload: res.data.data,
       });
     })
     .catch(err => {

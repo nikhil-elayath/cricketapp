@@ -5,11 +5,12 @@ import { getFixtures } from "../actions/Teams";
 
 export class TeamFixtures extends Component {
   componentDidMount() {
-    this.props.getFixtures();
+    this.props.getFixtures({ team_name: this.props.teams.team_name });
+    console.log(this.props.teams.team_name);
   }
   render() {
     return (
-      <div id="bla">
+      <div id="fixture-container">
         <div id="fixture">
           {/* <div className="centered">
             <div className="cards-new">
@@ -33,11 +34,32 @@ export class TeamFixtures extends Component {
               </div>
             </div>
           </div> */}
-          {this.props.fixtures.map(fixtures => (
-            <p>hello {fixtures.team_one} </p>
-          ))}
+
+          <div id="fix-main-grid">
+            {this.props.fixtures.map(fixtures => (
+              <div id="fixgrid-item1">
+                {/* //main grid container */}
+                <div id="fixture-container">
+                  {/* first grid item */}
+                  <p id="fix-date">{fixtures.date}</p>
+                  {/* second grid item */}
+                  <p id="fix-teams">
+                    {fixtures.team_one}vs
+                    {fixtures.team_two}
+                  </p>
+                  <p id="fix-venue">{fixtures.venue}</p>
+                  <p id="fix-time">{fixtures.time}</p>
+                  {/* <img
+                    // id="pImage"
+                    // className="playerImage"
+                    className="main_img"
+                    src={`data:image/jpeg;base64,${fixtures.news_image}`}
+                  ></img> */}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <p> asdsd</p>
       </div>
     );
   }
