@@ -9,7 +9,54 @@ exports[`Testing for home component should render the component 1`] = `
     className="div-container"
   >
     <div
+<<<<<<< HEAD
+      className="div-news-section"
+    >
+      <Link
+        className="link-news"
+        to={
+          Object {
+            "pathname": "/newsbyid/1",
+          }
+        }
+      >
+        <div
+          className="div-news"
+        >
+          <div
+            className="div-news-images"
+            style={
+              Object {
+                "backgroundImage": "url(vk.jpeg)",
+              }
+            }
+          />
+          <div
+            className="div-news-details"
+          >
+            <p
+              className="p-news"
+              id="p-news"
+            >
+              <b>
+                this is title
+              </b>
+            </p>
+            <p
+              className="home-news-date"
+              id="home-news-date"
+            >
+              12-12-12
+            </p>
+          </div>
+        </div>
+      </Link>
+    </div>
+    <div
+      id="div-second-section"
+=======
       className="div-section"
+>>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
     >
       <div
         className="div-news-section"

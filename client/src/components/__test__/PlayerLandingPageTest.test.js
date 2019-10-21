@@ -71,7 +71,7 @@ describe("Testing Player Landing Page", () => {
     wrapper.instance().componentWillReceiveProps(nextProps);
     expect(componentDidMount).toHaveBeenCalled();
     expect(componentWillReceiveProps).toHaveBeenCalled();
-  });
+  }); 
 
   //////// ################ HISTORY.PUSH TEST CASE
   it("should mock the history push function", () => {
