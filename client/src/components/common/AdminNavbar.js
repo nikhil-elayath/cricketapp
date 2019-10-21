@@ -57,11 +57,12 @@ export class AdminNavbar extends Component {
 								display:
 									this.state.width < 526 ? "block" : "none"
 							}}
+							id="menu-btn-label"
 						>
 							<span className="bars"></span>
 						</label>
 
-						{/* manage matches link */}
+						{/* manage players link */}
 						<li
 							className="item"
 							style={{
