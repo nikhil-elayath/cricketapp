@@ -88,7 +88,7 @@ export const getManhattanGraphbyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_MANHATTAN_GRAPH_BY_ID,
-        payload: { manhattan: res.data },
+        payload: res.data,
       });
       console.log(res.data);
     })
@@ -107,7 +107,6 @@ export const getPieChartOnebyId = id => dispatch => {
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
         payload: res.data,
       });
-      console.log("accessing message from api", typeof res.data);
     })
     .catch(err => {
       dispatch(startLoading());
@@ -122,7 +121,7 @@ export const getPieChartTwobyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_TWO_GRAPH_BY_ID,
-        payload: { piechartTwo: res.data },
+        payload: res.data,
       });
       console.log(res.data);
     })

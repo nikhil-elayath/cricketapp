@@ -17,7 +17,10 @@ export default class MatchDetails extends Component {
 
       <div>
         <div>
-          <Navbar />
+          <Navbar
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+          />
         </div>
         <MatchSecondaryNavbar
           changeDetailsType={this.changeDetailsType}
