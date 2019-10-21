@@ -190,12 +190,35 @@ export class TeamStats extends Component {
                   >
                     <p className="p-card">Lowest Totals</p>
                   </div>
-                  <div className="cardodi">
+                  <div
+                    className="cardodi"
+                    className={
+                      this.state.stats_type == "largest_victory"
+                        ? "cardtest"
+                        : "cardodi"
+                    }
+                    onClick={() =>
+                      this.onClickTeamStats(
+                        this.state.match_type,
+                        "largest_victory"
+                      )
+                    }
+                  >
                     <p className="p-card">Largest Victories</p>
                   </div>
                   <div
-                    className="cardt20"
                     style={{ borderRadius: "0px 8px 8px 0px" }}
+                    className={
+                      this.state.stats_type == "smallest_victory"
+                        ? "cardtest"
+                        : "cardodi"
+                    }
+                    onClick={() =>
+                      this.onClickTeamStats(
+                        this.state.match_type,
+                        "smallest_victory"
+                      )
+                    }
                   >
                     <p className="p-card">Smallest Victories</p>
                   </div>

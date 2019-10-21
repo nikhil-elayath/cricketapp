@@ -1,15 +1,15 @@
 import * as action from "../PlayerAction";
 import {
-  GET_ALL_BATSMAN,
-  GET_ALL_BOWLERS,
   GET_SINGLE_PLAYER,
   GET_BATSMAN_STATS,
-  GET_TOP_SIXES,
+  GET_TOP_PLAYERS,
   GET_ODI_BATSMAN_STATS,
   GET_T20_BATSMAN_STATS,
   GET_ODI_BOWLER_STATS,
   GET_T20_BOWLER_STATS,
-  GET_TEST_BOWLER_STATS
+  GET_TEST_BOWLER_STATS,
+  LOADING_STOP,
+  LOADING_START
 } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
@@ -28,77 +28,98 @@ describe("Testing Players action", () => {
     moxios.uninstall();
   });
 
-  it("should create an action of type GET_ALL_BATSMAN and the payload should be same as the API response from the server when Match Type is Test with status code 200", () => {
+  it("should create an action of type GET_TOP_PLAYERS and the payload should be same as the API response from the server when Match Type is Test with status code 200", () => {
     const responseOfApi = [];
     let match_type = { match_type: "Test" };
+    let gender = { gender: "male" };
     moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      "http://localhost:5000/apis/PlayerInfo/top-Players",
 
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { topPlayers: responseOfApi }
       }
     );
     // console.log("response: ", data);
     const store = mockStore({}, {}, {});
     const expectedActions = [
       {
-        type: GET_ALL_BATSMAN,
+        type: LOADING_START
+      },
+      {
+        type: LOADING_STOP
+      },
+      {
+        type: GET_TOP_PLAYERS,
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBatsmen(match_type)).then(() => {
+    // console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTopPlayers(match_type, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-  it("should create an action of type GET_ALL_BATSMAN and the payload should be same as the API response from the server when Match Type is ODI with status code 200", () => {
+  it("should create an action of type GET_TOP_PLAYERS and the payload should be same as the API response from the server when Match Type is ODI with status code 200", () => {
     const responseOfApi = [];
     let match_type = { match_type: "ODI" };
+    let gender = { gender: "male" };
     moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      "http://localhost:5000/apis/PlayerInfo/top-Players",
 
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { topPlayers: responseOfApi }
       }
     );
     // console.log("response: ", data);
     const store = mockStore({}, {}, {});
     const expectedActions = [
       {
-        type: GET_ALL_BATSMAN,
+        type: LOADING_START
+      },
+      {
+        type: LOADING_STOP
+      },
+      {
+        type: GET_TOP_PLAYERS,
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBatsmen(match_type)).then(() => {
+    // console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTopPlayers(match_type, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
-  it("should create an action of type GET_ALL_BATSMAN and the payload should be same as the API response from the server when Match Type is T20 with status code 200", () => {
+  it("should create an action of type GET_TOP_PLAYERS and the payload should be same as the API response from the server when Match Type is T20 with status code 200", () => {
     const responseOfApi = [];
     let match_type = { match_type: "T20" };
+    let gender = { gender: "female " };
     moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      "http://localhost:5000/apis/PlayerInfo/top-Players",
 
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { topPlayers: responseOfApi }
       }
     );
     // console.log("response: ", data);
     const store = mockStore({}, {}, {});
     const expectedActions = [
       {
-        type: GET_ALL_BATSMAN,
+        type: LOADING_START
+      },
+      {
+        type: LOADING_STOP
+      },
+      {
+        type: GET_TOP_PLAYERS,
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBatsmen(match_type)).then(() => {
+    // console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTopPlayers(match_type, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -106,99 +127,31 @@ describe("Testing Players action", () => {
   it("should create an action of type GET_ALL_BATSMAN and the payload should be same as the API response from the server when Match Type is neither test,nor odi nor T20  with status code 400", () => {
     const responseOfApi = [];
     let match_type = { match_type: "Testasd" };
+    let gender = { gender: "female" };
     moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      "http://localhost:5000/apis/PlayerInfo/top-Players",
 
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { topPlayers: responseOfApi }
       }
     );
     // console.log("response: ", data);
     const store = mockStore({}, {}, {});
     const expectedActions = [
       {
-        type: GET_ALL_BATSMAN,
+        type: LOADING_START
+      },
+      {
+        type: LOADING_STOP
+      },
+      {
+        type: GET_TOP_PLAYERS,
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBatsmen(match_type)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-
-  it("should create an action of type GET_ALL_BOWLERS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = [];
-    let match = { match_type: "ODI" };
-    moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBowlers",
-
-      {
-        status: 200,
-        response: { data: responseOfApi }
-      }
-    );
-    // console.log("response: ", data);
-    const store = mockStore({}, {}, {});
-    const expectedActions = [
-      {
-        type: GET_ALL_BOWLERS,
-        payload: responseOfApi
-      }
-    ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBowlers(match)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-
-  it("should create an action of type GET_ALL_BOWLERS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = [];
-    let match = { match_type: "ODI" };
-    moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopBowlers",
-
-      {
-        status: 200,
-        response: { data: responseOfApi }
-      }
-    );
-    // console.log("response: ", data);
-    const store = mockStore({}, {}, {});
-    const expectedActions = [
-      {
-        type: GET_ALL_BOWLERS,
-        payload: responseOfApi
-      }
-    ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getBowlers(match)).then(() => {
-      expect(store.getActions()).toEqual(expectedActions);
-    });
-  });
-
-  it("should create an action of type GET_TOP_SIXES and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = [];
-    let match = { match_type: "ODI" };
-    moxios.stubRequest(
-      "http://localhost:5000/apis/PlayerInfo/TopSixes",
-
-      {
-        status: 200,
-        response: { data: responseOfApi }
-      }
-    );
-    // console.log("response: ", data);
-    const store = mockStore({}, {}, {});
-    const expectedActions = [
-      {
-        type: GET_TOP_SIXES,
-        payload: responseOfApi
-      }
-    ];
-    console.log("expected actions:", expectedActions);
-    return store.dispatch(action.getTopSixes(match)).then(() => {
+    // console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTopPlayers(match_type, gender)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
@@ -221,7 +174,7 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getSinglePlayer(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -230,16 +183,16 @@ describe("Testing Players action", () => {
   // BOWLERS ACTION
 
   it("should create an action of type GET_ODI_BOWLER_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
-    let player_id = 268;
+    const responseOfApi = [[]];
+    let player_id = 256;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/ODIBowlerStats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { ODIBowler: responseOfApi }
       }
     );
-    // console.log("response: ", re);
+    // console.log("response: ", response);
     const store = mockStore({}, {}, {});
     const expectedActions = [
       {
@@ -247,20 +200,20 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getODIBowlerStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should create an action of type GET_TEST_BOWLER_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
+    const responseOfApi = [[]];
     let player_id = 268;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/Test-Bowler-Stats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { TestBowler: responseOfApi }
       }
     );
     // console.log("response: ", re);
@@ -271,20 +224,20 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getTestBowlerStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should create an action of type GET_T20_BOWLER_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
+    const responseOfApi = [[]];
     let player_id = 268;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/T20-Bowler-Stats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { T20Bowler: responseOfApi }
       }
     );
     // console.log("response: ", re);
@@ -295,7 +248,7 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getT20BowlerStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -303,13 +256,13 @@ describe("Testing Players action", () => {
 
   // /// /// // // // // // BATSMAN STATS/////// ////// ///// /////
   it("should create an action of type GET_T20_BATSMAN_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
+    const responseOfApi = [[]];
     let player_id = 268;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/T20-Batsman-Stats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { T20: responseOfApi }
       }
     );
     // console.log("response: ", re);
@@ -320,20 +273,20 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getT20BatsmanStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should create an action of type GET_ODI_BATSMAN_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
+    const responseOfApi = [[]];
     let player_id = 268;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/ODI-Batsman-Stats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { ODI: responseOfApi }
       }
     );
     // console.log("response: ", re);
@@ -344,20 +297,20 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getODIBatsmanStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
   });
 
   it("should create an action of type GET_BATSMAN_STATS and the payload should be same as the API response from the server with status code 200", () => {
-    const responseOfApi = undefined;
+    const responseOfApi = [[]];
     let player_id = 268;
     moxios.stubRequest(
       "http://localhost:5000/apis/PlayerInfo/Test-Batsman-Stats/" + player_id,
       {
         status: 200,
-        response: { data: responseOfApi }
+        response: { Test: responseOfApi }
       }
     );
     // console.log("response: ", re);
@@ -368,7 +321,33 @@ describe("Testing Players action", () => {
         payload: responseOfApi
       }
     ];
-    console.log("expected actions:", expectedActions);
+    // console.log("expected actions:", expectedActions);
+    return store.dispatch(action.getTestBatsmanStats(player_id)).then(() => {
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+
+  //  ############## NEGATIVE ###################
+
+  it("should create an action of type GET_BATSMAN_STATS and  response from the server should be with status code 200", () => {
+    const responseOfApi = [[]];
+    let player_id = 268;
+    moxios.stubRequest(
+      "http://localhost:5000/apis/PlayerInfo/Test-Batsman-Stats/" + player_id,
+      {
+        status: 200,
+        response: { Test: responseOfApi }
+      }
+    );
+    // console.log("response: ", re);
+    const store = mockStore({}, {}, {});
+    const expectedActions = [
+      {
+        type: GET_BATSMAN_STATS,
+        payload: responseOfApi
+      }
+    ];
+    // console.log("expected actions:", expectedActions);
     return store.dispatch(action.getTestBatsmanStats(player_id)).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
