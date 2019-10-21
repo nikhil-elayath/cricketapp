@@ -3,7 +3,7 @@ const app = require("../..");
 
 const error = require("../../middleware/error");
 let id;
-let player_name;
+let player_id;
 let team_name;
 describe("Testing ecommerce API", () => {
   //test  for all team
@@ -40,7 +40,7 @@ describe("Testing ecommerce API", () => {
       .set("Content-type", "application/JSON")
       .then(response => {
         // console.log(response.body.data);
-        id = response.body.data[0].player_id;
+        player_id = response.body.data[0].player_id;
         // player_name = response.body.data[1].player_name;
         // console.log(response.body.data);
         expect(response.statusCode).toBe(200);
@@ -143,7 +143,7 @@ describe("Testing ecommerce API", () => {
     };
     let payload = JSON.stringify(data);
     request(app)
-      .put("/apis/admin/editplayer/" + id)
+      .put("/apis/admin/editplayer/" + player_id)
       .send(payload)
       .set("Content-type", "application/JSON")
       .then(response => {
@@ -175,7 +175,7 @@ describe("Testing ecommerce API", () => {
     };
     let payload = JSON.stringify(data);
     request(app)
-      .put("/apis/admin/editplayer/" + id)
+      .put("/apis/admin/editplayer/" + player_id)
       .send(payload)
       .set("Content-type", "application/JSON")
       .then(response => {
@@ -223,7 +223,7 @@ describe("Testing ecommerce API", () => {
     };
     let payload = JSON.stringify(data);
     request(app)
-      .put("/apis/admin/search/" + team_name)
+      .put("/apis/admin/searchteam/" + team_name)
       .send(payload)
       .set("Content-type", "application/JSON")
       .then(response => {
@@ -291,7 +291,7 @@ describe("Testing ecommerce API", () => {
   it("should return status of 200 and a message", done => {
     // let payload = JSON.stringify(id);
     request(app)
-      .delete("/apis/admin/deleteteam/" + id)
+      .delete("/apis/admin/deleteteam/" + player_id)
       // .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
