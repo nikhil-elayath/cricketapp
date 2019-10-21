@@ -1,54 +1,48 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { MatchScoreDetails } from "../MatchScoreDetails";
+import { MatchStatsDetails } from "../MatchStatsDetails";
 
 
-const getMatchScorecardDetailbyId = jest.fn();
+const getManhattanGraphbyId = jest.fn();
+const getPieChartOnebyId = jest.fn();
+const getPieChartTwobyId = jest.fn();
 
-const match_score = [{
-    all_bowler: [{
-        bowler_name: "M Ntini",
-        ecom: "3.05",
-        given_runs: "58",
-        total_extras: "0",
-        total_over: "19",
-        wicket_taken: "2"
-    }],
-    all_extra: [{
-        extras_type: "byes", extra_count: "1"
-    }],
-    batsman: [{
-        ball_faced: "151",
-        batsman_run: "115",
-        bowler_name: "JH Kallis",
-        fielder_name: "ND McKenzie",
-        fielder_two_name: null,
-        fours: "19",
-        sixes: "2",
-        striker_name: "PJ Hughes",
-        striker_rate: "76.16",
-        wicket_type: "caught"
-    }],
-    extra_total: [{
-        extra_count: "15"
-    }],
-    inning: [{ inning: 1 }],
-    total_score: [{
-        total_overs: "106",
-        total_runs: "352",
-        total_wicket: "10"
-    }]
-}
-]
+const match_stats_manhattan = [{
+    head: "https://plot.ly/~ankitecd/6",
+    message: "Graph link recieved successfully",
+    status_code: 200
+}]
+const match_stats_pie1 = [{
+    head: "https://plot.ly/~ankitecd/22",
+    head2: "https://plot.ly/~ankitecd/27",
+    message: "Graph link receieved succesfully",
+    status_code: 200,
+    team_one: "India",
+    team_two: "England"
+
+}]
+const match_stats_pie2 = [{
+    head: "https://plot.ly/~ankitecd/22",
+    head2: "https://plot.ly/~ankitecd/27",
+    message: "Graph link receieved succesfully",
+    status_code: 200,
+    teamone: ["India"],
+    teamtwo: ["England"]
+}]
 
 const map = jest.fn();
 
 const wrapper = shallow(
-    <MatchScoreDetails match_score={match_score}
-        getMatchScorecardDetailbyId={getMatchScorecardDetailbyId} />
+    <MatchStatsDetails
+        getManhattanGraphbyId={getManhattanGraphbyId}
+        getPieChartOnebyId={getPieChartOnebyId}
+        getPieChartTwobyId={getPieChartTwobyId}
+        match_stats_manhattan={match_stats_manhattan}
+        match_stats_pie1={match_stats_pie1}
+        match_stats_pie2={match_stats_pie2} />
 );
 
-describe("Testing of MatchScoreDetails Component", () => {
+describe("Testing of MatchStatsDetails Component", () => {
 
     it("should render the component", () => {
 
@@ -56,9 +50,15 @@ describe("Testing of MatchScoreDetails Component", () => {
     });
 
 
-    // it("[Scorecard-container > Bowlers Values] should have bowlers economy values", () => {
-    //     expect(wrapper.find("#bowler-ecom-value").text()).toBe("3.05");
-    // });
+    it("[Stats-container > Manhattan] should a title", () => {
+        expect(wrapper.find("#manhattan-title").text()).toBe("Manhattan");
+    });
+    it("[Stats-container > Manhattan] should a graph url", () => {
+        expect(wrapper.find("#manhattan-frame").prop('src')).toBe("India");
+    });
+    it("[Stats-container > Pie-chart-1] should a title", () => {
+        expect(wrapper.find("#pie1-title").text()).toBe("  Batsmen");
+    });
 
     // it("[getMatchScorecardDetailbyId] should test function ComponentDidMount is called ", () => {
     //     const componentDidMount = jest.spyOn(
