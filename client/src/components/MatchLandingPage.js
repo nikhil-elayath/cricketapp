@@ -32,7 +32,7 @@ export class MatchLandingPage extends Component {
     //   console.log("here", date.match_date)
     //   // this.props.getMatchesByDate(date.match_date, this.props.gender)
     // ))
-    this.props.getMatchesByDate("2009-03-10", this.props.gender);
+    this.props.getMatchesByDate("2016-03-17", this.props.gender);
     // this.props.getMatchesByDate("2016-05-20", this.props.gender);
   }
 
