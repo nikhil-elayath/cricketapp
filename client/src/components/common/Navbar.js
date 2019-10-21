@@ -224,6 +224,11 @@ export class Navbar extends Component {
 																	}}
 																>
 																	<div
+																		style={{
+																			backgroundImage: `url(data:image/jpeg;base64,${mapped_search.player_image}`
+																		}}
+																	></div>
+																	<div
 																		className="search-suggestion"
 																		id={
 																			"player-search-" +
@@ -255,6 +260,11 @@ export class Navbar extends Component {
 																		// state:{
 																	}}
 																>
+																	<div
+																		style={{
+																			backgroundImage: `url(data:image/jpeg;base64,${mapped_search.team_image}`
+																		}}
+																	></div>
 																	<div
 																		className="search-suggestion"
 																		id={

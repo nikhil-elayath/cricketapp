@@ -183,6 +183,15 @@ nav {
 	color: #272727;
 	text-decoration: none;
 }
+.search-list-item > div:first-child {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
 
 /* admin properties */
 
