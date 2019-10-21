@@ -306,15 +306,19 @@ router.get("/scorecard/:id", async (req, res, next) => {
             in(select bowler from b))
             select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
             full outer join b on b.bowler=d.player_id
-           `);
+           `)
 
       // total extra in delivery
       const extra_total = await db.any(
-        `select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0`
-      );
+        `select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${
+        inning.inning
+        } and extra_id>0`
+      )
 
       // different type of extras and thier count
-      const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0 group by extra_id),
+      const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${
+        inning.inning
+        } and extra_id>0 group by extra_id),
            ps as( select extras_id as extra_idd, extras_type from extras where extras_id in(select extra_id from s))
            select extras_type, extra_count from ps inner join s on s.extra_id=ps.extra_idd`);
 
@@ -330,7 +334,9 @@ router.get("/scorecard/:id", async (req, res, next) => {
             inning=${inning.inning} and wicket_id>0 and match_id in 
             (select match_id from s) group by match_idd) 
             select match_id, total_runs, total_wicket from ps inner join s on s.match_id=ps.match_idd),
-            pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${inning.inning} and extra_id=0 and match_id in 
+            pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${
+        inning.inning
+        } and extra_id=0 and match_id in 
             (select match_id from ss) group by match_idd) 
             select total_runs, total_wicket, total_overs from pss inner join ss on ss.match_id=pss.match_idd; `);
       console.log(total_score);

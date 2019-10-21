@@ -46,9 +46,10 @@
   grid-gap: 10px;
   width: 350px;
   padding: 15px;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   border-radius: 8px;
   margin: 10px;
+  background-color: white;
 }
 
 .p-top-team-details {
@@ -117,8 +118,9 @@
   width: 100%;
   height: 140px;
   border-radius: 8px;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   cursor: pointer;
+  background-color: white;
 }
 .list-info {
   text-align: left;

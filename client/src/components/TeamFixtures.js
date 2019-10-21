@@ -30,7 +30,7 @@ export class TeamFixtures extends Component {
               </div>
             </div>
           </div>
-          <div className="fixture-container">
+          {/* <div className="fixture-container">
             <div className="fixture-details">
               <div className="fixture-col-1">
                 <p className="fixture-info-type">T20</p>
@@ -58,8 +58,8 @@ export class TeamFixtures extends Component {
                 <p className="fixture-info-one">India vs South Africa</p>
                 <p className="fixture-info-two">JCA Stadium, Ranchi</p>
               </div>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       </div>
     );
