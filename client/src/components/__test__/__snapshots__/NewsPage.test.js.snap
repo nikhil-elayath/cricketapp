@@ -29,7 +29,7 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
            
         </p>
         <img
-          className="news_img"
+          className="main_img"
           src="vk.jpeg"
         />
         <p
@@ -48,7 +48,7 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
             style={Object {}}
           />
           <div
-            className="div-news"
+            className="div-newspage"
           >
             <div
               className="div-news-images"

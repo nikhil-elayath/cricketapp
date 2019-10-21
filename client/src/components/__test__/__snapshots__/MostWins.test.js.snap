@@ -31,7 +31,7 @@ exports[`Test MostWins Component render the component 1`] = `
             <p
               className="p-card"
             >
-              Test
+              IT20
             </p>
           </div>
           <div
@@ -51,7 +51,7 @@ exports[`Test MostWins Component render the component 1`] = `
             <p
               className="p-card"
             >
-              IT20
+              Test
             </p>
           </div>
           <div

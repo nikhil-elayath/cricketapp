@@ -1,39 +1,39 @@
-import {
-  GET_PLAYERS,
-  GET_STATISTICS,
-  GET_PLAYER_STATS,
-  GET_TOP_BATSMAN,
-  GET_NEWS,
-  GET_HOME_RECENT_MATCHES
-} from './Types'
-import axios from 'axios'
+import { GET_NEWS, GET_HOME_RECENT_MATCHES } from "./Types";
+import axios from "axios";
+
+import { startLoading, stopLoading } from "./LoadingAction";
 
 export const getNews = () => dispatch => {
-  axios
-    .get('http://localhost:5000/apis/news')
-    .then(res => {
-      dispatch({
-        type: GET_NEWS,
-        payload: res.data.data
-      })
-      console.log("from 'then' get news")
-    })
+	axios
+		.get("http://localhost:5000/apis/news")
+		.then(res => {
+			dispatch({
+				type: GET_NEWS,
+				payload: res.data.data
+			});
+			console.log("from 'then' get news");
+		})
 
-    .catch(err => console.log(err))
-}
+		.catch(err => console.log(err));
+};
 
 // fetching recent matches
 export const getRecentMatches = gender => dispatch => {
-  console.log('from actions of home recent matches', gender)
-  axios
-    .get('http://localhost:5000/apis/recentMatches/' + gender)
-    .then(res => {
-      dispatch({
-        type: GET_HOME_RECENT_MATCHES,
-        payload: res.data.data
-      })
-      console.log("from 'then' get RECENT MATCHES")
-    })
+	dispatch(startLoading());
+	console.log("from actions of home recent matches", gender);
+	axios
+		.get("http://localhost:5000/apis/recentMatches/" + gender)
+		.then(res => {
+			dispatch(stopLoading());
+			dispatch({
+				type: GET_HOME_RECENT_MATCHES,
+				payload: res.data.data
+			});
+			console.log("from 'then' get RECENT MATCHES");
+		})
 
-    .catch(err => console.log(err))
-}
+		.catch(err => {
+			// dispatch(stopLoading())
+			console.log(err);
+		});
+};

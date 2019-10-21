@@ -1,35 +1,271 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing of MatchScoreDetails Component should render the component 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": null,
-      },
-    }
-  }
->
-  <Connect(MatchScoreDetails) />
-</ContextProvider>
+<div>
+  <div
+    className="main-spacing-container"
+  >
+    <div
+      className="top-container-scorecard"
+      style={
+        Object {
+          "borderRadius": "5px",
+        }
+      }
+    >
+      <div
+        id="scorecard-inning"
+        style={
+          Object {
+            "backgroundColor": "#2980B9",
+            "borderTopLeftRadius": "5px",
+            "borderTopRightRadius": "5px",
+            "color": "white",
+            "fontSize": "400",
+            "padding": "10px",
+          }
+        }
+      >
+        Inning 
+      </div>
+      <div
+        className="main-container-scorecard"
+      >
+        <div
+          className="batsman-heading"
+          style={
+            Object {
+              "fontWeight": "500",
+              "padding": "5px",
+            }
+          }
+        >
+          <div
+            id="batsmen-text"
+          >
+            Batsmen
+          </div>
+          <div />
+          <div
+            id="runs-text"
+          >
+            R
+          </div>
+          <div
+            id="ball-text"
+          >
+            B
+          </div>
+          <div
+            id="fours-text"
+          >
+            4s
+          </div>
+          <div
+            id="sixes-text"
+          >
+            6s
+          </div>
+          <div
+            id="SR-text"
+          >
+            SR
+          </div>
+        </div>
+        <div>
+          <div
+            className="batsman-heading"
+            style={
+              Object {
+                "padding": "5px",
+              }
+            }
+          >
+            <div
+              id="batsmen-name"
+            >
+              PJ Hughes
+            </div>
+            <div
+              id="how-out"
+            >
+              (c) 
+              ND McKenzie
+               
+               (b) 
+               
+              JH Kallis
+            </div>
+            <div
+              id="batsmen-run"
+            >
+              115
+            </div>
+            <div
+              id="batsmen-ball-faced"
+            >
+              151
+            </div>
+            <div
+              id="batsmen-fours"
+            >
+              19
+            </div>
+            <div
+              id="batsmen-sixes"
+            >
+              2
+            </div>
+            <div
+              id="batsmen-strike-rate"
+            >
+              76.16
+            </div>
+          </div>
+        </div>
+        <div
+          className="extras-content"
+          style={
+            Object {
+              "fontWeight": "500",
+              "padding": "10px",
+            }
+          }
+        >
+          <div
+            id="match-extras-text"
+          >
+            Extras
+          </div>
+          <div
+            id="match-extras-value"
+            style={
+              Object {
+                "margin": "0 80px 0 0",
+              }
+            }
+          >
+            15
+             extras
+          </div>
+        </div>
+        <div
+          className="total-content"
+          style={
+            Object {
+              "borderBottom": "none",
+              "fontWeight": "500",
+              "padding": "5px",
+            }
+          }
+        >
+          <div
+            id="total-text"
+          >
+            Total
+          </div>
+          <div
+            id="total-value"
+            style={
+              Object {
+                "margin": "0 40px 0 0",
+              }
+            }
+          >
+            352
+             /
+            10
+             (
+            106
+             overs)
+          </div>
+        </div>
+        <div
+          className="bowler-heading"
+          style={
+            Object {
+              "borderTop": "none",
+              "fontWeight": "500",
+              "padding": "5px",
+            }
+          }
+        >
+          <div
+            id="bowler-text"
+          >
+            Bowler
+          </div>
+          <div />
+          <div
+            id="bowler-over-text"
+          >
+            O
+          </div>
+          <div
+            id="bowler-run-text"
+          >
+            R
+          </div>
+          <div
+            id="bowler-wicket-text"
+          >
+            W
+          </div>
+          <div
+            id="bowler-extras-text"
+          >
+            Extra
+          </div>
+          <div
+            id="bowler-ecom-text"
+          >
+            Ecom
+          </div>
+        </div>
+        <div>
+          <div
+            className="bowler-heading"
+            style={
+              Object {
+                "padding": "5px",
+              }
+            }
+          >
+            <div
+              id="bowler-name-value"
+            >
+              M Ntini
+            </div>
+            <div />
+            <div
+              id="bowler-overs-value"
+            >
+              19
+            </div>
+            <div
+              id="bowler-runs-value"
+            >
+              58
+            </div>
+            <div
+              id="bowler-wicket-value"
+            >
+              2
+            </div>
+            <div
+              id="bowler-extras-value"
+            >
+              0
+            </div>
+            <div
+              id="bowler-ecom-value"
+            >
+              3.05
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
