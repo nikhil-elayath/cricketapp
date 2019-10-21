@@ -15,10 +15,11 @@
 
 .grid-class-team {
   grid-gap: 10px;
+  background-color: white;
   width: 250px;
   height: 200px;
   padding: 15px;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   border-radius: 8px;
   margin: 15px;
   display: inline-flex;
@@ -75,6 +76,14 @@
 
 .cardtest-team p {
   color: #ffffff;
+}
+
+.cardodi {
+  background-color: white;
+}
+
+.cardt20 {
+  background-color: white;
 }
 
 .cardodi-team {
