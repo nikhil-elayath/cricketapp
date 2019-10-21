@@ -20,7 +20,7 @@ export default class MatchSecondaryNavbar extends Component {
                 <div>
                   <div
                     style={{
-                      backgroundImage: `url(data:image/jpeg;base64,${this.props.match.team_image})`
+                      backgroundImage: `url(data:image/jpeg;base64,${this.props.match.team_one_img}`
                     }}
                   ></div>
                   <div className="team-name">{this.props.match.teamOne}</div>
@@ -33,9 +33,9 @@ export default class MatchSecondaryNavbar extends Component {
                 </div>
                 <div>
                   <div
-                  // style={{
-                  //   backgroundImage: `url(data:image/jpeg;base64,${this.props.match.team_image})`
-                  // }}
+                    style={{
+                      backgroundImage: `url(data:image/jpeg;base64,${this.props.match.team_two_img}`
+                    }}
                   ></div>
                   <div className="team-name">{this.props.match.teamTwo}</div>
                   <div className="team-score">
