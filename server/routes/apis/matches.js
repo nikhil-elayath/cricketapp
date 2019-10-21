@@ -1,8 +1,8 @@
-const express = require('express')
-const router = express.Router()
-const config = require('config')
-const postgresURL = config.get('postgresURL')
-const pg = require('pg-promise')()
+const express = require("express");
+const router = express.Router();
+const config = require("config");
+const postgresURL = config.get("postgresURL");
+const pg = require("pg-promise")();
 // const db = pg(postgresURL);
 const db = pg('postgres://postgres:root@localhost:5432/cricketalpha')
 
@@ -14,13 +14,13 @@ router.get('/ondate/:date/:gender', async (req, res, next) => {
     console.log(date)
     const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date 
         inner join match as m on date.match_id=m.match_id where match_date='${date}' and gender='${gender}' 
-        ORDER BY date.match_date;`)
-    console.log('date of match', dateOfMatch)
-    var data = new Array()
+        ORDER BY date.match_date;`);
+    console.log("date of match", dateOfMatch);
+    var data = new Array();
 
     for (match of dateOfMatch) {
-      let match_id = match.match_id
-      console.log(match_id)
+      let match_id = match.match_id;
+      console.log(match_id);
 
       // match_id, team_one_name,  team_two_name, match_winner_name, won_by, match_type, player_of_the match
 
@@ -135,7 +135,7 @@ router.get('/summary/:id', async (req, res, next) => {
         psss as(select bowler, sum(total_runs) as given_runs from delivery 
         where match_id=${id} and inning=1 and bowler in (select bowler_id from sss) group by bowler)
         select bowler_id,player_name,total_wicket, overs, given_runs from psss 
-        inner join sss on sss.bowler_id=psss.bowler order by total_wicket desc;`)
+        inner join sss on sss.bowler_id=psss.bowler order by total_wicket desc;`);
 
     // console.log(team1_top2_bowlers);
 
@@ -156,13 +156,13 @@ router.get('/summary/:id', async (req, res, next) => {
          psss as(select bowler, sum(total_runs) as given_runs from delivery 
         where match_id=${id} and inning=2 and bowler in (select bowler_id from sss) group by bowler)
          select bowler_id,player_name,total_wicket, overs, given_runs from psss 
-         inner join sss on sss.bowler_id=psss.bowler order by total_wicket desc;`)
+         inner join sss on sss.bowler_id=psss.bowler order by total_wicket desc;`);
 
     // top2 batsman name, total (runs, ball) of inning 1
     const team1_top2_batsman = await db.any(`with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball 
          from delivery where match_id=${id} and inning=1 group by striker order by total_runs desc limit 2), 
          ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) 
-         select player_name,total_runs, total_ball from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`)
+         select player_name,total_runs, total_ball from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`);
 
     // console.log(team1_top2_bowlers)
 
@@ -170,28 +170,31 @@ router.get('/summary/:id', async (req, res, next) => {
     const team2_top2_batsman = await db.any(`with s as (select striker as batsman_id , sum(batsman_run) as total_runs, count(batsman_run)as total_ball 
         from delivery where match_id=${id} and inning=2 group by striker order by total_runs desc limit 2), 
         ps as(select player_name,player_id from player where player_id in (select batsman_id from s)) 
-        select player_name,total_runs, total_ball from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`)
+        select player_name,total_runs, total_ball from ps inner join s on s.batsman_id=ps.player_id order by total_runs desc;`);
 
     // console.log(team2_top2_batsman)
 
     // date of the match
     const dbdates = await db.any(
       `select match_date from match_date where match_id=${id}`
-    )
-    console.log(dbdates)
+    );
+    console.log(dbdates);
 
-    var dates = new Array()
+    var dates = new Array();
 
     for (onedate of dbdates) {
-      var date = new Date(onedate.match_date)
-      let format_date = (onedate.match_date = date.toLocaleDateString('en-IN', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric'
-      }))
-      dates.push({ match_date: format_date })
+      var date = new Date(onedate.match_date);
+      let format_date = (onedate.match_date = date.toLocaleDateString(
+        "en-IN",
+        {
+          day: "2-digit",
+          month: "short",
+          year: "numeric"
+        }
+      ));
+      dates.push({ match_date: format_date });
     }
-    console.log(dates)
+    console.log(dates);
 
     // tosswinner name, innings1,inning2,toss decision, competition, venue_name, venue_city
     const match_details = await db.any(`with ss as (with s as (select m.venue_id, m.toss_winner,t.team_name, m.innings_one_team , m.innings_two_team, m.toss_decision, m.competition from match as m 
@@ -318,6 +321,7 @@ router.get('/scorecard/:id', async (req, res, next) => {
             in(select bowler from b))
             select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
             full outer join b on b.bowler=d.player_id
+<<<<<<< HEAD
            `)
 
       // total extra in delivery
@@ -331,8 +335,19 @@ router.get('/scorecard/:id', async (req, res, next) => {
       const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${
         inning.inning
         } and extra_id>0 group by extra_id),
+=======
+           `);
+
+      // total extra in delivery
+      const extra_total = await db.any(
+        `select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0`
+      );
+
+      // different type of extras and thier count
+      const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0 group by extra_id),
+>>>>>>> 55dfa08eb1b3bb5cac89988ce0eb56de2342636c
            ps as( select extras_id as extra_idd, extras_type from extras where extras_id in(select extra_id from s))
-           select extras_type, extra_count from ps inner join s on s.extra_id=ps.extra_idd`)
+           select extras_type, extra_count from ps inner join s on s.extra_id=ps.extra_idd`);
 
       // distinct extra
       //    with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=1 and inning=4 and extra_id>0 group by extra_id),
@@ -346,12 +361,16 @@ router.get('/scorecard/:id', async (req, res, next) => {
             inning=${inning.inning} and wicket_id>0 and match_id in 
             (select match_id from s) group by match_idd) 
             select match_id, total_runs, total_wicket from ps inner join s on s.match_id=ps.match_idd),
+<<<<<<< HEAD
             pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${
         inning.inning
         } and extra_id=0 and match_id in 
+=======
+            pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${inning.inning} and extra_id=0 and match_id in 
+>>>>>>> 55dfa08eb1b3bb5cac89988ce0eb56de2342636c
             (select match_id from ss) group by match_idd) 
-            select total_runs, total_wicket, total_overs from pss inner join ss on ss.match_id=pss.match_idd; `)
-      console.log(total_score)
+            select total_runs, total_wicket, total_overs from pss inner join ss on ss.match_id=pss.match_idd; `);
+      console.log(total_score);
 
       // bowler_name,total_over, given_runs, wicket_taken, maiden_over(not accurate), total_extras, ecom
 
@@ -365,7 +384,7 @@ router.get('/scorecard/:id', async (req, res, next) => {
             match_id=${id} and inning=${inning.inning}
             group by bowler_id),
             ps as (select player_id,player_name as bowler_name from player where player_id in (select bowler_id from s))
-            select bowler_name,total_over,given_runs,wicket_taken,total_extras,total_extras, ecom from ps inner join s on s.bowler_id=ps.player_id;`)
+            select bowler_name,total_over,given_runs,wicket_taken,total_extras,total_extras, ecom from ps inner join s on s.bowler_id=ps.player_id;`);
 
       // console.log(all_batsman)
 
@@ -376,18 +395,18 @@ router.get('/scorecard/:id', async (req, res, next) => {
         all_extra: all_extra,
         total_score: total_score,
         all_bowler: all_bowler
-      })
+      });
     }
 
     res.status(200).json({
       status: 200,
       data: data,
-      message: 'Retrived scorecard of the match successfully!!'
-    })
+      message: "Retrived scorecard of the match successfully!!"
+    });
   } catch (err) {
-    console.log(err)
-    next(err)
+    console.log(err);
+    next(err);
   }
-})
+});
 
-module.exports = router
+module.exports = router;
