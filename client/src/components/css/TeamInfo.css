@@ -208,7 +208,7 @@
     width: 95%;
     height: 140px;
     border-radius: 8px;
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
   }
 
   .inside-recent-matches-box-team .Team-data {
@@ -288,7 +288,7 @@
     width: 95%;
     height: 140px;
     border-radius: 8px;
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
   }
   .inside-recent-matches-box-team:hover {
     width: 98%;
@@ -376,7 +376,7 @@
     width: 95%;
     height: 140px;
     border-radius: 8px;
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
   }
   .inside-recent-matches-box-team:hover {
     width: 98%;

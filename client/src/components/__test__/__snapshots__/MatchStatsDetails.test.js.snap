@@ -1,35 +1,99 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing of MatchStatsDetails Component should render the component 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": null,
-      },
-    }
-  }
->
-  <Connect(MatchStatsDetails) />
-</ContextProvider>
+<div>
+  <div
+    className="container-for-spacing"
+  >
+    <div
+      className="stats-main-container"
+    >
+      <div
+        className="stats-container"
+        id="manhattan-container"
+      >
+        <p
+          className="top-title"
+          id="manhattan-title"
+        >
+          Manhattan
+        </p>
+        <div>
+          <iframe
+            className="stats-graph"
+            id="manhattan-frame"
+          />
+        </div>
+      </div>
+      <div
+        className="two-pie-chart-container"
+      >
+        <div
+          className="stats-container"
+        >
+          <p
+            className="top-title"
+            id="pie1-title"
+          >
+             
+             Batsmen
+          </p>
+          <div>
+            <iframe
+              className="stats-graph"
+            />
+          </div>
+        </div>
+        <div
+          className="stats-container"
+        >
+          <p
+            className="top-title"
+          >
+             
+             Batsmen
+          </p>
+          <div>
+            <iframe
+              className="stats-graph"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        className="two-pie-chart-container"
+      >
+        <div
+          className="stats-container"
+        >
+          <p
+            className="top-title"
+          >
+             Bowler
+          </p>
+          <div>
+            <iframe
+              className="stats-graph"
+            />
+          </div>
+        </div>
+        <div
+          className="stats-container"
+        >
+          <p
+            className="top-title"
+          >
+             
+             Bowler
+          </p>
+          <div>
+            <iframe
+              className="stats-graph"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

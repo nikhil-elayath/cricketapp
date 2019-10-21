@@ -10,6 +10,10 @@ exports[`Testing for home component should render the component 1`] = `
     className="div-section"
   >
     <div
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
       className="div-news-section"
     >
       <Link
@@ -54,6 +58,12 @@ exports[`Testing for home component should render the component 1`] = `
     </div>
     <div
       id="div-second-section"
+<<<<<<< HEAD
+=======
+=======
+      className="div-section"
+>>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
     >
       <div
         id="home-recent-matches"

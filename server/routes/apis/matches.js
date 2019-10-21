@@ -21,46 +21,43 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
     for (match of dateOfMatch) {
       let match_id = match.match_id;
       console.log(match_id);
+      const match_detail = await db.any(`with m as (with ss as (with s as (select m.match_id, m.innings_two_team, 
+        m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name, t.team_image as team_one_img 
+        from match as m 
+        inner join team as t on t.team_id=m.innings_one_team where match_id=${match_id}),
+        ps as( select team_id,team_name as team_two_name, team_image as team_two_img from team
+        where team_id in(select innings_two_team from s))
+        select match_id, team_one_name, team_one_img,team_two_name, team_two_img, 
+        winner,won_by, match_type, player_of_the_match 
+        from ps inner join s on s.innings_two_team=ps.team_id),
+        pss as( select team_id, team_name as match_winner from team 
+        where team_id in(select winner from ss))
+        select match_id, team_one_name, team_one_img ,team_two_name, team_two_img,
+        match_winner,won_by, match_type, player_of_the_match 
+        from pss inner join ss on ss.winner=pss.team_id),
+        k as(select match_type as match_typee, match_values from match_type 
+        where match_type in(select match_type from m))
+        select match_id, match_values,team_one_name, team_one_img,team_two_name,team_two_img,
+        match_winner,won_by, match_type, player_of_the_match 
+        from k inner join m on m.match_type=k.match_typee`);
 
-      // match_id, team_one_name,  team_two_name, match_winner_name, won_by, match_type, player_of_the match
-
-      const match_detail = await db.any(`with m as (with ss as (with s as (select m.match_id, m.innings_one_team, m.innings_two_team, 
-                m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name 
-                from match as m 
-                inner join team as t on t.team_id=m.innings_one_team where match_id=${match_id}),
-                ps as( select team_id,team_name as team_two_name from team
-                where team_id in(select innings_two_team from s))
-                select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
-                winner,won_by, match_type, player_of_the_match 
-                from ps inner join s on s.innings_two_team=ps.team_id),
-                pss as( select team_id, team_name as match_winner from team 
-                where team_id in(select winner from ss))
-                select match_id, innings_one_team, team_one_name, innings_two_team,team_two_name, 
-                winner,match_winner,won_by, match_type, player_of_the_match 
-                from pss inner join ss on ss.winner=pss.team_id),
-                k as(select match_type as match_typee, match_values from match_type 
-                where match_type in(select match_type from m))
-                select match_id, innings_one_team, match_values,team_one_name, innings_two_team,team_two_name, 
-                winner,match_winner,won_by, match_type, player_of_the_match 
-                from k inner join m on m.match_type=k.match_typee`);
-
-      console.log(match_detail);
+      // console.log(match_detail);
 
       // total(score, wicket, over) all inning wise
 
-      const match_total_of_score = await db.any(`with ss as (with s as (select inning as inning_one, 
-                sum(total_runs) as total_score 
-                from delivery where match_id=${match_id} group by inning),
-                ps as(select inning, count(wicket_id) as total_wicket from delivery 
-                where match_id=${match_id} and wicket_id>0 and
-                inning in( select inning from s) group by inning)
-                select inning_one, total_score, total_wicket from ps
-                inner join s on s.inning_one=ps.inning),
-                pss as(select inning, count(overs)/6 as total_over 
-                from delivery where match_id=${match_id} and extra_id=0 and
-                inning in(select inning from ss) group by inning)
-                select inning,total_score, total_wicket, total_over from pss
-                inner join ss on ss.inning_one=pss.inning`);
+      const match_total_of_score = await db.any(`with ss as (with s as (select inning as inning_one,
+        sum(total_runs) as total_score 
+              from delivery where match_id=${match_id} group by inning),
+              ps as(select inning, count(wicket_id) as total_wicket from delivery 
+              where match_id=${match_id} and wicket_id>0 and
+              inning in( select inning from s) group by inning)
+              select inning_one, total_score, total_wicket from ps
+              full outer join s on s.inning_one=ps.inning), 
+              pss as(select inning, count(overs)/6 as total_over, mod(count(overs),6) as total_ball
+              from delivery where match_id=${match_id} and extra_id=0 and
+              inning in(select inning from ss) group by inning)
+              select inning,total_score, total_wicket, total_over, total_ball from pss
+              inner join ss on ss.inning_one=pss.inning`);
 
       console.log(match_total_of_score);
 
@@ -71,6 +68,8 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
         teamOne: match_detail[0].team_one_name,
         teamTwo: match_detail[0].team_two_name,
         team_winner: match_detail[0].match_winner,
+        team_one_img: match_detail[0].team_one_img,
+        team_two_img: match_detail[0].team_two_img,
         won_by: match_detail[0].won_by,
         player_of_the_match: match_detail[0].player_of_the_match,
         teamOneScore: match_total_of_score[0].total_score,
@@ -78,7 +77,9 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
         teamone_wicket: match_total_of_score[0].total_wicket,
         teamtwo_wicket: match_total_of_score[1].total_wicket,
         team_one_total_over: match_total_of_score[0].total_over,
-        team_two_total_over: match_total_of_score[1].total_over
+        team_two_total_over: match_total_of_score[1].total_over,
+        team_one_total_ball: match_total_of_score[0].total_ball,
+        team_two_total_ball: match_total_of_score[1].total_ball
       });
     }
 
@@ -306,19 +307,15 @@ router.get("/scorecard/:id", async (req, res, next) => {
             in(select bowler from b))
             select striker_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type,bowler_name, fielder_name, fielder_two_name from d
             full outer join b on b.bowler=d.player_id
-           `)
+           `);
 
       // total extra in delivery
       const extra_total = await db.any(
-        `select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${
-        inning.inning
-        } and extra_id>0`
-      )
+        `select count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0`
+      );
 
       // different type of extras and thier count
-      const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${
-        inning.inning
-        } and extra_id>0 group by extra_id),
+      const all_extra = await db.any(`with s as (select extra_id, count(extra_id) as extra_count from delivery where match_id=${id} and inning=${inning.inning} and extra_id>0 group by extra_id),
            ps as( select extras_id as extra_idd, extras_type from extras where extras_id in(select extra_id from s))
            select extras_type, extra_count from ps inner join s on s.extra_id=ps.extra_idd`);
 
@@ -334,9 +331,7 @@ router.get("/scorecard/:id", async (req, res, next) => {
             inning=${inning.inning} and wicket_id>0 and match_id in 
             (select match_id from s) group by match_idd) 
             select match_id, total_runs, total_wicket from ps inner join s on s.match_id=ps.match_idd),
-            pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${
-        inning.inning
-        } and extra_id=0 and match_id in 
+            pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${inning.inning} and extra_id=0 and match_id in 
             (select match_id from ss) group by match_idd) 
             select total_runs, total_wicket, total_overs from pss inner join ss on ss.match_id=pss.match_idd; `);
       console.log(total_score);

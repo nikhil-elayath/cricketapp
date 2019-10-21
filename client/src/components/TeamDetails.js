@@ -9,7 +9,7 @@ import Navbar from "./common/Navbar";
 
 export class TeamDetails extends Component {
   state = {
-    detailsType: "info"
+    detailsType: "info",
   };
   changeDetailsType = detailsType => {
     this.setState({ detailsType });
@@ -53,7 +53,7 @@ export class TeamDetails extends Component {
 }
 
 const mapStateTostate = state => ({
-  teams: state.TeamsReducer.teams
+  teams: state.TeamsReducer.teams,
 });
 
 export default connect(

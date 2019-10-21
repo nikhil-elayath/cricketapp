@@ -38,7 +38,7 @@ import decode from "jwt-decode";
 let decoded_token;
 export default class App extends Component {
   state = {
-    gender: "male"
+    gender: "male",
   };
 
   changeGender = gender_type => {

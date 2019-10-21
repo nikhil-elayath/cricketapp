@@ -2,9 +2,12 @@
 
 exports[`Testing PlayerInfo should render the component 1`] = `
 <div>
+<<<<<<< HEAD
   <Connect(Navbar)
     changeGender={[Function]}
   />
+=======
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
   <div
     className="secNavParent"
   >
@@ -104,6 +107,7 @@ exports[`Testing PlayerInfo should render the component 1`] = `
         className="playerBasicinfo"
       >
         <span
+          id="jest-full-name"
           style={
             Object {
               "fontSize": "14px",
@@ -125,15 +129,21 @@ exports[`Testing PlayerInfo should render the component 1`] = `
           </span>
         </div>
         <b />
-        <span>
+        <span
+          id="jest-role"
+        >
           Role
         </span>
         <b />
-        <span>
+        <span
+          id="jest-batting-style"
+        >
           Batting Style
         </span>
         <b />
-        <span>
+        <span
+          id="jest-bowling-style"
+        >
           Bowling Style
         </span>
         <b />
@@ -165,7 +175,9 @@ exports[`Testing PlayerInfo should render the component 1`] = `
         <div
           className="formatHeading"
         >
-          <span>
+          <span
+            id="test-heading"
+          >
             Test
           </span>
         </div>
@@ -197,7 +209,9 @@ exports[`Testing PlayerInfo should render the component 1`] = `
         <div
           className="formatHeading"
         >
-          <span>
+          <span
+            id="odi-heading"
+          >
             ODI
           </span>
         </div>
@@ -230,7 +244,9 @@ exports[`Testing PlayerInfo should render the component 1`] = `
         <div
           className="formatHeading"
         >
-          <span>
+          <span
+            id="t20-heading"
+          >
             T20
           </span>
         </div>

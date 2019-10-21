@@ -5,8 +5,9 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS
+  GET_TEAM_STATS,
+  // GET_HIGHEST_TOTALS,
+  // GET_LOWEST_TOTALS
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -19,7 +20,7 @@ export const getTeams = match_type => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAMS,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -36,7 +37,7 @@ export const getRanks = (gender, ranking) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_RANKS,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log("from actions", ranking);
     })
@@ -59,7 +60,7 @@ export const getMatch = (team_id, gender, match_type) => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_MATCHBYTEAMID,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -77,7 +78,7 @@ export const getTeamBatsmen = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BATSMEN,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -94,7 +95,7 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BOWLERS,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -102,16 +103,15 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     });
 };
 
-export const getFixtures = (team_id, match_type) => dispatch => {
+//NIKHIL
+export const getFixtures = team_name => dispatch => {
+  console.log("get fix from actions", team_name);
   return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
-      match_type
-    )
+    .post("http://localhost:5000/cricketalpha/teams/fixtures", team_name)
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -119,51 +119,29 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
-export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
-  console.log("high actions", team_id, match_type);
-  dispatch(startLoading());
-  return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/highesttotals/" +
-        team_id +
-        "/" +
-        gender,
-      match_type
-    )
-    .then(res => {
-      dispatch(stopLoading());
-      dispatch({
-        type: GET_HIGHEST_TOTALS,
-        payload: res.data.data
-      });
-      console.log("getHighestTotals action");
-    })
-    .catch(err => {
-      dispatch(startLoading());
-      console.log(err);
-    });
-};
+export const getTeamStats = (team_id, gender, type) => dispatch => {
+  console.log("getTeamStats action- ", team_id, gender, type);
 
-export const getLowestTotals = (team_id, gender, match_type) => dispatch => {
-  dispatch(startLoading());
+  // dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/lowesttotals/" +
+      "http://localhost:5000/cricketalpha/teams/stats/" +
         team_id +
         "/" +
         gender,
-      match_type
+      type
     )
+
     .then(res => {
-      dispatch(stopLoading());
+      // dispatch(stopLoading());
+      console.log("getTeamStats Action");
       dispatch({
-        type: GET_LOWEST_TOTALS,
-        payload: res.data.data
+        type: GET_TEAM_STATS,
+        payload: res.data.data,
       });
-      console.log("getLowestTotals action", match_type);
     })
     .catch(err => {
-      dispatch(startLoading());
+      // dispatch(startLoading());
       console.log(err);
     });
 };

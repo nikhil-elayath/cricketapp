@@ -53,7 +53,15 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
           className="calendar-fixed"
         >
           <Calendar
+<<<<<<< HEAD
             base={"2019-10-21T08:03:52.992Z"}
+=======
+<<<<<<< HEAD
+            base={"2019-10-19T05:20:34.698Z"}
+=======
+            base={"2019-10-20T17:14:43.971Z"}
+>>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
             onChange={[Function]}
             showMonthCnt={1}
             showToday={false}
@@ -61,6 +69,20 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
         </div>
       </div>
       <div>
+<<<<<<< HEAD
+        <h2
+          className="h1-match"
+          style={
+            Object {
+              "margin": "20px",
+              "textAlign": "left",
+            }
+          }
+        >
+          No Matches
+           
+        </h2>
+=======
         <div
           className="all-matches-box"
         >
@@ -154,6 +176,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
             </span>
           </div>
         </div>
+>>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
       </div>
     </div>
   </div>
