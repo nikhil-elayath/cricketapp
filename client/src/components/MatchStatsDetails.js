@@ -36,7 +36,7 @@ export class MatchStatsDetails extends Component {
                     Manhattan
               </p>
                   <div>
-                    <iframe
+                    <iframe id="manhattan-frame"
                       className="stats-graph"
                       src={this.props.match_stats_manhattan.head}
                     />
@@ -44,7 +44,7 @@ export class MatchStatsDetails extends Component {
                 </div>
                 <div className="two-pie-chart-container">
                   <div className="stats-container">
-                    <p className="top-title"> {this.props.match_stats_pie1.team_one} Batsmen</p>
+                    <p id="pie1-title" className="top-title"> {this.props.match_stats_pie1.team_one} Batsmen</p>
                     <div>
                       <iframe
                         className="stats-graph"

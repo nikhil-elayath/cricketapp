@@ -28,7 +28,7 @@ export default class MatchSecondaryNavbar extends Component {
                     {" "}
                     {this.props.match.teamOneScore}/
                     {this.props.match.teamone_wicket} (
-                    {this.props.match.team_one_total_over} overs)
+                    {this.props.match.team_one_total_over}.{this.props.match.team_one_total_ball} overs)
                   </div>
                 </div>
                 <div>
@@ -42,7 +42,7 @@ export default class MatchSecondaryNavbar extends Component {
                     {" "}
                     {this.props.match.teamTwoScore}/
                     {this.props.match.teamtwo_wicket} (
-                    {this.props.match.team_two_total_over} overs)
+                    {this.props.match.team_two_total_over}.{this.props.match.team_two_total_ball} overs)
                   </div>
                 </div>
               </div>
