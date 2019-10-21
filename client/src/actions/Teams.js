@@ -5,8 +5,14 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
+<<<<<<< HEAD
   GET_HIGHEST_TOTALS,
   GET_LOWEST_TOTALS,
+=======
+  GET_TEAM_STATS
+  // GET_HIGHEST_TOTALS,
+  // GET_LOWEST_TOTALS
+>>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -121,6 +127,7 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
+<<<<<<< HEAD
 export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
   console.log("high actions", team_id, match_type);
   dispatch(startLoading());
@@ -145,27 +152,36 @@ export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
       console.log(err);
     });
 };
+=======
+export const getTeamStats = (team_id, gender, type) => dispatch => {
+  console.log("getTeamStats action- ", team_id, gender, type);
+>>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
 
-export const getLowestTotals = (team_id, gender, match_type) => dispatch => {
-  dispatch(startLoading());
+  // dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/lowesttotals/" +
+      "http://localhost:5000/cricketalpha/teams/stats/" +
         team_id +
         "/" +
         gender,
-      match_type
+      type
     )
+
     .then(res => {
-      dispatch(stopLoading());
+      // dispatch(stopLoading());
+      console.log("getTeamStats Action");
       dispatch({
+<<<<<<< HEAD
         type: GET_LOWEST_TOTALS,
         payload: res.data.data,
+=======
+        type: GET_TEAM_STATS,
+        payload: res.data.data
+>>>>>>> 5d2d46fa89778032f4445ebb8bdf483130247adb
       });
-      console.log("getLowestTotals action", match_type);
     })
     .catch(err => {
-      dispatch(startLoading());
+      // dispatch(startLoading());
       console.log(err);
     });
 };

@@ -218,28 +218,84 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
   }
 });
 
-router.post("/teams/highesttotals/:team_id/:gender", async (req, res, next) => {
+router.post("/teams/stats/:team_id/:gender", async (req, res, next) => {
   try {
     const team_id = req.params.team_id;
     const gender = req.params.gender;
     const match_type = req.body.match_type;
-    // const stats_type = req.body.stats_type;
-    // console.log("match type", match_type);
-    // if(stats_type=="highest_score" || stats_type=="lowest_score" ){
-    //   order_type = stats_type == "highest_score"?"desc":"asc"
-    // }
-
-    // else  if(stats_type=="l_vic" || stats_type=="sm_v" ){
-
-    // }
-    const result = await db.any(
-      `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
+    const stats_type = req.body.stats_type;
+    if (stats_type == "highest_score" || stats_type == "lowest_score") {
+      let order_type = stats_type == "highest_score" ? "desc" : "asc";
+      console.log("match type", match_type);
+      console.log("stats type", stats_type);
+      console.log("order type", order_type);
+      const result = await db.any(
+        `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
 ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender = '${gender}' and match_id in(
 select match_id from s))
 select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
 pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
 where match_id in( select match_id from ss) group by match_id, inning)
-select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run desc limit 15),
+select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run),
+y as(select match_id as idd, match_date from match_date where match_id
+in(select match_id from k))
+select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd),
+yy as(select match_id as match_idd, innings_one_team, innings_two_team from match where match_id
+in(select match_id from kk))
+select match_id, match_date, inning, innings_one_team, innings_two_team, total_run, overs from yy
+inner join kk on kk.match_id=yy.match_idd),
+l as(select team_id,team_name as team_one from team where team_id!=0 and team_id
+in(select innings_one_team from t))
+select match_id, match_date, inning, team_one, innings_two_team, total_run, overs from l
+inner join t on t.innings_one_team=l.team_id),
+ll as(select team_id,team_name as team_two from team where team_id
+in(select innings_two_team from tt))
+select match_id, match_date, inning, team_one, team_two, total_run, overs from ll
+inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type} limit 15;`
+        //${order_type} instead of desc
+      );
+      // console.log("stats result is ", result);
+      let dates = [];
+      for (onedate of result) {
+        // console.log("date - ", onedate);
+        var date = new Date(onedate.match_date);
+        let format_date = (onedate.match_date = date.toLocaleDateString(
+          "en-IN",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }
+        ));
+        dates.push({ match_date: format_date });
+      }
+      console.log(dates);
+      if (!result)
+        throw {
+          statusCode: 404,
+          customMessage: "Cannot find any team stats",
+        };
+      res.status(200).json({
+        status: 200,
+        data: result,
+        message: "Retrieved all the team stats!",
+      });
+    } else if (
+      stats_type == "largest_victory" ||
+      stats_type == "smallest_victory"
+    ) {
+      let order_type = stats_type == "largest_victory" ? "desc" : "asc";
+      console.log("match type", match_type);
+      console.log("stats type", stats_type);
+      console.log("order type", order_type);
+      const result = await db.any(
+        `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
+ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender = '${gender}' and match_id in(
+select match_id from s))
+select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
+pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
+where match_id in( select match_id from ss) group by match_id, inning)
+select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run),
 y as(select match_id as idd, match_date from match_date where match_id
 in(select match_id from k))
 select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd),
@@ -254,90 +310,36 @@ inner join t on t.innings_one_team=l.team_id),
 ll as(select team_id,team_name as team_two from team where team_id
 in(select innings_two_team from tt))
 select match_id, match_date, inning, team_one, team_two, total_run, overs from ll
-inner join tt on tt.innings_two_team=ll.team_id order by total_run desc limit 15;`
-      //${order_type} instead of desc
-    );
-    // console.log("result is ", result);
-    let dates = [];
-    for (onedate of result) {
-      // console.log("date - ", onedate);
-      var date = new Date(onedate.match_date);
-      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }));
-      dates.push({ match_date: format_date });
+inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type} limit 15;`
+        //${order_type} instead of desc
+      );
+      // console.log("stats result is ", result);
+      let dates = [];
+      for (onedate of result) {
+        // console.log("date - ", onedate);
+        var date = new Date(onedate.match_date);
+        let format_date = (onedate.match_date = date.toLocaleDateString(
+          "en-IN",
+          {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+          }
+        ));
+        dates.push({ match_date: format_date });
+      }
+      console.log(dates);
+      if (!result)
+        throw {
+          statusCode: 404,
+          customMessage: "Cannot find any team stats",
+        };
+      res.status(200).json({
+        status: 200,
+        data: result,
+        message: "Retrieved all the team stats!",
+      });
     }
-    // console.log(dates);
-    if (!result)
-      throw {
-        statusCode: 404,
-        customMessage: "Cannot find any team stats",
-      };
-    res.status(200).json({
-      status: 200,
-      data: result,
-      message: "Retrieved all the team stats!",
-    });
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post("/teams/lowesttotals/:team_id/:gender", async (req, res, next) => {
-  try {
-    const team_id = req.params.team_id;
-    const gender = req.params.gender;
-    const match_type = req.body.match_type;
-    // console.log("match type", match_type);
-    const result = await db.any(
-      `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
-ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender = '${gender}' and match_id in(
-select match_id from s))
-select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
-pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
-where match_id in( select match_id from ss) group by match_id, inning)
-select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run desc limit 15),
-y as(select match_id as idd, match_date from match_date where match_id
-in(select match_id from k))
-select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd),
-yy as(select match_id as match_idd, innings_one_team, innings_two_team from match where match_id
-in(select match_id from kk))
-select match_id, match_date, inning, innings_one_team, innings_two_team, total_run, overs from yy
-inner join kk on kk.match_id=yy.match_idd),
-l as(select team_id,team_name as team_one from team where team_id
-in(select innings_one_team from t))
-select match_id, match_date, inning, team_one, innings_two_team, total_run, overs from l
-inner join t on t.innings_one_team=l.team_id),
-ll as(select team_id,team_name as team_two from team where team_id
-in(select innings_two_team from tt))
-select match_id, match_date, inning, team_one, team_two, total_run, overs from ll
-inner join tt on tt.innings_two_team=ll.team_id order by total_run limit 15;`
-    );
-    // console.log("result is ", result);
-    let dates = [];
-    for (onedate of result) {
-      // console.log("date - ", onedate);
-      var date = new Date(onedate.match_date);
-      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      }));
-      dates.push({ match_date: format_date });
-    }
-    // console.log(dates);
-    if (!result)
-      throw {
-        statusCode: 404,
-        customMessage: "Cannot find any team stats",
-      };
-    res.status(200).json({
-      status: 200,
-      data: result,
-      message: "Retrieved all the team stats!",
-    });
   } catch (err) {
     next(err);
   }

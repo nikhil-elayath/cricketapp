@@ -14,7 +14,6 @@ import BowlingStats from "./components/PlayerBowlingStats";
 //aditya
 import TeamLandingPage from "./components/TeamLandingPage";
 import TeamDetails from "./components/TeamDetails";
-import TeamFixtures from "./components/TeamFixtures";
 
 // import TeamInfo from "./components/TeamInfo";
 import Home from "./components/Home";
