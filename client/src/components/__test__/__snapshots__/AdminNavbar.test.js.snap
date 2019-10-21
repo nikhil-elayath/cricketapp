@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test for the text, input, css properties and icons on the navbar and snapshot testing renders the component for snapshot testing 1`] = `
+<div
+  className="nav-parent"
+>
+  <nav
+    className="menu admin"
+  >
+    <ul
+      className="admin-ul"
+    >
+      <li
+        className="nav-brand-li admin-nav-brand"
+      >
+        <Link
+          id="nav-brand"
+          to="/"
+        >
+          CricketAlpha
+        </Link>
+      </li>
+      <input
+        checked={true}
+        className="menu-btn"
+        id="menu-btn"
+        onClick={[Function]}
+        type="checkbox"
+      />
+      <label
+        className="menu-icon"
+        for="menu-btn"
+        id="menu-btn-label"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
+      >
+        <span
+          className="bars"
+        />
+      </label>
+      <li
+        className="item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="adminplayer"
+          to="/adminplayer"
+        >
+          Manage Players
+        </Link>
+      </li>
+      <li
+        className="item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="adminteam"
+          to="/adminteam"
+        >
+          Manage Teams
+        </Link>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;

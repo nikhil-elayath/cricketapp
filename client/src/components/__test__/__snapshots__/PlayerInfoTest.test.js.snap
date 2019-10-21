@@ -12,7 +12,7 @@ exports[`Testing PlayerInfo should render the component 1`] = `
       <div
         style={
           Object {
-            "backgroundImage": "url(dhoni.jpg)",
+            "backgroundImage": "url(data:image/jpeg;base64,undefined)",
           }
         }
       />

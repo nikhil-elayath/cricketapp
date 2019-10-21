@@ -59,3 +59,34 @@ column-gap: 10px;
 	color: #c2c2c2;
 	font-size: 30px;
 }
+
+@media screen and (max-width: 768px) {
+
+.match-team-score > div{
+display: grid;
+grid-template-columns: max-content 1fr 2fr;
+width:48vw;
+column-gap: 12px;
+}
+
+.match-pom{
+	padding-left: 30px;
+}
+
+}
+@media screen and (max-width: 576px) {
+
+.match-pom{
+display: none;
+}
+.match-team-score > div{
+grid-template-columns: max-content 1fr 2fr;
+width:100%;
+column-gap: 20px;
+}
+
+.secNavParent{
+width: 100%;
+margin: 45px 0 0 0;
+}
+}

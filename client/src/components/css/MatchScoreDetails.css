@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
+.main-spacing-container{
+  margin-top: 230px;
+}
+
 .top-container-scorecard {
   height: fit-content;
   margin: 50px 150px 50px 150px;
@@ -41,4 +45,35 @@
    display: grid;
     grid-template-columns: 4fr 6fr 1fr 1fr 1fr 1fr 1fr;
     border-bottom: none;
+}
+
+@media screen and (max-width: 768px) {
+
+  .top-container-scorecard{
+    margin: 20px 20px 20px 20px;
+  }
+}
+@media screen and (max-width: 576px) {
+.main-spacing-container{
+  margin-top: 350px;
+}
+   .top-container-scorecard{
+    margin: 20px 5px 10px 5px;
+  }
+  .main-container-scorecard{
+    padding: 5px;
+
+  }
+  .main-container-scorecard .batsman-heading{
+   grid-template-columns:2fr 3fr 1fr 1fr 1fr 1fr 1fr;
+}
+  .main-container-scorecard .bowler-heading:not(:last-child){
+    grid-template-columns:4fr auto 1fr 1fr 1fr 1fr 1fr;
+  }
+  
+  .main-container-scorecard .bowler-heading{
+  grid-template-columns:4fr auto 1fr 1fr 1fr 1fr 1fr;
+
+  }
+
 }

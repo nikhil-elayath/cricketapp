@@ -91,7 +91,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
         <img
           className="playerImage"
           id="pImage"
-          src="virat.jpg"
+          src="data:image/jpeg;base64,undefined"
         />
         <div
           className="playerInfoDiv"
