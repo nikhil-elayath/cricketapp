@@ -159,7 +159,12 @@ export class Home extends Component {
 							)}
 						</div>
 
-						<MostWins />
+						<MostWins
+							gender={this.props.gender}
+							changeGender={getGender =>
+								this.props.changeGender(getGender)
+							}
+						/>
 					</div>
 				</div>
 			</div>

@@ -12,7 +12,8 @@ export class TeamStats extends Component {
     t20Click: true,
     highestClick: true,
     lowestClick: false,
-    type: "T20"
+    type: "T20",
+    stats_type: "highest_score"
   };
   componentDidMount() {
     console.log("team id for team stats is ", this.props.teams.team_id);
@@ -120,6 +121,7 @@ export class TeamStats extends Component {
       this.props.teams.team_id,
       this.props.gender,
       type
+      // this.state.stats_type
     );
     // }
     // if ((this.state.testClick = true)) {
@@ -180,8 +182,10 @@ export class TeamStats extends Component {
                 <div className="cards-team-stats">
                   <div
                     style={{ borderRadius: "8px 0px 0px 8px" }}
-                    className={this.state.t20Click ? "cardtest" : "cardodi"}
-                    onClick={this.onClickT20}
+                    className={
+                      (this.state.type = "t20" ? "cardtest" : "cardodi")
+                    }
+                    onClick={this.getteamstats}
                   >
                     <p className="p-card">T20</p>
                   </div>
@@ -207,6 +211,11 @@ export class TeamStats extends Component {
                 <div className="cards-team-category">
                   <div
                     style={{ borderRadius: "8px 0px 0px 8px" }}
+                    // className={
+                    //   this.state.stats_type == "highest_score"
+                    //     ? "cardtest"
+                    //     : "cardodi"
+                    // }
                     className={this.state.highestClick ? "cardtest" : "cardodi"}
                     onClick={this.onClickHighestTotals}
                   >

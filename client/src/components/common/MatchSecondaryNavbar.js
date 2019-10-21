@@ -1,26 +1,18 @@
 import React, { Component } from "react";
 import "../css/MatchSecondaryNavbar.css";
 import "../css/SecondaryNavbar.css"
-import { Link } from "react-router-dom"
-import dhoni from "../images/dhoni.jpg";
-// import Navbar from "./Navbar";
-// import './css/SecondaryNavbar.css'
 import south_africa from "../images/SouthAfrica.jpeg";
 import india from "../images/india.jpeg";
-import default_user_img from "../images/defaultuserimg.jpg";
-// import { request } from "https";
-
 export default class MatchSecondaryNavbar extends Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className="secNavParent">
           <div className="matchSecNavHead">
             <div className="match-score-details">
-              <span style={{ fontSize: "14px" }}>
+              <span id="match-result" style={{ fontSize: "14px" }}>
                 Result:{" "}
-                <b>{this.props.match.team_winner} {this.props.match.won_by}</b>
+                <b id="match-winner-name-runs">{this.props.match.team_winner} {this.props.match.won_by}</b>
               </span>
               <div className="match-team-score">
                 <div>
@@ -71,12 +63,13 @@ export default class MatchSecondaryNavbar extends Component {
           <div className="secNavLinks">
             <ul>
               <span
+                id="summary-click"
                 className="secLink"
                 onClick={() => {
                   this.props.changeDetailsType("summary");
                 }}
               >
-                <li>Summary</li>
+                <li id="match-summary">Summary</li>
               </span>
               <span
                 className="secLink"
@@ -84,7 +77,7 @@ export default class MatchSecondaryNavbar extends Component {
                   this.props.changeDetailsType("scorecard");
                 }}
               >
-                <li>ScoreBoard</li>
+                <li id="match-scorecard">ScoreBoard</li>
               </span>
               <span
                 className="secLink"
@@ -92,7 +85,7 @@ export default class MatchSecondaryNavbar extends Component {
                   this.props.changeDetailsType("stats");
                 }}
               >
-                <li>Statistics</li>
+                <li id="match-stats">Statistics</li>
               </span>
             </ul>
           </div>
