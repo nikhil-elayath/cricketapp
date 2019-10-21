@@ -1,63 +1,69 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
-.top-container-stats{
+.container-for-spacing{
+    margin: 230px 0 0 0;
+}
+.stats-main-container{
+   border-radius: 5px;
+    margin: 150px;
+}
+
+.two-pie-chart-container{
     display: grid;
-    grid-template-columns: 12% auto 12%;
-    height: 500px;
-    /* border: 1px solid #272727; */
-    border-radius: 5px;
+    grid-template-columns: 1fr 1fr;
+    column-gap:50px;
 }
 .stats-container{
-    display: grid;
-    grid-template-rows: 5% auto;
-    border: 1px solid #272727;
+    background: white;
+    margin: 50px 0 0 0;
     border-radius: 5px;
 }
 
-.top-container-stats .top-title{
+.stats-container .top-title{
     font-weight: 500;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     background: #2980B9;
     color: white;
-    padding: 5px;
+    padding: 10px;
+    margin: 0;
 }
 .stats-graph{
-    width: 1000px;
+    width: 100%;
     border: none;
     height: 500px;
 
 }
 
+@media only screen and (max-width: 768px) {
+    .stats-main-container{
+         margin: 10px;
+     }  
+
+     .two-pie-chart-container{
+        column-gap:15px;
+    }
+
+    .stats-container{
+        margin: 20px 0 0 0;
+        
+    }
+
+     .stats-graph{
+        height: 300px;
+    
+    }
+
+}
 @media only screen and (max-width: 576px) {
 
-    .top-container-stats{
-        display: grid;
-        grid-template-columns: 2% auto 2%;
-        height: 300px;
-        width: 350px;
-        /* border: 1px solid #272727; */
-        border-radius: 5px;
+    .container-for-spacing{
+        margin: 350px 0 0 0;
     }
-    .stats-container{
-        display: grid;
-        grid-template-rows: 8% auto;
-        border: 1px solid #272727;
-        border-radius: 5px;
-    }
-    
-    .top-container-stats .top-title{
-        font-weight: 500;
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background: #2980B9;
-        color: white;
-        padding: 5px;
-    }
-    .stats-graph{
-        width: 380px;
-        border: none;
-        height: 280px;
+
+    .two-pie-chart-container{
+        grid-template-columns: 1fr;
+        
     }
 
 }

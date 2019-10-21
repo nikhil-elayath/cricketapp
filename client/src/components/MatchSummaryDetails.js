@@ -103,7 +103,7 @@ export class MatchSummaryDetails extends Component {
                   </div>
                   <div
                     className="match_details"
-                    style={{ border: "1px solid #272727", borderRadius: "5px" }}
+                    style={{ borderRadius: "5px" }}
                   >
                     <div id="match-conatiner-title" className="top-title">Match Details</div>
                     <div id="competition-name-text" style={{ margin: "5px 0 0 8px" }}>Series</div>

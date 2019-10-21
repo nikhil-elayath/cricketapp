@@ -9,7 +9,7 @@
   margin: 50px 150px 50px 150px;
   display: grid;
   grid-template-rows: 1fr auto;
-  border: 1px solid #272727;
+  background: white;
   font-size: 14px;
   
 }

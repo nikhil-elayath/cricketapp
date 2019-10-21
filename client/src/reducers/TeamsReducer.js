@@ -5,8 +5,7 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS,
+  GET_TEAM_STATS,
   GET_TEAM_SEARCH
 } from "../actions/Types";
 
@@ -43,12 +42,7 @@ export default function(state = initialstate, action) {
         ...state,
         fixtures: action.payload
       };
-    case GET_HIGHEST_TOTALS:
-      return {
-        ...state,
-        teamstats: action.payload
-      };
-    case GET_LOWEST_TOTALS:
+    case GET_TEAM_STATS:
       return {
         ...state,
         teamstats: action.payload

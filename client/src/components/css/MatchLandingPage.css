@@ -29,7 +29,7 @@ body {
 }
 .landing-container .all-matches-box > div {
 	padding: 1%;
-	border: 1px solid black;
+	background: white;
 	height: 100%;
 }
 .all-matches-box .each-matches-box {

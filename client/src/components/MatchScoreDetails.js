@@ -110,6 +110,7 @@ export class MatchScoreDetails extends Component {
                       <div id="bowler-ecom-text">Ecom</div>
                     </div>
                     <div>
+                      {/* Bowlers details is mapped from reducer*/}
                       {match.all_bowler.map(bowler => (
                         <div
                           className="bowler-heading"

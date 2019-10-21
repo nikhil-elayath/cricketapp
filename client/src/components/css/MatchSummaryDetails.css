@@ -22,7 +22,7 @@ body {
 }
 
 .top-container .top-left-container {
-  border: 1px solid #272727;
+  background: white;
   border-radius: 5px;
 }
 
@@ -40,7 +40,7 @@ body {
 .top-container .bottom-left-container {
   display: grid;
   grid-template-rows: 1fr 9fr;
-  border: 1px solid #272727;
+  background: white;
   border-radius: 5px;
 }
 
@@ -53,6 +53,7 @@ body {
 }
 .match_details {
   grid-area: matchdetails;
+  background: white;
   height: fit-content;
 }
 
