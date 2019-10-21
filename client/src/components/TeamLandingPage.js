@@ -132,7 +132,13 @@ export class TeamLandingPage extends Component {
                     }}
                   >
                     <div className="info-team">
-                      <img src={logo} className="img-team-logo" />
+                      {/* <img src={logo} className="img-team-logo" /> */}
+                      <img
+                        id="pImage"
+                        className="playerImage"
+                        // className="img-team-logo"
+                        src={`data:image/jpeg;base64,${teams.team_image}`}
+                      ></img>
                       <p className="p-team">{teams.team_name}</p>
                     </div>
                   </div>
