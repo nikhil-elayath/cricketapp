@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
+.container-for-spacing{
+    margin: 230px 0 0 0;
+}
 .stats-main-container{
    border-radius: 5px;
     margin: 150px;
@@ -53,5 +56,14 @@
 
 }
 @media only screen and (max-width: 576px) {
+
+    .container-for-spacing{
+        margin: 350px 0 0 0;
+    }
+
+    .two-pie-chart-container{
+        grid-template-columns: 1fr;
+        
+    }
 
 }

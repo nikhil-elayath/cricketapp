@@ -17,15 +17,6 @@ export class MatchStatsDetails extends Component {
     this.props.getPieChartTwobyId(this.props.match_id);
   }
   render() {
-    console.log("received", this.props.match_stats_pie1);
-    console.log("received typeof", typeof this.props.match_stats_pie1);
-    console.log("accessing head", this.props.match_stats_pie1.head);
-    console.log("accessing head2", this.props.match_stats_pie1.head2);
-    console.log(
-      "accessing status_code",
-      this.props.match_stats_pie1.status_code
-    );
-    console.log("accessing message", this.props.match_stats_pie1.message);
     return (
       <div>
         {/* {this.props.isLoading ? (
@@ -38,7 +29,7 @@ export class MatchStatsDetails extends Component {
             />
           </div>
         ) : ( */}
-        <div style={{ marginTop: 230 + "px" }}>
+        <div className="container-for-spacing">
           <div className="stats-main-container">
             <div id="manhattan-container" className="stats-container">
               <p id="manhattan-title" className="top-title">
@@ -73,7 +64,7 @@ export class MatchStatsDetails extends Component {
             </div>
             <div className="two-pie-chart-container">
               <div className="stats-container">
-                <p className="top-title">{this.props.match_stats_pie2 ? this.props.match_stats_pie2.teamone ? this.props.match_stats_pie2.teamone : "NA" : "NA"} bowlers wicket</p>
+                <p className="top-title">{this.props.match_stats_pie2.teamone} bowlers wicket</p>
                 <div>
                   <iframe
                     className="stats-graph"
