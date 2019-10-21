@@ -4,11 +4,14 @@ import "./css/TeamFixtures.css";
 import { getFixtures } from "../actions/Teams";
 
 export class TeamFixtures extends Component {
+  componentDidMount() {
+    this.props.getFixtures();
+  }
   render() {
     return (
-      <div>
-        <div className="team-fixtures-container">
-          <div className="centered">
+      <div id="bla">
+        <div id="fixture">
+          {/* <div className="centered">
             <div className="cards-new">
               <div
                 style={{ borderRadius: "8px 0px 0px 8px" }}
@@ -29,45 +32,19 @@ export class TeamFixtures extends Component {
                 <p className="p-card">T20</p>
               </div>
             </div>
-          </div>
-          {/* <div className="fixture-container">
-            <div className="fixture-details">
-              <div className="fixture-col-1">
-                <p className="fixture-info-type">T20</p>
-              </div>
-              <div className="fixture-col-2">
-                <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
-                <p className="fixture-info-two">9:30 (IST)</p>
-              </div>
-              <div className="fixture-col-3">
-                <p className="fixture-info-one">India vs Bangladesh</p>
-                <p className="fixture-info-two">JCA Stadium, Ranchi</p>
-              </div>
-            </div>
-          </div>
-          <div className="fixture-container">
-            <div className="fixture-details">
-              <div className="fixture-col-1">
-                <p className="fixture-info-type">T20</p>
-              </div>
-              <div className="fixture-col-2">
-                <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
-                <p className="fixture-info-two">9:30 (IST)</p>
-              </div>
-              <div className="fixture-col-3">
-                <p className="fixture-info-one">India vs South Africa</p>
-                <p className="fixture-info-two">JCA Stadium, Ranchi</p>
-              </div>
-            </div> */}
-          {/* </div> */}
+          </div> */}
+          {this.props.fixtures.map(fixtures => (
+            <p>hello {fixtures.team_one} </p>
+          ))}
         </div>
+        <p> asdsd</p>
       </div>
     );
   }
 }
 
 const mapStateTostate = state => ({
-  fixtures: state.TeamsReducer.fixtures
+  fixtures: state.TeamsReducer.fixtures,
 });
 
 export default connect(

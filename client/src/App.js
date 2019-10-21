@@ -14,6 +14,7 @@ import BowlingStats from "./components/PlayerBowlingStats";
 //aditya
 import TeamLandingPage from "./components/TeamLandingPage";
 import TeamDetails from "./components/TeamDetails";
+import TeamFixtures from "./components/TeamFixtures";
 
 // import TeamInfo from "./components/TeamInfo";
 import Home from "./components/Home";
@@ -45,7 +46,7 @@ import decode from "jwt-decode";
 let decoded_token;
 export default class App extends Component {
   state = {
-    gender: "male"
+    gender: "male",
   };
 
   changeGender = gender_type => {

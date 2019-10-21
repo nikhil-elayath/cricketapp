@@ -6,7 +6,7 @@ import {
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
   GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS
+  GET_LOWEST_TOTALS,
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -19,7 +19,7 @@ export const getTeams = match_type => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAMS,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -36,7 +36,7 @@ export const getRanks = (gender, ranking) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_RANKS,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log("from actions", ranking);
     })
@@ -59,7 +59,7 @@ export const getMatch = (team_id, gender, match_type) => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_MATCHBYTEAMID,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -77,7 +77,7 @@ export const getTeamBatsmen = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BATSMEN,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -94,7 +94,7 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BOWLERS,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -102,7 +102,9 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     });
 };
 
+//NIKHIL
 export const getFixtures = (team_id, match_type) => dispatch => {
+  console.log("get fix from actions");
   return axios
     .post(
       "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
@@ -111,7 +113,7 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,
-        payload: res.data.data
+        payload: res.data.data,
       });
     })
     .catch(err => {
@@ -134,7 +136,7 @@ export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_HIGHEST_TOTALS,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log("getHighestTotals action");
     })
@@ -158,7 +160,7 @@ export const getLowestTotals = (team_id, gender, match_type) => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_LOWEST_TOTALS,
-        payload: res.data.data
+        payload: res.data.data,
       });
       console.log("getLowestTotals action", match_type);
     })
