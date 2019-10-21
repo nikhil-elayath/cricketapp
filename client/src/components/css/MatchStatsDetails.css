@@ -32,6 +32,26 @@
 
 }
 
+@media only screen and (max-width: 768px) {
+    .stats-main-container{
+         margin: 10px;
+     }  
+
+     .two-pie-chart-container{
+        column-gap:15px;
+    }
+
+    .stats-container{
+        margin: 20px 0 0 0;
+        
+    }
+
+     .stats-graph{
+        height: 300px;
+    
+    }
+
+}
 @media only screen and (max-width: 576px) {
 
 }
