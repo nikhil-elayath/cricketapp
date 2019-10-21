@@ -39,7 +39,7 @@ export class Home extends Component {
 									<div
 										className="div-news-images"
 										style={{
-											backgroundImage: `url(${news_img})`
+											backgroundImage: `url(data:image/jpeg;base64,${news.news_image}`
 										}}
 									/>
 									<div className="div-news-details">
