@@ -7,6 +7,8 @@ import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
 import Navbar from "./common/Navbar";
+import Loader from "react-loader-spinner";
+
 export class Home extends Component {
 	componentWillMount() {
 		console.log("home mounted");
@@ -63,56 +65,98 @@ export class Home extends Component {
 								{/* <h1 id="rm">Recent matches </h1> */}
 							</div>
 
-							{this.props.recent_matches.map(recent_matches => (
-								<Link
-									id="link-recent-matches"
-									to={{
-										pathname:
-											"/match/details/" +
-											recent_matches.match_id
-									}}
+							{this.props.isLoading ? (
+								<div
+									id="home-match"
+									// onClick={{
+									//   pathname: "/newsbyid/" + recent_matches.match_id,
+									// }}
 								>
-									<div
-										id="home-match"
-										// onClick={{
-										//   pathname: "/newsbyid/" + recent_matches.match_id,
-										// }}
-									>
-										<div id="team-score">
-											<p id="home-recent-matches-teamOne">
-												{recent_matches.teamOne}
-											</p>
-											<p id="home-recent-matches-team-one-score">
-												{recent_matches.teamOneScore}/
-												{recent_matches.teamone_wicket}
-											</p>
-											{/* <p id="home-recent-matches-team-one-wickets">
+									<div style={{ margin: "auto" }}>
+										<Loader
+											type="TailSpin"
+											color="#2980b9"
+											height="100"
+											width="100"
+										/>
+									</div>
+								</div>
+							) : (
+								<>
+									{this.props.recent_matches.map(
+										recent_matches => (
+											<Link
+												id="link-recent-matches"
+												to={{
+													pathname:
+														"/match/details/" +
+														recent_matches.match_id
+												}}
+											>
+												<div
+													id="home-match"
+													// onClick={{
+													//   pathname: "/newsbyid/" + recent_matches.match_id,
+													// }}
+												>
+													<div id="team-score">
+														<p id="home-recent-matches-teamOne">
+															{
+																recent_matches.teamOne
+															}
+														</p>
+														<p id="home-recent-matches-team-one-score">
+															{
+																recent_matches.teamOneScore
+															}
+															/
+															{
+																recent_matches.teamone_wicket
+															}
+														</p>
+														{/* <p id="home-recent-matches-team-one-wickets">
 												{recent_matches.teamone_wicket}{" "}
 												</p> */}
-										</div>
-										<div id="team-score">
-											<p id="home-recent-matches-teamTwo">
-												{recent_matches.teamTwo}{" "}
-											</p>
-											<p id="home-recent-matches-team-two-score">
-												{recent_matches.teamTwoScore}/{" "}
-												{recent_matches.teamtwo_wicket}{" "}
-											</p>
-											{/* <p id="home-recent-matches-team-two-wickets"></p> */}
-										</div>
-										<div id="home-recent-matches-result">
-											<p id="home-recent-matches-team-winner">
-												{recent_matches.team_winner}{" "}
-												{recent_matches.won_by}{" "}
-											</p>
-											{/* <p id="home-recent-matches-won-by"></p> */}
-										</div>
-										<div id="home-recent-match-date">
-											{recent_matches.match_date}
-										</div>
-									</div>
-								</Link>
-							))}
+													</div>
+													<div id="team-score">
+														<p id="home-recent-matches-teamTwo">
+															{
+																recent_matches.teamTwo
+															}{" "}
+														</p>
+														<p id="home-recent-matches-team-two-score">
+															{
+																recent_matches.teamTwoScore
+															}
+															/{" "}
+															{
+																recent_matches.teamtwo_wicket
+															}{" "}
+														</p>
+														{/* <p id="home-recent-matches-team-two-wickets"></p> */}
+													</div>
+													<div id="home-recent-matches-result">
+														<p id="home-recent-matches-team-winner">
+															{
+																recent_matches.team_winner
+															}{" "}
+															{
+																recent_matches.won_by
+															}{" "}
+														</p>
+														{/* <p id="home-recent-matches-won-by"></p> */}
+													</div>
+													<div id="home-recent-match-date">
+														{
+															recent_matches.match_date
+														}
+													</div>
+												</div>
+											</Link>
+										)
+									)}
+								</>
+							)}
 						</div>
 
 						<MostWins />
@@ -125,7 +169,8 @@ export class Home extends Component {
 const mapStateToProps = state => ({
 	home: state.HomeReducer.home,
 	ranks: state.TeamsReducer.ranks,
-	recent_matches: state.HomeReducer.recent_matches
+	recent_matches: state.HomeReducer.recent_matches,
+	isLoading: state.LoadingReducer.isLoading
 });
 export default connect(
 	mapStateToProps,
