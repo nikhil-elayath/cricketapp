@@ -15,13 +15,8 @@ import BowlingStats from "./components/PlayerBowlingStats";
 import TeamLandingPage from "./components/TeamLandingPage";
 import TeamDetails from "./components/TeamDetails";
 
-// import TeamInfo from "./components/TeamInfo";
-import Home from "./components/Home";
-// import MatchLandingPage from "./components/MatchLandingPage";
-// import MatchSummaryDetails from "./components/MatchSummaryDetails";
-// import MatchScoreDetails from "./components/MatchScoreDetails";
-
 //Nikhil
+import Home from "./components/Home";
 import NewsPage from "./components/NewsPage";
 
 //piyush
@@ -38,8 +33,6 @@ import MatchStatsDetails from "./components/MatchStatsDetails";
 import MatchDetails from "./components/MatchDetails";
 
 // ankit
-import Navbar from "./components/common/Navbar";
-import AdminNavbar from "./components/common/AdminNavbar";
 import decode from "jwt-decode";
 
 let decoded_token;

@@ -5,21 +5,20 @@ import { getNews } from "../actions/Home";
 import { connect } from "react-redux";
 import "./css/NewsPage.css";
 import Navbar from "./common/Navbar";
-import news_img from "../components/images/vk.jpeg";
-import { Link } from "react-router-dom";
 import "./css/Home.css";
 
 export class NewsPage extends Component {
 	componentDidMount() {
 		const id = this.props.match.params.id;
 		this.props.getNews();
+
 		this.props.getNewsById(id);
 	}
 	render() {
 		return (
 			<div className="parent">
 				<Navbar
-					gender={this.props.gender}
+					gender={this.props.gener}
 					changeGender={getGender =>
 						this.props.changeGender(getGender)
 					}
@@ -29,14 +28,17 @@ export class NewsPage extends Component {
 						<div className="newspage-grid-container">
 							<div className="grid-item2">
 								<p
-									className="grid-item2"
+									// className="grid-item2"
 									id="newspage-news-title"
 								>
 									<b>{news.news_title}</b>
 								</p>
 								<p id="news-date">{news.news_date} </p>
 
-								<img className="main_img" src={news_img} />
+								<img
+									className="main_img"
+									src={`data:image/jpeg;base64,${news.news_image}`}
+								></img>
 								<p id="news-content">{news.news_content} </p>
 							</div>
 
@@ -52,14 +54,10 @@ export class NewsPage extends Component {
 											<div
 												className="div-news-images"
 												style={{
-													backgroundImage: `url(${news_img})`
+													backgroundImage: `url(data:image/jpeg;base64,${recent.news_image}`
 												}}
 											/>
 											<div
-												id={
-													"news-list-item-" +
-													recent.news_id
-												}
 												className="div-news-details"
 												onClick={() =>
 													this.props.getNewsById(

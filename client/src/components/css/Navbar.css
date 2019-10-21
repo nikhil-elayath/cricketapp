@@ -86,6 +86,11 @@ nav {
 	width: 100%;
 	display: none;
 }
+.item:hover {
+	transition: 0.2s;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #ffffff;
+}
 .search-box-li {
 	order: 6;
 	width: 100%;

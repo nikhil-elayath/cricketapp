@@ -54,7 +54,7 @@ export class Navbar extends Component {
 							<span
 								id="men"
 								className={
-									this.props.gender == "male"
+									this.props.gender === "male"
 										? "active-gender"
 										: ""
 								}
@@ -65,7 +65,7 @@ export class Navbar extends Component {
 							<span
 								id="women"
 								className={
-									this.props.gender == "female"
+									this.props.gender === "female"
 										? "active-gender"
 										: ""
 								}
@@ -84,7 +84,6 @@ export class Navbar extends Component {
 							className="menu-btn"
 							checked={this.state.isChecked}
 							onClick={this.toggleChange}
-							// hidden="hidden"
 						/>
 
 						{/* label for checkbox which makes the hamburger menu */}
@@ -201,7 +200,7 @@ export class Navbar extends Component {
 
 											{/* checks for team array length in seaarch
 										if present map all the team available */}
-											{this.props.search.team.length != 0
+											{this.props.search.team.length !== 0
 												? this.props.search.team.map(
 														mapped_search => (
 															<div>

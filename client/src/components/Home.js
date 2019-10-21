@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getNews, getRecentMatches } from "../actions/Home";
 import "./css/Home.css";
-import news_img from "../components/images/vk.jpeg";
 import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
@@ -62,7 +61,6 @@ export class Home extends Component {
 						<div id="home-recent-matches">
 							<div id="home-recent-matches-title">
 								Recent Matches
-								{/* <h1 id="rm">Recent matches </h1> */}
 							</div>
 
 							{this.props.isLoading ? (
@@ -94,12 +92,7 @@ export class Home extends Component {
 														recent_matches.match_id
 												}}
 											>
-												<div
-													id="home-match"
-													// onClick={{
-													//   pathname: "/newsbyid/" + recent_matches.match_id,
-													// }}
-												>
+												<div id="home-match">
 													<div id="team-score">
 														<p id="home-recent-matches-teamOne">
 															{
@@ -115,9 +108,6 @@ export class Home extends Component {
 																recent_matches.teamone_wicket
 															}
 														</p>
-														{/* <p id="home-recent-matches-team-one-wickets">
-												{recent_matches.teamone_wicket}{" "}
-												</p> */}
 													</div>
 													<div id="team-score">
 														<p id="home-recent-matches-teamTwo">
@@ -134,7 +124,6 @@ export class Home extends Component {
 																recent_matches.teamtwo_wicket
 															}{" "}
 														</p>
-														{/* <p id="home-recent-matches-team-two-wickets"></p> */}
 													</div>
 													<div id="home-recent-matches-result">
 														<p id="home-recent-matches-team-winner">
@@ -145,7 +134,6 @@ export class Home extends Component {
 																recent_matches.won_by
 															}{" "}
 														</p>
-														{/* <p id="home-recent-matches-won-by"></p> */}
 													</div>
 													<div id="home-recent-match-date">
 														{
