@@ -17,7 +17,7 @@ export const getPlayers = () => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/allPlayer")
     .then(res => {
-      console.log("From Player Actions", res.data.data);
+      // console.log("From Player Actions", res.data.data);
       dispatch({
         type: GET_PLAYERS,
         payload: res.data.data
@@ -32,10 +32,10 @@ export const getSinglePlayer = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/singlePlayer/" + player_id)
     .then(res => {
-      console.log(
-        "From Player Actions Single player is: ",
-        res.data.data[0].player_name
-      );
+      // console.log(
+      //   "From Player Actions Single player is: ",
+      //   res.data.data[0].player_name
+      // );
       dispatch({
         type: GET_SINGLE_PLAYER,
         payload: res.data.data
@@ -118,10 +118,10 @@ export const getODIBowlerStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/ODIBowlerStats/" + player_id)
     .then(res => {
-      console.log(
-        "From Player Actions odi BOWLER stats is: ",
-        res.data.ODIBowler
-      );
+      // console.log(
+      //   "From Player Actions odi BOWLER stats is: ",
+      //   res.data.ODIBowler
+      // );
       dispatch({
         type: GET_ODI_BOWLER_STATS,
         payload: res.data.ODIBowler
@@ -153,10 +153,10 @@ export const getTestBowlerStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/Test-Bowler-Stats/" + player_id)
     .then(res => {
-      console.log(
-        "From Player Actions test Batsman stats is: ",
-        res.data.TestBowler
-      );
+      // console.log(
+      //   "From Player Actions test Batsman stats is: ",
+      //   res.data.TestBowler
+      // );
       dispatch({
         type: GET_TEST_BOWLER_STATS,
         payload: res.data.TestBowler
@@ -186,10 +186,10 @@ export const getT20BowlerStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/T20-Bowler-Stats/" + player_id)
     .then(res => {
-      console.log(
-        "From Player Actions ODI BOWLER stats is: ",
-        res.data.T20Bowler
-      );
+      // console.log(
+      //   "From Player Actions ODI BOWLER stats is: ",
+      //   res.data.T20Bowler
+      // );
       dispatch({
         type: GET_T20_BOWLER_STATS,
         payload: res.data.T20Bowler
@@ -204,7 +204,7 @@ export const getBatsmanStats = player_id => dispatch => {
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/Batsman-Stats/" + player_id)
     .then(res => {
-      console.log("From Player Actions test Batsman stats is: ", res.data.data);
+      // console.log("From Player Actions test Batsman stats is: ", res.data.data);
       dispatch({
         type: GET_T20_BOWLER_STATS,
         payload: res.data.data

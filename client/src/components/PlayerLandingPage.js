@@ -54,8 +54,7 @@ export class PlayerLandingPage extends Component {
     console.log("Gender check: ", this.props);
 
     return (
-      <div style={{ padding: 12 + "px" }}>
-        <h1 id="playerHeading">Players</h1>
+      <div style={{ padding: 12 + "px", backgroundColor: " #ecf0f1" }}>
         <div className="container">
           <div className="matchFormatOptons">
             <div className="selectNav">

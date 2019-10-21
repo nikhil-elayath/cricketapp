@@ -55,53 +55,6 @@ router.get("/singlePlayer/:player_id", async (req, res) => {
   }
 });
 
-// router.get("/allBatsman", async (req, res) => {
-//   try {
-//     var BatRole1 = " Batsman ";
-//     var BatRole2 = " WK-Batsman ";
-//     var BatRole3 = " Batting Allrounder ";
-//     const result = await db.any(
-//       "select * from player where player_role ='" +
-//         BatRole1 +
-//         "'OR player_role = '" +
-//         BatRole2 +
-//         "'OR player_role = '" +
-//         BatRole3 +
-//         "' ;"
-//     );
-//     // console.log("data is: ", result);
-//     res.status(200).json({
-//       status: 200,
-//       data: result,
-//       message: "All Batsman retrieved"
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
-// router.get("/allBowlers", async (req, res) => {
-//   try {
-//     var BallRole1 = " Bowler ";
-//     var BallRole2 = " Bowling Allrounder ";
-//     const result = await db.any(
-//       "select * from player where player_role ='" +
-//         BallRole1 +
-//         "'OR player_role = '" +
-//         BallRole2 +
-//         "' ;"
-//     );
-//     // console.log("data is: ", result);
-//     res.status(200).json({
-//       status: 200,
-//       data: result,
-//       message: "All Bowlers retrieved"
-//     });
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
-
 router.post("/TopBatsman", async (req, res) => {
   try {
     var match_type = req.body.match_type;
@@ -512,108 +465,108 @@ router.get("/T20-Batsman-Stats/:player_id", async (req, res) => {
   }
 });
 
-router.get("/Batsman-Stats/:player_id", async (req, res) => {
-  try {
-    let player_id = req.params.player_id;
+// router.get("/Batsman-Stats/:player_id", async (req, res) => {
+//   try {
+//     let player_id = req.params.player_id;
 
-    const total_runs = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = 'total_runs' order by match_type"
-    );
+//     const total_runs = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = 'total_runs' order by match_type"
+//     );
 
-    const highest_score = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = 'highest_score' order by match_type "
-    );
+//     const highest_score = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = 'highest_score' order by match_type "
+//     );
 
-    const balls_faced = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = 'balls_faced' order by match_type"
-    );
+//     const balls_faced = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = 'balls_faced' order by match_type"
+//     );
 
-    const batsman_matches_played = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "  and player_stats_name = 'batsman_matches_played' order by match_type"
-    );
+//     const batsman_matches_played = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "  and player_stats_name = 'batsman_matches_played' order by match_type"
+//     );
 
-    const batsman_innings_played = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "  and player_stats_name = 'batsman_innings_played' order by match_type"
-    );
+//     const batsman_innings_played = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "  and player_stats_name = 'batsman_innings_played' order by match_type"
+//     );
 
-    const strike_rate = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = 'strike_rate' order by match_type"
-    );
+//     const strike_rate = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = 'strike_rate' order by match_type"
+//     );
 
-    const not_out = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = 'not_out' order by match_type"
-    );
+//     const not_out = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = 'not_out' order by match_type"
+//     );
 
-    const _100s = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = '100s' order by match_type"
-    );
+//     const _100s = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = '100s' order by match_type"
+//     );
 
-    const _200s = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = '200s' order by match_type"
-    );
+//     const _200s = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = '200s' order by match_type"
+//     );
 
-    const _50s = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = '50s' order by match_type"
-    );
+//     const _50s = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = '50s' order by match_type"
+//     );
 
-    const _6s = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = '6s' order by match_type"
-    );
+//     const _6s = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = '6s' order by match_type"
+//     );
 
-    const _4s = await db.any(
-      "select * from player_stats where player_id = " +
-        player_id +
-        "   and player_stats_name = '4s' order by match_type"
-    );
+//     const _4s = await db.any(
+//       "select * from player_stats where player_id = " +
+//         player_id +
+//         "   and player_stats_name = '4s' order by match_type"
+//     );
 
-    data = [
-      {
-        Matches: batsman_matches_played,
-        Innings: batsman_innings_played,
-        Highestscore: highest_score,
-        TotalRuns: total_runs,
-        BallsFaced: balls_faced,
-        StrikeRate: strike_rate,
-        NotOut: not_out,
-        Hundreds: _100s,
-        Fifties: _50s,
-        TwoHundreds: _200s,
-        Sixes: _6s,
-        Fours: _4s
-      }
-    ];
+//     data = [
+//       {
+//         Matches: batsman_matches_played,
+//         Innings: batsman_innings_played,
+//         Highestscore: highest_score,
+//         TotalRuns: total_runs,
+//         BallsFaced: balls_faced,
+//         StrikeRate: strike_rate,
+//         NotOut: not_out,
+//         Hundreds: _100s,
+//         Fifties: _50s,
+//         TwoHundreds: _200s,
+//         Sixes: _6s,
+//         Fours: _4s
+//       }
+//     ];
 
-    res.status(200).json({
-      status: 200,
-      data: data,
-      message: "Batsman stats retrieved"
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+//     res.status(200).json({
+//       status: 200,
+//       data: data,
+//       message: "Batsman stats retrieved"
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 // ////////////////////////////// BOWLER STATS ////////////////////////////
 
