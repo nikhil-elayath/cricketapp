@@ -76,70 +76,70 @@ describe("testing player api's", () => {
       });
   });
 
-  it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is ODI data and should be an array", done => {
-    let data = { match_type: "ODI" };
-    let payload = JSON.stringify(data);
-    request(app)
-      .post("/apis/PlayerInfo/TopBowlers")
-      .send(payload)
-      .set("Content-type", "application/json")
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("All top bowlers retrieved");
-        done();
-      });
-  });
+  // it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is ODI data and should be an array", done => {
+  //   let data = { match_type: "ODI" };
+  //   let payload = JSON.stringify(data);
+  //   request(app)
+  //     .post("/apis/PlayerInfo/TopBowlers")
+  //     .send(payload)
+  //     .set("Content-type", "application/json")
+  //     .then(res => {
+  //       expect(res.status).toBe(200);
+  //       expect(res.body).toEqual(expect.any(Object));
+  //       expect(res.body.data).toEqual(expect.any(Array));
+  //       expect(res.body.message).toBe("All top bowlers retrieved");
+  //       done();
+  //     });
+  // });
 
-  it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is Test data and should be an array", done => {
-    let data = { match_type: "Test" };
-    let payload = JSON.stringify(data);
-    request(app)
-      .post("/apis/PlayerInfo/TopBowlers")
-      .send(payload)
-      .set("Content-type", "application/json")
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("All top bowlers retrieved");
-        done();
-      });
-  });
+  // it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is Test data and should be an array", done => {
+  //   let data = { match_type: "Test" };
+  //   let payload = JSON.stringify(data);
+  //   request(app)
+  //     .post("/apis/PlayerInfo/TopBowlers")
+  //     .send(payload)
+  //     .set("Content-type", "application/json")
+  //     .then(res => {
+  //       expect(res.status).toBe(200);
+  //       expect(res.body).toEqual(expect.any(Object));
+  //       expect(res.body.data).toEqual(expect.any(Array));
+  //       expect(res.body.message).toBe("All top bowlers retrieved");
+  //       done();
+  //     });
+  // });
 
-  it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is T20 data and should be an array", done => {
-    let data = { match_type: "T20" };
-    let payload = JSON.stringify(data);
-    request(app)
-      .post("/apis/PlayerInfo/TopBowlers")
-      .send(payload)
-      .set("Content-type", "application/json")
-      .then(res => {
-        expect(res.status).toBe(200);
-        expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("All top bowlers retrieved");
-        done();
-      });
-  });
+  // it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is T20 data and should be an array", done => {
+  //   let data = { match_type: "T20" };
+  //   let payload = JSON.stringify(data);
+  //   request(app)
+  //     .post("/apis/PlayerInfo/TopBowlers")
+  //     .send(payload)
+  //     .set("Content-type", "application/json")
+  //     .then(res => {
+  //       expect(res.status).toBe(200);
+  //       expect(res.body).toEqual(expect.any(Object));
+  //       expect(res.body.data).toEqual(expect.any(Array));
+  //       expect(res.body.message).toBe("All top bowlers retrieved");
+  //       done();
+  //     });
+  // });
 
-  it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is neither ODI,Test nor T20 data and should be an array", done => {
-    let data = { match_type: "ODIsad" };
-    let payload = JSON.stringify(data);
-    request(app)
-      .post("/apis/PlayerInfo/TopBowlers")
-      .send(payload)
-      .set("Content-type", "application/json")
-      .then(res => {
-        expect(res.body.statusCode).toBe(400);
-        expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.statusMessage).toBe(
-          "ERROR!Bad Request cannot retrieve bowlers"
-        );
-        done();
-      });
-  });
+  // it("should return a status code of 200, the body should be an object, a message, return all bowlers when match type is neither ODI,Test nor T20 data and should be an array", done => {
+  //   let data = { match_type: "ODIsad" };
+  //   let payload = JSON.stringify(data);
+  //   request(app)
+  //     .post("/apis/PlayerInfo/TopBowlers")
+  //     .send(payload)
+  //     .set("Content-type", "application/json")
+  //     .then(res => {
+  //       expect(res.body.statusCode).toBe(400);
+  //       expect(res.body).toEqual(expect.any(Object));
+  //       expect(res.body.statusMessage).toBe(
+  //         "ERROR!Bad Request cannot retrieve bowlers"
+  //       );
+  //       done();
+  //     });
+  // });
 
   //  ///////// BATSMAN STATS //////
 
