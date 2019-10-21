@@ -5,7 +5,7 @@ import {
   GET_MATCH_SCORECARD_DETAILS_BY_ID,
   GET_MANHATTAN_GRAPH_BY_ID,
   GET_PIECHART_ONE_GRAPH_BY_ID,
-  GET_PIECHART_TWO_GRAPH_BY_ID
+  GET_PIECHART_TWO_GRAPH_BY_ID,
 } from "./Types";
 import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
@@ -105,9 +105,9 @@ export const getPieChartOnebyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
-        payload: res.data
+        payload: res.data,
       });
-      console.log(res.data);
+      console.log("accessing message from api", typeof res.data);
     })
     .catch(err => {
       dispatch(startLoading());
