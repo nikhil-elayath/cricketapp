@@ -13,7 +13,9 @@ export class Navbar extends Component {
 	};
 
 	toggleChange = () => {
-		this.setState({ isChecked: !this.state.isChecked });
+		window.innerWidth <= 526
+			? this.setState({ isChecked: !this.state.isChecked })
+			: console.log("do nothing");
 	};
 
 	handleSearchInputChange = e => {
