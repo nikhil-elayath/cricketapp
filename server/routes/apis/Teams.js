@@ -236,7 +236,7 @@ select match_id from s))
 select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
 pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
 where match_id in( select match_id from ss) group by match_id, inning)
-select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run desc limit 15),
+select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id order by total_run),
 y as(select match_id as idd, match_date from match_date where match_id
 in(select match_id from k))
 select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd),
@@ -244,7 +244,7 @@ yy as(select match_id as match_idd, innings_one_team, innings_two_team from matc
 in(select match_id from kk))
 select match_id, match_date, inning, innings_one_team, innings_two_team, total_run, overs from yy
 inner join kk on kk.match_id=yy.match_idd),
-l as(select team_id,team_name as team_one from team where team_id
+l as(select team_id,team_name as team_one from team where team_id!=0 and team_id
 in(select innings_one_team from t))
 select match_id, match_date, inning, team_one, innings_two_team, total_run, overs from l
 inner join t on t.innings_one_team=l.team_id),
