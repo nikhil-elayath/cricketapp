@@ -44,7 +44,7 @@ export class MatchStatsDetails extends Component {
             </div>
             <div className="two-pie-chart-container">
               <div className="stats-container">
-                <p className="top-title"> {this.props.match_stats_pie1.team_one} players run</p>
+                <p className="top-title"> {this.props.match_stats_pie1.team_one} Batsmen</p>
                 <div>
                   <iframe
                     className="stats-graph"
@@ -53,7 +53,7 @@ export class MatchStatsDetails extends Component {
                 </div>
               </div>
               <div className="stats-container">
-                <p className="top-title"> {this.props.match_stats_pie1.team_two} players run</p>
+                <p className="top-title"> {this.props.match_stats_pie1.team_two} Batsmen</p>
                 <div>
                   <iframe
                     className="stats-graph"
@@ -64,7 +64,7 @@ export class MatchStatsDetails extends Component {
             </div>
             <div className="two-pie-chart-container">
               <div className="stats-container">
-                <p className="top-title">{this.props.match_stats_pie2.teamone} bowlers wicket</p>
+                <p className="top-title">{this.props.match_stats_pie2.teamone} Bowler</p>
                 <div>
                   <iframe
                     className="stats-graph"
@@ -73,7 +73,7 @@ export class MatchStatsDetails extends Component {
                 </div>
               </div>
               <div className="stats-container">
-                <p className="top-title"> {this.props.match_stats_pie2.teamtwo} bowlers wicket</p>
+                <p className="top-title"> {this.props.match_stats_pie2.teamtwo} Bowler</p>
                 <div>
                   <iframe
                     className="stats-graph"
