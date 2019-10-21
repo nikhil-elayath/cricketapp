@@ -12,9 +12,9 @@ import { connect } from "react-redux";
 export class MatchStatsDetails extends Component {
   componentDidMount() {
     // [yatin] calling indivisual stats api on component mount
-    // this.props.getManhattanGraphbyId(this.props.match_id);
-    // this.props.getPieChartOnebyId(this.props.match_id);
-    // this.props.getPieChartTwobyId(this.props.match_id);
+    this.props.getManhattanGraphbyId(this.props.match_id);
+    this.props.getPieChartOnebyId(this.props.match_id);
+    this.props.getPieChartTwobyId(this.props.match_id);
   }
   render() {
     console.log("received", this.props.match_stats_pie1);
@@ -47,7 +47,7 @@ export class MatchStatsDetails extends Component {
               <div>
                 <iframe
                   className="stats-graph"
-                  src={this.props.match_stats_manhattan.manhattan}
+                  src={this.props.match_stats_manhattan.head}
                 />
               </div>
             </div>

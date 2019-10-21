@@ -8,15 +8,13 @@
 .two-pie-chart-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap:10px;
+    column-gap:50px;
 }
 .stats-container{
     background: white;
     margin: 50px 0 0 0;
     border-radius: 5px;
 }
-
-
 
 .stats-container .top-title{
     font-weight: 500;
@@ -30,7 +28,7 @@
 .stats-graph{
     width: 100%;
     border: none;
-    height: 100%;
+    height: 500px;
 
 }
 
