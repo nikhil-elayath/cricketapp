@@ -1,23 +1,24 @@
 import {
   GET_PLAYERS,
   GET_SINGLE_PLAYER,
-  GET_ALL_BATSMAN,
-  GET_ALL_BOWLERS,
   GET_BATSMAN_STATS,
   GET_ODI_BATSMAN_STATS,
   GET_T20_BATSMAN_STATS,
   GET_ODI_BOWLER_STATS,
   GET_T20_BOWLER_STATS,
   GET_TEST_BOWLER_STATS,
-  GET_TOP_SIXES
+  GET_TOP_PLAYERS
 } from "./Types";
+import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
 
 export const getPlayers = () => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/allPlayer")
     .then(res => {
       // console.log("From Player Actions", res.data.data);
+      dispatch(stopLoading());
       dispatch({
         type: GET_PLAYERS,
         payload: res.data.data
@@ -46,52 +47,19 @@ export const getSinglePlayer = player_id => dispatch => {
     });
 };
 
-export const getBatsmen = (match_type, gender) => dispatch => {
+export const getTopPlayers = (match_type, gender) => dispatch => {
+  dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/apis/PlayerInfo/TopBatsman",
+      "http://localhost:5000/apis/PlayerInfo/top-Players",
       match_type,
       gender
     )
     .then(res => {
-      // console.log("From Player Actions batsman data is: ", res.data.data);
+      dispatch(stopLoading());
       dispatch({
-        type: GET_ALL_BATSMAN,
-        payload: res.data.data
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-export const getBowlers = (match_type, gender) => dispatch => {
-  return axios
-    .post(
-      "http://localhost:5000/apis/PlayerInfo/TopBowlers",
-      match_type,
-      gender
-    )
-    .then(res => {
-      // console.log("From Player Actions bowler data is: ", res.data.data);
-      dispatch({
-        type: GET_ALL_BOWLERS,
-        payload: res.data.data
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-export const getTopSixes = (match_type, gender) => dispatch => {
-  return axios
-    .post("http://localhost:5000/apis/PlayerInfo/TopSixes", match_type, gender)
-    .then(res => {
-      // console.log("From Player Actions bowler data is: ", res.data.data);
-      dispatch({
-        type: GET_TOP_SIXES,
-        payload: res.data.data
+        type: GET_TOP_PLAYERS,
+        payload: res.data.topPlayers
       });
     })
     .catch(err => {

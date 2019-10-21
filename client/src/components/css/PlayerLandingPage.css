@@ -26,6 +26,7 @@
 
 .selectNav {
   margin-top: 5em;
+  margin-left: 35px;
 }
 
 .selectNav a {
@@ -71,8 +72,10 @@
 .playersDiv {
   display: grid;
   grid-template-columns: 30vw 30vw 30vw;
-  margin-left: 20px;
+  /* margin-left: 50px; */
+  justify-content: center;
   margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 .playerBatsman {
@@ -91,7 +94,7 @@
 
 .playerType {
   /* border: 1px solid #707070; */
-  margin-right: 40px;
+  /* margin-right: 40px; */
   border-radius: 8px;
   background: white;
 }
@@ -173,6 +176,7 @@
 
   .playersDiv {
     grid-template-columns: 49vw 49vw;
+
     /* margin-right: 10px; */
   }
 }

@@ -1,24 +1,22 @@
 import {
   GET_PLAYERS,
   GET_SINGLE_PLAYER,
-  GET_ALL_BATSMAN,
-  GET_ALL_BOWLERS,
-  GET_TOP_SIXES,
   GET_BATSMAN_STATS,
   GET_ODI_BATSMAN_STATS,
   GET_T20_BATSMAN_STATS,
   GET_ODI_BOWLER_STATS,
   GET_T20_BOWLER_STATS,
   GET_TEST_BOWLER_STATS,
-  GET_PLAYER_SEARCH
+  GET_PLAYER_SEARCH,
+  GET_TOP_PLAYERS
 } from "../actions/Types";
 
 const initialState = {
   playerInfo: [],
   singlePlayer: [[]],
-  batsmen: [],
-  bowlers: [],
-  topSixes: [],
+
+  topPlayer: [[]],
+
   batsmanStats: [[]],
   odiBatsmanStats: [[]],
   t20BatsmanStats: [[]],
@@ -42,21 +40,13 @@ export default function(state = initialState, action) {
         ...state,
         singlePlayer: action.payload
       };
-    case GET_ALL_BATSMAN:
+    case GET_TOP_PLAYERS:
+      console.log("GET_TOP_PLAYERS");
       return {
         ...state,
-        batsmen: action.payload
+        topPlayer: action.payload
       };
-    case GET_ALL_BOWLERS:
-      return {
-        ...state,
-        bowlers: action.payload
-      };
-    case GET_TOP_SIXES:
-      return {
-        ...state,
-        topSixes: action.payload
-      };
+
     case GET_BATSMAN_STATS:
       return {
         ...state,
