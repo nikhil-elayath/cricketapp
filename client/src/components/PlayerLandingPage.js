@@ -133,10 +133,11 @@ export class PlayerLandingPage extends Component {
                     this.props.history.push("/playerInfo/" + batsman.player_id)
                   }
                 >
+                  {console.log("batsman", batsman)}
                   <img
                     id="pImage"
                     className="playerImage"
-                    src={this.props.gender == "male" ? virat : smriti}
+                    src={`data:image/jpeg;base64,${batsman.player_image}`}
                   ></img>
                   {/* player basic info div */}
                   <div

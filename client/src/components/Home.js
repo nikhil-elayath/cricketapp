@@ -7,7 +7,6 @@ import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
 import Navbar from "./common/Navbar";
-
 export class Home extends Component {
 	componentWillMount() {
 		console.log("home mounted");

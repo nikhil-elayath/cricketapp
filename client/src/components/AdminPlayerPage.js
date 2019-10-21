@@ -16,6 +16,7 @@ import SweetAlert from "sweetalert-react";
 import "sweetalert/dist/sweetalert.css";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import AdminNavbar from "./common/AdminNavbar";
 
 export class AdminPlayerPage extends Component {
   constructor() {
@@ -230,7 +231,7 @@ export class AdminPlayerPage extends Component {
     console.log("loading is:", this.props.isLoading);
     return (
       <div>
-        {/* <NavBar /> */}
+        <AdminNavbar />
         <div className="player-page">
           {this.props.isLoading ? (
             <div style={{ margin: "auto" }}>

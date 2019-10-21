@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamStats.css";
 import { getHighestTotals, getLowestTotals } from "../actions/Teams";
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 export class TeamStats extends Component {
   state = {
@@ -19,9 +21,19 @@ export class TeamStats extends Component {
     let type = {
       match_type: "T20"
     };
-    this.props.getHighestTotals(this.props.teams.team_id, type);
+    this.props.getHighestTotals(
+      this.props.teams.team_id,
+      this.props.gender,
+      type
+    );
   }
-
+  //   getTeamStats=(returnType)=>{
+  //     let mtype={
+  //       type:returnType
+  //     }
+  // this.props.getHighestTotals(this.props.team_id,mtype);
+  // this.props.getLowestTotals(this.props.team_id,mtype);
+  //   }
   onClickTest = e => {
     e.preventDefault();
     this.setState({
@@ -104,7 +116,11 @@ export class TeamStats extends Component {
     //   let type = {
     //     match_type: "ODI"
     //   };
-    this.props.getHighestTotals(this.props.teams.team_id, type);
+    this.props.getHighestTotals(
+      this.props.teams.team_id,
+      this.props.gender,
+      type
+    );
     // }
     // if ((this.state.testClick = true)) {
     //   let type = {
@@ -127,7 +143,19 @@ export class TeamStats extends Component {
     // let type = {
     //   match_type: "ODI"
     // };
-    this.props.getLowestTotals(this.props.teams.team_id, type);
+    this.props.getLowestTotals(
+      this.props.teams.team_id,
+      this.props.gender,
+      type
+    );
+    console.log(
+      "lowest - ",
+      this.props.getLowestTotals(
+        this.props.teams.team_id,
+        this.props.gender,
+        type
+      )
+    );
     // }
     // if (this.state.testClick == true) {
     //   let type = {
@@ -205,27 +233,39 @@ export class TeamStats extends Component {
             </div>
           </div>
           {/* ------------------------------------------------------------------------- */}
-          <div className="stats-display">
-            <p className="p-category-name">Highest Totals</p>
-            <div className="grid-table">
-              <div className="grid-container">
-                <p className="grid-item-title">Score</p>
-                <p className="grid-item-title">Overs</p>
-                <p className="grid-item-title">Opposition</p>
-                <p className="grid-item-title">Inns</p>
-                <p className="grid-item-title">MatchDate</p>
-              </div>
-              {this.props.teamstats.map(teamstats => (
-                <div className="grid-container">
-                  <p className="grid-item-detail">{teamstats.total_run}</p>
-                  <p className="grid-item-detail">{teamstats.overs}</p>
-                  <p className="grid-item-detail">Bangladesh</p>
-                  <p className="grid-item-detail">{teamstats.inning}</p>
-                  <p className="grid-item-detail">{teamstats.match_date}</p>
-                </div>
-              ))}
+          {this.props.isLoading ? (
+            <div style={{ margin: "auto" }}>
+              <Loader
+                type="TailSpin"
+                color="#2980b9"
+                height="100"
+                width="100"
+              />
             </div>
-          </div>
+          ) : (
+            <div className="stats-display">
+              <p className="p-category-name">Highest Totals</p>
+
+              <div className="grid-table">
+                <div className="grid-container">
+                  <p className="grid-item-title">Score</p>
+                  <p className="grid-item-title">Overs</p>
+                  <p className="grid-item-title">Opposition</p>
+                  <p className="grid-item-title">Inns</p>
+                  <p className="grid-item-title">MatchDate</p>
+                </div>
+                {this.props.teamstats.map(teamstats => (
+                  <div className="grid-container">
+                    <p className="grid-item-detail">{teamstats.total_run}</p>
+                    <p className="grid-item-detail">{teamstats.overs}</p>
+                    <p className="grid-item-detail">Bangladesh</p>
+                    <p className="grid-item-detail">{teamstats.inning}</p>
+                    <p className="grid-item-detail">{teamstats.match_date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getAllTeams, editTeam } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/AdminEditPage.css";
-// import NavBar from "./common/Navbar";
+import AdminNavbar from "./common/AdminNavbar";
 
 export class AdminEditTeam extends Component {
   componentDidMount() {
@@ -60,6 +60,7 @@ export class AdminEditTeam extends Component {
   render() {
     return (
       <div>
+        <AdminNavbar />
         <div id="AdminEditform">
           <fieldset>
             <h1 id="heading">Edit Team</h1>

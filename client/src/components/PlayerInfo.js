@@ -31,6 +31,8 @@ export class PlayerInfo extends Component {
   };
 
   render() {
+    console.log(this.props);
+    console.log(this.props.singlePlayer[0].player_image);
     // console.log(
     //   "Inside render component",
     //   this.props.singlePlayer[0].player_dob
@@ -44,7 +46,7 @@ export class PlayerInfo extends Component {
             <div className="secNavHead">
               <div
                 style={{
-                  backgroundImage: `url(${dhoni})`
+                  backgroundImage: `url(data:image/jpeg;base64,${this.props.singlePlayer[0].player_image})`
                 }}
               ></div>
               <div>
