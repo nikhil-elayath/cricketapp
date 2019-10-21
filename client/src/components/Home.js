@@ -10,7 +10,7 @@ import Navbar from "./common/Navbar";
 import Loader from "react-loader-spinner";
 
 export class Home extends Component {
-	componentWillMount() {
+	componentDidMount() {
 		console.log("home mounted");
 		this.props.getNews();
 		this.props.getRecentMatches(this.props.gender);
@@ -66,20 +66,21 @@ export class Home extends Component {
 							</div>
 
 							{this.props.isLoading ? (
-								<div
-									id="home-match"
-									// onClick={{
-									//   pathname: "/newsbyid/" + recent_matches.match_id,
-									// }}
-								>
-									<div style={{ margin: "auto" }}>
-										<Loader
-											type="TailSpin"
-											color="#2980b9"
-											height="100"
-											width="100"
-										/>
-									</div>
+								<div className="loader-div">
+									<Loader
+										type="TailSpin"
+										color="#2980b9"
+										height="80"
+										width="80"
+									/>
+									<span
+										style={{
+											marginTop: "20px",
+											fontSize: "12px"
+										}}
+									>
+										Loading Recent Matches
+									</span>
 								</div>
 							) : (
 								<>

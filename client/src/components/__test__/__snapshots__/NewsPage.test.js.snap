@@ -4,8 +4,8 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
 <div
   className="parent"
 >
-  <div
-    className="navbar"
+  <Connect(Navbar)
+    changeGender={[Function]}
   />
   <div>
     <div
@@ -45,7 +45,6 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
         <div>
           <div
             className="div-news-images"
-            style={Object {}}
           />
           <div
             className="div-newspage"
@@ -60,6 +59,7 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
             />
             <div
               className="div-news-details"
+              id="news-list-item-1"
               onClick={[Function]}
             >
               <p

@@ -53,7 +53,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
           className="calendar-fixed"
         >
           <Calendar
-            base={"2019-10-20T17:14:43.971Z"}
+            base={"2019-10-21T08:03:52.992Z"}
             onChange={[Function]}
             showMonthCnt={1}
             showToday={false}

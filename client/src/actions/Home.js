@@ -4,14 +4,14 @@ import axios from "axios";
 import { startLoading, stopLoading } from "./LoadingAction";
 
 export const getNews = () => dispatch => {
-	axios
+	return axios
 		.get("http://localhost:5000/apis/news")
 		.then(res => {
 			dispatch({
 				type: GET_NEWS,
 				payload: res.data.data
 			});
-			console.log("from 'then' get news");
+			// console.log("from 'then' get news");
 		})
 
 		.catch(err => console.log(err));
@@ -20,8 +20,8 @@ export const getNews = () => dispatch => {
 // fetching recent matches
 export const getRecentMatches = gender => dispatch => {
 	dispatch(startLoading());
-	console.log("from actions of home recent matches", gender);
-	axios
+	// console.log("from actions of home recent matches", gender);
+	return axios
 		.get("http://localhost:5000/apis/recentMatches/" + gender)
 		.then(res => {
 			dispatch(stopLoading());
@@ -29,7 +29,7 @@ export const getRecentMatches = gender => dispatch => {
 				type: GET_HOME_RECENT_MATCHES,
 				payload: res.data.data
 			});
-			console.log("from 'then' get RECENT MATCHES");
+			// console.log("from 'then' get RECENT MATCHES");
 		})
 
 		.catch(err => {

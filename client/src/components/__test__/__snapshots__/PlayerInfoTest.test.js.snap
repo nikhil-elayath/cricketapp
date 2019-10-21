@@ -2,7 +2,9 @@
 
 exports[`Testing PlayerInfo should render the component 1`] = `
 <div>
-  <Connect(Navbar) />
+  <Connect(Navbar)
+    changeGender={[Function]}
+  />
   <div
     className="secNavParent"
   >
