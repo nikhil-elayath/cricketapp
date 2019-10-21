@@ -46,9 +46,10 @@
   grid-gap: 10px;
   width: 350px;
   padding: 15px;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   border-radius: 8px;
   margin: 10px;
+  background-color: white;
 }
 
 .p-top-team-details {
@@ -117,11 +118,12 @@
   width: 100%;
   height: 140px;
   border-radius: 8px;
-  border: 1px solid #707070;
+  /* border: 1px solid #707070; */
   cursor: pointer;
+  background-color: white;
 }
 .list-info {
-  text-align: center;
+  text-align: left;
   display: flex;
   margin: 15px 0px 0px 0px;
 }
@@ -349,6 +351,10 @@
 }
 
 @media only screen and (max-width: 576px) {
+  .container-team-details {
+    margin-top: 220px;
+  }
+
   .cards-new {
     margin: 5px 15px 15px 25px;
   }
@@ -438,9 +444,5 @@
 
   .grid-class-team-details {
     width: auto;
-  }
-
-  .container-team-details {
-    margin-top: 220px;
   }
 }

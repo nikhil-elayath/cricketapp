@@ -18,15 +18,18 @@ export class TeamInfo extends Component {
   };
   componentDidMount() {
     console.log("team name is ", this.props.teams);
-    // this.props.getMatch(this.props.teams.team_id);
+    this.props.getMatch("team info gender - ", this.props.gender);
     let type = {
       match_type: "T20",
       player_country: this.props.teams.team_name
     };
-    this.props.getTeamBatsmen(type);
-    this.props.getTeamBowlers(type);
-    console.log("batsman is", this.props.getTeamBatsmen(type));
-    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
+    this.props.getTeamBatsmen(this.props.gender, type);
+    this.props.getTeamBowlers(this.props.gender, type);
+    console.log(
+      "batsman is",
+      this.props.getTeamBatsmen(this.props.gender, type)
+    );
+    this.props.getMatch(this.props.teams.team_id, this.props.gender, type);
   }
 
   onClickTest = () => {
@@ -35,9 +38,9 @@ export class TeamInfo extends Component {
       match_type: "Test",
       player_country: this.props.teams.team_name
     };
-    this.props.getTeamBatsmen(type);
-    this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "Test" });
+    this.props.getTeamBatsmen(this.props.gender, type);
+    this.props.getTeamBowlers(this.props.gender, type);
+    this.props.getMatch(this.props.teams.team_id, this.props.gender, type);
   };
 
   onClickT20 = () => {
@@ -46,9 +49,9 @@ export class TeamInfo extends Component {
       match_type: "T20",
       player_country: this.props.teams.team_name
     };
-    this.props.getTeamBatsmen(type);
-    this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "T20" });
+    this.props.getTeamBatsmen(this.props.gender, type);
+    this.props.getTeamBowlers(this.props.gender, type);
+    this.props.getMatch(this.props.teams.team_id, this.props.gender, type);
   };
 
   onClickOdi = () => {
@@ -57,9 +60,9 @@ export class TeamInfo extends Component {
       match_type: "ODI",
       player_country: this.props.teams.team_name
     };
-    this.props.getTeamBatsmen(type);
-    this.props.getTeamBowlers(type);
-    this.props.getMatch(this.props.teams.team_id, { match_type: "ODI" });
+    this.props.getTeamBatsmen(this.props.gender, type);
+    this.props.getTeamBowlers(this.props.gender, type);
+    this.props.getMatch(this.props.teams.team_id, this.props.gender, type);
   };
 
   render() {

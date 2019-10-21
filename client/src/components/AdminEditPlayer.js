@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { getPlayers, editPlayer } from "../actions/Admin";
 import { connect } from "react-redux";
 import "./css/AdminEditPage.css";
-// import NavBar from "./common/Navbar";
+import AdminNavbar from "./common/AdminNavbar";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -67,7 +67,7 @@ export class AdminEditPlayer extends Component {
   componentDidMount() {
     this.props.getPlayers(this.props.match.params.player_id);
     if (!localStorage.getItem("token")) {
-      this.props.history.push("/");
+      this.props.history.push("/login");
     }
   }
   OnChange = e => {
@@ -214,12 +214,13 @@ export class AdminEditPlayer extends Component {
   render() {
     return (
       <div>
-        {/* <NavBar /> */}
+        <AdminNavbar />
 
         <div id="AdminEditform">
           <fieldset>
-            <h1>Edit New Player</h1>
+            <h1 id="heading">Edit New Player</h1>
             <input
+              id="player_name"
               type="text"
               name="player_name"
               placeholder="Player name"
@@ -227,6 +228,7 @@ export class AdminEditPlayer extends Component {
               onChange={this.OnChange}
             />
             <input
+              id="player_country"
               type="text"
               name="player_country"
               placeholder="Enter Player Country"
@@ -236,6 +238,7 @@ export class AdminEditPlayer extends Component {
             <div className="playing-style">
               <div>
                 <select
+                  id="batting_style"
                   type="text"
                   name="batting_style"
                   value={this.state.batting_style}
@@ -249,6 +252,7 @@ export class AdminEditPlayer extends Component {
               </div>
               <div>
                 <select
+                  id="bowling_style"
                   type="text"
                   name="bowling_style"
                   value={this.state.bowling_style}
@@ -273,6 +277,7 @@ export class AdminEditPlayer extends Component {
             </div>
             <div className="playing-style">
               <DatePicker
+                id="datepicker"
                 name="datepicker"
                 dateFormat="yyyy-MM-dd"
                 placeholderText="DOB"
@@ -282,6 +287,7 @@ export class AdminEditPlayer extends Component {
 
               <div>
                 <select
+                  id="player_gender"
                   type="text"
                   name="player_gender"
                   value={this.state.player_gender}
@@ -295,6 +301,7 @@ export class AdminEditPlayer extends Component {
               </div>
             </div>
             <select
+              id="player_role"
               type="text"
               name="player_role"
               placeholder="Enter Player Role"
@@ -311,6 +318,7 @@ export class AdminEditPlayer extends Component {
               <option name="male">Allrounder</option>
             </select>
             <input
+              id="debut_odi_match"
               type="text"
               name="debut_odi_match"
               placeholder="Enter Debut ODI Match"
@@ -318,6 +326,7 @@ export class AdminEditPlayer extends Component {
               onChange={this.OnChange}
             />
             <input
+              id="debut_test_match"
               type="text"
               name="debut_test_match"
               placeholder="Enter Debut Test Match"
@@ -325,6 +334,7 @@ export class AdminEditPlayer extends Component {
               onChange={this.OnChange}
             />
             <input
+              id="debut_t20_match"
               type="text"
               name="debut_t20_match"
               placeholder="Enter Debut T20 Match"
@@ -342,10 +352,13 @@ export class AdminEditPlayer extends Component {
             </span>
             <div className="form-button">
               <Link to="/adminplayer">
-                <button className="cancel">Cancel</button>
+                <button id="cancel" className="cancel">
+                  Cancel
+                </button>
               </Link>
 
               <button
+                id="editbutton"
                 className="admineditpagebutton"
                 onChange={this.OnChange}
                 onClick={this.OnEdit}

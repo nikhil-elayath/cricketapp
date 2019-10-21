@@ -1,0 +1,145 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`[MatchSecondaryNavbar] test renders the component for snapshot testing 1`] = `
+<div>
+  <div
+    className="secNavParent"
+  >
+    <div
+      className="matchSecNavHead"
+    >
+      <div
+        className="match-score-details"
+      >
+        <span
+          id="match-result"
+          style={
+            Object {
+              "fontSize": "14px",
+            }
+          }
+        >
+          Result:
+           
+          <b
+            id="match-winner-name-runs"
+          >
+             
+          </b>
+        </span>
+        <div
+          className="match-team-score"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "backgroundImage": "url(india.jpeg)",
+                }
+              }
+            />
+            <div
+              className="team-name"
+            />
+            <div
+              className="team-score"
+            >
+               
+              /
+               (
+               overs)
+            </div>
+          </div>
+          <div>
+            <div
+              style={
+                Object {
+                  "backgroundImage": "url(SouthAfrica.jpeg)",
+                }
+              }
+            />
+            <div
+              className="team-name"
+            />
+            <div
+              className="team-score"
+            >
+               
+              /
+               (
+               overs)
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="match-pom"
+      >
+        <span
+          style={
+            Object {
+              "fontSize": "14px",
+            }
+          }
+        >
+          Player of the match
+        </span>
+        <div
+          className="pom-name-photo"
+        >
+          <div
+            className="pom-img"
+          >
+            <i
+              className="fas fa-user"
+            />
+          </div>
+          <div
+            className="pom-name"
+          >
+            <div />
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="secNavLinks"
+    >
+      <ul>
+        <span
+          className="secLink"
+          id="summary-click"
+          onClick={[Function]}
+        >
+          <li
+            id="match-summary"
+          >
+            Summary
+          </li>
+        </span>
+        <span
+          className="secLink"
+          onClick={[Function]}
+        >
+          <li
+            id="match-scorecard"
+          >
+            ScoreBoard
+          </li>
+        </span>
+        <span
+          className="secLink"
+          onClick={[Function]}
+        >
+          <li
+            id="match-stats"
+          >
+            Statistics
+          </li>
+        </span>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

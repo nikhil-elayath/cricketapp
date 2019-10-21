@@ -2,15 +2,18 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
-  <Navbar />
+  <Connect(AdminNavbar) />
   <div
     id="AdminEditform"
   >
     <fieldset>
-      <h1>
+      <h1
+        id="heading"
+      >
         Edit New Player
       </h1>
       <input
+        id="player_name"
         name="player_name"
         onChange={[Function]}
         placeholder="Player name"
@@ -18,6 +21,7 @@ exports[`test  Component render the component 1`] = `
         value="test"
       />
       <input
+        id="player_country"
         name="player_country"
         onChange={[Function]}
         placeholder="Enter Player Country"
@@ -30,6 +34,7 @@ exports[`test  Component render the component 1`] = `
         <div>
           <select
             className="choice"
+            id="batting_style"
             name="batting_style"
             onChange={[Function]}
             type="text"
@@ -55,6 +60,7 @@ exports[`test  Component render the component 1`] = `
         <div>
           <select
             className="choice"
+            id="bowling_style"
             name="bowling_style"
             onChange={[Function]}
             type="text"
@@ -138,6 +144,7 @@ exports[`test  Component render the component 1`] = `
           disabled={false}
           disabledKeyboardNavigation={false}
           dropdownMode="scroll"
+          id="datepicker"
           inlineFocusSelectedMonth={false}
           monthsShown={1}
           name="datepicker"
@@ -159,7 +166,7 @@ exports[`test  Component render the component 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={2019-10-11T03:44:42.634Z}
+          selected={2019-10-20T16:09:45.342Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
@@ -174,6 +181,7 @@ exports[`test  Component render the component 1`] = `
         <div>
           <select
             className="choice"
+            id="player_gender"
             name="player_gender"
             onChange={[Function]}
             type="text"
@@ -199,6 +207,7 @@ exports[`test  Component render the component 1`] = `
       </div>
       <select
         className="choice"
+        id="player_role"
         name="player_role"
         onChange={[Function]}
         placeholder="Enter Player Role"
@@ -242,6 +251,7 @@ exports[`test  Component render the component 1`] = `
         </option>
       </select>
       <input
+        id="debut_odi_match"
         name="debut_odi_match"
         onChange={[Function]}
         placeholder="Enter Debut ODI Match"
@@ -249,6 +259,7 @@ exports[`test  Component render the component 1`] = `
         value="pakistan"
       />
       <input
+        id="debut_test_match"
         name="debut_test_match"
         onChange={[Function]}
         placeholder="Enter Debut Test Match"
@@ -256,6 +267,7 @@ exports[`test  Component render the component 1`] = `
         value="pakistan"
       />
       <input
+        id="debut_t20_match"
         name="debut_t20_match"
         onChange={[Function]}
         placeholder="Enter Debut T20 Match"
@@ -279,11 +291,14 @@ exports[`test  Component render the component 1`] = `
         >
           <button
             className="cancel"
+            id="cancel"
           >
             Cancel
           </button>
         </Link>
         <button
+          className="admineditpagebutton"
+          id="editbutton"
           onChange={[Function]}
           onClick={[Function]}
         >

@@ -1,107 +1,101 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat&display=swap");
 
-body{
-    font-family: 'Montserrat', sans-serif;
-    color: #272727;
-}
-
-.landing-container{
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-    grid-gap: 2px;
-}
-.landing-container .calendar-container{
-    margin: 5px;
-    border-radius: 5px;
-    height: fit-content;
-    
-}
-.calendar-container .calender-datepicker{
-        display: none;
-    }
-.landing-container .all-matches-box{
-    height: fit-content;
-    margin: 5px;
-    border-radius: 5px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 15px;
-    row-gap: 30px;
-    }
-.landing-container .all-matches-box > div{
-    padding: 1%;
-    border: 1px solid black;
-    height: 100%;
-    
-}
-.all-matches-box .each-matches-box{
-    padding: 15px;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-    margin: 1%;
-    text-align: left;
-
+body {
+	font-family: "Montserrat", sans-serif;
+	color: #272727;
 }
 
-.each-matches-box .Team-data{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    justify-content: space-between; 
-    font-size: 120%;  
+.landing-container {
+	display: grid;
+	grid-template-columns: 1fr 5fr;
+	grid-gap: 2px;
+}
+.landing-container .calendar-container {
+	margin: 5px;
+	border-radius: 5px;
+	height: fit-content;
+}
+.calendar-container .calender-datepicker {
+	display: none;
+}
+.landing-container .all-matches-box {
+	height: fit-content;
+	margin: 5px;
+	border-radius: 5px;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-gap: 15px;
+	row-gap: 30px;
+}
+.landing-container .all-matches-box > div {
+	padding: 1%;
+	border: 1px solid black;
+	height: 100%;
+}
+.all-matches-box .each-matches-box {
+	padding: 15px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	border-radius: 5px;
+	margin: 1%;
+	text-align: left;
 }
 
-.Team-data > div{
-    word-break: break-word;
+.each-matches-box .Team-data {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+	justify-content: space-between;
+	font-size: 120%;
 }
 
+.Team-data > div {
+	word-break: break-word;
+}
 
 @media screen and (max-width: 768px) {
-    .calendar-container .calender-datepicker{
-        display: inline-block;
-    }
-    
-.calendar-container .calendar-fixed{
-        display: none;
-    }
+	.calendar-container .calender-datepicker {
+		display: block;
+	}
 
-.landing-container{
-        grid-template-columns: 1fr;
-}
-.landing-container .calendar-container{
-    margin: 5px;
-    border-radius: 5px;
-    height: fit-content;  
-}
-.landing-container .all-matches-box{
-    margin: 20px;
-    grid-template-columns: 1fr 1fr;
-}
+	.calendar-container .calendar-fixed {
+		display: none;
+	}
 
+	.landing-container {
+		grid-template-columns: 1fr;
+	}
+	.landing-container .calendar-container {
+		margin: 5px;
+		border-radius: 5px;
+		height: fit-content;
+	}
+	.landing-container .all-matches-box {
+		margin: 20px;
+		grid-template-columns: 1fr 1fr;
+	}
 }
 
 @media screen and (max-width: 576px) {
-    .calendar-container .calender-datepicker{
-        display: inline-block;
-    }
-    
-.calendar-container .calendar-fixed{
-        display: none;
-    }
+	.calendar-container .calender-datepicker {
+		display: block;
+	}
 
-.landing-container{
-        grid-template-columns: 1fr;
-}
-.landing-container .calendar-container{
-    margin: 5px;
-    border-radius: 5px;
-    height: fit-content;  
-}
-.landing-container .all-matches-box{
-    margin: 20px;
-    grid-template-columns: 1fr;
-}
+	.calendar-container .calendar-fixed {
+		display: none;
+	}
 
+	.landing-container {
+		grid-template-columns: 1fr;
+	}
+	.landing-container .calendar-container {
+		margin: 5px;
+		border-radius: 5px;
+		height: fit-content;
+	}
+	.landing-container .all-matches-box {
+		margin: 20px;
+		grid-template-columns: 1fr;
+	}
 }

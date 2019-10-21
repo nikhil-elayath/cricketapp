@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamLandingPage.css";
 import logo from "./images/indialogo.jpg";
-// import Navbar from "../components/common/Navbar";
+import Navbar from "../components/common/Navbar";
 import { getTeams } from "../actions/Teams";
 import MostWins from "./MostWins";
 
@@ -83,7 +83,10 @@ export class TeamLandingPage extends Component {
     console.log(this.props);
     return (
       <div>
-        {/* <Navbar /> */}
+        <Navbar
+          gender={this.props.gender}
+          changeGender={getGender => this.props.changeGender(getGender)}
+        />
         <div className="container-team">
           <h2 className="h1-team">Teams</h2>
           <div className="centered-team">
@@ -119,19 +122,6 @@ export class TeamLandingPage extends Component {
           <div className="grid-container-team">
             <div>
               <div className="country-team">
-                {/* <div className="centered-team">
-                  <div className="cards-team">
-                    <div className="cardtest-team">
-                      <p className="p-card-team">Test</p>
-                    </div>
-                    <div className="cardodi-team">
-                      <p className="p-card">ODI</p>
-                    </div>
-                    <div className="cardt20-team">
-                      <p className="p-card">T20</p>
-                    </div>
-                  </div>
-                </div> */}
                 {this.props.teams.map(teams => (
                   <div
                     className="grid-class-team"
@@ -149,7 +139,10 @@ export class TeamLandingPage extends Component {
                 ))}
               </div>
               <div className="top-team">
-                <MostWins />
+                <MostWins
+                  gender={this.props.gender}
+                  changeGender={getGender => this.props.changeGender(getGender)}
+                />
               </div>
             </div>
           </div>

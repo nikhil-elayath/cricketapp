@@ -10,8 +10,6 @@ export class MatchSummaryDetails extends Component {
     this.props.getmatchdetailbyId(this.props.match_id);
   }
   render() {
-    console.log("Match Summary", this.props);
-    console.log("Loader", this.props.isLoading);
     return (
       <div>
         {this.props.isLoading ? (
@@ -24,42 +22,42 @@ export class MatchSummaryDetails extends Component {
             />
           </div>
         ) : (
-            <div style={{ marginTop: 200 + "px" }}>
+            <div style={{ marginTop: 210 + "px" }}>
               {this.props.match.map(match => (
-                <div className="top-container" style={{ height: "700px" }}>
+                <div className="top-container">
                   <div className="top-left-container">
-                    <div className="top-title">Summary Scorecard</div>
+                    <div id="summary-title" className="top-title">Summary Scorecard</div>
 
-                    <div style={{ margin: "18px 0 0 8px" }}>
+                    <div id="team-one-name-summary" style={{ padding: "10px" }}>
                       {match.teamone_name[0].teamone_name}
                     </div>
 
                     <div className="teamone-top-players">
-                      <div style={{ margin: "7px 0 0 12px", fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team1_batsman.map(t1_batsman => (
-                          <div>{t1_batsman.player_name}</div>
+                          <div id="team-one-tbm" >{t1_batsman.player_name}</div>
                         ))}
                       </div>
                       <div
                         style={{
                           borderRight: "1px solid #272727",
-                          margin: "7px 0 0 0"
+                          padding: "10px"
                         }}
                       >
                         {match.team1_batsman.map(t1_batsman => (
-                          <div>
+                          <div id="team-one-tbm-runs">
                             {t1_batsman.total_runs} ({t1_batsman.total_ball})
                         </div>
                         ))}
                       </div>
-                      <div style={{ margin: "7px 0 0 15px", fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team1_bowler.map(t1_bowler => (
-                          <div>{t1_bowler.player_name}</div>
+                          <div id="team-one-tbn">{t1_bowler.player_name}</div>
                         ))}
                       </div>
-                      <div style={{ margin: "7px 0 0 0" }}>
+                      <div style={{ margin: "10px" }}>
                         {match.team1_bowler.map(t1_bowler => (
-                          <div>
+                          <div id="team-one-tbn-wickets">
                             {t1_bowler.total_wicket}/{t1_bowler.given_runs} (
                           {t1_bowler.overs})
                         </div>
@@ -67,35 +65,35 @@ export class MatchSummaryDetails extends Component {
                       </div>
                     </div>
 
-                    <div style={{ margin: "18px 0 0 8px" }}>
+                    <div id="team-two-name" style={{ padding: "10px" }}>
                       {match.teamtwo_name[0].teamtwo_name}
                     </div>
                     <div className="teamtwo-top-players">
-                      <div style={{ margin: "7px 0 0 12px", fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team2_batsman.map(t2_batsman => (
-                          <div>{t2_batsman.player_name}</div>
+                          <div id="team-two-tbn">{t2_batsman.player_name}</div>
                         ))}
                       </div>
                       <div
                         style={{
                           borderRight: "1px solid #272727",
-                          margin: "7px 0 0 0"
+                          padding: "10px"
                         }}
                       >
                         {match.team2_batsman.map(t2_batsman => (
-                          <div>
+                          <div id="team-two-btm-score">
                             {t2_batsman.total_runs} ({t2_batsman.total_ball})
                         </div>
                         ))}
                       </div>
-                      <div style={{ margin: "7px 0 0 15px", fontWeight: "500" }}>
+                      <div style={{ fontWeight: "500", margin: "10px" }}>
                         {match.team2_bowler.map(t2_bowler => (
-                          <div>{t2_bowler.player_name}</div>
+                          <div id="team-two-top-bowler-name">{t2_bowler.player_name}</div>
                         ))}
                       </div>
-                      <div style={{ margin: "7px 0 0 0" }}>
+                      <div style={{ margin: "10px" }}>
                         {match.team2_bowler.map(t2_bowler => (
-                          <div>
+                          <div id="team-two-top-bowler-wicket">
                             {t2_bowler.total_wicket}/{t2_bowler.given_runs} (
                           {t2_bowler.overs})
                         </div>
@@ -107,36 +105,32 @@ export class MatchSummaryDetails extends Component {
                     className="match_details"
                     style={{ border: "1px solid #272727", borderRadius: "5px" }}
                   >
-                    <div className="top-title"> Match Details</div>
-                    <div style={{ margin: "5px 0 0 8px" }}>Series</div>
-                    <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
-                      {" "}
+                    <div id="match-conatiner-title" className="top-title">Match Details</div>
+                    <div id="competition-name-text" style={{ margin: "5px 0 0 8px" }}>Series</div>
+                    <div id="competition-name" style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                       {match.match_details[0].competition}
                     </div>
-                    <div style={{ margin: "3px 0 0 8px" }}> Date</div>
+                    <div id="match-date-text" style={{ margin: "3px 0 0 8px" }}>Date</div>
 
                     <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                       {match.date.map(date => (
-                        <div>{date.match_date}</div>
+                        <div id="match-date-value">{date.match_date}</div>
                       ))}
                     </div>
-                    <div style={{ margin: "3px 0 0 8px" }}> Toss</div>
-                    <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
-                      {" "}
+                    <div id="match-toss-text" style={{ margin: "3px 0 0 8px" }}>Toss</div>
+                    <div id="toss-and-decision" style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                       {match.match_details[0].toss_winner_team} elected to{" "}
                       {match.match_details[0].toss_decision}
                     </div>
-                    <div style={{ margin: "3px 0 0 8px" }}> Venue</div>
-                    <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
-                      {" "}
+                    <div id="match-venue-text" style={{ margin: "3px 0 0 8px" }}>Venue</div>
+                    <div id="match-venue-value" style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                       {match.match_details[0].venue_name},{" "}
                       {match.match_details[0].venue_city}
                     </div>
 
-                    <div style={{ margin: "3px 0 0 8px" }}> Umpire</div>
+                    <div id="match-umpire-text" style={{ margin: "3px 0 0 8px" }}>Umpire</div>
                     {match.umpires.map(umpire => (
-                      <div style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
-                        {" "}
+                      <div id="match-umpire-name" style={{ fontWeight: "500", margin: "0 0 0 15px" }}>
                         {umpire.umpire_name}
                       </div>
                     ))}
@@ -146,32 +140,32 @@ export class MatchSummaryDetails extends Component {
                     className="bottom-left-container"
                     style={{ borderRadius: "5px" }}
                   >
-                    <div className="top-title"> Playing XI</div>
+                    <div id="playing-XI-title" className="top-title">Playing XI</div>
                     <div className="playingXI">
-                      <div
+                      <div id="team-one-p-name"
                         style={{
                           borderBottom: "1px solid #272727",
-                          margin: "6px 0 0 8px"
+                          margin: "15px 0 0 8px"
                         }}
                       >
                         {match.teamone_name.map(teamone => teamone.teamone_name)}
                       </div>
-                      <div
+                      <div id="team-two-p-name"
                         style={{
                           borderBottom: "1px solid #272727",
-                          margin: "6px 0 0 8px"
+                          margin: "15px 0 0 8px"
                         }}
                       >
                         {match.teamtwo_name.map(teamtwo => teamtwo.teamtwo_name)}
                       </div>
                       <div style={{ margin: "0 0 0 10px", fontWeight: "500" }}>
                         {match.team_one_XI.map(team1_XI => (
-                          <div>{team1_XI.teamone_players} </div>
+                          <div id="team-one-playingXI" >{team1_XI.teamone_players}</div>
                         ))}
                       </div>
                       <div style={{ margin: "0 0 0 10px", fontWeight: "500" }}>
                         {match.team_two_XI.map(team2_XI => (
-                          <div>{team2_XI.teamtwo_players} </div>
+                          <div id="team-two-playingXI">{team2_XI.teamtwo_players}</div>
                         ))}
                       </div>
                     </div>

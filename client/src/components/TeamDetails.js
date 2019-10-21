@@ -5,6 +5,7 @@ import TeamInfo from "./TeamInfo";
 import TeamStats from "./TeamStats";
 import TeamFixtures from "./TeamFixtures";
 import { getTeams } from "../actions/Teams";
+import Navbar from "./common/Navbar";
 
 export class TeamDetails extends Component {
   state = {
@@ -17,16 +18,34 @@ export class TeamDetails extends Component {
     console.log("team props is ", this.props);
     return (
       <div>
+        <Navbar
+          gender={this.props.gender}
+          changeGender={getGender => this.props.changeGender(getGender)}
+        />
         <TeamSecondaryNavbar
+          gender={this.props.gender}
+          changeGender={getGender => this.props.changeGender(getGender)}
           changeDetailsType={this.changeDetailsType}
           teams={this.props.history.location.state.teams}
         />
         {this.state.detailsType === "stats" ? (
-          <TeamStats teams={this.props.history.location.state.teams} />
+          <TeamStats
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+            teams={this.props.history.location.state.teams}
+          />
         ) : this.state.detailsType === "fixtures" ? (
-          <TeamFixtures teams={this.props.history.location.state.teams} />
+          <TeamFixtures
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+            teams={this.props.history.location.state.teams}
+          />
         ) : (
-          <TeamInfo teams={this.props.history.location.state.teams} />
+          <TeamInfo
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+            teams={this.props.history.location.state.teams}
+          />
         )}
       </div>
     );

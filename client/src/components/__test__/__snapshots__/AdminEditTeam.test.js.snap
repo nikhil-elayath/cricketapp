@@ -2,15 +2,18 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
-  <Navbar />
+  <Connect(AdminNavbar) />
   <div
     id="AdminEditform"
   >
     <fieldset>
-      <h1>
+      <h1
+        id="heading"
+      >
         Edit Team
       </h1>
       <input
+        id="team_name"
         name="team_name"
         onChange={[Function]}
         placeholder="Enter Team Name"
@@ -34,11 +37,14 @@ exports[`test  Component render the component 1`] = `
         >
           <button
             className="cancel"
+            id="cancel"
           >
             Cancel
           </button>
         </Link>
         <button
+          className="admineditpagebutton"
+          id="editbutton"
           onChange={[Function]}
           onClick={[Function]}
         >

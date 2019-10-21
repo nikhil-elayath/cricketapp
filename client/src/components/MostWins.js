@@ -6,19 +6,20 @@ import { getRanks } from "../actions/Teams";
 
 export class MostWins extends Component {
   state = {
-    testClick: true,
+    testClick: false,
     odiClick: false,
-    t20Click: false,
+    t20Click: true,
     iplClick: false
   };
 
   componentDidMount() {
+    console.log("ranking gender - ", this.props.gender);
     console.log(this.props);
     let ranking = {
-      match_type: "Test",
+      match_type: "T20",
       competition: "others"
     };
-    this.props.getRanks(ranking);
+    this.props.getRanks(this.props.gender, ranking);
   }
 
   onClickTest = () => {
@@ -32,7 +33,7 @@ export class MostWins extends Component {
       match_type: "Test",
       competition: "others"
     };
-    this.props.getRanks(ranking);
+    this.props.getRanks(this.props.gender, ranking);
   };
 
   onClickOdi = () => {
@@ -46,7 +47,7 @@ export class MostWins extends Component {
       match_type: "ODI",
       competition: "others"
     };
-    this.props.getRanks(ranking);
+    this.props.getRanks(this.props.gender, ranking);
   };
 
   onClickT20 = () => {
@@ -60,7 +61,7 @@ export class MostWins extends Component {
       match_type: "T20",
       competition: "others"
     };
-    this.props.getRanks(ranking);
+    this.props.getRanks(this.props.gender, ranking);
   };
 
   onClickIpl = () => {
@@ -74,7 +75,7 @@ export class MostWins extends Component {
       match_type: "T20",
       competition: "IPL"
     };
-    this.props.getRanks(ranking);
+    this.props.getRanks(this.props.gender, ranking);
   };
 
   render() {
@@ -87,10 +88,10 @@ export class MostWins extends Component {
               <div className="cards">
                 <div
                   style={{ borderRadius: "8px 0px 0px 8px" }}
-                  className={this.state.testClick ? "cardtest" : "cardodi"}
-                  onClick={this.onClickTest}
+                  className={this.state.t20Click ? "cardtest" : "cardodi"}
+                  onClick={this.onClickT20}
                 >
-                  <p className="p-card">Test</p>
+                  <p className="p-card">IT20</p>
                 </div>
                 <div
                   className={this.state.odiClick ? "cardtest" : "cardodi"}
@@ -99,10 +100,10 @@ export class MostWins extends Component {
                   <p className="p-card">ODI</p>
                 </div>
                 <div
-                  className={this.state.t20Click ? "cardtest" : "cardt20"}
-                  onClick={this.onClickT20}
+                  className={this.state.testClick ? "cardtest" : "cardt20"}
+                  onClick={this.onClickTest}
                 >
-                  <p className="p-card">IT20</p>
+                  <p className="p-card">Test</p>
                 </div>
                 <div
                   style={{ borderRadius: "0px 8px 8px 0px" }}
@@ -115,13 +116,10 @@ export class MostWins extends Component {
             </div>
             <div>
               {this.props.ranks.map(ranks => (
-                <div>
-                  <div className="list">
-                    <img src={logo} className="img-card" />
-                    <p className="p-team-name">{ranks.team_name}</p>
-                    <h2 className="h2-team-position">{ranks.count}</h2>
-                  </div>
-                  <hr className="hr-team-card" />
+                <div className="list-wins">
+                  <img src={logo} className="img-card" />
+                  <p className="p-team-name">{ranks.team_name}</p>
+                  <h2 className="h2-team-position">{ranks.count}</h2>
                 </div>
               ))}
             </div>

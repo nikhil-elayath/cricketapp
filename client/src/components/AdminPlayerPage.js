@@ -16,6 +16,7 @@ import SweetAlert from "sweetalert-react";
 import "sweetalert/dist/sweetalert.css";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import AdminNavbar from "./common/AdminNavbar";
 
 export class AdminPlayerPage extends Component {
   constructor() {
@@ -111,7 +112,7 @@ export class AdminPlayerPage extends Component {
     } else {
       //   e.preventDefault();
 
-      e.preventDefault();
+      // e.preventDefault();
       if (this.state.player_name.length < 2) {
         this.setState({
           showError: true,
@@ -230,7 +231,7 @@ export class AdminPlayerPage extends Component {
     console.log("loading is:", this.props.isLoading);
     return (
       <div>
-        {/* <NavBar /> */}
+        <AdminNavbar />
         <div className="player-page">
           {this.props.isLoading ? (
             <div style={{ margin: "auto" }}>
@@ -245,11 +246,12 @@ export class AdminPlayerPage extends Component {
             <div className="players">
               <div className="inner-heading">
                 <div>
-                  <h1>All Players</h1>
+                  <h1 id="heading-1">All Players</h1>
                 </div>
                 <div>
                   {" "}
                   <input
+                    id="searchInput"
                     type="text"
                     name="Search"
                     margin="normal"
@@ -266,6 +268,7 @@ export class AdminPlayerPage extends Component {
                     <div className="inner-button">
                       <div style={{ marginRight: "5px" }}>
                         <button
+                          id="editbutton"
                           className="admininnerbutton"
                           onChange={this.OnChange}
                           onClick={() => {
@@ -290,6 +293,7 @@ export class AdminPlayerPage extends Component {
 
                       <div>
                         <button
+                          id="deletebutton"
                           className="admininnerbutton"
                           onChange={this.OnChange}
                           // onClick={() =>
@@ -301,6 +305,7 @@ export class AdminPlayerPage extends Component {
                           Delete
                         </button>
                         <SweetAlert
+                          id="SweetAlert"
                           show={this.state.show}
                           type="warning"
                           title={`DELETE PLAYER!`}
@@ -310,12 +315,12 @@ export class AdminPlayerPage extends Component {
                           cancelButtonText="No, keep it"
                           showCancelButton
                           onConfirm={() => {
-                            console.log("confirm");
+                            // console.log("confirm");
                             this.setState({ show: false });
                             this.props.deletePlayer(players.player_id);
                           }}
                           onCancel={() => {
-                            console.log("cancel");
+                            // console.log("cancel");
 
                             this.setState({ show: false });
                           }}
@@ -332,16 +337,18 @@ export class AdminPlayerPage extends Component {
 
           <div id="Adminform">
             <fieldset>
-              <h1>Add New Player</h1>
+              <h2 id="heading-2">Add New Player</h2>
               <input
                 type="text"
                 name="player_name"
+                id="enter-name"
                 placeholder="Enter Name"
                 value={this.state.player_name}
                 onChange={this.OnChange}
               />
               <input
                 type="text"
+                id="player_country"
                 name="player_country"
                 placeholder="Enter Player Country"
                 value={this.state.player_country}
@@ -351,6 +358,7 @@ export class AdminPlayerPage extends Component {
                 <div>
                   <select
                     type="text"
+                    id="batting_style"
                     name="batting_style"
                     value={this.state.batting_style}
                     onChange={this.OnSelectBattingStyle}
@@ -363,6 +371,7 @@ export class AdminPlayerPage extends Component {
                 </div>
                 <div>
                   <select
+                    id="bowling_style"
                     type="text"
                     name="bowling_style"
                     value={this.state.bowling_style}
@@ -387,6 +396,7 @@ export class AdminPlayerPage extends Component {
               </div>
               <div className="playing-style">
                 <DatePicker
+                  id="DatePicker"
                   name="datepicker"
                   dateFormat="yyyy-MM-dd"
                   placeholderText="DOB"
@@ -396,6 +406,7 @@ export class AdminPlayerPage extends Component {
 
                 <div>
                   <select
+                    id="player_gender"
                     type="text"
                     name="player_gender"
                     value={this.state.player_gender}
@@ -409,6 +420,7 @@ export class AdminPlayerPage extends Component {
                 </div>
               </div>
               <select
+                id="player_role"
                 type="text"
                 name="player_role"
                 placeholder="Enter Player Role"
@@ -425,6 +437,7 @@ export class AdminPlayerPage extends Component {
                 <option name="male">Allrounder</option>
               </select>
               <input
+                id="debut_odi_match"
                 type="text"
                 name="debut_odi_match"
                 placeholder="Enter Debut ODI Match"
@@ -432,6 +445,7 @@ export class AdminPlayerPage extends Component {
                 onChange={this.OnChange}
               />
               <input
+                id="debut_test_match"
                 type="text"
                 name="debut_test_match"
                 placeholder="Enter Debut Test Match"
@@ -439,6 +453,7 @@ export class AdminPlayerPage extends Component {
                 onChange={this.OnChange}
               />
               <input
+                id="debut_t20_match"
                 type="text"
                 name="debut_t20_match"
                 placeholder="Enter Debut T20 Match"
@@ -467,12 +482,13 @@ export class AdminPlayerPage extends Component {
                 )}
               </div>
               <button
+                id="addbutton"
                 className="adminpagebutton "
                 onChange={this.OnChange}
                 onClick={this.onRegister}
               >
                 Add Player
-                {console.log(this.onRegister)}
+                {/* {console.log(this.onRegister)} */}
               </button>
               {/* <p>
               Already have an account ?

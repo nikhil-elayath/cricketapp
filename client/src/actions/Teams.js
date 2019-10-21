@@ -27,9 +27,12 @@ export const getTeams = match_type => dispatch => {
     });
 };
 
-export const getRanks = ranking => dispatch => {
+export const getRanks = (gender, ranking) => dispatch => {
   return axios
-    .post("http://localhost:5000/cricketalpha/teams/rankings", ranking)
+    .post(
+      "http://localhost:5000/cricketalpha/teams/rankings/" + gender,
+      ranking
+    )
     .then(res => {
       dispatch({
         type: GET_RANKS,
@@ -42,11 +45,14 @@ export const getRanks = ranking => dispatch => {
     });
 };
 
-export const getMatch = (team_id, match_type) => dispatch => {
+export const getMatch = (team_id, gender, match_type) => dispatch => {
   dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/match/" + team_id,
+      "http://localhost:5000/cricketalpha/teams/match/" +
+        team_id +
+        "/" +
+        gender,
       match_type
     )
     .then(res => {
@@ -62,9 +68,12 @@ export const getMatch = (team_id, match_type) => dispatch => {
     });
 };
 
-export const getTeamBatsmen = match_type => dispatch => {
+export const getTeamBatsmen = (gender, match_type) => dispatch => {
   return axios
-    .post("http://localhost:5000/cricketalpha/teams/topbatsmen", match_type)
+    .post(
+      "http://localhost:5000/cricketalpha/teams/topbatsmen/" + gender,
+      match_type
+    )
     .then(res => {
       dispatch({
         type: GET_TEAM_BATSMEN,
@@ -76,9 +85,12 @@ export const getTeamBatsmen = match_type => dispatch => {
     });
 };
 
-export const getTeamBowlers = match_type => dispatch => {
+export const getTeamBowlers = (gender, match_type) => dispatch => {
   return axios
-    .post("http://localhost:5000/cricketalpha/teams/topbowlers", match_type)
+    .post(
+      "http://localhost:5000/cricketalpha/teams/topbowlers/" + gender,
+      match_type
+    )
     .then(res => {
       dispatch({
         type: GET_TEAM_BOWLERS,
@@ -107,36 +119,51 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
-export const getHighestTotals = (team_id, match_type) => dispatch => {
+export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
+  console.log("high actions", team_id, match_type);
+  dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/highesttotals/" + team_id,
+      "http://localhost:5000/cricketalpha/teams/highesttotals/" +
+        team_id +
+        "/" +
+        gender,
       match_type
     )
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_HIGHEST_TOTALS,
         payload: res.data.data
       });
+      console.log("getHighestTotals action");
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
 
-export const getLowestTotals = (team_id, match_type) => dispatch => {
+export const getLowestTotals = (team_id, gender, match_type) => dispatch => {
+  dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/lowesttotals/" + team_id,
+      "http://localhost:5000/cricketalpha/teams/lowesttotals/" +
+        team_id +
+        "/" +
+        gender,
       match_type
     )
     .then(res => {
+      dispatch(stopLoading());
       dispatch({
         type: GET_LOWEST_TOTALS,
         payload: res.data.data
       });
+      console.log("getLowestTotals action", match_type);
     })
     .catch(err => {
+      dispatch(startLoading());
       console.log(err);
     });
 };
