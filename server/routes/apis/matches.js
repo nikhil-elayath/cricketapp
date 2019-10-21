@@ -4,14 +4,14 @@ const config = require("config");
 const postgresURL = config.get("postgresURL");
 const pg = require("pg-promise")();
 // const db = pg(postgresURL);
-const db = pg('postgres://postgres:root@localhost:5432/cricketalpha')
+const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 
-router.get('/ondate/:date/:gender', async (req, res, next) => {
+router.get("/ondate/:date/:gender", async (req, res, next) => {
   try {
-    let date = req.params.date
-    let gender = req.params.gender
-    console.log(gender)
-    console.log(date)
+    let date = req.params.date;
+    let gender = req.params.gender;
+    console.log(gender);
+    console.log(date);
     const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date 
         inner join match as m on date.match_id=m.match_id where match_date='${date}' and gender='${gender}' 
         ORDER BY date.match_date;`);
@@ -42,9 +42,9 @@ router.get('/ondate/:date/:gender', async (req, res, next) => {
                 where match_type in(select match_type from m))
                 select match_id, innings_one_team, match_values,team_one_name, innings_two_team,team_two_name, 
                 winner,match_winner,won_by, match_type, player_of_the_match 
-                from k inner join m on m.match_type=k.match_typee`)
+                from k inner join m on m.match_type=k.match_typee`);
 
-      console.log(match_detail)
+      console.log(match_detail);
 
       // total(score, wicket, over) all inning wise
 
@@ -60,9 +60,9 @@ router.get('/ondate/:date/:gender', async (req, res, next) => {
                 from delivery where match_id=${match_id} and extra_id=0 and
                 inning in(select inning from ss) group by inning)
                 select inning,total_score, total_wicket, total_over from pss
-                inner join ss on ss.inning_one=pss.inning`)
+                inner join ss on ss.inning_one=pss.inning`);
 
-      console.log(match_total_of_score)
+      console.log(match_total_of_score);
 
       data.push({
         match_id: match_detail[0].match_id,
@@ -79,45 +79,45 @@ router.get('/ondate/:date/:gender', async (req, res, next) => {
         teamtwo_wicket: match_total_of_score[1].total_wicket,
         team_one_total_over: match_total_of_score[0].total_over,
         team_two_total_over: match_total_of_score[1].total_over
-      })
+      });
     }
 
     res.status(200).json({
       status: 200,
       data: data,
-      message: 'Retrived matches list by date successfully!!'
-    })
+      message: "Retrived matches list by date successfully!!"
+    });
   } catch (err) {
-    console.log(err)
-    next(err)
+    console.log(err);
+    next(err);
   }
-})
+});
 
-router.get('/recent/:gender', async (req, res, next) => {
-  let gender = req.params.gender
+router.get("/recent/:gender", async (req, res, next) => {
+  let gender = req.params.gender;
   try {
     // feaching latest 6 matches dates from database
     const result = await db.any(`with s as(select distinct (match_date) , match_id from match_date  group by match_date, match_id  order by match_date desc),
     ps as(select match_id as match_idd, gender from match where gender='${gender}' and match_id 
     in(select match_id from s))
-    select match_id,match_date from ps inner join s on s.match_id=ps.match_idd order by match_date desc limit 6`)
+    select match_id,match_date from ps inner join s on s.match_id=ps.match_idd order by match_date desc limit 6`);
     // console.log(result)
 
     res.status(200).json({
       status: 200,
       data: result,
-      message: 'Retrived 6 recent matches date ordered by date successfully!!'
-    })
+      message: "Retrived 6 recent matches date ordered by date successfully!!"
+    });
   } catch (err) {
-    console.log(err)
-    next(err)
+    console.log(err);
+    next(err);
   }
-})
+});
 
-router.get('/summary/:id', async (req, res, next) => {
+router.get("/summary/:id", async (req, res, next) => {
   try {
-    let id = req.params.id
-    console.log('abc', id)
+    let id = req.params.id;
+    console.log("abc", id);
 
     // top2 bowlers name, total wicket, overs, given_runs of inning 1
 
@@ -184,14 +184,11 @@ router.get('/summary/:id', async (req, res, next) => {
 
     for (onedate of dbdates) {
       var date = new Date(onedate.match_date);
-      let format_date = (onedate.match_date = date.toLocaleDateString(
-        "en-IN",
-        {
-          day: "2-digit",
-          month: "short",
-          year: "numeric"
-        }
-      ));
+      let format_date = (onedate.match_date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric"
+      }));
       dates.push({ match_date: format_date });
     }
     console.log(dates);
@@ -204,45 +201,37 @@ router.get('/summary/:id', async (req, res, next) => {
             from ps inner join s on s.venue_id=ps.venue_id),
             pss as( select team_id, team_name as toss_winner_team from team where team_id in (select toss_winner from ss))
             select toss_winner_team, team_name, innings_one_team,innings_two_team,toss_decision, competition, venue_name, venue_city
-            from pss inner join ss on ss.toss_winner=pss.team_id`)
+            from pss inner join ss on ss.toss_winner=pss.team_id`);
 
-    console.log(match_details[0].innings_one_team)
-    console.log(match_details[0].innings_two_team)
+    console.log(match_details[0].innings_one_team);
+    console.log(match_details[0].innings_two_team);
 
     // teamone name
     const teamone_name = await db.any(
-      `select team_name as teamone_name from team where team_id=${
-      match_details[0].innings_one_team
-      }`
-    )
+      `select team_name as teamone_name from team where team_id=${match_details[0].innings_one_team}`
+    );
     // console.log(teamone_name);
 
     // playing XI of first team inning 1
     const team_one_XI = await db.any(`select p.player_name as teamone_players from player as p inner join match_team_player as mtp on 
-        mtp.player_id=p.player_id where match_id=${id} and team_id=${
-      match_details[0].innings_one_team
-      }`)
+        mtp.player_id=p.player_id where match_id=${id} and team_id=${match_details[0].innings_one_team}`);
 
     // teamtwo name
     const teamtwo_name = await db.any(
-      `select team_name as teamtwo_name from team where team_id=${
-      match_details[0].innings_two_team
-      }`
-    )
+      `select team_name as teamtwo_name from team where team_id=${match_details[0].innings_two_team}`
+    );
     // console.log(teamtwo_name);
 
     // playing XI of first team inning 1
     const team_two_XI = await db.any(`select p.player_name as teamtwo_players from player as p inner join match_team_player as mtp on 
-        mtp.player_id=p.player_id where match_id=${id} and team_id=${
-      match_details[0].innings_two_team
-      }`)
+        mtp.player_id=p.player_id where match_id=${id} and team_id=${match_details[0].innings_two_team}`);
     // console.log(team_two_XI)
 
     // umpires of the match
 
     const umpires = await db.any(
       `select u.umpire_name from umpire as u inner join match_umpire as mu on mu.umpire_id=u.umpire_id where match_id=${id};`
-    )
+    );
     // console.log(umpires);
 
     const result = [
@@ -259,45 +248,41 @@ router.get('/summary/:id', async (req, res, next) => {
         umpires: umpires,
         date: dates
       }
-    ]
+    ];
     // console.log(result)
 
     res.status(200).json({
       status: 200,
       data: result,
-      message: 'Retrived the specific match detail successfully!!'
-    })
+      message: "Retrived the specific match detail successfully!!"
+    });
   } catch (err) {
-    console.log(err)
-    next(err)
+    console.log(err);
+    next(err);
   }
-})
+});
 
-router.get('/scorecard/:id', async (req, res, next) => {
-  let id = req.params.id
-  console.log('scorecard', id)
+router.get("/scorecard/:id", async (req, res, next) => {
+  let id = req.params.id;
+  console.log("scorecard", id);
 
-  var data = new Array()
+  var data = new Array();
 
   try {
     const innings = await db.any(
       `select distinct(inning) from delivery where match_id=${id} order by inning`
-    )
+    );
 
     for (inning of innings) {
-      console.log(inning.inning)
+      console.log(inning.inning);
 
       // Batsman_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type, bowler_name(out by whom),fielder_name, fielder_two_name
 
       const all_batsman = await db.any(`with b as(with aaaa as (with aaa as (with aa as (with a as(with ssss as (select striker,(sum(cast(batsman_run as int))) as batsman_run,
             (count(overs)) as ball_faced, round(cast((sum(cast(batsman_run as float))/(count(overs))*100) as numeric),2) as striker_rate ,
             sum(cast(batsman_run=4 as int)) as fours, sum(cast(batsman_run=6 as int))as sixes
-            from delivery d inner join player p on d.striker=p.player_id where match_id=${id} and inning=${
-        inning.inning
-        }  
-            group by striker),pssss as(select striker as striker1, wicket_id, bowler from delivery where match_id=${id} and inning=${
-        inning.inning
-        } and wicket_id>0 and striker
+            from delivery d inner join player p on d.striker=p.player_id where match_id=${id} and inning=${inning.inning}  
+            group by striker),pssss as(select striker as striker1, wicket_id, bowler from delivery where match_id=${id} and inning=${inning.inning} and wicket_id>0 and striker
             in(select striker from ssss))
             select striker, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_id,bowler from pssss
             full outer join ssss on ssss.striker=pssss.striker1),

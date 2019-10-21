@@ -35,8 +35,9 @@ describe("Testing cricket alpha api", () => {
       match_type: "Test"
     };
     let payload = JSON.stringify(data);
+    let gender = "male";
     request(app)
-      .post("/cricketalpha/teams/rankings")
+      .post("/cricketalpha/teams/rankings/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -66,19 +67,20 @@ describe("Testing cricket alpha api", () => {
       });
   });
 
-  it("For teams matches,GET should return the status of 200, the body should be an object body.data should be an array and the body.msg should be correct", done => {
-    let team_id = 3;
-    request(app)
-      .get("/cricketalpha/teams/match/" + team_id)
-      .then(response => {
-        expect(response.statusCode).toBe(200);
-        expect(response.body).toEqual(expect.any(Object));
-        expect(response.body.message).toBe(
-          "Retrived 8 recent matches list successfully!!"
-        );
-        done();
-      });
-  });
+  // it("For teams matches,GET should return the status of 200, the body should be an object body.data should be an array and the body.msg should be correct", done => {
+  //   let team_id = 3;
+  //   let gender = "male";
+  //   request(app)
+  //     .get("/cricketalpha/teams/match/" + team_id + "/" + gender)
+  //     .then(response => {
+  //       expect(response.statusCode).toBe(200);
+  //       expect(response.body).toEqual(expect.any(Object));
+  //       expect(response.body.message).toBe(
+  //         "Retrived 8 recent matches list successfully!!"
+  //       );
+  //       done();
+  //     });
+  // });
 
   it("For teams matches,GET should return the status of 400, the body should be an object.", done => {
     let team_id = 3;
@@ -96,9 +98,10 @@ describe("Testing cricket alpha api", () => {
       match_type: "Test",
       player_country: "India"
     };
+    let gender = "male";
     let payload = JSON.stringify(data);
     request(app)
-      .post("/cricketalpha/teams/topbatsmen")
+      .post("/cricketalpha/teams/topbatsmen/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -115,9 +118,10 @@ describe("Testing cricket alpha api", () => {
       match_type: "ODI",
       player_country: "India"
     };
+    let gender = "male";
     let payload = JSON.stringify(data);
     request(app)
-      .post("/cricketalpha/teams/topbatsmen")
+      .post("/cricketalpha/teams/topbatsmen/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -134,9 +138,10 @@ describe("Testing cricket alpha api", () => {
       match_type: "T20",
       player_country: "India"
     };
+    let gender = "male";
     let payload = JSON.stringify(data);
     request(app)
-      .post("/cricketalpha/teams/topbatsmen")
+      .post("/cricketalpha/teams/topbatsmen/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -153,9 +158,10 @@ describe("Testing cricket alpha api", () => {
       match_type: "Testmatch",
       player_country: "India"
     };
+    let gender = "male";
     let payload = JSON.stringify(data);
     request(app)
-      .post("/cricketalpha/teams/topbatsmen")
+      .post("/cricketalpha/teams/topbatsmen/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(res => {
@@ -191,8 +197,9 @@ describe("Testing cricket alpha api", () => {
       player_country: "India"
     };
     let payload = JSON.stringify(data);
+    let gender = "male";
     request(app)
-      .post("/cricketalpha/teams/topbowlers")
+      .post("/cricketalpha/teams/topbowlers/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -210,8 +217,9 @@ describe("Testing cricket alpha api", () => {
       player_country: "India"
     };
     let payload = JSON.stringify(data);
+    let gender = "male";
     request(app)
-      .post("/cricketalpha/teams/topbowlers")
+      .post("/cricketalpha/teams/topbowlers/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -229,8 +237,9 @@ describe("Testing cricket alpha api", () => {
       player_country: "India"
     };
     let payload = JSON.stringify(data);
+    let gender = "male";
     request(app)
-      .post("/cricketalpha/teams/topbowlers")
+      .post("/cricketalpha/teams/topbowlers/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(response => {
@@ -248,8 +257,9 @@ describe("Testing cricket alpha api", () => {
       player_country: "India"
     };
     let payload = JSON.stringify(data);
+    let gender = "male";
     request(app)
-      .post("/cricketalpha/teams/topbowlers")
+      .post("/cricketalpha/teams/topbowlers/" + gender)
       .send(payload)
       .set("Content-type", "application/json")
       .then(res => {

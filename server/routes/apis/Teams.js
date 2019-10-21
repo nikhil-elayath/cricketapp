@@ -223,18 +223,16 @@ router.post("/teams/highesttotals/:team_id/:gender", async (req, res, next) => {
     const team_id = req.params.team_id;
     const gender = req.params.gender;
     const match_type = req.body.match_type;
+    // const stats_type = req.body.stats_type;
     console.log("match type", match_type);
+    // if(stats_type=="highest_score" || stats_type=="lowest_score" ){
+    //   order_type = stats_type == "highest_score"?"desc":"asc"
+    // }
+
+    // else  if(stats_type=="l_vic" || stats_type=="sm_v" ){
+
+    // }
     const result = await db.any(
-      // `with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
-      // ps as(select match_id as match_idd, match_type from match where gender = '${gender}' and match_type='${match_type}' and match_id in(
-      // select match_id from s))
-      // select distinct(match_id), match_type from ps inner join s on s.match_id=ps.match_idd),
-      // pss as(select match_id as match_idd, inning, sum(total_runs) as total_run, sum(cast(extra_id=0 as int))/6 as overs from delivery
-      // where match_id in( select match_id from ss) group by match_id, inning)
-      // select match_id, inning, total_run, overs from pss inner join ss on pss.match_idd=ss.match_id),
-      // y as(select match_id as idd, match_date from match_date where match_id
-      // in(select match_id from k))
-      // select match_id, match_date, inning, total_run, overs from y inner join k on k.match_id=y.idd order by total_run desc limit 15;`
       `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
 ps as(select match_id as match_idd, match_type from match where match_type='${match_type}' and gender = '${gender}' and match_id in(
 select match_id from s))
@@ -257,6 +255,7 @@ ll as(select team_id,team_name as team_two from team where team_id
 in(select innings_two_team from tt))
 select match_id, match_date, inning, team_one, team_two, total_run, overs from ll
 inner join tt on tt.innings_two_team=ll.team_id order by total_run desc limit 15;`
+      //${order_type} instead of desc
     );
     // console.log("result is ", result);
     let dates = [];
