@@ -6,7 +6,7 @@ import news_img from "../components/images/vk.jpeg";
 import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
-import Navbar from "./common/Navbar"
+import Navbar from "./common/Navbar";
 
 export class Home extends Component {
 	componentWillMount() {
@@ -19,8 +19,12 @@ export class Home extends Component {
 		console.log("find layout", this.props);
 		return (
 			<div>
-        <Navbar gender={this.props.gender} changeGender={getGender => this.props.changeGender(getGender)} />
-        <div className="div-container">
+				<Navbar
+					gender={this.props.gender}
+					changeGender={getGender =>
+						this.props.changeGender(getGender)
+					}
+				/>
 				<div className="div-section">
 					<div className="div-news-section">
 						{this.props.home.map(news => (
@@ -84,8 +88,8 @@ export class Home extends Component {
 												{recent_matches.teamone_wicket}
 											</p>
 											{/* <p id="home-recent-matches-team-one-wickets">
-                      {recent_matches.teamone_wicket}{" "}
-                    </p> */}
+												{recent_matches.teamone_wicket}{" "}
+												</p> */}
 										</div>
 										<div id="team-score">
 											<p id="home-recent-matches-teamTwo">
@@ -116,7 +120,6 @@ export class Home extends Component {
 					</div>
 				</div>
 			</div>
-      </div>
 		);
 	}
 }
