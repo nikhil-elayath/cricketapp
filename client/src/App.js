@@ -70,7 +70,7 @@ export default class App extends Component {
           exact
           path="/admineditteam/:team_id"
           component={AdminEditTeam}
-        ></Route>
+        ></Route> 
         <Route
           path="/login"
           exact

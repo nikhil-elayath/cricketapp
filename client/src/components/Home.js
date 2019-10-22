@@ -24,6 +24,7 @@ export class Home extends Component {
 					changeGender={getGender =>
 						this.props.changeGender(getGender)
 					}
+					showGender={true}
 				/>
 				<div className="div-section">
 					<div className="div-news-section">
