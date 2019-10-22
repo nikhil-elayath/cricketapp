@@ -64,6 +64,8 @@ export class PlayerLandingPage extends Component {
         <Navbar
           gender={this.props.gender}
           changeGender={getGender => this.props.changeGender(getGender)}
+          showGender={true}
+          pageLink={"players"}
         />
 
         <div style={{ padding: 12 + "px" }}>
