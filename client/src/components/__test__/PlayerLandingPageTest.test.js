@@ -6,42 +6,38 @@ let state = {
   gender: "male"
 };
 
-const getBowlers = jest.fn();
-var bowlers = [
+const getTopPlayers = jest.fn();
+var topPlayer = [
   {
-    player_name: "SL Malinga",
-    player_id: 35
-  }
-];
-
-const getBatsmen = jest.fn();
-var batsmen = [
-  {
-    player_name: "virat kohli",
-    player_id: 44
+    TopBatsman: [
+      {
+        player_name: "AB de Villiers",
+        player_id: 44
+      }
+    ],
+    MostSixes: [
+      {
+        player_name: "AB de Villiers",
+        player_id: 44
+      }
+    ],
+    TopBowler: [
+      {
+        player_name: "DW Steyn",
+        player_id: 256
+      }
+    ]
   }
 ];
 
 const changeGender = jest.fn();
 
-const getTopSixes = jest.fn();
-var topSixes = [
-  {
-    player_name: "virat kohli",
-    player_id: 44
-  }
-];
-
 const historyMock = { push: jest.fn() };
 
 const wrapper = shallow(
   <PlayerLandingPage
-    getBowlers={getBowlers}
-    bowlers={bowlers}
-    getBatsmen={getBatsmen}
-    batsmen={batsmen}
-    getTopSixes={getTopSixes}
-    topSixes={topSixes}
+    getTopPlayers={getTopPlayers}
+    topPlayer={topPlayer}
     history={historyMock}
     gender={state.gender}
     changeGender={changeGender}
@@ -71,26 +67,22 @@ describe("Testing Player Landing Page", () => {
     wrapper.instance().componentWillReceiveProps(nextProps);
     expect(componentDidMount).toHaveBeenCalled();
     expect(componentWillReceiveProps).toHaveBeenCalled();
-  }); 
+  });
 
   //////// ################ HISTORY.PUSH TEST CASE
   it("should mock the history push function", () => {
     wrapper.find("#jest-history-1").simulate("click");
     expect(historyMock.push).toBeCalledWith(
-      "/playerInfo/" + batsmen[0].player_id
+      "/playerInfo/" + topPlayer[0].TopBatsman[0].player_id
     );
     wrapper.find("#jest-history-2").simulate("click");
     expect(historyMock.push).toBeCalledWith(
-      "/playerInfo/" + bowlers[0].player_id
+      "/playerInfo/" + topPlayer[0].TopBowler[0].player_id
     );
     wrapper.find("#jest-history-mostSixes").simulate("click");
     expect(historyMock.push).toBeCalledWith(
-      "/playerInfo/" + topSixes[0].player_id
+      "/playerInfo/" + topPlayer[0].MostSixes[0].player_id
     );
-  });
-
-  it("should have the name of header as Players", () => {
-    expect(wrapper.find("#playerHeading").text()).toBe("Players");
   });
 
   it("should have links for Test,Odi and T20", () => {

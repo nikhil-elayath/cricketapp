@@ -19,24 +19,28 @@
   color: white;
   padding: 8px;
   margin-top: 0px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
 .bowling-Test-div {
-  border: 1px solid #707070;
-  border-top: none;
+  border-radius: 8px;
   /* margin-left: 70px; */
+  background: white;
   font-family: "Montserrat", sans-serif;
 }
 
 .bowling-Odi-div {
-  border: 1px solid #707070;
-  border-top: none;
+  border-radius: 8px;
+  /* margin-left: 70px; */
+  background: white;
   margin-left: 15px;
 }
 
 .bowling-T20-div {
-  border: 1px solid #707070;
-  border-top: none;
+  border-radius: 8px;
+  /* margin-left: 70px; */
+  background: white;
   /* margin-left: 50px; */
   margin-top: 15px;
 }
@@ -114,23 +118,25 @@
   }
 
   .bowling-Test-div {
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-top: none;
     margin-left: 35px;
     font-family: "Montserrat", sans-serif;
+    background-color: white;
   }
 
   .bowling-Odi-div {
-    border: 1px solid #707070;
-    border-top: none;
+    /* border-radius: 8px; */
     margin-left: 25px;
+    background-color: white;
   }
 
   .bowling-T20-div {
-    border: 1px solid #707070;
-    border-top: none;
+    /* border: 1px solid #707070; */
+    border-radius: 8px;
     margin-left: 35px;
     margin-top: 15px;
+    background-color: white;
   }
 
   .bowling-Ipl-div {
@@ -207,7 +213,7 @@
   }
 
   .bowling-Test-div {
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-top: none;
     margin: auto;
     margin-top: 35px;
@@ -215,14 +221,14 @@
   }
 
   .bowling-Odi-div {
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-top: none;
     margin: auto;
     margin-top: 15px;
   }
 
   .bowling-T20-div {
-    border: 1px solid #707070;
+    /* border: 1px solid #707070; */
     border-top: none;
     margin: auto;
     margin-top: 15px;

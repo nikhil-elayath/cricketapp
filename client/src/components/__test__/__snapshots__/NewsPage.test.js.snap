@@ -6,6 +6,7 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
 >
   <Connect(Navbar)
     changeGender={[Function]}
+    showGender={false}
   />
   <div>
     <div

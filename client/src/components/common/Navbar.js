@@ -14,7 +14,7 @@ export class Navbar extends Component {
 		isChecked: window.innerWidth >= 526 ? true : false,
 		width: window.innerWidth,
 		redirect: false,
-		pageLink: "",
+		pageLink: this.props.pageLink ? this.props.pageLink : "",
 		showGender: this.props.showGender
 	};
 
@@ -35,7 +35,6 @@ export class Navbar extends Component {
 
 	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
-		console.log("navbar", this.state.showGender);
 		if (localStorage.getItem("token")) {
 			decoded_token = decode(localStorage.getItem("token"));
 		}
