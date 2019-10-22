@@ -182,6 +182,8 @@ nav {
 	font-weight: 500;
 	color: #272727;
 	text-decoration: none;
+	display: flex;
+	align-items: center;
 }
 .search-list-item > div:first-child {
 	display: inline-block;
@@ -191,6 +193,7 @@ nav {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	margin-right: 10px;;
 }
 
 /* admin properties */
