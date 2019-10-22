@@ -258,7 +258,7 @@ describe("Testing Matches actions", () => {
     });
 
     it("[GET_PIECHART_TWO_GRAPH_BY_ID] [20*]should create an action with type GET_PIECHART_TWO_GRAPH_BY_ID and the payload should be same as the API response when the response is 20*", () => {
-        const responseofAPI = {};
+        const responseofAPI = { data: {} };
         const id = '1';
         moxios.stubRequest(url2 + "/bowlerwickets/" + id, {
             status: 200,
