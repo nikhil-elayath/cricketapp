@@ -15,7 +15,6 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
         className="grid-item2"
       >
         <p
-          className="grid-item2"
           id="newspage-news-title"
         >
           <b>
@@ -30,7 +29,7 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
         </p>
         <img
           className="main_img"
-          src="vk.jpeg"
+          src="data:image/jpeg;base64,undefined"
         />
         <p
           id="news-content"
@@ -53,13 +52,12 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
               className="div-news-images"
               style={
                 Object {
-                  "backgroundImage": "url(vk.jpeg)",
+                  "backgroundImage": "url(data:image/jpeg;base64,undefined",
                 }
               }
             />
             <div
               className="div-news-details"
-              id="news-list-item-1"
               onClick={[Function]}
             >
               <p

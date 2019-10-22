@@ -11,7 +11,7 @@ describe("test  Component", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("there should be a div", () => {
-    expect(wrapper.find("div").length).toBe(1);
+    expect(wrapper.find("div").length).toBe(2);
   });
   it("there should be a p tag", () => {
     expect(wrapper.find("p").length).toBe(2);
@@ -22,9 +22,7 @@ describe("test  Component", () => {
   it("there should be a h1 tag", () => {
     expect(wrapper.find("h1").length).toBe(1);
   });
-  it("there should be a navber", () => {
-    expect(wrapper.find("Navbar").length).toBe(1);
-  });
+
   it("there should be a input", () => {
     expect(wrapper.find("input").length).toBe(2);
   });

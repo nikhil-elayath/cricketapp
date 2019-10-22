@@ -3,7 +3,8 @@ import {
   GET_USERS,
   CREATE_USERS,
   OTP_VERIFICATION,
-  EMAIL_VERIFICATION
+  EMAIL_VERIFICATION,
+  ERROR_TYPE
 } from "../Types";
 import moxios from "moxios";
 import configureMockStore from "redux-mock-store";
@@ -79,7 +80,11 @@ describe("Testing user Action", () => {
       response: { data: responseOfApi }
     });
     const store = mockstore({});
-    const expectedActions = [];
+    const expectedActions = [
+      {
+        type: ERROR_TYPE
+      }
+    ];
     return store.dispatch(action.createUsers()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -115,7 +120,11 @@ describe("Testing user Action", () => {
       response: { data: responseOfApi }
     });
     const store = mockstore({});
-    const expectedActions = [];
+    const expectedActions = [
+      {
+        type: ERROR_TYPE
+      }
+    ];
     return store.dispatch(action.login()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -155,7 +164,11 @@ describe("Testing user Action", () => {
       }
     );
     const store = mockstore({});
-    const expectedActions = [];
+    const expectedActions = [
+      {
+        type: ERROR_TYPE
+      }
+    ];
     return store.dispatch(action.otpVerify()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
@@ -196,7 +209,11 @@ describe("Testing user Action", () => {
       }
     );
     const store = mockstore({});
-    const expectedActions = [];
+    const expectedActions = [
+      {
+        type: ERROR_TYPE
+      }
+    ];
     return store.dispatch(action.otpSend()).then(() => {
       expect(store.getActions()).toEqual(expectedActions);
     });
