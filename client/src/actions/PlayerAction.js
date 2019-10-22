@@ -68,10 +68,12 @@ export const getTopPlayers = (match_type, gender) => dispatch => {
 };
 
 export const getODIBatsmanStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/ODI-Batsman-Stats/" + player_id)
     .then(res => {
       // console.log("From Player Actions odi Batsman stats is: ", res.data.ODI);
+      dispatch(stopLoading());
       dispatch({
         type: GET_ODI_BATSMAN_STATS,
         payload: res.data.ODI
@@ -83,6 +85,7 @@ export const getODIBatsmanStats = player_id => dispatch => {
 };
 
 export const getODIBowlerStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/ODIBowlerStats/" + player_id)
     .then(res => {
@@ -90,6 +93,7 @@ export const getODIBowlerStats = player_id => dispatch => {
       //   "From Player Actions odi BOWLER stats is: ",
       //   res.data.ODIBowler
       // );
+      dispatch(stopLoading());
       dispatch({
         type: GET_ODI_BOWLER_STATS,
         payload: res.data.ODIBowler
@@ -101,12 +105,14 @@ export const getODIBowlerStats = player_id => dispatch => {
 };
 
 export const getTestBatsmanStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get(
       "http://localhost:5000/apis/PlayerInfo/Test-Batsman-Stats/" + player_id
     )
     .then(res => {
       // console.log("From Player Actions test Batsman stats is: ", res.data.Test);
+      dispatch(stopLoading());
       dispatch({
         type: GET_BATSMAN_STATS,
         payload: res.data.Test
@@ -118,6 +124,7 @@ export const getTestBatsmanStats = player_id => dispatch => {
 };
 
 export const getTestBowlerStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/Test-Bowler-Stats/" + player_id)
     .then(res => {
@@ -125,6 +132,7 @@ export const getTestBowlerStats = player_id => dispatch => {
       //   "From Player Actions test Batsman stats is: ",
       //   res.data.TestBowler
       // );
+      dispatch(stopLoading());
       dispatch({
         type: GET_TEST_BOWLER_STATS,
         payload: res.data.TestBowler
@@ -136,10 +144,12 @@ export const getTestBowlerStats = player_id => dispatch => {
 };
 
 export const getT20BatsmanStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/T20-Batsman-Stats/" + player_id)
     .then(res => {
       // console.log("From Player Actions test Batsman stats is: ", res.data.T20);
+      dispatch(stopLoading());
       dispatch({
         type: GET_T20_BATSMAN_STATS,
         payload: res.data.T20
@@ -151,6 +161,7 @@ export const getT20BatsmanStats = player_id => dispatch => {
 };
 
 export const getT20BowlerStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/T20-Bowler-Stats/" + player_id)
     .then(res => {
@@ -158,6 +169,7 @@ export const getT20BowlerStats = player_id => dispatch => {
       //   "From Player Actions ODI BOWLER stats is: ",
       //   res.data.T20Bowler
       // );
+      dispatch(stopLoading());
       dispatch({
         type: GET_T20_BOWLER_STATS,
         payload: res.data.T20Bowler
@@ -169,10 +181,12 @@ export const getT20BowlerStats = player_id => dispatch => {
 };
 
 export const getBatsmanStats = player_id => dispatch => {
+  dispatch(startLoading());
   return axios
     .get("http://localhost:5000/apis/PlayerInfo/Batsman-Stats/" + player_id)
     .then(res => {
       // console.log("From Player Actions test Batsman stats is: ", res.data.data);
+      dispatch(stopLoading());
       dispatch({
         type: GET_T20_BOWLER_STATS,
         payload: res.data.data

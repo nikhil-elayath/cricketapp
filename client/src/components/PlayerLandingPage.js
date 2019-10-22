@@ -52,12 +52,14 @@ export class PlayerLandingPage extends Component {
   };
 
   render() {
-    console.log(
-      "Gender check: ",
-      this.props.topPlayer["0"].TopBatsman
-        ? this.props.topPlayer["0"].TopBatsman
-        : console.log("not found")
-    );
+    // console.log(
+    //   "Gender check: ",
+    //   this.props.topPlayer["0"].TopBatsman
+    //     ? this.props.topPlayer["0"].TopBatsman
+    //     : console.log("not found")
+    // );
+
+    console.log("finding isloading", this.props);
 
     return (
       <div>

@@ -87,6 +87,7 @@ export class TeamLandingPage extends Component {
           gender={this.props.gender}
           changeGender={getGender => this.props.changeGender(getGender)}
           showGender={true}
+          pageLink={"teams"}
         />
         <div className="container-team">
           <h2 className="h1-team">Teams</h2>

@@ -19,12 +19,12 @@ router.post("/teams", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team",
+        customMessage: "Cannot find any team"
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!",
+      message: "Retrieved all the teams successfully!"
     });
   } catch (err) {
     next(err);
@@ -108,7 +108,7 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
         teamOneScore: teamOneScore,
         teamTwoScore: teamTwoScore,
         teamOneWicket: teamone_wicket[0].teamone_wickets,
-        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets,
+        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets
       });
     }
 
@@ -116,7 +116,7 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
     res.status(200).json({
       status: 200,
       data: data,
-      message: "Retrived 8 recent matches list successfully!!",
+      message: "Retrived 8 recent matches list successfully!!"
     });
   } catch (err) {
     next(err);
@@ -138,12 +138,12 @@ router.post("/teams/rankings/:gender", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team",
+        customMessage: "Cannot find any team"
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!",
+      message: "Retrieved all the teams successfully!"
     });
   } catch (err) {
     next(err);
@@ -165,14 +165,14 @@ router.post("/teams/topbatsmen/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top Batsman retrieved",
+        message: "All top Batsman retrieved"
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve batsman",
-        }),
+          statusMessage: "ERROR!Bad Request cannot retrieve batsman"
+        })
       };
     }
 
@@ -196,14 +196,14 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top bowlers retrieved",
+        message: "All top bowlers retrieved"
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve bowlers",
-        }),
+          statusMessage: "ERROR!Bad Request cannot retrieve bowlers"
+        })
       };
     }
 
@@ -211,7 +211,7 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
     res.status(200).json({
       status: 200,
       data: result,
-      message: "All top bowlers retrieved",
+      message: "All top bowlers retrieved"
     });
   } catch (err) {
     console.log(err);
@@ -264,7 +264,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
           {
             day: "2-digit",
             month: "short",
-            year: "numeric",
+            year: "numeric"
           }
         ));
         dates.push({ match_date: format_date });
@@ -273,12 +273,12 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats",
+          customMessage: "Cannot find any team stats"
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!",
+        message: "Retrieved all the team stats!"
       });
     } else if (
       stats_type == "largest_victory" ||
@@ -325,7 +325,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
           {
             day: "2-digit",
             month: "short",
-            year: "numeric",
+            year: "numeric"
           }
         ));
         dates.push({ match_date: format_date });
@@ -334,12 +334,12 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats",
+          customMessage: "Cannot find any team stats"
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!",
+        message: "Retrieved all the team stats!"
       });
     }
   } catch (err) {
@@ -470,7 +470,7 @@ router.post("/teams/fixtures", async (req, res) => {
       onedate.date = onedate.date = date.toLocaleDateString("en-IN", {
         day: "2-digit",
         month: "short",
-        year: "numeric",
+        year: "numeric"
       });
       // dates.push({ match_date: format_date });
     }
@@ -483,7 +483,7 @@ router.post("/teams/fixtures", async (req, res) => {
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Fixtures received",
+      message: "Fixtures received"
     });
   } catch (err) {
     console.log(err);

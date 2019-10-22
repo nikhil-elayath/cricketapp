@@ -7,6 +7,7 @@ import {
   getBatsmanStats
 } from "../actions/PlayerAction";
 import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
 
 export class PlayerBattingStats extends Component {
   componentDidMount() {
@@ -27,11 +28,36 @@ export class PlayerBattingStats extends Component {
     //     : console.log("not found")
     // );
 
-    console.log("from component", this.props.batsmanStats);
+    console.log("from component", this.props);
 
     return (
       <div>
 
+        { this.props.isLoading ?(<div
+              style={{
+                height: 500 + "px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <div>
+                <Loader
+                  type="TailSpin"
+                  color="#2980b9"
+                  height="100"
+                  width="100"
+                />
+              </div>
+              <span
+                style={{
+                  marginTop: "40px"
+                }}
+              >
+                Loading Players...
+              </span>
+            </div>): (
       <div className="bat-main">
         <div className="battting-main-div">
           <div className="battting-Test-div">
@@ -504,7 +530,8 @@ export class PlayerBattingStats extends Component {
           </div>
           
         </div>
-      </div>
+        </div>
+        )}
       </div>
     );
   }
