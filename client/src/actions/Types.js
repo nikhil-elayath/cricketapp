@@ -66,3 +66,4 @@ export const GET_TEAM_STATS = "GET_TEAM_STATS";
 // Nikhil
 export const GET_NEWS_ID = "GET_NEWS_ID";
 export const GET_HOME_RECENT_MATCHES = "GET_HOME_RECENT_MATCHES";
+export const GET_PREDICTION = "GET_PREDICTION";

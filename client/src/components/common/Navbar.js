@@ -212,13 +212,13 @@ export class Navbar extends Component {
 								if not then prints no result found */}
 								{this.props.search.length !== 0 ? (
 									this.props.search.player.length !== 0 ||
-									this.props.search.team.length !== 0 ? (
-										<>
-											{/* checks for player array length in seaarch
+										this.props.search.team.length !== 0 ? (
+											<>
+												{/* checks for player array length in seaarch
 										if present map all the player available */}
-											{this.props.search.player.length !==
-											0
-												? this.props.search.player.map(
+												{this.props.search.player.length !==
+													0
+													? this.props.search.player.map(
 														mapped_search => (
 															<div>
 																<Link
@@ -249,13 +249,13 @@ export class Navbar extends Component {
 																</Link>
 															</div>
 														)
-												  )
-												: null}
+													)
+													: null}
 
-											{/* checks for team array length in seaarch
+												{/* checks for team array length in seaarch
 										if present map all the team available */}
-											{this.props.search.team.length !== 0
-												? this.props.search.team.map(
+												{this.props.search.team.length !== 0
+													? this.props.search.team.map(
 														mapped_search => (
 															<div>
 																<Link
@@ -286,16 +286,16 @@ export class Navbar extends Component {
 																</Link>
 															</div>
 														)
-												  )
-												: null}
-										</>
-									) : (
-										<div className="search-no-result">
-											<div style={{ color: "#272727" }}>
-												No result found
+													)
+													: null}
+											</>
+										) : (
+											<div className="search-no-result">
+												<div style={{ color: "#272727" }}>
+													No result found
 											</div>
-										</div>
-									)
+											</div>
+										)
 								) : null}
 							</div>
 						</li>
@@ -367,15 +367,15 @@ export class Navbar extends Component {
 											</div>
 										</>
 									) : (
-										<div>
-											<Link
-												className="user-options-item"
-												onClick={this.logout}
-											>
-												<div id="logout">Logout</div>
-											</Link>
-										</div>
-									)
+											<div>
+												<Link
+													className="user-options-item"
+													onClick={this.logout}
+												>
+													<div id="logout">Logout</div>
+												</Link>
+											</div>
+										)
 								) : null}
 							</div>
 						</li>

@@ -19,12 +19,12 @@ router.post("/teams", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team",
+        customMessage: "Cannot find any team"
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!",
+      message: "Retrieved all the teams successfully!"
     });
   } catch (err) {
     next(err);
@@ -108,7 +108,7 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
         teamOneScore: teamOneScore,
         teamTwoScore: teamTwoScore,
         teamOneWicket: teamone_wicket[0].teamone_wickets,
-        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets,
+        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets
       });
     }
 
@@ -116,7 +116,7 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
     res.status(200).json({
       status: 200,
       data: data,
-      message: "Retrived 8 recent matches list successfully!!",
+      message: "Retrived 8 recent matches list successfully!!"
     });
   } catch (err) {
     next(err);
@@ -138,12 +138,12 @@ router.post("/teams/rankings/:gender", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team",
+        customMessage: "Cannot find any team"
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!",
+      message: "Retrieved all the teams successfully!"
     });
   } catch (err) {
     next(err);
@@ -165,14 +165,14 @@ router.post("/teams/topbatsmen/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top Batsman retrieved",
+        message: "All top Batsman retrieved"
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve batsman",
-        }),
+          statusMessage: "ERROR!Bad Request cannot retrieve batsman"
+        })
       };
     }
 
@@ -196,14 +196,14 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top bowlers retrieved",
+        message: "All top bowlers retrieved"
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve bowlers",
-        }),
+          statusMessage: "ERROR!Bad Request cannot retrieve bowlers"
+        })
       };
     }
 
@@ -211,7 +211,7 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
     res.status(200).json({
       status: 200,
       data: result,
-      message: "All top bowlers retrieved",
+      message: "All top bowlers retrieved"
     });
   } catch (err) {
     console.log(err);
@@ -264,7 +264,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
           {
             day: "2-digit",
             month: "short",
-            year: "numeric",
+            year: "numeric"
           }
         ));
         dates.push({ match_date: format_date });
@@ -273,21 +273,21 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats",
+          customMessage: "Cannot find any team stats"
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!",
+        message: "Retrieved all the team stats!"
       });
     } else if (
       stats_type == "largest_victory" ||
       stats_type == "smallest_victory"
     ) {
       let order_type = stats_type == "largest_victory" ? "desc" : "asc";
-      console.log("match type", match_type);
-      console.log("stats type", stats_type);
-      console.log("order type", order_type);
+      // console.log("match type", match_type);
+      // console.log("stats type", stats_type);
+      // console.log("order type", order_type);
       const result = await db.any(
         `with tt as(with t as (with kk as(with k as(with ss as(with s as (select match_id from match_team_player where team_id='${team_id}'),
 ps as(select match_id as match_idd, match_type, cast(substring(outcome FROM '[0-9]+') as numeric) as outcome from match 
@@ -325,21 +325,21 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
           {
             day: "2-digit",
             month: "short",
-            year: "numeric",
+            year: "numeric"
           }
         ));
         dates.push({ match_date: format_date });
       }
-      console.log(dates);
+      // console.log(dates);
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats",
+          customMessage: "Cannot find any team stats"
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!",
+        message: "Retrieved all the team stats!"
       });
     }
   } catch (err) {
@@ -437,7 +437,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
 
 router.post("/teams/fixtures", async (req, res) => {
   const team_name = req.body.team_name;
-  console.log("team name", team_name);
+  // console.log("team name", team_name);
 
   try {
     // const player_gender = req.params.player_gender;
@@ -446,30 +446,44 @@ router.post("/teams/fixtures", async (req, res) => {
     // let gender = req.body.player_gender;
     // if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
     const result = await db.any(
-      `select distinct * from fixtures where team_one='${team_name}' or team_two='${team_name}' `
+      `with fix as (select  * from fixtures where team_one='Australia' or team_two='Australia'),
+      team_one_ids as (select team_id as team_one_id, team_one, team_two, venue,gender, team.team_image as team_one_image, date  from team inner join fix 
+      on team_name=team_one)
+      select team_id as team_two_id, team_one_id, team_one, team_two, venue, gender,team_one_image,team.team_image as team_two_image, date  from team inner join team_one_ids 
+      on team_name=team_two`
     );
-    const images = await db.any(
-      `select team_image from team where team_name='${team_name}'`
-    );
+    // const images = await db.any(
+    //   `select team_image from team where team_name='${team_name}'`
+    // );
+    // const ids = await db.any(`with fix as (select  * from fixtures where team_one='${team_name}' or team_two='${team_name}'),
+    // team_one_ids as (select team_id as team_one_id, team_one, team_two, venue,gender  from team inner join fix
+    // on team_name=team_one)
+    // select team_id as team_two_id, team_one_id, team_one, team_two, venue, gender  from team inner join team_one_ids
+    // on team_name=team_two`);
+
+    // console.log(images);
     let dates = [];
     for (onedate of result) {
-      console.log("some date", onedate);
+      // console.log("some date", onedate);
       // console.log("date - ", onedate);
       var date = new Date(onedate.date);
       onedate.date = onedate.date = date.toLocaleDateString("en-IN", {
         day: "2-digit",
         month: "short",
-        year: "numeric",
+        year: "numeric"
       });
       // dates.push({ match_date: format_date });
     }
-    console.log("FIXTURES", result);
-    // data = { result };
+    // console.log("FIXTURES", result);
+    // data = [{ result: result, images: images }];
+    // data.result = result;
+    // data.images = images;
+    // console.log(data);
 
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Fixtures received",
+      message: "Fixtures received"
     });
   } catch (err) {
     console.log(err);

@@ -1,14 +1,20 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamFixtures.css";
-import { getFixtures } from "../actions/Teams";
+import { getFixtures, getPrediction } from "../actions/Teams";
 
 export class TeamFixtures extends Component {
   componentDidMount() {
     this.props.getFixtures({ team_name: this.props.teams.team_name });
-    console.log(this.props.teams.team_name);
+
+    this.props.getPrediction({ team_id: this.props.teams.team_id });
   }
+  // OnPredictButtonClick() {
+  //   console.log("predict button clicked");
+  //   this.props.getPrediction({ team_id: this.props.teams.team_id });
+  // }
   render() {
+    console.log("reducer", this.props.fixtures);
     return (
       <div id="fixture-container">
         <div id="fixture">
@@ -36,28 +42,51 @@ export class TeamFixtures extends Component {
           </div> */}
 
           <div id="fix-main-grid">
-            {this.props.fixtures.map(fixtures => (
-              <div id="fixgrid-item1">
-                {/* //main grid container */}
-                <div id="fixture-container">
-                  {/* first grid item */}
-                  <p id="fix-date">{fixtures.date}</p>
-                  {/* second grid item */}
-                  <p id="fix-teams">
-                    {fixtures.team_one}vs
-                    {fixtures.team_two}
-                  </p>
-                  <p id="fix-venue">{fixtures.venue}</p>
-                  <p id="fix-time">{fixtures.time}</p>
-                  {/* <img
-                    // id="pImage"
-                    // className="playerImage"
-                    className="main_img"
-                    src={`data:image/jpeg;base64,${fixtures.news_image}`}
-                  ></img> */}
-                </div>
-              </div>
-            ))}
+            {this.props.fixtures
+              ? this.props.fixtures.map(fixtures => (
+                  <div id="fixgrid-item1">
+                    {/* //main grid container */}
+                    <div id="fixture-container">
+                      {/* {this.props.fixtures.images.map(images => (
+                        <div
+                          className="div-news-images"
+                          style={{
+                            backgroundImage: `url(data:image/jpeg;base64,${images.team_image}`,
+                          }}
+                        /> */}
+                      {/* ))} */}
+                      {/* first grid item */}
+                      <p id="fix-date">{fixtures.date}</p>
+                      {/* second grid item */}
+                      <p id="fix-teams">
+                        {fixtures.team_one}vs
+                        {fixtures.team_two}
+                      </p>
+                      <p id="fix-venue">{fixtures.venue}</p>
+                      <p id="fix-time">{fixtures.time}</p>
+                      {/* <img
+                      // id="pImage"
+                      // className="playerImage"
+                      className="main_img"
+                      src={`data:image/jpeg;base64,${fixtures.news_image}`}
+                    ></img> */}
+                      <button
+                        id="editbutton"
+                        className="admineditpagebutton"
+                        onChange={this.OnChange}
+                        onClick={() =>
+                          this.props.getPrediction(
+                            fixtures.team_one_id,
+                            fixtures.team_two_id
+                          )
+                        }
+                      >
+                        Predicted result
+                      </button>
+                    </div>
+                  </div>
+                ))
+              : null}
           </div>
         </div>
       </div>
@@ -71,5 +100,5 @@ const mapStateTostate = state => ({
 
 export default connect(
   mapStateTostate,
-  { getFixtures }
+  { getFixtures, getPrediction }
 )(TeamFixtures);

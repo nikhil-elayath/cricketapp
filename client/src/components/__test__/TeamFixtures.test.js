@@ -1,53 +1,42 @@
 import React from "react";
 import { shallow } from "enzyme";
 import { TeamFixtures } from "../TeamFixtures";
-import { getFixtures } from "../../actions/Teams";
+// import { getFixtures } from "../../actions/Teams";
+const getFixtures = jest.fn();
+// const fixtures = jest.fn();
+const getPrediction = jest.fn();
+const teams = [
+  {
+    team_name: "Australia",
+  },
+];
 
-const wrapper = shallow(<TeamFixtures getFixtures={getFixtures} />);
+const fixtures = [
+  {
+    result: [{ date: "12-12-12", team_one: "India", team_two: "Australia" }],
+    images: [{ team_image: "" }],
+  },
+];
+
+const wrapper = shallow(
+  <TeamFixtures
+    getFixtures={getFixtures}
+    getPrediction={getPrediction}
+    fixtures={fixtures}
+    history={[]}
+    teams={teams}
+    match={{ isExact: true, params: { path: "/", url: "/" } }}
+  />
+);
 describe("Test TeamInfo Component", () => {
   it("render the component", () => {
     expect(wrapper).toMatchSnapshot();
   });
-  //   it("should have links for Test,ODI,T20 for Top Bowlers", () => {
-  //     expect(
-  //       wrapper
-  //         .find("p")
-  //         .at(5)
-  //         .text()
-  //     ).toBe("Top Bowlers");
-  //     expect(
-  //       wrapper
-  //         .find("p")
-  //         .at(6)
-  //         .text()
-  //     ).toBe("Test");
+  it("User should be able to see the date of the upcoming match", () => {
+    expect(wrapper.find("#fix-date").text()).toBe("12-12-12");
+  });
 
-  //     expect(
-  //       wrapper
-  //         .find("p")
-  //         .at(7)
-  //         .text()
-  //     ).toBe("ODI");
-
-  //     expect(
-  //       wrapper
-  //         .find("p")
-  //         .at(8)
-  //         .text()
-  //     ).toBe("T20");
-  //   });
-  //   it("should check if the tabs are getting clicked ", () => {
-  //     wrapper
-  //       .find("div")
-  //       .at(0)
-  //       .simulate("click");
-  //   });
-  //   it("should have className = 'container-team-details' exacty 1", () => {
-  //     expect(wrapper.find(".container-team-details").length).toBe(1);
-  //   });
-  //   it("should have className = 'grid-container-team' exacty 1", () => {
-  //     expect(wrapper.find(".grid-container-team").length).toBe(1);
-  it("should have no br tags", () => {
-    expect(wrapper.find("br").length).toBe(0);
+  it("User should be able to see the name of both the team", () => {
+    expect(wrapper.find("#fix-teams").text()).toBe("IndiavsAustralia");
   });
 });
