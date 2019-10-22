@@ -7,8 +7,15 @@ export class TeamFixtures extends Component {
   componentDidMount() {
     this.props.getFixtures({ team_name: this.props.teams.team_name });
 
-    this.props.getPrediction({ team_id: this.props.teams.team_id });
+    // this.props.getPrediction({ team_id: this.props.teams.team_id });
   }
+  sendPredictions = (t1, t2) => {
+    let team_ids = {
+      team_one: t1,
+      team_two: t2,
+    };
+    this.props.getPrediction(team_ids);
+  };
   // OnPredictButtonClick() {
   //   console.log("predict button clicked");
   //   this.props.getPrediction({ team_id: this.props.teams.team_id });
@@ -75,7 +82,7 @@ export class TeamFixtures extends Component {
                         className="admineditpagebutton"
                         onChange={this.OnChange}
                         onClick={() =>
-                          this.props.getPrediction(
+                          this.sendPredictions(
                             fixtures.team_one_id,
                             fixtures.team_two_id
                           )

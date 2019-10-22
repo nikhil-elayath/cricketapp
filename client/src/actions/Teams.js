@@ -145,12 +145,12 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
 };
 
 //prediction score
-export const getPrediction = (team_one_id, team_two_id) => dispatch => {
-  console.log("getPrediction actions- ", team_one_id, team_two_id);
+export const getPrediction = team_id => dispatch => {
+  console.log("getPrediction actions- ", team_id);
 
   // dispatch(startLoading());
   return axios
-    .post("http://127.0.0.1:5100/teamwinningchance")
+    .post("http://127.0.0.1:5100/teamwinningchance", team_id)
 
     .then(res => {
       // dispatch(stopLoading());
