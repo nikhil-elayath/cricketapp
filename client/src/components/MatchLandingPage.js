@@ -43,6 +43,7 @@ export class MatchLandingPage extends Component {
           <Navbar
             gender={this.props.gender}
             changeGender={getGender => this.props.changeGender(getGender)}
+            showGender={true}
           />
         </div>
         <div style={{ marginTop: "80px" }}>

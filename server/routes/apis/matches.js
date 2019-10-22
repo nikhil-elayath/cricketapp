@@ -59,7 +59,6 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
               select inning,total_score, total_wicket, total_over, total_ball from pss
               inner join ss on ss.inning_one=pss.inning`);
 
-      console.log(match_total_of_score);
 
       data.push({
         match_id: match_detail[0].match_id,
@@ -110,7 +109,10 @@ router.get("/recent/:gender", async (req, res, next) => {
       message: "Retrived 6 recent matches date ordered by date successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });

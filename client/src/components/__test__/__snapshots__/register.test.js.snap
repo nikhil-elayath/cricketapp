@@ -2,6 +2,7 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
+  <Connect(Navbar) />
   <form
     id="msform"
   >

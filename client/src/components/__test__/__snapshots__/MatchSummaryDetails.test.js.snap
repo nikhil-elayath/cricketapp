@@ -180,7 +180,6 @@ exports[`Testing of MatchSummaryDetails Component should render the component 1`
         className="match_details"
         style={
           Object {
-            "border": "1px solid #272727",
             "borderRadius": "5px",
           }
         }
