@@ -164,27 +164,6 @@
 	border: 0px;
 	margin-top: 40px;
 }
-#div-second-section .grid-class-topteam .info-topteam {
-	padding: 20px 0px;
-}
-#div-second-section .grid-class-topteam .p-topteam {
-	font-size: 24px;
-	margin: 0px 0px 20px 0px;
-}
-#div-second-section .p-card {
-	margin: 10px 0px;
-	/* font-size: 14px; */
-}
-#div-second-section .list-wins .p-team-name {
-	font-size: 16px;
-}
-#div-second-section .list-wins {
-	margin: 16px 14px;
-}
-#div-second-section .list-wins .img-card {
-	width: 50px;
-	height: 50px;
-}
 .loader-div {
 	display: flex;
 	justify-content: center;

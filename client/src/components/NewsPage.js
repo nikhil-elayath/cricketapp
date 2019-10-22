@@ -22,6 +22,7 @@ export class NewsPage extends Component {
 					changeGender={getGender =>
 						this.props.changeGender(getGender)
 					}
+					showGender={false}
 				/>
 				<div>
 					{this.props.news.map(news => (

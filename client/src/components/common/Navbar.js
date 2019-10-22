@@ -14,7 +14,8 @@ export class Navbar extends Component {
 		isChecked: window.innerWidth >= 526 ? true : false,
 		width: window.innerWidth,
 		redirect: false,
-		pageLink: ""
+		pageLink: "",
+		showGender: this.props.showGender
 	};
 
 	toggleChange = pageLink => {
@@ -34,7 +35,7 @@ export class Navbar extends Component {
 
 	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
-
+		console.log("navbar", this.state.showGender);
 		if (localStorage.getItem("token")) {
 			decoded_token = decode(localStorage.getItem("token"));
 		}
@@ -78,7 +79,14 @@ export class Navbar extends Component {
 						</li>
 
 						{/* toggle gender buttons for men and women */}
-						<div className="genders">
+						<div
+							className="genders"
+							style={{
+								display: this.state.showGender
+									? "default"
+									: "none"
+							}}
+						>
 							<span
 								id="men"
 								className={
