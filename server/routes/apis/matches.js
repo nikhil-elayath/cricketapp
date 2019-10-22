@@ -120,7 +120,6 @@ router.get("/recent/:gender", async (req, res, next) => {
 router.get("/summary/:id", async (req, res, next) => {
   try {
     let id = req.params.id;
-    console.log("abc", id);
 
     // top2 bowlers name, total wicket, overs, given_runs of inning 1
 
@@ -181,7 +180,6 @@ router.get("/summary/:id", async (req, res, next) => {
     const dbdates = await db.any(
       `select match_date from match_date where match_id=${id}`
     );
-    console.log(dbdates);
 
     var dates = new Array();
 
@@ -194,7 +192,6 @@ router.get("/summary/:id", async (req, res, next) => {
       }));
       dates.push({ match_date: format_date });
     }
-    console.log(dates);
 
     // tosswinner name, innings1,inning2,toss decision, competition, venue_name, venue_city
     const match_details = await db.any(`with ss as (with s as (select m.venue_id, m.toss_winner,t.team_name, m.innings_one_team , m.innings_two_team, m.toss_decision, m.competition from match as m 
@@ -260,7 +257,10 @@ router.get("/summary/:id", async (req, res, next) => {
       message: "Retrived the specific match detail successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
@@ -370,7 +370,10 @@ router.get("/scorecard/:id", async (req, res, next) => {
       message: "Retrived scorecard of the match successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
