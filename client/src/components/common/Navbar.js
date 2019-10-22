@@ -35,7 +35,6 @@ export class Navbar extends Component {
 
 	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
-		console.log("navbar", this.state.showGender);
 		if (localStorage.getItem("token")) {
 			decoded_token = decode(localStorage.getItem("token"));
 		}
