@@ -3,10 +3,11 @@ const app = require("../../index");
 
 describe("Testing Matches APIs", () => {
 
-    it("should Retrieve matches information by date", done => {
-        const date = '2008-08-20';
+    it("should Retrieve matches information on selected/provided date", done => {
+        const date = '2016-03-17';
+        const gender = 'male'
         request(app)
-            .get("/api/matches/recent/" + date)
+            .get("/api/matches/ondate/" + date + "/" + gender)
             .then(response => {
                 expect(response.statusCode).toBe(200);
                 expect(response.body).toEqual(expect.any(Object));
@@ -17,14 +18,16 @@ describe("Testing Matches APIs", () => {
             });
     });
 
-    it("should Retrieve all matches date information", done => {
+
+    it("should retrieve recent matches dates", done => {
+        let gender = 'male';
         request(app)
-            .get("/api/matches/bydate")
+            .get("/api/matches/recent/" + gender)
             .then(response => {
                 expect(response.statusCode).toBe(200);
                 expect(response.body).toEqual(expect.any(Object));
                 expect(response.body.message).toBe(
-                    "Retrived all matches date ordered by date successfully!!"
+                    "Retrived 6 recent matches date ordered by date successfully!!"
                 );
                 done();
             });

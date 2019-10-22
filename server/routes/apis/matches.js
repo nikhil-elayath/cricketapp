@@ -109,7 +109,10 @@ router.get("/recent/:gender", async (req, res, next) => {
       message: "Retrived 6 recent matches date ordered by date successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
