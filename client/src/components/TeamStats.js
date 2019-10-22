@@ -238,11 +238,25 @@ export class TeamStats extends Component {
             </div>
           ) : ( */}
           <div className="stats-display">
-            <p className="p-category-name">Highest Totals</p>
-
+            <p className="p-category-name">
+              {this.state.stats_type == "largest_victory"
+                ? "Largest Victories"
+                : this.state.stats_type == "smallest_victory"
+                ? "Smallest Victories"
+                : this.state.stats_type == "highest_score"
+                ? "Highest Totals"
+                : "Lowest Totals"}
+            </p>
+            {console.log(this.props.teamstats)}
             <div className="grid-table">
               <div className="grid-container">
-                <p className="grid-item-title">Score</p>
+                <p className="grid-item-title">
+                  {this.props.teamstats.length == 0
+                    ? null
+                    : this.props.teamstats[0].outcome
+                    ? "Margin"
+                    : "Score"}
+                </p>
                 <p className="grid-item-title">Overs</p>
                 <p className="grid-item-title">Opposition</p>
                 <p className="grid-item-title">Inns</p>
@@ -250,7 +264,11 @@ export class TeamStats extends Component {
               </div>
               {this.props.teamstats.map(teamstats => (
                 <div className="grid-container">
-                  <p className="grid-item-detail">{teamstats.total_run}</p>
+                  <p className="grid-item-detail">
+                    {teamstats.outcome
+                      ? teamstats.outcome
+                      : teamstats.total_run}
+                  </p>
                   <p className="grid-item-detail">{teamstats.overs}</p>
                   <p className="grid-item-detail">
                     {teamstats.team_one} vs {teamstats.team_two}

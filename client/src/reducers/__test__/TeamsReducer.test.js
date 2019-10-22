@@ -5,8 +5,7 @@ import {
   GET_MATCHBYTEAMID,
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS
+  GET_TEAM_STATS
 } from "../../actions/Types";
 
 describe("Testing TeamsReducer", () => {
@@ -19,8 +18,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -29,8 +28,8 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
@@ -55,8 +54,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -65,8 +64,8 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
@@ -91,8 +90,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -101,8 +100,8 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
@@ -127,8 +126,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -137,8 +136,8 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
@@ -163,8 +162,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -173,8 +172,8 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
@@ -192,15 +191,15 @@ describe("Testing TeamsReducer", () => {
 
   it("should return a state object with teams array equal to the payload in the action when the action type is GET_HIGHEST_TOTALS (when the returned state is initial state", () => {
     const action = {
-      type: GET_HIGHEST_TOTALS,
+      type: GET_TEAM_STATS,
       payload: [],
       matches: [],
       ranks: [],
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     const returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -209,57 +208,21 @@ describe("Testing TeamsReducer", () => {
       teams: action.payload,
       batsmen: action.payload,
       bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
+      teamstats: action.payload,
+      fixtures: action.payload
     });
   });
 
   it("should return a state object with teams array equal to the payload in the action when the action type is GET_HIGHEST_TOTALS (when the returned state is not an initial state", () => {
     const initialState = {
-      highesttotals: [1, 2, 3, 4, 5]
+      teamstats: [1, 2, 3, 4, 5]
     };
     const action = {
-      type: GET_HIGHEST_TOTALS,
+      type: GET_TEAM_STATS,
       payload: [{}, {}, {}]
     };
     const returnedState = TeamsReducer(initialState, action);
-    expect(returnedState).toEqual({ highesttotals: action.payload });
-  });
-
-  it("should return a state object with teams array equal to the payload in the action when the action type is GET_LOWEST_TOTALS (when the returned state is initial state", () => {
-    const action = {
-      type: GET_LOWEST_TOTALS,
-      payload: [],
-      matches: [],
-      ranks: [],
-      teams: [],
-      batsmen: [],
-      bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
-    };
-    const returnedState = TeamsReducer(undefined, action);
-    expect(returnedState).toEqual({
-      matches: action.payload,
-      ranks: action.payload,
-      teams: action.payload,
-      batsmen: action.payload,
-      bowlers: action.payload,
-      highesttotals: action.payload,
-      lowesttotals: action.payload
-    });
-  });
-
-  it("should return a state object with teams array equal to the payload in the action when the action type is GET_LOWEST_TOTALS (when the returned state is not an initial state", () => {
-    const initialState = {
-      lowesttotals: [1, 2, 3, 4, 5]
-    };
-    const action = {
-      type: GET_LOWEST_TOTALS,
-      payload: [{}, {}, {}]
-    };
-    const returnedState = TeamsReducer(initialState, action);
-    expect(returnedState).toEqual({ lowesttotals: action.payload });
+    expect(returnedState).toEqual({ teamstats: action.payload });
   });
 
   it("should return the initial state object when the action type is not mentioned or doesn't concern the reducer (when the returned state is initial state", () => {
@@ -270,8 +233,8 @@ describe("Testing TeamsReducer", () => {
       teams: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     };
     let returnedState = TeamsReducer(undefined, action);
     expect(returnedState).toEqual({
@@ -280,8 +243,8 @@ describe("Testing TeamsReducer", () => {
       ranks: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     });
     action = {
       type: "SOME_TYPE",
@@ -294,25 +257,8 @@ describe("Testing TeamsReducer", () => {
       ranks: [],
       batsmen: [],
       bowlers: [],
-      highesttotals: [],
-      lowesttotals: []
+      teamstats: [],
+      fixtures: []
     });
   });
-
-  // it("should return a state object with teams array equal to the payload in the action when the action type is GET_TEAMS (when the returned state is not an initial state", () => {
-  //   const initialState = {
-  //     teams: [1, 2, 3, 4, 5]
-  //   };
-  //   let action = {
-  //     payload: [{}, {}, {}]
-  //   };
-  //   let returnedState = teams(initialState, action);
-  //   expect(returnedState).toEqual({ teams: initialState.teams });
-  //   action = {
-  //     type: "SOME_TYPE",
-  //     payload: [{}, {}, {}]
-  //   };
-  //   returnedState = teams(initialState, action);
-  //   expect(returnedState).toEqual({ teams: initialState.teams });
-  // });
 });

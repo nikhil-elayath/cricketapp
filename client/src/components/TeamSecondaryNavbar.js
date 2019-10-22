@@ -45,7 +45,7 @@ export default class TeamSecondaryNavbar extends Component {
               <h2>{this.props.teams.team_name}</h2>
             </div>
           </div>
-          <div className="secNavLinks">
+          <div className="secNavLink">
             <ul>
               <div>
                 <li
