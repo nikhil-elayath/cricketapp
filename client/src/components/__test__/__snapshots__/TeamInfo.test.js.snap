@@ -149,8 +149,9 @@ exports[`Test TeamInfo Component render the component 1`] = `
                 className="list-info"
               >
                 <img
-                  className="img-card"
-                  src="dhoni.jpg"
+                  className="playerImage"
+                  id="pImage"
+                  src="data:image/jpeg;base64,undefined"
                 />
                 <div>
                   <p
@@ -190,8 +191,9 @@ exports[`Test TeamInfo Component render the component 1`] = `
                 className="list-info"
               >
                 <img
-                  className="img-card"
-                  src="dhoni.jpg"
+                  className="playerImage"
+                  id="pImage"
+                  src="data:image/jpeg;base64,undefined"
                 />
                 <div>
                   <p
