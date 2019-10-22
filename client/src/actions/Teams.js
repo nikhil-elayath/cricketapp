@@ -157,7 +157,7 @@ export const getPrediction = team_id => dispatch => {
       console.log("getTeamStats Action");
       dispatch({
         type: GET_PREDICTION,
-        payload: res.data.data
+        payload: res.data
       });
     })
     .catch(err => {
