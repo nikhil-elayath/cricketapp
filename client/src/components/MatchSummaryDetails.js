@@ -20,6 +20,14 @@ export class MatchSummaryDetails extends Component {
               height="100"
               width="100"
             />
+            <span
+              style={{
+                marginTop: "20px",
+                fontSize: "12px"
+              }}
+            >
+              Loading Summary
+									</span>
           </div>
         ) : (
             <div style={{ marginTop: 210 + "px" }}>

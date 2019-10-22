@@ -27,6 +27,14 @@ export class MatchStatsDetails extends Component {
               height="100"
               width="100"
             />
+            <span
+              style={{
+                marginTop: "20px",
+                fontSize: "12px"
+              }}
+            >
+              Loading Stats
+									</span>
           </div>
         ) : (
             <div className="container-for-spacing">
