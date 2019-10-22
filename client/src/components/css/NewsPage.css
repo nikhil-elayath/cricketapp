@@ -1,136 +1,110 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,600&display=swap");
 
 * {
-  font-family: Montserrat, sans-serif;
+	font-family: Montserrat, sans-serif;
 }
 .newspage-grid-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  background-color: white;
-  /* padding: 10px; */
-  color: black;
-  padding: 100px;
-  background-color: #ecf0f1;
-  /* font-size: 30px; */
-
-  /* padding-right: 100px;
-  padd */
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	background-color: white;
+	color: #272727;
+	padding: 100px;
+	background-color: #ecf0f1;
 }
 #recent-news-title {
-  font-size: 15px;
-}
-#news-date {
-  margin-left: 25px;
+	font-size: 15px;
 }
 .div-newspage {
-  width: 100%;
-  height: 140px;
-  /* border: 1px solid #707070; */
-  border-radius: 8px;
-  margin-bottom: 30px;
-  display: flex;
-  background-color: white;
+	width: 100%;
+	height: 140px;
+	border-radius: 8px;
+	margin-bottom: 30px;
+	display: flex;
+	background-color: white;
+}
+.div-newspage:hover {
+	cursor: pointer;
 }
 .newspage-grid-container p {
-  color: black;
-  display: grid;
-  /* padding: 10px; */
+	color: #272727;
+	display: grid;
 }
 .grid-item {
-  color: black;
-  background-color: #ecf0f1;
-  /* margin-top: 50px; */
-  /* border: 1px solid black; */
-  /* margin-left: 180px; */
-  column-gap: 400px;
+	color: #272727;
+	background-color: #ecf0f1;
+	column-gap: 400px;
 }
 .grid-item2 {
-  color: black;
-  background-color: white;
-  /* margin-top: 50px; */
-  /* border: 1px solid black; */
-  column-gap: 400px;
-  padding: 15px;
-  /* margin-left: 10px; */
-  text-align: left;
-  margin: 20px 60px 10px 10px;
+	color: #272727;
+	background-color: white;
+	column-gap: 400px;
+	padding: 15px;
+	border-radius: 8px;
+	text-align: left;
+	margin: 0px 60px 0px 0px;
 }
 #newspage-news-title {
-  /* margin-top: 70px; */
-  font-size: 35px;
+	font-size: 32px;
+	margin: 10px 0px 0px 0px;
 }
 
 .main_img {
-  width: 100%;
-  border-radius: 8px;
+	width: 100%;
+	border-radius: 8px;
 }
 
 .recent-news {
-  width: 100%;
-  border: 1px solid #707070;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  display: flex;
+	width: 100%;
+	border: 1px solid #707070;
+	border-radius: 8px;
+	margin-bottom: 30px;
+	display: flex;
 }
 .date {
-  font-size: 12px;
+	font-size: 12px;
 }
-
-@media screen and (max-width: 480px) {
-  .newspage-grid-container {
-    display: grid;
-    grid-template-columns: 2fr;
-    /* background-color: white; */
-    /* padding: 10px; */
-    /* color: black; */
-    padding: 0px;
-
-    /* padding: 100px; */
-
-    /* padding-right: 100px;
-        padd */
-  }
-  /* .div-newspage {
-    border: 1px solid #707070;
-  } */
-
-  #newspage-news-title {
-    margin: 50px 0px 0px 0px;
-    font-size: 30px;
-    border: 0px;
-  }
-  #news-date {
-    margin: 10px 0px 10px 0px;
-  }
-  .main_img {
-    width: 100%;
-  }
-  .grid-item {
-    color: black;
-    background-color: #ecf0f1;
-    /* margin-top: 50px; */
-    /* border: 1px solid black; */
-    /* margin-left: 180px; */
-    /* column-gap: 400px; */
-  }
-  .grid-item2 {
-    color: black;
-    background-color: white;
-    /* border: 1px solid black; */
-    padding: 5px;
-    margin: 0px 0px 0px 0px;
-  }
-  .newspage-grid-container p {
-    padding: 0px 10px 0px 10px;
-  }
+#news-date {
+	margin: 10px 0px 20px 0px;
 }
 @media screen and (max-width: 768px) {
-  .newspage-grid-container {
-    display: grid;
-    grid-template-columns: 2fr;
-    padding: 0px;
-  }
-  .grid-item {
-    padding: 10px;
-  }
+	.newspage-grid-container {
+		display: grid;
+		grid-template-columns: 2fr;
+		margin-top: 124px;
+		padding: 10px 30px;
+	}
+	.grid-item {
+		padding: 0px;
+		margin-top: 40px;
+	}
+	.grid-item2 {
+		margin: 0px;
+	}
+}
+@media screen and (max-width: 480px) {
+	.newspage-grid-container {
+		display: grid;
+		grid-template-columns: 2fr;
+		margin-top: 124px;
+		padding: 10px;
+	}
+
+	.main_img {
+		width: 100%;
+	}
+	.grid-item {
+		color: #272727;
+		background-color: #ecf0f1;
+		padding: 0px;
+		margin-top: 40px;
+	}
+	.grid-item2 {
+		color: #272727;
+		background-color: white;
+		padding: 5px;
+		margin: 0px;
+	}
+	.newspage-grid-container p {
+		padding: 0px 10px 0px 10px;
+	}
 }

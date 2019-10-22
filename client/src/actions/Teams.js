@@ -101,12 +101,11 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     });
 };
 
-export const getFixtures = (team_id, match_type) => dispatch => {
+//NIKHIL
+export const getFixtures = team_name => dispatch => {
+  console.log("get fix from actions", team_name);
   return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
-      match_type
-    )
+    .post("http://localhost:5000/cricketalpha/teams/fixtures", team_name)
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,

@@ -86,6 +86,15 @@ nav {
 	width: 100%;
 	display: none;
 }
+.item:hover {
+	transition: 0.2s;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #ffffff;
+}
+.active-link {
+	padding-bottom: 8px;
+	border-bottom: 2px solid #ffffff;
+}
 .search-box-li {
 	order: 6;
 	width: 100%;
@@ -94,6 +103,7 @@ nav {
 	order: 4;
 }
 .login-icon {
+	position: relative;
 	order: 5;
 	width: 100%;
 	text-align: center;
@@ -173,6 +183,15 @@ nav {
 	color: #272727;
 	text-decoration: none;
 }
+.search-list-item > div:first-child {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
 
 /* admin properties */
 
@@ -182,6 +201,41 @@ nav {
 
 .admin-nav-brand {
 	margin-right: auto;
+}
+
+.user-options-links {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background-color: #ffffff;
+	left: -240%;
+	margin-top: 6px;
+	border-radius: 4px;
+	display: none;
+	font-size: 16px;
+	box-shadow: 0px 2px 4px 0px #c2c2c2;
+}
+.user-options-links > div {
+	padding: 8px 12px;
+}
+.user-options-links > div:first-child {
+	border-radius: 4px 4px 0px 0px;
+}
+.user-options-links > div:last-child {
+	border-radius: 0px 0px 4px 4px;
+}
+.user-options-links > div:hover {
+	background-color: #e6e6e6;
+	cursor: pointer;
+}
+.user-options-item {
+	color: #272727;
+	text-decoration: none;
+}
+
+.login-icon:hover .link ~ .user-options-links {
+	display: block;
 }
 
 @media screen and (min-width: 526px) {

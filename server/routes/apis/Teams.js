@@ -19,12 +19,12 @@ router.post("/teams", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team"
+        customMessage: "Cannot find any team",
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!"
+      message: "Retrieved all the teams successfully!",
     });
   } catch (err) {
     next(err);
@@ -45,7 +45,7 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
       `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.gender = '${gender}' and m.match_type = '${match_type}' and (m.innings_one_team='${team_id}' or m.innings_two_team='${team_id}') order by md.match_date desc limit 8`
       // `select md.match_date, m.match_id, m.match_type from match_date as md inner join match as m on md.match_id = m.match_id where m.team_one=${team_id} or m.team_two=${team_id} order by md.match_date desc limit 8`
     );
-    console.log("matches id", result);
+    // console.log("matches id", result);
     var data = new Array();
 
     for (match of result) {
@@ -55,50 +55,50 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
       const teamone_striker_runs = await db.any(
         `select sum(d.batsman_run) as teamone_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =1;`
       );
-      console.log(teamone_striker_runs);
+      // console.log(teamone_striker_runs);
       const teamone_extra_runs = await db.any(
         `select sum(e.extras_run) as teamone_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=1;`
       );
-      console.log(teamone_extra_runs);
+      // console.log(teamone_extra_runs);
       const teamtwo_striker_runs = await db.any(
         `select sum(d.batsman_run) as teamtwo_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =2;`
       );
-      console.log(teamtwo_striker_runs);
+      // console.log(teamtwo_striker_runs);
       const teamtwo_extra_runs = await db.any(
         `select sum(e.extras_run) as teamtwo_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=2;`
       );
-      console.log(teamtwo_extra_runs);
+      // console.log(teamtwo_extra_runs);
       const teamone_wicket = await db.any(
         `select count(wicket_id) as teamone_wickets from delivery where match_id =${match_id} AND inning =1 AND wicket_id>0;`
       );
-      console.log(teamone_wicket);
+      // console.log(teamone_wicket);
       const teamtwo_wicket = await db.any(
         `select count(wicket_id) as teamtwo_wickets from delivery where match_id =${match_id} AND inning =2 AND wicket_id>0;`
       );
-      console.log(teamtwo_wicket);
+      // console.log(teamtwo_wicket);
       const teamone_name = await db.any(
         `select t.team_name as teamone_name from team as t inner join match as m on m.innings_one_team=t.team_id where match_id=${match_id};`
         // `select t.team_name as teamone_name from team as t inner join match as m on m.team_one=t.team_id where match_id=${match_id};`
       );
-      console.log(teamone_name);
+      // console.log(teamone_name);
       const teamtwo_name = await db.any(
         `select t.team_name as teamtwo_name from team as t inner join match as m on m.innings_two_team=t.team_id where match_id=${match_id};`
         // `select t.team_name as teamtwo_name from team as t inner join match as m on m.team_two=t.team_id where match_id=${match_id};`
       );
-      console.log(teamtwo_name);
+      // console.log(teamtwo_name);
       const teamwinner_name = await db.any(
         `select t.team_name as winner_name from team as t inner join match as m on m.winner=t.team_id where match_id=${match_id};`
       );
-      console.log(teamwinner_name);
+      // console.log(teamwinner_name);
 
       const teamOneScore =
         parseInt(teamone_striker_runs[0].teamone_striker_run) +
         parseInt(teamone_extra_runs[0].teamone_extra_runs);
-      console.log(teamOneScore);
+      // console.log(teamOneScore);
       const teamTwoScore =
         parseInt(teamtwo_striker_runs[0].teamtwo_striker_run) +
         parseInt(teamtwo_extra_runs[0].teamtwo_extra_runs);
-      console.log(teamTwoScore);
+      // console.log(teamTwoScore);
       data.push({
         matchId: match.match_id,
         matchType: match.match_type,
@@ -108,15 +108,15 @@ router.post("/teams/match/:team_id/:gender", async (req, res, next) => {
         teamOneScore: teamOneScore,
         teamTwoScore: teamTwoScore,
         teamOneWicket: teamone_wicket[0].teamone_wickets,
-        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets
+        teamTwoWicket: teamtwo_wicket[0].teamtwo_wickets,
       });
     }
 
-    console.log("outside", data);
+    // console.log("outside", data);
     res.status(200).json({
       status: 200,
       data: data,
-      message: "Retrived 8 recent matches list successfully!!"
+      message: "Retrived 8 recent matches list successfully!!",
     });
   } catch (err) {
     next(err);
@@ -128,8 +128,8 @@ router.post("/teams/rankings/:gender", async (req, res, next) => {
     const gender = req.params.gender;
     const match_type = req.body.match_type;
     const competition = req.body.competition;
-    console.log("match type", match_type);
-    console.log("competition", match_type);
+    // console.log("match type", match_type);
+    // console.log("competition", match_type);
     const result = await db.any(
       `select team.team_id,team.team_image, team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' and match.competition = '${competition}' and match.gender = '${gender}' and team.team_id != 0 group by team.team_id,team.team_image, team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
       // `select team.team_name, count(team.team_name) from team team left join match match on match.winner = team.team_id where match.match_type = '${match_type}' group by team.team_name having count(team.team_name)>1 order by count(team.team_name) desc fetch first 5 rows only;`
@@ -138,12 +138,12 @@ router.post("/teams/rankings/:gender", async (req, res, next) => {
     if (!result)
       throw {
         statusCode: 404,
-        customMessage: "Cannot find any team"
+        customMessage: "Cannot find any team",
       };
     res.status(200).json({
       status: 200,
       data: result,
-      message: "Retrieved all the teams successfully!"
+      message: "Retrieved all the teams successfully!",
     });
   } catch (err) {
     next(err);
@@ -155,7 +155,7 @@ router.post("/teams/topbatsmen/:player_gender", async (req, res) => {
     const player_gender = req.params.player_gender;
     var match_type = req.body.match_type;
     var player_country = req.body.player_country;
-    console.log(match_type);
+    // console.log(match_type);
 
     if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
       const result = await db.any(
@@ -165,14 +165,14 @@ router.post("/teams/topbatsmen/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top Batsman retrieved"
+        message: "All top Batsman retrieved",
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve batsman"
-        })
+          statusMessage: "ERROR!Bad Request cannot retrieve batsman",
+        }),
       };
     }
 
@@ -196,22 +196,22 @@ router.post("/teams/topbowlers/:player_gender", async (req, res) => {
       res.status(200).json({
         status: 200,
         data: result,
-        message: "All top bowlers retrieved"
+        message: "All top bowlers retrieved",
       });
     } else {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve bowlers"
-        })
+          statusMessage: "ERROR!Bad Request cannot retrieve bowlers",
+        }),
       };
     }
 
-    console.log("data is: ", result);
+    // console.log("data is: ", result);
     res.status(200).json({
       status: 200,
       data: result,
-      message: "All top bowlers retrieved"
+      message: "All top bowlers retrieved",
     });
   } catch (err) {
     console.log(err);
@@ -264,7 +264,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
           {
             day: "2-digit",
             month: "short",
-            year: "numeric"
+            year: "numeric",
           }
         ));
         dates.push({ match_date: format_date });
@@ -273,12 +273,12 @@ inner join tt on tt.innings_two_team=ll.team_id order by total_run ${order_type}
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats"
+          customMessage: "Cannot find any team stats",
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!"
+        message: "Retrieved all the team stats!",
       });
     } else if (
       stats_type == "largest_victory" ||
@@ -325,7 +325,7 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
           {
             day: "2-digit",
             month: "short",
-            year: "numeric"
+            year: "numeric",
           }
         ));
         dates.push({ match_date: format_date });
@@ -334,12 +334,12 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
       if (!result)
         throw {
           statusCode: 404,
-          customMessage: "Cannot find any team stats"
+          customMessage: "Cannot find any team stats",
         };
       res.status(200).json({
         status: 200,
         data: result,
-        message: "Retrieved all the team stats!"
+        message: "Retrieved all the team stats!",
       });
     }
   } catch (err) {
@@ -347,4 +347,132 @@ inner join tt on tt.innings_two_team=ll.team_id order by outcome ${order_type} l
   }
 });
 
+// router.get("/matches/:teamid", async (req, res, next) => {
+//   try {
+//     const team_id = req.params.team_id;
+//     console.log("called recent matches");
+//     // const result = await db.any(`SELECT * FROM matches where dates='${date}' ORDER BY runs;`);
+//     // const result = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`);
+//     const result = await db.any(
+//       `select date.match_date, m.match_type, m.match_id from match_date as date inner join match as m on date.match_id=m.match_id where match_date='${date}' ORDER BY date.match_date;`
+//     );
+//     console.log("date of match", result);
+//     var result = new Array();
+
+//     for (match of result) {
+//       console.log("match:", match.match_id);
+//       let match_id = match.match_id;
+//       const teamone_striker_runs = await db.any(
+//         `select sum(d.batsman_run) as teamone_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =1;`
+//       );
+//       console.log(teamone_striker_runs);
+//       const teamone_extra_runs = await db.any(
+//         `select sum(e.extras_run) as teamone_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=1;`
+//       );
+//       console.log(teamone_extra_runs);
+//       const teamtwo_striker_runs = await db.any(
+//         `select sum(d.batsman_run) as teamtwo_striker_run from delivery as d inner join match as m ON d.match_id =m.match_id where m.match_id =${match_id} AND d.inning =2;`
+//       );
+//       console.log(teamtwo_striker_runs);
+//       const teamtwo_extra_runs = await db.any(
+//         `select sum(e.extras_run) as teamtwo_extra_runs from extras as e inner join delivery as d ON e.extras_id =d.extra_id where d.match_id =${match_id} AND inning=2;`
+//       );
+//       console.log(teamtwo_extra_runs);
+//       const teamone_wicket = await db.any(
+//         `select count(wicket_id) as teamone_wickets from delivery where match_id =${match_id} AND inning =1 AND wicket_id>0;`
+//       );
+//       console.log(teamone_wicket);
+//       const teamtwo_wicket = await db.any(
+//         `select count(wicket_id) as teamtwo_wickets from delivery where match_id =${match_id} AND inning =2 AND wicket_id>0;;`
+//       );
+//       console.log(teamtwo_wicket);
+//       const teamone_name = await db.any(
+//         `select t.team_name as teamone_name from team as t inner join match as m on m.team_one=t.team_id where match_id=${match_id};`
+//       );
+//       console.log(teamone_name);
+//       const teamtwo_name = await db.any(
+//         `select t.team_name as teamtwo_name from team as t inner join match as m on m.team_two=t.team_id where match_id=${match_id};`
+//       );
+//       console.log(teamtwo_name);
+//       const teamwinner_name = await db.any(
+//         `select t.team_name as winner_name from team as t inner join match as m on m.winner=t.team_id where match_id=${match_id};`
+//       );
+//       console.log(teamwinner_name);
+
+//       const teamOneScore =
+//         parseInt(teamone_striker_runs[0].teamone_striker_run) +
+//         parseInt(teamone_extra_runs[0].teamone_extra_runs);
+//       console.log(teamOneScore);
+//       const teamTwoScore =
+//         parseInt(teamtwo_striker_runs[0].teamtwo_striker_run) +
+//         parseInt(teamtwo_extra_runs[0].teamtwo_extra_runs);
+//       console.log(teamTwoScore);
+//       result.push({
+//         match_id: result[0].match_id,
+//         match_type: result[0].match_type,
+//         teamOne: teamone_name[0].teamone_name,
+//         teamtwo: teamtwo_name[0].teamtwo_name,
+//         team_winner: teamwinner_name[0].winner_name,
+//         teamOneScore: teamOneScore,
+//         teamTwoScore: teamTwoScore,
+//         teamone_wicket: teamone_wicket[0].teamone_wickets,
+//         teamtwo_wicket: teamtwo_wicket[0].teamtwo_wickets
+//       });
+//     }
+
+//     console.log("outside", result);
+//     res.status(200).json({
+//       status: 200,
+//       data: result,
+//       message: "Retrived 8 recent matches list successfully!!"
+//     });
+//   } catch (err) {
+//     console.log(err);
+//     next(err);
+//   }
+// });
+
+//for fixtures
+// router.post("/teams/lowesttotals/:team_id/:gender", async (req, res, next) => {
+
+router.post("/teams/fixtures", async (req, res) => {
+  const team_name = req.body.team_name;
+  console.log("team name", team_name);
+
+  try {
+    // const player_gender = req.params.player_gender;
+    // let match_type = req.body.match_type;
+    // var player_country = req.body.player_country;
+    // let gender = req.body.player_gender;
+    // if (match_type === "ODI" || match_type === "Test" || match_type === "T20") {
+    const result = await db.any(
+      `select distinct * from fixtures where team_one='${team_name}' or team_two='${team_name}' `
+    );
+    const images = await db.any(
+      `select team_image from team where team_name='${team_name}'`
+    );
+    let dates = [];
+    for (onedate of result) {
+      console.log("some date", onedate);
+      // console.log("date - ", onedate);
+      var date = new Date(onedate.date);
+      onedate.date = onedate.date = date.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      });
+      // dates.push({ match_date: format_date });
+    }
+    console.log("FIXTURES", result);
+    // data = { result };
+
+    res.status(200).json({
+      status: 200,
+      data: result,
+      message: "Fixtures received",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 module.exports = router;

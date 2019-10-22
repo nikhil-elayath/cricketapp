@@ -1,260 +1,268 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing Player Landing Page should render the component 1`] = `
-<div
-  style={
-    Object {
-      "padding": "12px",
+<div>
+  <Connect(Navbar)
+    changeGender={[Function]}
+    gender="male"
+  />
+  <div
+    style={
+      Object {
+        "padding": "12px",
+      }
     }
-  }
->
-  <h1
-    id="playerHeading"
   >
-    Players
-  </h1>
-  <div
-    className="container"
-  >
+    <h1
+      id="playerHeading"
+    >
+      Players
+    </h1>
     <div
-      className="matchFormatOptons"
+      className="container"
     >
       <div
-        className="selectNav"
+        className="matchFormatOptons"
       >
-        <a
-          className="active"
-          id="jest-test-tab"
-          onClick={[Function]}
-          style={
-            Object {
-              "borderBottomLeftRadius": "8px",
-              "borderLeft": "1px solid",
-              "borderTopLeftRadius": "8px",
-              "cursor": "pointer",
-            }
-          }
-        >
-          Test
-        </a>
-        <a
-          className="notActive"
-          id="jest-ODI-tab"
-          onClick={[Function]}
-          style={
-            Object {
-              "cursor": "pointer",
-            }
-          }
-        >
-          ODI
-        </a>
-        <a
-          className="notActive"
-          id="jest-T20-tab"
-          onClick={[Function]}
-          style={
-            Object {
-              "borderBottomRightRadius": "8px",
-              "borderRight": "1px solid",
-              "borderTopRightRadius": "8px",
-              "cursor": "pointer",
-            }
-          }
-        >
-          T20
-        </a>
-      </div>
-    </div>
-  </div>
-  <div
-    className="playersDiv"
-  >
-    <div
-      className="playerBatsman"
-    >
-      <h1
-        id="jest-heading-Top-Batsman"
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        Top Batsmen
-      </h1>
-      <div
-        className="singlePlayerDiv"
-        id="jest-history-1"
-        onClick={[Function]}
-      >
-        <img
-          className="playerImage"
-          id="pImage"
-          src="data:image/jpeg;base64,undefined"
-        />
         <div
-          className="playerInfoDiv"
-          style={
-            Object {
-              "marginTop": "8px",
+          className="selectNav"
+        >
+          <a
+            className="active"
+            id="jest-test-tab"
+            onClick={[Function]}
+            style={
+              Object {
+                "borderBottomLeftRadius": "8px",
+                "borderLeft": "1px solid",
+                "borderTopLeftRadius": "8px",
+                "cursor": "pointer",
+              }
             }
-          }
-        >
-          <span
-            id="playerName"
           >
-            virat kohli
-          </span>
-          <span
-            id="playerMinInfo"
+            Test
+          </a>
+          <a
+            className="notActive"
+            id="jest-ODI-tab"
+            onClick={[Function]}
+            style={
+              Object {
+                "cursor": "pointer",
+              }
+            }
           >
-            Right Handed Batsman
-          </span>
-          <span
-            id="playerMinInfo"
-          />
-        </div>
-        <div
-          className="playerInfoDiv"
-        >
-          <span
-            className="playerStatValue"
-          />
-          <span
-            id="playerMinInfo"
+            ODI
+          </a>
+          <a
+            className="notActive"
+            id="jest-T20-tab"
+            onClick={[Function]}
+            style={
+              Object {
+                "borderBottomRightRadius": "8px",
+                "borderRight": "1px solid",
+                "borderTopRightRadius": "8px",
+                "cursor": "pointer",
+              }
+            }
           >
-            Innings: 12
-          </span>
-          <span
-            id="playerMinInfo"
-          >
-            Average: 52.12
-          </span>
+            T20
+          </a>
         </div>
       </div>
     </div>
     <div
-      className="playerBowler"
+      className="playersDiv"
     >
-      <h1
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        Top Bowlers
-      </h1>
       <div
-        className="singlePlayerDiv"
-        id="jest-history-2"
-        onClick={[Function]}
+        className="playerBatsman"
       >
-        <img
-          className="playerImage"
-          src="virat.jpg"
-        />
-        <div
-          className="playerInfoDiv"
+        <h1
+          id="jest-heading-Top-Batsman"
           style={
             Object {
-              "marginTop": "8px",
+              "textAlign": "center",
             }
           }
         >
-          <span
-            id="playerName"
-          >
-            SL Malinga
-          </span>
-          <span
-            id="playerMinInfo"
-          >
-            Right Arm Medium
-          </span>
-          <span
-            id="playerMinInfo"
-          />
-        </div>
+          Top Batsmen
+        </h1>
         <div
-          className="playerInfoDiv"
+          className="singlePlayerDiv"
+          id="jest-history-1"
+          onClick={[Function]}
         >
-          <span
-            className="playerStatValue"
+          <img
+            className="playerImage"
+            id="pImage"
+            src="data:image/jpeg;base64,undefined"
           />
-          <span
-            id="playerMinInfo"
+          <div
+            className="playerInfoDiv"
+            style={
+              Object {
+                "marginTop": "8px",
+              }
+            }
           >
-            Innings: 12
-          </span>
-          <span
-            id="playerMinInfo"
+            <span
+              id="playerName"
+            >
+              virat kohli
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Right Handed Batsman
+            </span>
+            <span
+              id="playerMinInfo"
+            />
+          </div>
+          <div
+            className="playerInfoDiv"
           >
-            Average: 52.12
-          </span>
+            <span
+              className="playerStatValue"
+            />
+            <span
+              id="playerMinInfo"
+            >
+              Innings: 12
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Average: 52.12
+            </span>
+          </div>
         </div>
       </div>
-    </div>
-    <div
-      className="playerType"
-    >
-      <h1
-        style={
-          Object {
-            "textAlign": "center",
-          }
-        }
-      >
-        Most 6s
-      </h1>
       <div
-        className="singlePlayerDiv"
-        id="jest-history-mostSixes"
-        onClick={[Function]}
+        className="playerBowler"
       >
-        <img
-          className="playerImage"
-          src="virat.jpg"
-        />
-        <div
-          className="playerInfoDiv"
+        <h1
           style={
             Object {
-              "marginTop": "8px",
+              "textAlign": "center",
             }
           }
         >
-          <span
-            id="playerName"
-          >
-            virat kohli
-          </span>
-          <span
-            id="playerMinInfo"
-          >
-            Right Arm Medium
-          </span>
-          <span
-            id="playerMinInfo"
-          />
-        </div>
+          Top Bowlers
+        </h1>
         <div
-          className="playerInfoDiv"
+          className="singlePlayerDiv"
+          id="jest-history-2"
+          onClick={[Function]}
         >
-          <span
-            className="playerStatValue"
+          <img
+            className="playerImage"
+            id="pImage"
+            src="data:image/jpeg;base64,undefined"
           />
-          <span
-            id="playerMinInfo"
+          <div
+            className="playerInfoDiv"
+            style={
+              Object {
+                "marginTop": "8px",
+              }
+            }
           >
-            Innings: 12
-          </span>
-          <span
-            id="playerMinInfo"
+            <span
+              id="playerName"
+            >
+              SL Malinga
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Right Arm Medium
+            </span>
+            <span
+              id="playerMinInfo"
+            />
+          </div>
+          <div
+            className="playerInfoDiv"
           >
-            Average: 52.12
-          </span>
+            <span
+              className="playerStatValue"
+            />
+            <span
+              id="playerMinInfo"
+            >
+              Innings: 12
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Average: 52.12
+            </span>
+          </div>
+        </div>
+      </div>
+      <div
+        className="playerType"
+      >
+        <h1
+          style={
+            Object {
+              "textAlign": "center",
+            }
+          }
+        >
+          Most 6s
+        </h1>
+        <div
+          className="singlePlayerDiv"
+          id="jest-history-mostSixes"
+          onClick={[Function]}
+        >
+          <img
+            className="playerImage"
+            id="pImage"
+            src="data:image/jpeg;base64,undefined"
+          />
+          <div
+            className="playerInfoDiv"
+            style={
+              Object {
+                "marginTop": "8px",
+              }
+            }
+          >
+            <span
+              id="playerName"
+            >
+              virat kohli
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Right Arm Medium
+            </span>
+            <span
+              id="playerMinInfo"
+            />
+          </div>
+          <div
+            className="playerInfoDiv"
+          >
+            <span
+              className="playerStatValue"
+            />
+            <span
+              id="playerMinInfo"
+            >
+              Innings: 12
+            </span>
+            <span
+              id="playerMinInfo"
+            >
+              Average: 52.12
+            </span>
+          </div>
         </div>
       </div>
     </div>

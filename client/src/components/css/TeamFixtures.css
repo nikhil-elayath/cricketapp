@@ -44,3 +44,35 @@
   font-size: 12px;
   color: #707070;
 }
+#test {
+  color: rebeccapurple;
+}
+#fixture-container {
+  margin: 100px 0px 0px 0px;
+}
+#fix-team {
+  color: #16a085;
+}
+
+#map {
+  margin: 500px 0px 0px 0px;
+}
+
+#fixture-details {
+  display: grid;
+}
+
+#fix-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0px 10px 10px 10px;
+  margin: 200px 0px 0px 0px;
+}
+#fixgrid-item1 {
+  color: black;
+  padding: 0px 0px 0px 20px;
+  border: 1px solid #16a085;
+}
+#fixture {
+  margin: 100px 0px 0px 0px;
+}

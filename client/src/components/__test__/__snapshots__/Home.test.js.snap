@@ -4,12 +4,16 @@ exports[`Testing for home component should render the component 1`] = `
 <div>
   <Connect(Navbar)
     changeGender={[Function]}
+    gender="male"
   />
   <div
-    className="div-container"
+    className="div-section"
   >
     <div
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
       className="div-news-section"
     >
       <Link
@@ -54,129 +58,88 @@ exports[`Testing for home component should render the component 1`] = `
     </div>
     <div
       id="div-second-section"
+<<<<<<< HEAD
+=======
 =======
       className="div-section"
 >>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
+>>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
     >
       <div
-        className="div-news-section"
+        id="home-recent-matches"
       >
+        <div
+          id="home-recent-matches-title"
+        >
+          Recent Matches
+        </div>
         <Link
-          className="link-news"
+          id="link-recent-matches"
           to={
             Object {
-              "pathname": "/newsbyid/1",
+              "pathname": "/match/details/1",
             }
           }
         >
           <div
-            className="div-news"
+            id="home-match"
           >
             <div
-              className="div-news-images"
-              style={
-                Object {
-                  "backgroundImage": "url(vk.jpeg)",
-                }
-              }
-            />
-            <div
-              className="div-news-details"
+              id="team-score"
             >
               <p
-                className="p-news"
-                id="p-news"
+                id="home-recent-matches-teamOne"
               >
-                <b>
-                  this is title
-                </b>
+                India
               </p>
               <p
-                className="home-news-date"
-                id="home-news-date"
+                id="home-recent-matches-team-one-score"
               >
-                12-12-12
+                120
+                /
               </p>
+            </div>
+            <div
+              id="team-score"
+            >
+              <p
+                id="home-recent-matches-teamTwo"
+              >
+                Pakistan
+                 
+              </p>
+              <p
+                id="home-recent-matches-team-two-score"
+              >
+                150
+                /
+                 
+                 
+              </p>
+            </div>
+            <div
+              id="home-recent-matches-result"
+            >
+              <p
+                id="home-recent-matches-team-winner"
+              >
+                Pakistan
+                 
+                 
+              </p>
+            </div>
+            <div
+              id="home-recent-match-date"
+            >
+              12-12-12
             </div>
           </div>
         </Link>
       </div>
-      <div
-        id="div-second-section"
-      >
-        <div
-          id="home-recent-matches"
-        >
-          <div
-            id="home-recent-matches-title"
-          >
-            Recent Matches
-          </div>
-          <Link
-            id="link-recent-matches"
-            to={
-              Object {
-                "pathname": "/match/details/1",
-              }
-            }
-          >
-            <div
-              id="home-match"
-            >
-              <div
-                id="team-score"
-              >
-                <p
-                  id="home-recent-matches-teamOne"
-                >
-                  India
-                </p>
-                <p
-                  id="home-recent-matches-team-one-score"
-                >
-                  120
-                  /
-                </p>
-              </div>
-              <div
-                id="team-score"
-              >
-                <p
-                  id="home-recent-matches-teamTwo"
-                >
-                  Pakistan
-                   
-                </p>
-                <p
-                  id="home-recent-matches-team-two-score"
-                >
-                  150
-                  /
-                   
-                   
-                </p>
-              </div>
-              <div
-                id="home-recent-matches-result"
-              >
-                <p
-                  id="home-recent-matches-team-winner"
-                >
-                  Pakistan
-                   
-                   
-                </p>
-              </div>
-              <div
-                id="home-recent-match-date"
-              >
-                12-12-12
-              </div>
-            </div>
-          </Link>
-        </div>
-        <Connect(MostWins) />
-      </div>
+      <Connect(MostWins)
+        changeGender={[Function]}
+        gender="male"
+      />
     </div>
   </div>
 </div>
