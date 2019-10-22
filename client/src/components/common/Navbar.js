@@ -14,7 +14,7 @@ export class Navbar extends Component {
 		isChecked: window.innerWidth >= 526 ? true : false,
 		width: window.innerWidth,
 		redirect: false,
-		pageLink: "",
+		pageLink: this.props.pageLink ? this.props.pageLink : "",
 		showGender: this.props.showGender
 	};
 
