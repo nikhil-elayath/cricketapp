@@ -21,6 +21,11 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
       </li>
       <div
         className="genders"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
       >
         <span
           className=""
@@ -137,6 +142,13 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
               }
             >
               <div
+                style={
+                  Object {
+                    "backgroundImage": "url(data:image/jpeg;base64,undefined",
+                  }
+                }
+              />
+              <div
                 className="search-suggestion"
                 id="player-search-58"
               >
@@ -153,6 +165,13 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
                 }
               }
             >
+              <div
+                style={
+                  Object {
+                    "backgroundImage": "url(data:image/jpeg;base64,undefined",
+                  }
+                }
+              />
               <div
                 className="search-suggestion"
                 id="team-search-10"

@@ -5,15 +5,12 @@ exports[`Testing for home component should render the component 1`] = `
   <Connect(Navbar)
     changeGender={[Function]}
     gender="male"
+    showGender={true}
   />
   <div
     className="div-section"
   >
     <div
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
       className="div-news-section"
     >
       <Link
@@ -31,7 +28,7 @@ exports[`Testing for home component should render the component 1`] = `
             className="div-news-images"
             style={
               Object {
-                "backgroundImage": "url(vk.jpeg)",
+                "backgroundImage": "url(data:image/jpeg;base64,undefined",
               }
             }
           />
@@ -58,12 +55,6 @@ exports[`Testing for home component should render the component 1`] = `
     </div>
     <div
       id="div-second-section"
-<<<<<<< HEAD
-=======
-=======
-      className="div-section"
->>>>>>> 0ab3b062ba51a609960cb703269d58cf69b70d34
->>>>>>> d39022411bcba92990b0f26073b69fa0c23b8944
     >
       <div
         id="home-recent-matches"
@@ -73,13 +64,9 @@ exports[`Testing for home component should render the component 1`] = `
         >
           Recent Matches
         </div>
-        <Link
+        <div
           id="link-recent-matches"
-          to={
-            Object {
-              "pathname": "/match/details/1",
-            }
-          }
+          onClick={[Function]}
         >
           <div
             id="home-match"
@@ -134,7 +121,7 @@ exports[`Testing for home component should render the component 1`] = `
               12-12-12
             </div>
           </div>
-        </Link>
+        </div>
       </div>
       <Connect(MostWins)
         changeGender={[Function]}

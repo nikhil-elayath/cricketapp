@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import { login, getUsers } from "../actions/Users.js";
 import { connect } from "react-redux";
-// import Navbar from "./common/Navbar";
+import Navbar from "./common/Navbar";
 
 import { Link } from "react-router-dom";
 import "./css/Login.css";
@@ -77,7 +77,7 @@ export class Login extends Component {
   render() {
     return (
       <div>
-        {/* <Navbar /> */}
+        <Navbar />
         <form id="msform">
           <fieldset>
             <h1>Login</h1>

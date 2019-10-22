@@ -7,7 +7,7 @@ const db = pg(postgresURL);
 // const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 
 router.post("/search", async (req, res) => {
-	console.log("from api", req.body.search);
+	// console.log("from api", req.body.search);
 	const player = await db.any(
 		`select player_id, player_name, player_image from player where player_name ilike '${req.body.search}%' or player_name ilike '%${req.body.search}'  limit 2`
 	);
@@ -19,6 +19,7 @@ router.post("/search", async (req, res) => {
 	data.team = team;
 
 	data.player = player;
+	console.log("search response sent sucessfully");
 	res.status(200).json({
 		status: 200,
 		data: data,

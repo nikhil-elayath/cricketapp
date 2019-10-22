@@ -20,6 +20,7 @@ export class NewsPage extends Component {
         <Navbar
           gender={this.props.gener}
           changeGender={getGender => this.props.changeGender(getGender)}
+          showGender={false}
         />
         <div>
           {this.props.news.map(news => (

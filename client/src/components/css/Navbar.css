@@ -182,6 +182,8 @@ nav {
 	font-weight: 500;
 	color: #272727;
 	text-decoration: none;
+	display: flex;
+	align-items: center;
 }
 .search-list-item > div:first-child {
 	display: inline-block;
@@ -191,6 +193,7 @@ nav {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
+	margin-right: 10px;
 }
 
 /* admin properties */
@@ -201,6 +204,15 @@ nav {
 
 .admin-nav-brand {
 	margin-right: auto;
+}
+.admin-ul .admin-item .link {
+	padding: 10px 0px;
+}
+
+.admin-ul .admin-item:hover .link {
+	transition: 0.2s;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #ffffff;
 }
 
 .user-options-links {
@@ -247,7 +259,7 @@ nav {
 		font-size: 12px;
 	}
 	#adminteam {
-		margin-left: 30px;
+		margin: 0px 30px;
 	}
 }
 

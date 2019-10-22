@@ -13,11 +13,6 @@ exports[`Testing Player Landing Page should render the component 1`] = `
       }
     }
   >
-    <h1
-      id="playerHeading"
-    >
-      Players
-    </h1>
     <div
       className="container"
     >
@@ -109,7 +104,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
             <span
               id="playerName"
             >
-              virat kohli
+              AB de Villiers
             </span>
             <span
               id="playerMinInfo"
@@ -172,7 +167,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
             <span
               id="playerName"
             >
-              SL Malinga
+              DW Steyn
             </span>
             <span
               id="playerMinInfo"
@@ -235,7 +230,7 @@ exports[`Testing Player Landing Page should render the component 1`] = `
             <span
               id="playerName"
             >
-              virat kohli
+              AB de Villiers
             </span>
             <span
               id="playerMinInfo"

@@ -120,8 +120,7 @@ export const getFixtures = team_name => dispatch => {
 
 export const getTeamStats = (team_id, gender, type) => dispatch => {
   console.log("getTeamStats action- ", team_id, gender, type);
-
-  // dispatch(startLoading());
+  dispatch(startLoading());
   return axios
     .post(
       "http://localhost:5000/cricketalpha/teams/stats/" +
@@ -132,7 +131,7 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
     )
 
     .then(res => {
-      // dispatch(stopLoading());
+      dispatch(stopLoading());
       console.log("getTeamStats Action");
       dispatch({
         type: GET_TEAM_STATS,
@@ -140,7 +139,7 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
       });
     })
     .catch(err => {
-      // dispatch(startLoading());
+      dispatch(startLoading());
       console.log(err);
     });
 };

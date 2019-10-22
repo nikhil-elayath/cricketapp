@@ -10,17 +10,16 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
   try {
     let date = req.params.date;
     let gender = req.params.gender;
-    console.log(gender);
-    console.log(date);
+
     const dateOfMatch = await db.any(`select date.match_date, m.match_type, m.match_id from match_date as date 
         inner join match as m on date.match_id=m.match_id where match_date='${date}' and gender='${gender}' 
         ORDER BY date.match_date;`);
-    console.log("date of match", dateOfMatch);
+
     var data = new Array();
 
     for (match of dateOfMatch) {
       let match_id = match.match_id;
-      console.log(match_id);
+
       const match_detail = await db.any(`with m as (with ss as (with s as (select m.match_id, m.innings_two_team, 
         m.outcome as won_by,winner, m.match_type, m.player_of_the_match,t.team_name as team_one_name, t.team_image as team_one_img 
         from match as m 
@@ -59,7 +58,6 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
               select inning,total_score, total_wicket, total_over, total_ball from pss
               inner join ss on ss.inning_one=pss.inning`);
 
-      console.log(match_total_of_score);
 
       data.push({
         match_id: match_detail[0].match_id,
@@ -89,7 +87,10 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
       message: "Retrived matches list by date successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
@@ -110,7 +111,10 @@ router.get("/recent/:gender", async (req, res, next) => {
       message: "Retrived 6 recent matches date ordered by date successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
@@ -118,7 +122,6 @@ router.get("/recent/:gender", async (req, res, next) => {
 router.get("/summary/:id", async (req, res, next) => {
   try {
     let id = req.params.id;
-    console.log("abc", id);
 
     // top2 bowlers name, total wicket, overs, given_runs of inning 1
 
@@ -179,7 +182,6 @@ router.get("/summary/:id", async (req, res, next) => {
     const dbdates = await db.any(
       `select match_date from match_date where match_id=${id}`
     );
-    console.log(dbdates);
 
     var dates = new Array();
 
@@ -192,7 +194,6 @@ router.get("/summary/:id", async (req, res, next) => {
       }));
       dates.push({ match_date: format_date });
     }
-    console.log(dates);
 
     // tosswinner name, innings1,inning2,toss decision, competition, venue_name, venue_city
     const match_details = await db.any(`with ss as (with s as (select m.venue_id, m.toss_winner,t.team_name, m.innings_one_team , m.innings_two_team, m.toss_decision, m.competition from match as m 
@@ -203,9 +204,6 @@ router.get("/summary/:id", async (req, res, next) => {
             pss as( select team_id, team_name as toss_winner_team from team where team_id in (select toss_winner from ss))
             select toss_winner_team, team_name, innings_one_team,innings_two_team,toss_decision, competition, venue_name, venue_city
             from pss inner join ss on ss.toss_winner=pss.team_id`);
-
-    console.log(match_details[0].innings_one_team);
-    console.log(match_details[0].innings_two_team);
 
     // teamone name
     const teamone_name = await db.any(
@@ -258,14 +256,16 @@ router.get("/summary/:id", async (req, res, next) => {
       message: "Retrived the specific match detail successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });
 
 router.get("/scorecard/:id", async (req, res, next) => {
   let id = req.params.id;
-  console.log("scorecard", id);
 
   var data = new Array();
 
@@ -275,7 +275,6 @@ router.get("/scorecard/:id", async (req, res, next) => {
     );
 
     for (inning of innings) {
-      console.log(inning.inning);
 
       // Batsman_name, batsman_run, ball_faced, fours, sixes, striker_rate, wicket_type, bowler_name(out by whom),fielder_name, fielder_two_name
 
@@ -334,7 +333,7 @@ router.get("/scorecard/:id", async (req, res, next) => {
             pss as(select match_id as match_idd, count(overs)/6 as total_overs from delivery where match_id=${id} and inning=${inning.inning} and extra_id=0 and match_id in 
             (select match_id from ss) group by match_idd) 
             select total_runs, total_wicket, total_overs from pss inner join ss on ss.match_id=pss.match_idd; `);
-      console.log(total_score);
+
 
       // bowler_name,total_over, given_runs, wicket_taken, maiden_over(not accurate), total_extras, ecom
 
@@ -368,7 +367,10 @@ router.get("/scorecard/:id", async (req, res, next) => {
       message: "Retrived scorecard of the match successfully!!"
     });
   } catch (err) {
-    console.log(err);
+    res.status(400).json({
+      status: 400,
+      message: "Unexpected error"
+    });
     next(err);
   }
 });

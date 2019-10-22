@@ -16,10 +16,10 @@ describe("test  Component", () => {
     expect(wrapper).toMatchSnapshot();
   });
   it("there should be a div", () => {
-    expect(wrapper.find("div").length).toBe(1);
+    expect(wrapper.find("div").length).toBe(2);
   });
   it("there should be a navbar", () => {
-    expect(wrapper.find("NavBar").length).toBe(0);
+    expect(wrapper.find("Navbar").length).toBe(1);
   });
   it("there should be a h1", () => {
     expect(wrapper.find("h1").length).toBe(1);
