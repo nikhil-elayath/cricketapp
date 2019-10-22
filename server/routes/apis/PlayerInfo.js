@@ -4,7 +4,7 @@ const pg = require("pg-promise")();
 const config = require("config");
 
 // const postgresURL = config.get("postgresURL");
-const db = pg("postgres://postgres:root@192.168.0.28:5432/cricketalpha");
+const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 
 router.get("/allPlayer", async (req, res) => {
   try {
