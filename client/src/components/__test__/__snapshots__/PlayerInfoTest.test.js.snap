@@ -59,14 +59,6 @@ exports[`Testing PlayerInfo should render the component 1`] = `
             Bowling Stats
           </li>
         </Link>
-        <Link
-          className="secLink"
-          to="/performance"
-        >
-          <li>
-            Performance
-          </li>
-        </Link>
       </ul>
     </div>
   </div>
@@ -182,9 +174,8 @@ exports[`Testing PlayerInfo should render the component 1`] = `
           className="pl-stats-details"
           style={
             Object {
-              "marginBottom": "15px",
-              "marginLeft": "15px",
-              "marginTop": "15px",
+              "backgroundColor": "white",
+              "padding": "6px",
               "textAlign": "left",
             }
           }
@@ -216,10 +207,8 @@ exports[`Testing PlayerInfo should render the component 1`] = `
           className="pl-stats-details"
           style={
             Object {
-              "color": "#707070",
-              "marginBottom": "20px",
-              "marginLeft": "20px",
-              "marginTop": "20px",
+              "backgroundColor": "white",
+              "padding": "6px",
               "textAlign": "left",
             }
           }
@@ -251,9 +240,7 @@ exports[`Testing PlayerInfo should render the component 1`] = `
           className="pl-stats-details"
           style={
             Object {
-              "marginBottom": "20px",
-              "marginLeft": "20px",
-              "marginTop": "20px",
+              "backgroundColor": "white",
               "textAlign": "left",
             }
           }

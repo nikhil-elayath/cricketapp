@@ -95,9 +95,6 @@ export class PlayerInfo extends Component {
                 >
                   <li>Bowling Stats</li>
                 </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
-                </Link>
               </ul>
             </div>
           </div>
@@ -166,9 +163,11 @@ export class PlayerInfo extends Component {
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 15 + "px",
-                    marginLeft: 15 + "px",
-                    marginBottom: 15 + "px"
+                    // marginTop: 15 + "px",
+                    // marginLeft: 15 + "px",
+                    // marginBottom: 15 + "px",
+                    padding: 6 + "px",
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -191,10 +190,8 @@ export class PlayerInfo extends Component {
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 20 + "px",
-                    marginLeft: 20 + "px",
-                    marginBottom: 20 + "px",
-                    color: "#707070"
+                    padding: 6 + "px",
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -217,9 +214,8 @@ export class PlayerInfo extends Component {
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 20 + "px",
-                    marginLeft: 20 + "px",
-                    marginBottom: 20 + "px"
+
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -251,7 +247,7 @@ export class PlayerInfo extends Component {
             <div className="secNavHead">
               <div
                 style={{
-                  backgroundImage: `url(${dhoni})`
+                  backgroundImage: `url(data:image/jpeg;base64,${this.props.singlePlayer[0].player_image})`
                 }}
               ></div>
               <div>
@@ -298,9 +294,6 @@ export class PlayerInfo extends Component {
                   }}
                 >
                   <li>Bowling Stats</li>
-                </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
                 </Link>
               </ul>
             </div>
@@ -323,7 +316,7 @@ export class PlayerInfo extends Component {
             <div className="secNavHead">
               <div
                 style={{
-                  backgroundImage: `url(${dhoni})`
+                  backgroundImage: `url(data:image/jpeg;base64,${this.props.singlePlayer[0].player_image})`
                 }}
               ></div>
               <div>
@@ -370,9 +363,6 @@ export class PlayerInfo extends Component {
                   }}
                 >
                   <li>Bowling Stats</li>
-                </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
                 </Link>
               </ul>
             </div>

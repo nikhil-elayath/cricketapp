@@ -44,6 +44,7 @@ export class MatchLandingPage extends Component {
             gender={this.props.gender}
             changeGender={getGender => this.props.changeGender(getGender)}
             showGender={true}
+            pageLink={"matches"}
           />
         </div>
         <div style={{ marginTop: "80px" }}>

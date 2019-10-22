@@ -21,6 +21,11 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
       </li>
       <div
         className="genders"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
       >
         <span
           className=""
