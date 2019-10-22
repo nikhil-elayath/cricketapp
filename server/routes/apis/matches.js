@@ -59,7 +59,6 @@ router.get("/ondate/:date/:gender", async (req, res, next) => {
               select inning,total_score, total_wicket, total_over, total_ball from pss
               inner join ss on ss.inning_one=pss.inning`);
 
-      console.log(match_total_of_score);
 
       data.push({
         match_id: match_detail[0].match_id,

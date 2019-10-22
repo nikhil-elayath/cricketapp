@@ -24,6 +24,7 @@ export class Home extends Component {
 					changeGender={getGender =>
 						this.props.changeGender(getGender)
 					}
+					showGender={true}
 				/>
 				<div className="div-section">
 					<div className="div-news-section">
@@ -81,71 +82,74 @@ export class Home extends Component {
 									</span>
 								</div>
 							) : (
-								<>
-									{this.props.recent_matches.map(
-										recent_matches => (
-											<Link
-												id="link-recent-matches"
-												to={{
-													pathname:
-														"/match/details/" +
-														recent_matches.match_id
-												}}
-											>
-												<div id="home-match">
-													<div id="team-score">
-														<p id="home-recent-matches-teamOne">
+									<>
+										{this.props.recent_matches.map(
+											match => (
+												<div
+													id="link-recent-matches"
+													onClick={() => {
+														this.props.history.push(
+															"/match/details/" + match.match_id,
 															{
-																recent_matches.teamOne
+																match
 															}
-														</p>
-														<p id="home-recent-matches-team-one-score">
+														);
+													}}
+												>
+													<div id="home-match">
+														<div id="team-score">
+															<p id="home-recent-matches-teamOne">
+																{
+																	match.teamOne
+																}
+															</p>
+															<p id="home-recent-matches-team-one-score">
+																{
+																	match.teamOneScore
+																}
+																/
 															{
-																recent_matches.teamOneScore
+																	match.teamone_wicket
+																}
+															</p>
+														</div>
+														<div id="team-score">
+															<p id="home-recent-matches-teamTwo">
+																{
+																	match.teamTwo
+																}{" "}
+															</p>
+															<p id="home-recent-matches-team-two-score">
+																{
+																	match.teamTwoScore
+																}
+																/{" "}
+																{
+																	match.teamtwo_wicket
+																}{" "}
+															</p>
+														</div>
+														<div id="home-recent-matches-result">
+															<p id="home-recent-matches-team-winner">
+																{
+																	match.team_winner
+																}{" "}
+																{
+																	match.won_by
+																}{" "}
+															</p>
+														</div>
+														<div id="home-recent-match-date">
+															{
+																match.match_date
 															}
-															/
-															{
-																recent_matches.teamone_wicket
-															}
-														</p>
-													</div>
-													<div id="team-score">
-														<p id="home-recent-matches-teamTwo">
-															{
-																recent_matches.teamTwo
-															}{" "}
-														</p>
-														<p id="home-recent-matches-team-two-score">
-															{
-																recent_matches.teamTwoScore
-															}
-															/{" "}
-															{
-																recent_matches.teamtwo_wicket
-															}{" "}
-														</p>
-													</div>
-													<div id="home-recent-matches-result">
-														<p id="home-recent-matches-team-winner">
-															{
-																recent_matches.team_winner
-															}{" "}
-															{
-																recent_matches.won_by
-															}{" "}
-														</p>
-													</div>
-													<div id="home-recent-match-date">
-														{
-															recent_matches.match_date
-														}
+														</div>
 													</div>
 												</div>
-											</Link>
-										)
-									)}
-								</>
-							)}
+											)
+										)}
+									</>
+								)}
 						</div>
 
 						<MostWins

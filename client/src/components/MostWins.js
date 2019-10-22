@@ -132,10 +132,7 @@ export class MostWins extends Component {
 						<div>
 							{this.props.ranks.map(ranks => (
 								<div className="list-wins">
-									{/* <img src={logo} className="img-card" /> */}
 									<img
-										// id="pImage"
-										// className="playerImage"
 										className="img-card"
 										src={`data:image/jpeg;base64,${ranks.team_image}`}
 									></img>

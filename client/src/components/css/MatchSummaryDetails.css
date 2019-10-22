@@ -26,7 +26,8 @@ body {
   border-radius: 5px;
 }
 
-.top-container .teamone-top-players, .teamtwo-top-players {
+.top-container .teamone-top-players,
+.teamtwo-top-players {
   display: grid;
   grid-template-columns: 4fr 2fr 4fr 2fr;
   border-top: 1px solid #272727;
@@ -64,31 +65,30 @@ body {
   background: #2980b9;
   color: white;
   padding: 10px;
-  }
+}
 
 @media screen and (max-width: 768px) {
-.top-container {
-   margin: 0px;
-}
+  .top-container {
+    margin: 0px;
+  }
 
-.top-container .teamone-top-players, .teamtwo-top-players {
-  grid-gap: 0;
-}
-
+  .top-container .teamone-top-players,
+  .teamtwo-top-players {
+    grid-gap: 0;
+  }
 }
 
 @media screen and (max-width: 576px) {
-.top-container {
-   margin-top: 320px;
-   display: block;
+  .top-container {
+    margin-top: 230px;
+    display: block;
   }
 
-.top-container .top-left-container {
-  margin: 20px 0 20px 0;
-}
+  .top-container .top-left-container {
+    margin: 20px 0 20px 0;
+  }
 
-.match_details {
-  margin: 0 0 20px 0;
-}
-
+  .match_details {
+    margin: 0 0 20px 0;
+  }
 }
