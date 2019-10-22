@@ -5,6 +5,7 @@ exports[`Testing for home component should render the component 1`] = `
   <Connect(Navbar)
     changeGender={[Function]}
     gender="male"
+    showGender={true}
   />
   <div
     className="div-section"

@@ -22,8 +22,7 @@ const initialState = {
   t20BatsmanStats: [[]],
   odiBowlerStats: [[]],
   t20BowlerStats: [[]],
-  testBowlerStats: [[]],
-  bowlers: []
+  testBowlerStats: [[]]
 };
 
 export default function(state = initialState, action) {

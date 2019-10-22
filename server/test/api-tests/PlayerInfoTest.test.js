@@ -28,49 +28,49 @@ describe("testing player api's", () => {
   });
 
   it("should return a status code of 200, the body should be an object, a message, return all batsman when match type is Test data and should be an array", done => {
-    let data = { match_type: "Test" };
+    let data = { match_type: "Test", gender: "male" };
     let payload = JSON.stringify(data);
     request(app)
-      .post("/apis/PlayerInfo/TopBatsman")
+      .post("/apis/PlayerInfo/top-Players")
       .send(payload)
       .set("Content-type", "application/json")
       .then(res => {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("All top Batsman retrieved");
+        expect(res.body.topPlayers).toEqual(expect.any(Array));
+        expect(res.body.message).toBe("All top players retrieved");
         done();
       });
   });
 
   it("should return a status code of 200, the body should be an object, a message, return all batsman when match type is T20 data and should be an array", done => {
-    let data = { match_type: "T20" };
+    let data = { match_type: "T20", gender: "male" };
     let payload = JSON.stringify(data);
     request(app)
-      .post("/apis/PlayerInfo/TopBatsman")
+      .post("/apis/PlayerInfo/top-Players")
       .send(payload)
       .set("Content-type", "application/json")
       .then(res => {
         expect(res.status).toBe(200);
         expect(res.body).toEqual(expect.any(Object));
-        expect(res.body.data).toEqual(expect.any(Array));
-        expect(res.body.message).toBe("All top Batsman retrieved");
+        expect(res.body.topPlayers).toEqual(expect.any(Array));
+        expect(res.body.message).toBe("All top players retrieved");
         done();
       });
   });
 
   it("should return a status code of 200, the body should be an object, a message, return all batsman when match type is neither ODI,Test nor T20 data and should be an array", done => {
-    let data = { match_type: "ODIsad" };
+    let data = { match_type: "ODIsad", gender: "female" };
     let payload = JSON.stringify(data);
     request(app)
-      .post("/apis/PlayerInfo/TopBatsman")
+      .post("/apis/PlayerInfo/top-Players")
       .send(payload)
       .set("Content-type", "application/json")
       .then(res => {
         expect(res.status).toBe(400);
         expect(res.body).toEqual(expect.any(Object));
         expect(res.body.statusMessage).toBe(
-          "ERROR!Bad Request cannot retrieve batsman"
+          "ERROR!Bad Request cannot retrieve players"
         );
         done();
       });

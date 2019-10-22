@@ -99,7 +99,7 @@ router.post("/top-Players", async (req, res) => {
       throw {
         statusCode: res.status(400).json({
           statusCode: 400,
-          statusMessage: "ERROR!Bad Request cannot retrieve batsman"
+          statusMessage: "ERROR!Bad Request cannot retrieve players"
         })
       };
     }
