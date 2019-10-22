@@ -6,8 +6,6 @@ import {
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
   GET_TEAM_STATS
-  // GET_HIGHEST_TOTALS,
-  // GET_LOWEST_TOTALS
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
