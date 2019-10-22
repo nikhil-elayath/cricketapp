@@ -18,7 +18,6 @@ export class TeamInfo extends Component {
   };
   componentDidMount() {
     console.log("team name is ", this.props.teams);
-    this.props.getMatch("team info gender - ", this.props.gender);
     let type = {
       match_type: "T20",
       player_country: this.props.teams.team_name
@@ -109,13 +108,20 @@ export class TeamInfo extends Component {
           <div className="matches-section">
             <div className="all-recent-matches-box-team">
               {this.props.isLoading ? (
-                <div style={{ margin: "auto" }}>
+                <div style={{ margin: "0px 0px 0px 80px" }}>
                   <Loader
                     type="TailSpin"
                     color="#2980b9"
                     height="100"
                     width="100"
                   />
+                  <span
+                    style={{
+                      fontSize: "12px"
+                    }}
+                  >
+                    Loading Recent Matches. . .
+                  </span>
                 </div>
               ) : (
                 this.props.matches.map(matches => (
