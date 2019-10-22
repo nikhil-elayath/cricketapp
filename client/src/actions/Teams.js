@@ -6,8 +6,7 @@ import {
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
   GET_TEAM_STATS,
-  // GET_HIGHEST_TOTALS,
-  // GET_LOWEST_TOTALS
+  GET_PREDICTION,
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -137,6 +136,28 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
       console.log("getTeamStats Action");
       dispatch({
         type: GET_TEAM_STATS,
+        payload: res.data.data,
+      });
+    })
+    .catch(err => {
+      // dispatch(startLoading());
+      console.log(err);
+    });
+};
+
+//prediction score
+export const getPrediction = (team_one_id, team_two_id) => dispatch => {
+  console.log("getPrediction actions- ", team_one_id, team_two_id);
+
+  // dispatch(startLoading());
+  return axios
+    .post("http://127.0.0.1:5100/teamwinningchance")
+
+    .then(res => {
+      // dispatch(stopLoading());
+      console.log("getTeamStats Action");
+      dispatch({
+        type: GET_PREDICTION,
         payload: res.data.data,
       });
     })
