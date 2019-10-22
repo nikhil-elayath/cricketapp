@@ -1,24 +1,40 @@
 import React, { Component } from "react";
 import "../css/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { getSearch } from "../../actions/SerachAction";
 import { connect } from "react-redux";
+import decode from "jwt-decode";
 
 export class AdminNavbar extends Component {
 	state = {
 		active: true,
 		searchInput: "",
 		isChecked: window.innerWidth >= 526 ? true : false,
-		width: window.innerWidth
+		redirect: false,
+		pageLink: this.props.pageLink ? this.props.pageLink : "",
+		width: window.innerWidth,
+		isAdmin: false
 	};
 
 	toggleChange = () => {
-		this.setState({ isChecked: !this.state.isChecked });
+		window.innerWidth <= 526
+			? this.setState({ isChecked: !this.state.isChecked })
+			: console.log("do nothing");
 	};
 
 	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
+		if (localStorage.getItem("token")) {
+			let decoded_token = decode(localStorage.getItem("token"));
+			this.setState({ isAdmin: decoded_token.isAdmin ? true : false });
+		}
 	}
+
+	renderRedirect = () => {
+		if (this.state.redirect) {
+			return <Redirect to="/login" />;
+		}
+	};
 
 	updateDimensions = () => {
 		this.setState({
@@ -26,10 +42,15 @@ export class AdminNavbar extends Component {
 			isChecked: window.innerWidth >= 526 ? true : false
 		});
 	};
+	logout = () => {
+		localStorage.removeItem("token");
+		this.setState({ redirect: true });
+	};
 
 	render() {
 		return (
 			<div className="nav-parent">
+				{this.renderRedirect()}
 				<nav className="menu admin">
 					<ul className="admin-ul">
 						{/* brand name which is at left of navbar */}
@@ -64,7 +85,7 @@ export class AdminNavbar extends Component {
 
 						{/* manage players link */}
 						<li
-							className="item"
+							className="admin-item"
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
@@ -81,7 +102,7 @@ export class AdminNavbar extends Component {
 
 						{/* manage teams link */}
 						<li
-							className="item"
+							className="admin-item"
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
@@ -93,6 +114,19 @@ export class AdminNavbar extends Component {
 								id="adminteam"
 							>
 								Manage Teams
+							</Link>
+						</li>
+
+						{/* manage teams link */}
+						<li
+							className="admin-item"
+							style={{
+								display: this.state.isChecked ? "block" : "none"
+							}}
+							onClick={this.logout}
+						>
+							<Link className="link" id="logout-admin-page">
+								Logout
 							</Link>
 						</li>
 					</ul>

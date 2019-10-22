@@ -193,7 +193,7 @@ nav {
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: cover;
-	margin-right: 10px;;
+	margin-right: 10px;
 }
 
 /* admin properties */
@@ -204,6 +204,15 @@ nav {
 
 .admin-nav-brand {
 	margin-right: auto;
+}
+.admin-ul .admin-item .link {
+	padding: 10px 0px;
+}
+
+.admin-ul .admin-item:hover .link {
+	transition: 0.2s;
+	padding-bottom: 8px;
+	border-bottom: 2px solid #ffffff;
 }
 
 .user-options-links {
@@ -250,7 +259,7 @@ nav {
 		font-size: 12px;
 	}
 	#adminteam {
-		margin-left: 30px;
+		margin: 0px 30px;
 	}
 }
 
