@@ -6,7 +6,7 @@ import {
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
   GET_TEAM_STATS,
-  GET_PREDICTION,
+  GET_PREDICTION
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -19,7 +19,7 @@ export const getTeams = match_type => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAMS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -36,7 +36,7 @@ export const getRanks = (gender, ranking) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_RANKS,
-        payload: res.data.data,
+        payload: res.data.data
       });
       console.log("from actions", ranking);
     })
@@ -59,7 +59,7 @@ export const getMatch = (team_id, gender, match_type) => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_MATCHBYTEAMID,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -77,7 +77,7 @@ export const getTeamBatsmen = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BATSMEN,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -94,7 +94,7 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_BOWLERS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -110,7 +110,7 @@ export const getFixtures = team_name => dispatch => {
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -135,7 +135,7 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
       console.log("getTeamStats Action");
       dispatch({
         type: GET_TEAM_STATS,
-        payload: res.data.data,
+        payload: res.data.data
       });
     })
     .catch(err => {
@@ -145,19 +145,19 @@ export const getTeamStats = (team_id, gender, type) => dispatch => {
 };
 
 //prediction score
-export const getPrediction = (team_one_id, team_two_id) => dispatch => {
-  console.log("getPrediction actions- ", team_one_id, team_two_id);
+export const getPrediction = team_id => dispatch => {
+  console.log("getPrediction actions- ", team_id);
 
   // dispatch(startLoading());
   return axios
-    .post("http://127.0.0.1:5100/teamwinningchance")
+    .post("http://127.0.0.1:5100/teamwinningchance", team_id)
 
     .then(res => {
       // dispatch(stopLoading());
       console.log("getTeamStats Action");
       dispatch({
         type: GET_PREDICTION,
-        payload: res.data.data,
+        payload: res.data
       });
     })
     .catch(err => {

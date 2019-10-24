@@ -21,6 +21,14 @@ export class MatchScoreDetails extends Component {
                 height="100"
                 width="100"
               />
+              <span
+                style={{
+                  marginTop: "20px",
+                  fontSize: "12px"
+                }}
+              >
+                Loading Scorecard
+									</span>
             </div>
           ) : (
               this.props.match_score.map(match => (

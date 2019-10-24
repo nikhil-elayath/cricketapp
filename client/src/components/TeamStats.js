@@ -47,7 +47,9 @@ export class TeamStats extends Component {
           {/* ---------------------------------------------------------------------------- */}
           <div className="types-section">
             <div className="match-type-section">
-              <p className="p-match-type">Select Match Type</p>
+              <p className="p-match-type" id="p-stats-match-type">
+                Select Match Type
+              </p>
               <div className="centered-team">
                 <div className="cards-team-stats">
                   <div
@@ -59,7 +61,9 @@ export class TeamStats extends Component {
                       this.onClickTeamStats("T20", this.state.stats_type)
                     }
                   >
-                    <p className="p-card">T20</p>
+                    <p className="p-card" id="p-stats-match-type-t20">
+                      T20
+                    </p>
                   </div>
                   <div
                     className={
@@ -69,7 +73,9 @@ export class TeamStats extends Component {
                       this.onClickTeamStats("ODI", this.state.stats_type)
                     }
                   >
-                    <p className="p-card">ODI</p>
+                    <p className="p-card" id="p-stats-match-type-odi">
+                      ODI
+                    </p>
                   </div>
                   <div
                     style={{ borderRadius: "0px 8px 8px 0px" }}
@@ -80,13 +86,17 @@ export class TeamStats extends Component {
                       this.onClickTeamStats("Test", this.state.stats_type)
                     }
                   >
-                    <p className="p-card">Test</p>
+                    <p className="p-card" id="p-stats-match-type-test">
+                      Test
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="category-section">
-              <p className="p-category">Select Category</p>
+              <p className="p-category" id="p-stats-category">
+                Select Category
+              </p>
               <div className="centered-team">
                 <div className="cards-team-category">
                   <div
@@ -103,7 +113,9 @@ export class TeamStats extends Component {
                       )
                     }
                   >
-                    <p className="p-card">Highest Totals</p>
+                    <p className="p-card" id="p-stats-category-ht">
+                      Highest Totals
+                    </p>
                   </div>
                   <div
                     className={
@@ -118,7 +130,9 @@ export class TeamStats extends Component {
                       )
                     }
                   >
-                    <p className="p-card">Lowest Totals</p>
+                    <p className="p-card" id="p-stats-category-lt">
+                      Lowest Totals
+                    </p>
                   </div>
                   <div
                     className="cardodi"
@@ -134,7 +148,9 @@ export class TeamStats extends Component {
                       )
                     }
                   >
-                    <p className="p-card">Largest Victories</p>
+                    <p className="p-card" id="p-stats-category-lv">
+                      Largest Victories
+                    </p>
                   </div>
                   <div
                     style={{ borderRadius: "0px 8px 8px 0px" }}
@@ -150,7 +166,9 @@ export class TeamStats extends Component {
                       )
                     }
                   >
-                    <p className="p-card">Smallest Victories</p>
+                    <p className="p-card" id="p-stats-category-sv">
+                      Smallest Victories
+                    </p>
                   </div>
                 </div>
               </div>

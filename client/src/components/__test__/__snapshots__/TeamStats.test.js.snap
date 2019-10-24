@@ -13,6 +13,7 @@ exports[`Test TeamStats Component render the component 1`] = `
       >
         <p
           className="p-match-type"
+          id="p-stats-match-type"
         >
           Select Match Type
         </p>
@@ -33,6 +34,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-match-type-t20"
               >
                 T20
               </p>
@@ -43,6 +45,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-match-type-odi"
               >
                 ODI
               </p>
@@ -58,6 +61,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-match-type-test"
               >
                 Test
               </p>
@@ -70,6 +74,7 @@ exports[`Test TeamStats Component render the component 1`] = `
       >
         <p
           className="p-category"
+          id="p-stats-category"
         >
           Select Category
         </p>
@@ -90,6 +95,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-category-ht"
               >
                 Highest Totals
               </p>
@@ -100,6 +106,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-category-lt"
               >
                 Lowest Totals
               </p>
@@ -110,6 +117,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-category-lv"
               >
                 Largest Victories
               </p>
@@ -125,6 +133,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             >
               <p
                 className="p-card"
+                id="p-stats-category-sv"
               >
                 Smallest Victories
               </p>

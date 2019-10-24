@@ -1,10 +1,10 @@
 const request = require("supertest");
-const app = require("../../../index");
+const app = require("../../index");
 
 describe("Testing Search API", () => {
 	it("checks for the post api call and returns status code of 200 and array of object", done => {
 		let data = {
-			user_search: "virat"
+			search: "virat"
 		};
 		let payload = JSON.stringify(data);
 		request(app)
