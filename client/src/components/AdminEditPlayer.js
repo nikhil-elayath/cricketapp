@@ -1,3 +1,4 @@
+/*Name: Piyush kumar */
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { getPlayers, editPlayer } from "../actions/Admin";
@@ -12,13 +13,6 @@ export class AdminEditPlayer extends Component {
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
-
-    // this.state = {
-    //   player_gender: "Gender",
-    //   batting_style: "Batting Style",
-    //   bowling_style: "Bowling style",
-    //   player_role: "Player Role"
-    // };
     this.OnSelectGender = this.OnSelectGender.bind(this);
     this.OnSelectBattingStyle = this.OnSelectBattingStyle.bind(this);
     this.OnSelectBowlerStyle = this.OnSelectBowlerStyle.bind(this);
@@ -26,21 +20,25 @@ export class AdminEditPlayer extends Component {
     this.OnChange = this.OnChange.bind(this);
     this.OnEdit = this.OnEdit.bind(this);
   }
+  /*OnSelectGender function is use for Select Gender from the form */
   OnSelectGender(e) {
     this.setState({
       player_gender: e.target.value
     });
   }
+  /*OnSelectBattingStyle function is use for Select batting style from the form */
   OnSelectBattingStyle(e) {
     this.setState({
       batting_style: e.target.value
     });
   }
+  /*OnSelectBowlerStyle function is use for Select bowling style from the form */
   OnSelectBowlerStyle(e) {
     this.setState({
       bowling_style: e.target.value
     });
   }
+  /*OnSelectRole function is use for Select Role from the form */
   OnSelectRole(e) {
     this.setState({
       player_role: e.target.value
@@ -63,25 +61,26 @@ export class AdminEditPlayer extends Component {
     showError: false,
     errorMessage: ""
   };
-
+  /* componentDidMount help to get the player id and also check is token is available or not  */
   componentDidMount() {
     this.props.getPlayers(this.props.match.params.player_id);
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
     }
   }
+  /*OnChange function is use when any change have made in the input field*/
   OnChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
-
+  /*handleChange function is use for Select date from the form */
   handleChange = date => {
     this.setState({
       player_dob: date
     });
   };
-
+  /*OnEdit function is use to check all the condition for editing player form  
+after all condition is statisfy then it call to the editplayer function  */
   OnEdit = e => {
-    console.log("hello");
     e.preventDefault();
     if (
       !this.state.player_name ||
@@ -214,6 +213,7 @@ export class AdminEditPlayer extends Component {
   render() {
     return (
       <div>
+        {/* AdminNavbar use for display a navbar on page*/}
         <AdminNavbar />
 
         <div id="AdminEditform">
@@ -341,6 +341,7 @@ export class AdminEditPlayer extends Component {
               value={this.state.debut_t20_match}
               onChange={this.OnChange}
             />
+            {/* use to display error messaege if any */}
             <span
               className="errorMessage"
               style={{
