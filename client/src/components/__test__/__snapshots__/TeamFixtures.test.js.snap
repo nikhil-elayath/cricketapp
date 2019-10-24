@@ -16,25 +16,13 @@ exports[`Test TeamInfo Component render the component 1`] = `
         <div
           id="fixture-container"
         >
-          <div
-            className="div-news-images"
-            style={
-              Object {
-                "backgroundImage": "url(data:image/jpeg;base64,",
-              }
-            }
-          />
           <p
             id="fix-date"
-          >
-            12-12-12
-          </p>
+          />
           <p
             id="fix-teams"
           >
-            India
             vs
-            Australia
           </p>
           <p
             id="fix-venue"

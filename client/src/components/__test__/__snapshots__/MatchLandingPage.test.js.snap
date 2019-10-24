@@ -5,6 +5,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
   <div>
     <Connect(Navbar)
       changeGender={[Function]}
+      pageLink="matches"
       showGender={true}
     />
   </div>
@@ -54,7 +55,7 @@ exports[`Testing of MatchLandingPage Component should render the component 1`] =
           className="calendar-fixed"
         >
           <Calendar
-            base={"2019-10-22T05:48:41.260Z"}
+            base={"2019-10-22T06:35:29.477Z"}
             onChange={[Function]}
             showMonthCnt={1}
             showToday={false}

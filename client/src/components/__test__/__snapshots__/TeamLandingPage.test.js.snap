@@ -4,6 +4,7 @@ exports[`Test TeamLandingPage Component render the component 1`] = `
 <div>
   <Connect(Navbar)
     changeGender={[Function]}
+    pageLink="teams"
     showGender={true}
   />
   <div
