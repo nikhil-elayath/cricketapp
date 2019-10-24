@@ -34,7 +34,7 @@ exports[`Test TeamStats Component render the component 1`] = `
               <p
                 className="p-card"
               >
-                Test
+                T20
               </p>
             </div>
             <div
@@ -48,7 +48,7 @@ exports[`Test TeamStats Component render the component 1`] = `
               </p>
             </div>
             <div
-              className="cardt20"
+              className="cardodi"
               onClick={[Function]}
               style={
                 Object {
@@ -59,7 +59,7 @@ exports[`Test TeamStats Component render the component 1`] = `
               <p
                 className="p-card"
               >
-                T20
+                Test
               </p>
             </div>
           </div>
@@ -81,6 +81,7 @@ exports[`Test TeamStats Component render the component 1`] = `
           >
             <div
               className="cardtest"
+              onClick={[Function]}
               style={
                 Object {
                   "borderRadius": "8px 0px 0px 8px",
@@ -95,6 +96,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             </div>
             <div
               className="cardodi"
+              onClick={[Function]}
             >
               <p
                 className="p-card"
@@ -104,6 +106,7 @@ exports[`Test TeamStats Component render the component 1`] = `
             </div>
             <div
               className="cardodi"
+              onClick={[Function]}
             >
               <p
                 className="p-card"
@@ -112,7 +115,8 @@ exports[`Test TeamStats Component render the component 1`] = `
               </p>
             </div>
             <div
-              className="cardt20"
+              className="cardodi"
+              onClick={[Function]}
               style={
                 Object {
                   "borderRadius": "0px 8px 8px 0px",
@@ -138,40 +142,33 @@ exports[`Test TeamStats Component render the component 1`] = `
         Highest Totals
       </p>
       <div
-        className="stats-table"
+        className="grid-table"
       >
         <div
-          className="list"
+          className="grid-container"
         >
           <p
-            className="p-row"
-          >
-            Score
-          </p>
+            className="grid-item-title"
+          />
           <p
-            className="p-row"
+            className="grid-item-title"
           >
             Overs
           </p>
           <p
-            className="p-row"
+            className="grid-item-title"
           >
-            RR
+            Opposition
           </p>
           <p
-            className="p-row"
+            className="grid-item-title"
           >
             Inns
           </p>
           <p
-            className="p-row"
+            className="grid-item-title"
           >
             MatchDate
-          </p>
-          <p
-            className="p-row"
-          >
-            Scorecard
           </p>
         </div>
       </div>

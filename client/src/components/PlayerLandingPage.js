@@ -11,6 +11,7 @@ export class PlayerLandingPage extends Component {
     testClicked: true,
     odiClicked: false,
     t20Clicked: false,
+
     matchType: "Test"
   };
 
