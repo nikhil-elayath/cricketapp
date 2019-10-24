@@ -6,11 +6,11 @@ import "./css/AdminEditPage.css";
 import AdminNavbar from "./common/AdminNavbar";
 
 export class AdminEditTeam extends Component {
+  /* componentDidMount help to get the also check is token is available or not  */
   componentDidMount() {
     if (!localStorage.getItem("token")) {
       this.props.history.push("/login");
     }
-    // this.props.getAllTeams(this.props.match.params.team_id);
   }
 
   state = {
@@ -19,11 +19,12 @@ export class AdminEditTeam extends Component {
     showError: false,
     errorMessage: ""
   };
-
+  /*OnChange function is use when any change have made in the input field*/
   OnChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
-
+  /*OnEdit function is use to check all the condition for editing team form  
+after all condition is statisfy then it call to the editTeam function  */
   OnEdit = e => {
     e.preventDefault();
     if (!this.state.team_name) {
