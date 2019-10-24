@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const pg = require("pg-promise")();
 const config = require("config");
-
 // const postgresURL = config.get("postgresURL");
 const db = pg("postgres://postgres:root@localhost:5432/cricketalpha");
 
@@ -21,7 +20,7 @@ router.get("/allPlayer", async (req, res) => {
 
 router.get("/singlePlayer/:player_id", async (req, res) => {
   const id = req.params.player_id;
-  console.log("player id is: ", id);
+  // console.log("player id is: ", id);
   try {
     const result = await db.any(
       `select * from player where player_id = ${id} `
@@ -29,7 +28,7 @@ router.get("/singlePlayer/:player_id", async (req, res) => {
 
     var date = new Date(result[0].player_dob);
 
-    console.log(date);
+    // console.log(date);
 
     result[0].player_dob = date.toLocaleDateString("en-IN", {
       month: "short",

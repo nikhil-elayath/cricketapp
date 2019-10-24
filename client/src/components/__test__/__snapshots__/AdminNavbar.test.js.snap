@@ -42,7 +42,7 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
         />
       </label>
       <li
-        className="item"
+        className="admin-item"
         onClick={[Function]}
         style={
           Object {
@@ -59,7 +59,7 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
         </Link>
       </li>
       <li
-        className="item"
+        className="admin-item"
         onClick={[Function]}
         style={
           Object {
@@ -73,6 +73,22 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
           to="/adminteam"
         >
           Manage Teams
+        </Link>
+      </li>
+      <li
+        className="admin-item"
+        onClick={[Function]}
+        style={
+          Object {
+            "display": "block",
+          }
+        }
+      >
+        <Link
+          className="link"
+          id="logout-admin-page"
+        >
+          Logout
         </Link>
       </li>
     </ul>

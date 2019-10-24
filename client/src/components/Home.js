@@ -1,3 +1,6 @@
+// Author : Nikhil Elayath
+// The landing page of the component which consists of the navbar, recent news section, recent matches and most wins. Most wins is a reusable component which is just being called.
+
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getNews, getRecentMatches } from "../actions/Home";
@@ -6,19 +9,21 @@ import { getRanks } from "../actions/Teams";
 import MostWins from "./MostWins";
 import { Link } from "react-router-dom";
 import Navbar from "./common/Navbar";
+
 import Loader from "react-loader-spinner";
 
 export class Home extends Component {
 	componentDidMount() {
-		console.log("home mounted");
-		this.props.getNews();
+//this function calls the get News function which is defined in the actions which will retrive all the data from the news table.		
+	this.props.getNews();
+// calling the recentMatches function and passing the gender as a parameter so that it fetches recent matches bassed on gender type.
 		this.props.getRecentMatches(this.props.gender);
 	}
 
 	render() {
-		console.log("find layout", this.props);
 		return (
 			<div>
+{/* Navbar is a reusable component*/}
 				<Navbar
 					gender={this.props.gender}
 					changeGender={getGender =>
@@ -28,6 +33,7 @@ export class Home extends Component {
 				/>
 				<div className="div-section">
 					<div className="div-news-section">
+						{/* mappin the news data from the redux  */}
 						{this.props.home.map(news => (
 							<Link
 								className="link-news"
@@ -151,7 +157,7 @@ export class Home extends Component {
 									</>
 								)}
 						</div>
-
+{/* Most wins component being called  */}
 						<MostWins
 							gender={this.props.gender}
 							changeGender={getGender =>

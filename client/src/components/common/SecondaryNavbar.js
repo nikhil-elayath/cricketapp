@@ -32,9 +32,6 @@ export default class SecondaryNavbar extends Component {
               <Link className="secLink" to="/bowlingStats">
                 <li>Bowling Stats</li>
               </Link>
-              <Link className="secLink" to="/performance">
-                <li>Performance</li>
-              </Link>
             </ul>
           </div>
         </div>
