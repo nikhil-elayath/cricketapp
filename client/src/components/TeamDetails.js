@@ -21,6 +21,7 @@ export class TeamDetails extends Component {
         <Navbar
           gender={this.props.gender}
           changeGender={getGender => this.props.changeGender(getGender)}
+          showGender={true}
         />
         <TeamSecondaryNavbar
           gender={this.props.gender}

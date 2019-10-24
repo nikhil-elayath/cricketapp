@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./css/PlayerInfo.css";
-import NavBar from "../components/common/Navbar";
+import Navbar from "./common/Navbar";
 import "../components/css/SecondaryNavbar.css";
 import dhoni from "../components/images/dhoni.jpg";
 import { Link } from "react-router-dom";
@@ -22,17 +22,9 @@ export class PlayerInfo extends Component {
     this.props.getSinglePlayer(this.props.match.params.player_id);
   }
 
-  getDob = () => {
-    // console.log("from function", this.props.singlePlayer[0].player_dob);
-    let dob = {
-      date: this.props.singlePlayer[0].player_dob
-    };
-    console.log("dob is funxtions is", dob);
-  };
-
   render() {
-    console.log(this.props);
-    console.log(this.props.singlePlayer[0].player_image);
+    console.log("from player info", this.props);
+    // console.log(this.props.singlePlayer[0].player_image);
     // console.log(
     //   "Inside render component",
     //   this.props.singlePlayer[0].player_dob
@@ -40,7 +32,11 @@ export class PlayerInfo extends Component {
     if (this.state.info === true)
       return (
         <div>
-          <NavBar></NavBar>
+          <Navbar
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+          />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
@@ -99,9 +95,6 @@ export class PlayerInfo extends Component {
                 >
                   <li>Bowling Stats</li>
                 </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
-                </Link>
               </ul>
             </div>
           </div>
@@ -122,7 +115,9 @@ export class PlayerInfo extends Component {
                 Personal Details
               </p>
               <div className="playerBasicinfo">
-                <span style={{ fontSize: 14 + "px" }}>Full Name</span>
+                <span id="jest-full-name" style={{ fontSize: 14 + "px" }}>
+                  Full Name
+                </span>
                 <b>{this.props.singlePlayer[0].player_name}</b>
                 <div style={{ marginTop: 16 + "px" }}>
                   <span>Date Of Birth</span>
@@ -139,11 +134,11 @@ export class PlayerInfo extends Component {
                 */}
                 </div>
                 <b>{this.props.singlePlayer[0].player_dob}</b>
-                <span>Role</span>
+                <span id="jest-role">Role</span>
                 <b>{this.props.singlePlayer[0].player_role}</b>
-                <span>Batting Style</span>
+                <span id="jest-batting-style">Batting Style</span>
                 <b>{this.props.singlePlayer[0].batting_style}</b>
-                <span>Bowling Style</span>
+                <span id="jest-bowling-style">Bowling Style</span>
                 <b>{this.props.singlePlayer[0].bowling_style}</b>
               </div>
             </div>
@@ -162,15 +157,17 @@ export class PlayerInfo extends Component {
               </p>
               <div>
                 <div className="formatHeading">
-                  <span>Test</span>
+                  <span id="test-heading">Test</span>
                 </div>
                 <div
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 15 + "px",
-                    marginLeft: 15 + "px",
-                    marginBottom: 15 + "px"
+                    // marginTop: 15 + "px",
+                    // marginLeft: 15 + "px",
+                    // marginBottom: 15 + "px",
+                    padding: 6 + "px",
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -187,16 +184,14 @@ export class PlayerInfo extends Component {
                 </div>
 
                 <div className="formatHeading">
-                  <span>ODI</span>
+                  <span id="odi-heading">ODI</span>
                 </div>
                 <div
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 20 + "px",
-                    marginLeft: 20 + "px",
-                    marginBottom: 20 + "px",
-                    color: "#707070"
+                    padding: 6 + "px",
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -213,15 +208,14 @@ export class PlayerInfo extends Component {
                 </div>
 
                 <div className="formatHeading">
-                  <span>T20</span>
+                  <span id="t20-heading">T20</span>
                 </div>
                 <div
                   className="pl-stats-details"
                   style={{
                     textAlign: "left",
-                    marginTop: 20 + "px",
-                    marginLeft: 20 + "px",
-                    marginBottom: 20 + "px"
+
+                    backgroundColor: "white"
                   }}
                 >
                   <p
@@ -244,12 +238,16 @@ export class PlayerInfo extends Component {
     else if (this.state.batting_stats === true) {
       return (
         <div>
-          <NavBar></NavBar>
+          <Navbar
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+          />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
                 style={{
-                  backgroundImage: `url(${dhoni})`
+                  backgroundImage: `url(data:image/jpeg;base64,${this.props.singlePlayer[0].player_image})`
                 }}
               ></div>
               <div>
@@ -296,9 +294,6 @@ export class PlayerInfo extends Component {
                   }}
                 >
                   <li>Bowling Stats</li>
-                </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
                 </Link>
               </ul>
             </div>
@@ -312,12 +307,16 @@ export class PlayerInfo extends Component {
     } else if (this.state.bowling_stats === true) {
       return (
         <div>
-          <NavBar></NavBar>
+          <Navbar
+            gender={this.props.gender}
+            changeGender={getGender => this.props.changeGender(getGender)}
+          />
+
           <div className="secNavParent">
             <div className="secNavHead">
               <div
                 style={{
-                  backgroundImage: `url(${dhoni})`
+                  backgroundImage: `url(data:image/jpeg;base64,${this.props.singlePlayer[0].player_image})`
                 }}
               ></div>
               <div>
@@ -364,9 +363,6 @@ export class PlayerInfo extends Component {
                   }}
                 >
                   <li>Bowling Stats</li>
-                </Link>
-                <Link className="secLink" to="/performance">
-                  <li>Performance</li>
                 </Link>
               </ul>
             </div>

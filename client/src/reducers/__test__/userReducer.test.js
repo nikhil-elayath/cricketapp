@@ -14,7 +14,7 @@ describe("Testing Users Reducers", () => {
       payload: [{}, {}, {}]
     };
     const returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: action.payload });
+    expect(returnedState).toEqual({ error: "", users: action.payload });
   });
 
   it("should return a state object with user array equal to the payload in the action when the action type is GET_USER (when the returned state is not an initial state)", () => {
@@ -34,7 +34,7 @@ describe("Testing Users Reducers", () => {
       payload: [{}, {}, {}]
     };
     let returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: [] });
+    expect(returnedState).toEqual({ error: "", users: [] });
     action = {
       type: "SOME_TYPE",
       payload: [{}, {}, {}]
@@ -66,7 +66,7 @@ describe("Testing Users Reducers", () => {
       // payload: [{}, {}, {}]
     };
     const returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: [] });
+    expect(returnedState).toEqual({ error: "", users: [] });
   });
   it("should return a state object with user array equal to the payload in the action when the action type is CREATE_USERS (when the returned state is not an initial state)", () => {
     const initialState = {
@@ -86,7 +86,7 @@ describe("Testing Users Reducers", () => {
       // payload: [{}, {}, {}]
     };
     const returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: [] });
+    expect(returnedState).toEqual({ error: "", users: [] });
   });
   it("should return a state object with user array equal to the payload in the action when the action type is LOGIN (when the returned state is not an initial state)", () => {
     const initialState = {
@@ -106,7 +106,7 @@ describe("Testing Users Reducers", () => {
       // payload: [{}, {}, {}]
     };
     const returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: [] });
+    expect(returnedState).toEqual({ error: "", users: [] });
   });
   it("should return a state object with user array equal to the payload in the action when the action type is CREATE_USERS (when the returned state is not an initial state)", () => {
     const initialState = {
@@ -126,7 +126,7 @@ describe("Testing Users Reducers", () => {
       // payload: [{}, {}, {}]
     };
     const returnedState = user(undefined, action);
-    expect(returnedState).toEqual({ users: [] });
+    expect(returnedState).toEqual({ error: "", users: [] });
   });
   it("should return a state object with user array equal to the payload in the action when the action type is CREATE_USERS (when the returned state is not an initial state)", () => {
     const initialState = {

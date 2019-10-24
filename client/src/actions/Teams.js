@@ -5,8 +5,8 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS
+  GET_TEAM_STATS,
+  GET_PREDICTION
 } from "./Types";
 
 import { startLoading, stopLoading } from "./LoadingAction";
@@ -102,12 +102,11 @@ export const getTeamBowlers = (gender, match_type) => dispatch => {
     });
 };
 
-export const getFixtures = (team_id, match_type) => dispatch => {
+//NIKHIL
+export const getFixtures = team_name => dispatch => {
+  console.log("get fix from actions", team_name);
   return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/fixtures/" + team_id,
-      match_type
-    )
+    .post("http://localhost:5000/cricketalpha/teams/fixtures", team_name)
     .then(res => {
       dispatch({
         type: GET_TEAM_FIXTURES,
@@ -119,24 +118,25 @@ export const getFixtures = (team_id, match_type) => dispatch => {
     });
 };
 
-export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
-  console.log("high actions", team_id, match_type);
+export const getTeamStats = (team_id, gender, type) => dispatch => {
+  console.log("getTeamStats action- ", team_id, gender, type);
   dispatch(startLoading());
   return axios
     .post(
-      "http://localhost:5000/cricketalpha/teams/highesttotals/" +
+      "http://localhost:5000/cricketalpha/teams/stats/" +
         team_id +
         "/" +
         gender,
-      match_type
+      type
     )
+
     .then(res => {
       dispatch(stopLoading());
+      console.log("getTeamStats Action");
       dispatch({
-        type: GET_HIGHEST_TOTALS,
+        type: GET_TEAM_STATS,
         payload: res.data.data
       });
-      console.log("getHighestTotals action");
     })
     .catch(err => {
       dispatch(startLoading());
@@ -144,26 +144,24 @@ export const getHighestTotals = (team_id, gender, match_type) => dispatch => {
     });
 };
 
-export const getLowestTotals = (team_id, gender, match_type) => dispatch => {
-  dispatch(startLoading());
+//prediction score
+export const getPrediction = team_id => dispatch => {
+  console.log("getPrediction actions- ", team_id);
+
+  // dispatch(startLoading());
   return axios
-    .post(
-      "http://localhost:5000/cricketalpha/teams/lowesttotals/" +
-        team_id +
-        "/" +
-        gender,
-      match_type
-    )
+    .post("http://127.0.0.1:5100/teamwinningchance", team_id)
+
     .then(res => {
-      dispatch(stopLoading());
+      // dispatch(stopLoading());
+      console.log("getTeamStats Action");
       dispatch({
-        type: GET_LOWEST_TOTALS,
-        payload: res.data.data
+        type: GET_PREDICTION,
+        payload: res.data
       });
-      console.log("getLowestTotals action", match_type);
     })
     .catch(err => {
-      dispatch(startLoading());
+      // dispatch(startLoading());
       console.log(err);
     });
 };

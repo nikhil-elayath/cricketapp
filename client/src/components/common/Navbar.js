@@ -1,19 +1,28 @@
 import React, { Component } from "react";
 import "../css/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { getSearch } from "../../actions/SerachAction";
 import { connect } from "react-redux";
+import decode from "jwt-decode";
+
+let decoded_token;
 
 export class Navbar extends Component {
 	state = {
 		active: true,
 		searchInput: "",
 		isChecked: window.innerWidth >= 526 ? true : false,
-		width: window.innerWidth
+		width: window.innerWidth,
+		redirect: false,
+		pageLink: this.props.pageLink ? this.props.pageLink : "",
+		showGender: this.props.showGender
 	};
 
-	toggleChange = () => {
-		window.innerWidth <= 526 ? this.setState({ isChecked: !this.state.isChecked }):console.log("do nothing");
+	toggleChange = pageLink => {
+		this.setState({ pageLink });
+		window.innerWidth <= 526
+			? this.setState({ isChecked: !this.state.isChecked })
+			: console.log("do nothing");
 	};
 
 	handleSearchInputChange = e => {
@@ -26,6 +35,9 @@ export class Navbar extends Component {
 
 	componentDidMount() {
 		window.addEventListener("resize", this.updateDimensions);
+		if (localStorage.getItem("token")) {
+			decoded_token = decode(localStorage.getItem("token"));
+		}
 	}
 
 	updateDimensions = () => {
@@ -35,24 +47,49 @@ export class Navbar extends Component {
 		});
 	};
 
+	renderRedirect = () => {
+		if (this.state.redirect) {
+			return <Redirect to="/login" />;
+		}
+	};
+
+	logout = () => {
+		localStorage.removeItem("token");
+		this.setState({ redirect: true });
+	};
+
 	render() {
 		return (
 			<div className="nav-parent">
+				{this.renderRedirect()}
 				<nav className="menu">
 					<ul>
 						{/* brand name which is at left of navbar */}
 						<li className="nav-brand-li">
-							<Link to="/" id="nav-brand">
+							<Link
+								to="/"
+								id="nav-brand"
+								onClick={() => {
+									this.setState({ pageLink: "" });
+								}}
+							>
 								CricketAlpha
 							</Link>
 						</li>
 
 						{/* toggle gender buttons for men and women */}
-						<div className="genders">
+						<div
+							className="genders"
+							style={{
+								display: this.state.showGender
+									? "default"
+									: "none"
+							}}
+						>
 							<span
 								id="men"
 								className={
-									this.props.gender == "male"
+									this.props.gender === "male"
 										? "active-gender"
 										: ""
 								}
@@ -63,7 +100,7 @@ export class Navbar extends Component {
 							<span
 								id="women"
 								className={
-									this.props.gender == "female"
+									this.props.gender === "female"
 										? "active-gender"
 										: ""
 								}
@@ -81,8 +118,9 @@ export class Navbar extends Component {
 							id="menu-btn"
 							className="menu-btn"
 							checked={this.state.isChecked}
-							onClick={this.toggleChange}
-							// hidden="hidden"
+							onClick={() =>
+								this.toggleChange(this.state.pageLink)
+							}
 						/>
 
 						{/* label for checkbox which makes the hamburger menu */}
@@ -99,11 +137,15 @@ export class Navbar extends Component {
 
 						{/* matches link */}
 						<li
-							className="item"
+							className={
+								this.state.pageLink == "matches"
+									? "item active-link"
+									: "item"
+							}
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
-							onClick={this.toggleChange}
+							onClick={() => this.toggleChange("matches")}
 						>
 							<Link className="link" to="/matches" id="matches">
 								Matches
@@ -112,11 +154,15 @@ export class Navbar extends Component {
 
 						{/* teams link */}
 						<li
-							className="item"
+							className={
+								this.state.pageLink == "teams"
+									? "item active-link"
+									: "item"
+							}
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
-							onClick={this.toggleChange}
+							onClick={() => this.toggleChange("teams")}
 						>
 							<Link className="link" to="/teams" id="teams">
 								Teams
@@ -125,11 +171,15 @@ export class Navbar extends Component {
 
 						{/* players link */}
 						<li
-							className="item"
+							className={
+								this.state.pageLink == "players"
+									? "item active-link"
+									: "item"
+							}
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
-							onClick={this.toggleChange}
+							onClick={() => this.toggleChange("players")}
 						>
 							<Link className="link" to="/players" id="players">
 								Players
@@ -162,13 +212,13 @@ export class Navbar extends Component {
 								if not then prints no result found */}
 								{this.props.search.length !== 0 ? (
 									this.props.search.player.length !== 0 ||
-									this.props.search.team.length !== 0 ? (
-										<>
-											{/* checks for player array length in seaarch
+										this.props.search.team.length !== 0 ? (
+											<>
+												{/* checks for player array length in seaarch
 										if present map all the player available */}
-											{this.props.search.player.length !==
-											0
-												? this.props.search.player.map(
+												{this.props.search.player.length !==
+													0
+													? this.props.search.player.map(
 														mapped_search => (
 															<div>
 																<Link
@@ -180,6 +230,11 @@ export class Navbar extends Component {
 																		// state:{
 																	}}
 																>
+																	<div
+																		style={{
+																			backgroundImage: `url(data:image/jpeg;base64,${mapped_search.player_image}`
+																		}}
+																	></div>
 																	<div
 																		className="search-suggestion"
 																		id={
@@ -194,13 +249,13 @@ export class Navbar extends Component {
 																</Link>
 															</div>
 														)
-												  )
-												: null}
+													)
+													: null}
 
-											{/* checks for team array length in seaarch
+												{/* checks for team array length in seaarch
 										if present map all the team available */}
-											{this.props.search.team.length != 0
-												? this.props.search.team.map(
+												{this.props.search.team.length !== 0
+													? this.props.search.team.map(
 														mapped_search => (
 															<div>
 																<Link
@@ -212,6 +267,11 @@ export class Navbar extends Component {
 																		// state:{
 																	}}
 																>
+																	<div
+																		style={{
+																			backgroundImage: `url(data:image/jpeg;base64,${mapped_search.team_image}`
+																		}}
+																	></div>
 																	<div
 																		className="search-suggestion"
 																		id={
@@ -226,16 +286,16 @@ export class Navbar extends Component {
 																</Link>
 															</div>
 														)
-												  )
-												: null}
-										</>
-									) : (
-										<div className="search-no-result">
-											<div style={{ color: "#272727" }}>
-												No result found
+													)
+													: null}
+											</>
+										) : (
+											<div className="search-no-result">
+												<div style={{ color: "#272727" }}>
+													No result found
 											</div>
-										</div>
-									)
+											</div>
+										)
 								) : null}
 							</div>
 						</li>
@@ -246,11 +306,78 @@ export class Navbar extends Component {
 							style={{
 								display: this.state.isChecked ? "block" : "none"
 							}}
-							onClick={this.toggleChange}
 						>
 							<Link className="link" to="/login">
 								<i className="fas fa-user"></i>
 							</Link>
+							<div className="user-options-links">
+								{!localStorage.getItem("token") ? (
+									<>
+										<div>
+											<Link
+												className="user-options-item"
+												to="/login"
+											>
+												<div id="login">Login</div>
+											</Link>
+										</div>
+										<div>
+											<Link
+												className="user-options-item"
+												to="/register"
+											>
+												<div id="register">
+													Register
+												</div>
+											</Link>
+										</div>
+									</>
+								) : decoded_token ? (
+									decoded_token.isAdmin ? (
+										<>
+											<div>
+												<Link
+													className="user-options-item"
+													to="/adminteam"
+												>
+													<div id="manage-teams">
+														Manage Teams
+													</div>
+												</Link>
+											</div>
+											<div>
+												<Link
+													className="user-options-item"
+													to="/adminplayer"
+												>
+													<div id="manage-players">
+														Manage Players
+													</div>
+												</Link>
+											</div>
+											<div>
+												<Link
+													className="user-options-item"
+													onClick={this.logout}
+												>
+													<div id="logout-admin">
+														Logout
+													</div>
+												</Link>
+											</div>
+										</>
+									) : (
+											<div>
+												<Link
+													className="user-options-item"
+													onClick={this.logout}
+												>
+													<div id="logout">Logout</div>
+												</Link>
+											</div>
+										)
+								) : null}
+							</div>
 						</li>
 					</ul>
 				</nav>

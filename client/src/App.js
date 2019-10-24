@@ -15,13 +15,8 @@ import BowlingStats from "./components/PlayerBowlingStats";
 import TeamLandingPage from "./components/TeamLandingPage";
 import TeamDetails from "./components/TeamDetails";
 
-// import TeamInfo from "./components/TeamInfo";
-import Home from "./components/Home";
-// import MatchLandingPage from "./components/MatchLandingPage";
-// import MatchSummaryDetails from "./components/MatchSummaryDetails";
-// import MatchScoreDetails from "./components/MatchScoreDetails";
-
 //Nikhil
+import Home from "./components/Home";
 import NewsPage from "./components/NewsPage";
 
 //piyush
@@ -38,14 +33,12 @@ import MatchStatsDetails from "./components/MatchStatsDetails";
 import MatchDetails from "./components/MatchDetails";
 
 // ankit
-import Navbar from "./components/common/Navbar";
-import AdminNavbar from "./components/common/AdminNavbar";
 import decode from "jwt-decode";
 
 let decoded_token;
 export default class App extends Component {
   state = {
-    gender: "male"
+    gender: "male",
   };
 
   changeGender = gender_type => {
@@ -66,24 +59,18 @@ export default class App extends Component {
       <Router>
         {console.log("gender", this.state.gender)}
         {/* //piyush */}
-        {decoded_token ? (
-          decoded_token.isAdmin ? (
-            <>
-              <Route exact path="/adminplayer" component={AdminPlayer}></Route>
-              <Route exact path="/adminteam" component={AdminTeam}></Route>
-              <Route
-                exact
-                path="/admineditplayer/:player_id"
-                component={AdminEditPlayer}
-              ></Route>
-              <Route
-                exact
-                path="/admineditteam/:team_id"
-                component={AdminEditTeam}
-              ></Route>
-            </>
-          ) : null
-        ) : null}
+        <Route exact path="/adminplayer" component={AdminPlayer}></Route>
+        <Route exact path="/adminteam" component={AdminTeam}></Route>
+        <Route
+          exact
+          path="/admineditplayer/:player_id"
+          component={AdminEditPlayer}
+        ></Route>
+        <Route
+          exact
+          path="/admineditteam/:team_id"
+          component={AdminEditTeam}
+        ></Route> 
         <Route
           path="/login"
           exact

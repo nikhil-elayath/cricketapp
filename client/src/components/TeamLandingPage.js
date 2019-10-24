@@ -86,6 +86,8 @@ export class TeamLandingPage extends Component {
         <Navbar
           gender={this.props.gender}
           changeGender={getGender => this.props.changeGender(getGender)}
+          showGender={true}
+          pageLink={"teams"}
         />
         <div className="container-team">
           <h2 className="h1-team">Teams</h2>
@@ -131,8 +133,15 @@ export class TeamLandingPage extends Component {
                       });
                     }}
                   >
+                    {console.log("teams data", teams)}
                     <div className="info-team">
-                      <img src={logo} className="img-team-logo" />
+                      {/* <img src={logo} className="img-team-logo" /> */}
+                      <img
+                        id="pImage"
+                        className="playerImage"
+                        // className="img-team-logo"
+                        src={`data:image/jpeg;base64,${teams.team_image}`}
+                      ></img>
                       <p className="p-team">{teams.team_name}</p>
                     </div>
                   </div>

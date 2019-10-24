@@ -4,8 +4,9 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
 <div
   className="parent"
 >
-  <div
-    className="navbar"
+  <Connect(Navbar)
+    changeGender={[Function]}
+    showGender={false}
   />
   <div>
     <div
@@ -15,7 +16,6 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
         className="grid-item2"
       >
         <p
-          className="grid-item2"
           id="newspage-news-title"
         >
           <b>
@@ -29,8 +29,8 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
            
         </p>
         <img
-          className="news_img"
-          src="vk.jpeg"
+          className="main_img"
+          src="data:image/jpeg;base64,undefined"
         />
         <p
           id="news-content"
@@ -45,16 +45,15 @@ exports[`Testing of NewsPage Component should render the component 1`] = `
         <div>
           <div
             className="div-news-images"
-            style={Object {}}
           />
           <div
-            className="div-news"
+            className="div-newspage"
           >
             <div
               className="div-news-images"
               style={
                 Object {
-                  "backgroundImage": "url(vk.jpeg)",
+                  "backgroundImage": "url(data:image/jpeg;base64,undefined",
                 }
               }
             />

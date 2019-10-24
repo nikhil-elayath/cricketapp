@@ -7,6 +7,7 @@ import {
   getBatsmanStats
 } from "../actions/PlayerAction";
 import { connect } from "react-redux";
+import Loader from "react-loader-spinner";
 
 export class PlayerBattingStats extends Component {
   componentDidMount() {
@@ -27,9 +28,36 @@ export class PlayerBattingStats extends Component {
     //     : console.log("not found")
     // );
 
-    console.log("from component", this.props.batsmanStats);
+    console.log("from component", this.props);
 
     return (
+      <div>
+
+        { this.props.isLoading ?(<div
+              style={{
+                height: 500 + "px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center"
+              }}
+            >
+              <div>
+                <Loader
+                  type="TailSpin"
+                  color="#2980b9"
+                  height="100"
+                  width="100"
+                />
+              </div>
+              <span
+                style={{
+                  marginTop: "40px"
+                }}
+              >
+                Loading Players...
+              </span>
+            </div>): (
       <div className="bat-main">
         <div className="battting-main-div">
           <div className="battting-Test-div">
@@ -500,69 +528,10 @@ export class PlayerBattingStats extends Component {
               </div>
             </div>
           </div>
-          {/* <div className="battting-Ipl-div">
-            <h3 id="batting-format-heading">IPL</h3>
-            <div className="batting-stats-info-parent-div">
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">500</span>
-                <span id="bat-stat-span-2">Matches</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">623</span>
-                <span id="bat-stat-span-2">Innings</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">21756</span>
-                <span id="bat-stat-span-2">Runs</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">37568</span>
-                <span id="bat-stat-span-2">Balls Faced</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">123.4</span>
-                <span id="bat-stat-span-2">Strike Rate</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">43</span>
-                <span id="bat-stat-span-2">Average</span>
-              </div>
-            </div>
-            <div
-              className="batting-stats-info-parent-div"
-              style={{ borderBottom: "none" }}
-            >
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">375</span>
-                <span id="bat-stat-span-2">Highest Score</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">125</span>
-                <span id="bat-stat-span-2">Not Out</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">30</span>
-                <span id="bat-stat-span-2">100s</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">55</span>
-                <span id="bat-stat-span-2">50s</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">3</span>
-                <span id="bat-stat-span-2">200s</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">2749</span>
-                <span id="bat-stat-span-2">4s</span>
-              </div>
-              <div className="batting-stats-info-div">
-                <span id="bat-stat-span-1">2140</span>
-                <span id="bat-stat-span-2">6s</span>
-              </div>
-            </div>
-          </div> */}
+          
         </div>
+        </div>
+        )}
       </div>
     );
   }

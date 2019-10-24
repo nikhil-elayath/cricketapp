@@ -59,3 +59,83 @@ column-gap: 10px;
 	color: #c2c2c2;
 	font-size: 30px;
 }
+
+
+.secNavLink {
+	margin: 0px 60px;
+}
+
+.secNavLink ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.secNavLink ul li {
+	font-family: "Montserrat", sans-serif;
+	padding: 10px 0px;
+	transition: 0.3s;
+	margin-right: 30px;
+	letter-spacing: 0.3px;
+	text-align: center;
+}
+
+.secNavLink ul li:hover {
+	font-weight: 600;
+	cursor: pointer;
+	padding-bottom: 7px;
+	color: #2980b9;
+	border-bottom: 3px solid #2980b9;
+}
+
+
+.options-li{
+	font-family: "Montserrat", sans-serif;
+	padding: 10px 0px;
+	transition: 0.3s;
+	color: #272727;
+	margin-right: 30px;
+	letter-spacing: 0.3px;
+	text-align: center;
+}
+
+.options-selected-li{
+	font-weight: 600;
+	cursor: pointer;
+	padding-bottom: 7px;
+	color: #2980b9;
+	border-bottom: 3px solid #2980b9;
+}
+
+@media screen and (max-width: 768px) {
+
+.match-team-score > div{
+display: grid;
+grid-template-columns: max-content 1fr 2fr;
+width:48vw;
+column-gap: 12px;
+}
+
+.match-pom{
+	padding-left: 30px;
+}
+
+}
+@media screen and (max-width: 576px) {
+
+.match-pom{
+display: none;
+}
+.match-team-score > div{
+grid-template-columns: max-content 1fr 2fr;
+width:100%;
+column-gap: 20px;
+}
+
+.secNavParent{
+width: 100%;
+margin: 0 0 0 0;
+}
+}

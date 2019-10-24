@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/TeamFixtures.css";
-import { getFixtures } from "../actions/Teams";
+import { getFixtures, getPrediction } from "../actions/Teams";
 
 export class TeamFixtures extends Component {
+  componentDidMount() {
+    this.props.getFixtures({ team_name: this.props.teams.team_name });
+
+    // this.props.getPrediction({ team_id: this.props.teams.team_id });
+  }
+  sendPredictions = (t1, t2) => {
+    let team_ids = {
+      team_one: t1,
+      team_two: t2,
+    };
+    this.props.getPrediction(team_ids);
+  };
+  // OnPredictButtonClick() {
+  //   console.log("predict button clicked");
+  //   this.props.getPrediction({ team_id: this.props.teams.team_id });
+  // }
   render() {
+    console.log("reducer", this.props.fixtures);
     return (
-      <div>
-        <div className="team-fixtures-container">
-          <div className="centered">
+      <div id="fixture-container">
+        <div id="fixture">
+          {/* <div className="centered">
             <div className="cards-new">
               <div
                 style={{ borderRadius: "8px 0px 0px 8px" }}
@@ -29,36 +46,54 @@ export class TeamFixtures extends Component {
                 <p className="p-card">T20</p>
               </div>
             </div>
-          </div>
-          <div className="fixture-container">
-            <div className="fixture-details">
-              <div className="fixture-col-1">
-                <p className="fixture-info-type">T20</p>
-              </div>
-              <div className="fixture-col-2">
-                <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
-                <p className="fixture-info-two">9:30 (IST)</p>
-              </div>
-              <div className="fixture-col-3">
-                <p className="fixture-info-one">India vs Bangladesh</p>
-                <p className="fixture-info-two">JCA Stadium, Ranchi</p>
-              </div>
-            </div>
-          </div>
-          <div className="fixture-container">
-            <div className="fixture-details">
-              <div className="fixture-col-1">
-                <p className="fixture-info-type">T20</p>
-              </div>
-              <div className="fixture-col-2">
-                <p className="fixture-info-one">Wed 02 - Sun 06 Oct</p>
-                <p className="fixture-info-two">9:30 (IST)</p>
-              </div>
-              <div className="fixture-col-3">
-                <p className="fixture-info-one">India vs South Africa</p>
-                <p className="fixture-info-two">JCA Stadium, Ranchi</p>
-              </div>
-            </div>
+          </div> */}
+
+          <div id="fix-main-grid">
+            {this.props.fixtures
+              ? this.props.fixtures.map(fixtures => (
+                  <div id="fixgrid-item1">
+                    {/* //main grid container */}
+                    <div id="fixture-container">
+                      {/* {this.props.fixtures.images.map(images => (
+                        <div
+                          className="div-news-images"
+                          style={{
+                            backgroundImage: `url(data:image/jpeg;base64,${images.team_image}`,
+                          }}
+                        /> */}
+                      {/* ))} */}
+                      {/* first grid item */}
+                      <p id="fix-date">{fixtures.date}</p>
+                      {/* second grid item */}
+                      <p id="fix-teams">
+                        {fixtures.team_one}vs
+                        {fixtures.team_two}
+                      </p>
+                      <p id="fix-venue">{fixtures.venue}</p>
+                      <p id="fix-time">{fixtures.time}</p>
+                      {/* <img
+                      // id="pImage"
+                      // className="playerImage"
+                      className="main_img"
+                      src={`data:image/jpeg;base64,${fixtures.news_image}`}
+                    ></img> */}
+                      <button
+                        id="editbutton"
+                        className="admineditpagebutton"
+                        onChange={this.OnChange}
+                        onClick={() =>
+                          this.sendPredictions(
+                            fixtures.team_one_id,
+                            fixtures.team_two_id
+                          )
+                        }
+                      >
+                        Predicted result
+                      </button>
+                    </div>
+                  </div>
+                ))
+              : null}
           </div>
         </div>
       </div>
@@ -67,10 +102,10 @@ export class TeamFixtures extends Component {
 }
 
 const mapStateTostate = state => ({
-  fixtures: state.TeamsReducer.fixtures
+  fixtures: state.TeamsReducer.fixtures,
 });
 
 export default connect(
   mapStateTostate,
-  { getFixtures }
+  { getFixtures, getPrediction }
 )(TeamFixtures);

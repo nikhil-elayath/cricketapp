@@ -31,16 +31,21 @@ export default class TeamSecondaryNavbar extends Component {
         /> */}
         <div className="secNavTeamParent">
           <div className="secNavHead">
-            <div
+            {/* <div
               style={{
                 backgroundImage: `url(${teamlogo})`
               }}
-            ></div>
+            ></div> */}
+            <img
+              id="pImage"
+              className="playerImage"
+              src={`data:image/jpeg;base64,${this.props.teams.team_image}`}
+            ></img>
             <div>
               <h2>{this.props.teams.team_name}</h2>
             </div>
           </div>
-          <div className="secNavLinks">
+          <div className="secNavLink">
             <ul>
               <div>
                 <li

@@ -1,151 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Test TeamInfo Component render the component 1`] = `
-<div>
+<div
+  id="fixture-container"
+>
   <div
-    className="team-fixtures-container"
+    id="fixture"
   >
     <div
-      className="centered"
+      id="fix-main-grid"
     >
       <div
-        className="cards-new"
+        id="fixgrid-item1"
       >
         <div
-          className="cardtest"
-          style={
-            Object {
-              "borderRadius": "8px 0px 0px 8px",
+          id="fixture-container"
+        >
+          <div
+            className="div-news-images"
+            style={
+              Object {
+                "backgroundImage": "url(data:image/jpeg;base64,",
+              }
             }
-          }
-        >
+          />
           <p
-            className="p-card"
+            id="fix-date"
           >
-            All
-          </p>
-        </div>
-        <div
-          className="cardt20"
-        >
-          <p
-            className="p-card"
-          >
-            Test
-          </p>
-        </div>
-        <div
-          className="cardt20"
-        >
-          <p
-            className="p-card"
-          >
-            ODI
-          </p>
-        </div>
-        <div
-          className="cardt20"
-          style={
-            Object {
-              "borderRadius": "0px 8px 8px 0px",
-            }
-          }
-        >
-          <p
-            className="p-card"
-          >
-            T20
-          </p>
-        </div>
-      </div>
-    </div>
-    <div
-      className="fixture-container"
-    >
-      <div
-        className="fixture-details"
-      >
-        <div
-          className="fixture-col-1"
-        >
-          <p
-            className="fixture-info-type"
-          >
-            T20
-          </p>
-        </div>
-        <div
-          className="fixture-col-2"
-        >
-          <p
-            className="fixture-info-one"
-          >
-            Wed 02 - Sun 06 Oct
+            12-12-12
           </p>
           <p
-            className="fixture-info-two"
+            id="fix-teams"
           >
-            9:30 (IST)
-          </p>
-        </div>
-        <div
-          className="fixture-col-3"
-        >
-          <p
-            className="fixture-info-one"
-          >
-            India vs Bangladesh
+            India
+            vs
+            Australia
           </p>
           <p
-            className="fixture-info-two"
-          >
-            JCA Stadium, Ranchi
-          </p>
-        </div>
-      </div>
-    </div>
-    <div
-      className="fixture-container"
-    >
-      <div
-        className="fixture-details"
-      >
-        <div
-          className="fixture-col-1"
-        >
+            id="fix-venue"
+          />
           <p
-            className="fixture-info-type"
+            id="fix-time"
+          />
+          <button
+            className="admineditpagebutton"
+            id="editbutton"
+            onClick={[Function]}
           >
-            T20
-          </p>
-        </div>
-        <div
-          className="fixture-col-2"
-        >
-          <p
-            className="fixture-info-one"
-          >
-            Wed 02 - Sun 06 Oct
-          </p>
-          <p
-            className="fixture-info-two"
-          >
-            9:30 (IST)
-          </p>
-        </div>
-        <div
-          className="fixture-col-3"
-        >
-          <p
-            className="fixture-info-one"
-          >
-            India vs South Africa
-          </p>
-          <p
-            className="fixture-info-two"
-          >
-            JCA Stadium, Ranchi
-          </p>
+            Predicted result
+          </button>
         </div>
       </div>
     </div>

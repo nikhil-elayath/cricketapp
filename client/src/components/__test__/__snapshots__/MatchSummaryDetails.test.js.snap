@@ -1,35 +1,380 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing of MatchSummaryDetails Component should render the component 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "store": Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      },
-      "subscription": Subscription {
-        "handleChangeWrapper": [Function],
-        "listeners": Object {
-          "notify": [Function],
-        },
-        "onStateChange": [Function],
-        "parentSub": undefined,
-        "store": Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        },
-        "unsubscribe": null,
-      },
+<div>
+  <div
+    style={
+      Object {
+        "marginTop": "210px",
+      }
     }
-  }
->
-  <Connect(MatchSummaryDetails) />
-</ContextProvider>
+  >
+    <div
+      className="top-container"
+    >
+      <div
+        className="top-left-container"
+      >
+        <div
+          className="top-title"
+          id="summary-title"
+        >
+          Summary Scorecard
+        </div>
+        <div
+          id="team-one-name-summary"
+          style={
+            Object {
+              "padding": "10px",
+            }
+          }
+        >
+          Australia
+        </div>
+        <div
+          className="teamone-top-players"
+        >
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-one-tbm"
+            >
+              PJ Hughes
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "borderRight": "1px solid #272727",
+                "padding": "10px",
+              }
+            }
+          >
+            <div
+              id="team-one-tbm-runs"
+            >
+              115
+               (
+              151
+              )
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-one-tbn"
+            >
+              DW Steyn
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-one-tbn-wickets"
+            >
+              3
+              /
+              88
+               (
+              25
+              )
+            </div>
+          </div>
+        </div>
+        <div
+          id="team-two-name"
+          style={
+            Object {
+              "padding": "10px",
+            }
+          }
+        >
+          South Africa
+        </div>
+        <div
+          className="teamtwo-top-players"
+        >
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-two-tbn"
+            >
+              JP Duminy
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "borderRight": "1px solid #272727",
+                "padding": "10px",
+              }
+            }
+          >
+            <div
+              id="team-two-btm-score"
+            >
+              73
+               (
+              152
+              )
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-two-top-bowler-name"
+            >
+              MG Johnson
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "margin": "10px",
+              }
+            }
+          >
+            <div
+              id="team-two-top-bowler-wicket"
+            >
+              4
+              /
+              51
+               (
+              15
+              )
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className="match_details"
+        style={
+          Object {
+            "borderRadius": "5px",
+          }
+        }
+      >
+        <div
+          className="top-title"
+          id="match-conatiner-title"
+        >
+          Match Details
+        </div>
+        <div
+          id="competition-name-text"
+          style={
+            Object {
+              "margin": "5px 0 0 8px",
+            }
+          }
+        >
+          Series
+        </div>
+        <div
+          id="competition-name"
+          style={
+            Object {
+              "fontWeight": "500",
+              "margin": "0 0 0 15px",
+            }
+          }
+        >
+          others
+        </div>
+        <div
+          id="match-date-text"
+          style={
+            Object {
+              "margin": "3px 0 0 8px",
+            }
+          }
+        >
+          Date
+        </div>
+        <div
+          style={
+            Object {
+              "fontWeight": "500",
+              "margin": "0 0 0 15px",
+            }
+          }
+        >
+          <div
+            id="match-date-value"
+          >
+            Mar 07, 2009
+          </div>
+        </div>
+        <div
+          id="match-toss-text"
+          style={
+            Object {
+              "margin": "3px 0 0 8px",
+            }
+          }
+        >
+          Toss
+        </div>
+        <div
+          id="toss-and-decision"
+          style={
+            Object {
+              "fontWeight": "500",
+              "margin": "0 0 0 15px",
+            }
+          }
+        >
+          Australia
+           elected to
+           
+          bat
+        </div>
+        <div
+          id="match-venue-text"
+          style={
+            Object {
+              "margin": "3px 0 0 8px",
+            }
+          }
+        >
+          Venue
+        </div>
+        <div
+          id="match-venue-value"
+          style={
+            Object {
+              "fontWeight": "500",
+              "margin": "0 0 0 15px",
+            }
+          }
+        >
+          Kingsmead
+          ,
+           
+          Durban
+        </div>
+        <div
+          id="match-umpire-text"
+          style={
+            Object {
+              "margin": "3px 0 0 8px",
+            }
+          }
+        >
+          Umpire
+        </div>
+        <div
+          id="match-umpire-name"
+          style={
+            Object {
+              "fontWeight": "500",
+              "margin": "0 0 0 15px",
+            }
+          }
+        >
+          Asad Rauf
+        </div>
+      </div>
+      <div
+        className="bottom-left-container"
+        style={
+          Object {
+            "borderRadius": "5px",
+          }
+        }
+      >
+        <div
+          className="top-title"
+          id="playing-XI-title"
+        >
+          Playing XI
+        </div>
+        <div
+          className="playingXI"
+        >
+          <div
+            id="team-one-p-name"
+            style={
+              Object {
+                "borderBottom": "1px solid #272727",
+                "margin": "15px 0 0 8px",
+              }
+            }
+          >
+            Australia
+          </div>
+          <div
+            id="team-two-p-name"
+            style={
+              Object {
+                "borderBottom": "1px solid #272727",
+                "margin": "15px 0 0 8px",
+              }
+            }
+          >
+            South Africa
+          </div>
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "0 0 0 10px",
+              }
+            }
+          >
+            <div
+              id="team-one-playingXI"
+            >
+              MJ Clarke
+            </div>
+          </div>
+          <div
+            style={
+              Object {
+                "fontWeight": "500",
+                "margin": "0 0 0 10px",
+              }
+            }
+          >
+            <div
+              id="team-two-playingXI"
+            >
+              M Ntini
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;

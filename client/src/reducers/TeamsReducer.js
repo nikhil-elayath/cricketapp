@@ -5,9 +5,9 @@ import {
   GET_TEAM_BATSMEN,
   GET_TEAM_BOWLERS,
   GET_TEAM_FIXTURES,
-  GET_HIGHEST_TOTALS,
-  GET_LOWEST_TOTALS,
-  GET_TEAM_SEARCH
+  GET_TEAM_STATS,
+  GET_TEAM_SEARCH,
+  GET_PREDICTION,
 } from "../actions/Types";
 
 const initialstate = {
@@ -17,7 +17,8 @@ const initialstate = {
   batsmen: [],
   bowlers: [],
   fixtures: [],
-  teamstats: []
+  teamstats: [],
+  prediction: [],
 };
 
 export default function(state = initialstate, action) {
@@ -31,27 +32,27 @@ export default function(state = initialstate, action) {
     case GET_TEAM_BATSMEN:
       return {
         ...state,
-        batsmen: action.payload
+        batsmen: action.payload,
       };
     case GET_TEAM_BOWLERS:
       return {
         ...state,
-        bowlers: action.payload
+        bowlers: action.payload,
       };
     case GET_TEAM_FIXTURES:
       return {
         ...state,
-        fixtures: action.payload
+        fixtures: action.payload,
       };
-    case GET_HIGHEST_TOTALS:
+    case GET_TEAM_STATS:
       return {
         ...state,
-        teamstats: action.payload
+        teamstats: action.payload,
       };
-    case GET_LOWEST_TOTALS:
+    case GET_PREDICTION:
       return {
         ...state,
-        teamstats: action.payload
+        teamstats: action.payload,
       };
     case GET_TEAM_SEARCH:
       return { ...state, teams: action.payload };

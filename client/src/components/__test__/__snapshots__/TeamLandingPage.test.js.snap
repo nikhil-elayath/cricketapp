@@ -2,6 +2,10 @@
 
 exports[`Test TeamLandingPage Component render the component 1`] = `
 <div>
+  <Connect(Navbar)
+    changeGender={[Function]}
+    showGender={true}
+  />
   <div
     className="container-team"
   >
@@ -78,7 +82,9 @@ exports[`Test TeamLandingPage Component render the component 1`] = `
         <div
           className="top-team"
         >
-          <Connect(MostWins) />
+          <Connect(MostWins)
+            changeGender={[Function]}
+          />
         </div>
       </div>
     </div>

@@ -1,9 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Testing for home component should render the component 1`] = `
-<div
-  className="div-container"
->
+<div>
+  <Connect(Navbar)
+    changeGender={[Function]}
+    gender="male"
+    showGender={true}
+  />
   <div
     className="div-section"
   >
@@ -25,7 +28,7 @@ exports[`Testing for home component should render the component 1`] = `
             className="div-news-images"
             style={
               Object {
-                "backgroundImage": "url(vk.jpeg)",
+                "backgroundImage": "url(data:image/jpeg;base64,undefined",
               }
             }
           />
@@ -61,13 +64,9 @@ exports[`Testing for home component should render the component 1`] = `
         >
           Recent Matches
         </div>
-        <Link
+        <div
           id="link-recent-matches"
-          to={
-            Object {
-              "pathname": "/match/details/1",
-            }
-          }
+          onClick={[Function]}
         >
           <div
             id="home-match"
@@ -122,9 +121,12 @@ exports[`Testing for home component should render the component 1`] = `
               12-12-12
             </div>
           </div>
-        </Link>
+        </div>
       </div>
-      <Connect(MostWins) />
+      <Connect(MostWins)
+        changeGender={[Function]}
+        gender="male"
+      />
     </div>
   </div>
 </div>

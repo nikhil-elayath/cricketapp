@@ -1,11 +1,11 @@
 import {
-  GET_RECENT_MATCHES,
-  GET_MATCHES_DATE,
+  GET_MATCHES_BY_DATE,
+  GET_RECENT_MATCHES_DATE,
   GET_MATCH_DETAILS_BY_ID,
   GET_MATCH_SCORECARD_DETAILS_BY_ID,
   GET_MANHATTAN_GRAPH_BY_ID,
   GET_PIECHART_ONE_GRAPH_BY_ID,
-  GET_PIECHART_TWO_GRAPH_BY_ID
+  GET_PIECHART_TWO_GRAPH_BY_ID,
 } from "./Types";
 import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
@@ -13,14 +13,14 @@ import axios from "axios";
 const url = "http://localhost:5000/api/matches";
 const url2 = "http://127.0.0.1:5000";
 
-export const getRecentMatches = (date, gender) => dispatch => {
+export const getMatchesByDate = (date, gender) => dispatch => {
   dispatch(startLoading());
   return axios
-    .get(url + "/recent/" + date + "/" + gender)
+    .get(url + "/ondate/" + date + "/" + gender)
     .then(res => {
       dispatch(stopLoading());
       dispatch({
-        type: GET_RECENT_MATCHES,
+        type: GET_MATCHES_BY_DATE,
         payload: res.data.data,
       });
       console.log(res.data);
@@ -31,12 +31,12 @@ export const getRecentMatches = (date, gender) => dispatch => {
     });
 };
 
-export const getMatchesDate = () => dispatch => {
+export const getRecentMatchesDate = (gender) => dispatch => {
   return axios
-    .get(url + "/bydate")
+    .get(url + "/recent/" + gender)
     .then(res => {
       dispatch({
-        type: GET_MATCHES_DATE,
+        type: GET_RECENT_MATCHES_DATE,
         payload: res.data.data,
       });
       console.log(res.data);
@@ -88,7 +88,7 @@ export const getManhattanGraphbyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_MANHATTAN_GRAPH_BY_ID,
-        payload: { manhattan: res.data },
+        payload: res.data,
       });
       console.log(res.data);
     })
@@ -105,9 +105,8 @@ export const getPieChartOnebyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_ONE_GRAPH_BY_ID,
-        payload: res.data
+        payload: res.data,
       });
-      console.log(res.data);
     })
     .catch(err => {
       dispatch(startLoading());
@@ -122,7 +121,7 @@ export const getPieChartTwobyId = id => dispatch => {
       dispatch(stopLoading());
       dispatch({
         type: GET_PIECHART_TWO_GRAPH_BY_ID,
-        payload: { piechartTwo: res.data },
+        payload: res.data,
       });
       console.log(res.data);
     })

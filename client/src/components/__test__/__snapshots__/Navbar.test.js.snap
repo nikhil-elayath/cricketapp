@@ -13,6 +13,7 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
       >
         <Link
           id="nav-brand"
+          onClick={[Function]}
           to="/"
         >
           CricketAlpha
@@ -20,6 +21,11 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
       </li>
       <div
         className="genders"
+        style={
+          Object {
+            "display": "none",
+          }
+        }
       >
         <span
           className=""
@@ -136,6 +142,13 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
               }
             >
               <div
+                style={
+                  Object {
+                    "backgroundImage": "url(data:image/jpeg;base64,undefined",
+                  }
+                }
+              />
+              <div
                 className="search-suggestion"
                 id="player-search-58"
               >
@@ -153,6 +166,13 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
               }
             >
               <div
+                style={
+                  Object {
+                    "backgroundImage": "url(data:image/jpeg;base64,undefined",
+                  }
+                }
+              />
+              <div
                 className="search-suggestion"
                 id="team-search-10"
               >
@@ -164,7 +184,6 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
       </li>
       <li
         className="login-icon"
-        onClick={[Function]}
         style={
           Object {
             "display": "block",
@@ -179,6 +198,34 @@ exports[`test for the text, input, css properties and icons on the navbar and sn
             className="fas fa-user"
           />
         </Link>
+        <div
+          className="user-options-links"
+        >
+          <div>
+            <Link
+              className="user-options-item"
+              to="/login"
+            >
+              <div
+                id="login"
+              >
+                Login
+              </div>
+            </Link>
+          </div>
+          <div>
+            <Link
+              className="user-options-item"
+              to="/register"
+            >
+              <div
+                id="register"
+              >
+                Register
+              </div>
+            </Link>
+          </div>
+        </div>
       </li>
     </ul>
   </nav>

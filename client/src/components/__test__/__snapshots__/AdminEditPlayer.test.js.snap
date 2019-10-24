@@ -2,6 +2,7 @@
 
 exports[`test  Component render the component 1`] = `
 <div>
+  <Connect(AdminNavbar) />
   <div
     id="AdminEditform"
   >
@@ -165,7 +166,7 @@ exports[`test  Component render the component 1`] = `
           previousYearButtonLabel="Previous Year"
           readOnly={false}
           renderDayContents={[Function]}
-          selected={2019-10-19T08:19:24.654Z}
+          selected={2019-10-22T05:48:42.410Z}
           shouldCloseOnSelect={true}
           showMonthYearPicker={false}
           showQuarterYearPicker={false}
