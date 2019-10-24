@@ -19,8 +19,11 @@ export class MatchStatsDetails extends Component {
   render() {
     return (
       <div>
+        {/* [yatin] when the data content from the database is not loaded in the redux store 
+            then loader will apper on the page */}
         {this.props.isLoading ? (
           <div style={{ margin: "400px" }}>
+
             <Loader
               type="TailSpin"
               color="#2980b9"
@@ -98,6 +101,7 @@ export class MatchStatsDetails extends Component {
 }
 
 const mapStateToProps = state => ({
+  // [yatin] mapping the data present in the redux store on the page
   match_stats_manhattan: state.matchreducer.match_stats_manhattan,
   match_stats_pie1: state.matchreducer.match_stats_pie1,
   match_stats_pie2: state.matchreducer.match_stats_pie2,

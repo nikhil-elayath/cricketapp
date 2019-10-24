@@ -10,9 +10,17 @@ import {
 import { startLoading, stopLoading } from "./LoadingAction";
 import axios from "axios";
 
+// [yatin] This url contains path address of node which is used as 
+// a backend service for database quering
 const url = "http://localhost:5000/api/matches";
+
+// [yatin] This url contains path address of python which is used as 
+// a backend service for visualization
 const url2 = "http://127.0.0.1:5000";
 
+// [yatin] getMatchesByDate passes date and gender as parameter and 
+// fetches the list of matches with thier details for the mentioned
+// /provided date.
 export const getMatchesByDate = (date, gender) => dispatch => {
   dispatch(startLoading());
   return axios
@@ -31,6 +39,8 @@ export const getMatchesByDate = (date, gender) => dispatch => {
     });
 };
 
+// [yatin] getRecentMatchesDate passes gender as parameter and 
+// fetches the list of recent dates 
 export const getRecentMatchesDate = (gender) => dispatch => {
   return axios
     .get(url + "/recent/" + gender)
@@ -46,6 +56,8 @@ export const getRecentMatchesDate = (gender) => dispatch => {
     });
 };
 
+// [yatin] getmatchdetailbyId passes match_id as parameter and 
+// fetches the summary details for the mentioned/provided match.
 export const getmatchdetailbyId = id => dispatch => {
   dispatch(startLoading());
   return axios
@@ -63,6 +75,9 @@ export const getmatchdetailbyId = id => dispatch => {
       console.log(err);
     });
 };
+
+// [yatin] getMatchScorecardDetailbyId passes match_id as a parameter and 
+// fetches the scorecard details for the mentioned/provided match.
 export const getMatchScorecardDetailbyId = id => dispatch => {
   dispatch(startLoading());
   return axios
@@ -80,6 +95,9 @@ export const getMatchScorecardDetailbyId = id => dispatch => {
       console.log(err);
     });
 };
+
+// [yatin] getManhattanGraphbyId passes match_id as a parameter and 
+// fetches the manhattan graph for the mentioned/provided match.
 export const getManhattanGraphbyId = id => dispatch => {
   dispatch(startLoading());
   return axios
@@ -97,6 +115,10 @@ export const getManhattanGraphbyId = id => dispatch => {
       console.log(err);
     });
 };
+
+// [yatin] getPieChartOnebyId passes match_id as a parameter and 
+// fetches the pichart graph based on players run for both team
+//  for the mentioned/provided match.
 export const getPieChartOnebyId = id => dispatch => {
   dispatch(startLoading());
   return axios
@@ -113,6 +135,10 @@ export const getPieChartOnebyId = id => dispatch => {
       console.log(err);
     });
 };
+
+// [yatin] getPieChartTwobyId passes match_id as a parameter and 
+// fetches the pichart graph based on bowlers wickets for both team
+//  for the mentioned/provided match.
 export const getPieChartTwobyId = id => dispatch => {
   dispatch(startLoading());
   return axios

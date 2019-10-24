@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import "./css/MatchLandingPage.css";
-import { getMatchesByDate, getRecentMatchesDate } from "../actions/Matches.js";
+import { getMatchesByDate } from "../actions/Matches.js";
 import { Calendar, DatePicker } from "@y0c/react-datepicker";
 import "@y0c/react-datepicker/assets/styles/calendar.scss";
 import Loader from "react-loader-spinner";
@@ -9,11 +9,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Navbar from "./common/Navbar";
 
 export class MatchLandingPage extends Component {
+
   // [Yatin] On selection of new date from the calender,
   // new date will be passed to the match api to check
-  // if any matches were played on selected date
-
+  // if any matches were played on that selected date
   onChange = date => {
+
     //[yatin] storing the selected date in date format
     var received_date = date.toDate();
 
@@ -21,25 +22,22 @@ export class MatchLandingPage extends Component {
     //  before passing it to the match api function
     var datee = received_date.toJSON().slice(0, 10);
 
-    //[yatin] passing the new selected date to the api
+    //[yatin] passing the new selected date to the getMatchesByDate api
     this.props.getMatchesByDate(datee, this.props.gender);
   };
   componentDidMount() {
-    // calling the initial matches
-    this.props.getRecentMatchesDate(this.props.gender);
 
-    // this.props.match_date.map(date => (
-    //   console.log("here", date.match_date)
-    //   // this.props.getMatchesByDate(date.match_date, this.props.gender)
-    // ))
+    // [yatin] calling the getMatchesByDate with a default random date
     this.props.getMatchesByDate("2016-03-17", this.props.gender);
-    // this.props.getMatchesByDate("2016-05-20", this.props.gender);
   }
 
   render() {
     return (
       <div>
         <div>
+          {/* [yatin] The primary navbar contains gender option for example 
+          when clicked on female option, the data will be reloaded with the
+          result of selected gender */}
           <Navbar
             gender={this.props.gender}
             changeGender={getGender => this.props.changeGender(getGender)}
@@ -62,12 +60,17 @@ export class MatchLandingPage extends Component {
           <div className="landing-container">
             <div className="calendar-container">
               <div className="calender-datepicker">
+                {/* [yatin] on mobile view the calander icon will be displayed,
+                when clicked on the icon the calander will appear */}
                 <DatePicker onChange={this.onChange} showDefaultIcon clear />
               </div>
               <div className="calendar-fixed">
+                {/* [yatin] on web view the calander will be displayed with a fixed postion*/}
                 <Calendar onChange={this.onChange} />
               </div>
             </div>
+            {/* [yatin] when the data content from the database is not loaded in the redux store 
+            then loader will apper on the page */}
             {this.props.isLoading ? (
               <div style={{ margin: "auto" }}>
                 <Loader
@@ -79,6 +82,8 @@ export class MatchLandingPage extends Component {
               </div>
             ) : (
                 <div>
+                  {/* [yatin] On selection of any date from the calender doesn't conatin any 
+                match data/context then the message such as "No matches" will be displayed */}
                   {this.props.matches.length === 0 ? (
                     <h2
                       id="no-matches-title"
@@ -176,12 +181,12 @@ export class MatchLandingPage extends Component {
 }
 
 const mapStateToProps = state => ({
+  // [yatin] mapping the data present in the redux store on the page
   matches: state.matchreducer.matches,
-  match_date: state.matchreducer.match_date,
   isLoading: state.LoadingReducer.isLoading
 });
 
 export default connect(
   mapStateToProps,
-  { getMatchesByDate, getRecentMatchesDate }
+  { getMatchesByDate }
 )(MatchLandingPage);

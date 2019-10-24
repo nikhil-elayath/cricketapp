@@ -13,6 +13,9 @@ export class MatchScoreDetails extends Component {
     return (
       <div>
         <div className="main-spacing-container">
+
+          {/* [yatin] when the data content from the database is not loaded in the redux store 
+            then loader will apper on the page */}
           {this.props.isLoading ? (
             <div style={{ margin: "400px" }}>
               <Loader
@@ -31,6 +34,7 @@ export class MatchScoreDetails extends Component {
 									</span>
             </div>
           ) : (
+              // [yatin] mapping match_score redux store content
               this.props.match_score.map(match => (
                 <div
                   className="top-container-scorecard"
@@ -46,6 +50,7 @@ export class MatchScoreDetails extends Component {
                       padding: "10px"
                     }}
                   >
+                    {/*[yatin] inning number will be displayed */}
                     Inning {match.inning.inning}
                   </div>
                   <div className="main-container-scorecard">
@@ -62,12 +67,16 @@ export class MatchScoreDetails extends Component {
                       <div id="SR-text">SR</div>
                     </div>
                     <div>
+                      {/* [yatin] mapping of batsmen details */}
                       {match.batsman.map(batsman => (
                         <div
                           className="batsman-heading"
                           style={{ padding: "5px" }}
                         >
                           <div id="batsmen-name">{batsman.striker_name}</div>
+                          {/* [yatin] if the wicket_type received from redux store is null then "not out" will be displayed
+                                      if the wicket_type recieved from redux store is "caught" then "(c)" along with the
+                                      fielder_name followed by "(b)" before every bowler_name*/}
                           {batsman.wicket_type ?
                             (<div id="how-out">
                               {batsman.wicket_type == "caught" ? "(c) " : batsman.wicket_type}
@@ -90,6 +99,7 @@ export class MatchScoreDetails extends Component {
                     >
                       <div id="match-extras-text">Extras</div>
                       <div id="match-extras-value" style={{ margin: "0 80px 0 0" }}>
+                        {/* [yatin] mapping of total extras */}
                         {match.extra_total.map(total => total.extra_count)} extras
                     </div>
                     </div>
@@ -145,6 +155,7 @@ export class MatchScoreDetails extends Component {
 }
 
 const mapStateToProps = state => ({
+  // [yatin] mapping the data present in the redux store on the page
   match_score: state.matchreducer.match_score,
   isLoading: state.LoadingReducer.isLoading
 });

@@ -12,6 +12,8 @@ export class MatchSummaryDetails extends Component {
   render() {
     return (
       <div>
+        {/* [yatin] when the data content from the database is not loaded in the redux store 
+            then loader will apper on the page */}
         {this.props.isLoading ? (
           <div style={{ margin: "400px" }}>
             <Loader
@@ -31,6 +33,7 @@ export class MatchSummaryDetails extends Component {
           </div>
         ) : (
             <div style={{ marginTop: 210 + "px" }}>
+              {/* [yatin] mapping match redux store content */}
               {this.props.match.map(match => (
                 <div className="top-container">
                   <div className="top-left-container">
@@ -167,11 +170,13 @@ export class MatchSummaryDetails extends Component {
                         {match.teamtwo_name.map(teamtwo => teamtwo.teamtwo_name)}
                       </div>
                       <div style={{ margin: "0 0 0 10px", fontWeight: "500" }}>
+                        {/* [yatin] mapping of playing XI of team one */}
                         {match.team_one_XI.map(team1_XI => (
                           <div id="team-one-playingXI" >{team1_XI.teamone_players}</div>
                         ))}
                       </div>
                       <div style={{ margin: "0 0 0 10px", fontWeight: "500" }}>
+                        {/* [yatin] mapping of playing XI of team two */}
                         {match.team_two_XI.map(team2_XI => (
                           <div id="team-two-playingXI">{team2_XI.teamtwo_players}</div>
                         ))}
@@ -188,6 +193,7 @@ export class MatchSummaryDetails extends Component {
 }
 
 const mapStateToProps = state => ({
+  // [yatin] mapping the data present in the redux store on the page
   match: state.matchreducer.match,
   isLoading: state.LoadingReducer.isLoading
 });
