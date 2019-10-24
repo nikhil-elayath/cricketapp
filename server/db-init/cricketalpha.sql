@@ -1,7 +1,7 @@
-drop database if exists cricketalpha;
-create database cricketalpha;
+drop database if exists dummydata;
+create database dummydata;
 
-\c cricketalpha;
+\c dummydata;
 
 create table delivery
 (
@@ -45,6 +45,20 @@ create table match
     (255)
 );
 
+create table dummy 
+(
+    player_name varchar(255),
+    player_country varchar(100),
+    batting_style varchar(255),
+    bowling_style varchar(255),
+    bowling_style varchar(255),
+    player_dob date,
+    player_role varchar(255),
+    debut_odi_match varchar(500),
+    debut_test_match varchar(500),
+    debut_t20_match varchar(500)
+);
+
     create table match_date
     (
         match_id int,
@@ -76,7 +90,8 @@ create table match
         news_id serial,
         news_content varchar(8000),
         news_title varchar(500),
-        news_date date
+        news_date date,
+        news_image varchar
     );
 
     create table player
@@ -91,7 +106,8 @@ create table match
         debut_odi_match varchar(255),
         debut_test_match varchar(255),
         debut_t20_match varchar(255),
-        player_country varchar(255)
+        player_country varchar(255),
+        player_image varchar
     );
 
     create table player_stats
@@ -104,32 +120,11 @@ create table match
         competition varchar(255)
     );
 
-    create table match_stats
-    (
-        match_stats_id serial,
-        match_id int,
-        match_stats_name varchar(100),
-        match_stats_value varchar(255),
-        match_type varchar(30),
-        competition varchar(255),
-        inning int
-    );
-
-    create table team_stats
-    (
-        team_stats_id serial,
-        team_stats_name varchar(100),
-        team_stats_value varchar(255),
-        team_id int,
-        match_type varchar(30),
-        competition varchar(255),
-        match_id int
-    );
-
     create table team
     (
         team_id serial,
-        team_name varchar(255)
+        team_name varchar(255),
+        team_image varchar
     );
 
     create table umpire
@@ -168,3 +163,8 @@ create table match
         fielder_two int,
         player_out int
     );
+
+insert into extras(extras_id,extras_type, extras_run) values(0,'NA',0);
+insert into team(team_id,team_name, team_image) values(0,'NA','NA');
+insert into player values(0,'NA','NA','NA','NA','0000-00-00','NA','NA','NA','NA','NA','NA');
+insert into wickets values(0,'NA',0,0,0)
