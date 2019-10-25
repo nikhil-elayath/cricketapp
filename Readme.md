@@ -49,8 +49,9 @@ npm install
         |___ cricketalpha
             |___ client
             |___ server
-                |___ yaml
-                |___ json
+                |___db-init
+                    |___ yaml
+                    |___ json
 
 2.  Add .yaml files to yaml folder.
 3.  Run the following command on terminal inside db-init directory.
@@ -96,7 +97,8 @@ CSV and SQL files are present inside scrape folder to add data inside the cricke
         |___ cricketalpha
             |___ client
             |___ server
-                |___ image.png
+                |___db-init
+                    |___ image.png
 
 2.  Add your image.png file address in img.js file.
 3.  Run the following command on terminal inside db-init directory.
