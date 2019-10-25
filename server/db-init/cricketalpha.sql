@@ -164,6 +164,16 @@ create table dummy
         player_out int
     );
 
+    create table fixtures
+    (
+        date date,
+        team_one varchar(255),
+        team_two varchar(255),
+        venue varchar(255),
+        time varchar(255),
+        gender varchar(255)
+    );
+
 insert into extras(extras_id,extras_type, extras_run) values(0,'NA',0);
 insert into team(team_id,team_name, team_image) values(0,'NA','NA');
 insert into player values(0,'NA','NA','NA','NA','0000-00-00','NA','NA','NA','NA','NA','NA');
